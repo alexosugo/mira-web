@@ -107,7 +107,7 @@ const Header = () => {
                 onClick={() => scrollToSection('testimonials')} 
                 className="block w-full text-left px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
-                Success Stories
+                Impact
               </button>
               <button 
                 onClick={() => scrollToSection('pricing')} 
