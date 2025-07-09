@@ -432,7 +432,7 @@ const FinalCTA = () => {
         {/* Additional Trust Elements */}
         <div className="text-center">
           <p className="text-gray-400 text-sm mb-2">
-            ✓ No spam, ever ✓ Unsubscribe anytime ✓ <span style={{ fontFamily: "Funnel Sans" }}>30</span>-day money-back guarantee
+            ✓ No spam, ever ✓ Unsubscribe anytime ✓
           </p>
           <p className="text-gray-500 text-xs">
             Join the revolution in customer service automation for Kenyan businesses
