@@ -1,9 +1,11 @@
 import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
+import { useCTATracking } from '../hooks/useTracking';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { trackCTA } = useCTATracking();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -11,6 +13,14 @@ const Header = () => {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false); // Close mobile menu after clicking
     }
+  };
+
+  const handleCTAClick = () => {
+    trackCTA('header_cta_button', 'Get Early Access', 'header', {
+      button_location: 'top_navigation',
+      button_type: 'primary'
+    });
+    scrollToContactForm();
   };
 
   return (
@@ -57,8 +67,12 @@ const Header = () => {
 
           <div className="hidden md:flex items-center">
             <button 
-              onClick={scrollToContactForm}
+              onClick={handleCTAClick}
               className="bg-[#C0DC2D] text-[#13243E] px-4 py-2 rounded-lg hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 font-medium text-sm"
+              data-hotjar-trigger="cta_click"
+              data-button-id="header_cta_button"
+              data-button-text="Get Early Access"
+              data-page-section="header"
             >
               Get Early Access
             </button>
@@ -103,8 +117,12 @@ const Header = () => {
               </button>
               <div className="border-t border-gray-100 pt-2">
                 <button 
-                  onClick={scrollToContactForm}
+                  onClick={handleCTAClick}
                   className="block w-full text-left px-3 py-2 bg-[#C0DC2D] text-[#13243E] rounded-lg hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105"
+                  data-hotjar-trigger="cta_click"
+                  data-button-id="header_mobile_cta_button"
+                  data-button-text="Get Early Access"
+                  data-page-section="header_mobile"
                 >
                   Get Early Access
                 </button>

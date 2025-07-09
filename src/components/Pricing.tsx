@@ -1,8 +1,12 @@
 import React from 'react';
 import { Check, MessageCircle, Star, Zap, ArrowRight, Clock } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
+import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
 const Pricing = () => {
+  const { trackCTA } = useCTATracking();
+  const sectionRef = useSectionTracking('pricing', 'Pricing Section');
+
   const plans = [
     {
       name: "Starter",
@@ -60,8 +64,17 @@ const Pricing = () => {
     }
   ];
 
+  const handleCTAClick = () => {
+    trackCTA('pricing_cta_button', 'Get Early Access', 'pricing', {
+      button_location: 'pricing_section',
+      button_type: 'primary',
+      section_headline: 'Affordable Automation That Pays for Itself'
+    });
+    scrollToContactForm();
+  };
+
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
+    <section id="pricing" ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#C0DC2D]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#13243E]/5 rounded-full blur-3xl"></div>
@@ -129,8 +142,12 @@ const Pricing = () => {
             
             <div className="flex justify-center">
               <button 
-                onClick={scrollToContactForm}
+                onClick={handleCTAClick}
                 className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 shadow-lg inline-flex items-center gap-2 btn-shimmer hover-glow group"
+                data-hotjar-trigger="cta_click"
+                data-button-id="pricing_cta_button"
+                data-button-text="Get Early Access"
+                data-page-section="pricing"
               >
                 Get Early Access
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { MessageCircle, Instagram, Zap, Bot, ArrowRight } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
+import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { trackCTA } = useCTATracking();
+  const sectionRef = useSectionTracking('hero', 'Hero Section');
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  const handleCTAClick = () => {
+    trackCTA('hero_cta_button', 'Get Early Access', 'hero', {
+      button_location: 'hero_section',
+      button_type: 'primary',
+      hero_headline: 'Turn every visitor into a customer'
+    });
+    scrollToContactForm();
+  };
+
   return (
-    <section className="bg-white pt-16 pb-20 relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
+    <section ref={sectionRef} className="bg-white pt-16 pb-20 relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-[#C0DC2D]/5 animate-gradient"></div>
       
@@ -64,8 +76,12 @@ const Hero = () => {
             }`}
           >
             <button 
-              onClick={scrollToContactForm}
+              onClick={handleCTAClick}
               className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 btn-shimmer hover-glow group"
+              data-hotjar-trigger="cta_click"
+              data-button-id="hero_cta_button"
+              data-button-text="Get Early Access"
+              data-page-section="hero"
             >
               Get Early Access
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
