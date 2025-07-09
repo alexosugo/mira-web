@@ -142,9 +142,9 @@ const Pricing = () => {
         {/* Trust Indicators */}
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">
-            ✓ No setup fees ✓ Cancel anytime ✓ <span style={{ fontFamily: "Funnel Sans" }}>30</span>-day money-back guarantee
+            ✓ No setup fees ✓ Cancel anytime ✓
           </p>
-          <div className="flex justify-center items-center gap-2 text-sm text-gray-500">
+          <div className="flex justify-center items-center gap-2 text-sm text-gray-500 hidden">
             <MessageCircle className="h-4 w-4" />
             <span>Questions? WhatsApp us at <span style={{ fontFamily: "Funnel Sans" }}>+254 700 123 456</span></span>
           </div>
