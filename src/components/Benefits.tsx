@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Clock, Settings, TrendingUp, BarChart3, ArrowRight } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
+import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
 const Benefits = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [counters, setCounters] = useState({ response: 0, efficiency: 0, sales: 0 });
+  const { trackCTA } = useCTATracking();
+  const sectionRef = useSectionTracking('benefits', 'Benefits Section');
 
   const benefits = [
     {
@@ -97,8 +100,17 @@ const Benefits = () => {
     }, stepDuration);
   };
 
+  const handleCTAClick = () => {
+    trackCTA('benefits_cta_button', 'Get Early Access', 'benefits', {
+      button_location: 'benefits_section',
+      button_type: 'primary',
+      section_headline: 'Transform Your Business with Mira'
+    });
+    scrollToContactForm();
+  };
+
   return (
-    <section id="benefits" className="py-20 bg-gray-50" style={{ fontFamily: "Funnel Sans" }}>
+    <section id="benefits" ref={sectionRef} className="py-20 bg-gray-50" style={{ fontFamily: "Funnel Sans" }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight animate-fade-in-up" style={{ fontFamily: "Funnel Display" }}>
@@ -154,8 +166,12 @@ const Benefits = () => {
 
           <div className="text-center">
             <button 
-              onClick={scrollToContactForm}
+              onClick={handleCTAClick}
               className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2 btn-shimmer hover-glow group animate-fade-in-up animate-delay-600"
+              data-hotjar-trigger="cta_click"
+              data-button-id="benefits_cta_button"
+              data-button-text="Get Early Access"
+              data-page-section="benefits"
             >
               Get Early Access
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

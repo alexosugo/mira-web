@@ -1,10 +1,23 @@
 import React from 'react';
 import { ArrowRight, Bot, Zap, Globe } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
+import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
 const SolutionOverview = () => {
+  const { trackCTA } = useCTATracking();
+  const sectionRef = useSectionTracking('solution', 'Solution Overview');
+
+  const handleCTAClick = () => {
+    trackCTA('solution_cta_button', 'Get Early Access', 'solution', {
+      button_location: 'solution_section',
+      button_type: 'primary',
+      section_headline: 'Meet Mira: Your Intelligent Customer Experience Partner'
+    });
+    scrollToContactForm();
+  };
+
   return (
-    <section className="py-16 bg-white" style={{ fontFamily: "Funnel Sans" }}>
+    <section ref={sectionRef} className="py-16 bg-white" style={{ fontFamily: "Funnel Sans" }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight" style={{ fontFamily: "Funnel Display" }}>
@@ -39,8 +52,12 @@ const SolutionOverview = () => {
             
             <div className="text-center">
               <button 
-                onClick={scrollToContactForm}
+                onClick={handleCTAClick}
                 className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2 btn-shimmer hover-glow group"
+                data-hotjar-trigger="cta_click"
+                data-button-id="solution_cta_button"
+                data-button-text="Get Early Access"
+                data-page-section="solution"
               >
                 Get Early Access
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

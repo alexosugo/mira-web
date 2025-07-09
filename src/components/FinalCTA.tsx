@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Clock, Star, Shield, CheckCircle, AlertCircle } from 'lucide-react';
 import { submitToWaitlist, type WaitlistFormData } from '../services/waitlistService';
+import { useFormTracking, useSectionTracking } from '../hooks/useTracking';
 
 interface FormErrors {
   firstName?: string;
@@ -23,6 +24,8 @@ const FinalCTA = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
+  const { trackSubmission, trackFieldInteraction } = useFormTracking();
+  const sectionRef = useSectionTracking('final-cta', 'Final CTA Section');
 
   const validateField = (name: string, value: string): string | undefined => {
     switch (name) {
@@ -74,6 +77,9 @@ const FinalCTA = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
+    // Track field interaction
+    trackFieldInteraction(name, name, 'change', value);
+    
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
@@ -86,8 +92,19 @@ const FinalCTA = () => {
     }
   };
 
+  const handleFieldFocus = (fieldName: string) => {
+    trackFieldInteraction(fieldName, fieldName, 'focus');
+  };
+
+  const handleFieldBlur = (fieldName: string, value: string) => {
+    trackFieldInteraction(fieldName, fieldName, 'blur', value);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Track form submission attempt
+    trackSubmission('waitlist_form', 'Waitlist Form', formData, 'attempt');
     
     // Validate all fields
     const newErrors: FormErrors = {};
@@ -108,6 +125,8 @@ const FinalCTA = () => {
         const result = await submitToWaitlist(formData);
         
         if (result.success) {
+          // Track successful submission
+          trackSubmission('waitlist_form', 'Waitlist Form', formData, 'success');
           setSubmitStatus('success');
           setSubmitMessage(result.message);
           setFormData({
@@ -118,6 +137,8 @@ const FinalCTA = () => {
             instagram: ''
           });
         } else {
+          // Track failed submission
+          trackSubmission('waitlist_form', 'Waitlist Form', formData, 'error');
           setSubmitStatus('error');
           setSubmitMessage(result.message);
           
@@ -127,6 +148,8 @@ const FinalCTA = () => {
           }
         }
       } catch (error) {
+        // Track error submission
+        trackSubmission('waitlist_form', 'Waitlist Form', formData, 'error');
         setSubmitStatus('error');
         setSubmitMessage('An unexpected error occurred. Please try again.');
         console.error('Form submission error:', error);
@@ -203,7 +226,7 @@ const FinalCTA = () => {
   }
 
   return (
-    <section id="contact-form" className="py-20 bg-gradient-to-br from-[#13243E] via-[#1a2f4a] to-[#13243E] relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
+    <section id="contact-form" ref={sectionRef} className="py-20 bg-gradient-to-br from-[#13243E] via-[#1a2f4a] to-[#13243E] relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#C0DC2D]/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#C0DC2D]/5 rounded-full blur-3xl"></div>
@@ -259,12 +282,16 @@ const FinalCTA = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
+                  onFocus={() => handleFieldFocus('firstName')}
+                  onBlur={() => handleFieldBlur('firstName', formData.firstName)}
                   maxLength={50}
                   className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
                     errors.firstName ? 'border-red-500' : 'border-white/30'
                   }`}
                   placeholder="Enter your first name"
                   aria-describedby={errors.firstName ? 'firstName-error' : undefined}
+                  data-hotjar-trigger="form_field"
+                  data-field-name="firstName"
                 />
                 {errors.firstName && (
                   <p id="firstName-error" className="text-red-400 text-sm mt-1">{errors.firstName}</p>
@@ -281,12 +308,16 @@ const FinalCTA = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
+                  onFocus={() => handleFieldFocus('lastName')}
+                  onBlur={() => handleFieldBlur('lastName', formData.lastName)}
                   maxLength={50}
                   className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
                     errors.lastName ? 'border-red-500' : 'border-white/30'
                   }`}
                   placeholder="Enter your last name"
                   aria-describedby={errors.lastName ? 'lastName-error' : undefined}
+                  data-hotjar-trigger="form_field"
+                  data-field-name="lastName"
                 />
                 {errors.lastName && (
                   <p id="lastName-error" className="text-red-400 text-sm mt-1">{errors.lastName}</p>
@@ -305,12 +336,16 @@ const FinalCTA = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                onFocus={() => handleFieldFocus('email')}
+                onBlur={() => handleFieldBlur('email', formData.email)}
                 maxLength={255}
                 className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
                   errors.email ? 'border-red-500' : 'border-white/30'
                 }`}
                 placeholder="your.email@company.com"
                 aria-describedby={errors.email ? 'email-error' : undefined}
+                data-hotjar-trigger="form_field"
+                data-field-name="email"
               />
               {errors.email && (
                 <p id="email-error" className="text-red-400 text-sm mt-1">{errors.email}</p>
@@ -328,12 +363,16 @@ const FinalCTA = () => {
                 name="website"
                 value={formData.website}
                 onChange={handleInputChange}
+                onFocus={() => handleFieldFocus('website')}
+                onBlur={() => handleFieldBlur('website', formData.website)}
                 maxLength={255}
                 className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
                   errors.website ? 'border-red-500' : 'border-white/30'
                 }`}
                 placeholder="https://yourwebsite.com"
                 aria-describedby={errors.website ? 'website-error' : undefined}
+                data-hotjar-trigger="form_field"
+                data-field-name="website"
               />
               {errors.website && (
                 <p id="website-error" className="text-red-400 text-sm mt-1">{errors.website}</p>
@@ -351,12 +390,16 @@ const FinalCTA = () => {
                 name="instagram"
                 value={formData.instagram}
                 onChange={handleInputChange}
+                onFocus={() => handleFieldFocus('instagram')}
+                onBlur={() => handleFieldBlur('instagram', formData.instagram)}
                 maxLength={255}
                 className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
                   errors.instagram ? 'border-red-500' : 'border-white/30'
                 }`}
                 placeholder="https://instagram.com/yourbusiness"
                 aria-describedby={errors.instagram ? 'instagram-error' : undefined}
+                data-hotjar-trigger="form_field"
+                data-field-name="instagram"
               />
               {errors.instagram && (
                 <p id="instagram-error" className="text-red-400 text-sm mt-1">{errors.instagram}</p>
@@ -368,6 +411,10 @@ const FinalCTA = () => {
               type="submit"
               disabled={isSubmitting}
               className="w-full bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 shadow-2xl inline-flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              data-hotjar-trigger="form_submit"
+              data-button-id="waitlist_form_submit"
+              data-button-text="Get Early Access"
+              data-page-section="final-cta"
             >
               {isSubmitting ? (
                 <>
@@ -432,7 +479,7 @@ const FinalCTA = () => {
         {/* Additional Trust Elements */}
         <div className="text-center">
           <p className="text-gray-400 text-sm mb-2">
-            ✓ No spam, ever ✓ Unsubscribe anytime ✓ <span style={{ fontFamily: "Funnel Sans" }}>30</span>-day money-back guarantee
+            ✓ No spam, ever ✓ Unsubscribe anytime ✓
           </p>
           <p className="text-gray-500 text-xs">
             Join the revolution in customer service automation for Kenyan businesses

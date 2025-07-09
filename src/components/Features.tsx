@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MessageSquare, Globe, Clock, Brain, Zap, ArrowRight } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
+import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
 const Features = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -8,6 +9,8 @@ const Features = () => {
   const [isInView, setIsInView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { trackCTA } = useCTATracking();
+  const trackingSectionRef = useSectionTracking('features', 'Features Section');
 
   const features = [
     {
@@ -132,8 +135,17 @@ const Features = () => {
     }
   }, [chatMessages, chatSequence, isInView, isMobile]);
 
+  const handleCTAClick = () => {
+    trackCTA('features_cta_button', 'Get Early Access', 'features', {
+      button_location: 'features_section',
+      button_type: 'primary',
+      section_headline: 'How Mira Works for Your Business'
+    });
+    scrollToContactForm();
+  };
+
   return (
-    <section id="features" className="py-20 bg-white" style={{ fontFamily: "Funnel Sans" }} ref={sectionRef}>
+    <section id="features" className="py-20 bg-white" style={{ fontFamily: "Funnel Sans" }} ref={trackingSectionRef}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight animate-fade-in-up" style={{ fontFamily: "Funnel Display" }}>
@@ -214,8 +226,12 @@ const Features = () => {
             </div>
 
             <button 
-              onClick={scrollToContactForm}
+              onClick={handleCTAClick}
               className="bg-[#C0DC2D] text-[#13243E] px-6 py-3 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2 btn-shimmer group"
+              data-hotjar-trigger="cta_click"
+              data-button-id="features_cta_button"
+              data-button-text="Get Early Access"
+              data-page-section="features"
             >
               Get Early Access
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -223,7 +239,7 @@ const Features = () => {
           </div>
 
           {/* Right side - Mobile-optimized chat demo */}
-          <div className="animate-fade-in-right">
+          <div className="animate-fade-in-right" ref={sectionRef}>
             <div className={`bg-gray-50 rounded-3xl p-8 ${!isMobile ? 'hover-lift' : ''}`}>
               <div className="bg-white rounded-2xl p-6 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">

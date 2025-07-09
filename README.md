@@ -1,10 +1,10 @@
-# Mira - AI Customer Service Automation for Kenyan SMEs
+# Mira - AI Customer Experience Partner
 
 Transform your Kenyan business with intelligent 24/7 customer service automation that handles WhatsApp, Instagram, and Facebook messages while you sleep.
 
 ## 🚀 Overview
 
-Mira is an AI-powered customer service platform specifically designed for Small and Medium Enterprises (SMEs) in Kenya. It automates customer interactions across multiple social media platforms, providing instant responses in local languages while significantly reducing operational costs.
+Mira is an AI-powered customer experience platform specifically designed for Small and Medium Enterprises (SMEs) in Kenya. It automates customer interactions across multiple social media platforms, providing instant responses in local languages while significantly reducing operational costs.
 
 ### Key Benefits
 - **24/7 Availability**: Never miss a customer inquiry
