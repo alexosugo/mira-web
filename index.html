@@ -33,6 +33,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Funnel+Display:wght@300;400;500;600;700;800&family=Funnel+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCWQWJET0W"></script>
+  <script>
+    const measurementId = "%VITE_GA_MEASUREMENT_ID%";
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', measurementId);
+</script>
   </head>
   <body style="font-family: 'Funnel Sans', sans-serif;">
     <div id="root"></div>
