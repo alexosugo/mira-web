@@ -81,7 +81,7 @@ const Pricing = () => {
           </h2>
           
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Starting at just <span className="font-bold text-[#13243E]" style={{ fontFamily: "Funnel Sans" }}>KES 2,999/month</span> – 
+            Starting at just <span className="font-bold text-[#13243E]" style={{ fontFamily: "Funnel Sans" }}>KES 3,999/month</span> – 
             less than hiring one part-time employee, but with <span style={{ fontFamily: "Funnel Sans" }}>24/7</span> availability and unlimited patience.
           </p>
           
