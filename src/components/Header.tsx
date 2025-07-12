@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking } from '../hooks/useTracking';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const location = useLocation();
   const { trackCTA } = useCTATracking();
 
   const scrollToSection = (sectionId: string) => {
@@ -39,6 +41,14 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <Link
+              to="/blog"
+              className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+            >
+              Blog
+            </Link>
+            {location.pathname === '/' && (
+              <>
             <button 
               onClick={() => scrollToSection('features')} 
               className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
@@ -63,6 +73,8 @@ const Header = () => {
             >
               Pricing
             </button>
+              </>
+            )}
           </nav>
 
           <div className="hidden md:flex items-center">
@@ -91,6 +103,15 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-100">
             <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link
+                to="/blog"
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full text-left px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                Blog
+              </Link>
+              {location.pathname === '/' && (
+                <>
               <button 
                 onClick={() => scrollToSection('features')} 
                 className="block w-full text-left px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors"
@@ -115,6 +136,8 @@ const Header = () => {
               >
                 Pricing
               </button>
+                </>
+              )}
               <div className="border-t border-gray-100 pt-2">
                 <button 
                   onClick={handleCTAClick}

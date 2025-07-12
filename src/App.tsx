@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -10,6 +11,10 @@ import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
+import BlogListingPage from './pages/BlogListingPage';
+import BlogPostPage from './pages/BlogPostPage';
+import AdminPostsPage from './pages/AdminPostsPage';
+import AdminPostEditorPage from './pages/AdminPostEditorPage';
 import { trackPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useTracking';
 
@@ -22,20 +27,37 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <div id="hero">
-        <Hero />
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <Routes>
+          {/* Main Landing Page */}
+          <Route path="/" element={
+            <>
+              <div id="hero">
+                <Hero />
+              </div>
+              <ProblemStatement />
+              <SolutionOverview />
+              <Features />
+              <Benefits />
+              <Testimonials />
+              <Pricing />
+              <FinalCTA />
+            </>
+          } />
+          
+          {/* Blog Routes */}
+          <Route path="/blog" element={<BlogListingPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/posts" element={<AdminPostsPage />} />
+          <Route path="/admin/posts/:postId" element={<AdminPostEditorPage />} />
+        </Routes>
+        <Footer />
       </div>
-      <ProblemStatement />
-      <SolutionOverview />
-      <Features />
-      <Benefits />
-      <Testimonials />
-      <Pricing />
-      <FinalCTA />
-      <Footer />
-    </div>
+    </Router>
   );
 }
 
