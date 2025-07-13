@@ -95,13 +95,13 @@ const BlogListingPage: React.FC = () => {
             {isAuthenticated && (
               <>
                 <div className="w-px h-6 bg-gray-300"></div>
-            <Link
-              to="/admin/posts"
-              className="flex items-center gap-2 text-gray-600 hover:text-[#C0DC2D] transition-colors"
-            >
-              <PenTool className="h-5 w-5" />
-              Manage Posts
-            </Link>
+                <Link
+                  to="/admin/posts"
+                  className="flex items-center gap-2 text-gray-600 hover:text-[#C0DC2D] transition-colors"
+                >
+                  <PenTool className="h-5 w-5" />
+                  Manage Posts
+                </Link>
               </>
             )}
           </div>
@@ -192,13 +192,6 @@ const BlogListingPage: React.FC = () => {
               >
                 Clear Search
               </button>
-            ) : (
-              <Link
-                to="/admin/posts/new"
-                className="bg-[#C0DC2D] text-[#13243E] px-6 py-3 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-colors inline-block"
-              >
-                Write First Post
-              </Link>
             ) : isAuthenticated ? (
               <Link
                 to="/admin/posts/new"
@@ -206,8 +199,7 @@ const BlogListingPage: React.FC = () => {
               >
                 Write First Post
               </Link>
-            ) : null
-            )}
+            ) : null}
           </div>
         )}
       </div>
