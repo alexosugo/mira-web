@@ -39,7 +39,8 @@ const OnboardingPage: React.FC = () => {
 
     // Real-time validation
     if (value && !validateInstagramHandle(value)) {
-      setErrors(prev => ({ ...prev, instagram: 'Please enter a valid Instagram handle' }));
+      //setErrors(prev => ({ ...prev, instagram: 'Please enter a valid Instagram handle' }));
+      setErrors(prev => ({ ...prev }));
     }
   };
 
