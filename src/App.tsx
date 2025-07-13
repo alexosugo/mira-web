@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import BlogListingPage from './pages/BlogListingPage';
 import BlogPostPage from './pages/BlogPostPage';
 import LoginPage from './pages/LoginPage';
+import OnboardingPage from './pages/OnboardingPage';
 import AdminPostsPage from './pages/AdminPostsPage';
 import AdminPostEditorPage from './pages/AdminPostEditorPage';
 import { trackPageView } from './utils/analytics';
@@ -54,6 +55,9 @@ function App() {
             {/* Public Blog Routes */}
             <Route path="/blog" element={<BlogListingPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
+            
+            {/* Onboarding Routes */}
+            <Route path="/onboarding" element={<OnboardingPage />} />
             
             {/* Authentication Route */}
             <Route path="/login" element={<LoginPage />} />

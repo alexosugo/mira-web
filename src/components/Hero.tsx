@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MessageCircle, Instagram, Zap, Bot, ArrowRight } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
@@ -7,6 +8,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('hero', 'Hero Section');
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -21,6 +23,15 @@ const Hero = () => {
     scrollToContactForm();
   };
 
+  const handlePreviewCTAClick = () => {
+    trackCTA('hero_preview_cta_button', 'Join Preview', 'hero', {
+      button_location: 'hero_section',
+      button_type: 'primary',
+      hero_headline: 'Turn every visitor into a customer',
+      onboarding_flow: 'preview'
+    });
+    navigate('/onboarding');
+  };
   return (
     <section ref={sectionRef} className="bg-white pt-16 pb-20 relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
       {/* Animated background gradient */}
@@ -76,8 +87,19 @@ const Hero = () => {
             }`}
           >
             <button 
-              onClick={handleCTAClick}
+              onClick={handlePreviewCTAClick}
               className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 btn-shimmer hover-glow group"
+              data-hotjar-trigger="cta_click"
+              data-button-id="hero_preview_cta_button"
+              data-button-text="Join Preview"
+              data-page-section="hero"
+            >
+              Join Preview
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </button>
+            <button 
+              onClick={handleCTAClick}
+              className="bg-white text-[#13243E] border-2 border-[#C0DC2D] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#C0DC2D]/10 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 group"
               data-hotjar-trigger="cta_click"
               data-button-id="hero_cta_button"
               data-button-text="Get Early Access"
