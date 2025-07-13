@@ -192,14 +192,16 @@ const BlogListingPage: React.FC = () => {
               >
                 Clear Search
               </button>
-            ) : isAuthenticated ? (
-              <Link
-                to="/admin/posts/new"
-                className="bg-[#C0DC2D] text-[#13243E] px-6 py-3 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-colors inline-block"
-              >
-                Write First Post
-              </Link>
-            ) : null}
+            ) : (
+              isAuthenticated ? (
+                <Link
+                  to="/admin/posts/new"
+                  className="bg-[#C0DC2D] text-[#13243E] px-6 py-3 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-colors inline-block"
+                >
+                  Write First Post
+                </Link>
+              ) : null
+            )}
           </div>
         )}
       </div>
