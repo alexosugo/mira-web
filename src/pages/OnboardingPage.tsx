@@ -194,78 +194,73 @@ const OnboardingPage: React.FC = () => {
               
               <div className="space-y-3 mb-4">
                 {platformOptions.map((platform) => (
-                  <label key={platform.id} className="flex items-center gap-3 cursor-pointer group">
-                    <input
-                      type="checkbox"
-                      checked={additionalPlatforms.includes(platform.id)}
-                      onChange={() => handlePlatformToggle(platform.id)}
-                      className="w-5 h-5 text-[#C0DC2D] border-2 border-gray-300 rounded focus:ring-[#C0DC2D] focus:ring-2"
-                    />
-                    <platform.icon className="h-5 w-5 text-gray-400 group-hover:text-[#C0DC2D] transition-colors" />
-                    <span className="text-gray-700 group-hover:text-gray-900 transition-colors">
-                      {platform.label}
-                    </span>
-                  </label>
+                  <div key={platform.id} className="space-y-2">
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={additionalPlatforms.includes(platform.id)}
+                        onChange={() => handlePlatformToggle(platform.id)}
+                        className="w-5 h-5 text-[#C0DC2D] border-2 border-gray-300 rounded focus:ring-[#C0DC2D] focus:ring-2"
+                      />
+                      <platform.icon className="h-5 w-5 text-gray-400 group-hover:text-[#C0DC2D] transition-colors" />
+                      <span className="text-gray-700 group-hover:text-gray-900 transition-colors">
+                        {platform.label}
+                      </span>
+                    </label>
+                    
+                    {/* Input field directly beneath each platform option */}
+                    {additionalPlatforms.includes(platform.id) && (
+                      <div className="ml-8">
+                        {platform.id === 'website' && (
+                          <input
+                            type="url"
+                            value={websiteUrl}
+                            onChange={(e) => setWebsiteUrl(e.target.value)}
+                            className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
+                              errors.website 
+                                ? 'border-red-500 focus:border-red-500' 
+                                : 'border-gray-300 focus:border-[#C0DC2D]'
+                            }`}
+                            placeholder="https://yourwebsite.com"
+                          />
+                        )}
+                        
+                        {platform.id === 'facebook' && (
+                          <input
+                            type="text"
+                            value={facebookPage}
+                            onChange={(e) => setFacebookPage(e.target.value)}
+                            className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
+                              errors.facebook 
+                                ? 'border-red-500 focus:border-red-500' 
+                                : 'border-gray-300 focus:border-[#C0DC2D]'
+                            }`}
+                            placeholder="Your Facebook Page URL"
+                          />
+                        )}
+                        
+                        {platform.id === 'whatsapp' && (
+                          <input
+                            type="tel"
+                            value={whatsappBusiness}
+                            onChange={(e) => setWhatsappBusiness(e.target.value)}
+                            className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
+                              errors.whatsapp 
+                                ? 'border-red-500 focus:border-red-500' 
+                                : 'border-gray-300 focus:border-[#C0DC2D]'
+                            }`}
+                            placeholder="+254 700 123 456"
+                          />
+                        )}
+                        
+                        {errors[platform.id] && (
+                          <p className="text-red-600 text-sm mt-1">{errors[platform.id]}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
-
-              {/* Additional Platform Inputs */}
-              {additionalPlatforms.includes('website') && (
-                <div className="mb-4">
-                  <input
-                    type="url"
-                    value={websiteUrl}
-                    onChange={(e) => setWebsiteUrl(e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
-                      errors.website 
-                        ? 'border-red-500 focus:border-red-500' 
-                        : 'border-gray-300 focus:border-[#C0DC2D]'
-                    }`}
-                    placeholder="https://yourwebsite.com"
-                  />
-                  {errors.website && (
-                    <p className="text-red-600 text-sm mt-1">{errors.website}</p>
-                  )}
-                </div>
-              )}
-
-              {additionalPlatforms.includes('facebook') && (
-                <div className="mb-4">
-                  <input
-                    type="text"
-                    value={facebookPage}
-                    onChange={(e) => setFacebookPage(e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
-                      errors.facebook 
-                        ? 'border-red-500 focus:border-red-500' 
-                        : 'border-gray-300 focus:border-[#C0DC2D]'
-                    }`}
-                    placeholder="Your Facebook Page URL"
-                  />
-                  {errors.facebook && (
-                    <p className="text-red-600 text-sm mt-1">{errors.facebook}</p>
-                  )}
-                </div>
-              )}
-
-              {additionalPlatforms.includes('whatsapp') && (
-                <div className="mb-4">
-                  <input
-                    type="tel"
-                    value={whatsappBusiness}
-                    onChange={(e) => setWhatsappBusiness(e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
-                      errors.whatsapp 
-                        ? 'border-red-500 focus:border-red-500' 
-                        : 'border-gray-300 focus:border-[#C0DC2D]'
-                    }`}
-                    placeholder="+254 700 123 456"
-                  />
-                  {errors.whatsapp && (
-                    <p className="text-red-600 text-sm mt-1">{errors.whatsapp}</p>
-                  )}
-                </div>
-              )}
             </div>
 
             {/* Privacy Notice */}
