@@ -4,6 +4,7 @@ import { ArrowLeft, Save, Eye, Upload, X, Plus } from 'lucide-react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { createPost, updatePost, getAllPosts, uploadMedia, generateSlug } from '../services/blogService';
+import { useAuth } from '../contexts/AuthContext';
 import { BlogPost, BlogPostFormData } from '../types/blog';
 
 const AdminPostEditorPage: React.FC = () => {
@@ -11,10 +12,18 @@ const AdminPostEditorPage: React.FC = () => {
   const navigate = useNavigate();
   const isEditing = postId && postId !== 'new';
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [uploadingMedia, setUploadingMedia] = useState(false);
+
+  const { user } = useAuth();
+
   const [formData, setFormData] = useState<BlogPostFormData>({
     title: '',
     content: '',
-    author: '',
+    author: user?.email || '',
     publish_date: new Date().toISOString().slice(0, 16),
     image_urls: [],
     video_urls: [],
@@ -22,12 +31,6 @@ const AdminPostEditorPage: React.FC = () => {
     status: 'draft',
     meta_description: ''
   });
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSaving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
-  const [uploadingMedia, setUploadingMedia] = useState(false);
 
   // Load post data if editing
   useEffect(() => {
@@ -64,6 +67,13 @@ const AdminPostEditorPage: React.FC = () => {
 
     loadPost();
   }, [isEditing, postId]);
+
+  // Update author when user changes
+  useEffect(() => {
+    if (user?.email && !isEditing) {
+      setFormData(prev => ({ ...prev, author: user.email || '' }));
+    }
+  }, [user?.email, isEditing]);
 
   // Auto-generate slug from title
   useEffect(() => {
