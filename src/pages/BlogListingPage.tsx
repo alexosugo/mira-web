@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { PenTool, ArrowLeft } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 import { getPosts } from '../services/blogService';
 import { BlogPost, BlogListResponse } from '../types/blog';
 import BlogCard from '../components/blog/BlogCard';
@@ -19,6 +20,7 @@ const BlogListingPage: React.FC = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const { isAuthenticated } = useAuth();
   const postsPerPage = 6;
 
   const loadPosts = useCallback(async (page: number, search?: string) => {
@@ -90,7 +92,9 @@ const BlogListingPage: React.FC = () => {
               <ArrowLeft className="h-5 w-5" />
               Back to Home
             </Link>
-            <div className="w-px h-6 bg-gray-300"></div>
+            {isAuthenticated && (
+              <>
+                <div className="w-px h-6 bg-gray-300"></div>
             <Link
               to="/admin/posts"
               className="flex items-center gap-2 text-gray-600 hover:text-[#C0DC2D] transition-colors"
@@ -98,6 +102,8 @@ const BlogListingPage: React.FC = () => {
               <PenTool className="h-5 w-5" />
               Manage Posts
             </Link>
+              </>
+            )}
           </div>
           
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight" style={{ fontFamily: "Funnel Display" }}>
@@ -193,6 +199,14 @@ const BlogListingPage: React.FC = () => {
               >
                 Write First Post
               </Link>
+            ) : isAuthenticated ? (
+              <Link
+                to="/admin/posts/new"
+                className="bg-[#C0DC2D] text-[#13243E] px-6 py-3 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-colors inline-block"
+              >
+                Write First Post
+              </Link>
+            ) : null
             )}
           </div>
         )}

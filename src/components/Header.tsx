@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut, Settings } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking } from '../hooks/useTracking';
 
@@ -8,6 +9,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const location = useLocation();
   const { trackCTA } = useCTATracking();
+  const { isAuthenticated, signOut, loading } = useAuth();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -23,6 +25,11 @@ const Header = () => {
       button_type: 'primary'
     });
     scrollToContactForm();
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    setIsMenuOpen(false);
   };
 
   return (
@@ -75,9 +82,29 @@ const Header = () => {
             </button>
               </>
             )}
+            {/* Admin Links for Authenticated Users */}
+            {isAuthenticated && (
+              <Link
+                to="/admin/posts"
+                className="text-gray-600 hover:text-gray-900 font-medium transition-colors flex items-center gap-1"
+              >
+                <Settings className="h-4 w-4" />
+                Admin
+              </Link>
+            )}
           </nav>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-3">
+            {isAuthenticated ? (
+              <button
+                onClick={handleSignOut}
+                disabled={loading}
+                className="flex items-center gap-2 text-gray-600 hover:text-red-600 font-medium transition-colors disabled:opacity-50"
+              >
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </button>
+            ) : (
             <button 
               onClick={handleCTAClick}
               className="bg-[#C0DC2D] text-[#13243E] px-4 py-2 rounded-lg hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 font-medium text-sm"
@@ -88,6 +115,7 @@ const Header = () => {
             >
               Get Early Access
             </button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -139,6 +167,28 @@ const Header = () => {
                 </>
               )}
               <div className="border-t border-gray-100 pt-2">
+                {/* Admin Links for Authenticated Users */}
+                {isAuthenticated && (
+                  <Link
+                    to="/admin/posts"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center gap-2 w-full text-left px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Settings className="h-4 w-4" />
+                    Admin Dashboard
+                  </Link>
+                )}
+                
+                {isAuthenticated ? (
+                  <button
+                    onClick={handleSignOut}
+                    disabled={loading}
+                    className="flex items-center gap-2 w-full text-left px-3 py-2 text-gray-600 hover:text-red-600 transition-colors disabled:opacity-50"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </button>
+                ) : (
                 <button 
                   onClick={handleCTAClick}
                   className="block w-full text-left px-3 py-2 bg-[#C0DC2D] text-[#13243E] rounded-lg hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105"
@@ -149,6 +199,7 @@ const Header = () => {
                 >
                   Get Early Access
                 </button>
+                )}
               </div>
             </div>
           </div>

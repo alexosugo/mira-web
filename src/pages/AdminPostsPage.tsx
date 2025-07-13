@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, Edit, Trash2, Eye, EyeOff, Calendar, User, ArrowLeft } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 import { getAllPosts, deletePost } from '../services/blogService';
 import { BlogPost } from '../types/blog';
 
@@ -9,6 +10,8 @@ const AdminPostsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const { user } = useAuth();
 
   useEffect(() => {
     loadPosts();
@@ -82,9 +85,16 @@ const AdminPostsPage: React.FC = () => {
               Back to Blog
             </Link>
             <div className="w-px h-6 bg-gray-300"></div>
-            <h1 className="text-3xl font-bold text-gray-900" style={{ fontFamily: "Funnel Display" }}>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900" style={{ fontFamily: "Funnel Display" }}>
               Manage Posts
-            </h1>
+              </h1>
+              {user && (
+                <p className="text-sm text-gray-600 mt-1">
+                  Logged in as: {user.email}
+                </p>
+              )}
+            </div>
           </div>
           
           <Link
