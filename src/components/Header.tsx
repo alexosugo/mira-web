@@ -24,14 +24,14 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white border-b border-gray-100 sticky top-0 z-50 backdrop-blur-sm bg-white/95" style={{ fontFamily: "Funnel Sans" }}>
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <header className="bg-white/80 border-b border-gray-200/50 sticky top-0 z-50 backdrop-blur-md" style={{ fontFamily: "Funnel Sans" }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-xl font-semibold text-gray-900 hover:text-[#C0DC2D] transition-colors" 
-              style={{ fontFamily: "Lexend" }}
+              className="text-xl font-bold text-gray-900 hover:text-[#C0DC2D] transition-colors duration-200" 
+              style={{ fontFamily: "Lexend", fontWeight: 600 }}
             >
               Mira
             </button>
@@ -68,7 +68,7 @@ const Header = () => {
           <div className="hidden md:flex items-center">
             <button 
               onClick={handleCTAClick}
-              className="bg-[#C0DC2D] text-[#13243E] px-4 py-2 rounded-lg hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 font-medium text-sm"
+              className="btn-premium bg-[#C0DC2D] text-[#13243E] px-6 py-2 rounded-lg hover:bg-[#C0DC2D]/90 font-semibold text-sm shadow-md"
               data-hotjar-trigger="cta_click"
               data-button-id="header_cta_button"
               data-button-text="Get Early Access"
@@ -118,7 +118,7 @@ const Header = () => {
               <div className="border-t border-gray-100 pt-2">
                 <button 
                   onClick={handleCTAClick}
-                  className="block w-full text-left px-3 py-2 bg-[#C0DC2D] text-[#13243E] rounded-lg hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105"
+                  className="btn-premium block w-full text-center px-4 py-3 bg-[#C0DC2D] text-[#13243E] rounded-lg hover:bg-[#C0DC2D]/90 font-semibold shadow-md"
                   data-hotjar-trigger="cta_click"
                   data-button-id="header_mobile_cta_button"
                   data-button-text="Get Early Access"

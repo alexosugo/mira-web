@@ -250,13 +250,13 @@ const FinalCTA = () => {
         </p>
         
         {/* Contact Form */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 max-w-2xl mx-auto">
-          <div className="text-left mb-6">
-            <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "Funnel Display" }}>
+        <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-2xl p-8 mb-10 max-w-2xl mx-auto border border-white/10 shadow-xl">
+          <div className="text-left mb-8">
+            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3" style={{ fontFamily: "Funnel Display" }}>
               Get Early Access
             </h3>
-            <p className="text-gray-300">
-              Join the exclusive group of forward-thinking businesses getting priority access to Mira.
+            <p className="text-gray-300 text-base">
+              Join Kenya's forward-thinking businesses getting priority access to Mira's AI customer service platform.
             </p>
           </div>
 
@@ -285,8 +285,8 @@ const FinalCTA = () => {
                   onFocus={() => handleFieldFocus('firstName')}
                   onBlur={() => handleFieldBlur('firstName', formData.firstName)}
                   maxLength={50}
-                  className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
-                    errors.firstName ? 'border-red-500' : 'border-white/30'
+                  className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-[#C0DC2D]/50 transition-all backdrop-blur-sm ${
+                    errors.firstName ? 'border-red-500/50' : 'border-white/20'
                   }`}
                   placeholder="Enter your first name"
                   aria-describedby={errors.firstName ? 'firstName-error' : undefined}
@@ -311,8 +311,8 @@ const FinalCTA = () => {
                   onFocus={() => handleFieldFocus('lastName')}
                   onBlur={() => handleFieldBlur('lastName', formData.lastName)}
                   maxLength={50}
-                  className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
-                    errors.lastName ? 'border-red-500' : 'border-white/30'
+                  className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-[#C0DC2D]/50 transition-all backdrop-blur-sm ${
+                    errors.lastName ? 'border-red-500/50' : 'border-white/20'
                   }`}
                   placeholder="Enter your last name"
                   aria-describedby={errors.lastName ? 'lastName-error' : undefined}
@@ -339,8 +339,8 @@ const FinalCTA = () => {
                 onFocus={() => handleFieldFocus('email')}
                 onBlur={() => handleFieldBlur('email', formData.email)}
                 maxLength={255}
-                className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
-                  errors.email ? 'border-red-500' : 'border-white/30'
+                className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-[#C0DC2D]/50 transition-all backdrop-blur-sm ${
+                  errors.email ? 'border-red-500/50' : 'border-white/20'
                 }`}
                 placeholder="your.email@company.com"
                 aria-describedby={errors.email ? 'email-error' : undefined}
@@ -366,8 +366,8 @@ const FinalCTA = () => {
                 onFocus={() => handleFieldFocus('website')}
                 onBlur={() => handleFieldBlur('website', formData.website)}
                 maxLength={255}
-                className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
-                  errors.website ? 'border-red-500' : 'border-white/30'
+                className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-[#C0DC2D]/50 transition-all backdrop-blur-sm ${
+                  errors.website ? 'border-red-500/50' : 'border-white/20'
                 }`}
                 placeholder="https://yourwebsite.com"
                 aria-describedby={errors.website ? 'website-error' : undefined}
@@ -393,8 +393,8 @@ const FinalCTA = () => {
                 onFocus={() => handleFieldFocus('instagram')}
                 onBlur={() => handleFieldBlur('instagram', formData.instagram)}
                 maxLength={255}
-                className={`w-full px-4 py-3 bg-white/20 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-transparent transition-colors ${
-                  errors.instagram ? 'border-red-500' : 'border-white/30'
+                className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C0DC2D] focus:border-[#C0DC2D]/50 transition-all backdrop-blur-sm ${
+                  errors.instagram ? 'border-red-500/50' : 'border-white/20'
                 }`}
                 placeholder="https://instagram.com/yourbusiness"
                 aria-describedby={errors.instagram ? 'instagram-error' : undefined}
@@ -410,7 +410,7 @@ const FinalCTA = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 shadow-2xl inline-flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full btn-premium bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-xl text-lg font-bold shadow-xl inline-flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none"
               data-hotjar-trigger="form_submit"
               data-button-id="waitlist_form_submit"
               data-button-text="Get Early Access"

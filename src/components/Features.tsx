@@ -227,7 +227,7 @@ const Features = () => {
 
             <button 
               onClick={handleCTAClick}
-              className="bg-[#C0DC2D] text-[#13243E] px-6 py-3 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2 btn-shimmer group"
+              className="btn-premium bg-[#C0DC2D] text-[#13243E] px-8 py-3.5 rounded-xl font-semibold inline-flex items-center gap-2 shadow-lg group"
               data-hotjar-trigger="cta_click"
               data-button-id="features_cta_button"
               data-button-text="Get Early Access"

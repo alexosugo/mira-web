@@ -121,53 +121,61 @@ const Benefits = () => {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {benefits.map((benefit, index) => (
-              <div 
-                key={index} 
-                className={`benefit-card bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-all duration-500 hover-lift ${
-                  visibleCards.includes(index) ? 'animate-scale-in opacity-100' : 'opacity-0 transform translate-y-8'
-                }`}
-                data-index={index}
-                style={{ 
-                  animationDelay: `${index * 0.15}s`,
-                  transitionDelay: `${index * 0.1}s`
-                }}
-              >
-                <div className="w-16 h-16 bg-[#C0DC2D]/20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-scale">
-                  <benefit.icon className="h-8 w-8 text-[#C0DC2D]" />
+            {benefits.map((benefit, index) => {
+              const gradients = [
+                'from-blue-500/10 to-lime-400/10',
+                'from-lime-400/10 to-teal-500/10',
+                'from-teal-500/10 to-blue-500/10',
+                'from-amber-400/10 to-lime-400/10'
+              ];
+              return (
+                <div 
+                  key={index} 
+                  className={`benefit-card card-premium bg-gradient-to-br ${gradients[index]} rounded-2xl p-8 text-center shadow-md backdrop-blur-sm border border-white/20 ${
+                    visibleCards.includes(index) ? 'animate-scale-in opacity-100' : 'opacity-0 transform translate-y-8'
+                  }`}
+                  data-index={index}
+                  style={{ 
+                    animationDelay: `${index * 0.15}s`,
+                    transitionDelay: `${index * 0.1}s`
+                  }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#C0DC2D] to-lime-400 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-scale animate-icon-hop shadow-lg">
+                    <benefit.icon className="h-8 w-8 text-white" />
+                  </div>
+                  
+                  {/* Animated metric with smooth counting */}
+                  <div className="text-4xl font-bold bg-gradient-to-r from-[#13243E] to-[#C0DC2D] bg-clip-text text-transparent mb-3 animate-count-up" style={{ fontFamily: "Funnel Sans" }}>
+                    {index === 0 && counters.response}
+                    {index === 1 && counters.efficiency}
+                    {index === 2 && counters.sales}
+                    {index === 3 && "∞"}
+                    {index < 3 && "%"}
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: "Funnel Display" }}>
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    {benefit.description.includes("40%") ? (
+                      <>Reduce response times by up to <span style={{ fontFamily: "Funnel Sans" }}>40%</span> with instant <span style={{ fontFamily: "Funnel Sans" }}>24/7</span> support.</>
+                    ) : benefit.description.includes("80%") ? (
+                      <>Automate <span style={{ fontFamily: "Funnel Sans" }}>80%</span> of repetitive queries, freeing your team for high-value work.</>
+                    ) : benefit.description.includes("25%") ? (
+                      <>Boost conversions by <span style={{ fontFamily: "Funnel Sans" }}>25%</span> with always-on customer engagement.</>
+                    ) : (
+                      benefit.description
+                    )}
+                  </p>
                 </div>
-                
-                {/* Animated metric with smooth counting */}
-                <div className="text-3xl font-bold text-[#C0DC2D] mb-2 animate-count-up" style={{ fontFamily: "Funnel Sans" }}>
-                  {index === 0 && counters.response}
-                  {index === 1 && counters.efficiency}
-                  {index === 2 && counters.sales}
-                  {index === 3 && "∞"}
-                  {index < 3 && "%"}
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: "Funnel Display" }}>
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {benefit.description.includes("40%") ? (
-                    <>Reduce response times by up to <span style={{ fontFamily: "Funnel Sans" }}>40%</span> with instant <span style={{ fontFamily: "Funnel Sans" }}>24/7</span> support.</>
-                  ) : benefit.description.includes("80%") ? (
-                    <>Automate <span style={{ fontFamily: "Funnel Sans" }}>80%</span> of repetitive queries, freeing your team for high-value work.</>
-                  ) : benefit.description.includes("25%") ? (
-                    <>Boost conversions by <span style={{ fontFamily: "Funnel Sans" }}>25%</span> with always-on customer engagement.</>
-                  ) : (
-                    benefit.description
-                  )}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="text-center">
             <button 
               onClick={handleCTAClick}
-              className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2 btn-shimmer hover-glow group animate-fade-in-up animate-delay-600"
+              className="btn-premium bg-[#C0DC2D] text-[#13243E] px-8 py-3.5 rounded-xl font-semibold inline-flex items-center gap-2 shadow-lg group animate-fade-in-up animate-delay-600"
               data-hotjar-trigger="cta_click"
               data-button-id="benefits_cta_button"
               data-button-text="Get Early Access"
