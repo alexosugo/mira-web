@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Star, Quote, MessageCircle, TrendingUp, ArrowRight } from 'lucide-react';
+import { TrendingUp, ArrowRight } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 

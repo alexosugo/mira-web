@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MessageCircle, Zap, ArrowRight, MessageSquare, Globe } from 'lucide-react';
+import { MessageCircle, Zap, ArrowRight, MessageSquare, Globe, Sparkles } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
@@ -21,150 +21,197 @@ const Hero = () => {
     scrollToContactForm();
   };
 
+  const features = [
+    { icon: MessageSquare, text: 'Multi-channel support' },
+    { icon: Globe, text: 'Swahili & English ready' },
+    { icon: Zap, text: '24/7 instant responses' },
+  ];
+
   return (
-    <section ref={sectionRef} className="bg-gradient-to-br from-white via-[#f9fafb] to-[#f3f4f6] pt-20 pb-24 lg:pt-32 lg:pb-32 relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
-      {/* Premium background elements */}
+    <section 
+      ref={sectionRef} 
+      className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-warm-50 via-white to-gray-50 pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden"
+    >
+      {/* Premium animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-lime-400/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-lime-500/8 to-transparent rounded-full blur-3xl animate-float-gentle" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-navy-500/5 to-transparent rounded-full blur-3xl animate-float-gentle" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-gradient-radial from-lime-400/5 to-transparent rounded-full blur-2xl animate-float-gentle" style={{ animationDelay: '4s' }} />
       </div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Content */}
           <div className="space-y-8">
-            {/* Animated headline */}
-            <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              <div className="inline-block">
-                <span className="inline-block px-4 py-1.5 bg-lime-400/10 border border-lime-400/20 text-[#C0DC2D] text-sm font-semibold rounded-full mb-4">
-                  AI-Powered Solutions for Kenya
-                </span>
-              </div>
-              <h1 
-                className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight"
-                style={{ fontFamily: "Funnel Display", fontWeight: 800 }}
-              >
+            {/* Badge */}
+            <div className={`${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              <span className="inline-flex items-center gap-2 px-4 py-2 
+                             bg-gradient-to-r from-lime-500/10 to-lime-500/5 
+                             border border-lime-500/20 rounded-full
+                             text-lime-600 text-sm font-semibold
+                             shadow-sm backdrop-blur-sm">
+                <Sparkles className="w-4 h-4" />
+                AI-Powered Solutions for Kenya
+              </span>
+            </div>
+
+            {/* Headline */}
+            <div className={`space-y-2 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 tracking-tight leading-[0.95]">
                 AI Customer Service That Drives{' '}
-                <span className="relative">
-                  Real Results
-                  <div className="absolute -inset-2 bg-gradient-to-r from-[#C0DC2D]/30 to-[#C0DC2D]/0 rounded-lg blur-sm"></div>
+                <span className="relative inline-block">
+                  <span className="gradient-text">Real Results</span>
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                    <path d="M2 8C50 2 150 2 198 8" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
+                  </svg>
                 </span>
               </h1>
             </div>
             
-            {/* Animated description */}
+            {/* Description */}
             <p 
-              className={`text-lg text-gray-600 leading-relaxed max-w-xl ${
-                isVisible ? 'animate-fade-in-up animate-delay-100' : 'opacity-0'
+              className={`text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xl font-body ${
+                isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
+              style={{ animationDelay: '200ms' }}
             >
               Mira automates customer service across WhatsApp, Instagram, and Facebook 24/7. Save costs, boost sales, and give your customers the instant support they deserve.
             </p>
             
             {/* Features list */}
-            <div className={`space-y-3 ${isVisible ? 'animate-fade-in-up animate-delay-200' : 'opacity-0'}`}>
-              {[
-                { icon: MessageSquare, text: 'Multi-channel support' },
-                { icon: Globe, text: 'Swahili & English ready' },
-                { icon: Zap, text: '24/7 instant responses' },
-              ].map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-lime-400/20 flex items-center justify-center">
-                    <feature.icon className="w-4 h-4 text-[#C0DC2D]" />
+            <div className={`flex flex-wrap gap-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
+              {features.map((feature, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex items-center gap-2.5 px-4 py-2.5 
+                             bg-white rounded-xl shadow-sm border border-gray-100
+                             hover:shadow-md hover:border-lime-200 transition-all duration-300"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-lime-500/20 to-lime-500/10 
+                                  flex items-center justify-center">
+                    <feature.icon className="w-4 h-4 text-lime-600" />
                   </div>
-                  <span className="text-gray-700 font-medium">{feature.text}</span>
+                  <span className="text-gray-700 font-medium text-sm">{feature.text}</span>
                 </div>
               ))}
             </div>
             
-            {/* CTA Button */}
+            {/* CTA */}
             <div 
-              className={`flex items-center gap-4 pt-2 ${
-                isVisible ? 'animate-fade-in-up animate-delay-300' : 'opacity-0'
+              className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 ${
+                isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
+              style={{ animationDelay: '400ms' }}
             >
               <button 
                 onClick={handleCTAClick}
-                className="btn-premium bg-[#C0DC2D] text-[#13243E] px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-[#C0DC2D]/90 shadow-lg flex items-center justify-center gap-2 group"
+                className="btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl 
+                           text-base font-bold shadow-lg shadow-lime-500/20
+                           flex items-center justify-center gap-2.5"
                 data-hotjar-trigger="cta_click"
                 data-button-id="hero_cta_button"
                 data-button-text="Get Early Access"
                 data-page-section="hero"
               >
                 Get Early Access
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
-              <span className="text-sm text-gray-500">Launching soon</span>
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <div className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
+                <span>Launching soon</span>
+              </div>
             </div>
           </div>
 
-          {/* Right: Visual mockup */}
-          <div className={`hidden lg:block relative h-96 ${isVisible ? 'animate-fade-in-right animate-delay-200' : 'opacity-0'}`}>
-            {/* Phone mockup frame */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-72 h-96 bg-black rounded-3xl shadow-2xl p-3 transform hover:scale-105 transition-transform duration-300">
+          {/* Right: Phone Mockup */}
+          <div className={`hidden lg:flex justify-center items-center relative ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
+            {/* Phone container with shadow */}
+            <div className="relative">
+              {/* Glow effect behind phone */}
+              <div className="absolute -inset-8 bg-gradient-to-br from-lime-500/20 via-transparent to-navy-500/10 rounded-[60px] blur-2xl opacity-60" />
+              
+              {/* Phone frame */}
+              <div className="relative w-80 bg-navy-900 rounded-[3rem] p-3 shadow-2xl shadow-navy-900/30 animate-float-gentle">
+                {/* Phone notch */}
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-navy-900 rounded-b-2xl z-20" />
+                
                 {/* Phone screen */}
-                <div className="w-full h-full bg-gradient-to-b from-[#f9fafb] to-white rounded-2xl overflow-hidden flex flex-col">
-                  {/* Status bar */}
-                  <div className="bg-[#13243E] text-white px-4 py-2 text-xs flex justify-between items-center">
-                    <span>9:41</span>
-                    <div className="flex gap-1">
-                      <Zap className="w-3 h-3" />
-                    </div>
-                  </div>
-                  
-                  {/* Chat header */}
-                  <div className="bg-[#13243E] text-white px-4 py-3 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#C0DC2D] flex items-center justify-center">
-                      <MessageCircle className="w-5 h-5 text-[#13243E]" />
+                <div className="w-full aspect-[9/19] bg-white rounded-[2.2rem] overflow-hidden flex flex-col">
+                  {/* WhatsApp-style header */}
+                  <div className="bg-navy-800 text-white px-5 py-4 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-lime-500 
+                                    flex items-center justify-center shadow-lg">
+                      <MessageCircle className="w-5 h-5 text-navy-800" />
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-semibold">Mira AI</p>
-                      <p className="text-xs text-gray-300">Online</p>
+                      <p className="text-xs text-lime-400 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-lime-400" />
+                        Online
+                      </p>
                     </div>
                   </div>
                   
                   {/* Chat messages */}
-                  <div className="flex-1 overflow-y-auto px-3 py-4 space-y-3 bg-white">
+                  <div className="flex-1 overflow-hidden px-4 py-5 space-y-3 bg-gradient-to-b from-gray-50 to-white">
+                    {/* Customer message */}
                     <div className="flex justify-start">
-                      <div className="bg-gray-100 text-gray-900 px-3 py-2 rounded-2xl text-xs max-w-xs rounded-tl-none">
+                      <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
+                                      text-sm max-w-[80%] shadow-sm border border-gray-100">
                         Hi! Do you have airtime?
                       </div>
                     </div>
+                    
+                    {/* Mira response */}
                     <div className="flex justify-end">
-                      <div className="bg-[#C0DC2D] text-[#13243E] px-3 py-2 rounded-2xl text-xs max-w-xs rounded-tr-none font-medium">
+                      <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
+                                      px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
+                                      font-medium shadow-sm">
                         Yes! We have all networks. Which would you like?
                       </div>
                     </div>
+                    
+                    {/* Customer message */}
                     <div className="flex justify-start">
-                      <div className="bg-gray-100 text-gray-900 px-3 py-2 rounded-2xl text-xs max-w-xs rounded-tl-none">
-                        Safaricom 1000 KES
+                      <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
+                                      text-sm max-w-[80%] shadow-sm border border-gray-100">
+                        <span className="font-mono">Safaricom 1000 KES</span>
                       </div>
                     </div>
+                    
+                    {/* Mira response */}
                     <div className="flex justify-end">
-                      <div className="bg-[#C0DC2D] text-[#13243E] px-3 py-2 rounded-2xl text-xs max-w-xs rounded-tr-none font-medium">
-                        Perfect! That's 1000 KES. Pay via M-Pesa?
+                      <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
+                                      px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
+                                      font-medium shadow-sm">
+                        Perfect! That's <span className="font-mono">1000 KES</span>. Pay via M-Pesa?
                       </div>
                     </div>
                   </div>
                   
                   {/* Input area */}
-                  <div className="bg-white border-t border-gray-200 px-3 py-2 flex gap-2">
-                    <input type="text" placeholder="Type here..." className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-xs outline-none" disabled />
-                    <button className="w-8 h-8 rounded-full bg-[#C0DC2D] flex items-center justify-center text-[#13243E] hover:bg-lime-500 transition-colors">
-                      <ArrowRight className="w-4 h-4" />
+                  <div className="bg-white border-t border-gray-100 px-4 py-3 flex gap-3">
+                    <input 
+                      type="text" 
+                      placeholder="Type a message..." 
+                      className="flex-1 bg-gray-100 rounded-full px-4 py-2.5 text-sm outline-none
+                                 focus:bg-gray-50 focus:ring-2 focus:ring-lime-500/20 transition-all" 
+                      disabled 
+                    />
+                    <button className="w-10 h-10 rounded-full bg-lime-500 flex items-center justify-center 
+                                       text-navy-800 shadow-md hover:bg-lime-400 transition-colors">
+                      <ArrowRight className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            
-            {/* Floating accent circles */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-[#C0DC2D] rounded-full opacity-10 blur-2xl animate-float"></div>
-            <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-blue-500 rounded-full opacity-10 blur-2xl animate-float-delayed"></div>
           </div>
         </div>
       </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 };

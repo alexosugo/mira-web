@@ -1,65 +1,118 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Clock, MessageSquare, Users, RefreshCw } from 'lucide-react';
 
 const ProblemStatement = () => {
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   const problems = [
     {
       icon: Users,
       title: "Limited Resources",
-      description: "Can't afford a 24/7 support team, leaving customers waiting and sales slipping away."
+      description: "Can't afford a 24/7 support team, leaving customers waiting and sales slipping away.",
+      stat: "24/7"
     },
     {
       icon: MessageSquare,
       title: "Multi-Channel Chaos",
-      description: "Managing messages on WhatsApp, Instagram, and Facebook is overwhelming and disjointed."
+      description: "Managing messages on WhatsApp, Instagram, and Facebook is overwhelming and disjointed.",
+      stat: "3+"
     },
     {
       icon: Clock,
       title: "Slow Responses",
-      description: "4-6 hour delays frustrate customers and hurt your business."
+      description: "4-6 hour delays frustrate customers and hurt your business.",
+      stat: "4-6h"
     },
     {
       icon: RefreshCw,
       title: "Repetitive Queries",
-      description: "60-70% of your team's time is spent answering basic questions about products and pricing."
+      description: "60-70% of your team's time is spent answering basic questions about products and pricing.",
+      stat: "70%"
     }
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleCards(prev => prev.includes(index) ? prev : [...prev, index]);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const cards = document.querySelectorAll('.problem-card');
+    cards.forEach(card => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-16 bg-gray-50" style={{ fontFamily: "Funnel Sans" }}>
+    <section ref={sectionRef} className="py-20 lg:py-28 bg-gradient-to-b from-white to-warm-50">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight" style={{ fontFamily: "Funnel Display" }}>
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 mb-5 tracking-tight">
             Struggling to Keep Up with Customer Inquiries?
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
             You're not alone—here's what Kenyan SMEs face every day:
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {/* Problem cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {problems.map((problem, index) => (
-            <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#C0DC2D]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <problem.icon className="h-6 w-6 text-[#C0DC2D]" />
+            <div 
+              key={index} 
+              data-index={index}
+              className={`problem-card group relative bg-white p-8 rounded-2xl border border-gray-100
+                         shadow-lg hover:shadow-xl transition-all duration-500 ease-premium
+                         hover:-translate-y-1 ${
+                           visibleCards.includes(index) 
+                             ? 'opacity-100 translate-y-0' 
+                             : 'opacity-0 translate-y-8'
+                         }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              {/* Accent border on left */}
+              <div className="absolute left-0 top-6 bottom-6 w-1 bg-gradient-to-b from-lime-500 to-lime-400 rounded-full 
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="flex items-start gap-5">
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-lime-500/15 to-lime-500/5 
+                               flex items-center justify-center flex-shrink-0
+                               group-hover:from-lime-500/25 group-hover:to-lime-500/10 transition-all duration-300">
+                  <problem.icon className="h-7 w-7 text-lime-600" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3" style={{ fontFamily: "Funnel Display" }}>
-                    {problem.title}
-                  </h3>
+                
+                {/* Content */}
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-display text-xl font-bold text-navy-800">
+                      {problem.title}
+                    </h3>
+                    <span className="font-mono text-sm font-bold text-lime-600 bg-lime-500/10 px-2.5 py-1 rounded-lg">
+                      {problem.stat}
+                    </span>
+                  </div>
                   <p className="text-gray-600 leading-relaxed">
                     {problem.description.includes("60-70%") ? (
                       <>
-                        <span style={{ fontFamily: "Funnel Sans" }}>60-70%</span> of your team's time is spent answering basic questions about products and pricing.
+                        <span className="font-mono font-medium">60-70%</span> of your team's time is spent answering basic questions about products and pricing.
                       </>
                     ) : problem.description.includes("4-6") ? (
                       <>
-                        <span style={{ fontFamily: "Funnel Sans" }}>4-6</span> hour delays frustrate customers and hurt your business.
+                        <span className="font-mono font-medium">4-6</span> hour delays frustrate customers and hurt your business.
                       </>
                     ) : problem.description.includes("24/7") ? (
                       <>
-                        Can't afford a <span style={{ fontFamily: "Funnel Sans" }}>24/7</span> support team, leaving customers waiting and sales slipping away.
+                        Can't afford a <span className="font-mono font-medium">24/7</span> support team, leaving customers waiting and sales slipping away.
                       </>
                     ) : (
                       problem.description
