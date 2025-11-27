@@ -38,7 +38,7 @@ const Features = () => {
       name: "No-Code Setup",
       description: "Get started in 30 minutes without any technical skills required"
     }
-  ];
+  ] as const;
 
   const chatSequence = [
     { type: 'customer', text: 'Hi! Do you have Samsung Galaxy A54 in blue?', delay: 1000 },
@@ -145,10 +145,14 @@ const Features = () => {
   };
 
   return (
-    <section id="features" className="py-20 bg-white" style={{ fontFamily: "Funnel Sans" }} ref={trackingSectionRef}>
+    <section id="features" className="py-20 lg:py-28 bg-white font-body" ref={trackingSectionRef}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight animate-fade-in-up" style={{ fontFamily: "Funnel Display" }}>
+          <div className="inline-flex items-center gap-2 bg-navy-800/5 text-navy-800 px-5 py-2.5 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
+            <Zap className="h-4 w-4 text-lime-600" />
+            Powerful Features
+          </div>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 mb-6 tracking-tight animate-fade-in-up">
             How Mira Works for Your Business
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animate-delay-200">
@@ -158,11 +162,11 @@ const Features = () => {
         </div>
 
         {/* Core Features Grid with optimized animations */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className={`feature-card bg-gray-50 rounded-2xl p-8 text-center hover:bg-gray-100 transition-all duration-500 hover-lift ${
+              className={`feature-card group glass-card rounded-2xl p-8 text-center transition-all duration-500 hover:shadow-premium ${
                 visibleCards.includes(index) ? 'animate-fade-in-up opacity-100' : 'opacity-0 transform translate-y-8'
               }`}
               data-index={index}
@@ -171,15 +175,16 @@ const Features = () => {
                 transitionDelay: `${index * 0.05}s`
               }}
             >
-              <div className="w-16 h-16 bg-[#C0DC2D]/20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-scale">
-                <feature.icon className="h-8 w-8 text-[#C0DC2D]" />
+              <div className="w-16 h-16 bg-gradient-to-br from-lime-500/20 to-lime-600/10 rounded-2xl flex items-center justify-center mx-auto mb-6 
+                             group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-lime-500/20 transition-all duration-300">
+                <feature.icon className="h-8 w-8 text-lime-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: "Funnel Display" }}>
+              <h3 className="font-display text-xl font-bold text-navy-800 mb-4">
                 {feature.name}
               </h3>
               <p className="text-gray-600 leading-relaxed">
                 {feature.description.includes("30 minutes") ? (
-                  <>Get started in <span style={{ fontFamily: "Funnel Sans" }}>30</span> minutes without any technical skills required</>
+                  <>Get started in <span className="font-mono font-semibold text-navy-700">30</span> minutes without any technical skills required</>
                 ) : feature.description.includes("24/7") ? (
                   <>Never miss a customer inquiry, even when you're sleeping</>
                 ) : (
@@ -194,10 +199,11 @@ const Features = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Feature details */}
           <div className="animate-fade-in-left">
-            <div className="inline-flex items-center gap-2 bg-[#13243E]/10 text-[#13243E] px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-navy-800/10 text-navy-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <Brain className="h-4 w-4" />
               Smart Automation
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 tracking-tight" style={{ fontFamily: "Funnel Display" }}>
+            <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 mb-6 tracking-tight">
               Your AI Assistant That Never Sleeps
             </h3>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
@@ -217,8 +223,9 @@ const Features = () => {
                   className={`flex items-start gap-3 animate-fade-in-left`}
                   style={{ animationDelay: `${(index + 1) * 0.2}s` }}
                 >
-                  <div className="w-6 h-6 bg-[#C0DC2D] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 hover-scale">
-                    <span className="text-[#13243E] text-xs font-bold">✓</span>
+                  <div className="w-6 h-6 bg-lime-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 
+                                  shadow-md shadow-lime-500/30 hover:scale-110 transition-transform">
+                    <span className="text-navy-800 text-xs font-bold">✓</span>
                   </div>
                   <span className="text-gray-700">{item}</span>
                 </div>
@@ -227,7 +234,8 @@ const Features = () => {
 
             <button 
               onClick={handleCTAClick}
-              className="btn-premium bg-[#C0DC2D] text-[#13243E] px-8 py-3.5 rounded-xl font-semibold inline-flex items-center gap-2 shadow-lg group"
+              className="btn-premium bg-lime-500 text-navy-800 px-8 py-3.5 rounded-xl font-bold inline-flex items-center gap-2 
+                         shadow-lg shadow-lime-500/20 group hover:shadow-xl hover:shadow-lime-500/30 transition-all"
               data-hotjar-trigger="cta_click"
               data-button-id="features_cta_button"
               data-button-text="Get Early Access"
@@ -240,14 +248,14 @@ const Features = () => {
 
           {/* Right side - Mobile-optimized chat demo */}
           <div className="animate-fade-in-right" ref={sectionRef}>
-            <div className={`bg-gray-50 rounded-3xl p-8 ${!isMobile ? 'hover-lift' : ''}`}>
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className={`glass-card rounded-3xl p-8 ${!isMobile ? 'hover:shadow-premium transition-shadow duration-300' : ''}`}>
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center ${!isMobile ? 'hover-scale' : ''}`}>
+                  <div className={`w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-md ${!isMobile ? 'hover:scale-110 transition-transform' : ''}`}>
                     <MessageSquare className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">WhatsApp Business</div>
+                    <div className="font-display font-semibold text-navy-800">WhatsApp Business</div>
                     <div className="text-sm text-gray-500">Customer Inquiry</div>
                   </div>
                 </div>
@@ -261,27 +269,27 @@ const Features = () => {
                           ? 'message-slide-in-left' 
                           : !isMobile && message.type === 'bot'
                           ? 'message-slide-in-right'
-                          : '' // No animation classes on mobile
+                          : ''
                       }`}
                     >
                       <div className={`${
                         message.type === 'customer'
                           ? 'bg-gray-100 rounded-2xl rounded-bl-sm p-4 max-w-xs'
-                          : 'bg-[#C0DC2D] rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto'
+                          : 'bg-lime-500 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-lime-500/20'
                       }`}>
                         <p className={`text-sm ${
-                          message.type === 'customer' ? 'text-gray-800' : 'text-[#13243E]'
+                          message.type === 'customer' ? 'text-gray-800' : 'text-navy-800'
                         }`}>
                           {message.text.includes('KES 32,000') ? (
-                            <>Yes! We have the Samsung Galaxy A54 in blue available for <span style={{ fontFamily: "Funnel Sans" }}>KES 32,000</span>. Would you like me to reserve one for you?</>
+                            <>Yes! We have the Samsung Galaxy A54 in blue available for <span className="font-mono font-semibold">KES 32,000</span>. Would you like me to reserve one for you?</>
                           ) : (
                             message.text
                           )}
                         </p>
                         <div className={`text-xs mt-1 ${
-                          message.type === 'customer' ? 'text-gray-500' : 'text-[#13243E]/70'
+                          message.type === 'customer' ? 'text-gray-500' : 'text-navy-800/70'
                         }`}>
-                          {message.type === 'customer' ? 'Customer' : 'Mira AI'} • <span style={{ fontFamily: "Funnel Sans" }}>2:3{4 + index}</span> PM
+                          {message.type === 'customer' ? 'Customer' : 'Mira AI'} • <span className="font-mono">2:3{4 + index}</span> PM
                         </div>
                       </div>
                     </div>
@@ -289,11 +297,11 @@ const Features = () => {
                   
                   {/* Typing indicator - hidden on mobile */}
                   {!isMobile && isInView && chatMessages < chatSequence.length && chatMessages > 0 && (
-                    <div className="bg-[#C0DC2D] rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto">
+                    <div className="bg-lime-500 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-lime-500/20">
                       <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-[#13243E] rounded-full typing-dot"></div>
-                        <div className="w-2 h-2 bg-[#13243E] rounded-full typing-dot"></div>
-                        <div className="w-2 h-2 bg-[#13243E] rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-navy-800 rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-navy-800 rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-navy-800 rounded-full typing-dot"></div>
                       </div>
                     </div>
                   )}
