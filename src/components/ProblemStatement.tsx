@@ -52,14 +52,14 @@ const ProblemStatement = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 lg:py-28 bg-gradient-to-b from-white to-warm-50">
+    <section ref={sectionRef} className="py-24 lg:py-32 bg-gradient-to-b from-white to-warm-50 dark:from-navy-950 dark:to-navy-900">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 mb-5 tracking-tight">
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
             Struggling to Keep Up with Customer Inquiries?
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
             You're not alone—here's what Kenyan SMEs face every day:
           </p>
         </div>
@@ -70,8 +70,8 @@ const ProblemStatement = () => {
             <div 
               key={index} 
               data-index={index}
-              className={`problem-card group relative bg-white p-8 rounded-2xl border border-gray-100
-                         shadow-lg hover:shadow-xl transition-all duration-500 ease-premium
+              className={`problem-card group relative bg-white dark:bg-navy-800 p-8 rounded-2xl border border-gray-100 dark:border-navy-700
+                         shadow-lg hover:shadow-xl dark:shadow-navy-900/50 transition-all duration-500 ease-premium
                          hover:-translate-y-1 ${
                            visibleCards.includes(index) 
                              ? 'opacity-100 translate-y-0' 
@@ -94,14 +94,14 @@ const ProblemStatement = () => {
                 {/* Content */}
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-display text-xl font-bold text-navy-800">
+                    <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white">
                       {problem.title}
                     </h3>
                     <span className="font-mono text-sm font-bold text-lime-600 bg-lime-500/10 px-2.5 py-1 rounded-lg">
                       {problem.stat}
                     </span>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     {problem.description.includes("60-70%") ? (
                       <>
                         <span className="font-mono font-medium">60-70%</span> of your team's time is spent answering basic questions about products and pricing.

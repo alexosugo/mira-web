@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MessageSquare, Globe, Clock, Brain, Zap, ArrowRight } from 'lucide-react';
-import { scrollToContactForm } from '../utils/scrollToForm';
-import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
+import { MessageSquare, Globe, Clock, Brain, Zap, Shield } from 'lucide-react';
+import { useSectionTracking } from '../hooks/useTracking';
 
 const Features = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -9,7 +8,6 @@ const Features = () => {
   const [isInView, setIsInView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { trackCTA } = useCTATracking();
   const trackingSectionRef = useSectionTracking('features', 'Features Section');
 
   const features = [
@@ -37,6 +35,11 @@ const Features = () => {
       icon: Zap,
       name: "No-Code Setup",
       description: "Get started in 30 minutes without any technical skills required"
+    },
+    {
+      icon: Shield,
+      name: "Enterprise-Grade Security",
+      description: "Your customer data is encrypted and protected with bank-level security standards"
     }
   ] as const;
 
@@ -135,27 +138,18 @@ const Features = () => {
     }
   }, [chatMessages, chatSequence, isInView, isMobile]);
 
-  const handleCTAClick = () => {
-    trackCTA('features_cta_button', 'Get Early Access', 'features', {
-      button_location: 'features_section',
-      button_type: 'primary',
-      section_headline: 'How Mira Works for Your Business'
-    });
-    scrollToContactForm();
-  };
-
   return (
-    <section id="features" className="py-20 lg:py-28 bg-white font-body" ref={trackingSectionRef}>
+    <section id="features" className="py-24 lg:py-32 bg-white dark:bg-navy-950 font-body" ref={trackingSectionRef}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-navy-800/5 text-navy-800 px-5 py-2.5 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 bg-navy-800/5 dark:bg-lime-500/10 text-navy-800 dark:text-lime-400 px-5 py-2.5 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
             <Zap className="h-4 w-4 text-lime-600" />
             Powerful Features
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 mb-6 tracking-tight animate-fade-in-up">
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight animate-fade-in-up">
             How Mira Works for Your Business
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animate-delay-200">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animate-delay-200">
             Designed specifically for Kenyan SMEs, Mira delivers powerful automation 
             that's simple to use and built for local market needs.
           </p>
@@ -166,7 +160,7 @@ const Features = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className={`feature-card group glass-card rounded-2xl p-8 text-center transition-all duration-500 hover:shadow-premium ${
+              className={`feature-card group glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-2xl p-8 text-center transition-all duration-500 hover:shadow-premium ${
                 visibleCards.includes(index) ? 'animate-fade-in-up opacity-100' : 'opacity-0 transform translate-y-8'
               }`}
               data-index={index}
@@ -179,12 +173,12 @@ const Features = () => {
                              group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-lime-500/20 transition-all duration-300">
                 <feature.icon className="h-8 w-8 text-lime-600" />
               </div>
-              <h3 className="font-display text-xl font-bold text-navy-800 mb-4">
+              <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white mb-4">
                 {feature.name}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
                 {feature.description.includes("30 minutes") ? (
-                  <>Get started in <span className="font-mono font-semibold text-navy-700">30</span> minutes without any technical skills required</>
+                  <>Get started in <span className="font-mono font-semibold text-navy-700 dark:text-lime-400">30</span> minutes without any technical skills required</>
                 ) : feature.description.includes("24/7") ? (
                   <>Never miss a customer inquiry, even when you're sleeping</>
                 ) : (
@@ -199,20 +193,20 @@ const Features = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Feature details */}
           <div className="animate-fade-in-left">
-            <div className="inline-flex items-center gap-2 bg-navy-800/10 text-navy-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 bg-navy-800/10 dark:bg-lime-500/10 text-navy-800 dark:text-lime-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Brain className="h-4 w-4" />
               Smart Automation
             </div>
-            <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 mb-6 tracking-tight">
+            <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white mb-6 tracking-tight">
               Your AI Assistant That Never Sleeps
             </h3>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               Mira automatically learns about your products, understands what your customers want, 
               and provides accurate answers in real-time. From product availability to pricing 
               inquiries, your customers get instant, helpful responses.
             </p>
             
-            <div className="space-y-4 mb-8">
+            <div className="space-y-4">
               {[
                 "Handles product inquiries, stock checks, and price quotes",
                 "Escalates complex issues to your team with full context",
@@ -227,36 +221,23 @@ const Features = () => {
                                   shadow-md shadow-lime-500/30 hover:scale-110 transition-transform">
                     <span className="text-navy-800 text-xs font-bold">✓</span>
                   </div>
-                  <span className="text-gray-700">{item}</span>
+                  <span className="text-gray-700 dark:text-gray-300">{item}</span>
                 </div>
               ))}
             </div>
-
-            <button 
-              onClick={handleCTAClick}
-              className="btn-premium bg-lime-500 text-navy-800 px-8 py-3.5 rounded-xl font-bold inline-flex items-center gap-2 
-                         shadow-lg shadow-lime-500/20 group hover:shadow-xl hover:shadow-lime-500/30 transition-all"
-              data-hotjar-trigger="cta_click"
-              data-button-id="features_cta_button"
-              data-button-text="Get Early Access"
-              data-page-section="features"
-            >
-              Get Early Access
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </button>
           </div>
 
           {/* Right side - Mobile-optimized chat demo */}
           <div className="animate-fade-in-right" ref={sectionRef}>
-            <div className={`glass-card rounded-3xl p-8 ${!isMobile ? 'hover:shadow-premium transition-shadow duration-300' : ''}`}>
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className={`glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-3xl p-8 ${!isMobile ? 'hover:shadow-premium transition-shadow duration-300' : ''}`}>
+              <div className="bg-white dark:bg-navy-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-navy-700">
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-md ${!isMobile ? 'hover:scale-110 transition-transform' : ''}`}>
                     <MessageSquare className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <div className="font-display font-semibold text-navy-800">WhatsApp Business</div>
-                    <div className="text-sm text-gray-500">Customer Inquiry</div>
+                    <div className="font-display font-semibold text-navy-800 dark:text-white">WhatsApp Business</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Customer Inquiry</div>
                   </div>
                 </div>
                 
@@ -274,11 +255,11 @@ const Features = () => {
                     >
                       <div className={`${
                         message.type === 'customer'
-                          ? 'bg-gray-100 rounded-2xl rounded-bl-sm p-4 max-w-xs'
+                          ? 'bg-gray-100 dark:bg-navy-700 rounded-2xl rounded-bl-sm p-4 max-w-xs'
                           : 'bg-lime-500 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-lime-500/20'
                       }`}>
                         <p className={`text-sm ${
-                          message.type === 'customer' ? 'text-gray-800' : 'text-navy-800'
+                          message.type === 'customer' ? 'text-gray-800 dark:text-gray-200' : 'text-navy-800'
                         }`}>
                           {message.text.includes('KES 32,000') ? (
                             <>Yes! We have the Samsung Galaxy A54 in blue available for <span className="font-mono font-semibold">KES 32,000</span>. Would you like me to reserve one for you?</>
@@ -287,7 +268,7 @@ const Features = () => {
                           )}
                         </p>
                         <div className={`text-xs mt-1 ${
-                          message.type === 'customer' ? 'text-gray-500' : 'text-navy-800/70'
+                          message.type === 'customer' ? 'text-gray-600 dark:text-gray-400' : 'text-navy-800/70'
                         }`}>
                           {message.type === 'customer' ? 'Customer' : 'Mira AI'} • <span className="font-mono">2:3{4 + index}</span> PM
                         </div>

@@ -217,7 +217,7 @@ const FinalCTA = () => {
                     onFocus={() => handleFieldFocus('firstName')}
                     onBlur={() => handleFieldBlur('firstName', formData.firstName)}
                     maxLength={50}
-                    className={`glass-input w-full pl-12 pr-4 py-3.5 rounded-xl text-white placeholder-gray-500 ${
+                    className={`glass-input w-full pl-12 pr-4 py-4 rounded-xl text-white placeholder-gray-500 min-h-[48px] ${
                       errors.firstName ? 'border-red-500/50 focus:border-red-500' : ''
                     }`}
                     placeholder="John"
@@ -237,7 +237,7 @@ const FinalCTA = () => {
                     onFocus={() => handleFieldFocus('lastName')}
                     onBlur={() => handleFieldBlur('lastName', formData.lastName)}
                     maxLength={50}
-                    className={`glass-input w-full pl-12 pr-4 py-3.5 rounded-xl text-white placeholder-gray-500 ${
+                    className={`glass-input w-full pl-12 pr-4 py-4 rounded-xl text-white placeholder-gray-500 min-h-[48px] ${
                       errors.lastName ? 'border-red-500/50 focus:border-red-500' : ''
                     }`}
                     placeholder="Doe"
@@ -263,7 +263,7 @@ const FinalCTA = () => {
                   onFocus={() => handleFieldFocus('email')}
                   onBlur={() => handleFieldBlur('email', formData.email)}
                   maxLength={255}
-                  className={`glass-input w-full pl-12 pr-4 py-3.5 rounded-xl text-white placeholder-gray-500 ${
+                  className={`glass-input w-full pl-12 pr-4 py-4 rounded-xl text-white placeholder-gray-500 min-h-[48px] ${
                     errors.email ? 'border-red-500/50 focus:border-red-500' : ''
                   }`}
                   placeholder="john@company.com"
@@ -288,7 +288,7 @@ const FinalCTA = () => {
                   onFocus={() => handleFieldFocus('website')}
                   onBlur={() => handleFieldBlur('website', formData.website)}
                   maxLength={255}
-                  className={`glass-input w-full pl-12 pr-4 py-3.5 rounded-xl text-white placeholder-gray-500 ${
+                  className={`glass-input w-full pl-12 pr-4 py-4 rounded-xl text-white placeholder-gray-500 min-h-[48px] ${
                     errors.website ? 'border-red-500/50 focus:border-red-500' : ''
                   }`}
                   placeholder="https://yourwebsite.com"
@@ -308,7 +308,7 @@ const FinalCTA = () => {
                   onFocus={() => handleFieldFocus('instagram')}
                   onBlur={() => handleFieldBlur('instagram', formData.instagram)}
                   maxLength={255}
-                  className="glass-input w-full pl-12 pr-4 py-3.5 rounded-xl text-white placeholder-gray-500"
+                  className="glass-input w-full pl-12 pr-4 py-4 rounded-xl text-white placeholder-gray-500 min-h-[48px]"
                   placeholder="https://instagram.com/yourbusiness"
                 />
               </div>
@@ -321,7 +321,7 @@ const FinalCTA = () => {
   };
 
   return (
-    <section id="contact-form" ref={sectionRef} className="py-20 lg:py-28 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 relative overflow-hidden">
+    <section id="contact-form" ref={sectionRef} className="py-24 lg:py-32 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-lime-500/10 to-transparent rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-radial from-lime-500/5 to-transparent rounded-full blur-3xl" />

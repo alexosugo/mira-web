@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Clock, Settings, TrendingUp, BarChart3, ArrowRight } from 'lucide-react';
-import { scrollToContactForm } from '../utils/scrollToForm';
-import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
+import { Clock, Settings, TrendingUp, BarChart3 } from 'lucide-react';
+import { useSectionTracking } from '../hooks/useTracking';
 
 const Benefits = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [counters, setCounters] = useState({ response: 0, efficiency: 0, sales: 0 });
-  const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('benefits', 'Benefits Section');
 
   const benefits = [
@@ -88,31 +86,22 @@ const Benefits = () => {
     }, stepDuration);
   };
 
-  const handleCTAClick = () => {
-    trackCTA('benefits_cta_button', 'Get Early Access', 'benefits', {
-      button_location: 'benefits_section',
-      button_type: 'primary',
-      section_headline: 'Transform Your Business with Mira'
-    });
-    scrollToContactForm();
-  };
-
   const gradientColors = [
-    'from-lime-500/10 via-white to-navy-500/5',
-    'from-navy-500/5 via-white to-lime-500/10',
-    'from-lime-500/10 via-white to-navy-500/5',
-    'from-amber-500/10 via-white to-lime-500/10',
+    'from-lime-500/10 via-white to-navy-500/5 dark:from-lime-500/10 dark:via-navy-800 dark:to-navy-800',
+    'from-navy-500/5 via-white to-lime-500/10 dark:from-navy-700 dark:via-navy-800 dark:to-lime-500/10',
+    'from-lime-500/10 via-white to-navy-500/5 dark:from-lime-500/10 dark:via-navy-800 dark:to-navy-800',
+    'from-amber-500/10 via-white to-lime-500/10 dark:from-amber-500/10 dark:via-navy-800 dark:to-lime-500/10',
   ];
 
   return (
-    <section id="benefits" ref={sectionRef} className="py-20 lg:py-28 bg-white">
+    <section id="benefits" ref={sectionRef} className="py-24 lg:py-32 bg-white dark:bg-navy-900">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 mb-5 tracking-tight">
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
             Transform Your Business with Mira
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Here's what Mira can do for you:
           </p>
         </div>
@@ -124,7 +113,7 @@ const Benefits = () => {
               key={index} 
               data-index={index}
               className={`benefit-card group relative bg-gradient-to-br ${gradientColors[index]} 
-                         rounded-2xl p-8 text-center border border-gray-100 shadow-lg
+                         rounded-2xl p-8 text-center border border-gray-100 dark:border-navy-700 shadow-lg
                          hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-premium
                          ${visibleCards.includes(index) 
                            ? 'opacity-100 translate-y-0' 
@@ -139,7 +128,7 @@ const Benefits = () => {
               </div>
               
               {/* Animated metric */}
-              <div className="font-mono text-4xl lg:text-5xl font-bold text-navy-800 mb-3">
+              <div className="font-mono text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-3">
                 {index === 0 && counters.response}
                 {index === 1 && counters.efficiency}
                 {index === 2 && counters.sales}
@@ -148,12 +137,12 @@ const Benefits = () => {
               </div>
               
               {/* Title */}
-              <h3 className="font-display text-xl font-bold text-navy-800 mb-3">
+              <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white mb-3">
                 {benefit.title}
               </h3>
               
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed text-sm">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
                 {benefit.description.includes("40%") ? (
                   <>Reduce response times by up to <span className="font-mono font-medium">40%</span> with instant <span className="font-mono font-medium">24/7</span> support.</>
                 ) : benefit.description.includes("80%") ? (
@@ -168,21 +157,6 @@ const Benefits = () => {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <button 
-            onClick={handleCTAClick}
-            className="btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl 
-                       font-bold shadow-lg shadow-lime-500/20 inline-flex items-center gap-2.5"
-            data-hotjar-trigger="cta_click"
-            data-button-id="benefits_cta_button"
-            data-button-text="Get Early Access"
-            data-page-section="benefits"
-          >
-            Get Early Access
-            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
-        </div>
       </div>
     </section>
   );

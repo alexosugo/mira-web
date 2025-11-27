@@ -12,6 +12,7 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import { trackPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useTracking';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   useScrollTracking();
@@ -22,20 +23,22 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <div id="hero">
-        <Hero />
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-navy-950 transition-colors duration-300">
+        <Header />
+        <div id="hero">
+          <Hero />
+        </div>
+        <ProblemStatement />
+        <SolutionOverview />
+        <Features />
+        <Benefits />
+        <Testimonials />
+        <Pricing />
+        <FinalCTA />
+        <Footer />
       </div>
-      <ProblemStatement />
-      <SolutionOverview />
-      <Features />
-      <Benefits />
-      <Testimonials />
-      <Pricing />
-      <FinalCTA />
-      <Footer />
-    </div>
+    </ThemeProvider>
   );
 }
 

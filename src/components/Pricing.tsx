@@ -20,66 +20,8 @@ const Pricing = () => {
     return () => observer.disconnect();
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const plans = [
-    {
-      name: "Starter",
-      price: "KES 2,999",
-      originalPrice: "KES 4,999",
-      period: "/month",
-      description: "Perfect for small businesses just getting started",
-      popular: false,
-      features: [
-        "Up to 500 messages/month",
-        "WhatsApp integration",
-        "English & Swahili support",
-        "Basic analytics",
-        "Email support",
-        "14-day free trial"
-      ],
-      cta: "Get Early Access"
-    },
-    {
-      name: "Professional",
-      price: "KES 5,999",
-      originalPrice: "KES 8,999",
-      period: "/month",
-      description: "Most popular for growing SMEs",
-      popular: true,
-      features: [
-        "Up to 2,000 messages/month",
-        "WhatsApp + Instagram + Facebook",
-        "All local languages",
-        "Advanced analytics & insights",
-        "Priority WhatsApp support",
-        "Custom business training",
-        "14-day free trial"
-      ],
-      cta: "Get Early Access"
-    },
-    {
-      name: "Enterprise",
-      price: "KES 12,999",
-      originalPrice: "KES 18,999",
-      period: "/month",
-      description: "For established businesses with high volume",
-      popular: false,
-      features: [
-        "Unlimited messages",
-        "All social media platforms",
-        "Multi-location support",
-        "Advanced AI customization",
-        "Dedicated account manager",
-        "Phone & WhatsApp support",
-        "Custom integrations",
-        "14-day free trial"
-      ],
-      cta: "Contact Sales"
-    }
-  ];
-
   const handleCTAClick = () => {
-    trackCTA('pricing_cta_button', 'Get Early Access', 'pricing', {
+    trackCTA('pricing_cta_button', 'Claim Early Bird Pricing', 'pricing', {
       button_location: 'pricing_section',
       button_type: 'primary',
       section_headline: 'Affordable Automation That Pays for Itself'
@@ -88,7 +30,7 @@ const Pricing = () => {
   };
 
   return (
-    <section id="pricing" ref={sectionRef} className="py-20 lg:py-28 bg-gradient-to-b from-warm-50 to-white relative overflow-hidden">
+    <section id="pricing" ref={sectionRef} className="py-24 lg:py-32 bg-gradient-to-b from-warm-50 to-white dark:from-navy-900 dark:to-navy-950 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-lime-500/8 to-transparent rounded-full blur-3xl" />
@@ -107,13 +49,13 @@ const Pricing = () => {
             Early Bird Pricing - Limited Time Only
           </div>
           
-          <h2 className="font-display text-4xl lg:text-6xl font-bold text-navy-800 mb-6 tracking-tight">
+          <h2 className="font-display text-4xl lg:text-6xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
             Affordable Automation<br />
             <span className="gradient-text">That Pays for Itself</span>
           </h2>
           
-          <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Starting at just <span className="font-mono font-bold text-navy-800">KES 3,999/month</span> – 
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Starting at just <span className="font-mono font-bold text-navy-800 dark:text-lime-400">KES 3,999/month</span> – 
             less than hiring one part-time employee, but with <span className="font-mono">24/7</span> availability and unlimited patience.
           </p>
           
@@ -124,12 +66,12 @@ const Pricing = () => {
               { text: 'Handle 10x more inquiries', stat: '10x' },
               { text: 'No technical skills required', stat: null },
             ].map((benefit, idx) => (
-              <div key={idx} className="flex items-center gap-2.5 bg-white px-5 py-3 rounded-xl shadow-md border border-gray-100
-                                       hover:shadow-lg hover:border-lime-200 transition-all duration-300">
+              <div key={idx} className="flex items-center gap-2.5 bg-white dark:bg-navy-800 px-5 py-3 rounded-xl shadow-md border border-gray-100 dark:border-navy-700
+                                       hover:shadow-lg hover:border-lime-200 dark:hover:border-lime-500/30 transition-all duration-300">
                 <div className="w-6 h-6 rounded-full bg-lime-500/20 flex items-center justify-center">
                   <Check className="h-3.5 w-3.5 text-lime-600" />
                 </div>
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   {benefit.stat ? (
                     <>
                       {benefit.text.split(benefit.stat)[0]}
@@ -192,10 +134,10 @@ const Pricing = () => {
                            shadow-lg shadow-lime-500/30 inline-flex items-center gap-3"
                 data-hotjar-trigger="cta_click"
                 data-button-id="pricing_cta_button"
-                data-button-text="Get Early Access"
+                data-button-text="Claim Early Bird Pricing"
                 data-page-section="pricing"
               >
-                Get Early Access
+                Claim Early Bird Pricing
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
@@ -204,15 +146,15 @@ const Pricing = () => {
 
         {/* Trust Indicators */}
         <div className="text-center mt-12">
-          <div className="flex flex-wrap justify-center gap-6 text-gray-500 text-sm">
+          <div className="flex flex-wrap justify-center gap-6 text-gray-600 dark:text-gray-400 text-sm">
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-lime-500" /> No setup fees
+              <Check className="w-4 h-4 text-lime-600" /> No setup fees
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-lime-500" /> Cancel anytime
+              <Check className="w-4 h-4 text-lime-600" /> Cancel anytime
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-lime-500" /> Local support
+              <Check className="w-4 h-4 text-lime-600" /> Local support
             </span>
           </div>
         </div>

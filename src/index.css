@@ -18,6 +18,18 @@
   --warm-gray-50: #f9fafb;
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-border: rgba(255, 255, 255, 0.12);
+  
+  /* Standardized animation durations */
+  --duration-fast: 300ms;
+  --duration-medium: 500ms;
+  --duration-slow: 800ms;
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark mode variables */
+.dark {
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================
@@ -527,10 +539,12 @@ body {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-input:focus {
+.glass-input:focus,
+.glass-input:focus-visible {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(192, 220, 45, 0.5);
-  box-shadow: 0 0 0 3px rgba(192, 220, 45, 0.15), 0 0 20px rgba(192, 220, 45, 0.1);
+  box-shadow: 0 0 0 3px rgba(192, 220, 45, 0.2), 0 0 20px rgba(192, 220, 45, 0.15);
+  outline: none;
 }
 
 /* Gradient Mesh Background */
@@ -795,6 +809,11 @@ html {
 
 .btn-premium:active {
   transform: translateY(0) scale(0.98);
+}
+
+.btn-premium:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(192, 220, 45, 0.4), 0 10px 30px rgba(192, 220, 45, 0.3);
 }
 
 .btn-premium-glass {

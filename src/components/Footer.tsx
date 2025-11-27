@@ -1,8 +1,14 @@
 import React from 'react';
-import { MessageCircle, Mail, MapPin } from 'lucide-react';
+import { MessageCircle, Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  ];
 
   return (
     <footer className="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white relative overflow-hidden">
@@ -20,11 +26,28 @@ const Footer = () => {
             <p className="text-gray-400 leading-relaxed mb-6">
               AI-powered customer service automation for Kenyan SMEs. Transform your business with 24/7 intelligent support.
             </p>
-            <div className="flex items-center gap-2 text-sm">
+            <div className="flex items-center gap-2 text-sm mb-6">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-lime-500/10 border border-lime-500/20 rounded-full text-lime-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" />
                 Made in Kenya
               </span>
+            </div>
+            
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 
+                             flex items-center justify-center text-gray-400
+                             hover:bg-lime-500/20 hover:border-lime-500/30 hover:text-lime-400
+                             transition-all duration-300"
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -78,12 +101,12 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400 text-sm">
               © <span className="font-mono">{currentYear}</span> Mira. All rights reserved.
             </p>
-            <div className="flex items-center gap-6 text-sm text-gray-500">
-              <span className="hover:text-gray-400 cursor-pointer transition-colors">Privacy Policy</span>
-              <span className="hover:text-gray-400 cursor-pointer transition-colors">Terms of Service</span>
+            <div className="flex items-center gap-6 text-sm text-gray-400">
+              <button className="hover:text-lime-400 transition-colors duration-200">Privacy Policy</button>
+              <button className="hover:text-lime-400 transition-colors duration-200">Terms of Service</button>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ const Hero = () => {
   }, []);
 
   const handleCTAClick = () => {
-    trackCTA('hero_cta_button', 'Get Early Access', 'hero', {
+    trackCTA('hero_cta_button', 'Join the Waitlist', 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
       hero_headline: 'AI Customer Service That Drives Real Results'
@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-warm-50 via-white to-gray-50 pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden"
+      className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-warm-50 via-white to-gray-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden"
     >
       {/* Premium animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -57,7 +57,7 @@ const Hero = () => {
 
             {/* Headline */}
             <div className={`space-y-2 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 tracking-tight leading-[0.95]">
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 dark:text-white tracking-tight leading-[0.95]">
                 AI Customer Service That Drives{' '}
                 <span className="relative inline-block">
                   <span className="gradient-text">Real Results</span>
@@ -70,7 +70,7 @@ const Hero = () => {
             
             {/* Description */}
             <p 
-              className={`text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xl font-body ${
+              className={`text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl font-body ${
                 isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
               style={{ animationDelay: '200ms' }}
@@ -84,14 +84,14 @@ const Hero = () => {
                 <div 
                   key={idx} 
                   className="flex items-center gap-2.5 px-4 py-2.5 
-                             bg-white rounded-xl shadow-sm border border-gray-100
-                             hover:shadow-md hover:border-lime-200 transition-all duration-300"
+                             bg-white dark:bg-navy-800 rounded-xl shadow-sm border border-gray-100 dark:border-navy-700
+                             hover:shadow-md hover:border-lime-200 dark:hover:border-lime-500/30 transition-all duration-300"
                 >
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-lime-500/20 to-lime-500/10 
                                   flex items-center justify-center">
                     <feature.icon className="w-4 h-4 text-lime-600" />
                   </div>
-                  <span className="text-gray-700 font-medium text-sm">{feature.text}</span>
+                  <span className="text-gray-700 dark:text-gray-300 font-medium text-sm">{feature.text}</span>
                 </div>
               ))}
             </div>
@@ -110,20 +110,47 @@ const Hero = () => {
                            flex items-center justify-center gap-2.5"
                 data-hotjar-trigger="cta_click"
                 data-button-id="hero_cta_button"
-                data-button-text="Get Early Access"
+                data-button-text="Join the Waitlist"
                 data-page-section="hero"
               >
-                Get Early Access
+                Join the Waitlist
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
+              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <div className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
                 <span>Launching soon</span>
               </div>
             </div>
+
+            {/* Mobile Chat Preview - Shows only on mobile */}
+            <div className={`lg:hidden mt-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
+              <div className="glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-2xl p-4 max-w-sm mx-auto">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-500 to-lime-400 
+                                  flex items-center justify-center shadow-md">
+                    <MessageCircle className="w-5 h-5 text-navy-800" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-navy-800 dark:text-white">Mira AI</p>
+                    <p className="text-xs text-lime-600 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-lime-500" />
+                      Always online
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
+                    Do you have airtime?
+                  </div>
+                  <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
+                    Yes! All networks available 24/7 ✓
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Right: Phone Mockup */}
+          {/* Right: Phone Mockup - Desktop only */}
           <div className={`hidden lg:flex justify-center items-center relative ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
             {/* Phone container with shadow */}
             <div className="relative">
@@ -138,7 +165,7 @@ const Hero = () => {
                 {/* Phone screen */}
                 <div className="w-full aspect-[9/19] bg-white rounded-[2.2rem] overflow-hidden flex flex-col">
                   {/* WhatsApp-style header */}
-                  <div className="bg-navy-800 text-white px-5 py-4 flex items-center gap-3">
+                  <div className="bg-navy-800 dark:bg-navy-900 text-white px-5 py-4 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-lime-500 
                                     flex items-center justify-center shadow-lg">
                       <MessageCircle className="w-5 h-5 text-navy-800" />
@@ -211,7 +238,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-navy-950 to-transparent pointer-events-none" />
     </section>
   );
 };
