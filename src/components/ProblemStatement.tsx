@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Clock, MessageSquare, Users, RefreshCw } from 'lucide-react';
 
 const ProblemStatement = () => {
@@ -8,27 +8,23 @@ const ProblemStatement = () => {
   const problems = [
     {
       icon: Users,
-      title: "Limited Resources",
-      description: "Can't afford a 24/7 support team, leaving customers waiting and sales slipping away.",
-      stat: "24/7"
+      title: "Limited Time",
+      description: "You can't be online all day, so customers end up waiting and sales slip away."
     },
     {
       icon: MessageSquare,
-      title: "Multi-Channel Chaos",
-      description: "Managing messages on WhatsApp, Instagram, and Facebook is overwhelming and disjointed.",
-      stat: "3+"
+      title: "Too Many Channels",
+      description: "WhatsApp here, Instagram there… keeping up with messages everywhere is overwhelming."
     },
     {
       icon: Clock,
-      title: "Slow Responses",
-      description: "4-6 hour delays frustrate customers and hurt your business.",
-      stat: "4-6h"
+      title: "Slow Replies Hurt Sales",
+      description: "A few hours’ delay and customers move on. You lose the sale without even knowing."
     },
     {
       icon: RefreshCw,
-      title: "Repetitive Queries",
-      description: "60-70% of your team's time is spent answering basic questions about products and pricing.",
-      stat: "70%"
+      title: "The Same Questions, Every Day",
+      description: "“How much?” “Do you have it?” “What colors?” Your time goes into repeating the same answers."
     }
   ];
 
@@ -60,7 +56,7 @@ const ProblemStatement = () => {
             Can't keep up with DMs?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
-            You're not alone in dealing with:
+           You’re not alone. Most shops face the same problems every day.
           </p>
         </div>
         
@@ -93,30 +89,13 @@ const ProblemStatement = () => {
                 
                 {/* Content */}
                 <div className="flex-1">
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="mb-3">
                     <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white">
                       {problem.title}
                     </h3>
-                    <span className="font-mono text-sm font-bold text-lime-600 bg-lime-500/10 px-2.5 py-1 rounded-lg">
-                      {problem.stat}
-                    </span>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {problem.description.includes("60-70%") ? (
-                      <>
-                        <span className="font-mono font-medium">60-70%</span> of your team's time is spent answering basic questions about products and pricing.
-                      </>
-                    ) : problem.description.includes("4-6") ? (
-                      <>
-                        <span className="font-mono font-medium">4-6</span> hour delays frustrate customers and hurt your business.
-                      </>
-                    ) : problem.description.includes("24/7") ? (
-                      <>
-                        Can't afford a <span className="font-mono font-medium">24/7</span> support team, leaving customers waiting and sales slipping away.
-                      </>
-                    ) : (
-                      problem.description
-                    )}
+                    {problem.description}
                   </p>
                 </div>
               </div>
