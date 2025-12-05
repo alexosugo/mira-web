@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Bot, Zap, Globe, Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Zap, Globe, Sparkles, Hammer } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 
 const SolutionOverview = () => {
@@ -19,9 +19,9 @@ const SolutionOverview = () => {
   }, []);
 
   const features = [
-    { icon: Bot, label: 'AI-Powered' },
-    { icon: Globe, label: 'Multi-Language' },
-    { icon: Zap, label: 'Instant Setup' },
+    { icon: Zap, label: 'Instant Answers' },
+    { icon: Globe, label: 'Works Everywhere' },
+    { icon: Hammer, label: 'Ready In Minutes' },
   ];
 
   return (
@@ -40,10 +40,10 @@ const SolutionOverview = () => {
             The Solution
           </div>
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
-            Meet Mira: Your Intelligent<br className="hidden lg:block" /> Customer Experience Partner
+            Meet Mira: built for shop owners who do everything themselves.
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
-            Automate routine tasks, engage customers across channels, and grow your business with ease.
+            Customers get what they need right away. You get your time back.
           </p>
         </div>
         
@@ -80,7 +80,7 @@ const SolutionOverview = () => {
               
               {/* Description */}
               <p className="relative text-lg lg:text-xl text-gray-300 leading-relaxed text-center max-w-2xl mx-auto">
-                Mira learns your business and answers customers instantly on WhatsApp, Instagram, and more—in English or Swahili. When customers need you personally, Mira hands the conversation over to you.
+                Mira understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.
               </p>
             </div>
           </div>

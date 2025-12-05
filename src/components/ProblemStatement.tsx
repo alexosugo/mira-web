@@ -19,7 +19,7 @@ const ProblemStatement = () => {
     {
       icon: Clock,
       title: "Slow Replies Hurt Sales",
-      description: "A few hours’ delay and customers move on. You lose the sale without even knowing."
+      description: "A few hours' delay and customers move on. You lose the sale without even knowing."
     },
     {
       icon: RefreshCw,
