@@ -11,25 +11,25 @@ const Benefits = () => {
     {
       icon: Clock,
       title: "Faster Responses",
-      description: "Reduce response times by up to 40% with instant 24/7 support.",
+      description: "Customers get answers right away, even when you're busy.",
       metric: "40%"
     },
     {
       icon: Settings,
-      title: "More Efficiency",
-      description: "Automate 80% of repetitive queries, freeing your team for high-value work.",
+      title: "Less Repetitive Work",
+      description: "Mira handles the questions you get every day, so you don't have to repeat yourself.",
       metric: "80%"
     },
     {
       icon: TrendingUp,
-      title: "Higher Sales",
-      description: "Boost conversions by 25% with always-on customer engagement.",
+      title: "More Sales Opportunities",
+      description: "Customers stay engaged instead of drifting away when replies take too long.",
       metric: "25%"
     },
     {
       icon: BarChart3,
-      title: "Better Insights",
-      description: "Gain data on query patterns and customer satisfaction to improve your business.",
+      title: "Clearer Understanding of Your Customers",
+      description: "See the questions they ask most and where they hesitate, so you can improve your shop.",
       metric: "100%"
     }
   ];
@@ -99,10 +99,10 @@ const Benefits = () => {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
-            Transform Your Business with Mira
+            How Mira Makes Your Shop Run Smoother
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Here's what Mira can do for you:
+           Here’s what you’ll notice once Mira starts handling your customer messages:
           </p>
         </div>
 

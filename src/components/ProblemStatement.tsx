@@ -56,7 +56,7 @@ const ProblemStatement = () => {
             Can't keep up with DMs?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
-           You’re not alone. Most shops face the same problems every day.
+           You're not alone. Most shops face the same problems every day.
           </p>
         </div>
         

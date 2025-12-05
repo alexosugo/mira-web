@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { MessageSquare, Globe, Clock, Brain, Zap, Shield } from 'lucide-react';
+import { MessageSquare, Globe, Clock, Brain, Zap, Shield, Heart } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 
 const Features = () => {
@@ -13,33 +13,33 @@ const Features = () => {
   const features = [
     {
       icon: MessageSquare,
-      name: "Multi-Platform Integration",
-      description: "Connect WhatsApp, Instagram, Telegram, and Facebook in one dashboard"
+      name: "Serve Everywhere",
+      description: "Keep WhatsApp, Instagram, and other messages in one place so nothing gets lost"
     },
     {
       icon: Globe,
-      name: "Local Language Support",
-      description: "Communicate fluently in English, Swahili, and other Kenyan languages"
+      name: "Speaks Your Language",
+      description: "Clear, natural conversations with your customers"
     },
     {
       icon: Clock,
-      name: "24/7 Instant Responses",
-      description: "Never miss a customer inquiry, even when you're sleeping"
+      name: "Answers Anytime",
+      description: "Customers get quick replies, even when you're busy or offline"
     },
     {
       icon: Brain,
-      name: "Smart Product Knowledge",
-      description: "AI learns your inventory, prices, and policies automatically"
+      name: "Knows Your Products",
+      description: "Mira understands your products well enough to guide customers with clear, helpful answers"
     },
     {
       icon: Zap,
-      name: "No-Code Setup",
-      description: "Get started in 30 minutes without any technical skills required"
+      name: "Quick Setup",
+      description: "Connect your social media or website. Mira organizes everything for you"
     },
     {
       icon: Shield,
-      name: "Enterprise-Grade Security",
-      description: "Your customer data is encrypted and protected with bank-level security standards"
+      name: "Safe & Private",
+      description: "Your customer conversations and shop data stay protected"
     }
   ] as const;
 
@@ -143,15 +143,14 @@ const Features = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-navy-800/5 dark:bg-lime-500/10 text-navy-800 dark:text-lime-400 px-5 py-2.5 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
-            <Zap className="h-4 w-4 text-lime-600" />
-            Powerful Features
+            <Heart className="h-4 w-4 text-lime-600" />
+            What You'll Love
           </div>
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight animate-fade-in-up">
-            How Mira Works for Your Business
+           How Mira Helps You Run Your Shop
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animate-delay-200">
-            Designed specifically for Kenyan SMEs, Mira delivers powerful automation 
-            that's simple to use and built for local market needs.
+            Simple tools designed for busy sellers
           </p>
         </div>
 
@@ -193,24 +192,22 @@ const Features = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Feature details */}
           <div className="animate-fade-in-left">
-            <div className="inline-flex items-center gap-2 bg-navy-800/10 dark:bg-lime-500/10 text-navy-800 dark:text-lime-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            {/* <div className="inline-flex items-center gap-2 bg-navy-800/10 dark:bg-lime-500/10 text-navy-800 dark:text-lime-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Brain className="h-4 w-4" />
               Smart Automation
-            </div>
+            </div> */}
             <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white mb-6 tracking-tight">
-              Your AI Assistant That Never Sleeps
+              A Helping Hand That’s Always There
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Mira automatically learns about your products, understands what your customers want, 
-              and provides accurate answers in real-time. From product availability to pricing 
-              inquiries, your customers get instant, helpful responses.
+              Mira keeps conversations moving by answering the questions customers ask every day—what’s available, what something costs, how to order, or how to pay. When a customer needs you personally, Mira brings you in with everything already explained.
             </p>
             
             <div className="space-y-4">
               {[
-                "Handles product inquiries, stock checks, and price quotes",
-                "Escalates complex issues to your team with full context",
-                "Works seamlessly across all your social media channels"
+                "Handles common product questions and availability checks",
+                "Shares clear pricing and buying info",
+                "Passes complex messages to you with full context"
               ].map((item, index) => (
                 <div 
                   key={index}
@@ -237,7 +234,7 @@ const Features = () => {
                   </div>
                   <div>
                     <div className="font-display font-semibold text-navy-800 dark:text-white">WhatsApp Business</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Customer Inquiry</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Online</div>
                   </div>
                 </div>
                 
@@ -262,7 +259,7 @@ const Features = () => {
                           message.type === 'customer' ? 'text-gray-800 dark:text-gray-200' : 'text-navy-800'
                         }`}>
                           {message.text.includes('KES 32,000') ? (
-                            <>Yes! We have the Samsung Galaxy A54 in blue available for <span className="font-mono font-semibold">KES 32,000</span>. Would you like me to reserve one for you?</>
+                            <>Yes! We have the Samsung Galaxy A54 in blue available for KES 32,000. Would you like me to reserve one for you?</>
                           ) : (
                             message.text
                           )}
@@ -270,7 +267,7 @@ const Features = () => {
                         <div className={`text-xs mt-1 ${
                           message.type === 'customer' ? 'text-gray-600 dark:text-gray-400' : 'text-navy-800/70'
                         }`}>
-                          {message.type === 'customer' ? 'Customer' : 'Mira AI'} • <span className="font-mono">2:3{4 + index}</span> PM
+                            <span className="font-mono">2:3{4 + index}</span> PM
                         </div>
                       </div>
                     </div>
