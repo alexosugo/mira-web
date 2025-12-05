@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MessageSquare, Globe, Clock, Brain, Zap, Shield } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 

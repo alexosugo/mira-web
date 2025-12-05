@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { MessageCircle, Zap, ArrowRight, MessageSquare, Globe, Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { MessageCircle, Zap, ArrowRight, MessageSquare, Library, Sparkles, Hammer } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
@@ -16,15 +16,16 @@ const Hero = () => {
     trackCTA('hero_cta_button', 'Join the Waitlist', 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
-      hero_headline: 'AI Customer Service That Drives Real Results'
+      hero_headline: 'Let Customers Shop Without Waiting For You To Reply'
     });
     scrollToContactForm();
   };
 
   const features = [
-    { icon: MessageSquare, text: 'Multi-channel support' },
-    { icon: Globe, text: 'Swahili & English ready' },
-    { icon: Zap, text: '24/7 instant responses' },
+    { icon: MessageSquare, text: 'Serve anywhere' },
+    { icon: Library, text: 'Knows your products' },
+    { icon: Zap, text: 'Sell around the clock' },
+    { icon: Hammer, text: 'Get started in minutes' },
   ];
 
   return (
@@ -51,16 +52,21 @@ const Hero = () => {
                              text-lime-600 text-sm font-semibold
                              shadow-sm backdrop-blur-sm">
                 <Sparkles className="w-4 h-4" />
-                AI-Powered Solutions for Kenya
+                Designed for social-first sellers
               </span>
             </div>
 
             {/* Headline */}
             <div className={`space-y-2 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 dark:text-white tracking-tight leading-[0.95]">
-                AI Customer Service That Drives{' '}
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 dark:text-white tracking-tight leading-[1.15]">
+                Let Customers <span className="relative inline-block">
+                  <span className="gradient-text">Shop</span>
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                    <path d="M2 8C50 2 150 2 198 8" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
+                  </svg>
+                </span> Without Waiting On{' '}
                 <span className="relative inline-block">
-                  <span className="gradient-text">Real Results</span>
+                  <span className="gradient-text">You</span>
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                     <path d="M2 8C50 2 150 2 198 8" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
                   </svg>
@@ -75,7 +81,7 @@ const Hero = () => {
               }`}
               style={{ animationDelay: '200ms' }}
             >
-              Mira automates customer service across WhatsApp, Instagram, and Facebook 24/7. Save costs, boost sales, and give your customers the instant support they deserve.
+              Mira handles product questions, recommendations, and orders so customers get fast, accurate answers—without you glued to your phone.
             </p>
             
             {/* Features list */}
@@ -131,7 +137,7 @@ const Hero = () => {
                     <MessageCircle className="w-5 h-5 text-navy-800" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-navy-800 dark:text-white">Mira AI</p>
+                    <p className="text-sm font-semibold text-navy-800 dark:text-white">Mira</p>
                     <p className="text-xs text-lime-600 flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-lime-500" />
                       Always online
@@ -140,10 +146,10 @@ const Hero = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
-                    Do you have airtime?
+                    Hi, have gris charnel extrait?
                   </div>
                   <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
-                    Yes! All networks available 24/7 ✓
+                    Yes! I have it in stock. 
                   </div>
                 </div>
               </div>
@@ -171,7 +177,7 @@ const Hero = () => {
                       <MessageCircle className="w-5 h-5 text-navy-800" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-semibold">Mira AI</p>
+                      <p className="text-sm font-semibold">Mira</p>
                       <p className="text-xs text-lime-400 flex items-center gap-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-lime-400" />
                         Online
@@ -185,7 +191,7 @@ const Hero = () => {
                     <div className="flex justify-start">
                       <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
                                       text-sm max-w-[80%] shadow-sm border border-gray-100">
-                        Hi! Do you have airtime?
+                        Hi, do you have eli sab parfum?
                       </div>
                     </div>
                     
@@ -193,25 +199,35 @@ const Hero = () => {
                     <div className="flex justify-end">
                       <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
                                       px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
-                                      font-medium shadow-sm">
-                        Yes! We have all networks. Which would you like?
+                                       shadow-sm">
+                        Hi! Welcome to City Perfumes. We have Elie Saab Le Parfum, 90ml.
+                        <br/><br/>
+                        We also have Elie Saab Girl of Now Shine and Le Parfum Royal, all in 90ml bottles.
                       </div>
                     </div>
                     
                     {/* Customer message */}
                     <div className="flex justify-start">
                       <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
-                                      text-sm max-w-[80%] shadow-sm border border-gray-100">
-                        <span className="font-mono">Safaricom 1000 KES</span>
+                                      text-sm max-w-[80%]  shadow-sm border border-gray-100">
+                        I want the le parfum
                       </div>
                     </div>
-                    
+
                     {/* Mira response */}
                     <div className="flex justify-end">
                       <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
                                       px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
-                                      font-medium shadow-sm">
-                        Perfect! That's <span className="font-mono">1000 KES</span>. Pay via M-Pesa?
+                                       shadow-sm">
+                        Excellent, Le Parfum is a best seller. Would you like to order?
+                      </div>
+                    </div>
+                    
+                    {/* Customer message */}
+                    <div className="flex justify-start">
+                      <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
+                                      text-sm max-w-[80%]  shadow-sm border border-gray-100">
+                        Yes, how much is it?
                       </div>
                     </div>
                   </div>

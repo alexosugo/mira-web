@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Clock, Settings, TrendingUp, BarChart3 } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 

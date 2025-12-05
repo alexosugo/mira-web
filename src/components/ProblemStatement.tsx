@@ -57,10 +57,10 @@ const ProblemStatement = () => {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
-            Struggling to Keep Up with Customer Inquiries?
+            Can't keep up with DMs?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
-            You're not alone—here's what Kenyan SMEs face every day:
+            You're not alone in dealing with:
           </p>
         </div>
         
