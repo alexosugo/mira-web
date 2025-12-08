@@ -50,13 +50,13 @@ const Pricing = () => {
           </div>
           
           <h2 className="font-display text-4xl lg:text-6xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
-            Affordable Automation<br />
-            <span className="gradient-text">That Pays for Itself</span>
+            Mira pays for itself<br />
+            {/* <span className="gradient-text">Pays for Itself</span> */}
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
             Starting at just <span className="font-mono font-bold text-navy-800 dark:text-lime-400">KES 3,999/month</span> – 
-            less than hiring one part-time employee, but with <span className="font-mono">24/7</span> availability and unlimited patience.
+            less than hiring one part-time employee, always available, unbelievably patient.
           </p>
           
           {/* Key Benefits */}
@@ -85,7 +85,7 @@ const Pricing = () => {
           </div>
           
           {/* Value Proposition Card */}
-          <div className={`relative max-w-4xl mx-auto mb-16 transition-all duration-700 delay-200 ${
+          {/* <div className={`relative max-w-4xl mx-auto mb-16 transition-all duration-700 delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             <div className="absolute -inset-1 bg-gradient-to-r from-lime-500/30 via-navy-500/20 to-lime-500/30 rounded-3xl blur-sm" />
@@ -96,7 +96,7 @@ const Pricing = () => {
                 Mira works around the clock, never takes sick days, and gets smarter every day.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Urgency CTA Section */}
@@ -124,8 +124,8 @@ const Pricing = () => {
               </h3>
               
               <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-                Join our waitlist now and secure these special launch prices for life. 
-                Plus get exclusive early access and a <span className="font-mono font-semibold text-lime-400">14-day</span> free trial when we launch.
+                Sign up now and secure the early bird pricing for lifetime use. 
+                Always pay <span className="font-mono font-semibold text-lime-400">KES 1500 per month</span>.
               </p>
               
               <button 
@@ -148,13 +148,13 @@ const Pricing = () => {
         <div className="text-center mt-12">
           <div className="flex flex-wrap justify-center gap-6 text-gray-600 dark:text-gray-400 text-sm">
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-lime-600" /> No setup fees
+              <Check className="w-4 h-4 text-lime-600" /> Start using Mira right away
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-lime-600" /> Cancel anytime
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-lime-600" /> Local support
+              <Check className="w-4 h-4 text-lime-600" /> Use Mira 24/7
             </span>
           </div>
         </div>

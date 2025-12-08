@@ -80,7 +80,7 @@ const SolutionOverview = () => {
               
               {/* Description */}
               <p className="relative text-lg lg:text-xl text-gray-300 leading-relaxed text-center max-w-2xl mx-auto">
-                Mira understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.
+                Mira lives in your DMs and understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.
               </p>
             </div>
           </div>

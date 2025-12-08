@@ -83,7 +83,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <Mail className="w-4 h-4 text-lime-500" />
-                hello@mira-ai.ke
+                hello@withmira.co
               </li>
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <MessageCircle className="w-4 h-4 text-lime-500" />

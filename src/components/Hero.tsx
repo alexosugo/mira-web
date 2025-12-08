@@ -13,7 +13,7 @@ const Hero = () => {
   }, []);
 
   const handleCTAClick = () => {
-    trackCTA('hero_cta_button', 'Join the Waitlist', 'hero', {
+    trackCTA('hero_cta_button', 'Get started', 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
       hero_headline: 'Let Customers Shop Without Waiting For You To Reply'
@@ -116,16 +116,16 @@ const Hero = () => {
                            flex items-center justify-center gap-2.5"
                 data-hotjar-trigger="cta_click"
                 data-button-id="hero_cta_button"
-                data-button-text="Join the Waitlist"
+                data-button-text="Get started"
                 data-page-section="hero"
               >
-                Join the Waitlist
+                Get started
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
-              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              {/* <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <div className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
                 <span>Launching soon</span>
-              </div>
+              </div> */}
             </div>
 
             {/* Mobile Chat Preview - Shows only on mobile */}
@@ -146,10 +146,21 @@ const Hero = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
-                    Hi, have gris charnel extrait?
+                    Hi, do you have eli sab parfum?
                   </div>
                   <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
-                    Yes! I have it in stock. 
+                    Hi! Welcome to City Perfumes. We have Elie Saab Le Parfum, 90ml.
+                    <br/><br/>
+                    We also have Elie Saab Girl of Now Shine and Le Parfum Royal, all in 90ml bottles.
+                  </div>
+                  <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
+                    I want the le parfum
+                  </div>
+                  <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
+                    Excellent, Le Parfum is a best seller. Would you like to order?
+                  </div>
+                  <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
+                    Yes, how much is it?
                   </div>
                 </div>
               </div>

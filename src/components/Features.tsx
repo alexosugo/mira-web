@@ -200,7 +200,7 @@ const Features = () => {
               A Helping Hand That’s Always There
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Mira keeps conversations moving by answering the questions customers ask every day—what’s available, what something costs, how to order, or how to pay. When a customer needs you personally, Mira brings you in with everything already explained.
+              Mira lives in your DMs and keeps conversations moving by answering the questions customers ask every day—what’s available, what something costs, how to order, or how to pay. When a customer needs you personally, Mira brings you in with everything already explained.
             </p>
             
             <div className="space-y-4">

@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   const handleCTAClick = () => {
-    trackCTA('header_cta_button', 'Get Early Access', 'header', {
+    trackCTA('header_cta_button', 'Get started', 'header', {
       button_location: 'top_navigation',
       button_type: 'primary'
     });
@@ -98,10 +98,10 @@ const Header = () => {
                          font-semibold text-sm shadow-md flex items-center gap-2"
               data-hotjar-trigger="cta_click"
               data-button-id="header_cta_button"
-              data-button-text="Get Early Access"
+              data-button-text="Get started"
               data-page-section="header"
             >
-              Get Early Access
+              Get started
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
           </div>
@@ -162,10 +162,10 @@ const Header = () => {
                          rounded-xl font-semibold shadow-lg flex items-center justify-center gap-2"
               data-hotjar-trigger="cta_click"
               data-button-id="header_mobile_cta_button"
-              data-button-text="Get Early Access"
+              data-button-text="Get started"
               data-page-section="header_mobile"
             >
-              Get Early Access
+              Get started
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
