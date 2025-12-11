@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Moon, Sun } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking } from '../hooks/useTracking';
@@ -37,7 +37,6 @@ const Header = () => {
   const navItems = [
     { id: 'features', label: 'How It Works' },
     { id: 'benefits', label: 'Benefits' },
-    { id: 'testimonials', label: 'Impact' },
     { id: 'pricing', label: 'Pricing' },
   ];
 

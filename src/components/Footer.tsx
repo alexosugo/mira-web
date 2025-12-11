@@ -23,7 +23,7 @@ const Footer = () => {
           <div>
             <h3 className="font-display text-2xl font-bold text-white mb-4">Mira</h3>
             <p className="text-gray-400 leading-relaxed mb-6">
-              AI-powered customer service automation for Kenyan SMEs. Transform your business with 24/7 intelligent support.
+              Mira helps social-first shops serve customers quickly and easily, no matter how busy the day gets.
             </p>
             <div className="flex items-center gap-2 text-sm mb-6">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-lime-500/10 border border-lime-500/20 rounded-full text-lime-400">
