@@ -41,10 +41,10 @@ const Benefits = () => {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
-            How Mira Makes Your Shop Run Smoother
+            The Results You'll See
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-           Here's what you'll notice once Mira starts handling your customer messages:
+           Here's what changes once Mira starts handling your customer messages:
           </p>
         </div>
 

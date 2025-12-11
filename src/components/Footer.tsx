@@ -54,7 +54,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              {['How It Works', 'Benefits', 'Impact', 'Pricing'].map((link) => (
+              {['How It Works', 'Benefits', 'Pricing'].map((link) => (
                 <li key={link}>
                   <button 
                     onClick={() => {
