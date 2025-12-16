@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { MessageCircle, Instagram, Zap, Bot, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { MessageCircle, Zap, ArrowRight, MessageSquare, Library, Sparkles, Hammer } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
@@ -13,82 +13,259 @@ const Hero = () => {
   }, []);
 
   const handleCTAClick = () => {
-    trackCTA('hero_cta_button', 'Get Early Access', 'hero', {
+    trackCTA('hero_cta_button', 'Get started', 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
-      hero_headline: 'Turn every visitor into a customer'
+      hero_headline: 'Let Customers Shop Without Waiting For You To Reply'
     });
     scrollToContactForm();
   };
 
-  return (
-    <section ref={sectionRef} className="bg-white pt-16 pb-20 relative overflow-hidden" style={{ fontFamily: "Funnel Sans" }}>
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-[#C0DC2D]/5 animate-gradient"></div>
-      
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
-        {/* Enhanced floating avatars with better animations */}
-        <div className="relative">
-          <div className="absolute top-8 left-8 w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 flex items-center justify-center transform rotate-12 hidden lg:block animate-float hover-scale">
-          </div>
-          <div className="absolute top-16 right-12 w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center transform -rotate-12 hidden lg:block animate-float-delayed hover-scale">
-          </div>
-          <div className="absolute bottom-20 left-16 w-10 h-10 rounded-full bg-gradient-to-br from-[#13243E] to-blue-600 flex items-center justify-center transform rotate-45 hidden lg:block animate-float-slow hover-scale">
-            <Bot className="h-5 w-5 text-white" />
-          </div>
-          <div className="absolute bottom-32 right-8 w-12 h-12 rounded-full bg-gradient-to-br from-[#C0DC2D] to-green-600 flex items-center justify-center transform -rotate-45 hidden lg:block animate-float-reverse hover-scale">
-            <Zap className="h-6 w-6 text-white" />
-          </div>
-        </div>
+  const features = [
+    { icon: MessageSquare, text: 'Serve anywhere' },
+    { icon: Library, text: 'Knows your products' },
+    { icon: Zap, text: 'Sell around the clock' },
+    { icon: Hammer, text: 'Get started in minutes' },
+  ];
 
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Animated headline with staggered entrance */}
-          <h1 
-            className={`text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-8 tracking-tight ${
-              isVisible ? 'animate-fade-in-up' : 'opacity-0'
-            }`}
-            style={{ fontFamily: "Funnel Display" }}
-          >
-            Turn every<br />
-            <span className="text-[#C0DC2D] relative">
-              visitor
-              <div className="absolute -inset-1 bg-[#C0DC2D]/20 rounded-lg blur-sm animate-pulse-glow"></div>
-            </span> into a{' '}
-            <span className="text-[#C0DC2D] relative">
-              customer
-              <div className="absolute -inset-1 bg-[#C0DC2D]/20 rounded-lg blur-sm animate-pulse-glow"></div>
-            </span>
-          </h1>
-          
-          {/* Animated description */}
-          <p 
-            className={`text-xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto ${
-              isVisible ? 'animate-fade-in-up animate-delay-200' : 'opacity-0'
-            }`}
-          >
-            AI agents that know your products, understand your customers, deliver personalized shopping experiences, and close sales 24/7 – so you can focus on growing your business
-          </p>
-          
-          {/* Enhanced CTA button with shimmer effect */}
-          <div 
-            className={`flex justify-center ${
-              isVisible ? 'animate-fade-in-up animate-delay-400' : 'opacity-0'
-            }`}
-          >
-            <button 
-              onClick={handleCTAClick}
-              className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 btn-shimmer hover-glow group"
-              data-hotjar-trigger="cta_click"
-              data-button-id="hero_cta_button"
-              data-button-text="Get Early Access"
-              data-page-section="hero"
+  return (
+    <section 
+      ref={sectionRef} 
+      className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-warm-50 via-white to-gray-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden"
+    >
+      {/* Premium animated background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-lime-500/8 to-transparent rounded-full blur-3xl animate-float-gentle" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-navy-500/5 to-transparent rounded-full blur-3xl animate-float-gentle" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-gradient-radial from-lime-400/5 to-transparent rounded-full blur-2xl animate-float-gentle" style={{ animationDelay: '4s' }} />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Content */}
+          <div className="space-y-8">
+            {/* Badge */}
+            <div className={`${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              <span className="inline-flex items-center gap-2 px-4 py-2 
+                             bg-gradient-to-r from-lime-500/10 to-lime-500/5 
+                             border border-lime-500/20 rounded-full
+                             text-lime-600 text-sm font-semibold
+                             shadow-sm backdrop-blur-sm">
+                <Sparkles className="w-4 h-4" />
+                Designed for social-first sellers
+              </span>
+            </div>
+
+            {/* Headline */}
+            <div className={`space-y-2 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 dark:text-white tracking-tight leading-[1.15]">
+                Let Customers <span className="relative inline-block">
+                  <span className="gradient-text">Shop</span>
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                    <path d="M2 8C50 2 150 2 198 8" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
+                  </svg>
+                </span> Without Waiting On{' '}
+                <span className="relative inline-block">
+                  <span className="gradient-text">You</span>
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                    <path d="M2 8C50 2 150 2 198 8" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
+                  </svg>
+                </span>
+              </h1>
+            </div>
+            
+            {/* Description */}
+            <p 
+              className={`text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl font-body ${
+                isVisible ? 'animate-fade-in-up' : 'opacity-0'
+              }`}
+              style={{ animationDelay: '200ms' }}
             >
-              Get Early Access
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </button>
+              Mira handles product questions, recommendations, and orders so customers get fast, accurate answers—without you glued to your phone.
+            </p>
+            
+            {/* Features list */}
+            <div className={`flex flex-wrap gap-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
+              {features.map((feature, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex items-center gap-2.5 px-4 py-2.5 
+                             bg-white dark:bg-navy-800 rounded-xl shadow-sm border border-gray-100 dark:border-navy-700
+                             hover:shadow-md hover:border-lime-200 dark:hover:border-lime-500/30 transition-all duration-300"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-lime-500/20 to-lime-500/10 
+                                  flex items-center justify-center">
+                    <feature.icon className="w-4 h-4 text-lime-600" />
+                  </div>
+                  <span className="text-gray-700 dark:text-gray-300 font-medium text-sm">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+            
+            {/* CTA */}
+            <div 
+              className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 ${
+                isVisible ? 'animate-fade-in-up' : 'opacity-0'
+              }`}
+              style={{ animationDelay: '400ms' }}
+            >
+              <button 
+                onClick={handleCTAClick}
+                className="btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl 
+                           text-base font-bold shadow-lg shadow-lime-500/20
+                           flex items-center justify-center gap-2.5"
+                data-hotjar-trigger="cta_click"
+                data-button-id="hero_cta_button"
+                data-button-text="Get started"
+                data-page-section="hero"
+              >
+                Get started
+                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+              {/* <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <div className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
+                <span>Launching soon</span>
+              </div> */}
+            </div>
+
+            {/* Mobile Chat Preview - Shows only on mobile */}
+            <div className={`lg:hidden mt-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
+              <div className="glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-2xl p-4 max-w-sm mx-auto">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-500 to-lime-400 
+                                  flex items-center justify-center shadow-md">
+                    <MessageCircle className="w-5 h-5 text-navy-800" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-navy-800 dark:text-white">Mira</p>
+                    <p className="text-xs text-lime-600 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-lime-500" />
+                      Always online
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
+                    Hi, do you have eli sab parfum?
+                  </div>
+                  <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
+                    Hi! Welcome to City Perfumes. We have Elie Saab Le Parfum, 90ml.
+                    <br/><br/>
+                    We also have Elie Saab Girl of Now Shine and Le Parfum Royal, all in 90ml bottles.
+                  </div>
+                  <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
+                    I want the le parfum
+                  </div>
+                  <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
+                    Excellent, Le Parfum is a best seller. Would you like to order?
+                  </div>
+                  <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
+                    Yes, how much is it?
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Phone Mockup - Desktop only */}
+          <div className={`hidden lg:flex justify-center items-center relative ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
+            {/* Phone container with shadow */}
+            <div className="relative">
+              {/* Glow effect behind phone */}
+              <div className="absolute -inset-8 bg-gradient-to-br from-lime-500/20 via-transparent to-navy-500/10 rounded-[60px] blur-2xl opacity-60" />
+              
+              {/* Phone frame */}
+              <div className="relative w-80 bg-navy-900 rounded-[3rem] p-3 shadow-2xl shadow-navy-900/30 animate-float-gentle">
+                {/* Phone notch */}
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-navy-900 rounded-b-2xl z-20" />
+                
+                {/* Phone screen */}
+                <div className="w-full aspect-[9/19] bg-white rounded-[2.2rem] overflow-hidden flex flex-col">
+                  {/* WhatsApp-style header */}
+                  <div className="bg-navy-800 dark:bg-navy-900 text-white px-5 py-4 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-lime-500 
+                                    flex items-center justify-center shadow-lg">
+                      <MessageCircle className="w-5 h-5 text-navy-800" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold">Mira</p>
+                      <p className="text-xs text-lime-400 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-lime-400" />
+                        Online
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Chat messages */}
+                  <div className="flex-1 overflow-hidden px-4 py-5 space-y-3 bg-gradient-to-b from-gray-50 to-white">
+                    {/* Customer message */}
+                    <div className="flex justify-start">
+                      <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
+                                      text-sm max-w-[80%] shadow-sm border border-gray-100">
+                        Hi, do you have eli sab parfum?
+                      </div>
+                    </div>
+                    
+                    {/* Mira response */}
+                    <div className="flex justify-end">
+                      <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
+                                      px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
+                                       shadow-sm">
+                        Hi! Welcome to City Perfumes. We have Elie Saab Le Parfum, 90ml.
+                        <br/><br/>
+                        We also have Elie Saab Girl of Now Shine and Le Parfum Royal, all in 90ml bottles.
+                      </div>
+                    </div>
+                    
+                    {/* Customer message */}
+                    <div className="flex justify-start">
+                      <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
+                                      text-sm max-w-[80%]  shadow-sm border border-gray-100">
+                        I want the le parfum
+                      </div>
+                    </div>
+
+                    {/* Mira response */}
+                    <div className="flex justify-end">
+                      <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
+                                      px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
+                                       shadow-sm">
+                        Excellent, Le Parfum is a best seller. Would you like to order?
+                      </div>
+                    </div>
+                    
+                    {/* Customer message */}
+                    <div className="flex justify-start">
+                      <div className="bg-white text-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-md 
+                                      text-sm max-w-[80%]  shadow-sm border border-gray-100">
+                        Yes, how much is it?
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Input area */}
+                  <div className="bg-white border-t border-gray-100 px-4 py-3 flex gap-3">
+                    <input 
+                      type="text" 
+                      placeholder="Type a message..." 
+                      className="flex-1 bg-gray-100 rounded-full px-4 py-2.5 text-sm outline-none
+                                 focus:bg-gray-50 focus:ring-2 focus:ring-lime-500/20 transition-all" 
+                      disabled 
+                    />
+                    <button className="w-10 h-10 rounded-full bg-lime-500 flex items-center justify-center 
+                                       text-navy-800 shadow-md hover:bg-lime-400 transition-colors">
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-navy-950 to-transparent pointer-events-none" />
     </section>
   );
 };

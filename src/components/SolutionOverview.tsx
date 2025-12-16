@@ -1,67 +1,85 @@
-import React from 'react';
-import { ArrowRight, Bot, Zap, Globe } from 'lucide-react';
-import { scrollToContactForm } from '../utils/scrollToForm';
-import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
+import { useEffect, useState } from 'react';
+import { Zap, Sparkles } from 'lucide-react';
+import { useSectionTracking } from '../hooks/useTracking';
 
 const SolutionOverview = () => {
-  const { trackCTA } = useCTATracking();
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useSectionTracking('solution', 'Solution Overview');
 
-  const handleCTAClick = () => {
-    trackCTA('solution_cta_button', 'Get Early Access', 'solution', {
-      button_location: 'solution_section',
-      button_type: 'primary',
-      section_headline: 'Meet Mira: Your Intelligent Customer Experience Partner'
-    });
-    scrollToContactForm();
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.3 }
+    );
+    const section = document.getElementById('solution-section');
+    if (section) observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  const features = [
+    { icon: Zap, label: 'Instant Answers' },
+  ];
 
   return (
-    <section ref={sectionRef} className="py-16 bg-white" style={{ fontFamily: "Funnel Sans" }}>
+    <section 
+      ref={sectionRef} 
+      id="solution-section"
+      className="py-24 lg:py-32 bg-warm-50 dark:bg-navy-900"
+    >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight" style={{ fontFamily: "Funnel Display" }}>
-            Meet Mira: Your Intelligent Customer Experience Partner
+        {/* Section header */}
+        <div className={`text-center mb-14 transition-all duration-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-navy-800/5 dark:bg-lime-500/10 rounded-full text-navy-700 dark:text-lime-400 text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4" />
+            The Solution
+          </div>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
+            Meet Mira: built for shop owners who do everything themselves.
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Automate routine tasks, engage customers across channels, and grow your business with ease.
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            Customers get what they need right away. You get your time back.
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-[#13243E] p-8 lg:p-12 rounded-3xl shadow-lg">
-            {/* Feature highlights */}
-            <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="flex items-center gap-2 bg-[#C0DC2D]/20 px-4 py-2 rounded-full">
-                <Bot className="h-4 w-4 text-[#C0DC2D]" />
-                <span className="text-sm font-medium text-[#C0DC2D]">AI-Powered</span>
-              </div>
-              <div className="flex items-center gap-2 bg-[#C0DC2D]/20 px-4 py-2 rounded-full">
-                <Globe className="h-4 w-4 text-[#C0DC2D]" />
-                <span className="text-sm font-medium text-[#C0DC2D]">Multi-Language</span>
-              </div>
-              <div className="flex items-center gap-2 bg-[#C0DC2D]/20 px-4 py-2 rounded-full">
-                <Zap className="h-4 w-4 text-[#C0DC2D]" />
-                <span className="text-sm font-medium text-[#C0DC2D]">Instant Setup</span>
-              </div>
-            </div>
+        {/* Main card */}
+        <div className={`max-w-4xl mx-auto transition-all duration-700 delay-200 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="relative">
+            {/* Animated gradient border */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-lime-500 via-navy-500 to-lime-500 rounded-[28px] opacity-20 blur-sm animate-gradient-border" 
+                 style={{ backgroundSize: '200% 200%' }} />
             
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed text-center">
-             Mira learns your business and answers customers instantly on WhatsApp, Instagram, and more—in English or Swahili. When customers need you personally, Mira hands the conversation over to you.
-            </p>
-            
-            <div className="text-center">
-              <button 
-                onClick={handleCTAClick}
-                className="bg-[#C0DC2D] text-[#13243E] px-8 py-4 rounded-lg font-semibold hover:bg-[#C0DC2D]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2 btn-shimmer hover-glow group"
-                data-hotjar-trigger="cta_click"
-                data-button-id="solution_cta_button"
-                data-button-text="Get Early Access"
-                data-page-section="solution"
-              >
-                Get Early Access
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
+            {/* Card content */}
+            <div className="relative bg-gradient-to-br from-navy-800 to-navy-900 p-10 lg:p-14 rounded-3xl shadow-2xl overflow-hidden">
+              {/* Background decoration */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-lime-500/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-lime-500/5 rounded-full blur-3xl" />
+              
+              {/* Feature badges */}
+              <div className="relative flex flex-wrap justify-center gap-4 mb-10">
+                {features.map((feature, idx) => (
+                  <div 
+                    key={idx}
+                    className="flex items-center gap-2.5 px-5 py-2.5 
+                               bg-lime-500/10 border border-lime-500/20 rounded-full
+                               hover:bg-lime-500/15 hover:border-lime-500/30 
+                               transition-all duration-300 cursor-default"
+                  >
+                    <feature.icon className="h-4 w-4 text-lime-400" />
+                    <span className="text-sm font-semibold text-lime-400">{feature.label}</span>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Description */}
+              <p className="relative text-lg lg:text-xl text-gray-300 leading-relaxed text-center max-w-2xl mx-auto">
+                Mira lives in your DMs and understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.
+              </p>
             </div>
           </div>
         </div>
