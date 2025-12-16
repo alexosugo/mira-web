@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Zap, Globe, Sparkles, Hammer } from 'lucide-react';
+import { Zap, Sparkles } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 
 const SolutionOverview = () => {
@@ -20,8 +20,6 @@ const SolutionOverview = () => {
 
   const features = [
     { icon: Zap, label: 'Instant Answers' },
-    { icon: Globe, label: 'Works Everywhere' },
-    { icon: Hammer, label: 'Ready In Minutes' },
   ];
 
   return (
