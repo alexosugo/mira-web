@@ -75,23 +75,32 @@ const Footer = () => {
             <ul className="space-y-3">
               {['How It Works', 'Benefits', 'Pricing'].map((link) => (
                 <li key={link}>
-                  <button 
-                    onClick={() => {
-                      const id = link.toLowerCase().replace(' ', '-');
+                  <a
+                    href={`#${(() => {
+                      const id = link.toLowerCase().replace(/\s+/g, '-');
                       const sectionMap: Record<string, string> = {
                         'how-it-works': 'features',
                         'benefits': 'benefits',
-                        'impact': 'testimonials',
                         'pricing': 'pricing'
                       };
+                      return sectionMap[id] || id;
+                    })()}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const id = link.toLowerCase().replace(/\s+/g, '-');
+                      const sectionMap: Record<string, string> = {
+                        'how-it-works': 'features',
+                        'benefits': 'benefits',
+                        'pricing': 'pricing'
+                      };
+                      const targetId = sectionMap[id] || id;
                       trackCTA(`footer_link_${id}`, link, 'footer');
-                      const element = document.getElementById(sectionMap[id] || id);
-                      element?.scrollIntoView({ behavior: 'smooth' });
+                      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="text-gray-400 hover:text-lime-400 transition-colors duration-200 text-sm"
                   >
                     {link}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
