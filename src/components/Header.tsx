@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Moon, Sun } from 'lucide-react';
-import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
 import { useTheme } from '../context/ThemeContext';
@@ -32,7 +31,6 @@ const Header = () => {
       button_location: 'top_navigation',
       button_type: 'primary'
     });
-    scrollToContactForm();
   };
 
   const navItems = [
@@ -96,14 +94,15 @@ const Header = () => {
                 <Moon className="w-5 h-5 text-navy-800" />
               )}
             </button>
-            <button 
+            <a 
+              href="https://app.withmira.co"
               onClick={handleCTAClick}
               className="btn-premium group bg-lime-500 text-navy-800 px-5 py-2.5 rounded-xl 
                          font-semibold text-sm shadow-md flex items-center gap-2"
             >
               Get started
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -156,14 +155,15 @@ const Header = () => {
             ))}
           </nav>
           <div className="mt-3 pt-3 border-t border-gray-100 dark:border-navy-700">
-            <button 
+            <a 
+              href="https://app.withmira.co"
               onClick={handleCTAClick}
               className="btn-premium w-full bg-lime-500 text-navy-800 px-6 py-3.5 
                          rounded-xl font-semibold shadow-lg flex items-center justify-center gap-2"
             >
               Get started
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

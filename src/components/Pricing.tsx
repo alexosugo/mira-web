@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
-import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
 const Pricing = () => {
@@ -25,35 +24,36 @@ const Pricing = () => {
       button_location: 'pricing_section',
       plan_type: planName,
     });
-    scrollToContactForm();
   };
 
   const freeChannels = [
-    'Instagram Direct Messages',
-    'Facebook Messenger',
-    'TikTok (Beta)',
+    'Instagram DMs & Comments',
+    'WhatsApp (Coming Soon)',
+    'TikTok (Coming Soon)',
   ];
 
   const proChannels = [
-    'Instagram Direct Messages',
-    'Facebook Messenger',
-    'WhatsApp',
-    'SMS & Email',
-    'TikTok (Beta)',
+    'Instagram DMs & Comments',
+    'WhatsApp (Coming Soon)',
+    'TikTok (Coming Soon)',
+  ];
+
+  const eliteChannels = [
+    'Instagram DMs & Comments',
+    'WhatsApp (Coming Soon)',
+    'TikTok (Coming Soon)',
+    'Custom Integrations'
   ];
 
   const freeFeatures = [
-    { bold: 'Automate conversations.', text: 'Unlimited custom flows to engage up to 1,000 contacts' },
-    { bold: 'Acquire new customers.', text: 'Access basic Growth Tools to drive leads to your automation' },
-    { bold: 'Segment your contacts.', text: '10 customer Tags' },
+    { bold: 'Automate conversations.', text: 'Unlimited interactions with up to 10 contacts' },
+    { bold: 'Acquire new customers.', text: 'Access basic Growth Tools to drive leads to your automation' }
   ];
 
   const proFeatures = [
     { bold: 'Engage unlimited contacts.', text: 'Scaled pricing based on contacts' },
-    { bold: 'Expand customer reach.', text: 'Unlimited Growth Tools and Keywords' },
-    { bold: 'Build advanced campaigns.', text: 'Unlimited Tags, Custom Fields, & advanced Segments' },
+    { bold: 'Expand customer reach.', text: 'Unlimited Growth Tools' },
     { bold: 'Optimize performance.', text: 'Mira Analytics & Insights tools' },
-    { bold: 'Save time.', text: 'Integrations with tools you already use' },
     { bold: 'Make it your own.', text: 'No Mira branding' },
     { bold: 'Email support,', text: 'anytime' },
   ];
@@ -101,12 +101,13 @@ const Pricing = () => {
               <span className="text-gray-500 ml-1">/mo</span>
             </div>
             <div className="mt-auto">
-              <button
+              <a
+                href="https://app.withmira.co"
                 onClick={() => handleCTAClick('free', 'Get started')}
-                className="w-full py-3 px-6 rounded-xl border-2 border-navy-800 text-navy-800 font-semibold hover:bg-navy-800 hover:text-white hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 mb-4"
+                className="block w-full py-3 px-6 rounded-xl border-2 border-navy-800 text-navy-800 font-semibold hover:bg-navy-800 hover:text-white hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 mb-4 text-center"
               >
                 Get started
-              </button>
+              </a>
               <p className="text-gray-500 font-medium text-xs text-center">
                 No credit card, or charge card, required!
               </p>
@@ -124,12 +125,13 @@ const Pricing = () => {
               <span className="text-navy-600 ml-1">/mo</span>
             </div>
             <div className="mt-auto">
-              <button
+              <a
+                href="https://app.withmira.co"
                 onClick={() => handleCTAClick('pro', 'Become pro')}
-                className="w-full py-3 px-6 rounded-xl bg-navy-800 text-white font-semibold hover:bg-navy-900 hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 mb-4"
+                className="block w-full py-3 px-6 rounded-xl bg-navy-800 text-white font-semibold hover:bg-navy-900 hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 mb-4 text-center"
               >
                 Become pro
-              </button>
+              </a>
               <p className="text-navy-700 font-medium text-xs text-center">
                 *scales with number of contacts
               </p>
@@ -146,12 +148,13 @@ const Pricing = () => {
               <span className="font-display text-4xl md:text-3xl lg:text-5xl font-bold text-white">Custom</span>
             </div>
             <div className="mt-auto">
-              <button
+              <a
+                href="https://app.withmira.co"
                 onClick={() => handleCTAClick('elite', "Let's chat")}
-                className="w-full py-3 px-6 rounded-xl bg-white text-navy-800 font-semibold hover:bg-gray-100 hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 mb-4"
+                className="block w-full py-3 px-6 rounded-xl bg-white text-navy-800 font-semibold hover:bg-gray-100 hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 mb-4 text-center"
               >
                 Let's chat
-              </button>
+              </a>
               <p className="text-gray-400 font-medium text-xs text-center">
                 *customized to fit your needs
               </p>
@@ -182,7 +185,7 @@ const Pricing = () => {
                   {freeChannels.map((channel, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-lime-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-navy-800 dark:text-gray-200 text-sm">{channel}</span>
+                      <span className="text-navy-800 font-medium dark:text-gray-200 text-sm">{channel}</span>
                     </li>
                   ))}
                 </ul>
@@ -255,7 +258,7 @@ const Pricing = () => {
                   Channel Access:
                 </h4>
                 <ul className="space-y-4">
-                  {proChannels.map((channel, index) => (
+                  {eliteChannels.map((channel, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-lime-500 flex-shrink-0 mt-0.5" />
                       <span className="text-navy-800 dark:text-gray-200 text-sm font-medium">{channel}</span>
