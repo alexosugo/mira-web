@@ -67,7 +67,10 @@ const Header = () => {
             {navItems.map((item) => (
               <button 
                 key={item.id}
-                onClick={() => scrollToSection(item.id)} 
+                onClick={() => {
+                  trackCTA(`header_nav_${item.id}`, item.label, 'header');
+                  scrollToSection(item.id);
+                }} 
                 className="nav-link-premium px-4 py-2 text-sm font-medium rounded-lg
                            hover:bg-gray-100/80 dark:hover:bg-navy-800/80 dark:text-gray-300 transition-all duration-200"
               >
@@ -108,7 +111,11 @@ const Header = () => {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-2">
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                const newTheme = isDark ? 'light' : 'dark';
+                trackPostHogEvent('theme_toggle', { theme: newTheme, location: 'header_mobile' });
+                toggleTheme();
+              }}
               className="p-2 rounded-lg bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700 
                          transition-all duration-300"
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -145,7 +152,10 @@ const Header = () => {
             {navItems.map((item, index) => (
               <button 
                 key={item.id}
-                onClick={() => scrollToSection(item.id)} 
+                onClick={() => {
+                  trackCTA(`header_mobile_nav_${item.id}`, item.label, 'header_mobile');
+                  scrollToSection(item.id);
+                }} 
                 className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-navy-800 dark:hover:text-white
                            hover:bg-gray-50 dark:hover:bg-navy-800 rounded-xl font-medium transition-all duration-200"
                 style={{ animationDelay: `${index * 50}ms` }}
