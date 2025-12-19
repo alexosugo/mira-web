@@ -110,10 +110,3 @@ export const initializeTracking = () => {
 
   console.log('Analytics tracking initialized');
 };
-
-// Type declarations for gtag
-declare global {
-  interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void;
-  }
-}
