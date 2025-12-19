@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { MessageCircle, Zap, ArrowRight, MessageSquare, Library, Sparkles, Hammer } from 'lucide-react';
-import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
 const Hero = () => {
@@ -18,7 +17,6 @@ const Hero = () => {
       button_type: 'primary',
       hero_headline: 'Let Customers Shop Without Waiting For You To Reply'
     });
-    scrollToContactForm();
   };
 
   const features = [
@@ -109,19 +107,20 @@ const Hero = () => {
               }`}
               style={{ animationDelay: '400ms' }}
             >
-              <button 
-                onClick={handleCTAClick}
+              <a
+                href="https://app.withmira.co"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleCTAClick();
+                  window.location.href = 'https://app.withmira.co';
+                }}
                 className="btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl 
                            text-base font-bold shadow-lg shadow-lime-500/20
                            flex items-center justify-center gap-2.5"
-                data-hotjar-trigger="cta_click"
-                data-button-id="hero_cta_button"
-                data-button-text="Get started"
-                data-page-section="hero"
               >
                 Get started
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              </a>
               {/* <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <div className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
                 <span>Launching soon</span>

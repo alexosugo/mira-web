@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/66c9d9aa-b369-4784-978b-916d99e99664/deploy-status?branch=main)](https://app.netlify.com/projects/withmira/deploys)
+
 # Mira - AI Customer Experience Partner
 
 Transform your Kenyan business with intelligent 24/7 customer service automation that handles WhatsApp, Instagram, and Facebook messages while you sleep.

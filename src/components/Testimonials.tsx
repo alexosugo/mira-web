@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TrendingUp, ArrowRight } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
@@ -261,10 +261,6 @@ const Testimonials = () => {
             className="btn-premium bg-lime-500 text-navy-800 px-8 py-4 rounded-xl text-lg font-bold 
                        hover:shadow-xl shadow-lg shadow-lime-500/20 inline-flex items-center gap-2 
                        group animate-fade-in-up transition-all"
-            data-hotjar-trigger="cta_click"
-            data-button-id="testimonials_cta_button"
-            data-button-text="Reserve Your Spot"
-            data-page-section="testimonials"
           >
             Reserve Your Spot
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
