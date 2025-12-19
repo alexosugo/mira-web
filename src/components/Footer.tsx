@@ -2,6 +2,12 @@ import { MessageCircle, Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucid
 import { useSectionTracking, useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
 
+const SECTION_MAP: Record<string, string> = {
+  'how-it-works': 'features',
+  'benefits': 'benefits',
+  'pricing': 'pricing'
+};
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const sectionRef = useSectionTracking('footer', 'Footer');
@@ -73,36 +79,26 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              {['How It Works', 'Benefits', 'Pricing'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${(() => {
-                      const id = link.toLowerCase().replace(/\s+/g, '-');
-                      const sectionMap: Record<string, string> = {
-                        'how-it-works': 'features',
-                        'benefits': 'benefits',
-                        'pricing': 'pricing'
-                      };
-                      return sectionMap[id] || id;
-                    })()}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const id = link.toLowerCase().replace(/\s+/g, '-');
-                      const sectionMap: Record<string, string> = {
-                        'how-it-works': 'features',
-                        'benefits': 'benefits',
-                        'pricing': 'pricing'
-                      };
-                      const targetId = sectionMap[id] || id;
-                      trackCTA(`footer_link_${id}`, link, 'footer');
-                      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="text-gray-400 hover:text-lime-400 transition-colors duration-200 text-sm"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              {['How It Works', 'Benefits', 'Pricing'].map((link) => {
+                const linkKey = link.toLowerCase().replace(/\s+/g, '-');
+                const targetId = SECTION_MAP[linkKey] || linkKey;
+                
+                return (
+                  <li key={link}>
+                    <a
+                      href={`#${targetId}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        trackCTA(`footer_link_${linkKey}`, link, 'footer');
+                        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-gray-400 hover:text-lime-400 transition-colors duration-200 text-sm"
+                    >
+                      {link}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
