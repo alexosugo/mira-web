@@ -107,9 +107,13 @@ const Hero = () => {
               }`}
               style={{ animationDelay: '400ms' }}
             >
-              <a 
+              <a
                 href="https://app.withmira.co"
-                onClick={handleCTAClick}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleCTAClick();
+                  window.location.href = 'https://app.withmira.co';
+                }}
                 className="btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl 
                            text-base font-bold shadow-lg shadow-lime-500/20
                            flex items-center justify-center gap-2.5"
