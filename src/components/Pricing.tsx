@@ -71,10 +71,6 @@ const Pricing = () => {
                 onClick={handleCTAClick}
                 className="btn-premium group bg-lime-500 text-navy-800 px-10 py-5 rounded-2xl text-lg font-bold 
                            shadow-lg shadow-lime-500/30 inline-flex items-center gap-3"
-                data-hotjar-trigger="cta_click"
-                data-button-id="pricing_cta_button"
-                data-button-text="Claim Early Bird Pricing"
-                data-page-section="pricing"
               >
                 Claim Early Bird Pricing
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />

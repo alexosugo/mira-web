@@ -1,9 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Clock, MessageSquare, Users, RefreshCw } from 'lucide-react';
+import { useSectionTracking } from '../hooks/useTracking';
 
 const ProblemStatement = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useSectionTracking('problem_statement', 'Problem Statement Section');
 
   const problems = [
     {
@@ -48,7 +49,7 @@ const ProblemStatement = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 bg-gradient-to-b from-white to-warm-50 dark:from-navy-950 dark:to-navy-900">
+    <section id="problem-statement" ref={sectionRef} className="py-24 lg:py-32 bg-gradient-to-b from-white to-warm-50 dark:from-navy-950 dark:to-navy-900">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
