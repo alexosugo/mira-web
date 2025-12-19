@@ -5,6 +5,7 @@ import './index.css';
 import Hotjar from '@hotjar/browser';
 import { initializeTracking } from './utils/analytics';
 import { setupHotjarTriggers, initializeHotjarHeatmaps, setupSessionRecording } from './utils/hotjarConfig';
+import { PostHogProvider } from 'posthog-js/react';
 
 const siteId = import.meta.env.VITE_HOTJAR_SITE_ID;
 const hotjarVersion = import.meta.env.VITE_HOTJAR_VERSION;
@@ -28,6 +29,16 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <App />
+    <PostHogProvider
+      apiKey={import.meta.env.VITE_PUBLIC_POSTHOG_KEY}
+      options={{
+        api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
+        defaults: '2025-05-24',
+        capture_exceptions: true,
+        debug: import.meta.env.MODE === 'development',
+      }}
+    >
+      <App />
+    </PostHogProvider>
   </StrictMode>
 );

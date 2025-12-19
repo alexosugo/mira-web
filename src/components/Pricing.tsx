@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Check, Star, ArrowRight, Clock, Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Star, ArrowRight } from 'lucide-react';
 import { scrollToContactForm } from '../utils/scrollToForm';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
