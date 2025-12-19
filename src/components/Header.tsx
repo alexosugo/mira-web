@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Moon, Sun } from 'lucide-react';
 import { useCTATracking } from '../hooks/useTracking';
+import { trackPostHogEvent } from '../utils/analytics';
 import { useTheme } from '../context/ThemeContext';
 
 const Header = () => {
@@ -66,7 +67,10 @@ const Header = () => {
             {navItems.map((item) => (
               <button 
                 key={item.id}
-                onClick={() => scrollToSection(item.id)} 
+                onClick={() => {
+                  trackCTA(`header_nav_${item.id}`, item.label, 'header');
+                  scrollToSection(item.id);
+                }} 
                 className="nav-link-premium px-4 py-2 text-sm font-medium rounded-lg
                            hover:bg-gray-100/80 dark:hover:bg-navy-800/80 dark:text-gray-300 transition-all duration-200"
               >
@@ -78,7 +82,11 @@ const Header = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                const newTheme = isDark ? 'light' : 'dark';
+                trackPostHogEvent('theme_toggle', { theme: newTheme });
+                toggleTheme();
+              }}
               className="p-2.5 rounded-xl bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700 
                          transition-all duration-300"
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -94,10 +102,6 @@ const Header = () => {
               onClick={handleCTAClick}
               className="btn-premium group bg-lime-500 text-navy-800 px-5 py-2.5 rounded-xl 
                          font-semibold text-sm shadow-md flex items-center gap-2"
-              data-hotjar-trigger="cta_click"
-              data-button-id="header_cta_button"
-              data-button-text="Get started"
-              data-page-section="header"
             >
               Get started
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -107,7 +111,11 @@ const Header = () => {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-2">
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                const newTheme = isDark ? 'light' : 'dark';
+                trackPostHogEvent('theme_toggle', { theme: newTheme, location: 'header_mobile' });
+                toggleTheme();
+              }}
               className="p-2 rounded-lg bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700 
                          transition-all duration-300"
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -144,7 +152,10 @@ const Header = () => {
             {navItems.map((item, index) => (
               <button 
                 key={item.id}
-                onClick={() => scrollToSection(item.id)} 
+                onClick={() => {
+                  trackCTA(`header_mobile_nav_${item.id}`, item.label, 'header_mobile');
+                  scrollToSection(item.id);
+                }} 
                 className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-navy-800 dark:hover:text-white
                            hover:bg-gray-50 dark:hover:bg-navy-800 rounded-xl font-medium transition-all duration-200"
                 style={{ animationDelay: `${index * 50}ms` }}
@@ -159,10 +170,6 @@ const Header = () => {
               onClick={handleCTAClick}
               className="btn-premium w-full bg-lime-500 text-navy-800 px-6 py-3.5 
                          rounded-xl font-semibold shadow-lg flex items-center justify-center gap-2"
-              data-hotjar-trigger="cta_click"
-              data-button-id="header_mobile_cta_button"
-              data-button-text="Get started"
-              data-page-section="header_mobile"
             >
               Get started
               <ArrowRight className="w-4 h-4" />

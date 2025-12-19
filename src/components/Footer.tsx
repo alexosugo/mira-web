@@ -1,7 +1,17 @@
 import { MessageCircle, Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { useSectionTracking, useCTATracking } from '../hooks/useTracking';
+import { trackPostHogEvent } from '../utils/analytics';
+
+const SECTION_MAP: Record<string, string> = {
+  'how-it-works': 'features',
+  'benefits': 'benefits',
+  'pricing': 'pricing'
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const sectionRef = useSectionTracking('footer', 'Footer');
+  const { trackCTA } = useCTATracking();
 
   const socialLinks = [
     { icon: Twitter, href: '#', label: 'Twitter' },
@@ -9,8 +19,22 @@ const Footer = () => {
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
   ];
 
+  const handleSocialClick = (label: string) => {
+    trackPostHogEvent('social_link_click', {
+      platform: label,
+      location: 'footer'
+    });
+  };
+
+  const handleContactClick = (type: string) => {
+    trackPostHogEvent('contact_link_click', {
+      contact_type: type,
+      location: 'footer'
+    });
+  };
+
   return (
-    <footer className="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white relative overflow-hidden">
+    <footer ref={sectionRef} className="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl" />
@@ -39,6 +63,7 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
+                  onClick={() => handleSocialClick(social.label)}
                   className="w-10 h-10 rounded-full bg-white/5 border border-white/10 
                              flex items-center justify-center text-gray-400
                              hover:bg-lime-500/20 hover:border-lime-500/30 hover:text-lime-400
@@ -54,35 +79,26 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              {['How It Works', 'Benefits', 'Pricing'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${(() => {
-                      const id = link.toLowerCase().replace(/\s+/g, '-');
-                      const sectionMap: Record<string, string> = {
-                        'how-it-works': 'features',
-                        'benefits': 'benefits',
-                        'pricing': 'pricing'
-                      };
-                      return sectionMap[id] || id;
-                    })()}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const id = link.toLowerCase().replace(/\s+/g, '-');
-                      const sectionMap: Record<string, string> = {
-                        'how-it-works': 'features',
-                        'benefits': 'benefits',
-                        'pricing': 'pricing'
-                      };
-                      const targetId = sectionMap[id] || id;
-                      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="text-gray-400 hover:text-lime-400 transition-colors duration-200 text-sm"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              {['How It Works', 'Benefits', 'Pricing'].map((link) => {
+                const linkKey = link.toLowerCase().replace(/\s+/g, '-');
+                const targetId = SECTION_MAP[linkKey] || linkKey;
+                
+                return (
+                  <li key={link}>
+                    <a
+                      href={`#${targetId}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        trackCTA(`footer_link_${linkKey}`, link, 'footer');
+                        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-gray-400 hover:text-lime-400 transition-colors duration-200 text-sm"
+                    >
+                      {link}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -91,12 +107,23 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-gray-400 text-sm">
-                <Mail className="w-4 h-4 text-lime-500" />
-                hello@withmira.co
+                <a 
+                  href="mailto:hello@withmira.co" 
+                  onClick={() => handleContactClick('email')}
+                  className="flex items-center gap-3 hover:text-lime-400 transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-lime-500" />
+                  hello@withmira.co
+                </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400 text-sm">
-                <MessageCircle className="w-4 h-4 text-lime-500" />
-                WhatsApp Support
+                <button 
+                  onClick={() => handleContactClick('whatsapp')}
+                  className="flex items-center gap-3 hover:text-lime-400 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4 text-lime-500" />
+                  WhatsApp Support
+                </button>
               </li>
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <MapPin className="w-4 h-4 text-lime-500" />
@@ -113,8 +140,18 @@ const Footer = () => {
               © <span className="font-mono">{currentYear}</span> Mira. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
-              <button className="hover:text-lime-400 transition-colors duration-200">Privacy Policy</button>
-              <button className="hover:text-lime-400 transition-colors duration-200">Terms of Service</button>
+              <button 
+                onClick={() => trackPostHogEvent('legal_link_click', { link: 'privacy', location: 'footer' })}
+                className="hover:text-lime-400 transition-colors duration-200"
+              >
+                Privacy Policy
+              </button>
+              <button 
+                onClick={() => trackPostHogEvent('legal_link_click', { link: 'terms', location: 'footer' })}
+                className="hover:text-lime-400 transition-colors duration-200"
+              >
+                Terms of Service
+              </button>
             </div>
           </div>
         </div>
