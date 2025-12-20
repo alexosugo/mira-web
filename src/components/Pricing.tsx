@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
+import EliteContactModal from './EliteContactModal';
 
 const Pricing = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isEliteModalOpen, setIsEliteModalOpen] = useState(false);
   const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('pricing', 'Pricing Section');
 
@@ -148,13 +150,15 @@ const Pricing = () => {
               <span className="font-display text-4xl md:text-3xl lg:text-5xl font-bold text-white">Custom</span>
             </div>
             <div className="mt-auto">
-              <a
-                href="https://app.withmira.co"
-                onClick={() => handleCTAClick('elite', "Let's chat")}
+              <button
+                onClick={() => {
+                  handleCTAClick('elite', "Let's chat");
+                  setIsEliteModalOpen(true);
+                }}
                 className="block w-full py-3 px-6 rounded-xl bg-white text-navy-800 font-semibold hover:bg-gray-100 hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 mb-4 text-center"
               >
                 Let's chat
-              </a>
+              </button>
               <p className="text-gray-400 font-medium text-xs text-center">
                 *customized to fit your needs
               </p>
@@ -287,6 +291,11 @@ const Pricing = () => {
           </div>
         </div>
       </div>
+
+      <EliteContactModal 
+        isOpen={isEliteModalOpen} 
+        onClose={() => setIsEliteModalOpen(false)} 
+      />
     </section>
   );
 };
