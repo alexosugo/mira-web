@@ -30,9 +30,7 @@ function App() {
         <SolutionOverview />
         <Features />
         <Benefits />
-        {/* <Testimonials /> */}
         <Pricing />
-        {/* <FinalCTA /> */}
         <Footer />
       </div>
     </ThemeProvider>
