@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   const navItems = [
-    { id: 'features', label: 'How It Works' },
+    { id: 'how-it-works', label: 'How It Works' },
     { id: 'benefits', label: 'Benefits' },
     { id: 'pricing', label: 'Pricing' },
   ];
