@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MessageCircle, Zap, ArrowRight, MessageSquare, Library, Sparkles, Hammer } from 'lucide-react';
+import { Zap, ArrowRight, MessageSquare, Library, Sparkles, Hammer } from 'lucide-react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { useExperiments, HERO_CTA_COPY, HERO_SUB_COPY } from '../hooks/useExperiments';
 
@@ -134,15 +134,14 @@ const Hero = () => {
             <div className={`lg:hidden mt-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
               <div className="glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-2xl p-4 max-w-sm mx-auto">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-500 to-lime-400 
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-orange-400
                                   flex items-center justify-center shadow-md">
-                    <MessageCircle className="w-5 h-5 text-navy-800" />
+                    <span className="text-white font-bold text-sm">M</span>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-navy-800 dark:text-white">Mira</p>
-                    <p className="text-xs text-lime-600 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-lime-500" />
-                      Always online
+                    <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                      Active now
                     </p>
                   </div>
                 </div>
@@ -150,7 +149,7 @@ const Hero = () => {
                   <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
                     Hi, do you have eli sab parfum?
                   </div>
-                  <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
+                  <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-white font-medium max-w-[85%] ml-auto">
                     Hi! Welcome to City Perfumes. We have Elie Saab Le Parfum, 90ml.
                     <br/><br/>
                     We also have Elie Saab Girl of Now Shine and Le Parfum Royal, all in 90ml bottles.
@@ -158,7 +157,7 @@ const Hero = () => {
                   <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
                     I want the le parfum
                   </div>
-                  <div className="bg-lime-500 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-navy-800 font-medium max-w-[85%] ml-auto">
+                  <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl rounded-tr-sm px-3 py-2 text-sm text-white font-medium max-w-[85%] ml-auto">
                     Excellent, Le Parfum is a best seller. Would you like to order?
                   </div>
                   <div className="bg-gray-100 dark:bg-navy-700 rounded-xl rounded-tl-sm px-3 py-2 text-sm text-gray-700 dark:text-gray-300 max-w-[85%]">
@@ -183,17 +182,16 @@ const Hero = () => {
                 
                 {/* Phone screen */}
                 <div className="w-full aspect-[9/19] bg-white rounded-[2.2rem] overflow-hidden flex flex-col">
-                  {/* WhatsApp-style header */}
+                  {/* Instagram DM-style header */}
                   <div className="bg-navy-800 dark:bg-navy-900 text-white px-5 py-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-lime-500 
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-orange-400
                                     flex items-center justify-center shadow-lg">
-                      <MessageCircle className="w-5 h-5 text-navy-800" />
+                      <span className="text-white font-bold text-sm">M</span>
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-semibold">Mira</p>
-                      <p className="text-xs text-lime-400 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-                        Online
+                      <p className="text-xs text-gray-400 flex items-center gap-1">
+                        Active now
                       </p>
                     </div>
                   </div>
@@ -210,7 +208,7 @@ const Hero = () => {
                     
                     {/* Mira response */}
                     <div className="flex justify-end">
-                      <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
+                      <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white 
                                       px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
                                        shadow-sm">
                         Hi! Welcome to City Perfumes. We have Elie Saab Le Parfum, 90ml.
@@ -229,7 +227,7 @@ const Hero = () => {
 
                     {/* Mira response */}
                     <div className="flex justify-end">
-                      <div className="bg-gradient-to-br from-lime-500 to-lime-400 text-navy-800 
+                      <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white 
                                       px-4 py-2.5 rounded-2xl rounded-tr-md text-sm max-w-[80%] 
                                        shadow-sm">
                         Excellent, Le Parfum is a best seller. Would you like to order?
@@ -251,11 +249,11 @@ const Hero = () => {
                       type="text" 
                       placeholder="Type a message..." 
                       className="flex-1 bg-gray-100 rounded-full px-4 py-2.5 text-sm outline-none
-                                 focus:bg-gray-50 focus:ring-2 focus:ring-lime-500/20 transition-all" 
+                                 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500/20 transition-all" 
                       disabled 
                     />
-                    <button className="w-10 h-10 rounded-full bg-lime-500 flex items-center justify-center 
-                                       text-navy-800 shadow-md hover:bg-lime-400 transition-colors">
+                    <button className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center
+                                       text-white shadow-md hover:from-blue-600 hover:to-purple-700 transition-colors">
                       <ArrowRight className="w-5 h-5" />
                     </button>
                   </div>
