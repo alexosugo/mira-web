@@ -1,4 +1,3 @@
-import React from 'react';
 import { Clock, Settings, TrendingUp, BarChart3 } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 
