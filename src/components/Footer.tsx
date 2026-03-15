@@ -3,7 +3,7 @@ import { useSectionTracking, useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
 
 const SECTION_MAP: Record<string, string> = {
-  'how-it-works': 'features',
+  'how-it-works': 'how-it-works',
   'benefits': 'benefits',
   'pricing': 'pricing'
 };
