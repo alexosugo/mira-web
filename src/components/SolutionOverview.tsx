@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Zap, Sparkles } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
+import { useExperiments, SOLUTION_COPY } from '../hooks/useExperiments';
 
 const SolutionOverview = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useSectionTracking('solution', 'Solution Overview');
+  const { solutionCopy } = useExperiments();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -78,7 +80,7 @@ const SolutionOverview = () => {
               
               {/* Description */}
               <p className="relative text-lg lg:text-xl text-gray-300 leading-relaxed text-center max-w-2xl mx-auto">
-                Mira lives in your DMs and understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.
+                {SOLUTION_COPY[solutionCopy]}
               </p>
             </div>
           </div>
