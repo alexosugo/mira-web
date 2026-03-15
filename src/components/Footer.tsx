@@ -1,4 +1,4 @@
-import { MessageCircle, Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { useSectionTracking, useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
 
@@ -116,15 +116,7 @@ const Footer = () => {
                   hello@withmira.co
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-gray-400 text-sm">
-                <button 
-                  onClick={() => handleContactClick('whatsapp')}
-                  className="flex items-center gap-3 hover:text-lime-400 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4 text-lime-500" />
-                  WhatsApp Support
-                </button>
-              </li>
+
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <MapPin className="w-4 h-4 text-lime-500" />
                 Nairobi, Kenya
