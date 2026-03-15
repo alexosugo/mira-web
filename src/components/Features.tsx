@@ -231,12 +231,12 @@ const Features = () => {
             <div className={`glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-3xl p-8 ${!isMobile ? 'hover:shadow-premium transition-shadow duration-300' : ''}`}>
               <div className="bg-white dark:bg-navy-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-navy-700">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-md ${!isMobile ? 'hover:scale-110 transition-transform' : ''}`}>
-                    <MessageSquare className="h-5 w-5 text-white" />
+                  <div className={`w-10 h-10 bg-gradient-to-br from-pink-500 to-orange-400 rounded-full flex items-center justify-center shadow-md ${!isMobile ? 'hover:scale-110 transition-transform' : ''}`}>
+                    <span className="text-white font-bold text-lg">M</span>
                   </div>
                   <div>
-                    <div className="font-display font-semibold text-navy-800 dark:text-white">WhatsApp Business</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Online</div>
+                    <div className="font-display font-semibold text-navy-800 dark:text-white">Instagram</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Active now</div>
                   </div>
                 </div>
                 
@@ -255,10 +255,10 @@ const Features = () => {
                       <div className={`${
                         message.type === 'customer'
                           ? 'bg-gray-100 dark:bg-navy-700 rounded-2xl rounded-bl-sm p-4 max-w-xs'
-                          : 'bg-lime-500 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-lime-500/20'
+                          : 'bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-blue-500/20'
                       }`}>
                         <p className={`text-sm ${
-                          message.type === 'customer' ? 'text-gray-800 dark:text-gray-200' : 'text-navy-800'
+                          message.type === 'customer' ? 'text-gray-800 dark:text-gray-200' : 'text-white'
                         }`}>
                           {message.text.includes('KES 32,000') ? (
                             <>Yes! We have the Samsung Galaxy A54 in blue available for KES 32,000. Would you like me to reserve one for you?</>
@@ -267,7 +267,7 @@ const Features = () => {
                           )}
                         </p>
                         <div className={`text-xs mt-1 ${
-                          message.type === 'customer' ? 'text-gray-600 dark:text-gray-400' : 'text-navy-800/70'
+                          message.type === 'customer' ? 'text-gray-600 dark:text-gray-400' : 'text-white/70'
                         }`}>
                             <span className="font-mono">2:3{4 + index}</span> PM
                         </div>
@@ -277,11 +277,11 @@ const Features = () => {
                   
                   {/* Typing indicator - hidden on mobile */}
                   {!isMobile && isInView && chatMessages < chatSequence.length && chatMessages > 0 && (
-                    <div className="bg-lime-500 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-lime-500/20">
+                    <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-blue-500/20">
                       <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-navy-800 rounded-full typing-dot"></div>
-                        <div className="w-2 h-2 bg-navy-800 rounded-full typing-dot"></div>
-                        <div className="w-2 h-2 bg-navy-800 rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-white rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-white rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-white rounded-full typing-dot"></div>
                       </div>
                     </div>
                   )}
