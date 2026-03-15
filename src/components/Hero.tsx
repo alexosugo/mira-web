@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react';
 import { MessageCircle, Zap, ArrowRight, MessageSquare, Library, Sparkles, Hammer } from 'lucide-react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
+import { useExperiments, HERO_CTA_COPY, HERO_SUB_COPY } from '../hooks/useExperiments';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('hero', 'Hero Section');
+  const { heroCta, heroSub } = useExperiments();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   const handleCTAClick = () => {
-    trackCTA('hero_cta_button', 'Get started', 'hero', {
+    trackCTA('hero_cta_button', HERO_CTA_COPY[heroCta], 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
-      hero_headline: 'Let Customers Shop Without Waiting For You To Reply'
+      hero_headline: 'Let Customers Shop Without Waiting For You To Reply',
+      experiment_variant: heroCta,
     });
   };
 
@@ -79,7 +82,7 @@ const Hero = () => {
               }`}
               style={{ animationDelay: '200ms' }}
             >
-              Mira handles product questions, recommendations, and orders so customers get fast, accurate answers—without you glued to your phone.
+              {HERO_SUB_COPY[heroSub]}
             </p>
             
             {/* Features list */}
@@ -118,7 +121,7 @@ const Hero = () => {
                            text-base font-bold shadow-lg shadow-lime-500/20
                            flex items-center justify-center gap-2.5"
               >
-                Get started
+                {HERO_CTA_COPY[heroCta]}
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               {/* <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
