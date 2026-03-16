@@ -4,7 +4,7 @@ import posthog from 'posthog-js';
 // PostHog event tracking
 export const trackPostHogEvent = (
   eventName: string,
-  properties: Record<string, any>
+  properties: Record<string, unknown>
 ) => {
   if (typeof window !== 'undefined' && posthog?.capture) {
     console.log('PostHog Event:', eventName, properties);
@@ -17,7 +17,7 @@ export const trackCTAClick = (
   buttonId: string,
   buttonText: string,
   pageSection: string,
-  additionalData?: Record<string, any>
+  additionalData?: Record<string, unknown>
 ) => {
   // PostHog tracking
   trackPostHogEvent('cta_click', {
@@ -32,7 +32,7 @@ export const trackCTAClick = (
 export const trackFormSubmission = (
   formId: string,
   formName: string,
-  formData: Record<string, any>,
+  formData: Record<string, unknown>,
   submissionStatus: 'success' | 'error' | 'attempt'
 ) => {
   // PostHog tracking

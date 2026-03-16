@@ -195,7 +195,7 @@ export const runAllTests = () => {
 
 // Make test functions available globally for debugging
 if (typeof window !== 'undefined') {
-  (window as any).trackingTests = {
+  (window as Window & { trackingTests?: unknown }).trackingTests = {
     testCTATracking,
     testFormTracking,
     testFieldTracking,

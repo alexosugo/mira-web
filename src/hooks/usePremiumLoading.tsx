@@ -9,8 +9,8 @@ export interface LoadingState {
 }
 
 export const usePremiumLoading = (
-  asyncFn: () => Promise<any>,
-  dependencies: any[] = []
+  asyncFn: () => Promise<unknown>,
+  dependencies: unknown[] = []
 ) => {
   const [state, setState] = useState<LoadingState>({
     isLoading: false,
@@ -143,7 +143,7 @@ export const usePremiumLoading = (
 };
 
 // Hook for staggered loading animations
-export const useStaggeredLoading = (items: any[], delay = 100) => {
+export const useStaggeredLoading = (items: unknown[], delay = 100) => {
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
 
   useEffect(() => {
