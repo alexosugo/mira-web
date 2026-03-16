@@ -10,6 +10,10 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@statsig/js-client": "^3.32.0",
+        "@statsig/react-bindings": "^3.32.0",
+        "@statsig/session-replay": "^3.32.0",
+        "@statsig/web-analytics": "^3.32.0",
         "@supabase/supabase-js": "^2.39.0",
         "lucide-react": "^0.344.0",
         "posthog-js": "^1.309.1",

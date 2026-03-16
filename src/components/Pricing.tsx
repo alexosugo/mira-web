@@ -94,7 +94,7 @@ const Pricing = () => {
           <div className="flex flex-col bg-white rounded-3xl p-8 border border-gray-200 dark:border-gray-300 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 min-h-[380px]">
             <h3 className="font-display text-2xl font-bold text-navy-800 mb-4">Free</h3>
             <p className="text-gray-600 text-sm mb-6 font-medium leading-relaxed min-h-[72px]">
-              Get started with access to Mira basic features to engage up to 1,000 contacts FREE OF CHARGE:
+              Get started with access to Mira basic features to engage up to 10 contacts FREE OF CHARGE:
             </p>
             <div className="mb-6 min-h-16 flex items-baseline">
               <span className="font-display text-4xl md:text-3xl lg:text-5xl font-bold text-navy-800">KES 0</span>

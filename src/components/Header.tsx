@@ -3,12 +3,14 @@ import { Menu, X, ArrowRight, Moon, Sun } from 'lucide-react';
 import { useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
 import { useTheme } from '../context/ThemeContext';
+import { useHeroCtaExperiment, HERO_CTA_COPY } from '../hooks/useExperiments';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { trackCTA } = useCTATracking();
   const { toggleTheme, isDark } = useTheme();
+  const heroCta = useHeroCtaExperiment();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,14 +29,15 @@ const Header = () => {
   };
 
   const handleCTAClick = () => {
-    trackCTA('header_cta_button', 'Get started', 'header', {
+    trackCTA('header_cta_button', HERO_CTA_COPY[heroCta], 'header', {
       button_location: 'top_navigation',
-      button_type: 'primary'
+      button_type: 'primary',
+      experiment_variant: heroCta,
     });
   };
 
   const navItems = [
-    { id: 'features', label: 'How It Works' },
+    { id: 'how-it-works', label: 'How It Works' },
     { id: 'benefits', label: 'Benefits' },
     { id: 'pricing', label: 'Pricing' },
   ];
@@ -103,7 +106,7 @@ const Header = () => {
               className="btn-premium group bg-lime-500 text-navy-800 px-5 py-2.5 rounded-xl 
                          font-semibold text-sm shadow-md flex items-center gap-2"
             >
-              Get started
+              {HERO_CTA_COPY[heroCta]}
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
           </div>
@@ -171,7 +174,7 @@ const Header = () => {
               className="btn-premium w-full bg-lime-500 text-navy-800 px-6 py-3.5 
                          rounded-xl font-semibold shadow-lg flex items-center justify-center gap-2"
             >
-              Get started
+              {HERO_CTA_COPY[heroCta]}
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
