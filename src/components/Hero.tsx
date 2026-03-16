@@ -18,7 +18,7 @@ const Hero = () => {
     trackCTA('hero_cta_button', HERO_CTA_COPY[heroCta], 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
-      hero_headline: 'Let Customers Shop Without Waiting For You To Reply',
+      hero_headline: 'Let Customers Shop Without Waiting On You',
       experiment_variant: heroCta,
     });
   };
@@ -81,7 +81,7 @@ const Hero = () => {
 
             {/* CTA */}
             <div
-              className={`flex items-center justify-center pt-4 gap-4 ${
+              className={`flex items-center justify-center pt-4 ${
                 isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
               style={{ animationDelay: '400ms' }}
