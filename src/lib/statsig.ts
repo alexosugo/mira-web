@@ -35,7 +35,7 @@ export function getStatsigClient(): StatsigClient {
   return client;
 }
 
-export function initStatsig(): Promise<void> {
+export async function initStatsig(): Promise<void> {
   const c = getStatsigClient();
   return c.initializeAsync();
 }
