@@ -7,13 +7,6 @@ export type HeroSubVariant = 'control' | 'ig_commerce';
 export type SolutionCopyVariant = 'control' | 'full_journey';
 export type ProductExpertVariant = 'control' | 'misspell_aware';
 
-export interface ExperimentVariants {
-  heroCta: HeroCtaVariant;
-  heroSub: HeroSubVariant;
-  solutionCopy: SolutionCopyVariant;
-  productExpert: ProductExpertVariant;
-}
-
 /** Validates a variant value at runtime, falling back to a default if unexpected. */
 function coerceVariant<T extends string>(value: string, allowed: readonly T[], fallback: T): T {
   return (allowed as readonly string[]).includes(value) ? (value as T) : fallback;
@@ -24,34 +17,46 @@ const HERO_SUB_VARIANTS: readonly HeroSubVariant[] = ['control', 'ig_commerce'];
 const SOLUTION_COPY_VARIANTS: readonly SolutionCopyVariant[] = ['control', 'full_journey'];
 const PRODUCT_EXPERT_VARIANTS: readonly ProductExpertVariant[] = ['control', 'misspell_aware'];
 
-/** Module-level flag to ensure exposure is tracked exactly once per page load. */
-let exposureTracked = false;
+/** Module-level set to deduplicate PostHog exposure tracking per experiment. */
+const trackedExperiments = new Set<string>();
 
-export function useExperiments(): ExperimentVariants {
-  const heroCta = useExperiment('hero_cta');
-  const heroSub = useExperiment('hero_sub');
-  const solutionCopy = useExperiment('solution_copy');
-  const productExpert = useExperiment('product_expert');
+/** Tracks a single experiment exposure to PostHog exactly once per page load. */
+function trackExposureOnce(experimentName: string, variant: string) {
+  if (trackedExperiments.has(experimentName)) return;
+  trackedExperiments.add(experimentName);
+  trackPostHogEvent('experiment_exposure', { experiment: experimentName, variant });
+}
 
-  const variants: ExperimentVariants = {
-    heroCta: coerceVariant(heroCta.get('variant', 'control'), HERO_CTA_VARIANTS, 'control'),
-    heroSub: coerceVariant(heroSub.get('variant', 'control'), HERO_SUB_VARIANTS, 'control'),
-    solutionCopy: coerceVariant(solutionCopy.get('variant', 'control'), SOLUTION_COPY_VARIANTS, 'control'),
-    productExpert: coerceVariant(productExpert.get('variant', 'control'), PRODUCT_EXPERT_VARIANTS, 'control'),
-  };
+/** Returns the hero CTA variant. Only triggers Statsig exposure for hero_cta. */
+export function useHeroCtaExperiment(): HeroCtaVariant {
+  const exp = useExperiment('hero_cta');
+  const variant = coerceVariant(exp.get('variant', 'control'), HERO_CTA_VARIANTS, 'control');
+  useEffect(() => { trackExposureOnce('hero_cta', variant); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  return variant;
+}
 
-  useEffect(() => {
-    if (exposureTracked) return;
-    exposureTracked = true;
-    trackPostHogEvent('experiment_exposure', {
-      hero_cta: variants.heroCta,
-      hero_sub: variants.heroSub,
-      solution_copy: variants.solutionCopy,
-      product_expert: variants.productExpert,
-    });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+/** Returns the hero subheadline variant. Only triggers Statsig exposure for hero_sub. */
+export function useHeroSubExperiment(): HeroSubVariant {
+  const exp = useExperiment('hero_sub');
+  const variant = coerceVariant(exp.get('variant', 'control'), HERO_SUB_VARIANTS, 'control');
+  useEffect(() => { trackExposureOnce('hero_sub', variant); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  return variant;
+}
 
-  return variants;
+/** Returns the solution copy variant. Only triggers Statsig exposure for solution_copy. */
+export function useSolutionCopyExperiment(): SolutionCopyVariant {
+  const exp = useExperiment('solution_copy');
+  const variant = coerceVariant(exp.get('variant', 'control'), SOLUTION_COPY_VARIANTS, 'control');
+  useEffect(() => { trackExposureOnce('solution_copy', variant); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  return variant;
+}
+
+/** Returns the product expert variant. Only triggers Statsig exposure for product_expert. */
+export function useProductExpertExperiment(): ProductExpertVariant {
+  const exp = useExperiment('product_expert');
+  const variant = coerceVariant(exp.get('variant', 'control'), PRODUCT_EXPERT_VARIANTS, 'control');
+  useEffect(() => { trackExposureOnce('product_expert', variant); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  return variant;
 }
 
 export const HERO_CTA_COPY: Record<HeroCtaVariant, string> = {

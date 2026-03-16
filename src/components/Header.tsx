@@ -3,14 +3,14 @@ import { Menu, X, ArrowRight, Moon, Sun } from 'lucide-react';
 import { useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
 import { useTheme } from '../context/ThemeContext';
-import { useExperiments, HERO_CTA_COPY } from '../hooks/useExperiments';
+import { useHeroCtaExperiment, HERO_CTA_COPY } from '../hooks/useExperiments';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { trackCTA } = useCTATracking();
   const { toggleTheme, isDark } = useTheme();
-  const { heroCta } = useExperiments();
+  const heroCta = useHeroCtaExperiment();
 
   useEffect(() => {
     const handleScroll = () => {

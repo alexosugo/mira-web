@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Zap, ArrowRight, MessageSquare, Library, Sparkles, Hammer } from 'lucide-react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
-import { useExperiments, HERO_CTA_COPY, HERO_SUB_COPY } from '../hooks/useExperiments';
+import { useHeroCtaExperiment, useHeroSubExperiment, HERO_CTA_COPY, HERO_SUB_COPY } from '../hooks/useExperiments';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('hero', 'Hero Section');
-  const { heroCta, heroSub } = useExperiments();
+  const heroCta = useHeroCtaExperiment();
+  const heroSub = useHeroSubExperiment();
 
   useEffect(() => {
     setIsVisible(true);

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { MessageSquare, Globe, Clock, Brain, Zap, Shield, Heart } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
-import { useExperiments, PRODUCT_EXPERT_COPY } from '../hooks/useExperiments';
+import { useProductExpertExperiment, PRODUCT_EXPERT_COPY } from '../hooks/useExperiments';
 
 const Features = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -10,7 +10,7 @@ const Features = () => {
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackingSectionRef = useSectionTracking('features', 'Features Section');
-  const { productExpert } = useExperiments();
+  const productExpert = useProductExpertExperiment();
 
   const features = [
     {

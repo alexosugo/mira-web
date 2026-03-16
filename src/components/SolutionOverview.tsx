@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Zap, Sparkles } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
-import { useExperiments, SOLUTION_COPY } from '../hooks/useExperiments';
+import { useSolutionCopyExperiment, SOLUTION_COPY } from '../hooks/useExperiments';
 
 const SolutionOverview = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useSectionTracking('solution', 'Solution Overview');
-  const { solutionCopy } = useExperiments();
+  const solutionCopy = useSolutionCopyExperiment();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
