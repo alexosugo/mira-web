@@ -5,13 +5,17 @@ import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 let client: StatsigClient | null = null;
 
 function getOrCreateAnonId(): string {
-  const key = 'mira_statsig_uid';
-  let id = localStorage.getItem(key);
-  if (!id) {
-    id = crypto.randomUUID();
-    localStorage.setItem(key, id);
+  try {
+    const key = 'mira_statsig_uid';
+    let id = localStorage.getItem(key);
+    if (!id) {
+      id = crypto.randomUUID?.() ?? Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem(key, id);
+    }
+    return id;
+  } catch {
+    return Math.random().toString(36).slice(2) + Date.now().toString(36);
   }
-  return id;
 }
 
 export function getStatsigClient(): StatsigClient {
