@@ -4,12 +4,22 @@ import { StatsigAutoCapturePlugin } from '@statsig/web-analytics';
 
 let client: StatsigClient | null = null;
 
+function getOrCreateAnonId(): string {
+  const key = 'mira_statsig_uid';
+  let id = localStorage.getItem(key);
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem(key, id);
+  }
+  return id;
+}
+
 export function getStatsigClient(): StatsigClient {
   if (client) return client;
 
   client = new StatsigClient(
     import.meta.env.VITE_STATSIG_CLIENT_KEY,
-    {},
+    { userID: getOrCreateAnonId() },
     {
       plugins: [
         new StatsigSessionReplayPlugin(),
