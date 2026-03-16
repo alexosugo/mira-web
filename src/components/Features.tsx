@@ -3,6 +3,13 @@ import { MessageSquare, Globe, Clock, Brain, Zap, Shield, Heart } from 'lucide-r
 import { useSectionTracking } from '../hooks/useTracking';
 import { useProductExpertExperiment, PRODUCT_EXPERT_COPY } from '../hooks/useExperiments';
 
+const chatSequence = [
+  { type: 'customer', text: 'Hi! Do you have Samsung Galaxy A54 in blue?', delay: 1000 },
+  { type: 'bot', text: 'Yes! We have the Samsung Galaxy A54 in blue available for KES 32,000. Would you like me to reserve one for you?', delay: 2000 },
+  { type: 'customer', text: 'Perfect! Can I pay via M-Pesa?', delay: 1500 },
+  { type: 'bot', text: 'Absolutely! We accept M-Pesa. I\'ll connect you with our sales team to complete your order. They\'ll be with you shortly!', delay: 2000 }
+];
+
 const Features = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [chatMessages, setChatMessages] = useState<number>(0);
@@ -43,13 +50,6 @@ const Features = () => {
       name: "Safe & Private",
       description: "Your customer conversations and shop data stay protected"
     }
-  ];
-
-  const chatSequence = [
-    { type: 'customer', text: 'Hi! Do you have Samsung Galaxy A54 in blue?', delay: 1000 },
-    { type: 'bot', text: 'Yes! We have the Samsung Galaxy A54 in blue available for KES 32,000. Would you like me to reserve one for you?', delay: 2000 },
-    { type: 'customer', text: 'Perfect! Can I pay via M-Pesa?', delay: 1500 },
-    { type: 'bot', text: 'Absolutely! We accept M-Pesa. I\'ll connect you with our sales team to complete your order. They\'ll be with you shortly!', delay: 2000 }
   ];
 
   // Check if device is mobile
@@ -138,7 +138,7 @@ const Features = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [chatMessages, chatSequence, isInView, isMobile]);
+  }, [chatMessages, isInView, isMobile]);
 
   return (
     <section id="features" className="py-24 lg:py-32 bg-white dark:bg-navy-950 font-body" ref={trackingSectionRef}>
