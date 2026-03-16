@@ -1,6 +1,6 @@
 import { useExperiment } from '@statsig/react-bindings';
 import { trackPostHogEvent } from '../utils/analytics';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export type HeroCtaVariant = 'control' | 'try_free' | 'connect_ig' | 'sell_dms';
 export type HeroSubVariant = 'control' | 'ig_commerce';
@@ -14,6 +14,19 @@ export interface ExperimentVariants {
   productExpert: ProductExpertVariant;
 }
 
+/** Validates a variant value at runtime, falling back to a default if unexpected. */
+function coerceVariant<T extends string>(value: string, allowed: readonly T[], fallback: T): T {
+  return (allowed as readonly string[]).includes(value) ? (value as T) : fallback;
+}
+
+const HERO_CTA_VARIANTS: readonly HeroCtaVariant[] = ['control', 'try_free', 'connect_ig', 'sell_dms'];
+const HERO_SUB_VARIANTS: readonly HeroSubVariant[] = ['control', 'ig_commerce'];
+const SOLUTION_COPY_VARIANTS: readonly SolutionCopyVariant[] = ['control', 'full_journey'];
+const PRODUCT_EXPERT_VARIANTS: readonly ProductExpertVariant[] = ['control', 'misspell_aware'];
+
+/** Module-level flag to ensure exposure is tracked exactly once per page load. */
+let exposureTracked = false;
+
 export function useExperiments(): ExperimentVariants {
   const heroCta = useExperiment('hero_cta');
   const heroSub = useExperiment('hero_sub');
@@ -21,16 +34,15 @@ export function useExperiments(): ExperimentVariants {
   const productExpert = useExperiment('product_expert');
 
   const variants: ExperimentVariants = {
-    heroCta: (heroCta.get('variant', 'control') as HeroCtaVariant),
-    heroSub: (heroSub.get('variant', 'control') as HeroSubVariant),
-    solutionCopy: (solutionCopy.get('variant', 'control') as SolutionCopyVariant),
-    productExpert: (productExpert.get('variant', 'control') as ProductExpertVariant),
+    heroCta: coerceVariant(heroCta.get('variant', 'control'), HERO_CTA_VARIANTS, 'control'),
+    heroSub: coerceVariant(heroSub.get('variant', 'control'), HERO_SUB_VARIANTS, 'control'),
+    solutionCopy: coerceVariant(solutionCopy.get('variant', 'control'), SOLUTION_COPY_VARIANTS, 'control'),
+    productExpert: coerceVariant(productExpert.get('variant', 'control'), PRODUCT_EXPERT_VARIANTS, 'control'),
   };
 
-  const synced = useRef(false);
   useEffect(() => {
-    if (synced.current) return;
-    synced.current = true;
+    if (exposureTracked) return;
+    exposureTracked = true;
     trackPostHogEvent('experiment_exposure', {
       hero_cta: variants.heroCta,
       hero_sub: variants.heroSub,

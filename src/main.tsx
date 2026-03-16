@@ -14,7 +14,9 @@ if (!rootElement) {
   throw new Error('Root element not found');
 }
 
-initStatsig().then(() => {
+initStatsig().catch((err) => {
+  console.error('Statsig initialization failed, falling back to control variants:', err);
+}).finally(() => {
   createRoot(rootElement).render(
     <StrictMode>
       <StatsigProvider client={getStatsigClient()}>
