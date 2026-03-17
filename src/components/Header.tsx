@@ -47,11 +47,13 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
       <div
-        className={`max-w-3xl mx-auto rounded-full transition-all duration-300 ease-premium ${
+        className={`max-w-3xl mx-auto transition-all duration-300 ease-premium ${
+          isMenuOpen ? 'rounded-3xl' : 'rounded-full'
+        } ${
           isScrolled
             ? 'bg-white/90 dark:bg-navy-800/90 backdrop-blur-xl shadow-md border border-gray-200/30 dark:border-navy-600/40'
             : 'bg-white/70 dark:bg-navy-800/80 backdrop-blur-xl border border-gray-200/20 dark:border-navy-600/30'
-        } ${isMenuOpen ? 'rounded-3xl' : ''}`}
+        }`}
       >
         <div className="px-6">
           <div className="flex justify-between items-center h-14">
