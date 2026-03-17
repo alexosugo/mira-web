@@ -4,6 +4,7 @@ import { useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
 import { useTheme } from '../context/ThemeContext';
 import { useHeroCtaExperiment, HERO_CTA_COPY } from '../hooks/useExperiments';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,22 +21,19 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const navHeight = 80; // fixed nav height (~56px) + top padding (16px) + buffer
-      const top = element.getBoundingClientRect().top + window.scrollY - navHeight;
-      window.scrollTo({ top, behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+  const handleNavClick = (sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsMenuOpen(false);
   };
 
-  const handleCTAClick = () => {
+  const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     trackCTA('header_cta_button', HERO_CTA_COPY[heroCta], 'header', {
       button_location: 'top_navigation',
       button_type: 'primary',
       experiment_variant: heroCta,
     });
+    window.location.href = 'https://app.withmira.co';
   };
 
   const navItems = [
@@ -59,7 +57,7 @@ const Header = () => {
           <div className="flex justify-between items-center h-14">
             {/* Logo */}
             <button
-              onClick={() => scrollToSection('hero')}
+              onClick={() => handleNavClick('hero')}
               className="group flex items-center gap-2"
             >
               <span
@@ -77,7 +75,7 @@ const Header = () => {
                   key={item.id}
                   onClick={() => {
                     trackCTA(`header_nav_${item.id}`, item.label, 'header');
-                    scrollToSection(item.id);
+                    handleNavClick(item.id);
                   }}
                   className="nav-link-premium px-3 py-1.5 text-sm font-medium rounded-full
                              hover:bg-gray-100/80 dark:hover:bg-navy-800/80 dark:text-gray-300 transition-all duration-200"
@@ -162,7 +160,7 @@ const Header = () => {
                   key={item.id}
                   onClick={() => {
                     trackCTA(`header_mobile_nav_${item.id}`, item.label, 'header_mobile');
-                    scrollToSection(item.id);
+                    handleNavClick(item.id);
                   }}
                   className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-navy-800 dark:hover:text-white
                              hover:bg-gray-50 dark:hover:bg-navy-800 rounded-xl font-medium transition-all duration-200"

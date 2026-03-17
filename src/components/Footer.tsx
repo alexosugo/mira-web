@@ -1,6 +1,7 @@
 import { Mail, MapPin, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { useSectionTracking, useCTATracking } from '../hooks/useTracking';
 import { trackPostHogEvent } from '../utils/analytics';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const SECTION_MAP: Record<string, string> = {
   'how-it-works': 'how-it-works',
@@ -90,7 +91,7 @@ const Footer = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         trackCTA(`footer_link_${linkKey}`, link, 'footer');
-                        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                        scrollToSection(targetId);
                       }}
                       className="text-gray-400 hover:text-lime-400 transition-colors duration-200 text-sm"
                     >
