@@ -9,8 +9,8 @@ export interface LoadingState {
 }
 
 export const usePremiumLoading = (
-  asyncFn: () => Promise<any>,
-  dependencies: any[] = []
+  asyncFn: () => Promise<unknown>,
+  dependencies: unknown[] = []
 ) => {
   const [state, setState] = useState<LoadingState>({
     isLoading: false,
@@ -22,9 +22,11 @@ export const usePremiumLoading = (
   const execute = async () => {
     setState(prev => ({ ...prev, isLoading: true, hasError: false, error: undefined, progress: 0 }));
 
+    let progressInterval: ReturnType<typeof setInterval> | undefined;
+
     try {
       // Simulate progress for better UX
-      const progressInterval = setInterval(() => {
+      progressInterval = setInterval(() => {
         setState(prev => {
           if (prev.progress < 90) {
             return { ...prev, progress: Math.min(prev.progress + Math.random() * 15, 90) };
@@ -143,7 +145,7 @@ export const usePremiumLoading = (
 };
 
 // Hook for staggered loading animations
-export const useStaggeredLoading = (items: any[], delay = 100) => {
+export const useStaggeredLoading = (items: unknown[], delay = 100) => {
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
 
   useEffect(() => {

@@ -31,7 +31,7 @@ export const useSectionTracking = (sectionId: string, sectionName: string) => {
 
 // Hook for tracking CTA clicks
 export const useCTATracking = () => {
-  const trackCTA = (buttonId: string, buttonText: string, pageSection: string, additionalData?: Record<string, any>) => {
+  const trackCTA = (buttonId: string, buttonText: string, pageSection: string, additionalData?: Record<string, unknown>) => {
     trackCTAClick(buttonId, buttonText, pageSection, additionalData);
   };
 
@@ -40,7 +40,7 @@ export const useCTATracking = () => {
 
 // Hook for tracking form submissions
 export const useFormTracking = () => {
-  const trackSubmission = (formId: string, formName: string, formData: Record<string, any>, status: 'success' | 'error' | 'attempt') => {
+  const trackSubmission = (formId: string, formName: string, formData: Record<string, unknown>, status: 'success' | 'error' | 'attempt') => {
     trackFormSubmission(formId, formName, formData, status);
   };
 
