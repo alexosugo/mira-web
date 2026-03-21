@@ -47,7 +47,7 @@ const Hero = () => {
                              text-lime-600 text-sm font-semibold
                              shadow-sm backdrop-blur-sm">
                 <Sparkles className="w-4 h-4" />
-                Designed for social-first sellers
+                Designed for Instagram sellers
               </span>
             </div>
 
