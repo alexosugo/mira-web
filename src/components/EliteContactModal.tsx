@@ -49,7 +49,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
         setFormData({ companyName: '', email: '', phone: '', personName: '', message: '', optInUpdates: false });
         setErrors({});
         setIsSuccess(false);
-        onClose();
+        resetAndClose();
       }
     };
     document.addEventListener('keydown', handleEscape);
