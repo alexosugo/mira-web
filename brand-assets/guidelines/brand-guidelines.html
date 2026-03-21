@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mira Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4;
+    margin: 48px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    color: #13243E;
+    background: #ffffff;
+    line-height: 1.6;
+    font-size: 14px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px;
+  }
+
+  /* ============ PRINT STYLES ============ */
+  @media print {
+    body { padding: 0; max-width: none; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none; }
+  }
+
+  /* ============ COVER ============ */
+  .cover {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0;
+    border-bottom: 3px solid #C0DC2D;
+    margin-bottom: 48px;
+  }
+  .cover-icon {
+    width: 64px; height: 64px; margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+  }
+  .cover .subtitle {
+    font-size: 20px;
+    color: #6085ab;
+    margin-bottom: 24px;
+  }
+  .cover .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #94adc9;
+  }
+
+  /* ============ SECTIONS ============ */
+  section { margin-bottom: 48px; }
+  h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e7e5e4;
+  }
+  h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+  p { margin-bottom: 12px; }
+
+  /* ============ SWATCHES ============ */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .swatch-card {
+    border: 1px solid #e7e5e4;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 64px;
+  }
+  .swatch-info {
+    padding: 8px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+  .swatch-info .name {
+    font-weight: 600;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  /* ============ LOGO EXAMPLES ============ */
+  .logo-examples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .logo-ex {
+    border: 1px solid #e7e5e4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    min-height: 100px;
+  }
+  .logo-ex--dark { background: #0a1628; }
+  .logo-ex--lime { background: #C0DC2D; }
+
+  /* ============ RULES ============ */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .rule {
+    border: 1px solid #e7e5e4;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .rule--do { border-left: 3px solid #10b981; }
+  .rule--dont { border-left: 3px solid #f97316; }
+  .rule .rule-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .rule--do .rule-label { color: #10b981; }
+  .rule--dont .rule-label { color: #f97316; }
+
+  /* ============ TYPE SPECIMENS ============ */
+  .specimen {
+    border: 1px solid #e7e5e4;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 12px 0;
+  }
+  .specimen-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #6085ab;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  /* ============ TABLE ============ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6085ab;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #e7e5e4;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f5f5f4;
+    vertical-align: top;
+  }
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(192, 220, 45, 0.12);
+    color: #a8c426;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <svg class="cover-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="6" fill="#C0DC2D"/>
+    <path d="M6 24V8H9.5L13.5 18L17.5 8H21V24H18V12L14.5 21H12.5L9 12V24H6Z" fill="white"/>
+  </svg>
+  <h1>Mira</h1>
+  <div class="subtitle">Brand Guidelines</div>
+  <div class="meta">Version 1.0 &middot; March 2026 &middot; withmira.co</div>
+</div>
+
+<!-- BRAND OVERVIEW -->
+<section>
+  <h2>1. Brand Overview</h2>
+  <p>Mira is an AI-powered Instagram DM sales assistant built in Kenya for social-first shops. Mira handles product questions, recommendations, and orders so customers get fast, accurate answers — without the shop owner glued to their phone.</p>
+
+  <h3>Mission</h3>
+  <p>Help social-first shops serve customers quickly and easily, no matter how busy the day gets.</p>
+
+  <h3>Target Audience</h3>
+  <p>Kenyan SME shop owners who sell primarily through Instagram DMs. Solopreneurs and small teams who do everything themselves.</p>
+
+  <h3>Brand Values</h3>
+  <p><strong>Empowering</strong> — the user is the business owner in control. <strong>Direct</strong> — say what it does, simply. <strong>Locally rooted</strong> — made in Kenya, priced in KES. <strong>Approachable</strong> — no jargon, no corporate speak.</p>
+</section>
+
+<!-- LOGO -->
+<section class="page-break">
+  <h2>2. Logo</h2>
+  <p>The Mira logo is a clean wordmark in Bricolage Grotesque Bold. The app icon / favicon uses a lime-green rounded square with a white "M" letterform.</p>
+
+  <h3>Logo Variants</h3>
+  <div class="logo-examples">
+    <div class="logo-ex">
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;color:#13243E;">Mira</span>
+    </div>
+    <div class="logo-ex logo-ex--dark">
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;color:#ffffff;">Mira</span>
+    </div>
+    <div class="logo-ex logo-ex--lime">
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;color:#13243E;">Mira</span>
+    </div>
+  </div>
+
+  <h3>Clear Space &amp; Minimum Size</h3>
+  <p>Maintain clear space around the logo equal to the height of the "M" letterform. Minimum sizes: Digital — 120px width (wordmark), 40px (icon only). Print — 1 inch (wordmark), 0.25 inch (icon).</p>
+
+  <h3>Logo Usage Rules</h3>
+  <div class="rules-grid">
+    <div class="rule rule--do">
+      <div class="rule-label">Do</div>
+      Use approved color variants only<br>
+      Maintain clear space<br>
+      Use SVG where possible<br>
+      Keep proportions locked
+    </div>
+    <div class="rule rule--dont">
+      <div class="rule-label">Don't</div>
+      Rotate or skew the logo<br>
+      Add shadows or gradients<br>
+      Change the logo colors<br>
+      Place on busy backgrounds
+    </div>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section class="page-break">
+  <h2>3. Color Palette</h2>
+  <p>Follow the 60/30/10 rule: 60% warm neutrals, 30% navy, 10% lime accent.</p>
+
+  <h3>Primary Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#C0DC2D;"></div>
+      <div class="swatch-info">
+        <div class="name">Lime 500 (Primary)</div>
+        #C0DC2D<br>RGB: 192, 220, 45<br>CMYK: 20, 0, 90, 0
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#13243E;"></div>
+      <div class="swatch-info">
+        <div class="name">Navy 800 (Foundation)</div>
+        #13243E<br>RGB: 19, 36, 62<br>CMYK: 90, 75, 40, 80
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#0a1628;"></div>
+      <div class="swatch-info">
+        <div class="name">Navy 950 (Dark BG)</div>
+        #0a1628<br>RGB: 10, 22, 40
+      </div>
+    </div>
+  </div>
+
+  <h3>Neutral Palette</h3>
+  <div class="swatch-grid">
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#fafaf9;"></div>
+      <div class="swatch-info"><div class="name">Warm 50</div>#fafaf9</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#f5f5f4;"></div>
+      <div class="swatch-info"><div class="name">Warm 100</div>#f5f5f4</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#e7e5e4;"></div>
+      <div class="swatch-info"><div class="name">Warm 200</div>#e7e5e4</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#d6d3d1;"></div>
+      <div class="swatch-info"><div class="name">Warm 300</div>#d6d3d1</div>
+    </div>
+  </div>
+
+  <h3>Semantic Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#10b981;"></div>
+      <div class="swatch-info"><div class="name">Success</div>#10b981</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#f97316;"></div>
+      <div class="swatch-info"><div class="name">Coral</div>#f97316</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#fbbf24;"></div>
+      <div class="swatch-info"><div class="name">Amber</div>#fbbf24</div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="page-break">
+  <h2>4. Typography</h2>
+  <p>Maximum two font families in any single context. Bricolage Grotesque for display, IBM Plex Sans for body, JetBrains Mono for data.</p>
+
+  <div class="specimen">
+    <div class="specimen-name">Display — Bricolage Grotesque</div>
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1.5px;line-height:1.1;">
+      Let Customers Shop Without Waiting On You
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen-name">Body — IBM Plex Sans</div>
+    <div style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.7;color:#456590;">
+      Mira replies to your Instagram DMs — answering product questions, helping customers pick the right item, and guiding them all the way to checkout. Your shop sells even when you're away.
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen-name">Mono — JetBrains Mono</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:14px;background:#f5f5f4;padding:12px;border-radius:6px;">
+      KES 2,500 &middot; 4 items in cart &middot; Order #MRA-0042
+    </div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Size</th><th>Weight</th><th>Tracking</th><th>Usage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Display XL</td><td>80px</td><td>800</td><td>-0.03em</td><td>Hero headlines</td></tr>
+      <tr><td>Display LG</td><td>72px</td><td>800</td><td>-0.02em</td><td>Major page titles</td></tr>
+      <tr><td>H1</td><td>64px</td><td>800</td><td>-0.02em</td><td>Page titles</td></tr>
+      <tr><td>H2</td><td>56px</td><td>700</td><td>-0.02em</td><td>Section headers</td></tr>
+      <tr><td>H3</td><td>40px</td><td>700</td><td>-0.01em</td><td>Subsections</td></tr>
+      <tr><td>H4</td><td>32px</td><td>600</td><td>0</td><td>Card titles</td></tr>
+      <tr><td>Body LG</td><td>20px</td><td>400</td><td>0</td><td>Lead paragraphs</td></tr>
+      <tr><td>Body</td><td>18px</td><td>400</td><td>0</td><td>Default body text</td></tr>
+      <tr><td>Body SM</td><td>16px</td><td>400</td><td>0</td><td>Captions, labels</td></tr>
+      <tr><td>Stat</td><td>48px</td><td>700</td><td>0</td><td>KPIs, metrics</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- VOICE & TONE -->
+<section class="page-break">
+  <h2>5. Voice &amp; Tone</h2>
+
+  <h3>Brand Personality</h3>
+  <p><strong>Empowering</strong> but not patronizing. <strong>Direct</strong> but not blunt. <strong>Locally rooted</strong> but not provincial. <strong>Approachable</strong> but not casual.</p>
+
+  <h3>Writing Guidelines</h3>
+  <table>
+    <thead>
+      <tr><th>Principle</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Use active voice</td><td>"Mira answers questions" not "Questions are answered by Mira"</td></tr>
+      <tr><td>Address the user directly</td><td>"Your shop" and "you" — never "our users"</td></tr>
+      <tr><td>Be specific</td><td>"Handles Instagram DMs" not "Manages communications"</td></tr>
+      <tr><td>Avoid jargon</td><td>"Sales assistant" not "conversational commerce solution"</td></tr>
+      <tr><td>Reference local context</td><td>KES pricing, M-Pesa, Instagram shops</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Key Messages</h3>
+  <table>
+    <thead>
+      <tr><th>Context</th><th>Copy</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Primary headline</td><td><strong>Let Customers Shop Without Waiting On You</strong></td></tr>
+      <tr><td>Tagline</td><td>Your Instagram DM Sales Assistant</td></tr>
+      <tr><td>Page title</td><td>Mira — Your Instagram DM Sales Assistant for Kenyan Businesses</td></tr>
+      <tr><td>Value prop</td><td>Mira handles product questions, recommendations, and orders so customers get fast, accurate answers — without you glued to your phone.</td></tr>
+      <tr><td>Origin</td><td>Made in Kenya</td></tr>
+      <tr><td>CTAs</td><td>Get started / Try Mira Free / Connect Your Instagram / Start Selling in DMs</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- DIGITAL ASSETS -->
+<section class="page-break">
+  <h2>6. Digital Assets</h2>
+
+  <h3>Favicon &amp; App Icons</h3>
+  <table>
+    <thead>
+      <tr><th>Asset</th><th>Size</th><th>Format</th><th>File</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Favicon (scalable)</td><td>Any</td><td>SVG</td><td><code>favicon.svg</code></td></tr>
+      <tr><td>Browser tab</td><td>16x16, 32x32</td><td>PNG</td><td><code>favicon-16x16.png</code></td></tr>
+      <tr><td>Apple touch icon</td><td>180x180</td><td>PNG</td><td><code>apple-touch-icon.png</code></td></tr>
+      <tr><td>Android chrome</td><td>192x192, 512x512</td><td>PNG</td><td><code>android-chrome-*.png</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Social Media Templates</h3>
+  <table>
+    <thead>
+      <tr><th>Template</th><th>Dimensions</th><th>Format</th><th>Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Open Graph / Twitter</td><td>1200 x 630</td><td>SVG</td><td>Link previews, sharing</td></tr>
+      <tr><td>Instagram Post</td><td>1080 x 1080</td><td>SVG</td><td>Feed posts</td></tr>
+      <tr><td>Instagram Story</td><td>1080 x 1920</td><td>SVG</td><td>Stories, reel covers</td></tr>
+      <tr><td>Profile Avatar</td><td>400 x 400</td><td>SVG</td><td>Social profile pictures</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Theme Colors</h3>
+  <table>
+    <thead>
+      <tr><th>Context</th><th>Light Mode</th><th>Dark Mode</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Theme color (manifest)</td><td><code>#C0DC2D</code></td><td><code>#13243E</code></td></tr>
+      <tr><td>Background</td><td><code>#fafaf9</code></td><td><code>#0a1628</code></td></tr>
+      <tr><td>Surface</td><td><code>#ffffff</code></td><td><code>#0f172a</code></td></tr>
+      <tr><td>Text</td><td><code>#13243E</code></td><td><code>#e0e7f0</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <h2>7. Contact</h2>
+  <p>For brand asset requests, partnership inquiries, or press materials:</p>
+  <p><strong>Website:</strong> withmira.co<br>
+  <strong>Domain:</strong> withmira.co</p>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#94adc9;margin-top:32px;">Mira Brand Guidelines v1.0 &middot; March 2026</p>
+</section>
+
+<!-- Print button (hidden in print) -->
+<div class="no-print" style="text-align:center;padding:32px;border-top:1px solid #e7e5e4;margin-top:32px;">
+  <button onclick="window.print()" style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;background:#C0DC2D;color:#13243E;border:none;padding:12px 32px;border-radius:8px;cursor:pointer;">
+    Print / Save as PDF
+  </button>
+</div>
+
+</body>
+</html>

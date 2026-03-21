@@ -24,9 +24,17 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
+      document.body.style.backgroundColor = '#0a1628';
     } else {
       root.classList.remove('dark');
+      document.body.style.backgroundColor = '#ffffff';
     }
+
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]:not([media])');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', theme === 'dark' ? '#0a1628' : '#ffffff');
+    }
+
     localStorage.setItem('theme', theme);
   }, [theme]);
 

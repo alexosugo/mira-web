@@ -46,7 +46,7 @@ export const validateInstagramUrl = (url: string): boolean => {
   }
 };
 
-export const validateFormData = (data: any) => {
+export const validateFormData = (data: Record<string, unknown>) => {
   const errors: Record<string, string> = {};
 
   // First Name validation

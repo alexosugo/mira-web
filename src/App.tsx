@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import ProblemStatement from './components/ProblemStatement';
 import SolutionOverview from './components/SolutionOverview';
+import HowItWorks from './components/HowItWorks';
 import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Pricing from './components/Pricing';
@@ -28,11 +29,10 @@ function App() {
         </div>
         <ProblemStatement />
         <SolutionOverview />
+        <HowItWorks />
         <Features />
         <Benefits />
-        {/* <Testimonials /> */}
         <Pricing />
-        {/* <FinalCTA /> */}
         <Footer />
       </div>
     </ThemeProvider>

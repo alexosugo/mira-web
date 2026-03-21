@@ -1,0 +1,64 @@
+{
+  "brand": "Mira",
+  "version": "1.0",
+  "updated": "2026-03-15",
+  "colors": {
+    "lime": {
+      "description": "Primary accent — CTAs, highlights, badges, glow effects",
+      "usage_ratio": "10%",
+      "shades": {
+        "300": { "hex": "#d4f059", "rgb": [212, 240, 89] },
+        "400": { "hex": "#c4e538", "rgb": [196, 229, 56] },
+        "500": { "hex": "#C0DC2D", "rgb": [192, 220, 45] },
+        "600": { "hex": "#a8c426", "rgb": [168, 196, 38] }
+      }
+    },
+    "navy": {
+      "description": "Foundation — text, headings, dark mode backgrounds",
+      "usage_ratio": "30%",
+      "shades": {
+        "50":  { "hex": "#f0f3f8", "rgb": [240, 243, 248] },
+        "100": { "hex": "#e0e7f0", "rgb": [224, 231, 240] },
+        "200": { "hex": "#c1cfe1", "rgb": [193, 207, 225] },
+        "300": { "hex": "#94adc9", "rgb": [148, 173, 201] },
+        "400": { "hex": "#6085ab", "rgb": [96, 133, 171] },
+        "500": { "hex": "#456590", "rgb": [69, 101, 144] },
+        "600": { "hex": "#2d4a6f", "rgb": [45, 74, 111] },
+        "700": { "hex": "#1a2942", "rgb": [26, 41, 66] },
+        "800": { "hex": "#13243E", "rgb": [19, 36, 62] },
+        "900": { "hex": "#0f172a", "rgb": [15, 23, 42] },
+        "950": { "hex": "#0a1628", "rgb": [10, 22, 40] }
+      }
+    },
+    "warm": {
+      "description": "Neutral backgrounds — cards, dividers, surfaces",
+      "usage_ratio": "60%",
+      "shades": {
+        "50":  { "hex": "#fafaf9", "rgb": [250, 250, 249] },
+        "100": { "hex": "#f5f5f4", "rgb": [245, 245, 244] },
+        "200": { "hex": "#e7e5e4", "rgb": [231, 229, 228] },
+        "300": { "hex": "#d6d3d1", "rgb": [214, 211, 209] }
+      }
+    },
+    "semantic": {
+      "success": { "hex": "#10b981", "rgb": [16, 185, 129], "usage": "Positive states, confirmations" },
+      "coral":   { "hex": "#f97316", "rgb": [249, 115, 22], "usage": "Warnings, secondary highlights" },
+      "amber":   { "hex": "#fbbf24", "rgb": [251, 191, 36], "usage": "Caution, tertiary accent" },
+      "accent":  { "hex": "#f59e0b", "rgb": [245, 158, 11], "usage": "Decorative accent" }
+    },
+    "theme": {
+      "light": { "background": "#fafaf9", "surface": "#ffffff", "text": "#13243E", "text_dim": "#6085ab" },
+      "dark":  { "background": "#0a1628", "surface": "#0f172a", "text": "#e0e7f0", "text_dim": "#94adc9" }
+    }
+  },
+  "gradients": {
+    "mesh": "linear-gradient(-45deg, #0a1628, #1a2942, #C0DC2D, #0a1628)",
+    "glass": "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)"
+  },
+  "shadows": {
+    "glow":    "0 0 20px rgba(192, 220, 45, 0.3)",
+    "glow_lg": "0 0 40px rgba(192, 220, 45, 0.4)",
+    "glow_xl": "0 0 60px rgba(192, 220, 45, 0.5)",
+    "premium": "0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1)"
+  }
+}
