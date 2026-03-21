@@ -1,0 +1,52 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mira OG Image — 1200x630 for Open Graph / Twitter -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#13243E"/>
+      <stop offset="100%" stop-color="#1a2942"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="30%">
+      <stop offset="0%" stop-color="#C0DC2D" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#C0DC2D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="70%">
+      <stop offset="0%" stop-color="#C0DC2D" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#C0DC2D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Subtle grid dots -->
+  <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="20" cy="20" r="0.8" fill="rgba(192,220,45,0.08)"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- Icon -->
+  <rect x="80" y="180" width="72" height="72" rx="14" fill="#C0DC2D"/>
+  <path d="M93.5 234.5V198.5H99.3L106 216.5L112.8 198.5H118.5V234.5H114V207L108.5 224H103.5L98 207V234.5H93.5Z" fill="white"/>
+
+  <!-- Headline -->
+  <text x="172" y="226" font-family="'Bricolage Grotesque', 'SF Pro Display', system-ui, sans-serif" font-size="56" font-weight="800" letter-spacing="-2" fill="white">Stop losing DM sales</text>
+  <text x="172" y="292" font-family="'Bricolage Grotesque', 'SF Pro Display', system-ui, sans-serif" font-size="56" font-weight="800" letter-spacing="-2" fill="#C0DC2D">to slow replies</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="380" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="22" font-weight="400" fill="#94adc9">Mira is the AI assistant that handles your Instagram DM</text>
+  <text x="80" y="412" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="22" font-weight="400" fill="#94adc9">product questions, builds carts, and guides customers to checkout.</text>
+
+  <!-- CTA pill -->
+  <rect x="80" y="450" width="200" height="48" rx="24" fill="#C0DC2D"/>
+  <text x="130" y="481" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="18" font-weight="600" fill="#13243E">Try Mira Free</text>
+
+  <!-- URL -->
+  <text x="80" y="560" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="500" letter-spacing="0.5" fill="#6085ab">withmira.co</text>
+
+  <!-- Made in Kenya badge -->
+  <circle cx="1080" y="550" r="5" fill="#10b981"/>
+  <text x="1093" y="555" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="14" font-weight="500" fill="#94adc9">Made in Kenya</text>
+</svg>

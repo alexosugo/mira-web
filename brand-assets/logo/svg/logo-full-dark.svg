@@ -1,0 +1,8 @@
+<svg width="440" height="80" viewBox="0 0 440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mira Full Logo — Icon + Wordmark, dark variant (for light backgrounds) -->
+  <!-- Icon -->
+  <rect x="0" y="12" width="56" height="56" rx="10.5" fill="#C0DC2D"/>
+  <path d="M10.5 54.5V26.5H16.625L23.625 43.5L30.625 26.5H36.75V54.5H31.5V33L26.375 48.75H22.875L17.75 33V54.5H10.5Z" fill="white" transform="translate(0, 12) scale(0.875)"/>
+  <!-- Wordmark -->
+  <text x="76" y="58" font-family="'Bricolage Grotesque', system-ui, sans-serif" font-size="52" font-weight="700" letter-spacing="-1" fill="#13243E">Mira</text>
+</svg>

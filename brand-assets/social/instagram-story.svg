@@ -1,0 +1,39 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mira Instagram Story Template — 1080x1920 (9:16) -->
+  <defs>
+    <linearGradient id="bg-story" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="40%" stop-color="#13243E"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="glow-story" cx="50%" cy="35%">
+      <stop offset="0%" stop-color="#C0DC2D" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#C0DC2D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg-story)"/>
+  <rect width="1080" height="1920" fill="url(#glow-story)"/>
+
+  <!-- Icon centered -->
+  <rect x="460" y="320" width="160" height="160" rx="32" fill="#C0DC2D"/>
+  <path d="M490 436V356H504L520 392L536 356H550V436H542V372L527 413H513L498 372V436H490Z" fill="white"/>
+
+  <!-- Headline -->
+  <text x="540" y="680" text-anchor="middle" font-family="'Bricolage Grotesque', system-ui, sans-serif" font-size="80" font-weight="800" letter-spacing="-3" fill="white">Let customers</text>
+  <text x="540" y="775" text-anchor="middle" font-family="'Bricolage Grotesque', system-ui, sans-serif" font-size="80" font-weight="800" letter-spacing="-3" fill="white">shop without</text>
+  <text x="540" y="870" text-anchor="middle" font-family="'Bricolage Grotesque', system-ui, sans-serif" font-size="80" font-weight="800" letter-spacing="-3" fill="#C0DC2D">waiting on you</text>
+
+  <!-- Subtitle -->
+  <text x="540" y="1000" text-anchor="middle" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="28" font-weight="400" fill="#94adc9">AI-powered Instagram DM assistant</text>
+  <text x="540" y="1040" text-anchor="middle" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="28" font-weight="400" fill="#94adc9">for Kenyan businesses</text>
+
+  <!-- CTA -->
+  <rect x="370" y="1150" width="340" height="72" rx="36" fill="#C0DC2D"/>
+  <text x="540" y="1196" text-anchor="middle" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="26" font-weight="600" fill="#13243E">Try Mira Free</text>
+
+  <!-- Swipe up indicator -->
+  <text x="540" y="1720" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" fill="#6085ab">withmira.co</text>
+  <line x1="540" y1="1740" x2="540" y2="1780" stroke="#6085ab" stroke-width="1.5"/>
+  <polyline points="530,1770 540,1780 550,1770" fill="none" stroke="#6085ab" stroke-width="1.5"/>
+</svg>
