@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, FormEvent } from 'react';
+import { useEffect, useRef, useState, FormEvent, MouseEvent } from 'react';
 import { X, Building2, Mail, Phone, User, MessageSquare } from 'lucide-react';
 import GlassButton from './common/GlassButton';
 
@@ -46,6 +46,9 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
+        setFormData({ companyName: '', email: '', phone: '', personName: '', message: '', optInUpdates: false });
+        setErrors({});
+        setIsSuccess(false);
         onClose();
       }
     };
@@ -53,9 +56,9 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
 
-  const handleBackdropClick = (e: React.MouseEvent) => {
+  const handleBackdropClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      resetAndClose();
     }
   };
 
@@ -126,10 +129,9 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      onClick={handleBackdropClick}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-navy-950/80 backdrop-blur-sm animate-fade-in" />
+      <div className="absolute inset-0 bg-navy-950/80 backdrop-blur-sm animate-fade-in" onClick={handleBackdropClick} />
 
       {/* Modal */}
       <div
