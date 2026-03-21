@@ -46,9 +46,6 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
-        setFormData({ companyName: '', email: '', phone: '', personName: '', message: '', optInUpdates: false });
-        setErrors({});
-        setIsSuccess(false);
         resetAndClose();
       }
     };
