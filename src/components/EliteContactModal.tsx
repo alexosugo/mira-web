@@ -19,6 +19,7 @@ interface FormData {
 const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const submissionActiveRef = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -87,12 +88,15 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
+    submissionActiveRef.current = true;
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
+    if (!submissionActiveRef.current) return;
+
     console.log('Elite Contact Form Submission:', formData);
-    
+
     setIsSubmitting(false);
     setIsSuccess(true);
   };
@@ -105,6 +109,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   };
 
   const resetAndClose = () => {
+    submissionActiveRef.current = false;
     setFormData({
       companyName: '',
       email: '',
@@ -114,6 +119,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       optInUpdates: false,
     });
     setErrors({});
+    setIsSubmitting(false);
     setIsSuccess(false);
     onClose();
   };
