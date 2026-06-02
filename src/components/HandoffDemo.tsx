@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { ArrowRightLeft } from 'lucide-react';
 
 /** Stagger timing for the handoff conversation, matching HeroChatDemo's pace. */
@@ -25,44 +24,17 @@ const itemDelay = (index: number) => `${MESSAGE_BASE_DELAY_MS + index * MESSAGE_
 /**
  * The Features section's proof surface: the same @nia.thrifts DM thread as the
  * hero, later in the conversation, showing the handoff. Mira answers what it
- * can, then brings the owner in with full context. Content is visible by
- * default (works without JS); an IntersectionObserver only adds the entrance
- * animation when the demo scrolls into view. Reduced motion shows everything
- * instantly via the global override in index.css.
+ * can, then brings the owner in with full context. Messages stagger in with
+ * CSS-only delays, exactly like HeroChatDemo (no JS gating, no reveal flash);
+ * reduced motion shows everything instantly via the global override in
+ * index.css.
  */
 const HandoffDemo = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    const node = containerRef.current;
-    // No observer support (old browsers, test environments): skip the
-    // entrance animation entirely; content is already visible.
-    if (!node || typeof IntersectionObserver === 'undefined') return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setIsPlaying(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  const reveal = (index: number) =>
-    isPlaying ? { className: 'animate-fade-in-up', style: { animationDelay: itemDelay(index) } } : {};
-
   return (
     <div
-      ref={containerRef}
       aria-label="Example Instagram DM conversation: a customer asks for a custom order, Mira hands the thread to the shop owner with full context, and the owner closes the sale"
       className="w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto rounded-3xl bg-white dark:bg-navy-900
-                 border border-transparent dark:border-navy-700 shadow-xl dark:shadow-none overflow-hidden"
+                 dark:border dark:border-navy-700 shadow-xl dark:shadow-none overflow-hidden"
     >
       {/* Thread header: same shop as the hero demo, later that night */}
       <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100 dark:border-navy-800">
@@ -86,7 +58,11 @@ const HandoffDemo = () => {
         {THREAD.map((item, index) => {
           if (item.kind === 'handoff') {
             return (
-              <div key={index} className={`flex justify-center ${reveal(index).className ?? ''}`} style={reveal(index).style}>
+              <div
+                key={index}
+                className="flex justify-center animate-fade-in-up"
+                style={{ animationDelay: itemDelay(index) }}
+              >
                 <p
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full
                              bg-lime-500/15 border border-lime-500/30
@@ -103,8 +79,8 @@ const HandoffDemo = () => {
           return (
             <div
               key={index}
-              className={`flex flex-col ${isShopSide ? 'items-end' : 'items-start'} ${reveal(index).className ?? ''}`}
-              style={reveal(index).style}
+              className={`flex flex-col animate-fade-in-up ${isShopSide ? 'items-end' : 'items-start'}`}
+              style={{ animationDelay: itemDelay(index) }}
             >
               {item.kind === 'owner' && (
                 <p className="text-[11px] text-gray-600 dark:text-navy-300 mb-1 pr-1">Nia, that's you</p>
@@ -124,8 +100,8 @@ const HandoffDemo = () => {
 
         {/* Outcome */}
         <p
-          className={`pt-2 text-center text-xs text-gray-600 dark:text-navy-300 ${reveal(THREAD.length).className ?? ''}`}
-          style={reveal(THREAD.length).style}
+          className="pt-2 text-center text-xs text-gray-600 dark:text-navy-300 animate-fade-in-up"
+          style={{ animationDelay: itemDelay(THREAD.length) }}
         >
           You stepped in once. The sale kept moving.
         </p>

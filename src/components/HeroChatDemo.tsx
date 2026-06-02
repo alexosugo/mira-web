@@ -47,7 +47,7 @@ const HeroChatDemo = () => {
     <div
       aria-label="Example Instagram DM conversation: Mira answers a customer's stock question, adds a jacket to their cart, and confirms the order at 2:14 AM"
       className="w-full max-w-sm mx-auto rounded-3xl bg-white dark:bg-navy-900
-                 border border-transparent dark:border-navy-700 shadow-xl dark:shadow-none overflow-hidden"
+                 dark:border dark:border-navy-700 shadow-xl dark:shadow-none overflow-hidden"
     >
       {/* Thread header */}
       <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100 dark:border-navy-800">

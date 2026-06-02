@@ -18,11 +18,10 @@ describe('HandoffDemo', () => {
     expect(screen.getByText(/You stepped in once\. The sale kept moving\./)).toBeInTheDocument();
   });
 
-  it('is visible without the IntersectionObserver firing (no JS-gated content)', () => {
+  it('describes the conversation for assistive technology', () => {
     render(<HandoffDemo />);
-    const thread = screen.getByLabelText(/hands the thread to the shop owner/);
-    expect(thread).toBeInTheDocument();
-    // No reveal class applied before the observer fires; content is in the DOM and unhidden.
-    expect(thread.querySelector('.animate-fade-in-up')).toBeNull();
+    expect(
+      screen.getByLabelText(/hands the thread to the shop owner/)
+    ).toBeInTheDocument();
   });
 });
