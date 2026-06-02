@@ -62,7 +62,7 @@ const HandoffDemo = () => {
       ref={containerRef}
       aria-label="Example Instagram DM conversation: a customer asks for a custom order, Mira hands the thread to the shop owner with full context, and the owner closes the sale"
       className="w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto rounded-3xl bg-white dark:bg-navy-900
-                 border border-gray-200 dark:border-navy-700 shadow-xl overflow-hidden"
+                 border border-transparent dark:border-navy-700 shadow-xl dark:shadow-none overflow-hidden"
     >
       {/* Thread header: same shop as the hero demo, later that night */}
       <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100 dark:border-navy-800">
