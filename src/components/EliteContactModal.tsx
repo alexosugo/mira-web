@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, FormEvent, MouseEvent } from 'react';
-import { X, Building2, Mail, Phone, User, MessageSquare } from 'lucide-react';
-import GlassButton from './common/GlassButton';
+import { X } from 'lucide-react';
 
 interface EliteContactModalProps {
   isOpen: boolean;
@@ -16,21 +15,35 @@ interface FormData {
   optInUpdates: boolean;
 }
 
+const EMPTY_FORM: FormData = {
+  companyName: '',
+  email: '',
+  phone: '',
+  personName: '',
+  message: '',
+  optInUpdates: false,
+};
+
+const INPUT_CLASSES = (hasError: boolean) =>
+  `w-full px-4 py-3 rounded-xl transition-colors duration-200 focus:outline-none
+   bg-gray-50 dark:bg-white/5 text-navy-800 dark:text-white
+   placeholder-gray-500 dark:placeholder-navy-300 border ${
+     hasError
+       ? 'border-red-500/60 focus:border-red-500 focus:ring-2 focus:ring-red-500/20'
+       : 'border-gray-300 dark:border-white/15 focus:border-lime-500 focus:ring-2 focus:ring-lime-500/20'
+   }`;
+
+const LABEL_CLASSES = 'block text-sm font-semibold text-navy-800 dark:text-white mb-1.5';
+
 const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const submissionActiveRef = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
-    companyName: '',
-    email: '',
-    phone: '',
-    personName: '',
-    message: '',
-    optInUpdates: false,
-  });
+  const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
   useEffect(() => {
@@ -47,6 +60,12 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // The submit button unmounts on success; without this, keyboard focus drops
+  // to <body> and assistive tech never hears the confirmation.
+  useEffect(() => {
+    if (isSuccess) successHeadingRef.current?.focus();
+  }, [isSuccess]);
 
   // Keep keyboard focus inside the dialog: aria-modal alone doesn't enforce it
   useEffect(() => {
@@ -93,20 +112,20 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
-    
+
     if (!formData.companyName.trim()) {
-      newErrors.companyName = 'Company name is required';
+      newErrors.companyName = 'Please enter your shop name';
     }
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = 'Please enter your email';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = 'Email needs an @ and a domain, like nia@example.com';
     }
     if (!formData.personName.trim()) {
-      newErrors.personName = 'Your name is required';
+      newErrors.personName = 'Please enter your name';
     }
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = 'Tell us a little about your shop';
     }
 
     setErrors(newErrors);
@@ -115,7 +134,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -139,14 +158,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
 
   const resetAndClose = () => {
     submissionActiveRef.current = false;
-    setFormData({
-      companyName: '',
-      email: '',
-      phone: '',
-      personName: '',
-      message: '',
-      optInUpdates: false,
-    });
+    setFormData(EMPTY_FORM);
     setErrors({});
     setIsSubmitting(false);
     setIsSuccess(false);
@@ -163,162 +175,158 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       aria-labelledby="modal-title"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-navy-950/80 backdrop-blur-sm animate-fade-in" onClick={handleBackdropClick} />
+      <div className="absolute inset-0 bg-navy-950/80 animate-fade-in" onClick={handleBackdropClick} />
 
-      {/* Modal */}
+      {/* Modal: follows the page theme, same single-chrome elevation as the demo cards */}
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg bg-gradient-to-br from-navy-800 to-navy-900 rounded-3xl shadow-2xl border border-white/10 animate-scale-in overflow-hidden"
+        className="relative w-full max-w-lg max-h-[90svh] overflow-y-auto rounded-3xl animate-fade-in-up
+                   bg-white dark:bg-navy-900 shadow-xl dark:shadow-none
+                   dark:border dark:border-navy-700"
       >
         {/* Header */}
         <div className="relative px-8 pt-8 pb-4">
           <button
             onClick={resetAndClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors duration-200"
+            className="absolute top-4 right-4 p-2 rounded-full text-gray-600 dark:text-navy-300
+                       hover:text-navy-800 hover:bg-navy-800/5 dark:hover:text-white dark:hover:bg-white/10
+                       transition-colors duration-200"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
-          
-          <h2 id="modal-title" className="font-display text-2xl font-bold text-white">
+
+          <h2 id="modal-title" className="font-display text-2xl font-bold text-navy-800 dark:text-white">
             Get in touch
           </h2>
-          <p className="text-gray-400 mt-2 text-sm">
-            Tell us about your business and we'll craft a custom Elite plan for you.
+          <p className="text-gray-600 dark:text-navy-300 mt-2 text-sm">
+            Tell us about your shop and we'll put together an Elite plan for you.
           </p>
         </div>
 
         {/* Content */}
         <div className="px-8 pb-8">
           {isSuccess ? (
-            <div className="py-8 text-center animate-fade-in">
+            <div className="py-8 text-center animate-fade-in" role="status">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-lime-500/20 flex items-center justify-center">
-                <svg className="w-8 h-8 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-8 h-8 text-lime-600 dark:text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="font-display text-xl font-bold text-white mb-2">
+              <h3
+                ref={successHeadingRef}
+                tabIndex={-1}
+                className="font-display text-xl font-bold text-navy-800 dark:text-white mb-2 focus:outline-none"
+              >
                 Thank you
               </h3>
-              <p className="text-gray-400 mb-6">
+              <p className="text-gray-600 dark:text-navy-300 mb-6">
                 We've received your message and will get back to you within 24 hours.
               </p>
-              <GlassButton variant="primary" onClick={resetAndClose}>
+              <button
+                onClick={resetAndClose}
+                className="px-6 py-3 rounded-xl bg-navy-800 text-white font-semibold
+                           hover:bg-navy-900 transition-colors duration-200
+                           dark:bg-white dark:text-navy-800 dark:hover:bg-gray-100"
+              >
                 Close
-              </GlassButton>
+              </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Company Name */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Shop name */}
               <div>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
-                    <Building2 className="w-5 h-5" />
-                  </div>
-                  <input
-                    ref={firstInputRef}
-                    type="text"
-                    placeholder="Company Name *"
-                    value={formData.companyName}
-                    onChange={(e) => handleInputChange('companyName', e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3.5 bg-white/5 border rounded-xl text-white placeholder-gray-500 transition-all duration-300 focus:outline-none focus:bg-white/8 ${
-                      errors.companyName 
-                        ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
-                        : 'border-white/15 focus:border-lime-500/50 focus:ring-2 focus:ring-lime-500/20'
-                    }`}
-                  />
-                </div>
+                <label htmlFor="elite-shop-name" className={LABEL_CLASSES}>
+                  Shop name <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  ref={firstInputRef}
+                  id="elite-shop-name"
+                  type="text"
+                  placeholder="e.g. @nia.thrifts"
+                  value={formData.companyName}
+                  onChange={(e) => handleInputChange('companyName', e.target.value)}
+                  aria-required="true"
+                  className={INPUT_CLASSES(Boolean(errors.companyName))}
+                />
                 {errors.companyName && (
-                  <p className="mt-1.5 text-sm text-red-400">{errors.companyName}</p>
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.companyName}</p>
                 )}
               </div>
 
               {/* Email */}
               <div>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <input
-                    type="email"
-                    placeholder="Email *"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3.5 bg-white/5 border rounded-xl text-white placeholder-gray-500 transition-all duration-300 focus:outline-none focus:bg-white/8 ${
-                      errors.email 
-                        ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
-                        : 'border-white/15 focus:border-lime-500/50 focus:ring-2 focus:ring-lime-500/20'
-                    }`}
-                  />
-                </div>
+                <label htmlFor="elite-email" className={LABEL_CLASSES}>
+                  Email <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="elite-email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={formData.email}
+                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  aria-required="true"
+                  className={INPUT_CLASSES(Boolean(errors.email))}
+                />
                 {errors.email && (
-                  <p className="mt-1.5 text-sm text-red-400">{errors.email}</p>
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
                 )}
               </div>
 
-              {/* Phone (Optional) */}
+              {/* Phone (optional) */}
               <div>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <input
-                    type="tel"
-                    placeholder="Phone Number (optional)"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/15 rounded-xl text-white placeholder-gray-500 transition-all duration-300 focus:outline-none focus:bg-white/8 focus:border-lime-500/50 focus:ring-2 focus:ring-lime-500/20"
-                  />
-                </div>
+                <label htmlFor="elite-phone" className={LABEL_CLASSES}>
+                  Phone <span className="font-normal text-gray-600 dark:text-navy-300">(optional)</span>
+                </label>
+                <input
+                  id="elite-phone"
+                  type="tel"
+                  placeholder="+254 700 000 000"
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  className={INPUT_CLASSES(false)}
+                />
               </div>
 
-              {/* Person Name */}
+              {/* Your name */}
               <div>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
-                    <User className="w-5 h-5" />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Your Name *"
-                    value={formData.personName}
-                    onChange={(e) => handleInputChange('personName', e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3.5 bg-white/5 border rounded-xl text-white placeholder-gray-500 transition-all duration-300 focus:outline-none focus:bg-white/8 ${
-                      errors.personName 
-                        ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
-                        : 'border-white/15 focus:border-lime-500/50 focus:ring-2 focus:ring-lime-500/20'
-                    }`}
-                  />
-                </div>
+                <label htmlFor="elite-name" className={LABEL_CLASSES}>
+                  Your name <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="elite-name"
+                  type="text"
+                  placeholder="First and last name"
+                  value={formData.personName}
+                  onChange={(e) => handleInputChange('personName', e.target.value)}
+                  aria-required="true"
+                  className={INPUT_CLASSES(Boolean(errors.personName))}
+                />
                 {errors.personName && (
-                  <p className="mt-1.5 text-sm text-red-400">{errors.personName}</p>
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.personName}</p>
                 )}
               </div>
 
               {/* Message */}
               <div>
-                <div className="relative">
-                  <div className="absolute left-4 top-4 text-gray-500 pointer-events-none">
-                    <MessageSquare className="w-5 h-5" />
-                  </div>
-                  <textarea
-                    placeholder="Tell us about your business goals *"
-                    value={formData.message}
-                    onChange={(e) => handleInputChange('message', e.target.value)}
-                    rows={4}
-                    className={`w-full pl-12 pr-4 py-3.5 bg-white/5 border rounded-xl text-white placeholder-gray-500 transition-all duration-300 focus:outline-none focus:bg-white/8 resize-none ${
-                      errors.message 
-                        ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
-                        : 'border-white/15 focus:border-lime-500/50 focus:ring-2 focus:ring-lime-500/20'
-                    }`}
-                  />
-                </div>
+                <label htmlFor="elite-message" className={LABEL_CLASSES}>
+                  About your shop <span aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="elite-message"
+                  placeholder="What do you sell, and what should Mira handle for you?"
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  rows={4}
+                  aria-required="true"
+                  className={`${INPUT_CLASSES(Boolean(errors.message))} resize-none`}
+                />
                 {errors.message && (
-                  <p className="mt-1.5 text-sm text-red-400">{errors.message}</p>
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
                 )}
               </div>
 
-              {/* Opt-in Checkbox */}
+              {/* Opt-in checkbox */}
               <label className="flex items-start gap-3 cursor-pointer group">
                 <div className="relative mt-0.5">
                   <input
@@ -327,33 +335,37 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                     onChange={(e) => handleInputChange('optInUpdates', e.target.checked)}
                     className="sr-only peer"
                   />
-                  <div className={`w-5 h-5 border rounded transition-all duration-200 flex items-center justify-center ${
-                    formData.optInUpdates
-                      ? 'bg-lime-500 border-lime-500'
-                      : 'border-white/20 bg-white/5'
-                  }`}>
+                  <div
+                    className={`w-5 h-5 border rounded transition-all duration-200 flex items-center justify-center ${
+                      formData.optInUpdates
+                        ? 'bg-lime-500 border-lime-500'
+                        : 'border-gray-400 dark:border-white/20 bg-gray-50 dark:bg-white/5'
+                    }`}
+                  >
                     {formData.optInUpdates && (
-                      <svg className="w-3 h-3 text-navy-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-3 h-3 text-navy-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     )}
                   </div>
                 </div>
-                <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                <span className="text-sm text-gray-600 dark:text-navy-300 group-hover:text-navy-800 dark:group-hover:text-white transition-colors">
                   I'd like to receive product updates and news from Mira
                 </span>
               </label>
 
-              {/* Submit Button */}
-              <GlassButton
+              {/* Submit */}
+              <button
                 type="submit"
-                variant="primary"
-                size="lg"
-                loading={isSubmitting}
-                className="w-full mt-6"
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
+                className={`w-full mt-4 py-3.5 px-6 rounded-xl bg-lime-500 text-navy-800 font-bold
+                           hover:bg-lime-400 transition-colors duration-200
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500/60 focus-visible:ring-offset-2
+                           ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </GlassButton>
+                {isSubmitting ? 'Sending...' : 'Send message'}
+              </button>
             </form>
           )}
         </div>

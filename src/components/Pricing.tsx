@@ -210,10 +210,6 @@ const Pricing = () => {
           ))}
         </div>
 
-        {/* Roadmap, quietly */}
-        <p className="mt-10 text-center text-sm text-gray-600 dark:text-gray-400">
-          Coming soon on every plan: WhatsApp and TikTok.
-        </p>
       </div>
 
       <EliteContactModal

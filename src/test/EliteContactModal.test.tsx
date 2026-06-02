@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import EliteContactModal from '../components/EliteContactModal';
 
 describe('EliteContactModal', () => {
@@ -29,5 +29,21 @@ describe('EliteContactModal', () => {
     focusables[0].focus();
     fireEvent.keyDown(document, { key: 'Tab', shiftKey: true });
     expect(document.activeElement).toBe(focusables[focusables.length - 1]);
+  });
+
+  it('moves focus to the confirmation heading on successful submit', async () => {
+    vi.useFakeTimers();
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fireEvent.change(screen.getByLabelText(/Shop name/), { target: { value: 'Nia Thrifts' } });
+    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'nia@example.com' } });
+    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Nia' } });
+    fireEvent.change(screen.getByLabelText(/About your shop/), { target: { value: 'Thrift fashion' } });
+    fireEvent.click(screen.getByText('Send message'));
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1600);
+    });
+    expect(screen.getByRole('status')).toBeInTheDocument();
+    expect(document.activeElement?.textContent).toBe('Thank you');
+    vi.useRealTimers();
   });
 });
