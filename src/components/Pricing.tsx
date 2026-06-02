@@ -177,9 +177,9 @@ const Pricing = () => {
                       handleCTAClick('elite', plan.cta);
                       setIsEliteModalOpen(true);
                     }}
-                    className="block w-full py-3 px-6 rounded-xl bg-white text-navy-800 font-semibold
-                               hover:bg-gray-100 transition-colors duration-200 mb-3 text-center
-                               dark:bg-white dark:text-navy-800"
+                    className="block w-full py-3 px-6 rounded-xl bg-navy-800 text-white font-semibold
+                               hover:bg-navy-900 transition-colors duration-200 mb-3 text-center
+                               dark:bg-white dark:text-navy-800 dark:hover:bg-gray-100"
                   >
                     {plan.cta}
                   </button>
