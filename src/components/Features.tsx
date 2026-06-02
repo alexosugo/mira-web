@@ -1,223 +1,126 @@
-import { useEffect, useRef, useState } from 'react';
-import { MessageSquare, Globe, Clock, Brain, Zap, Shield, Heart } from 'lucide-react';
+import { Clock, Brain, Shield, Inbox } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 import { useProductExpertExperiment, PRODUCT_EXPERT_COPY } from '../hooks/useExperiments';
+import HandoffDemo from './HandoffDemo';
 
-const chatSequence = [
-  { type: 'customer', text: 'Hi! Do you have Samsung Galaxy A54 in blue?', delay: 1000 },
-  { type: 'bot', text: 'Yes! We have the Samsung Galaxy A54 in blue available for KES 32,000. Would you like me to reserve one for you?', delay: 2000 },
-  { type: 'customer', text: 'Perfect! Can I pay via M-Pesa?', delay: 1500 },
-  { type: 'bot', text: 'Absolutely! We accept M-Pesa. I\'ll connect you with our sales team to complete your order. They\'ll be with you shortly!', delay: 2000 }
-];
+interface Feature {
+  icon: LucideIcon;
+  name: string;
+  description: string;
+  /** The lead feature carries the section's lime accent and a wider card. */
+  isLead?: boolean;
+}
 
 const Features = () => {
-  const [visibleCards, setVisibleCards] = useState<number[]>([]);
-  const [chatMessages, setChatMessages] = useState<number>(0);
-  const [isInView, setIsInView] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
   const trackingSectionRef = useSectionTracking('features', 'Features Section');
   const productExpert = useProductExpertExperiment();
 
-  const features = [
-    {
-      icon: MessageSquare,
-      name: "Serve Everywhere",
-      description: "Keep WhatsApp, Instagram, and other messages in one place so nothing gets lost"
-    },
-    {
-      icon: Globe,
-      name: "Speaks Your Language",
-      description: "Clear, natural conversations with your customers"
-    },
+  const features: Feature[] = [
     {
       icon: Clock,
-      name: "Answers Anytime",
-      description: "Customers get quick replies, even when you're busy or offline"
+      name: 'Answers anytime',
+      description:
+        'Customers get answers at 9 PM and 2 AM. You see closed sales in the morning.',
+      isLead: true,
+    },
+    {
+      icon: Inbox,
+      name: 'Every DM answered',
+      description:
+        'Every Instagram DM gets a reply, even when twenty arrive at once. None sit unread.',
     },
     {
       icon: Brain,
       name: PRODUCT_EXPERT_COPY[productExpert].title,
-      description: PRODUCT_EXPERT_COPY[productExpert].description
-    },
-    {
-      icon: Zap,
-      name: "Simple Onboarding",
-      description: "Connect your social media or website. Mira organizes everything for you"
+      description: PRODUCT_EXPERT_COPY[productExpert].description,
     },
     {
       icon: Shield,
-      name: "Safe & Private",
-      description: "Your customer conversations and shop data stay protected"
-    }
+      name: 'Safe and private',
+      description: 'Your customer conversations and shop data stay protected',
+    },
   ];
 
-  // Check if device is mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Optimized intersection observer for feature cards
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleCards(prev => {
-              if (!prev.includes(index)) {
-                return [...prev, index];
-              }
-              return prev;
-            });
-          }
-        });
-      },
-      { 
-        threshold: 0.15,
-        rootMargin: '0px 0px -30px 0px'
-      }
-    );
-
-    const observeCards = () => {
-      const cards = document.querySelectorAll('.feature-card');
-      cards.forEach(card => {
-        if (card) observer.observe(card);
-      });
-    };
-
-    requestAnimationFrame(observeCards);
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Chat demo intersection observer - disabled on mobile
-  useEffect(() => {
-    if (isMobile) {
-      // On mobile, show all messages immediately without animation
-      setChatMessages(chatSequence.length);
-      setIsInView(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isInView) {
-            setIsInView(true);
-            // Reset and start chat sequence
-            setChatMessages(0);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isInView, isMobile]);
-
-  // Chat message timing with proper cleanup - disabled on mobile
-  useEffect(() => {
-    if (isMobile) return; // Skip animation timing on mobile
-
-    if (isInView && chatMessages < chatSequence.length) {
-      const timer = setTimeout(() => {
-        setChatMessages(prev => prev + 1);
-      }, chatSequence[chatMessages]?.delay || 1000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [chatMessages, isInView, isMobile]);
-
   return (
-    <section id="features" className="py-24 lg:py-32 bg-white dark:bg-navy-950 font-body" ref={trackingSectionRef}>
+    <section
+      id="features"
+      className="py-24 lg:py-32 bg-white dark:bg-navy-950 font-body"
+      ref={trackingSectionRef}
+    >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-navy-800/5 dark:bg-lime-500/10 text-navy-800 dark:text-lime-400 px-5 py-2.5 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
-            <Heart className="h-4 w-4 text-lime-600" />
-            What You'll Love
-          </div>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight animate-fade-in-up">
-           How Mira Helps You Run Your Shop
+        <div className="text-center mb-14 lg:mb-16">
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
+            How Mira helps you run your shop
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animate-delay-200">
-            Simple tools designed for busy sellers
+          <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            What Mira handles, and when it brings you in.
           </p>
         </div>
 
-        {/* Core Features Grid with optimized animations */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
-          {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className={`feature-card group glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-2xl p-8 text-center transition-all duration-500 hover:shadow-premium ${
-                visibleCards.includes(index) ? 'animate-fade-in-up opacity-100' : 'opacity-0 transform translate-y-8'
+        {/* Feature grid: one lead card with the lime accent, three supporting */}
+        <div className="grid md:grid-cols-3 gap-5 lg:gap-6 mb-16 lg:mb-20">
+          {features.map((feature) => (
+            <div
+              key={feature.name}
+              className={`rounded-2xl border transition-colors duration-300 ${
+                feature.isLead
+                  ? 'md:col-span-3 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 p-7 sm:p-8 text-left bg-navy-800 dark:bg-navy-800 border-navy-700'
+                  : 'p-7 text-left bg-white dark:bg-navy-900 border-gray-200 dark:border-navy-700 hover:border-navy-800/30 dark:hover:border-navy-500'
               }`}
-              data-index={index}
-              style={{ 
-                animationDelay: `${index * 0.1}s`,
-                transitionDelay: `${index * 0.05}s`
-              }}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-lime-500/20 to-lime-600/10 rounded-2xl flex items-center justify-center mx-auto mb-6 
-                             group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-lime-500/20 transition-all duration-300">
-                <feature.icon className="h-8 w-8 text-lime-600" />
+              <div
+                className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                  feature.isLead ? 'bg-lime-500' : 'bg-navy-800/[0.06] dark:bg-white/[0.08]'
+                }`}
+              >
+                <feature.icon
+                  className={`h-6 w-6 ${
+                    feature.isLead ? 'text-navy-800' : 'text-navy-800 dark:text-navy-100'
+                  }`}
+                />
               </div>
-              <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white mb-4">
-                {feature.name}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
-                {feature.description.includes("30 minutes") ? (
-                  <>Get started in <span className="font-mono font-semibold text-navy-700 dark:text-lime-400">30</span> minutes without any technical skills required</>
-                ) : feature.description.includes("24/7") ? (
-                  <>Never miss a customer inquiry, even when you're sleeping</>
-                ) : (
-                  feature.description
-                )}
-              </p>
+              <div className={feature.isLead ? '' : 'mt-5'}>
+                <h3
+                  className={`font-display text-xl font-bold mb-2 ${
+                    feature.isLead ? 'text-white' : 'text-navy-800 dark:text-white'
+                  }`}
+                >
+                  {feature.name}
+                </h3>
+                <p
+                  className={`leading-relaxed text-base ${
+                    feature.isLead ? 'text-navy-100' : 'text-gray-600 dark:text-gray-300'
+                  }`}
+                >
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Enhanced Feature Showcase with mobile-optimized chat demo */}
+        {/* The handoff: what happens when a customer needs the owner */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Feature details */}
-          <div className="animate-fade-in-left">
-            {/* <div className="inline-flex items-center gap-2 bg-navy-800/10 dark:bg-lime-500/10 text-navy-800 dark:text-lime-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <Brain className="h-4 w-4" />
-              Smart Automation
-            </div> */}
-            <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white mb-6 tracking-tight">
-              A Helping Hand That’s Always There
+          <div>
+            <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white mb-6 tracking-tight [text-wrap:balance]">
+              A helping hand that knows its limits
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Mira keeps conversations moving by answering the questions customers ask every day—what’s available, what something costs, how to order, or how to pay. When a customer needs you personally, Mira brings you in with everything already explained.
+              Mira keeps conversations moving by answering the questions customers ask every
+              day: what's available, what something costs, how to order, or how to pay. When a
+              customer needs you personally, Mira brings you in with everything already
+              explained.
             </p>
-            
+
             <div className="space-y-4">
               {[
-                "Handles common product questions and availability checks",
-                "Shares clear pricing and buying info",
-                "Passes complex messages to you with full context"
-              ].map((item, index) => (
-                <div 
-                  key={index}
-                  className={`flex items-start gap-3 animate-fade-in-left`}
-                  style={{ animationDelay: `${(index + 1) * 0.2}s` }}
-                >
-                  <div className="w-6 h-6 bg-lime-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 
-                                  shadow-md shadow-lime-500/30 hover:scale-110 transition-transform">
+                'Handles common product questions and availability checks',
+                'Shares clear pricing and buying info',
+                'Passes complex messages to you with full context',
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-lime-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-navy-800 text-xs font-bold">✓</span>
                   </div>
                   <span className="text-gray-700 dark:text-gray-300">{item}</span>
@@ -226,69 +129,7 @@ const Features = () => {
             </div>
           </div>
 
-          {/* Right side - Mobile-optimized chat demo */}
-          <div className="animate-fade-in-right" ref={sectionRef}>
-            <div className={`glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-3xl p-8 ${!isMobile ? 'hover:shadow-premium transition-shadow duration-300' : ''}`}>
-              <div className="bg-white dark:bg-navy-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-navy-700">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-10 h-10 bg-gradient-to-br from-pink-500 to-orange-400 rounded-full flex items-center justify-center shadow-md ${!isMobile ? 'hover:scale-110 transition-transform' : ''}`}>
-                    <span className="text-white font-bold text-lg">M</span>
-                  </div>
-                  <div>
-                    <div className="font-display font-semibold text-navy-800 dark:text-white">Instagram</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Active now</div>
-                  </div>
-                </div>
-                
-                <div className="space-y-4 min-h-[300px]">
-                  {chatSequence.slice(0, chatMessages).map((message, index) => (
-                    <div 
-                      key={index}
-                      className={`${
-                        !isMobile && message.type === 'customer' 
-                          ? 'message-slide-in-left' 
-                          : !isMobile && message.type === 'bot'
-                          ? 'message-slide-in-right'
-                          : ''
-                      }`}
-                    >
-                      <div className={`${
-                        message.type === 'customer'
-                          ? 'bg-gray-100 dark:bg-navy-700 rounded-2xl rounded-bl-sm p-4 max-w-xs'
-                          : 'bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-blue-500/20'
-                      }`}>
-                        <p className={`text-sm ${
-                          message.type === 'customer' ? 'text-gray-800 dark:text-gray-200' : 'text-white'
-                        }`}>
-                          {message.text.includes('KES 32,000') ? (
-                            <>Yes! We have the Samsung Galaxy A54 in blue available for KES 32,000. Would you like me to reserve one for you?</>
-                          ) : (
-                            message.text
-                          )}
-                        </p>
-                        <div className={`text-xs mt-1 ${
-                          message.type === 'customer' ? 'text-gray-600 dark:text-gray-400' : 'text-white/70'
-                        }`}>
-                            <span className="font-mono">2:3{4 + index}</span> PM
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  
-                  {/* Typing indicator - hidden on mobile */}
-                  {!isMobile && isInView && chatMessages < chatSequence.length && chatMessages > 0 && (
-                    <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl rounded-br-sm p-4 max-w-xs ml-auto shadow-md shadow-blue-500/20">
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-white rounded-full typing-dot"></div>
-                        <div className="w-2 h-2 bg-white rounded-full typing-dot"></div>
-                        <div className="w-2 h-2 bg-white rounded-full typing-dot"></div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
+          <HandoffDemo />
         </div>
       </div>
     </section>
