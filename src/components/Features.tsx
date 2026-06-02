@@ -51,7 +51,7 @@ const Features = () => {
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14 lg:mb-16">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
             How Mira helps you run your shop
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -83,7 +83,7 @@ const Features = () => {
               </div>
               <div className={feature.isLead ? '' : 'mt-5'}>
                 <h3
-                  className={`font-display text-xl font-bold mb-2 ${
+                  className={`font-display text-2xl font-bold mb-2 ${
                     feature.isLead ? 'text-white' : 'text-navy-800 dark:text-white'
                   }`}
                 >

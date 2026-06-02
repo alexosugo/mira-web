@@ -30,7 +30,7 @@ const HowItWorks = () => {
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14 lg:mb-16">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white tracking-tight [text-wrap:balance]">
+          <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white tracking-tight [text-wrap:balance]">
             How Mira Works
           </h2>
         </div>
@@ -44,7 +44,7 @@ const HowItWorks = () => {
               <div className="w-12 h-12 bg-navy-800 dark:bg-navy-700 text-white font-bold rounded-full flex items-center justify-center text-xl mb-6 font-display">
                 {step.number}
               </div>
-              <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white mb-3">
+              <h3 className="font-display text-2xl font-bold text-navy-800 dark:text-white mb-3">
                 {step.title}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">

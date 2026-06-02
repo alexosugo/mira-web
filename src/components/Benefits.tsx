@@ -36,7 +36,7 @@ const Benefits = () => {
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-14 lg:mb-16">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
+          <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
             The Results You'll See
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -52,7 +52,7 @@ const Benefits = () => {
                 <benefit.icon className="h-6 w-6 text-navy-800 dark:text-navy-100" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white mb-2 [text-wrap:balance]">
+                <h3 className="font-display text-2xl font-bold text-navy-800 dark:text-white mb-2 [text-wrap:balance]">
                   {benefit.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

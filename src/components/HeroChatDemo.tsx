@@ -17,7 +17,7 @@ const MESSAGES: ChatMessage[] = [
     from: 'mira',
     text: (
       <>
-        Yes, two left in M. <span className="font-mono text-[0.9em]">KES 2,400</span>. Want me to
+        Yes, two left in M. <span className="font-mono">KES 2,400</span>. Want me to
         add one to your cart?
       </>
     ),
@@ -27,7 +27,7 @@ const MESSAGES: ChatMessage[] = [
     from: 'mira',
     text: (
       <>
-        Done. Delivery is <span className="font-mono text-[0.9em]">KES 200</span>, arrives
+        Done. Delivery is <span className="font-mono">KES 200</span>, arrives
         tomorrow. You can pay with M-Pesa at checkout.
       </>
     ),

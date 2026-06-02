@@ -1135,32 +1135,3 @@ html {
   }
 }
 
-/* ============================================
-   RESPONSIVE TYPOGRAPHY
-   ============================================ */
-@media (max-width: 768px) {
-  .text-display-xl {
-    font-size: 48px;
-    line-height: 1;
-  }
-  
-  .text-display-lg {
-    font-size: 40px;
-    line-height: 1.05;
-  }
-  
-  .text-h1 {
-    font-size: 36px;
-    line-height: 1.1;
-  }
-  
-  .text-h2 {
-    font-size: 32px;
-    line-height: 1.15;
-  }
-  
-  .text-h3 {
-    font-size: 28px;
-    line-height: 1.2;
-  }
-}

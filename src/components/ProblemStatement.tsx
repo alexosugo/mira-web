@@ -38,7 +38,7 @@ const ProblemStatement = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-14 lg:mb-16">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
             Can't keep up with DMs?
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
@@ -58,7 +58,7 @@ const ProblemStatement = () => {
                   <problem.icon className="h-6 w-6 text-navy-800 dark:text-navy-100" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white mb-2">
+                  <h3 className="font-display text-2xl font-bold text-navy-800 dark:text-white mb-2">
                     {problem.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

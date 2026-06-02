@@ -87,7 +87,7 @@ const Pricing = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
         <div className="text-center mb-12 lg:mb-16">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
             Choose a Mira plan that works for you
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -126,10 +126,11 @@ const Pricing = () => {
                 {plan.description}
               </p>
               <div className="mb-6 flex items-baseline">
+                {/* Numeric prices render in mono (the data font); "Custom" is a word, stays display */}
                 <span
-                  className={`font-display text-4xl lg:text-5xl font-bold ${
-                    plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'
-                  }`}
+                  className={`text-4xl lg:text-5xl ${
+                    plan.price.startsWith('KES') ? 'stat-number' : 'font-display font-bold'
+                  } ${plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'}`}
                 >
                   {plan.price}
                 </span>

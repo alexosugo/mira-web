@@ -18,21 +18,21 @@ colors:
 typography:
   display:
     fontFamily: "Bricolage Grotesque, sans-serif"
-    fontSize: "80px"
+    fontSize: "72px"
     fontWeight: 800
-    lineHeight: 0.95
-    letterSpacing: "-0.03em"
+    lineHeight: 1.1
+    letterSpacing: "-0.025em"
   headline:
     fontFamily: "Bricolage Grotesque, sans-serif"
-    fontSize: "56px"
+    fontSize: "48px"
     fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.02em"
+    lineHeight: 1
+    letterSpacing: "-0.025em"
   title:
     fontFamily: "Bricolage Grotesque, sans-serif"
-    fontSize: "32px"
-    fontWeight: 600
-    lineHeight: 1.3
+    fontSize: "24px"
+    fontWeight: 700
+    lineHeight: 1.33
   body:
     fontFamily: "IBM Plex Sans, sans-serif"
     fontSize: "18px"
@@ -148,11 +148,12 @@ A navy foundation that works the night shift, warm neutrals for daylight surface
 **Character:** Bricolage's quirky, slightly flared letterforms carry the "helpful friend" personality at display sizes; Plex Sans keeps paragraphs plainspoken and trustworthy. The mono appears only where the product shows real data: prices, stock counts, timestamps in chat mocks.
 
 ### Hierarchy
-- **Display** (800, 80px desktop scaling down, 0.95 line-height, -0.03em): Hero headline only. One per page.
-- **Headline** (700, 56px, 1.1): Section headings.
-- **Title** (600, 32px, 1.3): Card titles, subsection heads, pricing plan names.
-- **Body** (400, 18px, 1.6): Paragraphs; max line length 65–75ch. Body Large (20px) for hero subcopy.
-- **Label** (500, 14px, JetBrains Mono): Chat metadata, prices, badges. Never full sentences.
+The scale ships as plain Tailwind classes (no custom fontSize tokens):
+- **Display** (800, `text-7xl` 72px desktop / `text-4xl` 36px mobile, leading-[1.1], tracking-tight): Hero headline only. One per page.
+- **Headline** (700, `text-5xl` 48px / `text-3xl` 30px mobile, tracking-tight): Primary section headings (Problem, Solution, Features, Pricing). Secondary sections (HowItWorks, Benefits) step down to `text-4xl` 36px desktop.
+- **Title** (700, `text-2xl` 24px): Card titles, subsection heads, pricing plan names. Keeps a ≥1.25 step over body.
+- **Body** (400, 16–18px, 1.6): Paragraphs; max line length 65–75ch. `text-lg`/`text-xl` (18/20px) for section subcopy.
+- **Data** (`.stat-number`: JetBrains Mono 700, tabular-nums): Headline prices (KES amounts). **Label** (Mono 400, 12–14px): chat metadata, chips, timestamps. Never full sentences.
 
 ### Named Rules
 **The One Display Rule.** Exactly one display-scale element per page, in the hero. Everything else steps down through the scale; competing displays cancel each other out.

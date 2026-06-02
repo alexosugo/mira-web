@@ -85,7 +85,7 @@ const HandoffDemo = () => {
               style={{ animationDelay: itemDelay(index) }}
             >
               {item.kind === 'owner' && (
-                <p className="text-[11px] text-gray-600 dark:text-navy-300 mb-1 pr-1">Nia, that's you</p>
+                <p className="text-xs text-gray-600 dark:text-navy-300 mb-1 pr-1">Nia, that's you</p>
               )}
               <p
                 className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${

@@ -40,18 +40,6 @@ export default {
         'body': ['IBM Plex Sans', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
       },
-      fontSize: {
-        'display-xl': ['80px', { lineHeight: '0.95', fontWeight: '800', letterSpacing: '-0.03em' }],
-        'display-lg': ['72px', { lineHeight: '1', fontWeight: '800', letterSpacing: '-0.02em' }],
-        'h1': ['64px', { lineHeight: '1.05', fontWeight: '800', letterSpacing: '-0.02em' }],
-        'h2': ['56px', { lineHeight: '1.1', fontWeight: '700', letterSpacing: '-0.02em' }],
-        'h3': ['40px', { lineHeight: '1.2', fontWeight: '700', letterSpacing: '-0.01em' }],
-        'h4': ['32px', { lineHeight: '1.3', fontWeight: '600' }],
-        'body-lg': ['20px', { lineHeight: '1.6', fontWeight: '400' }],
-        'body': ['18px', { lineHeight: '1.6', fontWeight: '400' }],
-        'body-sm': ['16px', { lineHeight: '1.5', fontWeight: '400' }],
-        'stat': ['48px', { lineHeight: '1', fontWeight: '700' }],
-      },
       borderRadius: {
         'xl': '16px',
         '2xl': '20px',
