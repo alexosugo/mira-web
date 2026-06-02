@@ -1,24 +1,26 @@
-import { useEffect, useState } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { useHeroCtaExperiment, useHeroSubExperiment, HERO_CTA_COPY, HERO_SUB_COPY } from '../hooks/useExperiments';
+import { scrollToSection } from '../utils/scrollToSection';
+import HeroChatDemo from './HeroChatDemo';
+
+const HERO_HEADLINE = 'Mira answers your DMs and sells in them';
+const APP_URL = 'https://app.withmira.co';
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('hero', 'Hero Section');
   const heroCta = useHeroCtaExperiment();
   const heroSub = useHeroSubExperiment();
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   const handleCTAClick = () => {
+    setIsRedirecting(true);
     trackCTA('hero_cta_button', HERO_CTA_COPY[heroCta], 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
-      hero_headline: 'Let Customers Shop Without Waiting On You',
+      hero_headline: HERO_HEADLINE,
       experiment_variant: heroCta,
     });
   };
@@ -26,87 +28,81 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-warm-50 via-white to-gray-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-32 pb-24 overflow-hidden"
+      className="relative min-h-[90svh] flex items-center bg-gradient-to-br from-warm-50 via-white to-gray-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-24 sm:pt-28 lg:pt-32 pb-16 lg:pb-24 overflow-hidden"
     >
-      {/* Premium animated background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-lime-500/5 to-transparent rounded-full blur-3xl animate-float-gentle" />
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-navy-500/3 to-transparent rounded-full blur-3xl animate-float-gentle" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-radial from-lime-400/3 to-transparent rounded-full blur-2xl animate-float-gentle" style={{ animationDelay: '4s' }} />
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center">
-          {/* Content */}
-          <div className="space-y-8 text-center">
-            {/* Badge */}
-            <div className={`${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              <span className="inline-flex items-center gap-2 px-4 py-2
-                             bg-gradient-to-r from-lime-500/10 to-lime-500/5
-                             border border-lime-500/20 rounded-full
-                             text-lime-600 text-sm font-semibold
-                             shadow-sm backdrop-blur-sm">
-                <Sparkles className="w-4 h-4" />
-                Designed for Instagram sellers
-              </span>
-            </div>
-
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+          {/* Copy */}
+          <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
             {/* Headline */}
-            <div className={`space-y-2 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
-              <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl font-extrabold text-navy-800 dark:text-white tracking-tight leading-[1.1]">
-                Let Customers <span className="relative inline-block">
-                  <span className="gradient-text">Shop</span>
-                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                    <path d="M2 8C50 2 150 2 198 8" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
-                  </svg>
-                </span> Without Waiting On{' '}
+            <div className="animate-fade-in-up">
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 dark:text-white tracking-tight leading-[1.1] [text-wrap:balance]">
+                Mira answers your DMs and{' '}
                 <span className="relative inline-block">
-                  <span className="gradient-text">You</span>
-                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                    <path d="M2 8C50 2 150 2 198 8" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
+                  sells
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none" aria-hidden="true">
+                    <path d="M2 8C50 2 150 2 198 8" pathLength="1" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
                   </svg>
-                </span>
+                </span>{' '}
+                in them
               </h1>
             </div>
 
-            {/* Description */}
+            {/* Description. The lead-in is static (not part of the HERO_SUB_COPY
+                experiment) so the qualifier survives the cut eyebrow badge without
+                touching live variant payloads. */}
             <p
-              className={`text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto font-body ${
-                isVisible ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: '200ms' }}
+              className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body animate-fade-in-up"
+              style={{ animationDelay: '100ms' }}
             >
+              <span className="font-semibold text-navy-700 dark:text-navy-100">
+                Built for Instagram sellers.
+              </span>{' '}
               {HERO_SUB_COPY[heroSub]}
             </p>
 
-            {/* CTA */}
+            {/* CTAs */}
             <div
-              className={`flex items-center justify-center pt-4 ${
-                isVisible ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: '400ms' }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 lg:pt-4 animate-fade-in-up"
+              style={{ animationDelay: '200ms' }}
             >
               <a
-                href="https://app.withmira.co"
+                href={APP_URL}
                 onClick={(e) => {
                   e.preventDefault();
+                  if (isRedirecting) return;
                   handleCTAClick();
-                  window.location.href = 'https://app.withmira.co';
+                  window.location.href = APP_URL;
                 }}
-                className="btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl
-                           text-base font-bold shadow-lg shadow-lime-500/20
-                           flex items-center justify-center gap-2.5"
+                aria-busy={isRedirecting}
+                className={`btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl
+                           text-base font-bold shadow-md
+                           flex items-center justify-center gap-2.5
+                           ${isRedirecting ? 'opacity-80 pointer-events-none' : ''}`}
               >
-                {HERO_CTA_COPY[heroCta]}
+                {isRedirecting ? 'Opening Mira...' : HERO_CTA_COPY[heroCta]}
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
+              <button
+                type="button"
+                onClick={() => scrollToSection('how-it-works')}
+                className="px-6 py-3 sm:py-4 text-base font-semibold text-navy-700 dark:text-navy-100
+                           rounded-2xl transition-colors duration-300
+                           hover:text-navy-800 hover:bg-navy-800/5
+                           dark:hover:text-white dark:hover:bg-white/5
+                           focus:outline-none focus:ring-2 focus:ring-lime-500/50 focus:ring-offset-2"
+              >
+                See how Mira works
+              </button>
             </div>
+          </div>
+
+          {/* Proof: the DM doing the selling */}
+          <div className="animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+            <HeroChatDemo />
           </div>
         </div>
       </div>
-
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-navy-950 to-transparent pointer-events-none" />
     </section>
   );
 };

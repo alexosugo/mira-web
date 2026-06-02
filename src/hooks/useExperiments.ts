@@ -67,8 +67,8 @@ export const HERO_CTA_COPY: Record<HeroCtaVariant, string> = {
 };
 
 export const HERO_SUB_COPY: Record<HeroSubVariant, string> = {
-  control: 'Mira handles product questions, recommendations, and orders so customers get fast, accurate answers\u2014without you glued to your phone.',
-  ig_commerce: 'Mira replies to your Instagram DMs \u2014 answering product questions, helping customers pick the right item, and guiding them all the way to checkout. Your shop sells even when you\u2019re away.',
+  control: 'Mira handles product questions, recommendations, and orders so customers get fast, accurate answers without you glued to your phone.',
+  ig_commerce: 'Mira replies to your Instagram DMs: answering product questions, helping customers pick the right item, and guiding them all the way to checkout. Your shop sells even when you\u2019re away.',
 };
 
 export const SOLUTION_COPY: Record<SolutionCopyVariant, string> = {

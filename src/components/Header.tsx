@@ -30,7 +30,7 @@ const Header = () => {
     e.preventDefault();
     trackCTA('header_cta_button', HERO_CTA_COPY[heroCta], 'header', {
       button_location: 'top_navigation',
-      button_type: 'primary',
+      button_type: 'secondary',
       experiment_variant: heroCta,
     });
     window.location.href = 'https://app.withmira.co';
@@ -103,11 +103,17 @@ const Header = () => {
                   <Moon className="w-4 h-4 text-navy-800" />
                 )}
               </button>
+              {/* Quiet outline: the hero owns the lime signal on this page */}
               <a
                 href="https://app.withmira.co"
                 onClick={handleCTAClick}
-                className="btn-premium group bg-lime-500 text-navy-800 px-5 py-2 rounded-full
-                           font-semibold text-sm shadow-md flex items-center gap-2"
+                className="group px-5 py-2 rounded-full font-semibold text-sm
+                           text-navy-800 dark:text-white
+                           border border-navy-800/20 dark:border-white/25
+                           hover:bg-navy-800/5 dark:hover:bg-white/10
+                           hover:border-navy-800/40 dark:hover:border-white/40
+                           transition-colors duration-200 flex items-center gap-2
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500/60"
               >
                 {HERO_CTA_COPY[heroCta]}
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -171,11 +177,16 @@ const Header = () => {
               ))}
             </nav>
             <div className="mt-3 pt-3 border-t border-gray-100 dark:border-navy-700">
+              {/* Quiet outline, matching the desktop header CTA */}
               <a
                 href="https://app.withmira.co"
                 onClick={handleCTAClick}
-                className="btn-premium w-full bg-lime-500 text-navy-800 px-6 py-3
-                           rounded-full font-semibold shadow-lg flex items-center justify-center gap-2"
+                className="w-full px-6 py-3 rounded-full font-semibold
+                           text-navy-800 dark:text-white
+                           border border-navy-800/20 dark:border-white/25
+                           hover:bg-navy-800/5 dark:hover:bg-white/10
+                           transition-colors duration-200 flex items-center justify-center gap-2
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500/60"
               >
                 {HERO_CTA_COPY[heroCta]}
                 <ArrowRight className="w-4 h-4" />
