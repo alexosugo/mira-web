@@ -19,6 +19,7 @@ interface FormData {
 const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const submissionActiveRef = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -34,15 +35,45 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
 
   useEffect(() => {
     if (isOpen) {
+      previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
       document.body.style.overflow = 'hidden';
       setTimeout(() => firstInputRef.current?.focus(), 100);
     } else {
       document.body.style.overflow = '';
+      previouslyFocusedRef.current?.focus();
+      previouslyFocusedRef.current = null;
     }
     return () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // Keep keyboard focus inside the dialog: aria-modal alone doesn't enforce it
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !modalRef.current) return;
+      const focusables = modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+
+      if (e.shiftKey && (active === first || !modalRef.current.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !modalRef.current.contains(active))) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleTab);
+    return () => document.removeEventListener('keydown', handleTab);
+  }, [isOpen, isSuccess]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -94,8 +125,6 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     if (!submissionActiveRef.current) return;
-
-    console.log('Elite Contact Form Submission:', formData);
 
     setIsSubmitting(false);
     setIsSuccess(true);
@@ -169,7 +198,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 </svg>
               </div>
               <h3 className="font-display text-xl font-bold text-white mb-2">
-                Thank you!
+                Thank you
               </h3>
               <p className="text-gray-400 mb-6">
                 We've received your message and will get back to you within 24 hours.
