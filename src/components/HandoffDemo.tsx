@@ -51,6 +51,8 @@ const HandoffDemo = () => {
           <p className="text-sm font-bold text-navy-800 dark:text-white truncate">@nia.thrifts</p>
           <p className="text-xs text-gray-600 dark:text-navy-300">Mira brings you in when it matters</p>
         </div>
+        {/* Temporal cue tying this to the hero's 2:14 AM thread */}
+        <p className="ml-auto shrink-0 text-xs text-gray-600 dark:text-navy-300">Later that night</p>
       </div>
 
       {/* Conversation */}
@@ -64,7 +66,7 @@ const HandoffDemo = () => {
                 style={{ animationDelay: itemDelay(index) }}
               >
                 <p
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl
                              bg-lime-500/15 border border-lime-500/30
                              text-navy-800 dark:text-lime-300 text-xs font-mono"
                 >
@@ -87,9 +89,12 @@ const HandoffDemo = () => {
               )}
               <p
                 className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${
-                  isShopSide
-                    ? 'bg-navy-800 dark:bg-navy-700 text-white rounded-2xl rounded-br-md'
-                    : 'bg-warm-100 dark:bg-navy-800 text-navy-800 dark:text-navy-100 rounded-2xl rounded-bl-md'
+                  item.kind === 'owner'
+                    ? // Lime marks the human handoff: same family as the chip above
+                      'bg-lime-500/15 border border-lime-500/40 text-navy-800 dark:text-navy-50 rounded-2xl rounded-br-md'
+                    : isShopSide
+                      ? 'bg-navy-800 dark:bg-navy-700 text-white rounded-2xl rounded-br-md'
+                      : 'bg-warm-100 dark:bg-navy-800 text-navy-800 dark:text-navy-100 rounded-2xl rounded-bl-md'
                 }`}
               >
                 {item.text}

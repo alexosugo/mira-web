@@ -38,7 +38,8 @@ const Features = () => {
     {
       icon: Shield,
       name: 'Safe and private',
-      description: 'Your customer conversations and shop data stay protected',
+      description:
+        'Conversations stay in your Instagram inbox. Mira never shares your customer list or your sales.',
     },
   ];
 
@@ -66,7 +67,7 @@ const Features = () => {
               className={`rounded-2xl border transition-colors duration-300 ${
                 feature.isLead
                   ? 'md:col-span-3 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 p-7 sm:p-8 text-left bg-navy-800 dark:bg-navy-800 border-navy-700'
-                  : 'p-7 text-left bg-white dark:bg-navy-900 border-gray-200 dark:border-navy-700 hover:border-navy-800/30 dark:hover:border-navy-500'
+                  : 'p-7 text-left bg-white dark:bg-navy-900 border-gray-200 dark:border-navy-700'
               }`}
             >
               <div
@@ -106,27 +107,12 @@ const Features = () => {
             <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white mb-6 tracking-tight [text-wrap:balance]">
               A helping hand that knows its limits
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               Mira keeps conversations moving by answering the questions customers ask every
               day: what's available, what something costs, how to order, or how to pay. When a
               customer needs you personally, Mira brings you in with everything already
               explained.
             </p>
-
-            <div className="space-y-4">
-              {[
-                'Handles common product questions and availability checks',
-                'Shares clear pricing and buying info',
-                'Passes complex messages to you with full context',
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-lime-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-navy-800 text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           <HandoffDemo />
