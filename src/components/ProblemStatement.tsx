@@ -33,15 +33,16 @@ const ProblemStatement = () => {
     <section
       id="problem-statement"
       ref={sectionRef}
-      className="py-24 lg:py-32 bg-gradient-to-b from-white to-warm-50 dark:from-navy-950 dark:to-navy-900"
+      className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-warm-50 to-white dark:from-navy-900 dark:to-navy-950"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-14 lg:mb-16">
+        {/* Section header — left-aligned, picking up the hero's left bias and
+            breaking the centered-header cadence that repeats down the page. */}
+        <div className="mb-14 lg:mb-16 max-w-2xl">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight leading-[1.1] [text-wrap:balance]">
             Can't keep up with DMs?
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             You're not alone. Most shops face the same problems every day.
           </p>
         </div>
@@ -53,10 +54,11 @@ const ProblemStatement = () => {
               key={problem.title}
               className="bg-white dark:bg-navy-800 p-8 rounded-2xl border border-gray-200 dark:border-navy-700"
             >
-              <div className="flex items-start gap-5">
-                <div className="w-12 h-12 rounded-xl bg-navy-800/[0.06] dark:bg-white/[0.08] flex items-center justify-center flex-shrink-0">
-                  <problem.icon className="h-6 w-6 text-navy-800 dark:text-navy-100" />
-                </div>
+              <div className="flex items-start gap-4">
+                <problem.icon
+                  className="h-7 w-7 text-navy-500 dark:text-navy-200 flex-shrink-0 mt-0.5"
+                  strokeWidth={1.75}
+                />
                 <div className="flex-1">
                   <h3 className="font-display text-2xl font-bold text-navy-800 dark:text-white mb-2">
                     {problem.title}

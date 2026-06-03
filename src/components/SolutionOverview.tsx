@@ -9,7 +9,7 @@ const SolutionOverview = () => {
     <section
       ref={sectionRef}
       id="solution-section"
-      className="py-24 lg:py-32 bg-warm-50 dark:bg-navy-900"
+      className="py-16 sm:py-24 lg:py-32 bg-warm-50 dark:bg-navy-900"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}

@@ -25,7 +25,7 @@ const HowItWorks = () => {
   return (
     <section
       id="how-it-works"
-      className="py-24 lg:py-32 bg-white dark:bg-navy-950 font-body"
+      className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-navy-950 font-body"
       ref={sectionRef}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -35,24 +35,32 @@ const HowItWorks = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
+        {/* An open, connected step-flow rather than a card grid: the three
+            steps are a real sequence, so a connector line makes the order
+            legible and gives the section a different shape from the carded
+            sections around it. */}
+        <ol className="relative grid gap-12 md:grid-cols-3 md:gap-8">
+          {/* Connector behind the number circles (desktop only). The three
+              columns are centered, so circle centers land at 1/6 and 5/6 of
+              the row; each circle's bg-matched ring masks the line beneath it. */}
+          <div
+            aria-hidden="true"
+            className="hidden md:block absolute top-8 left-[16.67%] right-[16.67%] h-px bg-gray-200 dark:bg-navy-700"
+          />
           {STEPS.map((step) => (
-            <div
-              key={step.number}
-              className="bg-white dark:bg-navy-900 border border-gray-200 dark:border-navy-700 rounded-2xl p-8 text-left"
-            >
-              <div className="w-12 h-12 bg-navy-800 dark:bg-navy-700 text-white font-bold rounded-full flex items-center justify-center text-xl mb-6 font-display">
+            <li key={step.number} className="relative text-center">
+              <div className="relative z-10 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-navy-800 dark:bg-navy-700 font-display text-2xl font-bold text-white ring-8 ring-white dark:ring-navy-950">
                 {step.number}
               </div>
               <h3 className="font-display text-2xl font-bold text-navy-800 dark:text-white mb-3">
                 {step.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base max-w-xs mx-auto">
                 {step.description}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
 
         {/* Reassurance at the scariest step: handing over your Instagram.
             Answers "what can Mira touch?" — the access question the connect

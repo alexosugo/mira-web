@@ -46,7 +46,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="py-24 lg:py-32 bg-white dark:bg-navy-950 font-body"
+      className="py-16 sm:py-24 lg:py-32 bg-warm-50 dark:bg-navy-900 font-body"
       ref={trackingSectionRef}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -67,7 +67,7 @@ const Features = () => {
               className={`rounded-2xl border transition-colors duration-300 ${
                 feature.isLead
                   ? 'md:col-span-3 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 p-7 sm:p-8 text-left bg-navy-800 dark:bg-navy-800 border-navy-700'
-                  : 'p-7 text-left bg-white dark:bg-navy-900 border-gray-200 dark:border-navy-700'
+                  : 'p-7 text-left bg-white dark:bg-navy-800 border-gray-200 dark:border-navy-700'
               }`}
             >
               <div

@@ -8,6 +8,7 @@ import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
+import StickyCTA from './components/StickyCTA';
 import { trackPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useTracking';
 import { ThemeProvider } from './context/ThemeContext';
@@ -34,6 +35,7 @@ function App() {
         <Benefits />
         <Pricing />
         <Footer />
+        <StickyCTA />
       </div>
     </ThemeProvider>
   );

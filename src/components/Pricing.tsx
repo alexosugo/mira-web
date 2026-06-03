@@ -85,7 +85,7 @@ const Pricing = () => {
     <section
       id="pricing"
       ref={sectionRef}
-      className="py-24 lg:py-32 bg-gradient-to-b from-warm-50 to-white dark:from-navy-900 dark:to-navy-950"
+      className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-warm-50 to-white dark:from-navy-900 dark:to-navy-950"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
@@ -105,8 +105,8 @@ const Pricing = () => {
               key={plan.key}
               className={`relative flex flex-col rounded-3xl p-8 ${
                 plan.isHighlighted
-                  ? 'bg-navy-800 border-2 border-lime-500'
-                  : 'bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-700'
+                  ? 'bg-navy-800 border-2 border-lime-500 shadow-2xl lg:scale-[1.04] z-10'
+                  : 'bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-700 shadow-sm'
               }`}
             >
               {plan.isHighlighted && (
@@ -122,38 +122,53 @@ const Pricing = () => {
                 {plan.name}
               </h3>
               <p
-                className={`text-sm mb-6 leading-relaxed ${
+                className={`text-sm mb-6 leading-relaxed min-h-[2.75rem] ${
                   plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-300'
                 }`}
               >
                 {plan.description}
               </p>
               <div className="mb-6">
-                {/* "from" stacks above the price so it never crowds the mono number into a wrap */}
-                {plan.pricePrefix && (
-                  <span
-                    className={`block text-sm font-medium -mb-0.5 ${
-                      plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-400'
-                    }`}
-                  >
-                    {plan.pricePrefix}
-                  </span>
-                )}
-                <div className="flex items-baseline">
-                  {/* Numeric prices render in mono (the data font); "Custom" is a word, stays display */}
-                  <span
-                    className={`text-4xl lg:text-5xl whitespace-nowrap ${
-                      plan.price.startsWith('KES') ? 'stat-number' : 'font-display font-bold'
-                    } ${plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'}`}
-                  >
-                    {plan.price}
-                  </span>
-                  {plan.priceNote && (
-                    <span className={plan.isHighlighted ? 'text-navy-100 ml-1' : 'text-gray-600 dark:text-gray-400 ml-1'}>
-                      {plan.priceNote}
-                    </span>
-                  )}
-                </div>
+                {/* Prefix line is always reserved (invisible when absent) so the
+                    price baseline sits at the same height across all three tiers. */}
+                <span
+                  className={`block text-sm font-medium -mb-0.5 ${
+                    plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-400'
+                  } ${plan.pricePrefix ? '' : 'invisible'}`}
+                >
+                  {plan.pricePrefix || ' '}
+                </span>
+                {(() => {
+                  // Split "KES" from the number: the mono space glyph at 48px
+                  // otherwise opens a huge gap that reads as a render glitch.
+                  const isKes = plan.price.startsWith('KES');
+                  const amount = isKes ? plan.price.slice(3).trim() : plan.price;
+                  return (
+                    <div className="flex items-baseline gap-1.5">
+                      {isKes && (
+                        <span
+                          className={`text-lg font-semibold ${
+                            plan.isHighlighted ? 'text-navy-100' : 'text-gray-500 dark:text-gray-400'
+                          }`}
+                        >
+                          KES
+                        </span>
+                      )}
+                      <span
+                        className={`text-4xl lg:text-5xl whitespace-nowrap ${
+                          isKes ? 'stat-number' : 'font-display font-bold'
+                        } ${plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'}`}
+                      >
+                        {amount}
+                      </span>
+                      {plan.priceNote && (
+                        <span className={plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-400'}>
+                          {plan.priceNote}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
 
               {/* Features */}

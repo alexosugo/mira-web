@@ -58,7 +58,7 @@ const Header = () => {
             {/* Logo */}
             <button
               onClick={() => handleNavClick('hero')}
-              className="group flex items-center gap-2"
+              className="group flex items-center gap-2 min-h-[44px] px-1.5 -ml-1.5"
             >
               <span
                 className="text-xl font-bold text-navy-800 dark:text-white font-display tracking-tight
@@ -93,7 +93,7 @@ const Header = () => {
                   trackEvent('theme_toggle', { theme: newTheme });
                   toggleTheme();
                 }}
-                className="p-2 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700
+                className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700
                            transition-all duration-300"
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               >
@@ -107,7 +107,7 @@ const Header = () => {
               <a
                 href="https://app.withmira.co"
                 onClick={handleCTAClick}
-                className="group px-5 py-2 rounded-full font-semibold text-sm
+                className="group px-5 py-2.5 min-h-[44px] rounded-full font-semibold text-sm
                            text-navy-800 dark:text-white
                            border border-navy-800/20 dark:border-white/25
                            hover:bg-navy-800/5 dark:hover:bg-white/10
@@ -128,7 +128,7 @@ const Header = () => {
                   trackEvent('theme_toggle', { theme: newTheme, location: 'header_mobile' });
                   toggleTheme();
                 }}
-                className="p-2 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700
+                className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700
                            transition-all duration-300"
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               >
@@ -139,7 +139,7 @@ const Header = () => {
                 )}
               </button>
               <button
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-navy-800 transition-colors"
+                className="inline-flex items-center justify-center w-11 h-11 rounded-full hover:bg-gray-100 dark:hover:bg-navy-800 transition-colors"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               >
