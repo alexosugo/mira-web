@@ -1,14 +1,27 @@
-// Analytics tracking utilities for PostHog
-import posthog from 'posthog-js';
+// Analytics tracking utilities. Custom events route through Statsig (the one
+// remaining analytics tool); PostHog and GA were removed to cut bundle weight.
+import { getStatsigClient } from '../lib/statsig';
 
-// PostHog event tracking
-export const trackPostHogEvent = (
-  eventName: string,
-  properties: Record<string, unknown>
-) => {
-  if (typeof window !== 'undefined' && posthog?.capture) {
-    console.log('PostHog Event:', eventName, properties);
-    posthog.capture(eventName, properties);
+/** Coerce arbitrary event properties to the string-only metadata Statsig accepts. */
+function toMetadata(properties: Record<string, unknown>): Record<string, string> {
+  const meta: Record<string, string> = {};
+  for (const [key, value] of Object.entries(properties)) {
+    if (value === null || value === undefined) continue;
+    meta[key] = typeof value === 'string' ? value : JSON.stringify(value);
+  }
+  return meta;
+}
+
+/**
+ * Log a custom analytics event. Safe to call before Statsig finishes
+ * initializing (the client buffers events) and never throws into the UI.
+ */
+export const trackEvent = (eventName: string, properties: Record<string, unknown> = {}) => {
+  if (typeof window === 'undefined') return;
+  try {
+    getStatsigClient().logEvent({ eventName, metadata: toMetadata(properties) });
+  } catch (err) {
+    console.error('Event tracking failed:', err);
   }
 };
 
@@ -19,8 +32,7 @@ export const trackCTAClick = (
   pageSection: string,
   additionalData?: Record<string, unknown>
 ) => {
-  // PostHog tracking
-  trackPostHogEvent('cta_click', {
+  trackEvent('cta_click', {
     button_id: buttonId,
     button_text: buttonText,
     page_section: pageSection,
@@ -35,8 +47,7 @@ export const trackFormSubmission = (
   formData: Record<string, unknown>,
   submissionStatus: 'success' | 'error' | 'attempt'
 ) => {
-  // PostHog tracking
-  trackPostHogEvent('form_submit', {
+  trackEvent('form_submit', {
     form_id: formId,
     form_name: formName,
     submission_status: submissionStatus,
@@ -51,8 +62,7 @@ export const trackFormFieldInteraction = (
   interactionType: 'focus' | 'blur' | 'change',
   value?: string
 ) => {
-  // PostHog tracking
-  trackPostHogEvent('form_interaction', {
+  trackEvent('form_interaction', {
     field_id: fieldId,
     field_name: fieldName,
     interaction_type: interactionType,
@@ -62,8 +72,7 @@ export const trackFormFieldInteraction = (
 
 // Page view tracking
 export const trackPageView = (pageName: string, pageSection?: string) => {
-  // PostHog tracking
-  trackPostHogEvent('page_view', {
+  trackEvent('page_view', {
     page_name: pageName,
     page_section: pageSection || 'main'
   });
@@ -71,42 +80,30 @@ export const trackPageView = (pageName: string, pageSection?: string) => {
 
 // Section scroll tracking
 export const trackSectionView = (sectionId: string, sectionName: string) => {
-  // PostHog tracking
-  trackPostHogEvent('section_view', {
+  trackEvent('section_view', {
     section_id: sectionId,
     section_name: sectionName
   });
 };
 
-// Initialize tracking
+// Initialize tracking: wire up global error and page-load performance events.
 export const initializeTracking = () => {
-  // Set up global error tracking
   window.addEventListener('error', (error) => {
-    const props = {
+    trackEvent('javascript_error', {
       error_source: error.filename,
       error_line: error.lineno,
       error_column: error.colno,
       message: error.message
-    };
-
-    // PostHog error tracking
-    trackPostHogEvent('javascript_error', props);
+    });
   });
 
-  // Track page load performance
   window.addEventListener('load', () => {
     const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
     if (navigation) {
-      const loadTime = Math.round(navigation.loadEventEnd - navigation.fetchStart);
-      const domReady = Math.round(navigation.domContentLoadedEventEnd - navigation.fetchStart);
-
-      // PostHog performance tracking
-      trackPostHogEvent('page_load_time', {
-        load_time: loadTime,
-        dom_ready: domReady
+      trackEvent('page_load_time', {
+        load_time: Math.round(navigation.loadEventEnd - navigation.fetchStart),
+        dom_ready: Math.round(navigation.domContentLoadedEventEnd - navigation.fetchStart)
       });
     }
   });
-
-  console.log('Analytics tracking initialized');
 };

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { trackSectionView, trackCTAClick, trackFormSubmission, trackFormFieldInteraction, trackPostHogEvent } from '../utils/analytics';
+import { trackSectionView, trackCTAClick, trackFormSubmission, trackFormFieldInteraction, trackEvent } from '../utils/analytics';
 
 // Hook for tracking section visibility
 export const useSectionTracking = (sectionId: string, sectionName: string) => {
@@ -70,7 +70,7 @@ export const useScrollTracking = () => {
           if (scrollPercent >= interval && !trackingIntervalsRef.current.has(interval)) {
             trackingIntervalsRef.current.add(interval);
             
-            trackPostHogEvent('scroll_depth', {
+            trackEvent('scroll_depth', {
               event_category: 'Engagement',
               event_label: `${interval}%`,
               value: interval

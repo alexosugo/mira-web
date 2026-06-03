@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Moon, Sun } from 'lucide-react';
 import { useCTATracking } from '../hooks/useTracking';
-import { trackPostHogEvent } from '../utils/analytics';
+import { trackEvent } from '../utils/analytics';
 import { useTheme } from '../context/ThemeContext';
 import { useHeroCtaExperiment, HERO_CTA_COPY } from '../hooks/useExperiments';
 import { scrollToSection } from '../utils/scrollToSection';
@@ -90,7 +90,7 @@ const Header = () => {
               <button
                 onClick={() => {
                   const newTheme = isDark ? 'light' : 'dark';
-                  trackPostHogEvent('theme_toggle', { theme: newTheme });
+                  trackEvent('theme_toggle', { theme: newTheme });
                   toggleTheme();
                 }}
                 className="p-2 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700
@@ -125,7 +125,7 @@ const Header = () => {
               <button
                 onClick={() => {
                   const newTheme = isDark ? 'light' : 'dark';
-                  trackPostHogEvent('theme_toggle', { theme: newTheme, location: 'header_mobile' });
+                  trackEvent('theme_toggle', { theme: newTheme, location: 'header_mobile' });
                   toggleTheme();
                 }}
                 className="p-2 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700

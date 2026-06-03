@@ -4,7 +4,6 @@ import { StatsigProvider } from '@statsig/react-bindings';
 import App from './App.tsx';
 import './index.css';
 import { initializeTracking } from './utils/analytics';
-import { PostHogProvider } from 'posthog-js/react';
 import { getStatsigClient, initStatsig } from './lib/statsig';
 
 initializeTracking();
@@ -14,23 +13,16 @@ if (!rootElement) {
   throw new Error('Root element not found');
 }
 
-initStatsig().catch((err) => {
-  console.error('Statsig initialization failed, falling back to control variants:', err);
-}).finally(() => {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <StatsigProvider client={getStatsigClient()}>
-        <PostHogProvider
-          apiKey={import.meta.env.VITE_PUBLIC_POSTHOG_KEY}
-          options={{
-            api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
-            capture_exceptions: true,
-            debug: import.meta.env.MODE === 'development',
-          }}
-        >
-          <App />
-        </PostHogProvider>
-      </StatsigProvider>
-    </StrictMode>
-  );
-});
+// Initialize Statsig without blocking the first paint. Gating render on the
+// async network round-trip left the hero blank until the experiment SDK
+// responded (a real LCP hit on slow mobile data). initStatsig() attaches the
+// data adapter synchronously from cache, then refreshes in the background.
+initStatsig();
+
+createRoot(rootElement).render(
+  <StrictMode>
+    <StatsigProvider client={getStatsigClient()}>
+      <App />
+    </StatsigProvider>
+  </StrictMode>
+);

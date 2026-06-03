@@ -35,7 +35,19 @@ export function getStatsigClient(): StatsigClient {
   return client;
 }
 
-export async function initStatsig(): Promise<void> {
+/**
+ * Initialize Statsig without blocking the first paint.
+ *
+ * `initializeSync()` attaches the data adapter immediately from cached/local
+ * values (no network), so experiment reads during the first render return
+ * cached or control values instead of erroring with "adapter not attached".
+ * The network refresh then runs in the background and re-renders in place when
+ * fresh values land.
+ */
+export function initStatsig(): void {
   const c = getStatsigClient();
-  return c.initializeAsync();
+  c.initializeSync();
+  c.initializeAsync().catch((err) => {
+    console.error('Statsig refresh failed, using cached/control variants:', err);
+  });
 }

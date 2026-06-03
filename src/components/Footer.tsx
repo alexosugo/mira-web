@@ -1,6 +1,6 @@
 import { Mail, MapPin } from 'lucide-react';
 import { useSectionTracking, useCTATracking } from '../hooks/useTracking';
-import { trackPostHogEvent } from '../utils/analytics';
+import { trackEvent } from '../utils/analytics';
 import { scrollToSection } from '../utils/scrollToSection';
 
 const SECTION_MAP: Record<string, string> = {
@@ -15,7 +15,7 @@ const Footer = () => {
   const { trackCTA } = useCTATracking();
 
   const handleContactClick = (type: string) => {
-    trackPostHogEvent('contact_link_click', {
+    trackEvent('contact_link_click', {
       contact_type: type,
       location: 'footer'
     });

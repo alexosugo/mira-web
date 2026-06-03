@@ -1,5 +1,5 @@
 import { useExperiment } from '@statsig/react-bindings';
-import { trackPostHogEvent } from '../utils/analytics';
+import { trackEvent } from '../utils/analytics';
 import { useEffect } from 'react';
 
 export type HeroCtaVariant = 'control' | 'try_free' | 'connect_ig' | 'sell_dms';
@@ -24,7 +24,7 @@ const trackedExperiments = new Set<string>();
 function trackExposureOnce(experimentName: string, variant: string) {
   if (trackedExperiments.has(experimentName)) return;
   trackedExperiments.add(experimentName);
-  trackPostHogEvent('experiment_exposure', { experiment: experimentName, variant });
+  trackEvent('experiment_exposure', { experiment: experimentName, variant });
 }
 
 /** Returns the hero CTA variant. Only triggers Statsig exposure for hero_cta. */
