@@ -31,7 +31,7 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-14 lg:mb-16">
           <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white tracking-tight [text-wrap:balance]">
-            How Mira Works
+            How Mira works
           </h2>
         </div>
 
@@ -53,6 +53,13 @@ const HowItWorks = () => {
             </div>
           ))}
         </div>
+
+        {/* Reassurance at the scariest step: handing over your Instagram.
+            Answers "what can Mira touch?" — the access question the connect
+            step raises. Features separately covers "we don't share your data". */}
+        <p className="mt-10 lg:mt-12 text-center text-sm text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+          Mira reads only your shop's DMs, nothing else on your account.
+        </p>
       </div>
     </section>
   );

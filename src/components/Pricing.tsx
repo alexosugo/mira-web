@@ -6,6 +6,8 @@ import EliteContactModal from './EliteContactModal';
 interface Plan {
   key: string;
   name: string;
+  /** Small qualifier rendered before the price, e.g. "from". */
+  pricePrefix?: string;
   price: string;
   priceNote?: string;
   description: string;
@@ -35,6 +37,7 @@ const PLANS: Plan[] = [
   {
     key: 'pro',
     name: 'Pro',
+    pricePrefix: 'from',
     price: 'KES 3,500',
     priceNote: '/mo',
     description: 'For shops with steady DM traffic. Every message answered, day and night.',
@@ -46,7 +49,7 @@ const PLANS: Plan[] = [
       'Email support from the Mira team',
     ],
     cta: 'Become pro',
-    footnote: '*price scales with how many customers you serve',
+    footnote: 'Scales with your shop as you grow.',
     isHighlighted: true,
   },
   {
@@ -62,7 +65,7 @@ const PLANS: Plan[] = [
       'Custom integrations',
     ],
     cta: "Let's chat",
-    footnote: '*priced to fit your shop',
+    footnote: 'Priced to fit your shop.',
   },
 ];
 
@@ -86,7 +89,7 @@ const Pricing = () => {
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-14 lg:mb-16">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
             Choose a Mira plan that works for you
           </h2>
@@ -125,20 +128,32 @@ const Pricing = () => {
               >
                 {plan.description}
               </p>
-              <div className="mb-6 flex items-baseline">
-                {/* Numeric prices render in mono (the data font); "Custom" is a word, stays display */}
-                <span
-                  className={`text-4xl lg:text-5xl ${
-                    plan.price.startsWith('KES') ? 'stat-number' : 'font-display font-bold'
-                  } ${plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'}`}
-                >
-                  {plan.price}
-                </span>
-                {plan.priceNote && (
-                  <span className={plan.isHighlighted ? 'text-navy-100 ml-1' : 'text-gray-600 dark:text-gray-400 ml-1'}>
-                    {plan.priceNote}
+              <div className="mb-6">
+                {/* "from" stacks above the price so it never crowds the mono number into a wrap */}
+                {plan.pricePrefix && (
+                  <span
+                    className={`block text-sm font-medium -mb-0.5 ${
+                      plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-400'
+                    }`}
+                  >
+                    {plan.pricePrefix}
                   </span>
                 )}
+                <div className="flex items-baseline">
+                  {/* Numeric prices render in mono (the data font); "Custom" is a word, stays display */}
+                  <span
+                    className={`text-4xl lg:text-5xl whitespace-nowrap ${
+                      plan.price.startsWith('KES') ? 'stat-number' : 'font-display font-bold'
+                    } ${plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'}`}
+                  >
+                    {plan.price}
+                  </span>
+                  {plan.priceNote && (
+                    <span className={plan.isHighlighted ? 'text-navy-100 ml-1' : 'text-gray-600 dark:text-gray-400 ml-1'}>
+                      {plan.priceNote}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Features */}

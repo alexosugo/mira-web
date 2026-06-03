@@ -13,7 +13,7 @@ const SolutionOverview = () => {
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-12 lg:mb-14">
+        <div className="text-center mb-14 lg:mb-16">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
             Meet Mira: built for shop owners who do everything themselves.
           </h2>

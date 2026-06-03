@@ -1,9 +1,9 @@
-import { Clock, MessageSquare, Users, RefreshCw } from 'lucide-react';
+import { Clock, MessageSquare, Hourglass, RefreshCw } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 
 const PROBLEMS = [
   {
-    icon: Users,
+    icon: Hourglass,
     title: 'Limited Time',
     description: "You can't be online all day, so customers end up waiting and sales slip away.",
   },
