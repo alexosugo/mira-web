@@ -90,7 +90,7 @@ const Pricing = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
         <div className="text-center mb-14 lg:mb-16">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight [text-wrap:balance]">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight leading-[1.1] [text-wrap:balance]">
             Choose a Mira plan that works for you
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
