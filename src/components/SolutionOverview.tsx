@@ -17,7 +17,7 @@ const SolutionOverview = () => {
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight leading-[1.1] [text-wrap:balance]">
             Meet Mira: built for shop owners who do everything themselves.
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
             Customers get what they need right away. You get your time back.
           </p>
         </div>
@@ -25,7 +25,7 @@ const SolutionOverview = () => {
         {/* Solution statement: same solid navy surface as the Features lead card */}
         <div className="max-w-4xl mx-auto">
           <div className="bg-navy-800 p-10 lg:p-14 rounded-3xl border border-navy-700">
-            <p className="text-lg lg:text-xl text-navy-100 leading-relaxed text-center max-w-2xl mx-auto">
+            <p className="text-base lg:text-lg text-navy-100 leading-relaxed text-center max-w-2xl mx-auto">
               {SOLUTION_COPY[solutionCopy]}
             </p>
           </div>

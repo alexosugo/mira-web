@@ -36,7 +36,7 @@ const Hero = () => {
           <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
             {/* Headline */}
             <div className="animate-fade-in-up">
-              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold text-navy-800 dark:text-white tracking-tight leading-[1.1] [text-wrap:balance]">
+              <h1 className="font-display text-[clamp(2rem,1.1rem+3.8vw,3.75rem)] font-bold text-navy-800 dark:text-white tracking-tight leading-[1.1] [text-wrap:balance]">
                 Mira answers your DMs and{' '}
                 <span className="relative inline-block">
                   sells
@@ -52,7 +52,7 @@ const Hero = () => {
                 experiment) so the qualifier survives the cut eyebrow badge without
                 touching live variant payloads. */}
             <p
-              className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body animate-fade-in-up"
+              className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body animate-fade-in-up"
               style={{ animationDelay: '100ms' }}
             >
               <span className="font-semibold text-navy-700 dark:text-navy-100">

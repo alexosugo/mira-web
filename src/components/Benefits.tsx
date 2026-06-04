@@ -39,7 +39,7 @@ const Benefits = () => {
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight leading-[1.1] [text-wrap:balance]">
             The results you'll see
           </h2>
-          <p className="text-lg lg:text-xl text-navy-100 leading-relaxed">
+          <p className="text-base lg:text-lg text-navy-100 leading-relaxed">
             Here's what changes once Mira starts handling your customer messages:
           </p>
         </div>

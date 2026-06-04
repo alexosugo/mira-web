@@ -54,7 +54,7 @@ const Features = () => {
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight leading-[1.1] [text-wrap:balance]">
             How Mira helps you run your shop
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             What Mira handles, and when it brings you in.
           </p>
         </div>
@@ -107,7 +107,7 @@ const Features = () => {
             <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy-800 dark:text-white mb-6 tracking-tight [text-wrap:balance]">
               A helping hand that knows its limits
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
               Mira keeps conversations moving by answering the questions customers ask every
               day: what's available, what something costs, how to order, or how to pay. When a
               customer needs you personally, Mira brings you in with everything already

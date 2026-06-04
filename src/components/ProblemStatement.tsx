@@ -42,7 +42,7 @@ const ProblemStatement = () => {
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight leading-[1.1] [text-wrap:balance]">
             Can't keep up with DMs?
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             You're not alone. Most shops face the same problems every day.
           </p>
         </div>
