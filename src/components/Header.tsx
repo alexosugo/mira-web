@@ -77,8 +77,8 @@ const Header = () => {
                     trackCTA(`header_nav_${item.id}`, item.label, 'header');
                     handleNavClick(item.id);
                   }}
-                  className="nav-link-premium px-3 py-1.5 text-sm font-medium rounded-full
-                             hover:bg-gray-100/80 dark:hover:bg-navy-800/80 dark:text-gray-300 transition-all duration-200"
+                  className="px-3 py-1.5 text-sm font-medium rounded-full text-gray-500 dark:text-gray-400
+                             hover:bg-lime-500/10 dark:hover:bg-lime-500/15 hover:text-navy-800 dark:hover:text-lime-400 transition-all duration-200"
                 >
                   {item.label}
                 </button>

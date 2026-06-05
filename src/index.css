@@ -988,36 +988,6 @@ html {
   background: #C0DC2D;
 }
 
-/* ============================================
-   NAV LINK UNDERLINE ANIMATION
-   ============================================ */
-.nav-link-premium {
-  position: relative;
-  color: #64748b;
-  transition: color 0.3s ease;
-}
-
-.nav-link-premium::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #C0DC2D;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nav-link-premium:hover {
-  color: #13243E;
-}
-
-.nav-link-premium:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
 
 /* ============================================
    ICON HOP ANIMATION
