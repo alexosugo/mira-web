@@ -46,22 +46,22 @@ const HeroChatDemo = () => {
   return (
     <div
       aria-label="Example Instagram DM conversation: Mira answers a customer's stock question, adds a jacket to their cart, and confirms the order at 2:14 AM"
-      className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-line bg-white"
+      className="w-full max-w-sm overflow-hidden rounded-3xl bg-white shadow-lifted"
     >
       {/* Thread header */}
       <div className="flex items-center gap-3 border-b border-line px-5 py-4">
         <div className="relative">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-ink font-display text-sm font-medium text-paper">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-dusk font-display text-sm font-semibold text-white">
             NT
           </div>
           <span
-            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-teal"
+            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-dusk-bright"
             aria-hidden="true"
           />
         </div>
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-ink">@nia.thrifts</p>
-          <p className="font-mono text-xs text-teal">Mira replies for you</p>
+          <p className="truncate text-sm font-semibold text-slate">@nia.thrifts</p>
+          <p className="font-mono text-xs text-dusk">Mira replies for you</p>
         </div>
       </div>
 
@@ -76,8 +76,8 @@ const HeroChatDemo = () => {
             <p
               className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${
                 message.from === 'mira'
-                  ? 'rounded-2xl rounded-br-md bg-teal text-paper'
-                  : 'rounded-2xl rounded-bl-md bg-paper text-ink'
+                  ? 'rounded-2xl rounded-br-md bg-dusk text-white'
+                  : 'rounded-2xl rounded-bl-md bg-mist text-slate'
               }`}
             >
               {message.text}
@@ -85,12 +85,12 @@ const HeroChatDemo = () => {
           </div>
         ))}
 
-        {/* Cart confirmation: the page's one clay signal above the fold */}
+        {/* Cart confirmation: the page's one dawn signal above the fold */}
         <div
           className="flex justify-end animate-fade-in-up"
           style={{ animationDelay: messageDelay(MESSAGES.length) }}
         >
-          <p className="inline-flex items-center gap-2 rounded-2xl rounded-br-md border border-clay/30 bg-clay/5 px-4 py-2.5 font-mono text-xs text-clay-deep sm:text-sm">
+          <p className="inline-flex items-center gap-2 rounded-2xl rounded-br-md bg-dawn-tint px-4 py-2.5 font-mono text-xs text-dawn sm:text-sm">
             <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
             1 × Denim jacket (M) · KES 2,400
           </p>
@@ -98,7 +98,7 @@ const HeroChatDemo = () => {
 
         {/* Outcome */}
         <p
-          className="pt-2 text-center font-mono text-xs text-ink-faint animate-fade-in-up"
+          className="pt-2 text-center font-mono text-xs text-slate-faint animate-fade-in-up"
           style={{ animationDelay: messageDelay(MESSAGES.length + 1) }}
         >
           Order confirmed · 2:14 AM

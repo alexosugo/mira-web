@@ -4,44 +4,57 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm editorial palette: paper ground, ink text, hairline rules,
-        // one clay accent reserved for the moment a sale closes.
-        paper: {
-          DEFAULT: '#FAF7F1',
-          raised: '#F3EEE4',
+        // "Morning light" palette: a cool, airy ground with one deep
+        // midnight passage. Dusk indigo is the product acting; dawn amber
+        // is a sale closing.
+        mist: {
+          DEFAULT: '#F3F6FB',
+          raised: '#E9EEF7',
         },
-        ink: {
-          DEFAULT: '#211C15',
-          light: '#5E5749',
-          // Quietest text step that still clears 4.5:1 on paper.
-          faint: '#6E6657',
+        slate: {
+          DEFAULT: '#1C2433',
+          light: '#4D5A70',
+          // Quietest text step that still clears 4.5:1 on mist.
+          faint: '#5C6A80',
         },
-        line: '#E6DFD1',
-        // Teal means Mira is speaking or working: her chat bubbles, her
-        // presence dot, her actions in the ledger. Never a button color.
-        teal: {
-          DEFAULT: '#2F6B63',
-          deep: '#24544E',
-          // Brighter step for legibility on the dark night-shift section.
-          bright: '#7FB5AB',
+        line: '#DFE6F1',
+        // Dusk means Mira (and the product) is acting: her chat bubbles,
+        // her ledger lines, every button and interactive control.
+        dusk: {
+          DEFAULT: '#4757D6',
+          deep: '#3848BE',
+          // Legible step for text/icons on the midnight surfaces.
+          bright: '#9DACF8',
+          // Wash for chips, icons stages, and gradient starts.
+          tint: '#E8ECFB',
         },
-        clay: {
-          DEFAULT: '#B23E1D',
-          deep: '#933312',
-          // Brighter step for legibility on the dark night-shift section.
-          bright: '#D96B45',
+        // Dawn means money: the cart confirmation, the Paid ledger line,
+        // the "Most popular" tag. Never a button color.
+        dawn: {
+          DEFAULT: '#A35F0C',
+          // Legible step on the midnight surfaces.
+          bright: '#F0B254',
+          // Wash for the cart-confirmed chip and gradient ends.
+          tint: '#FBF1E0',
         },
-        // On-dark equivalents for the night-shift section and footer.
-        night: {
-          DEFAULT: '#1B1712',
-          raised: '#262019',
-          line: '#352D23',
+        // The one dark passage: night-shift ledger and footer.
+        midnight: {
+          DEFAULT: '#10172B',
+          raised: '#1A2240',
+          line: '#28335C',
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        body: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        display: ['"Bricolage Grotesque"', 'Avenir', 'sans-serif'],
+        body: ['Figtree', 'system-ui', 'sans-serif'],
+        mono: ['"Spline Sans Mono"', 'ui-monospace', 'monospace'],
+      },
+      boxShadow: {
+        // Two-layer soft elevation: a hairline lift plus an ambient pool.
+        soft: '0 1px 2px rgba(28, 36, 51, 0.05), 0 10px 30px -12px rgba(28, 36, 51, 0.14)',
+        // The raised step for the hero demo and the highlighted plan.
+        lifted:
+          '0 2px 4px rgba(28, 36, 51, 0.06), 0 24px 56px -20px rgba(28, 36, 51, 0.22)',
       },
       transitionTimingFunction: {
         out: 'cubic-bezier(0.16, 1, 0.3, 1)',

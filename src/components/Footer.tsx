@@ -22,12 +22,12 @@ const Footer = () => {
   };
 
   return (
-    <footer ref={sectionRef} className="bg-night text-paper">
+    <footer ref={sectionRef} className="bg-midnight-sky mt-8 rounded-t-3xl text-white">
       {/* Closing CTA */}
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:px-8">
-        <p className="kicker text-paper/60">One more thing</p>
-        <h2 className="mt-6 max-w-2xl font-display text-[clamp(2rem,1.3rem+3.4vw,3.5rem)] font-medium leading-[1.1] tracking-tight [text-wrap:balance]">
-          Your DMs at 2 AM? <em className="font-normal italic">Mira's got it.</em>
+      <div className="mx-auto max-w-6xl px-6 py-24 text-center sm:py-32 lg:px-8">
+        <p className="kicker text-dusk-bright">One more thing</p>
+        <h2 className="mx-auto mt-6 max-w-2xl font-display text-[clamp(2rem,1.3rem+3.4vw,3.5rem)] font-semibold leading-[1.08] tracking-tight [text-wrap:balance]">
+          Your DMs at 2 AM? <span className="text-dawn-bright">Mira's got it.</span>
         </h2>
         <a
           href={APP_URL}
@@ -39,18 +39,18 @@ const Footer = () => {
             });
             window.location.href = APP_URL;
           }}
-          className="mt-10 inline-flex min-h-[48px] items-center rounded-full bg-paper px-7 text-base font-medium text-ink transition-colors duration-200 hover:bg-paper-raised"
+          className="mt-10 inline-flex min-h-[52px] items-center rounded-full bg-white px-8 text-base font-semibold text-slate transition-colors duration-200 hover:bg-mist"
         >
           {HERO_CTA_COPY[heroCta]}
         </a>
       </div>
 
       {/* Bottom matter */}
-      <div className="border-t border-night-line">
+      <div className="border-t border-midnight-line">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:flex-row sm:items-baseline sm:justify-between lg:px-8">
           <div>
-            <p className="font-display text-xl font-semibold">Mira</p>
-            <p className="mt-2 font-mono text-xs text-paper/55">
+            <p className="font-display text-xl font-bold">Mira</p>
+            <p className="mt-2 font-mono text-xs text-white/55">
               Made in Nairobi, Kenya · © {currentYear}
             </p>
           </div>
@@ -65,7 +65,7 @@ const Footer = () => {
                   trackCTA(`footer_link_${link.id}`, link.label, 'footer');
                   scrollToSection(link.id);
                 }}
-                className="text-sm text-paper/60 transition-colors duration-200 hover:text-paper"
+                className="text-sm text-white/60 transition-colors duration-200 hover:text-white"
               >
                 {link.label}
               </a>
@@ -75,7 +75,7 @@ const Footer = () => {
           <a
             href="mailto:hello@withmira.co"
             onClick={() => handleContactClick('email')}
-            className="font-mono text-sm text-paper/60 transition-colors duration-200 hover:text-paper"
+            className="font-mono text-sm text-white/60 transition-colors duration-200 hover:text-white"
           >
             hello@withmira.co
           </a>

@@ -12,9 +12,9 @@ interface HandleItem {
 }
 
 /**
- * The everyday DM work Mira takes over, as an editorial index rather than a
- * feature-card grid. Consolidates the old problem/solution/features/benefits
- * sections into one list a busy seller can scan in seconds.
+ * The everyday DM work Mira takes over, as a bento of soft cards a busy
+ * seller can scan in seconds. The first card (the catalog expertise that
+ * everything else builds on) gets the wide span.
  */
 const Handles = () => {
   const sectionRef = useSectionTracking('handles', 'What Mira Handles Section');
@@ -48,39 +48,36 @@ const Handles = () => {
   ];
 
   return (
-    <section id="handles" ref={sectionRef} className="py-24 sm:py-32 lg:py-40">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
-            <div className="lg:sticky lg:top-28">
-              <p className="kicker text-ink-light">What Mira handles</p>
-              <h2 className="mt-6 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
-                The questions you answer all day, answered for you
-              </h2>
-              <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-light">
-                {SOLUTION_COPY[solutionVariant]}
-              </p>
-            </div>
-          </div>
-
-          <div className="lg:col-span-6 lg:col-start-7">
-            <ol className="divide-y divide-line border-y border-line">
-              {items.map((item, index) => (
-                <li key={item.title} className="flex items-baseline gap-6 py-7">
-                  <span className="w-8 shrink-0 font-mono text-sm text-ink-faint">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-base leading-relaxed text-ink-light">
-                      {item.description}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+    <section id="handles" ref={sectionRef} className="py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="kicker text-dusk">What Mira handles</p>
+          <h2 className="mt-5 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-slate [text-wrap:balance]">
+            The questions you answer all day, answered for you
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-slate-light">
+            {SOLUTION_COPY[solutionVariant]}
+          </p>
         </div>
+
+        <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-6">
+          {items.map((item, index) => (
+            <li
+              key={item.title}
+              className={`rounded-3xl bg-white p-7 shadow-soft sm:p-8 ${
+                index < 2 ? 'lg:col-span-3' : 'lg:col-span-2'
+              }`}
+            >
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-dusk-tint font-mono text-sm text-dusk-deep">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 className="mt-5 text-lg font-semibold text-slate">{item.title}</h3>
+              <p className="mt-2 text-base leading-relaxed text-slate-light">
+                {item.description}
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

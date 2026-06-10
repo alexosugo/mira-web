@@ -11,9 +11,10 @@ const NAV_ITEMS = [
 ];
 
 /**
- * Minimal fixed header: wordmark, two nav links, one CTA.
- * The CTA stays visible at every viewport, so no hamburger and no
- * separate mobile sticky bar are needed.
+ * Floating pill header: wordmark, two nav links, one CTA. It starts
+ * transparent on the mist ground and lifts into a white pill with a soft
+ * shadow once the page scrolls. The CTA stays visible at every viewport,
+ * so no hamburger and no separate mobile sticky bar are needed.
  */
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,15 +38,17 @@ const Header = () => {
   };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 bg-paper/90 backdrop-blur-sm transition-[border-color] duration-300 border-b ${
-        isScrolled ? 'border-line' : 'border-transparent'
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
+      <div
+        className={`mx-auto flex h-14 max-w-5xl items-center justify-between rounded-full px-5 transition-[background-color,box-shadow,border-color] duration-300 sm:px-6 ${
+          isScrolled
+            ? 'border border-line bg-white/95 shadow-soft backdrop-blur-sm'
+            : 'border border-transparent bg-transparent'
+        }`}
+      >
         <button
           onClick={() => scrollToSection('hero')}
-          className="font-display text-2xl font-semibold tracking-tight text-ink"
+          className="font-display text-xl font-bold tracking-tight text-slate"
         >
           Mira
         </button>
@@ -59,7 +62,7 @@ const Header = () => {
                   trackCTA(`header_nav_${item.id}`, item.label, 'header');
                   scrollToSection(item.id);
                 }}
-                className="text-sm text-ink-light transition-colors duration-200 hover:text-ink"
+                className="text-sm font-medium text-slate-light transition-colors duration-200 hover:text-slate"
               >
                 {item.label}
               </button>
@@ -69,7 +72,7 @@ const Header = () => {
           <a
             href={APP_URL}
             onClick={handleCTAClick}
-            className="inline-flex min-h-[40px] items-center rounded-full bg-ink px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-night"
+            className="inline-flex min-h-[40px] items-center rounded-full bg-dusk px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-dusk-deep"
           >
             {HERO_CTA_COPY[heroCta]}
           </a>

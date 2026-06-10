@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-paper">
+    <div className="min-h-screen bg-mist">
       <Header />
       <main>
         <div id="hero">

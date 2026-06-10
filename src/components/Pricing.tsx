@@ -15,7 +15,7 @@ interface Plan {
   featuresLead?: string;
   cta: string;
   footnote?: string;
-  /** The highlighted tier gets the filled button and the clay tag. */
+  /** The highlighted tier gets the lifted card, the dusk ring, and the dawn tag. */
   isHighlighted?: boolean;
 }
 
@@ -82,24 +82,29 @@ const Pricing = () => {
   };
 
   return (
-    <section id="pricing" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <p className="kicker text-ink-light">Pricing</p>
-        <h2 className="mt-6 max-w-xl font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
-          Start free, upgrade when the DMs do
-        </h2>
+    <section id="pricing" ref={sectionRef} className="py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="kicker text-dusk">Pricing</p>
+          <h2 className="mt-5 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-slate [text-wrap:balance]">
+            Start free, upgrade when the DMs do
+          </h2>
+        </div>
 
-        {/* Three hairline columns rather than shadowed cards. */}
-        <div className="mt-16 grid border-y border-line md:grid-cols-3 md:divide-x md:divide-line lg:mt-20">
+        <div className="mt-14 grid gap-4 md:grid-cols-3 lg:mt-16 lg:gap-6">
           {PLANS.map((plan) => (
             <div
               key={plan.key}
-              className="flex flex-col border-b border-line py-10 last:border-b-0 md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
+              className={`flex flex-col rounded-3xl bg-white p-7 sm:p-8 ${
+                plan.isHighlighted
+                  ? 'shadow-lifted ring-2 ring-dusk'
+                  : 'shadow-soft'
+              }`}
             >
               <div className="flex items-baseline justify-between">
-                <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
+                <h3 className="font-display text-2xl font-semibold text-slate">{plan.name}</h3>
                 {plan.isHighlighted && (
-                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-clay">
+                  <span className="rounded-full bg-dawn-tint px-3 py-1 font-mono text-xs uppercase tracking-[0.14em] text-dawn">
                     Most popular
                   </span>
                 )}
@@ -107,22 +112,22 @@ const Pricing = () => {
 
               <div className="mt-6 flex items-baseline gap-2">
                 {plan.pricePrefix && (
-                  <span className="text-sm text-ink-light">{plan.pricePrefix}</span>
+                  <span className="text-sm text-slate-light">{plan.pricePrefix}</span>
                 )}
-                <span className="font-mono text-3xl text-ink">{plan.price}</span>
-                {plan.priceNote && <span className="text-sm text-ink-light">{plan.priceNote}</span>}
+                <span className="font-mono text-3xl text-slate">{plan.price}</span>
+                {plan.priceNote && <span className="text-sm text-slate-light">{plan.priceNote}</span>}
               </div>
 
-              <p className="mt-4 text-base leading-relaxed text-ink-light">{plan.description}</p>
+              <p className="mt-4 text-base leading-relaxed text-slate-light">{plan.description}</p>
 
               <ul className="mt-8 space-y-3">
                 {plan.featuresLead && (
-                  <li className="text-sm font-semibold text-ink">{plan.featuresLead}</li>
+                  <li className="text-sm font-semibold text-slate">{plan.featuresLead}</li>
                 )}
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-ink-faint" aria-hidden="true" />
-                    <span className="text-sm leading-relaxed text-ink-light">{feature}</span>
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-dusk" aria-hidden="true" />
+                    <span className="text-sm leading-relaxed text-slate-light">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -134,7 +139,7 @@ const Pricing = () => {
                       handleCTAClick('elite', plan.cta);
                       setIsEliteModalOpen(true);
                     }}
-                    className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5"
+                    className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-line px-6 text-sm font-semibold text-slate transition-colors duration-200 hover:border-slate-faint hover:bg-mist"
                   >
                     {plan.cta}
                   </button>
@@ -142,17 +147,17 @@ const Pricing = () => {
                   <a
                     href="https://app.withmira.co"
                     onClick={() => handleCTAClick(plan.key, plan.cta)}
-                    className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
+                    className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-semibold transition-colors duration-200 ${
                       plan.isHighlighted
-                        ? 'bg-ink text-paper hover:bg-night'
-                        : 'border border-ink/25 text-ink hover:border-ink hover:bg-ink/5'
+                        ? 'bg-dusk text-white hover:bg-dusk-deep'
+                        : 'border border-line text-slate hover:border-slate-faint hover:bg-mist'
                     }`}
                   >
                     {plan.cta}
                   </a>
                 )}
                 {plan.footnote && (
-                  <p className="mt-3 font-mono text-xs text-ink-faint">{plan.footnote}</p>
+                  <p className="mt-3 font-mono text-xs text-slate-faint">{plan.footnote}</p>
                 )}
               </div>
             </div>

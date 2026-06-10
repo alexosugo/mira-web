@@ -8,23 +8,16 @@
   }
 
   body {
-    @apply bg-paper font-body text-ink antialiased;
+    @apply bg-mist font-body text-slate antialiased;
   }
 
   ::selection {
-    @apply bg-clay text-paper;
+    @apply bg-dusk text-white;
   }
 
   :focus-visible {
-    outline: 2px solid theme('colors.clay.DEFAULT');
+    outline: 2px solid theme('colors.dusk.DEFAULT');
     outline-offset: 3px;
-  }
-
-  /* Fraunces renders its warmth at higher optical sizes. */
-  h1,
-  h2,
-  h3 {
-    font-optical-sizing: auto;
   }
 }
 
@@ -36,7 +29,24 @@
 
   /* Small uppercase mono label used as section eyebrows. */
   .kicker {
-    @apply font-mono text-xs uppercase tracking-[0.18em];
+    @apply font-mono text-xs font-medium uppercase tracking-[0.18em];
+  }
+
+  /* The dawn-sky atmosphere: periwinkle light fading into warm amber.
+     Used behind the hero demo and as the page's only gradient device. */
+  .bg-dawn-sky {
+    background:
+      radial-gradient(120% 90% at 18% 0%, rgba(71, 87, 214, 0.14), transparent 55%),
+      radial-gradient(110% 80% at 88% 100%, rgba(240, 178, 84, 0.22), transparent 60%),
+      linear-gradient(150deg, #e8ecfb 0%, #f4f0ea 100%);
+  }
+
+  /* The midnight sky for the night-shift panel: a hint of dusk light
+     low on the horizon, nothing that reads as a glow. */
+  .bg-midnight-sky {
+    background:
+      radial-gradient(130% 100% at 80% 115%, rgba(71, 87, 214, 0.28), transparent 55%),
+      theme('colors.midnight.DEFAULT');
   }
 }
 

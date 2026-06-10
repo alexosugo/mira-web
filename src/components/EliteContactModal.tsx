@@ -25,14 +25,14 @@ const EMPTY_FORM: FormData = {
 };
 
 const INPUT_CLASSES = (hasError: boolean) =>
-  `w-full px-4 py-3 rounded-lg transition-colors duration-200 focus:outline-none
-   bg-paper text-ink placeholder-ink-faint border ${
+  `w-full px-4 py-3 rounded-xl transition-colors duration-200 focus:outline-none
+   bg-mist text-slate placeholder-slate-faint border ${
      hasError
        ? 'border-red-600/60 focus:border-red-600 focus:ring-2 focus:ring-red-600/20'
-       : 'border-line focus:border-ink/40 focus:ring-2 focus:ring-ink/10'
+       : 'border-line focus:border-dusk/50 focus:ring-2 focus:ring-dusk/15'
    }`;
 
-const LABEL_CLASSES = 'block text-sm font-semibold text-ink mb-1.5';
+const LABEL_CLASSES = 'block text-sm font-semibold text-slate mb-1.5';
 
 const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -174,29 +174,29 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       aria-labelledby="modal-title"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-night/70" onClick={handleBackdropClick} />
+      <div className="absolute inset-0 bg-midnight/70" onClick={handleBackdropClick} />
 
-      {/* Modal: single hairline elevation, matching the page's demo card */}
+      {/* Modal: soft-shadow elevation, matching the page's demo card */}
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg max-h-[90svh] overflow-y-auto rounded-2xl animate-fade-in-up
-                   bg-white border border-line"
+        className="relative w-full max-w-lg max-h-[90svh] overflow-y-auto rounded-3xl animate-fade-in-up
+                   bg-white shadow-lifted"
       >
         {/* Header */}
         <div className="relative px-8 pt-8 pb-4">
           <button
             onClick={resetAndClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-ink-light
-                       hover:text-ink hover:bg-ink/5 transition-colors duration-200"
+            className="absolute top-4 right-4 p-2 rounded-full text-slate-light
+                       hover:text-slate hover:bg-mist transition-colors duration-200"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <h2 id="modal-title" className="font-display text-2xl font-medium text-ink">
+          <h2 id="modal-title" className="font-display text-2xl font-semibold text-slate">
             Get in touch
           </h2>
-          <p className="text-ink-light mt-2 text-sm">
+          <p className="text-slate-light mt-2 text-sm">
             Tell us about your shop and we'll put together an Elite plan for you.
           </p>
         </div>
@@ -205,25 +205,25 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
         <div className="px-8 pb-8">
           {isSuccess ? (
             <div className="py-8 text-center animate-fade-in-up" role="status">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-clay/10 flex items-center justify-center">
-                <svg className="w-7 h-7 text-clay" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-dusk-tint flex items-center justify-center">
+                <svg className="w-7 h-7 text-dusk" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <h3
                 ref={successHeadingRef}
                 tabIndex={-1}
-                className="font-display text-xl font-medium text-ink mb-2 focus:outline-none"
+                className="font-display text-xl font-semibold text-slate mb-2 focus:outline-none"
               >
                 Thank you
               </h3>
-              <p className="text-ink-light mb-6">
+              <p className="text-slate-light mb-6">
                 We've received your message and will get back to you within 24 hours.
               </p>
               <button
                 onClick={resetAndClose}
-                className="px-6 py-3 rounded-full bg-ink text-paper font-medium
-                           hover:bg-night transition-colors duration-200"
+                className="px-6 py-3 rounded-full bg-dusk text-white font-semibold
+                           hover:bg-dusk-deep transition-colors duration-200"
               >
                 Close
               </button>
@@ -272,7 +272,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
               {/* Phone (optional) */}
               <div>
                 <label htmlFor="elite-phone" className={LABEL_CLASSES}>
-                  Phone <span className="font-normal text-ink-light">(optional)</span>
+                  Phone <span className="font-normal text-slate-light">(optional)</span>
                 </label>
                 <input
                   id="elite-phone"
@@ -333,17 +333,17 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   />
                   <div
                     className={`w-5 h-5 border rounded transition-colors duration-200 flex items-center justify-center ${
-                      formData.optInUpdates ? 'bg-ink border-ink' : 'border-ink-faint bg-paper'
+                      formData.optInUpdates ? 'bg-dusk border-dusk' : 'border-slate-faint bg-mist'
                     }`}
                   >
                     {formData.optInUpdates && (
-                      <svg className="w-3 h-3 text-paper" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     )}
                   </div>
                 </div>
-                <span className="text-sm text-ink-light group-hover:text-ink transition-colors">
+                <span className="text-sm text-slate-light group-hover:text-slate transition-colors">
                   I'd like to receive product updates and news from Mira
                 </span>
               </label>
@@ -353,8 +353,8 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 type="submit"
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
-                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-ink text-paper font-medium
-                           hover:bg-night transition-colors duration-200
+                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-dusk text-white font-semibold
+                           hover:bg-dusk-deep transition-colors duration-200
                            ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}
