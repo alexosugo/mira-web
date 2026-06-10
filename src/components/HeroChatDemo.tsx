@@ -55,13 +55,13 @@ const HeroChatDemo = () => {
             NT
           </div>
           <span
-            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-clay"
+            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-teal"
             aria-hidden="true"
           />
         </div>
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold text-ink">@nia.thrifts</p>
-          <p className="font-mono text-xs text-ink-faint">Mira replies for you</p>
+          <p className="font-mono text-xs text-teal">Mira replies for you</p>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ const HeroChatDemo = () => {
             <p
               className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${
                 message.from === 'mira'
-                  ? 'rounded-2xl rounded-br-md bg-ink text-paper'
+                  ? 'rounded-2xl rounded-br-md bg-teal text-paper'
                   : 'rounded-2xl rounded-bl-md bg-paper text-ink'
               }`}
             >

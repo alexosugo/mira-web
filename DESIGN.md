@@ -8,6 +8,9 @@ colors:
   ink-light: "#5E5749"
   ink-faint: "#6E6657"
   line: "#E6DFD1"
+  teal: "#2F6B63"
+  teal-deep: "#24544E"
+  teal-bright: "#7FB5AB"
   clay: "#B23E1D"
   clay-deep: "#933312"
   clay-bright: "#D96B45"
@@ -39,6 +42,13 @@ Clay (`#B23E1D`) means **a sale closed**. It appears on the cart confirmation
 in the hero chat, the "Paid" line in the night ledger, the "Most popular"
 pricing tag, and nowhere else. CTAs are ink-filled pills — the accent is never
 a button color. If a new surface wants clay, it must be a money moment.
+
+## The Teal Rule
+
+Teal (`#2F6B63`) means **Mira is speaking or working**: her reply bubbles in
+the hero chat, her presence dot, and her action lines in the night ledger
+(`teal-bright` on dark). The customer stays paper-and-ink; the sale stays
+clay. Like clay, teal is never a button color.
 
 ## Typography
 

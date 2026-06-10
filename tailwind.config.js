@@ -17,6 +17,14 @@ export default {
           faint: '#6E6657',
         },
         line: '#E6DFD1',
+        // Teal means Mira is speaking or working: her chat bubbles, her
+        // presence dot, her actions in the ledger. Never a button color.
+        teal: {
+          DEFAULT: '#2F6B63',
+          deep: '#24544E',
+          // Brighter step for legibility on the dark night-shift section.
+          bright: '#7FB5AB',
+        },
         clay: {
           DEFAULT: '#B23E1D',
           deep: '#933312',

@@ -5,13 +5,15 @@ interface LedgerEntry {
   text: string;
   /** The payoff line gets the clay accent and full-strength text. */
   isPayoff?: boolean;
+  /** Lines where Mira acts get the teal timestamp — her color, her shift. */
+  isMira?: boolean;
 }
 
 const LEDGER: LedgerEntry[] = [
   { time: '9:41 PM', text: 'You close for the day. Mira stays on.' },
   { time: '11:52 PM', text: '"Sasa! Do you have the denim jacket in M?"' },
-  { time: '11:52 PM', text: 'Mira answers: two left in M, KES 2,400.' },
-  { time: '11:54 PM', text: 'Cart built. M-Pesa checkout link sent.' },
+  { time: '11:52 PM', text: 'Mira answers: two left in M, KES 2,400.', isMira: true },
+  { time: '11:54 PM', text: 'Cart built. M-Pesa checkout link sent.', isMira: true },
   { time: '2:14 AM', text: 'Paid. Order confirmed.', isPayoff: true },
   { time: '7:05 AM', text: 'You wake up to paid orders, not unread DMs.' },
 ];
@@ -46,7 +48,11 @@ const NightShift = () => {
                 <li key={`${entry.time}-${entry.text}`} className="flex items-baseline gap-6 py-5">
                   <span
                     className={`w-20 shrink-0 text-right font-mono text-xs sm:text-sm ${
-                      entry.isPayoff ? 'text-clay-bright' : 'text-paper/55'
+                      entry.isPayoff
+                        ? 'text-clay-bright'
+                        : entry.isMira
+                          ? 'text-teal-bright'
+                          : 'text-paper/55'
                     }`}
                   >
                     {entry.time}
