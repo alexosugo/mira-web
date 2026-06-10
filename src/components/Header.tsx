@@ -1,30 +1,30 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Moon, Sun } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useCTATracking } from '../hooks/useTracking';
-import { trackEvent } from '../utils/analytics';
-import { useTheme } from '../context/ThemeContext';
 import { useHeroCtaExperiment, HERO_CTA_COPY } from '../hooks/useExperiments';
 import { scrollToSection } from '../utils/scrollToSection';
 
+const APP_URL = 'https://app.withmira.co';
+
+const NAV_ITEMS = [
+  { id: 'how-it-works', label: 'How it works' },
+  { id: 'pricing', label: 'Pricing' },
+];
+
+/**
+ * Minimal fixed header: wordmark, two nav links, one CTA.
+ * The CTA stays visible at every viewport, so no hamburger and no
+ * separate mobile sticky bar are needed.
+ */
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { trackCTA } = useCTATracking();
-  const { toggleTheme, isDark } = useTheme();
   const heroCta = useHeroCtaExperiment();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 16);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleNavClick = (sectionId: string) => {
-    scrollToSection(sectionId);
-    setIsMenuOpen(false);
-  };
 
   const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -33,166 +33,46 @@ const Header = () => {
       button_type: 'secondary',
       experiment_variant: heroCta,
     });
-    window.location.href = 'https://app.withmira.co';
+    window.location.href = APP_URL;
   };
 
-  const navItems = [
-    { id: 'how-it-works', label: 'How It Works' },
-    { id: 'benefits', label: 'Benefits' },
-    { id: 'pricing', label: 'Pricing' },
-  ];
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-      <div
-        className={`max-w-3xl mx-auto transition-all duration-300 ease-premium ${
-          isMenuOpen ? 'rounded-3xl' : 'rounded-full'
-        } ${
-          isScrolled
-            ? 'bg-white/90 dark:bg-navy-800/90 backdrop-blur-xl shadow-md border border-gray-200/30 dark:border-navy-600/40'
-            : 'bg-white/70 dark:bg-navy-800/80 backdrop-blur-xl border border-gray-200/20 dark:border-navy-600/30'
-        }`}
-      >
-        <div className="px-6">
-          <div className="flex justify-between items-center h-14">
-            {/* Logo */}
-            <button
-              onClick={() => handleNavClick('hero')}
-              className="group flex items-center gap-2 min-h-[44px] px-1.5 -ml-1.5"
-            >
-              <span
-                className="text-xl font-bold text-navy-800 dark:text-white font-display tracking-tight
-                           transition-all duration-300 group-hover:text-lime-500"
-              >
-                Mira
-              </span>
-            </button>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    trackCTA(`header_nav_${item.id}`, item.label, 'header');
-                    handleNavClick(item.id);
-                  }}
-                  className="px-3 py-1.5 text-sm font-medium rounded-full text-gray-500 dark:text-gray-400
-                             hover:bg-lime-500/10 dark:hover:bg-lime-500/15 hover:text-navy-800 dark:hover:text-lime-400 transition-all duration-200"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-
-            {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-3">
-              <button
-                onClick={() => {
-                  const newTheme = isDark ? 'light' : 'dark';
-                  trackEvent('theme_toggle', { theme: newTheme });
-                  toggleTheme();
-                }}
-                className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700
-                           transition-all duration-300"
-                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                {isDark ? (
-                  <Sun className="w-4 h-4 text-lime-500" />
-                ) : (
-                  <Moon className="w-4 h-4 text-navy-800" />
-                )}
-              </button>
-              {/* Quiet outline: the hero owns the lime signal on this page */}
-              <a
-                href="https://app.withmira.co"
-                onClick={handleCTAClick}
-                className="group px-5 py-2.5 min-h-[44px] rounded-full font-semibold text-sm
-                           text-navy-800 dark:text-white
-                           border border-navy-800/20 dark:border-white/25
-                           hover:bg-navy-800/5 dark:hover:bg-white/10
-                           hover:border-navy-800/40 dark:hover:border-white/40
-                           transition-colors duration-200 flex items-center gap-2
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500/60"
-              >
-                {HERO_CTA_COPY[heroCta]}
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </a>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center gap-2">
-              <button
-                onClick={() => {
-                  const newTheme = isDark ? 'light' : 'dark';
-                  trackEvent('theme_toggle', { theme: newTheme, location: 'header_mobile' });
-                  toggleTheme();
-                }}
-                className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-gray-100 dark:bg-navy-800 hover:bg-gray-200 dark:hover:bg-navy-700
-                           transition-all duration-300"
-                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                {isDark ? (
-                  <Sun className="w-5 h-5 text-lime-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-navy-800" />
-                )}
-              </button>
-              <button
-                className="inline-flex items-center justify-center w-11 h-11 rounded-full hover:bg-gray-100 dark:hover:bg-navy-800 transition-colors"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-              >
-                {isMenuOpen ? (
-                  <X className="w-5 h-5 text-navy-800 dark:text-white" />
-                ) : (
-                  <Menu className="w-5 h-5 text-navy-800 dark:text-white" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-premium ${
-            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 bg-paper/90 backdrop-blur-sm transition-[border-color] duration-300 border-b ${
+        isScrolled ? 'border-line' : 'border-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
+        <button
+          onClick={() => scrollToSection('hero')}
+          className="font-display text-2xl font-semibold tracking-tight text-ink"
         >
-          <div className="px-6 pb-4 pt-2 border-t border-gray-100/50 dark:border-navy-700/50">
-            <nav className="flex flex-col gap-1">
-              {navItems.map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    trackCTA(`header_mobile_nav_${item.id}`, item.label, 'header_mobile');
-                    handleNavClick(item.id);
-                  }}
-                  className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-navy-800 dark:hover:text-white
-                             hover:bg-gray-50 dark:hover:bg-navy-800 rounded-xl font-medium transition-all duration-200"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-            <div className="mt-3 pt-3 border-t border-gray-100 dark:border-navy-700">
-              {/* Quiet outline, matching the desktop header CTA */}
-              <a
-                href="https://app.withmira.co"
-                onClick={handleCTAClick}
-                className="w-full px-6 py-3 rounded-full font-semibold
-                           text-navy-800 dark:text-white
-                           border border-navy-800/20 dark:border-white/25
-                           hover:bg-navy-800/5 dark:hover:bg-white/10
-                           transition-colors duration-200 flex items-center justify-center gap-2
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500/60"
+          Mira
+        </button>
+
+        <div className="flex items-center gap-2 sm:gap-6">
+          <nav aria-label="Main navigation" className="hidden sm:flex items-center gap-6">
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  trackCTA(`header_nav_${item.id}`, item.label, 'header');
+                  scrollToSection(item.id);
+                }}
+                className="text-sm text-ink-light transition-colors duration-200 hover:text-ink"
               >
-                {HERO_CTA_COPY[heroCta]}
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          <a
+            href={APP_URL}
+            onClick={handleCTAClick}
+            className="inline-flex min-h-[40px] items-center rounded-full bg-ink px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-night"
+          >
+            {HERO_CTA_COPY[heroCta]}
+          </a>
         </div>
       </div>
     </header>

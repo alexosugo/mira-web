@@ -25,15 +25,14 @@ const EMPTY_FORM: FormData = {
 };
 
 const INPUT_CLASSES = (hasError: boolean) =>
-  `w-full px-4 py-3 rounded-xl transition-colors duration-200 focus:outline-none
-   bg-gray-50 dark:bg-white/5 text-navy-800 dark:text-white
-   placeholder-gray-500 dark:placeholder-navy-300 border ${
+  `w-full px-4 py-3 rounded-lg transition-colors duration-200 focus:outline-none
+   bg-paper text-ink placeholder-ink-faint border ${
      hasError
-       ? 'border-red-500/60 focus:border-red-500 focus:ring-2 focus:ring-red-500/20'
-       : 'border-gray-300 dark:border-white/15 focus:border-lime-500 focus:ring-2 focus:ring-lime-500/20'
+       ? 'border-red-600/60 focus:border-red-600 focus:ring-2 focus:ring-red-600/20'
+       : 'border-line focus:border-ink/40 focus:ring-2 focus:ring-ink/10'
    }`;
 
-const LABEL_CLASSES = 'block text-sm font-semibold text-navy-800 dark:text-white mb-1.5';
+const LABEL_CLASSES = 'block text-sm font-semibold text-ink mb-1.5';
 
 const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -175,31 +174,29 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       aria-labelledby="modal-title"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-navy-950/80 animate-fade-in" onClick={handleBackdropClick} />
+      <div className="absolute inset-0 bg-night/70" onClick={handleBackdropClick} />
 
-      {/* Modal: follows the page theme, same single-chrome elevation as the demo cards */}
+      {/* Modal: single hairline elevation, matching the page's demo card */}
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg max-h-[90svh] overflow-y-auto rounded-3xl animate-fade-in-up
-                   bg-white dark:bg-navy-900 shadow-xl dark:shadow-none
-                   dark:border dark:border-navy-700"
+        className="relative w-full max-w-lg max-h-[90svh] overflow-y-auto rounded-2xl animate-fade-in-up
+                   bg-white border border-line"
       >
         {/* Header */}
         <div className="relative px-8 pt-8 pb-4">
           <button
             onClick={resetAndClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-gray-600 dark:text-navy-300
-                       hover:text-navy-800 hover:bg-navy-800/5 dark:hover:text-white dark:hover:bg-white/10
-                       transition-colors duration-200"
+            className="absolute top-4 right-4 p-2 rounded-full text-ink-light
+                       hover:text-ink hover:bg-ink/5 transition-colors duration-200"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <h2 id="modal-title" className="font-display text-2xl font-bold text-navy-800 dark:text-white">
+          <h2 id="modal-title" className="font-display text-2xl font-medium text-ink">
             Get in touch
           </h2>
-          <p className="text-gray-600 dark:text-navy-300 mt-2 text-sm">
+          <p className="text-ink-light mt-2 text-sm">
             Tell us about your shop and we'll put together an Elite plan for you.
           </p>
         </div>
@@ -207,27 +204,26 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
         {/* Content */}
         <div className="px-8 pb-8">
           {isSuccess ? (
-            <div className="py-8 text-center animate-fade-in" role="status">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-lime-500/20 flex items-center justify-center">
-                <svg className="w-8 h-8 text-lime-600 dark:text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <div className="py-8 text-center animate-fade-in-up" role="status">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-clay/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-clay" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <h3
                 ref={successHeadingRef}
                 tabIndex={-1}
-                className="font-display text-xl font-bold text-navy-800 dark:text-white mb-2 focus:outline-none"
+                className="font-display text-xl font-medium text-ink mb-2 focus:outline-none"
               >
                 Thank you
               </h3>
-              <p className="text-gray-600 dark:text-navy-300 mb-6">
+              <p className="text-ink-light mb-6">
                 We've received your message and will get back to you within 24 hours.
               </p>
               <button
                 onClick={resetAndClose}
-                className="px-6 py-3 rounded-xl bg-navy-800 text-white font-semibold
-                           hover:bg-navy-900 transition-colors duration-200
-                           dark:bg-white dark:text-navy-800 dark:hover:bg-gray-100"
+                className="px-6 py-3 rounded-full bg-ink text-paper font-medium
+                           hover:bg-night transition-colors duration-200"
               >
                 Close
               </button>
@@ -250,7 +246,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   className={INPUT_CLASSES(Boolean(errors.companyName))}
                 />
                 {errors.companyName && (
-                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.companyName}</p>
+                  <p className="mt-1.5 text-sm text-red-700">{errors.companyName}</p>
                 )}
               </div>
 
@@ -269,14 +265,14 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   className={INPUT_CLASSES(Boolean(errors.email))}
                 />
                 {errors.email && (
-                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
+                  <p className="mt-1.5 text-sm text-red-700">{errors.email}</p>
                 )}
               </div>
 
               {/* Phone (optional) */}
               <div>
                 <label htmlFor="elite-phone" className={LABEL_CLASSES}>
-                  Phone <span className="font-normal text-gray-600 dark:text-navy-300">(optional)</span>
+                  Phone <span className="font-normal text-ink-light">(optional)</span>
                 </label>
                 <input
                   id="elite-phone"
@@ -303,7 +299,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   className={INPUT_CLASSES(Boolean(errors.personName))}
                 />
                 {errors.personName && (
-                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.personName}</p>
+                  <p className="mt-1.5 text-sm text-red-700">{errors.personName}</p>
                 )}
               </div>
 
@@ -322,7 +318,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   className={`${INPUT_CLASSES(Boolean(errors.message))} resize-none`}
                 />
                 {errors.message && (
-                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
+                  <p className="mt-1.5 text-sm text-red-700">{errors.message}</p>
                 )}
               </div>
 
@@ -336,20 +332,18 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                     className="sr-only peer"
                   />
                   <div
-                    className={`w-5 h-5 border rounded transition-all duration-200 flex items-center justify-center ${
-                      formData.optInUpdates
-                        ? 'bg-lime-500 border-lime-500'
-                        : 'border-gray-400 dark:border-white/20 bg-gray-50 dark:bg-white/5'
+                    className={`w-5 h-5 border rounded transition-colors duration-200 flex items-center justify-center ${
+                      formData.optInUpdates ? 'bg-ink border-ink' : 'border-ink-faint bg-paper'
                     }`}
                   >
                     {formData.optInUpdates && (
-                      <svg className="w-3 h-3 text-navy-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <svg className="w-3 h-3 text-paper" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     )}
                   </div>
                 </div>
-                <span className="text-sm text-gray-600 dark:text-navy-300 group-hover:text-navy-800 dark:group-hover:text-white transition-colors">
+                <span className="text-sm text-ink-light group-hover:text-ink transition-colors">
                   I'd like to receive product updates and news from Mira
                 </span>
               </label>
@@ -359,9 +353,8 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 type="submit"
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
-                className={`w-full mt-4 py-3.5 px-6 rounded-xl bg-lime-500 text-navy-800 font-bold
-                           hover:bg-lime-400 transition-colors duration-200
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500/60 focus-visible:ring-offset-2
+                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-ink text-paper font-medium
+                           hover:bg-night transition-colors duration-200
                            ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}

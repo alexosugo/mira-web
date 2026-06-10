@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { useHeroCtaExperiment, useHeroSubExperiment, HERO_CTA_COPY, HERO_SUB_COPY } from '../hooks/useExperiments';
 import { scrollToSection } from '../utils/scrollToSection';
@@ -26,45 +25,32 @@ const Hero = () => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[90svh] flex items-center bg-gradient-to-br from-warm-50 via-white to-gray-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-24 sm:pt-28 lg:pt-32 pb-16 lg:pb-24 overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+    <section ref={sectionRef} className="pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="grid items-start gap-16 lg:grid-cols-12 lg:gap-12">
           {/* Copy */}
-          <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
-            {/* Headline */}
-            <div className="animate-fade-in-up">
-              <h1 className="font-display text-[clamp(2rem,1.1rem+3.8vw,3.75rem)] font-bold text-navy-800 dark:text-white tracking-tight leading-[1.1] [text-wrap:balance]">
-                Mira answers your DMs and{' '}
-                <span className="relative inline-block">
-                  sells
-                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none" aria-hidden="true">
-                    <path d="M2 8C50 2 150 2 198 8" pathLength="1" stroke="#C0DC2D" strokeWidth="4" strokeLinecap="round" className="animate-draw-line" />
-                  </svg>
-                </span>{' '}
-                in them
-              </h1>
-            </div>
+          <div className="lg:col-span-7">
+            <p className="kicker text-ink-light animate-fade-in-up">
+              For Instagram sellers in Kenya
+            </p>
 
-            {/* Description. The lead-in is static (not part of the HERO_SUB_COPY
-                experiment) so the qualifier survives the cut eyebrow badge without
-                touching live variant payloads. */}
-            <p
-              className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body animate-fade-in-up"
-              style={{ animationDelay: '100ms' }}
+            <h1
+              className="mt-6 font-display text-[clamp(2.5rem,1.4rem+4.6vw,4.5rem)] font-medium leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
+              style={{ animationDelay: '80ms' }}
             >
-              <span className="font-semibold text-navy-700 dark:text-navy-100">
-                Built for Instagram sellers.
-              </span>{' '}
+              Mira answers your DMs and <em className="font-normal italic">sells</em> in them
+            </h1>
+
+            <p
+              className="mt-8 max-w-md text-lg leading-relaxed text-ink-light animate-fade-in-up"
+              style={{ animationDelay: '160ms' }}
+            >
               {HERO_SUB_COPY[heroSub]}
             </p>
 
-            {/* CTAs */}
             <div
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 lg:pt-4 animate-fade-in-up"
-              style={{ animationDelay: '200ms' }}
+              className="mt-10 flex flex-wrap items-center gap-6 animate-fade-in-up"
+              style={{ animationDelay: '240ms' }}
             >
               <a
                 href={APP_URL}
@@ -75,30 +61,32 @@ const Hero = () => {
                   window.location.href = APP_URL;
                 }}
                 aria-busy={isRedirecting}
-                className={`btn-premium group bg-lime-500 text-navy-800 px-8 py-4 rounded-2xl
-                           text-base font-bold shadow-md
-                           flex items-center justify-center gap-2.5
-                           ${isRedirecting ? 'opacity-80 pointer-events-none' : ''}`}
+                className={`inline-flex min-h-[48px] items-center rounded-full bg-ink px-7 text-base font-medium text-paper transition-colors duration-200 hover:bg-night ${
+                  isRedirecting ? 'pointer-events-none opacity-80' : ''
+                }`}
               >
                 {isRedirecting ? 'Opening Mira...' : HERO_CTA_COPY[heroCta]}
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               <button
                 type="button"
                 onClick={() => scrollToSection('how-it-works')}
-                className="px-6 py-3 sm:py-4 text-base font-semibold text-navy-700 dark:text-navy-100
-                           rounded-2xl transition-colors duration-300
-                           hover:text-navy-800 hover:bg-navy-800/5
-                           dark:hover:text-white dark:hover:bg-white/5
-                           focus:outline-none focus:ring-2 focus:ring-lime-500/50 focus:ring-offset-2"
+                className="text-base text-ink-light underline decoration-line underline-offset-4 transition-colors duration-200 hover:text-ink hover:decoration-ink"
               >
-                See how Mira works
+                See how it works
               </button>
             </div>
+
+            {/* Quiet trust strip */}
+            <p
+              className="mt-14 border-t border-line pt-5 font-mono text-xs text-ink-faint animate-fade-in-up sm:text-sm"
+              style={{ animationDelay: '320ms' }}
+            >
+              Free to start&ensp;·&ensp;No card needed&ensp;·&ensp;M-Pesa at checkout
+            </p>
           </div>
 
           {/* Proof: the DM doing the selling */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+          <div className="lg:col-span-5 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
             <HeroChatDemo />
           </div>
         </div>

@@ -15,7 +15,7 @@ interface Plan {
   featuresLead?: string;
   cta: string;
   footnote?: string;
-  /** The highlighted tier carries the section's lime accent. */
+  /** The highlighted tier gets the filled button and the clay tag. */
   isHighlighted?: boolean;
 }
 
@@ -82,135 +82,59 @@ const Pricing = () => {
   };
 
   return (
-    <section
-      id="pricing"
-      ref={sectionRef}
-      className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-warm-50 to-white dark:from-navy-900 dark:to-navy-950"
-    >
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        {/* Section heading */}
-        <div className="text-center mb-14 lg:mb-16">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-5 tracking-tight leading-[1.1] [text-wrap:balance]">
-            Choose a Mira plan that works for you
-          </h2>
-          <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Start free, upgrade when the DMs do.
-          </p>
-        </div>
+    <section id="pricing" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <p className="kicker text-ink-light">Pricing</p>
+        <h2 className="mt-6 max-w-xl font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+          Start free, upgrade when the DMs do
+        </h2>
 
-        {/* Pricing cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        {/* Three hairline columns rather than shadowed cards. */}
+        <div className="mt-16 grid border-y border-line md:grid-cols-3 md:divide-x md:divide-line lg:mt-20">
           {PLANS.map((plan) => (
             <div
               key={plan.key}
-              className={`relative flex flex-col rounded-3xl p-8 ${
-                plan.isHighlighted
-                  ? 'bg-navy-800 border-2 border-lime-500 shadow-2xl lg:scale-[1.04] z-10'
-                  : 'bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-700 shadow-sm'
-              }`}
+              className="flex flex-col border-b border-line py-10 last:border-b-0 md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
             >
-              {plan.isHighlighted && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-lime-500 text-navy-800 text-xs font-bold">
-                  Most popular
-                </span>
-              )}
-              <h3
-                className={`font-display text-2xl font-bold mb-2 ${
-                  plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'
-                }`}
-              >
-                {plan.name}
-              </h3>
-              <p
-                className={`text-sm mb-6 leading-relaxed min-h-[2.75rem] ${
-                  plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-300'
-                }`}
-              >
-                {plan.description}
-              </p>
-              <div className="mb-6">
-                {/* Prefix line is always reserved (invisible when absent) so the
-                    price baseline sits at the same height across all three tiers. */}
-                <span
-                  className={`block text-sm font-medium -mb-0.5 ${
-                    plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-400'
-                  } ${plan.pricePrefix ? '' : 'invisible'}`}
-                >
-                  {plan.pricePrefix || ' '}
-                </span>
-                {(() => {
-                  // Split "KES" from the number: the mono space glyph at 48px
-                  // otherwise opens a huge gap that reads as a render glitch.
-                  const isKes = plan.price.startsWith('KES');
-                  const amount = isKes ? plan.price.slice(3).trim() : plan.price;
-                  return (
-                    <div className="flex items-baseline gap-1.5">
-                      {isKes && (
-                        <span
-                          className={`text-lg font-semibold ${
-                            plan.isHighlighted ? 'text-navy-100' : 'text-gray-500 dark:text-gray-400'
-                          }`}
-                        >
-                          KES
-                        </span>
-                      )}
-                      <span
-                        className={`text-4xl lg:text-5xl whitespace-nowrap ${
-                          isKes ? 'stat-number' : 'font-display font-bold'
-                        } ${plan.isHighlighted ? 'text-white' : 'text-navy-800 dark:text-white'}`}
-                      >
-                        {amount}
-                      </span>
-                      {plan.priceNote && (
-                        <span className={plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-400'}>
-                          {plan.priceNote}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })()}
+              <div className="flex items-baseline justify-between">
+                <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
+                {plan.isHighlighted && (
+                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-clay">
+                    Most popular
+                  </span>
+                )}
               </div>
 
-              {/* Features */}
-              {plan.featuresLead && (
-                <p
-                  className={`text-sm font-semibold mb-3 ${
-                    plan.isHighlighted ? 'text-navy-100' : 'text-navy-800 dark:text-white'
-                  }`}
-                >
-                  {plan.featuresLead}
-                </p>
-              )}
-              <ul className="space-y-3 mb-8">
+              <div className="mt-6 flex items-baseline gap-2">
+                {plan.pricePrefix && (
+                  <span className="text-sm text-ink-light">{plan.pricePrefix}</span>
+                )}
+                <span className="font-mono text-3xl text-ink">{plan.price}</span>
+                {plan.priceNote && <span className="text-sm text-ink-light">{plan.priceNote}</span>}
+              </div>
+
+              <p className="mt-4 text-base leading-relaxed text-ink-light">{plan.description}</p>
+
+              <ul className="mt-8 space-y-3">
+                {plan.featuresLead && (
+                  <li className="text-sm font-semibold text-ink">{plan.featuresLead}</li>
+                )}
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check
-                      className={`h-5 w-5 flex-shrink-0 mt-0.5 ${
-                        plan.isHighlighted ? 'text-lime-500' : 'text-navy-800 dark:text-navy-100'
-                      }`}
-                      aria-hidden="true"
-                    />
-                    <span
-                      className={`text-sm leading-relaxed ${
-                        plan.isHighlighted ? 'text-navy-100' : 'text-gray-700 dark:text-gray-300'
-                      }`}
-                    >
-                      {feature}
-                    </span>
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-ink-faint" aria-hidden="true" />
+                    <span className="text-sm leading-relaxed text-ink-light">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto">
+              <div className="mt-10 md:mt-auto md:pt-10">
                 {plan.key === 'elite' ? (
                   <button
                     onClick={() => {
                       handleCTAClick('elite', plan.cta);
                       setIsEliteModalOpen(true);
                     }}
-                    className="block w-full py-3 px-6 rounded-xl bg-navy-800 text-white font-semibold
-                               hover:bg-navy-900 transition-colors duration-200 mb-3 text-center
-                               dark:bg-white dark:text-navy-800 dark:hover:bg-gray-100"
+                    className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5"
                   >
                     {plan.cta}
                   </button>
@@ -218,35 +142,25 @@ const Pricing = () => {
                   <a
                     href="https://app.withmira.co"
                     onClick={() => handleCTAClick(plan.key, plan.cta)}
-                    className={`block w-full py-3 px-6 rounded-xl font-semibold transition-colors duration-200 mb-3 text-center ${
+                    className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
                       plan.isHighlighted
-                        ? 'bg-lime-500 text-navy-800 hover:bg-lime-400'
-                        : 'border-2 border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-navy-800'
+                        ? 'bg-ink text-paper hover:bg-night'
+                        : 'border border-ink/25 text-ink hover:border-ink hover:bg-ink/5'
                     }`}
                   >
                     {plan.cta}
                   </a>
                 )}
                 {plan.footnote && (
-                  <p
-                    className={`text-xs text-center ${
-                      plan.isHighlighted ? 'text-navy-100' : 'text-gray-600 dark:text-gray-400'
-                    }`}
-                  >
-                    {plan.footnote}
-                  </p>
+                  <p className="mt-3 font-mono text-xs text-ink-faint">{plan.footnote}</p>
                 )}
               </div>
             </div>
           ))}
         </div>
-
       </div>
 
-      <EliteContactModal
-        isOpen={isEliteModalOpen}
-        onClose={() => setIsEliteModalOpen(false)}
-      />
+      <EliteContactModal isOpen={isEliteModalOpen} onClose={() => setIsEliteModalOpen(false)} />
     </section>
   );
 };
