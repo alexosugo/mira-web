@@ -5,7 +5,7 @@ interface LedgerEntry {
   text: string;
   /** The payoff line gets the dawn accent and full-strength text. */
   isPayoff?: boolean;
-  /** Lines where Mira acts get the dusk timestamp — her color, her shift. */
+  /** Lines where Mira acts get the fern timestamp — her color, her shift. */
   isMira?: boolean;
 }
 
@@ -18,9 +18,9 @@ const LEDGER: LedgerEntry[] = [
   { time: '7:05 AM', text: 'You wake up to paid orders, not unread DMs.' },
 ];
 
-/** Timeline dot color per entry: dawn for the payoff, dusk where Mira acts. */
+/** Timeline dot color per entry: dawn for the payoff, fern where Mira acts. */
 const dotClass = (entry: LedgerEntry) =>
-  entry.isPayoff ? 'bg-dawn-bright' : entry.isMira ? 'bg-dusk-bright' : 'bg-white/30';
+  entry.isPayoff ? 'bg-dawn-bright' : entry.isMira ? 'bg-fern-bright' : 'bg-white/30';
 
 /**
  * The page's one dark surface: an overnight ledger told in timestamps.
@@ -36,7 +36,7 @@ const NightShift = () => {
         <div className="bg-midnight-sky rounded-3xl px-6 py-16 sm:px-12 sm:py-20 lg:px-16">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
-              <p className="kicker text-dusk-bright">The night shift</p>
+              <p className="kicker text-fern-bright">The night shift</p>
               <h2 className="mt-6 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-white [text-wrap:balance]">
                 Your customers shop at 2 AM. Now someone answers.
               </h2>
@@ -63,7 +63,7 @@ const NightShift = () => {
                         entry.isPayoff
                           ? 'text-dawn-bright'
                           : entry.isMira
-                            ? 'text-dusk-bright'
+                            ? 'text-fern-bright'
                             : 'text-white/55'
                       }`}
                     >

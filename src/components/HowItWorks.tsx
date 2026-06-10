@@ -26,7 +26,7 @@ const HowItWorks = () => {
     <section id="how-it-works" ref={sectionRef} className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="kicker text-dusk">How it works</p>
+          <p className="kicker text-fern">How it works</p>
           <h2 className="mt-5 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-slate [text-wrap:balance]">
             Live in an afternoon, not a quarter
           </h2>
@@ -36,7 +36,7 @@ const HowItWorks = () => {
           {STEPS.map((step, index) => (
             <li key={step.number} className="relative rounded-3xl bg-white p-7 shadow-soft sm:p-8">
               <div className="flex items-center gap-4">
-                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-dusk font-mono text-sm text-white">
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fern font-mono text-sm text-white">
                   {step.number}
                 </span>
                 {/* Connector to the next step; hidden on the last card and on mobile */}

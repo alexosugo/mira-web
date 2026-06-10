@@ -37,7 +37,7 @@ const Hero = () => {
             className="mt-8 font-display text-[clamp(2.5rem,1.4rem+4.6vw,4.5rem)] font-semibold leading-[1.04] tracking-tight text-slate [text-wrap:balance] animate-fade-in-up"
             style={{ animationDelay: '80ms' }}
           >
-            Mira answers your DMs and <span className="text-dusk">sells</span> in them
+            Mira answers your DMs and <span className="text-fern">sells</span> in them
           </h1>
 
           <p
@@ -60,7 +60,7 @@ const Hero = () => {
                 window.location.href = APP_URL;
               }}
               aria-busy={isRedirecting}
-              className={`inline-flex min-h-[52px] items-center rounded-full bg-dusk px-8 text-base font-semibold text-white shadow-soft transition-colors duration-200 hover:bg-dusk-deep ${
+              className={`inline-flex min-h-[52px] items-center rounded-full bg-fern px-8 text-base font-semibold text-white shadow-soft transition-colors duration-200 hover:bg-fern-deep ${
                 isRedirecting ? 'pointer-events-none opacity-80' : ''
               }`}
             >

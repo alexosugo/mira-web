@@ -51,7 +51,7 @@ const Handles = () => {
     <section id="handles" ref={sectionRef} className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="kicker text-dusk">What Mira handles</p>
+          <p className="kicker text-fern">What Mira handles</p>
           <h2 className="mt-5 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-slate [text-wrap:balance]">
             The questions you answer all day, answered for you
           </h2>
@@ -68,7 +68,7 @@ const Handles = () => {
                 index < 2 ? 'lg:col-span-3' : 'lg:col-span-2'
               }`}
             >
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-dusk-tint font-mono text-sm text-dusk-deep">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-fern-tint font-mono text-sm text-fern-deep">
                 {String(index + 1).padStart(2, '0')}
               </span>
               <h3 className="mt-5 text-lg font-semibold text-slate">{item.title}</h3>

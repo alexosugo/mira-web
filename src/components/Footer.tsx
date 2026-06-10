@@ -25,7 +25,7 @@ const Footer = () => {
     <footer ref={sectionRef} className="bg-midnight-sky mt-8 rounded-t-3xl text-white">
       {/* Closing CTA */}
       <div className="mx-auto max-w-6xl px-6 py-24 text-center sm:py-32 lg:px-8">
-        <p className="kicker text-dusk-bright">One more thing</p>
+        <p className="kicker text-fern-bright">One more thing</p>
         <h2 className="mx-auto mt-6 max-w-2xl font-display text-[clamp(2rem,1.3rem+3.4vw,3.5rem)] font-semibold leading-[1.08] tracking-tight [text-wrap:balance]">
           Your DMs at 2 AM? <span className="text-dawn-bright">Mira's got it.</span>
         </h2>

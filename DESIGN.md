@@ -2,22 +2,22 @@
 name: Mira
 description: Your shop's teammate in the DMs. Mira answers, builds carts, and sells while you sleep.
 colors:
-  mist: "#F3F6FB"
-  mist-raised: "#E9EEF7"
-  slate: "#1C2433"
-  slate-light: "#4D5A70"
-  slate-faint: "#5C6A80"
-  line: "#DFE6F1"
-  dusk: "#4757D6"
-  dusk-deep: "#3848BE"
-  dusk-bright: "#9DACF8"
-  dusk-tint: "#E8ECFB"
+  mist: "#F2F6F3"
+  mist-raised: "#E7EEE9"
+  slate: "#1B2620"
+  slate-light: "#49584F"
+  slate-faint: "#58685E"
+  line: "#DCE6DF"
+  fern: "#177E54"
+  fern-deep: "#11603F"
+  fern-bright: "#8BD9B3"
+  fern-tint: "#E4F2EA"
   dawn: "#A35F0C"
   dawn-bright: "#F0B254"
   dawn-tint: "#FBF1E0"
-  midnight: "#10172B"
-  midnight-raised: "#1A2240"
-  midnight-line: "#28335C"
+  midnight: "#0E1E17"
+  midnight-raised: "#162C22"
+  midnight-line: "#264436"
 fonts:
   display: Bricolage Grotesque (variable, 400–700)
   body: Figtree (400–700)
@@ -26,30 +26,31 @@ fonts:
 
 # Mira Visual System
 
-Direction: **morning light**. A calm, airy companion product — SaaS clarity
-with personal-assistant warmth. The page tells the product's own story in
-light: a soft daytime ground, one midnight passage (the night shift), and
-dawn amber wherever money lands.
+Direction: **morning light**. A calm, warm companion product — SaaS clarity
+with personal-assistant friendliness. The page tells the product's own story
+in light: a soft garden-fresh ground, one forest-night passage (the night
+shift), and dawn amber wherever money lands. Green, not blue: the palette
+should feel like a fresh morning, never like developer documentation.
 
 ## Surfaces
 
-- **Mist** (`#F3F6FB`) is the ground — cool, airy, blue-white.
+- **Mist** (`#F2F6F3`) is the ground — soft, green-tinted off-white.
 - Cards are white with **soft layered shadows** (`shadow-soft`; the hero demo
   and the highlighted plan step up to `shadow-lifted`). No hairline-only
   cards; the border token (`line`) is for inputs, dividers, and the unscrolled
   pill header.
-- **Midnight** (`#10172B`) is reserved for exactly two surfaces: the
-  night-shift panel and the footer, both via `.bg-midnight-sky` (a hint of
-  dusk light low on the horizon — never a glow or orb).
+- **Midnight** (`#0E1E17`) is a deep forest night, reserved for exactly two
+  surfaces: the night-shift panel and the footer, both via `.bg-midnight-sky`
+  (a hint of green dawn low on the horizon — never a glow or orb).
 - Radii are generous: `rounded-3xl` panels and cards, pill buttons and chips.
 - Light theme only. No dark-mode toggle.
 
-## The Dusk Rule
+## The Fern Rule
 
-Dusk indigo (`#4757D6`) means **the product is acting**: Mira's chat bubbles,
-her ledger lines (`dusk-bright` on midnight), her presence dot, section
+Fern green (`#177E54`) means **the product is acting**: Mira's chat bubbles,
+her ledger lines (`fern-bright` on midnight), her presence dot, section
 kickers, and every button and interactive control. One color says "Mira (or
-the product) does this" — buttons included, unlike the old clay system.
+the product) does this" — buttons included.
 
 ## The Dawn Rule
 
@@ -61,7 +62,7 @@ Never a button color. If a new surface wants dawn, it must be a money moment.
 ## Typography
 
 - **Bricolage Grotesque** for display: weight 600, tight leading. Emphasis in
-  headlines is a single dusk- or dawn-colored word, never italics.
+  headlines is a single fern- or dawn-colored word, never italics.
 - **Figtree** for body and UI. Buttons are semibold.
 - **Spline Sans Mono** for everything ledger-like: timestamps, KES figures,
   kickers (`.kicker` — 12px uppercase, 0.18em tracking), footnotes, trust
@@ -69,8 +70,8 @@ Never a button color. If a new surface wants dawn, it must be a money moment.
 
 ## Atmosphere
 
-`.bg-dawn-sky` is the page's only gradient device: periwinkle light fading
-into warm amber, used solely as the stage behind the hero DM demo. Subtle,
+`.bg-dawn-sky` is the page's only gradient device: garden light fading into
+warm amber, used solely as the stage behind the hero DM demo. Subtle,
 directional, and tied to the dawn narrative — not decoration.
 
 ## Layout
@@ -78,7 +79,7 @@ directional, and tied to the dawn narrative — not decoration.
 - `max-w-6xl` container. Section headers are centered (`max-w-2xl`); content
   below is a soft-card composition: a bento grid for what Mira handles
   (first two cards span wide), three connected step cards, three plan cards
-  with the middle one lifted and ringed in dusk.
+  with the middle one lifted and ringed in fern.
 - The night-shift ledger is a left-rail **timeline** (dots colored by actor)
   inside the inset midnight panel.
 - The header is a floating pill (`max-w-5xl`) that lifts to white + shadow
@@ -95,8 +96,8 @@ respects `prefers-reduced-motion` via the global override in `index.css`.
 ## Accessibility
 
 - WCAG 2.1 AA: every text style clears 4.5:1 on its surface (`slate-faint`
-  on mist, `dawn` on `dawn-tint`, white on `dusk`, and the on-midnight
+  on mist, `dawn` on `dawn-tint`, white on `fern`, and the on-midnight
   `white/55+` steps are tuned to this floor).
-- Focus-visible: 2px dusk outline, 3px offset, global.
+- Focus-visible: 2px fern outline, 3px offset, global.
 - Touch targets ≥ 40px; the header CTA is visible at every viewport (no
   hamburger, no sticky bar).

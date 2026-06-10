@@ -51,17 +51,17 @@ const HeroChatDemo = () => {
       {/* Thread header */}
       <div className="flex items-center gap-3 border-b border-line px-5 py-4">
         <div className="relative">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-dusk font-display text-sm font-semibold text-white">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-fern font-display text-sm font-semibold text-white">
             NT
           </div>
           <span
-            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-dusk-bright"
+            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-fern-bright"
             aria-hidden="true"
           />
         </div>
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold text-slate">@nia.thrifts</p>
-          <p className="font-mono text-xs text-dusk">Mira replies for you</p>
+          <p className="font-mono text-xs text-fern">Mira replies for you</p>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ const HeroChatDemo = () => {
             <p
               className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${
                 message.from === 'mira'
-                  ? 'rounded-2xl rounded-br-md bg-dusk text-white'
+                  ? 'rounded-2xl rounded-br-md bg-fern text-white'
                   : 'rounded-2xl rounded-bl-md bg-mist text-slate'
               }`}
             >

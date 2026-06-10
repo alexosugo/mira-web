@@ -72,7 +72,7 @@ const Header = () => {
           <a
             href={APP_URL}
             onClick={handleCTAClick}
-            className="inline-flex min-h-[40px] items-center rounded-full bg-dusk px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-dusk-deep"
+            className="inline-flex min-h-[40px] items-center rounded-full bg-fern px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-fern-deep"
           >
             {HERO_CTA_COPY[heroCta]}
           </a>

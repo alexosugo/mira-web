@@ -12,11 +12,11 @@
   }
 
   ::selection {
-    @apply bg-dusk text-white;
+    @apply bg-fern text-white;
   }
 
   :focus-visible {
-    outline: 2px solid theme('colors.dusk.DEFAULT');
+    outline: 2px solid theme('colors.fern.DEFAULT');
     outline-offset: 3px;
   }
 }
@@ -32,20 +32,20 @@
     @apply font-mono text-xs font-medium uppercase tracking-[0.18em];
   }
 
-  /* The dawn-sky atmosphere: periwinkle light fading into warm amber.
+  /* The dawn-sky atmosphere: garden light fading into warm amber.
      Used behind the hero demo and as the page's only gradient device. */
   .bg-dawn-sky {
     background:
-      radial-gradient(120% 90% at 18% 0%, rgba(71, 87, 214, 0.14), transparent 55%),
+      radial-gradient(120% 90% at 18% 0%, rgba(23, 126, 84, 0.13), transparent 55%),
       radial-gradient(110% 80% at 88% 100%, rgba(240, 178, 84, 0.22), transparent 60%),
-      linear-gradient(150deg, #e8ecfb 0%, #f4f0ea 100%);
+      linear-gradient(150deg, #e4f2ea 0%, #f6f0e6 100%);
   }
 
-  /* The midnight sky for the night-shift panel: a hint of dusk light
+  /* The midnight sky for the night-shift panel: a hint of green dawn
      low on the horizon, nothing that reads as a glow. */
   .bg-midnight-sky {
     background:
-      radial-gradient(130% 100% at 80% 115%, rgba(71, 87, 214, 0.28), transparent 55%),
+      radial-gradient(130% 100% at 80% 115%, rgba(23, 126, 84, 0.30), transparent 55%),
       theme('colors.midnight.DEFAULT');
   }
 }

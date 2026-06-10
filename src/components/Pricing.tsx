@@ -15,7 +15,7 @@ interface Plan {
   featuresLead?: string;
   cta: string;
   footnote?: string;
-  /** The highlighted tier gets the lifted card, the dusk ring, and the dawn tag. */
+  /** The highlighted tier gets the lifted card, the fern ring, and the dawn tag. */
   isHighlighted?: boolean;
 }
 
@@ -85,7 +85,7 @@ const Pricing = () => {
     <section id="pricing" ref={sectionRef} className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="kicker text-dusk">Pricing</p>
+          <p className="kicker text-fern">Pricing</p>
           <h2 className="mt-5 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-slate [text-wrap:balance]">
             Start free, upgrade when the DMs do
           </h2>
@@ -97,7 +97,7 @@ const Pricing = () => {
               key={plan.key}
               className={`flex flex-col rounded-3xl bg-white p-7 sm:p-8 ${
                 plan.isHighlighted
-                  ? 'shadow-lifted ring-2 ring-dusk'
+                  ? 'shadow-lifted ring-2 ring-fern'
                   : 'shadow-soft'
               }`}
             >
@@ -126,7 +126,7 @@ const Pricing = () => {
                 )}
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-dusk" aria-hidden="true" />
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-fern" aria-hidden="true" />
                     <span className="text-sm leading-relaxed text-slate-light">{feature}</span>
                   </li>
                 ))}
@@ -149,7 +149,7 @@ const Pricing = () => {
                     onClick={() => handleCTAClick(plan.key, plan.cta)}
                     className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-semibold transition-colors duration-200 ${
                       plan.isHighlighted
-                        ? 'bg-dusk text-white hover:bg-dusk-deep'
+                        ? 'bg-fern text-white hover:bg-fern-deep'
                         : 'border border-line text-slate hover:border-slate-faint hover:bg-mist'
                     }`}
                   >
