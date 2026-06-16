@@ -68,10 +68,7 @@ const Handles = () => {
                 index < 2 ? 'lg:col-span-3' : 'lg:col-span-2'
               }`}
             >
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-fern-tint font-mono text-sm text-fern-deep">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3 className="mt-5 text-lg font-semibold text-slate">{item.title}</h3>
+              <h3 className="text-lg font-semibold text-slate">{item.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-slate-light">
                 {item.description}
               </p>

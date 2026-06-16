@@ -30,7 +30,7 @@ const Hero = () => {
         {/* Centered copy */}
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <p className="kicker rounded-full border border-line bg-white px-4 py-2 text-slate-light animate-fade-in-up">
-            For Instagram sellers in Kenya
+            For Instagram sellers
           </p>
 
           <h1

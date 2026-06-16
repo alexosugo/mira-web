@@ -1,19 +1,16 @@
 import { useSectionTracking } from '../hooks/useTracking';
 
-/** A real 3-step sequence: the numbers carry information, so they stay. */
+/** A real 3-step sequence, read top to bottom in order. */
 const STEPS = [
   {
-    number: '01',
     title: 'Connect your Instagram',
     description: 'Link your Instagram Business account. Takes less than two minutes.',
   },
   {
-    number: '02',
     title: 'Mira learns your catalog',
     description: 'Mira reads your products and learns how to talk about them like you would.',
   },
   {
-    number: '03',
     title: 'Go live',
     description: 'Mira starts replying to DMs. You step in whenever you want.',
   },
@@ -33,21 +30,9 @@ const HowItWorks = () => {
         </div>
 
         <ol className="mt-14 grid gap-4 sm:grid-cols-3 lg:mt-16 lg:gap-6">
-          {STEPS.map((step, index) => (
-            <li key={step.number} className="relative rounded-3xl bg-white p-7 shadow-soft sm:p-8">
-              <div className="flex items-center gap-4">
-                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fern font-mono text-sm text-white">
-                  {step.number}
-                </span>
-                {/* Connector to the next step; hidden on the last card and on mobile */}
-                {index < STEPS.length - 1 && (
-                  <span
-                    className="hidden h-px flex-1 bg-line sm:block"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-              <h3 className="mt-6 text-lg font-semibold text-slate">{step.title}</h3>
+          {STEPS.map((step) => (
+            <li key={step.title} className="relative rounded-3xl bg-white p-7 shadow-soft sm:p-8">
+              <h3 className="text-lg font-semibold text-slate">{step.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-slate-light">{step.description}</p>
             </li>
           ))}
