@@ -96,14 +96,7 @@ const Pricing = () => {
               key={plan.key}
               className="flex flex-col border-b border-line py-10 last:border-b-0 md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
             >
-              <div className="flex items-baseline justify-between">
-                <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
-                {plan.isHighlighted && (
-                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-dawn">
-                    Most popular
-                  </span>
-                )}
-              </div>
+              <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
 
               <div className="mt-6 flex items-baseline gap-2">
                 {plan.pricePrefix && (
