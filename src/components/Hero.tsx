@@ -38,7 +38,7 @@ const Hero = () => {
               className="mt-6 font-display text-[clamp(2.5rem,1.4rem+4.6vw,4.5rem)] font-medium leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
               style={{ animationDelay: '80ms' }}
             >
-              Mira answers your DMs and <em className="font-normal italic">sells</em> in them
+              Mira answers your DMs and sells in them
             </h1>
 
             <p
