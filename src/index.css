@@ -12,11 +12,11 @@
   }
 
   ::selection {
-    @apply bg-clay text-paper;
+    @apply bg-fern text-paper;
   }
 
   :focus-visible {
-    outline: 2px solid theme('colors.clay.DEFAULT');
+    outline: 2px solid theme('colors.fern.DEFAULT');
     outline-offset: 3px;
   }
 

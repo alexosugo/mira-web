@@ -205,8 +205,8 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
         <div className="px-8 pb-8">
           {isSuccess ? (
             <div className="py-8 text-center animate-fade-in-up" role="status">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-clay/10 flex items-center justify-center">
-                <svg className="w-7 h-7 text-clay" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-fern/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-fern" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -222,8 +222,8 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
               </p>
               <button
                 onClick={resetAndClose}
-                className="px-6 py-3 rounded-full bg-ink text-paper font-medium
-                           hover:bg-night transition-colors duration-200"
+                className="px-6 py-3 rounded-full bg-fern text-paper font-medium
+                           hover:bg-fern-deep transition-colors duration-200"
               >
                 Close
               </button>
@@ -333,7 +333,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   />
                   <div
                     className={`w-5 h-5 border rounded transition-colors duration-200 flex items-center justify-center ${
-                      formData.optInUpdates ? 'bg-ink border-ink' : 'border-ink-faint bg-paper'
+                      formData.optInUpdates ? 'bg-fern border-fern' : 'border-ink-faint bg-paper'
                     }`}
                   >
                     {formData.optInUpdates && (
@@ -353,8 +353,8 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 type="submit"
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
-                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-ink text-paper font-medium
-                           hover:bg-night transition-colors duration-200
+                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-fern text-paper font-medium
+                           hover:bg-fern-deep transition-colors duration-200
                            ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}

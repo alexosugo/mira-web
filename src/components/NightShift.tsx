@@ -3,9 +3,9 @@ import { useSectionTracking } from '../hooks/useTracking';
 interface LedgerEntry {
   time: string;
   text: string;
-  /** The payoff line gets the clay accent and full-strength text. */
+  /** The payoff line gets the dawn accent and full-strength text. */
   isPayoff?: boolean;
-  /** Lines where Mira acts get the teal timestamp — her color, her shift. */
+  /** Lines where Mira acts get the fern timestamp — her color, her shift. */
   isMira?: boolean;
 }
 
@@ -49,9 +49,9 @@ const NightShift = () => {
                   <span
                     className={`w-20 shrink-0 text-right font-mono text-xs sm:text-sm ${
                       entry.isPayoff
-                        ? 'text-clay-bright'
+                        ? 'text-dawn-bright'
                         : entry.isMira
-                          ? 'text-teal-bright'
+                          ? 'text-fern-bright'
                           : 'text-paper/55'
                     }`}
                   >

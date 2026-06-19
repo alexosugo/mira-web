@@ -15,7 +15,7 @@ interface Plan {
   featuresLead?: string;
   cta: string;
   footnote?: string;
-  /** The highlighted tier gets the filled button and the clay tag. */
+  /** The highlighted tier gets the filled button and the dawn tag. */
   isHighlighted?: boolean;
 }
 
@@ -99,7 +99,7 @@ const Pricing = () => {
               <div className="flex items-baseline justify-between">
                 <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
                 {plan.isHighlighted && (
-                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-clay">
+                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-dawn">
                     Most popular
                   </span>
                 )}
@@ -144,7 +144,7 @@ const Pricing = () => {
                     onClick={() => handleCTAClick(plan.key, plan.cta)}
                     className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
                       plan.isHighlighted
-                        ? 'bg-ink text-paper hover:bg-night'
+                        ? 'bg-fern text-paper hover:bg-fern-deep'
                         : 'border border-ink/25 text-ink hover:border-ink hover:bg-ink/5'
                     }`}
                   >

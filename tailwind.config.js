@@ -4,38 +4,40 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm editorial palette: paper ground, ink text, hairline rules,
-        // one clay accent reserved for the moment a sale closes.
+        // "Morning light" palette: a soft green-tinted ground, fern green
+        // where Mira is present, and a dawn-amber accent for a closing sale.
         paper: {
-          DEFAULT: '#FAF7F1',
-          raised: '#F3EEE4',
+          DEFAULT: '#F2F6F3',
+          raised: '#E7EEE9',
         },
         ink: {
-          DEFAULT: '#211C15',
-          light: '#5E5749',
+          DEFAULT: '#1B2620',
+          light: '#49584F',
           // Quietest text step that still clears 4.5:1 on paper.
-          faint: '#6E6657',
+          faint: '#58685E',
         },
-        line: '#E6DFD1',
-        // Teal means Mira is speaking or working: her chat bubbles, her
-        // presence dot, her actions in the ledger. Never a button color.
-        teal: {
-          DEFAULT: '#2F6B63',
-          deep: '#24544E',
+        line: '#DCE6DF',
+        // Fern means Mira (and the product) is acting: her chat bubbles, her
+        // presence dot, and every button and interactive control.
+        fern: {
+          DEFAULT: '#177E54',
+          deep: '#11603F',
           // Brighter step for legibility on the dark night-shift section.
-          bright: '#7FB5AB',
+          bright: '#8BD9B3',
         },
-        clay: {
-          DEFAULT: '#B23E1D',
-          deep: '#933312',
+        // Dawn means money: the cart confirmation, the paid ledger line, the
+        // highlighted-plan tag. Never a button color.
+        dawn: {
+          DEFAULT: '#A35F0C',
+          deep: '#834B0A',
           // Brighter step for legibility on the dark night-shift section.
-          bright: '#D96B45',
+          bright: '#F0B254',
         },
         // On-dark equivalents for the night-shift section and footer.
         night: {
-          DEFAULT: '#1B1712',
-          raised: '#262019',
-          line: '#352D23',
+          DEFAULT: '#0E1E17',
+          raised: '#162C22',
+          line: '#264436',
         },
       },
       fontFamily: {

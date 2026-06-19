@@ -31,7 +31,7 @@ const Hero = () => {
           {/* Copy */}
           <div className="lg:col-span-7">
             <p className="kicker text-ink-light animate-fade-in-up">
-              For Instagram sellers in Kenya
+              For Instagram sellers
             </p>
 
             <h1
@@ -61,7 +61,7 @@ const Hero = () => {
                   window.location.href = APP_URL;
                 }}
                 aria-busy={isRedirecting}
-                className={`inline-flex min-h-[48px] items-center rounded-full bg-ink px-7 text-base font-medium text-paper transition-colors duration-200 hover:bg-night ${
+                className={`inline-flex min-h-[48px] items-center rounded-full bg-fern px-7 text-base font-medium text-paper transition-colors duration-200 hover:bg-fern-deep ${
                   isRedirecting ? 'pointer-events-none opacity-80' : ''
                 }`}
               >
