@@ -1,9 +1,37 @@
-import React from 'react';
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import EliteContactModal from '../components/EliteContactModal';
 
+// Supabase is lazily constructed and returns null without env vars, so the
+// success path needs a stubbed client. insertMock is swapped per-test to drive
+// the success vs. error branches.
+const insertMock = vi.fn();
+vi.mock('../lib/supabase', () => ({
+  getSupabase: () => ({ from: () => ({ insert: insertMock }) }),
+}));
+
+const identifyLead = vi.fn();
+vi.mock('../lib/mixpanel', () => ({ identifyLead: (...args: unknown[]) => identifyLead(...args) }));
+
+const trackFormSubmission = vi.fn();
+vi.mock('../utils/analytics', () => ({
+  trackFormSubmission: (...args: unknown[]) => trackFormSubmission(...args),
+}));
+
+function fillValidForm() {
+  fireEvent.change(screen.getByLabelText(/Shop name/), { target: { value: 'Nia Thrifts' } });
+  fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'nia@example.com' } });
+  fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Nia' } });
+  fireEvent.change(screen.getByLabelText(/About your shop/), { target: { value: 'Thrift fashion' } });
+}
+
 describe('EliteContactModal', () => {
+  beforeEach(() => {
+    insertMock.mockReset();
+    identifyLead.mockReset();
+    trackFormSubmission.mockReset();
+  });
+
   it('closes on Escape', () => {
     const onClose = vi.fn();
     render(<EliteContactModal isOpen onClose={onClose} />);
@@ -31,19 +59,66 @@ describe('EliteContactModal', () => {
     expect(document.activeElement).toBe(focusables[focusables.length - 1]);
   });
 
-  it('moves focus to the confirmation heading on successful submit', async () => {
-    vi.useFakeTimers();
+  it('persists the inquiry and moves focus to the confirmation heading on success', async () => {
+    insertMock.mockResolvedValue({ error: null });
     render(<EliteContactModal isOpen onClose={() => {}} />);
-    fireEvent.change(screen.getByLabelText(/Shop name/), { target: { value: 'Nia Thrifts' } });
-    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'nia@example.com' } });
-    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Nia' } });
-    fireEvent.change(screen.getByLabelText(/About your shop/), { target: { value: 'Thrift fashion' } });
+    fillValidForm();
     fireEvent.click(screen.getByText('Send message'));
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(1600);
-    });
-    expect(screen.getByRole('status')).toBeInTheDocument();
+
+    expect(await screen.findByRole('status')).toBeInTheDocument();
     expect(document.activeElement?.textContent).toBe('Thank you');
-    vi.useRealTimers();
+    expect(insertMock).toHaveBeenCalledWith(
+      expect.objectContaining({ shop_name: 'Nia Thrifts', email: 'nia@example.com', contact_name: 'Nia' })
+    );
+  });
+
+  it('fires the Mixpanel conversion event and identifies the lead on success', async () => {
+    insertMock.mockResolvedValue({ error: null });
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.click(screen.getByText('Send message'));
+
+    await screen.findByRole('status');
+    expect(trackFormSubmission).toHaveBeenCalledWith(
+      'elite_contact_form',
+      'Elite Contact',
+      expect.objectContaining({ plan_type: 'elite' }),
+      'attempt'
+    );
+    expect(trackFormSubmission).toHaveBeenCalledWith(
+      'elite_contact_form',
+      'Elite Contact',
+      expect.objectContaining({ plan_type: 'elite' }),
+      'success'
+    );
+    expect(identifyLead).toHaveBeenCalledWith('nia@example.com', expect.objectContaining({ plan_interest: 'elite' }));
+  });
+
+  it('reports an error event (not success) when persistence fails', async () => {
+    insertMock.mockResolvedValue({ error: { message: 'insert failed' } });
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.click(screen.getByText('Send message'));
+
+    await screen.findByRole('alert');
+    expect(trackFormSubmission).toHaveBeenCalledWith('elite_contact_form', 'Elite Contact', expect.anything(), 'error');
+    expect(identifyLead).not.toHaveBeenCalled();
+  });
+
+  it('shows a recoverable error when persistence fails', async () => {
+    insertMock.mockResolvedValue({ error: { message: 'insert failed' } });
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.click(screen.getByText('Send message'));
+
+    expect(await screen.findByRole('alert')).toHaveTextContent(/something went wrong/i);
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  });
+
+  it('does not submit when required fields are empty', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fireEvent.click(screen.getByText('Send message'));
+    expect(insertMock).not.toHaveBeenCalled();
+    expect(screen.getByText('Please enter your shop name')).toBeInTheDocument();
   });
 });

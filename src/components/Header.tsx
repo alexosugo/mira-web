@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useCTATracking } from '../hooks/useTracking';
-import { useHeroCtaExperiment, HERO_CTA_COPY } from '../hooks/useExperiments';
 import { scrollToSection } from '../utils/scrollToSection';
 
 const APP_URL = 'https://app.withmira.co';
+const CTA_LABEL = 'Get started';
 
 const NAV_ITEMS = [
   { id: 'how-it-works', label: 'How it works' },
@@ -18,7 +18,6 @@ const NAV_ITEMS = [
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { trackCTA } = useCTATracking();
-  const heroCta = useHeroCtaExperiment();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 16);
@@ -28,10 +27,9 @@ const Header = () => {
 
   const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    trackCTA('header_cta_button', HERO_CTA_COPY[heroCta], 'header', {
+    trackCTA('header_cta_button', CTA_LABEL, 'header', {
       button_location: 'top_navigation',
       button_type: 'secondary',
-      experiment_variant: heroCta,
     });
     window.location.href = APP_URL;
   };
@@ -71,7 +69,7 @@ const Header = () => {
             onClick={handleCTAClick}
             className="inline-flex min-h-[40px] items-center rounded-full bg-fern px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
           >
-            {HERO_CTA_COPY[heroCta]}
+            {CTA_LABEL}
           </a>
         </div>
       </div>

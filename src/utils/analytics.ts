@@ -1,25 +1,21 @@
-// Analytics tracking utilities. Custom events route through Statsig (the one
-// remaining analytics tool); PostHog and GA were removed to cut bundle weight.
-import { getStatsigClient } from '../lib/statsig';
-
-/** Coerce arbitrary event properties to the string-only metadata Statsig accepts. */
-function toMetadata(properties: Record<string, unknown>): Record<string, string> {
-  const meta: Record<string, string> = {};
-  for (const [key, value] of Object.entries(properties)) {
-    if (value === null || value === undefined) continue;
-    meta[key] = typeof value === 'string' ? value : JSON.stringify(value);
-  }
-  return meta;
-}
+// Analytics tracking utilities. Every event routes through Mixpanel, the single
+// analytics tool for the site. These thin wrappers are the stable seam: the ~13
+// component call sites import from here and never touch the SDK directly, so the
+// tool can be swapped again without touching the UI.
+import { track } from '../lib/mixpanel';
 
 /**
- * Log a custom analytics event. Safe to call before Statsig finishes
- * initializing (the client buffers events) and never throws into the UI.
+ * Log a custom analytics event. Never throws into the UI, and no-ops cleanly
+ * when analytics is not configured (e.g. local dev without a token). Events
+ * fired before the Mixpanel chunk finishes loading are buffered, not dropped.
+ *
+ * Unlike the previous Statsig setup, properties keep their native types —
+ * numbers stay numeric so Mixpanel can aggregate them (sums, averages, ranges).
  */
 export const trackEvent = (eventName: string, properties: Record<string, unknown> = {}) => {
   if (typeof window === 'undefined') return;
   try {
-    getStatsigClient().logEvent({ eventName, metadata: toMetadata(properties) });
+    track(eventName, properties);
   } catch (err) {
     console.error('Event tracking failed:', err);
   }
@@ -66,7 +62,7 @@ export const trackFormFieldInteraction = (
     field_id: fieldId,
     field_name: fieldName,
     interaction_type: interactionType,
-    value: value || null
+    value: value ?? null
   });
 };
 

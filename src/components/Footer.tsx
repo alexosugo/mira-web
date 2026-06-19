@@ -1,9 +1,9 @@
 import { useSectionTracking, useCTATracking } from '../hooks/useTracking';
 import { trackEvent } from '../utils/analytics';
 import { scrollToSection } from '../utils/scrollToSection';
-import { useHeroCtaExperiment, HERO_CTA_COPY } from '../hooks/useExperiments';
 
 const APP_URL = 'https://app.withmira.co';
+const CTA_LABEL = 'Get started';
 
 const FOOTER_LINKS = [
   { id: 'handles', label: 'What Mira handles' },
@@ -15,7 +15,6 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const sectionRef = useSectionTracking('footer', 'Footer');
   const { trackCTA } = useCTATracking();
-  const heroCta = useHeroCtaExperiment();
 
   const handleContactClick = (type: string) => {
     trackEvent('contact_link_click', { contact_type: type, location: 'footer' });
@@ -33,15 +32,14 @@ const Footer = () => {
           href={APP_URL}
           onClick={(e) => {
             e.preventDefault();
-            trackCTA('footer_cta_button', HERO_CTA_COPY[heroCta], 'footer', {
+            trackCTA('footer_cta_button', CTA_LABEL, 'footer', {
               button_location: 'footer_closing',
-              experiment_variant: heroCta,
             });
             window.location.href = APP_URL;
           }}
           className="mt-10 inline-flex min-h-[48px] items-center rounded-full bg-paper px-7 text-base font-medium text-ink transition-colors duration-200 hover:bg-paper-raised"
         >
-          {HERO_CTA_COPY[heroCta]}
+          {CTA_LABEL}
         </a>
       </div>
 
