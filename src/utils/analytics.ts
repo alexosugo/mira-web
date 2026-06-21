@@ -2,6 +2,13 @@
 // analytics tool for the site. These thin wrappers are the stable seam: the ~13
 // component call sites import from here and never touch the SDK directly, so the
 // tool can be swapped again without touching the UI.
+//
+// Event naming convention (per the Mixpanel skill):
+//   - User actions  -> object_verb, past tense, snake_case
+//                      (page_viewed, cta_clicked, form_submitted, lead_captured)
+//   - Diagnostics   -> descriptive snake_case (page_load_time, javascript_error)
+// Property values keep native types (numbers stay numeric so Mixpanel can
+// aggregate them). Lowercase enum-like values; omit empty/null properties.
 import { track } from '../lib/mixpanel';
 
 /**
@@ -28,7 +35,7 @@ export const trackCTAClick = (
   pageSection: string,
   additionalData?: Record<string, unknown>
 ) => {
-  trackEvent('cta_click', {
+  trackEvent('cta_clicked', {
     button_id: buttonId,
     button_text: buttonText,
     page_section: pageSection,
@@ -36,19 +43,28 @@ export const trackCTAClick = (
   });
 };
 
-// Form submission tracking
+// Form submission mechanics (funnel friction): attempt and error only. The
+// success/value-moment is a distinct lead_captured event (see trackLeadCaptured)
+// so one conversion is never double-counted across two events.
 export const trackFormSubmission = (
   formId: string,
   formName: string,
   formData: Record<string, unknown>,
-  submissionStatus: 'success' | 'error' | 'attempt'
+  submissionStatus: 'error' | 'attempt'
 ) => {
-  trackEvent('form_submit', {
+  trackEvent('form_submitted', {
     form_id: formId,
     form_name: formName,
     submission_status: submissionStatus,
     ...formData
   });
+};
+
+// Lead capture — the on-site Value Moment. Carries the lead's details as event
+// properties (there is no Mixpanel profile, by design: the site never calls
+// identify). Real signup + identify happens later in app.withmira.co.
+export const trackLeadCaptured = (leadData: Record<string, unknown>) => {
+  trackEvent('lead_captured', leadData);
 };
 
 // Form field interaction tracking
@@ -58,7 +74,7 @@ export const trackFormFieldInteraction = (
   interactionType: 'focus' | 'blur' | 'change',
   value?: string
 ) => {
-  trackEvent('form_interaction', {
+  trackEvent('form_field_interacted', {
     field_id: fieldId,
     field_name: fieldName,
     interaction_type: interactionType,
@@ -68,7 +84,7 @@ export const trackFormFieldInteraction = (
 
 // Page view tracking
 export const trackPageView = (pageName: string, pageSection?: string) => {
-  trackEvent('page_view', {
+  trackEvent('page_viewed', {
     page_name: pageName,
     page_section: pageSection || 'main'
   });
@@ -76,7 +92,7 @@ export const trackPageView = (pageName: string, pageSection?: string) => {
 
 // Section scroll tracking
 export const trackSectionView = (sectionId: string, sectionName: string) => {
-  trackEvent('section_view', {
+  trackEvent('section_viewed', {
     section_id: sectionId,
     section_name: sectionName
   });

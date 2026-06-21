@@ -17,7 +17,7 @@ const Footer = () => {
   const { trackCTA } = useCTATracking();
 
   const handleContactClick = (type: string) => {
-    trackEvent('contact_link_click', { contact_type: type, location: 'footer' });
+    trackEvent('contact_link_clicked', { contact_type: type, location: 'footer' });
   };
 
   return (

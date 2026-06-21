@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState, FormEvent, MouseEvent } from 'react';
 import { X } from 'lucide-react';
 import { getSupabase, type EliteInquiry } from '../lib/supabase';
-import { identifyLead } from '../lib/mixpanel';
-import { trackFormSubmission } from '../utils/analytics';
+import { trackFormSubmission, trackLeadCaptured } from '../utils/analytics';
 import { sanitizeInput } from '../utils/validation';
 
 const FORM_ID = 'elite_contact_form';
@@ -157,10 +156,10 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       opt_in_updates: formData.optInUpdates,
     };
 
-    // Keep PII (email, name, message) out of the event payload; identifyLead
-    // attaches it to the Mixpanel people profile where it belongs.
-    const eventProps = { plan_type: 'elite', opt_in_updates: inquiry.opt_in_updates };
-    trackFormSubmission(FORM_ID, FORM_NAME, eventProps, 'attempt');
+    // form_submitted carries no PII (funnel mechanics only). The lead's details
+    // live on lead_captured, the Value Moment, fired on success.
+    const mechanicsProps = { plan_type: 'elite', opt_in_updates: inquiry.opt_in_updates };
+    trackFormSubmission(FORM_ID, FORM_NAME, mechanicsProps, 'attempt');
 
     try {
       const supabase = getSupabase();
@@ -171,20 +170,22 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
 
       if (!submissionActiveRef.current) return;
 
-      identifyLead(inquiry.email, {
-        $name: inquiry.contact_name,
+      // Value Moment. No identify() — the site stays anonymous so the device id
+      // carries to app.withmira.co for merge at real signup (see lib/mixpanel).
+      trackLeadCaptured({
+        lead_type: 'elite',
+        email: inquiry.email,
+        contact_name: inquiry.contact_name,
         shop_name: inquiry.shop_name,
-        plan_interest: 'elite',
         opt_in_updates: inquiry.opt_in_updates,
       });
-      trackFormSubmission(FORM_ID, FORM_NAME, eventProps, 'success');
 
       setIsSubmitting(false);
       setIsSuccess(true);
     } catch (err) {
       if (!submissionActiveRef.current) return;
       console.error('Elite inquiry submission failed:', err);
-      trackFormSubmission(FORM_ID, FORM_NAME, eventProps, 'error');
+      trackFormSubmission(FORM_ID, FORM_NAME, mechanicsProps, 'error');
       setIsSubmitting(false);
       setSubmitError(
         'Something went wrong sending your message. Please try again, or email hello@withmira.co.'

@@ -10,12 +10,11 @@ vi.mock('../lib/supabase', () => ({
   getSupabase: () => ({ from: () => ({ insert: insertMock }) }),
 }));
 
-const identifyLead = vi.fn();
-vi.mock('../lib/mixpanel', () => ({ identifyLead: (...args: unknown[]) => identifyLead(...args) }));
-
 const trackFormSubmission = vi.fn();
+const trackLeadCaptured = vi.fn();
 vi.mock('../utils/analytics', () => ({
   trackFormSubmission: (...args: unknown[]) => trackFormSubmission(...args),
+  trackLeadCaptured: (...args: unknown[]) => trackLeadCaptured(...args),
 }));
 
 function fillValidForm() {
@@ -28,8 +27,8 @@ function fillValidForm() {
 describe('EliteContactModal', () => {
   beforeEach(() => {
     insertMock.mockReset();
-    identifyLead.mockReset();
     trackFormSubmission.mockReset();
+    trackLeadCaptured.mockReset();
   });
 
   it('closes on Escape', () => {
@@ -72,7 +71,7 @@ describe('EliteContactModal', () => {
     );
   });
 
-  it('fires the Mixpanel conversion event and identifies the lead on success', async () => {
+  it('fires lead_captured on success and form_submitted only as attempt mechanics', async () => {
     insertMock.mockResolvedValue({ error: null });
     render(<EliteContactModal isOpen onClose={() => {}} />);
     fillValidForm();
@@ -85,16 +84,16 @@ describe('EliteContactModal', () => {
       expect.objectContaining({ plan_type: 'elite' }),
       'attempt'
     );
-    expect(trackFormSubmission).toHaveBeenCalledWith(
-      'elite_contact_form',
-      'Elite Contact',
-      expect.objectContaining({ plan_type: 'elite' }),
-      'success'
+    // No form_submitted 'success' — the success path is the lead_captured value moment.
+    expect(trackFormSubmission).not.toHaveBeenCalledWith(
+      expect.anything(), expect.anything(), expect.anything(), 'success'
     );
-    expect(identifyLead).toHaveBeenCalledWith('nia@example.com', expect.objectContaining({ plan_interest: 'elite' }));
+    expect(trackLeadCaptured).toHaveBeenCalledWith(
+      expect.objectContaining({ lead_type: 'elite', email: 'nia@example.com', shop_name: 'Nia Thrifts' })
+    );
   });
 
-  it('reports an error event (not success) when persistence fails', async () => {
+  it('reports an error event (not a lead) when persistence fails', async () => {
     insertMock.mockResolvedValue({ error: { message: 'insert failed' } });
     render(<EliteContactModal isOpen onClose={() => {}} />);
     fillValidForm();
@@ -102,7 +101,7 @@ describe('EliteContactModal', () => {
 
     await screen.findByRole('alert');
     expect(trackFormSubmission).toHaveBeenCalledWith('elite_contact_form', 'Elite Contact', expect.anything(), 'error');
-    expect(identifyLead).not.toHaveBeenCalled();
+    expect(trackLeadCaptured).not.toHaveBeenCalled();
   });
 
   it('shows a recoverable error when persistence fails', async () => {

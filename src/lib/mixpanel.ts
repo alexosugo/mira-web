@@ -12,7 +12,10 @@ let loading = false;
 /** Actions queued before the client finishes loading, replayed on ready. */
 const pending: Array<(client: OverridedMixpanel) => void> = [];
 
-const TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
+// Public client token — it ships in the browser bundle regardless, so it is not
+// a secret. Override per-environment via VITE_MIXPANEL_TOKEN; set a separate
+// dev-project token locally so `npm run dev` does not write to the prod project.
+const TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN ?? 'eea24a73ea5ead32dfdaeeff0cfbde2f';
 // Optional EU residency host, e.g. https://api-eu.mixpanel.com. Leave unset for
 // the default US ingestion endpoint (must match your Mixpanel project region).
 const API_HOST = import.meta.env.VITE_MIXPANEL_API_HOST;
@@ -107,13 +110,9 @@ export function track(eventName: string, properties: Record<string, unknown> = {
   withClient((client) => client.track(eventName, properties));
 }
 
-/**
- * Stitch the anonymous device journey to a known person (called on signup).
- * Sets the people profile so the lead is identifiable in Mixpanel.
- */
-export function identifyLead(email: string, traits: Record<string, unknown> = {}): void {
-  withClient((client) => {
-    client.identify(email);
-    client.people.set({ $email: email, ...traits });
-  });
-}
+// Note: this marketing site deliberately never calls mixpanel.identify(). Leads
+// have no stable user id yet, and Mixpanel forbids email-as-$user_id (emails
+// change). Staying anonymous keeps the cookie's $device_id free to be claimed by
+// app.withmira.co's identify(dbUserId) at real signup, so Simplified ID Merge
+// stitches the whole marketing -> app journey to that user. Identifying here
+// would prematurely claim the device and sever that merge.
