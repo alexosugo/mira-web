@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, FormEvent, MouseEvent } from 'react';
 import { X } from 'lucide-react';
-import { getSupabase, type EliteInquiry } from '../lib/supabase';
+import { submitEliteInquiry, type EliteInquiry } from '../lib/elite-inquiry';
 import { trackFormSubmission, trackLeadCaptured } from '../utils/analytics';
 import { sanitizeInput } from '../utils/validation';
 
@@ -162,11 +162,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     trackFormSubmission(FORM_ID, FORM_NAME, mechanicsProps, 'attempt');
 
     try {
-      const supabase = getSupabase();
-      if (!supabase) throw new Error('Supabase is not configured');
-
-      const { error } = await supabase.from('elite_inquiries').insert(inquiry);
-      if (error) throw error;
+      await submitEliteInquiry(inquiry);
 
       if (!submissionActiveRef.current) return;
 

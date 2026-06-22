@@ -2,12 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import EliteContactModal from '../components/EliteContactModal';
 
-// Supabase is lazily constructed and returns null without env vars, so the
-// success path needs a stubbed client. insertMock is swapped per-test to drive
-// the success vs. error branches.
-const insertMock = vi.fn();
-vi.mock('../lib/supabase', () => ({
-  getSupabase: () => ({ from: () => ({ insert: insertMock }) }),
+const submitEliteInquiry = vi.fn();
+vi.mock('../lib/elite-inquiry', () => ({
+  submitEliteInquiry: (...args: unknown[]) => submitEliteInquiry(...args),
 }));
 
 const trackFormSubmission = vi.fn();
@@ -26,7 +23,7 @@ function fillValidForm() {
 
 describe('EliteContactModal', () => {
   beforeEach(() => {
-    insertMock.mockReset();
+    submitEliteInquiry.mockReset();
     trackFormSubmission.mockReset();
     trackLeadCaptured.mockReset();
   });
@@ -58,21 +55,21 @@ describe('EliteContactModal', () => {
     expect(document.activeElement).toBe(focusables[focusables.length - 1]);
   });
 
-  it('persists the inquiry and moves focus to the confirmation heading on success', async () => {
-    insertMock.mockResolvedValue({ error: null });
+  it('submits the inquiry and moves focus to the confirmation heading on success', async () => {
+    submitEliteInquiry.mockResolvedValue(undefined);
     render(<EliteContactModal isOpen onClose={() => {}} />);
     fillValidForm();
     fireEvent.click(screen.getByText('Send message'));
 
     expect(await screen.findByRole('status')).toBeInTheDocument();
     expect(document.activeElement?.textContent).toBe('Thank you');
-    expect(insertMock).toHaveBeenCalledWith(
+    expect(submitEliteInquiry).toHaveBeenCalledWith(
       expect.objectContaining({ shop_name: 'Nia Thrifts', email: 'nia@example.com', contact_name: 'Nia' })
     );
   });
 
   it('fires lead_captured on success and form_submitted only as attempt mechanics', async () => {
-    insertMock.mockResolvedValue({ error: null });
+    submitEliteInquiry.mockResolvedValue(undefined);
     render(<EliteContactModal isOpen onClose={() => {}} />);
     fillValidForm();
     fireEvent.click(screen.getByText('Send message'));
@@ -94,7 +91,7 @@ describe('EliteContactModal', () => {
   });
 
   it('reports an error event (not a lead) when persistence fails', async () => {
-    insertMock.mockResolvedValue({ error: { message: 'insert failed' } });
+    submitEliteInquiry.mockRejectedValue(new Error('insert failed'));
     render(<EliteContactModal isOpen onClose={() => {}} />);
     fillValidForm();
     fireEvent.click(screen.getByText('Send message'));
@@ -105,7 +102,7 @@ describe('EliteContactModal', () => {
   });
 
   it('shows a recoverable error when persistence fails', async () => {
-    insertMock.mockResolvedValue({ error: { message: 'insert failed' } });
+    submitEliteInquiry.mockRejectedValue(new Error('insert failed'));
     render(<EliteContactModal isOpen onClose={() => {}} />);
     fillValidForm();
     fireEvent.click(screen.getByText('Send message'));
@@ -117,7 +114,7 @@ describe('EliteContactModal', () => {
   it('does not submit when required fields are empty', () => {
     render(<EliteContactModal isOpen onClose={() => {}} />);
     fireEvent.click(screen.getByText('Send message'));
-    expect(insertMock).not.toHaveBeenCalled();
+    expect(submitEliteInquiry).not.toHaveBeenCalled();
     expect(screen.getByText('Please enter your shop name')).toBeInTheDocument();
   });
 });
