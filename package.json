@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "dev:netlify": "netlify dev",
         "build": "vite build",
         "lint": "eslint .",
         "preview": "vite preview",
@@ -13,22 +14,21 @@
         "test:coverage": "vitest run --coverage"
     },
     "dependencies": {
-        "@statsig/js-client": "^3.32.0",
-        "@statsig/react-bindings": "^3.32.0",
-        "@statsig/session-replay": "^3.32.0",
-        "@statsig/web-analytics": "^3.32.0",
         "@supabase/supabase-js": "^2.39.0",
         "clsx": "^2.1.1",
         "lucide-react": "^0.344.0",
+        "mixpanel-browser": "^2.80.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "tailwind-merge": "^3.5.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.9.1",
+        "@netlify/functions": "^5.3.0",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
         "@testing-library/user-event": "^14.6.1",
+        "@types/mixpanel-browser": "^2.60.0",
         "@types/react": "^18.3.5",
         "@types/react-dom": "^18.3.0",
         "@vitejs/plugin-react": "^4.3.1",

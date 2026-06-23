@@ -1,15 +1,12 @@
 import { useSectionTracking } from '../hooks/useTracking';
-import {
-  useSolutionCopyExperiment,
-  useProductExpertExperiment,
-  SOLUTION_COPY,
-  PRODUCT_EXPERT_COPY,
-} from '../hooks/useExperiments';
 
 interface HandleItem {
   title: string;
   description: string;
 }
+
+const SOLUTION_LEAD =
+  'Mira lives in your DMs and understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.';
 
 /**
  * The everyday DM work Mira takes over, as an editorial index rather than a
@@ -18,14 +15,12 @@ interface HandleItem {
  */
 const Handles = () => {
   const sectionRef = useSectionTracking('handles', 'What Mira Handles Section');
-  const solutionVariant = useSolutionCopyExperiment();
-  const productExpertVariant = useProductExpertExperiment();
-  const productExpert = PRODUCT_EXPERT_COPY[productExpertVariant];
 
   const items: HandleItem[] = [
     {
-      title: productExpert.title,
-      description: productExpert.description,
+      title: 'Product Expert',
+      description:
+        'Mira understands your catalog well enough to guide customers with clear, helpful answers',
     },
     {
       title: 'Sizes and recommendations',
@@ -58,7 +53,7 @@ const Handles = () => {
                 The questions you answer all day, answered for you
               </h2>
               <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-light">
-                {SOLUTION_COPY[solutionVariant]}
+                {SOLUTION_LEAD}
               </p>
             </div>
           </div>

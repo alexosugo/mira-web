@@ -31,3 +31,6 @@ dist-ssr
 .claude
 .factory
 .qodo
+# roborev snapshots
+/.roborev/
+coverage/

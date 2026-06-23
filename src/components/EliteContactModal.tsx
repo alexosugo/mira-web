@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState, FormEvent, MouseEvent } from 'react';
 import { X } from 'lucide-react';
+import { submitEliteInquiry, type EliteInquiry } from '../lib/elite-inquiry';
+import { trackFormSubmission, trackLeadCaptured } from '../utils/analytics';
+import { sanitizeInput } from '../utils/validation';
+
+const FORM_ID = 'elite_contact_form';
+const FORM_NAME = 'Elite Contact';
 
 interface EliteContactModalProps {
   isOpen: boolean;
@@ -42,6 +48,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const submissionActiveRef = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
@@ -137,15 +144,49 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
     submissionActiveRef.current = true;
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const inquiry: EliteInquiry = {
+      shop_name: sanitizeInput(formData.companyName),
+      email: sanitizeInput(formData.email),
+      phone: formData.phone ? sanitizeInput(formData.phone) : null,
+      contact_name: sanitizeInput(formData.personName),
+      message: sanitizeInput(formData.message),
+      opt_in_updates: formData.optInUpdates,
+    };
 
-    if (!submissionActiveRef.current) return;
+    // form_submitted carries no PII (funnel mechanics only). The lead's details
+    // live on lead_captured, the Value Moment, fired on success.
+    const mechanicsProps = { plan_type: 'elite', opt_in_updates: inquiry.opt_in_updates };
+    trackFormSubmission(FORM_ID, FORM_NAME, mechanicsProps, 'attempt');
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    try {
+      await submitEliteInquiry(inquiry);
+
+      if (!submissionActiveRef.current) return;
+
+      // Value Moment. No identify() — the site stays anonymous so the device id
+      // carries to app.withmira.co for merge at real signup (see lib/mixpanel).
+      trackLeadCaptured({
+        lead_type: 'elite',
+        email: inquiry.email,
+        contact_name: inquiry.contact_name,
+        shop_name: inquiry.shop_name,
+        opt_in_updates: inquiry.opt_in_updates,
+      });
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+    } catch (err) {
+      if (!submissionActiveRef.current) return;
+      console.error('Elite inquiry submission failed:', err);
+      trackFormSubmission(FORM_ID, FORM_NAME, mechanicsProps, 'error');
+      setIsSubmitting(false);
+      setSubmitError(
+        'Something went wrong sending your message. Please try again, or email hello@withmira.co.'
+      );
+    }
   };
 
   const handleInputChange = (field: keyof FormData, value: string | boolean) => {
@@ -161,6 +202,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     setErrors({});
     setIsSubmitting(false);
     setIsSuccess(false);
+    setSubmitError(null);
     onClose();
   };
 
@@ -347,6 +389,13 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   I'd like to receive product updates and news from Mira
                 </span>
               </label>
+
+              {/* Submission error (network / backend failure) */}
+              {submitError && (
+                <p className="text-sm text-red-700" role="alert">
+                  {submitError}
+                </p>
+              )}
 
               {/* Submit */}
               <button

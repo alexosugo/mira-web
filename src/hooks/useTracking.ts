@@ -70,11 +70,7 @@ export const useScrollTracking = () => {
           if (scrollPercent >= interval && !trackingIntervalsRef.current.has(interval)) {
             trackingIntervalsRef.current.add(interval);
             
-            trackEvent('scroll_depth', {
-              event_category: 'Engagement',
-              event_label: `${interval}%`,
-              value: interval
-            });
+            trackEvent('page_scrolled', { depth_percent: interval });
           }
         });
       }

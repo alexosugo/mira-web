@@ -1,26 +1,25 @@
 import { useState } from 'react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
-import { useHeroCtaExperiment, useHeroSubExperiment, HERO_CTA_COPY, HERO_SUB_COPY } from '../hooks/useExperiments';
 import { scrollToSection } from '../utils/scrollToSection';
 import HeroChatDemo from './HeroChatDemo';
 
 const HERO_HEADLINE = 'Mira answers your DMs and sells in them';
+const HERO_CTA_LABEL = 'Get started';
+const HERO_SUBHEAD =
+  'Mira handles product questions, recommendations, and orders so customers get fast, accurate answers without you glued to your phone.';
 const APP_URL = 'https://app.withmira.co';
 
 const Hero = () => {
   const [isRedirecting, setIsRedirecting] = useState(false);
   const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('hero', 'Hero Section');
-  const heroCta = useHeroCtaExperiment();
-  const heroSub = useHeroSubExperiment();
 
   const handleCTAClick = () => {
     setIsRedirecting(true);
-    trackCTA('hero_cta_button', HERO_CTA_COPY[heroCta], 'hero', {
+    trackCTA('hero_cta_button', HERO_CTA_LABEL, 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
       hero_headline: HERO_HEADLINE,
-      experiment_variant: heroCta,
     });
   };
 
@@ -45,7 +44,7 @@ const Hero = () => {
               className="mt-8 max-w-md text-lg leading-relaxed text-ink-light animate-fade-in-up"
               style={{ animationDelay: '160ms' }}
             >
-              {HERO_SUB_COPY[heroSub]}
+              {HERO_SUBHEAD}
             </p>
 
             <div
@@ -65,7 +64,7 @@ const Hero = () => {
                   isRedirecting ? 'pointer-events-none opacity-80' : ''
                 }`}
               >
-                {isRedirecting ? 'Opening Mira...' : HERO_CTA_COPY[heroCta]}
+                {isRedirecting ? 'Opening Mira...' : HERO_CTA_LABEL}
               </a>
               <button
                 type="button"
