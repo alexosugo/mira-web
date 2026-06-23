@@ -11,6 +11,17 @@ import { initializeTracking } from './utils/analytics';
 // by the analytics layer and flushed once the client is ready.
 initializeTracking();
 const startAnalytics = () => { void initMixpanel(); };
+
+// Also kick off SDK load on first user interaction. pointerdown fires before
+// click, giving the SDK a head start so CTA events aren't lost when navigation
+// destroys the in-memory queue before the idle callback fires. initMixpanel()
+// is idempotent, so both paths firing is safe.
+const onFirstInteraction = () => {
+  document.removeEventListener('pointerdown', onFirstInteraction, true);
+  startAnalytics();
+};
+document.addEventListener('pointerdown', onFirstInteraction, { capture: true, passive: true });
+
 if ('requestIdleCallback' in window) {
   requestIdleCallback(startAnalytics, { timeout: 3000 });
 } else {

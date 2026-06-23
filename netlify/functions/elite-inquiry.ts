@@ -30,7 +30,10 @@ function buildSlackMessage(inquiry: EliteInquiryPayload): object {
       },
       {
         type: 'section',
-        text: { type: 'mrkdwn', text: `*About their shop:*\n${inquiry.message}` },
+        // Slack caps section blocks at 3000 chars. Truncate message content so
+        // the prefix + body never exceeds that, rather than letting long inputs
+        // silently fail the webhook.
+        text: { type: 'mrkdwn', text: `*About their shop:*\n${inquiry.message.slice(0, 2980)}` },
       },
     ],
   };
