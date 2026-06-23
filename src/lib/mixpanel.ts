@@ -15,7 +15,7 @@ const pending: Array<(client: OverridedMixpanel) => void> = [];
 // Public client token — it ships in the browser bundle regardless, so it is not
 // a secret. Override per-environment via VITE_MIXPANEL_TOKEN; set a separate
 // dev-project token locally so `npm run dev` does not write to the prod project.
-const TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN ?? 'eea24a73ea5ead32dfdaeeff0cfbde2f';
+const TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
 // Optional EU residency host, e.g. https://api-eu.mixpanel.com. Leave unset for
 // the default US ingestion endpoint (must match your Mixpanel project region).
 const API_HOST = import.meta.env.VITE_MIXPANEL_API_HOST;
