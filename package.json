@@ -4,17 +4,20 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "astro dev",
         "dev:netlify": "netlify dev",
-        "build": "vite build",
+        "build": "astro build",
         "lint": "eslint .",
-        "preview": "vite preview",
+        "preview": "astro preview",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:coverage": "vitest run --coverage"
     },
     "dependencies": {
+        "@astrojs/react": "^6.0.0",
+        "@astrojs/tailwind": "^6.0.2",
         "@supabase/supabase-js": "^2.39.0",
+        "astro": "^7.0.2",
         "clsx": "^2.1.1",
         "lucide-react": "^0.344.0",
         "mixpanel-browser": "^2.80.0",

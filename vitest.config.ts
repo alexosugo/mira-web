@@ -1,12 +1,10 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+/// <reference types="vitest" />
+import { getViteConfig } from 'astro/config';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
+// getViteConfig pulls in astro.config.mjs (incl. the React integration), so the
+// existing .tsx component tests keep their JSX transform. Test + coverage
+// settings are carried over verbatim from the former vite.config.ts.
+export default getViteConfig({
   test: {
     globals: true,
     environment: 'jsdom',
@@ -23,10 +21,10 @@ export default defineConfig({
       exclude: [
         'node_modules/**',
         'src/test/**',
-        'src/main.tsx',
         'src/vite-env.d.ts',
         '*.config.*',
         'dist/**',
+        '.astro/**',
       ],
     },
   },

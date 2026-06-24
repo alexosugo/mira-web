@@ -12,12 +12,13 @@ let loading = false;
 /** Actions queued before the client finishes loading, replayed on ready. */
 const pending: Array<(client: OverridedMixpanel) => void> = [];
 
-// Set VITE_MIXPANEL_TOKEN in your environment. Use a separate dev-project token
+// Set PUBLIC_MIXPANEL_TOKEN in your environment. Use a separate dev-project token
 // locally (via .env.local) so `npm run dev` does not write to the prod project.
-const TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
+// (Astro only exposes PUBLIC_-prefixed vars to client code; VITE_ would not ship.)
+const TOKEN = import.meta.env.PUBLIC_MIXPANEL_TOKEN;
 // Optional EU residency host, e.g. https://api-eu.mixpanel.com. Leave unset for
 // the default US ingestion endpoint (must match your Mixpanel project region).
-const API_HOST = import.meta.env.VITE_MIXPANEL_API_HOST;
+const API_HOST = import.meta.env.PUBLIC_MIXPANEL_API_HOST;
 
 /** UTM and referrer keys captured once and attached to every event as super properties. */
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const;
@@ -63,7 +64,7 @@ function captureAttribution(): Record<string, string> {
 export async function initMixpanel(): Promise<void> {
   if (mp || loading || typeof window === 'undefined') return;
   if (!TOKEN) {
-    console.warn('VITE_MIXPANEL_TOKEN is not set; analytics is disabled.');
+    console.warn('PUBLIC_MIXPANEL_TOKEN is not set; analytics is disabled.');
     return;
   }
 
