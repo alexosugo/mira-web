@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "server",
+  "dolt_database": "mira_web",
+  "project_id": "e07b00ed-3af6-4bf7-90b1-3ba7a6e31214"
+}
