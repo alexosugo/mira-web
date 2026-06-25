@@ -40,7 +40,7 @@ export const useCTATracking = () => {
 
 // Hook for tracking form submissions
 export const useFormTracking = () => {
-  const trackSubmission = (formId: string, formName: string, formData: Record<string, unknown>, status: 'success' | 'error' | 'attempt') => {
+  const trackSubmission = (formId: string, formName: string, formData: Record<string, unknown>, status: 'error' | 'attempt') => {
     trackFormSubmission(formId, formName, formData, status);
   };
 

@@ -1,8 +1,49 @@
+---
+import '../index.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Mira — Your Instagram DM Sales Assistant for Kenyan Businesses',
+  description = 'Mira replies to your Instagram DMs — answering product questions, building carts, and guiding customers to checkout. Built in Kenya, priced in KES. Try free.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+// JSON-LD: WebSite + Product. Kept factual per docs/voice-and-tone.md (no hype).
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://withmira.co/#website',
+      url: 'https://withmira.co/',
+      name: 'Mira',
+      description,
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'Product',
+      '@id': 'https://withmira.co/#product',
+      name: 'Mira',
+      description:
+        'Mira answers your Instagram DMs — product questions, sizes, and delivery — builds carts, and guides customers to checkout.',
+      brand: { '@type': 'Brand', name: 'Mira' },
+      url: 'https://withmira.co/',
+      areaServed: 'KE',
+    },
+  ],
+};
+---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    
+
     <!-- Favicon Implementation -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -11,17 +52,18 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="manifest" href="/site.webmanifest" />    
-    
+    <link rel="manifest" href="/site.webmanifest" />
+
     <!-- Theme colors and meta tags for mobile browsers -->
     <meta name="theme-color" content="#F2F6F3" />
     <meta name="msapplication-TileColor" content="#F2F6F3" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mira — Your Instagram DM Sales Assistant for Kenyan Businesses</title>
-    <meta name="description" content="Mira replies to your Instagram DMs — answering product questions, building carts, and guiding customers to checkout. Built in Kenya, priced in KES. Try free." />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="keywords" content="Instagram DM sales assistant, AI customer service, Instagram automation, Kenya SME chatbot, social selling" />
+    <link rel="canonical" href={canonical} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -34,30 +76,33 @@
     <meta property="twitter:url" content="https://withmira.co/" />
     <meta property="twitter:title" content="Stop losing DM sales to slow replies" />
     <meta property="twitter:description" content="Mira answers your Instagram DMs: product questions, sizes, and delivery. It builds carts and guides customers to checkout, so you stop losing sales to slow replies." />
-    
+
     <!-- Additional Meta Tags -->
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="geo.region" content="KE" />
     <meta name="geo.country" content="Kenya" />
-    
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://images.pexels.com" />
-    
+
     <!-- Google Fonts: Fraunces (display serif), Instrument Sans (body/UI), IBM Plex Mono (timestamps, KES figures) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body style="font-family: 'Instrument Sans', sans-serif; background-color: #F2F6F3;">
-    <div id="root"></div>
+    <slot />
     <noscript>
-      <div style="max-width: 36rem; margin: 6rem auto; padding: 0 1.5rem; color: #1B2620; text-align: center;">
-        <p style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem;">Mira answers your DMs and sells in them.</p>
-        <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">This page needs JavaScript to load. Turn it on and reload, or go straight to the app.</p>
-        <a href="https://app.withmira.co" style="display: inline-block; padding: 0.75rem 1.5rem; border-radius: 999px; background: #1B2620; color: #F2F6F3; font-weight: 600; text-decoration: none;">Open Mira</a>
+      <div style="max-width: 36rem; margin: 2rem auto; padding: 0 1.5rem; color: #1B2620; text-align: center;">
+        <p style="font-size: 1rem; line-height: 1.6;">Some interactive details need JavaScript. To get started, open the app.</p>
+        <a href="https://app.withmira.co" style="display: inline-block; margin-top: 0.75rem; padding: 0.75rem 1.5rem; border-radius: 999px; background: #1B2620; color: #F2F6F3; font-weight: 600; text-decoration: none;">Open Mira</a>
       </div>
     </noscript>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      import '../lib/page-init';
+    </script>
   </body>
 </html>

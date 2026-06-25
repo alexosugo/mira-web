@@ -117,4 +117,50 @@ describe('EliteContactModal', () => {
     expect(submitEliteInquiry).not.toHaveBeenCalled();
     expect(screen.getByText('Please enter your shop name')).toBeInTheDocument();
   });
+
+  it('rejects shop name shorter than 2 characters', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fireEvent.change(screen.getByLabelText(/Shop name/), { target: { value: 'A' } });
+    fireEvent.click(screen.getByText('Send message'));
+    expect(screen.getByText('Shop name must be at least 2 characters')).toBeInTheDocument();
+    expect(submitEliteInquiry).not.toHaveBeenCalled();
+  });
+
+  it('rejects person name shorter than 2 characters', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fireEvent.change(screen.getByLabelText(/Shop name/), { target: { value: 'Nia Thrifts' } });
+    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'nia@example.com' } });
+    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'N' } });
+    fireEvent.change(screen.getByLabelText(/About your shop/), { target: { value: 'Thrift fashion' } });
+    fireEvent.click(screen.getByText('Send message'));
+    expect(screen.getByText('Name must be at least 2 characters')).toBeInTheDocument();
+    expect(submitEliteInquiry).not.toHaveBeenCalled();
+  });
+
+  it('rejects an invalid phone number when one is entered', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.change(screen.getByLabelText(/Phone/), { target: { value: '+25471234' } });
+    fireEvent.click(screen.getByText('Send message'));
+    expect(screen.getByText(/valid Kenyan number/i)).toBeInTheDocument();
+    expect(submitEliteInquiry).not.toHaveBeenCalled();
+  });
+
+  it('strips leading 0 from phone and enforces the +254 prefix', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    const phoneInput = screen.getByLabelText(/Phone/) as HTMLInputElement;
+    fireEvent.change(phoneInput, { target: { value: '0712345678' } });
+    expect(phoneInput.value).toBe('+254712345678');
+  });
+
+  it('submits null phone when only the prefix is present', async () => {
+    submitEliteInquiry.mockResolvedValue(undefined);
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.click(screen.getByText('Send message'));
+    await screen.findByRole('status');
+    expect(submitEliteInquiry).toHaveBeenCalledWith(
+      expect.objectContaining({ phone: null })
+    );
+  });
 });
