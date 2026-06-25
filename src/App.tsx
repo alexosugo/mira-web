@@ -1,41 +1,36 @@
 import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import ProblemStatement from './components/ProblemStatement';
-import SolutionOverview from './components/SolutionOverview';
+import NightShift from './components/NightShift';
+import Handles from './components/Handles';
 import HowItWorks from './components/HowItWorks';
-import Features from './components/Features';
-import Benefits from './components/Benefits';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import { trackPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useTracking';
-import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   useScrollTracking();
-  
+
   useEffect(() => {
     // Track initial page view
     trackPageView('Landing Page', 'main');
   }, []);
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-navy-950 transition-colors duration-300">
-        <Header />
+    <div className="min-h-screen bg-paper">
+      <Header />
+      <main>
         <div id="hero">
           <Hero />
         </div>
-        <ProblemStatement />
-        <SolutionOverview />
+        <NightShift />
+        <Handles />
         <HowItWorks />
-        <Features />
-        <Benefits />
         <Pricing />
-        <Footer />
-      </div>
-    </ThemeProvider>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

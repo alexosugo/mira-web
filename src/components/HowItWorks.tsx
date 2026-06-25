@@ -1,23 +1,20 @@
-import { Instagram, Sparkles, Zap } from 'lucide-react';
 import { useSectionTracking } from '../hooks/useTracking';
 
-const steps = [
+/** A real 3-step sequence: the numbers carry information, so they stay. */
+const STEPS = [
   {
-    icon: Instagram,
-    number: 1,
-    title: 'Connect Your Instagram',
+    number: '01',
+    title: 'Connect your Instagram',
     description: 'Link your Instagram Business account. Takes less than two minutes.',
   },
   {
-    icon: Sparkles,
-    number: 2,
-    title: 'Mira Learns Your Catalog',
+    number: '02',
+    title: 'Mira learns your catalog',
     description: 'Mira reads your products and learns how to talk about them like you would.',
   },
   {
-    icon: Zap,
-    number: 3,
-    title: 'Go Live',
+    number: '03',
+    title: 'Go live',
     description: 'Mira starts replying to DMs. You step in whenever you want.',
   },
 ];
@@ -26,44 +23,27 @@ const HowItWorks = () => {
   const sectionRef = useSectionTracking('how-it-works', 'How It Works Section');
 
   return (
-    <section
-      id="how-it-works"
-      className="py-24 lg:py-32 bg-white dark:bg-navy-950 font-body"
-      ref={sectionRef}
-    >
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-lime-500/10 text-lime-600 dark:text-lime-400 px-5 py-2.5 rounded-full text-sm font-semibold mb-6">
-            3 Simple Steps
-          </div>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white mb-8 tracking-tight">
-            How Mira Works
-          </h2>
-        </div>
+    <section id="how-it-works" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <p className="kicker text-ink-light">How it works</p>
+        <h2 className="mt-6 max-w-xl font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+          Live in an afternoon, not a quarter
+        </h2>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {steps.map((step) => (
-            <div
-              key={step.number}
-              className="glass-card dark:bg-navy-800/50 dark:border-navy-700 rounded-2xl p-8 text-center transition-all duration-500 hover:shadow-premium"
-            >
-              <div className="flex justify-center mb-4">
-                <div className="w-12 h-12 bg-lime-500 text-navy-800 font-bold rounded-full flex items-center justify-center text-xl">
-                  {step.number}
-                </div>
-              </div>
-              <div className="w-16 h-16 bg-gradient-to-br from-lime-500/20 to-lime-600/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <step.icon className="h-8 w-8 text-lime-600" />
-              </div>
-              <h3 className="font-display text-xl font-bold text-navy-800 dark:text-white mb-4">
-                {step.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
-                {step.description}
-              </p>
-            </div>
+        <ol className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-8 lg:mt-20">
+          {STEPS.map((step) => (
+            <li key={step.number} className="border-t border-line pt-6">
+              <span className="font-mono text-sm text-ink-faint">{step.number}</span>
+              <h3 className="mt-4 text-lg font-semibold text-ink">{step.title}</h3>
+              <p className="mt-2 text-base leading-relaxed text-ink-light">{step.description}</p>
+            </li>
           ))}
-        </div>
+        </ol>
+
+        {/* Reassurance at the scariest step: handing over your Instagram. */}
+        <p className="mt-14 font-mono text-xs text-ink-faint sm:text-sm">
+          Mira reads only your shop's DMs, nothing else on your account.
+        </p>
       </div>
     </section>
   );

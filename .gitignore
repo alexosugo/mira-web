@@ -31,3 +31,8 @@ dist-ssr
 .claude
 .factory
 .qodo
+# roborev snapshots
+/.roborev/
+coverage/
+# Local Netlify folder
+.netlify
