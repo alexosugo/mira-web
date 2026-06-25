@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from 're
 import { X } from 'lucide-react';
 import { submitEliteInquiry, type EliteInquiry } from '../lib/elite-inquiry';
 import { trackFormSubmission, trackLeadCaptured } from '../utils/analytics';
-import { sanitizeInput } from '../utils/validation';
+import { sanitizeInput, validateEmail } from '../utils/validation';
 
 const FORM_ID = 'elite_contact_form';
 const FORM_NAME = 'Elite Contact';
@@ -24,7 +24,7 @@ interface FormData {
 const EMPTY_FORM: FormData = {
   companyName: '',
   email: '',
-  phone: '',
+  phone: '+254',
   personName: '',
   message: '',
   optInUpdates: false,
@@ -116,19 +116,48 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     }
   };
 
+  // Kenyan E.164: +254 + 9 digits = 13 chars, no spaces
+  const PHONE_PREFIX = '+254';
+  const PHONE_MAX_LEN = 13; // +254 + 9 digits
+
+  const handlePhoneChange = (raw: string) => {
+    // If field is cleared entirely, reset to prefix
+    if (!raw || raw === '+') {
+      handleInputChange('phone', PHONE_PREFIX);
+      return;
+    }
+    // Strip everything except digits and leading +
+    let digits = raw.replace(/[^\d]/g, '');
+    // Strip leading 0 (local trunk prefix)
+    if (digits.startsWith('0')) digits = digits.slice(1);
+    // Strip the 254 prefix if already included (prevent doubling)
+    if (digits.startsWith('254')) digits = digits.slice(3);
+    const next = PHONE_PREFIX + digits;
+    if (next.length <= PHONE_MAX_LEN) handleInputChange('phone', next);
+  };
+
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
 
     if (!formData.companyName.trim()) {
       newErrors.companyName = 'Please enter your shop name';
+    } else if (formData.companyName.trim().length < 2) {
+      newErrors.companyName = 'Shop name must be at least 2 characters';
     }
     if (!formData.email.trim()) {
       newErrors.email = 'Please enter your email';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!validateEmail(formData.email.trim())) {
       newErrors.email = 'Email needs an @ and a domain, like nia@example.com';
+    }
+    if (formData.phone && formData.phone !== PHONE_PREFIX) {
+      if (!/^\+254\d{9}$/.test(formData.phone)) {
+        newErrors.phone = 'Enter a valid Kenyan number, e.g. +254712345678';
+      }
     }
     if (!formData.personName.trim()) {
       newErrors.personName = 'Please enter your name';
+    } else if (formData.personName.trim().length < 2) {
+      newErrors.personName = 'Name must be at least 2 characters';
     }
     if (!formData.message.trim()) {
       newErrors.message = 'Tell us a little about your shop';
@@ -150,7 +179,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     const inquiry: EliteInquiry = {
       shop_name: sanitizeInput(formData.companyName),
       email: sanitizeInput(formData.email),
-      phone: formData.phone ? sanitizeInput(formData.phone) : null,
+      phone: formData.phone && formData.phone !== '+254' ? sanitizeInput(formData.phone) : null,
       contact_name: sanitizeInput(formData.personName),
       message: sanitizeInput(formData.message),
       opt_in_updates: formData.optInUpdates,
@@ -304,10 +333,11 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
                   aria-required="true"
+                  aria-describedby={errors.email ? 'elite-email-error' : undefined}
                   className={INPUT_CLASSES(Boolean(errors.email))}
                 />
                 {errors.email && (
-                  <p className="mt-1.5 text-sm text-red-700">{errors.email}</p>
+                  <p id="elite-email-error" className="mt-1.5 text-sm text-red-700">{errors.email}</p>
                 )}
               </div>
 
@@ -319,11 +349,16 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 <input
                   id="elite-phone"
                   type="tel"
-                  placeholder="+254 700 000 000"
+                  inputMode="numeric"
                   value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className={INPUT_CLASSES(false)}
+                  onChange={(e) => handlePhoneChange(e.target.value)}
+                  maxLength={13}
+                  aria-describedby={errors.phone ? 'elite-phone-error' : undefined}
+                  className={INPUT_CLASSES(Boolean(errors.phone))}
                 />
+                {errors.phone && (
+                  <p id="elite-phone-error" className="mt-1.5 text-sm text-red-700">{errors.phone}</p>
+                )}
               </div>
 
               {/* Your name */}
