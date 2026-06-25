@@ -4,8 +4,9 @@ import { getViteConfig } from 'astro/config';
 // getViteConfig pulls in astro.config.mjs (incl. the React integration), so the
 // existing .tsx component tests keep their JSX transform. Test + coverage
 // settings are carried over verbatim from the former vite.config.ts.
-// @ts-expect-error getViteConfig's param type doesn't expose `test` in Astro 7
 export default getViteConfig({
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore: getViteConfig param type omits `test` in some TS/Astro 7 environments
   test: {
     globals: true,
     environment: 'jsdom',
