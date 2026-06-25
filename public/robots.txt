@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — explicitly permitted
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /

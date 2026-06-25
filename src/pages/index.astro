@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import NightShift from '../components/NightShift';
+import Handles from '../components/Handles';
+import HowItWorks from '../components/HowItWorks';
+import Pricing from '../components/Pricing';
+import Footer from '../components/Footer';
+---
+
+<BaseLayout>
+  <div class="min-h-screen bg-paper">
+    <Header client:load />
+    <main>
+      <div id="hero">
+        <Hero client:visible />
+      </div>
+      <NightShift client:visible />
+      <Handles client:visible />
+      <HowItWorks client:visible />
+      <Pricing client:visible />
+    </main>
+    <Footer client:visible />
+  </div>
+</BaseLayout>

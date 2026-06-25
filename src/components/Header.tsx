@@ -41,26 +41,32 @@ const Header = () => {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
-        <button
-          onClick={() => scrollToSection('hero')}
+        <a
+          href="#hero"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('hero');
+          }}
           className="font-display text-2xl font-semibold tracking-tight text-ink"
         >
           Mira
-        </button>
+        </a>
 
         <div className="flex items-center gap-2 sm:gap-6">
           <nav aria-label="Main navigation" className="hidden sm:flex items-center gap-6">
             {NAV_ITEMS.map((item) => (
-              <button
+              <a
                 key={item.id}
-                onClick={() => {
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
                   trackCTA(`header_nav_${item.id}`, item.label, 'header');
                   scrollToSection(item.id);
                 }}
                 className="text-sm text-ink-light transition-colors duration-200 hover:text-ink"
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </nav>
 
