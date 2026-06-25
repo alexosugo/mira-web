@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, FormEvent, MouseEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from 'react';
 import { X } from 'lucide-react';
 import { submitEliteInquiry, type EliteInquiry } from '../lib/elite-inquiry';
 import { trackFormSubmission, trackLeadCaptured } from '../utils/analytics';
