@@ -4,7 +4,9 @@ import { getViteConfig } from 'astro/config';
 // getViteConfig pulls in astro.config.mjs (incl. the React integration), so the
 // existing .tsx component tests keep their JSX transform. Test + coverage
 // settings are carried over verbatim from the former vite.config.ts.
+// ponytail: as any — getViteConfig's return type doesn't expose `test` in Astro 7; vitest triple-slash ref doesn't augment it
 export default getViteConfig({
+   
   test: {
     globals: true,
     environment: 'jsdom',
@@ -28,4 +30,4 @@ export default getViteConfig({
       ],
     },
   },
-});
+} as any);
