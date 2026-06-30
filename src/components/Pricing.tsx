@@ -1,73 +1,8 @@
 import { useState } from 'react';
 import { Check } from 'lucide-react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
+import { PLANS } from '../content/pages';
 import EliteContactModal from './EliteContactModal';
-
-interface Plan {
-  key: string;
-  name: string;
-  /** Small qualifier rendered before the price, e.g. "from". */
-  pricePrefix?: string;
-  price: string;
-  priceNote?: string;
-  description: string;
-  features: string[];
-  featuresLead?: string;
-  cta: string;
-  footnote?: string;
-  /** The highlighted tier gets the filled button and the dawn tag. */
-  isHighlighted?: boolean;
-}
-
-const PLANS: Plan[] = [
-  {
-    key: 'free',
-    name: 'Free',
-    price: 'KES 0',
-    priceNote: '/mo',
-    description: 'Try Mira on your own shop. No card needed.',
-    features: [
-      'Mira answers your Instagram DMs and comments',
-      'Carts and checkout guidance inside the DM',
-      'Up to 10 customer conversations a month',
-    ],
-    cta: 'Get started',
-    footnote: 'No card details asked, ever.',
-  },
-  {
-    key: 'pro',
-    name: 'Pro',
-    pricePrefix: 'from',
-    price: 'KES 3,500',
-    priceNote: '/mo',
-    description: 'For shops with steady DM traffic. Every message answered, day and night.',
-    featuresLead: 'Everything in Free, plus:',
-    features: [
-      'Unlimited customer conversations',
-      'Replies without Mira branding',
-      'See what customers ask most',
-      'Email support from the Mira team',
-    ],
-    cta: 'Become pro',
-    footnote: 'Scales with your shop as you grow.',
-    isHighlighted: true,
-  },
-  {
-    key: 'elite',
-    name: 'Elite',
-    price: 'Custom',
-    description: 'For bigger shops and teams. A plan shaped around how you sell.',
-    featuresLead: 'Everything in Pro, plus:',
-    features: [
-      'Onboarding for you and your team',
-      'A dedicated contact who knows your shop',
-      'Priority help with technical questions',
-      'Custom integrations',
-    ],
-    cta: "Let's chat",
-    footnote: 'Priced to fit your shop.',
-  },
-];
 
 const Pricing = () => {
   const [isEliteModalOpen, setIsEliteModalOpen] = useState(false);

@@ -4,17 +4,40 @@ import '../index.css';
 interface Props {
   title?: string;
   description?: string;
+  /** Explicit canonical path; defaults to the current URL pathname. */
+  canonicalPath?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  /** Page-specific JSON-LD merged into the site-wide @graph. */
+  jsonLd?: object | object[];
+  /** When true, renders noindex,follow (legal drafts until review). */
+  noindex?: boolean;
+  /** Mixpanel page-view label; written to <body data-page-name>. */
+  pageName?: string;
 }
 
 const {
   title = 'Mira — Your Instagram DM Sales Assistant for Kenyan Businesses',
   description = 'Mira replies to your Instagram DMs — answering product questions, building carts, and guiding customers to checkout. Built in Kenya, priced in KES. Try free.',
+  canonicalPath,
+  ogTitle,
+  ogDescription,
+  jsonLd,
+  noindex = false,
+  pageName,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const canonical = new URL(canonicalPath ?? Astro.url.pathname, Astro.site).href;
 
-// JSON-LD: WebSite + Product. Kept factual per docs/voice-and-tone.md (no hype).
-const jsonLd = {
+// Open Graph / Twitter fallback to the page title/description when not provided.
+const resolvedOgTitle = ogTitle ?? title;
+const resolvedOgDescription = ogDescription ?? description;
+
+// JSON-LD: WebSite + Product (site-wide) plus optional Organization and any
+// page-specific nodes (Offer, FAQPage) passed via the jsonLd prop. Kept factual
+// per docs/voice-and-tone.md (no hype).
+const pageNodes = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -35,6 +58,14 @@ const jsonLd = {
       url: 'https://withmira.co/',
       areaServed: 'KE',
     },
+    {
+      '@type': 'Organization',
+      '@id': 'https://withmira.co/#organization',
+      url: 'https://withmira.co/',
+      name: 'Mira',
+      email: 'hello@withmira.co',
+    },
+    ...pageNodes,
   ],
 };
 ---
@@ -62,23 +93,22 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Instagram DM sales assistant, AI customer service, Instagram automation, Kenya SME chatbot, social selling" />
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://withmira.co/" />
-    <meta property="og:title" content="Stop losing DM sales to slow replies" />
-    <meta property="og:description" content="Mira answers your Instagram DMs: product questions, sizes, and delivery. It builds carts and guides customers to checkout, so you stop losing sales to slow replies." />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://withmira.co/" />
-    <meta property="twitter:title" content="Stop losing DM sales to slow replies" />
-    <meta property="twitter:description" content="Mira answers your Instagram DMs: product questions, sizes, and delivery. It builds carts and guides customers to checkout, so you stop losing sales to slow replies." />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={resolvedOgTitle} />
+    <meta property="twitter:description" content={resolvedOgDescription} />
 
     <!-- Additional Meta Tags -->
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
     <meta name="language" content="English" />
     <meta name="geo.region" content="KE" />
     <meta name="geo.country" content="Kenya" />
@@ -91,9 +121,9 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
-  <body style="font-family: 'Instrument Sans', sans-serif; background-color: #F2F6F3;">
+  <body data-page-name={pageName} style="font-family: 'Instrument Sans', sans-serif; background-color: #F2F6F3;">
     <slot />
     <noscript>
       <div style="max-width: 36rem; margin: 2rem auto; padding: 0 1.5rem; color: #1B2620; text-align: center;">

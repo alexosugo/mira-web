@@ -1,23 +1,5 @@
 import { useSectionTracking } from '../hooks/useTracking';
-
-/** A real 3-step sequence: the numbers carry information, so they stay. */
-const STEPS = [
-  {
-    number: '01',
-    title: 'Connect your Instagram',
-    description: 'Link your Instagram Business account. Takes less than two minutes.',
-  },
-  {
-    number: '02',
-    title: 'Mira learns your catalog',
-    description: 'Mira reads your products and learns how to talk about them like you would.',
-  },
-  {
-    number: '03',
-    title: 'Go live',
-    description: 'Mira starts replying to DMs. You step in whenever you want.',
-  },
-];
+import { STEPS } from '../content/pages';
 
 const HowItWorks = () => {
   const sectionRef = useSectionTracking('how-it-works', 'How It Works Section');
