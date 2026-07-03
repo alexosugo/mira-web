@@ -33,7 +33,7 @@ export const PLANS: Plan[] = [
     priceNote: '/mo',
     description: 'Try Mira on your own shop. No card needed.',
     features: [
-      'Mira answers your Instagram DMs and comments',
+      'Mira answers customer questions in your Instagram DMs',
       'Carts and checkout guidance inside the DM',
       'Up to 10 customer conversations a month',
       'Replies include Mira branding',
@@ -46,16 +46,16 @@ export const PLANS: Plan[] = [
     name: 'Pro',
     price: 'KES 3,500',
     priceNote: '/mo',
-    description: 'For shops with steady DM traffic. Every message answered, day and night.',
+    description: 'For shops that need Mira to answer more customers. While Mira is on, it replies day and night.',
     featuresLead: 'Everything in Free, plus:',
     features: [
-      'Unlimited customer conversations',
+      'No monthly conversation cap',
       'Replies without Mira branding',
       'Pay by M-Pesa, cancel any time',
       'Email support from the Mira team',
     ],
-    cta: 'Become pro',
-    footnote: 'Scales with your shop as you grow.',
+    cta: 'Upgrade to Pro',
+    footnote: 'Cancel any time.',
     isHighlighted: true,
   },
   {
@@ -70,7 +70,7 @@ export const PLANS: Plan[] = [
       'Priority help with technical questions',
       'Custom integrations',
     ],
-    cta: "Let's chat",
+    cta: 'Ask about Elite',
     footnote: 'Priced to fit your shop.',
   },
 ];
@@ -137,30 +137,28 @@ export interface ScenarioItem {
 }
 
 export type ContentSection =
-  | { kind: 'prose'; kicker?: string; heading?: string; body: string }
-  | { kind: 'split'; kicker?: string; heading: string; body: string }
-  | { kind: 'list'; kicker?: string; heading?: string; items: string[] }
-  | { kind: 'numbered'; kicker?: string; heading?: string; items: ListItem[] }
-  | { kind: 'story'; kicker?: string; heading: string; body: string; aside?: string }
+  | { kind: 'prose'; heading?: string; body: string }
+  | { kind: 'split'; heading: string; body: string }
+  | { kind: 'list'; heading?: string; items: string[] }
+  | { kind: 'numbered'; heading?: string; items: ListItem[] }
+  | { kind: 'story'; heading: string; body: string; aside?: string }
   | {
       kind: 'fitGuide';
-      kicker?: string;
       heading: string;
       body: string;
       worksBest: string;
       handoff: string;
       ownerGets: string;
     }
-  | { kind: 'promiseGrid'; kicker?: string; heading: string; items: ListItem[] }
-  | { kind: 'beforeAfter'; kicker?: string; heading: string; content: BeforeAfterContent }
-  | { kind: 'scenarios'; kicker?: string; heading: string; items: ScenarioItem[] }
+  | { kind: 'promiseGrid'; heading: string; items: ListItem[] }
+  | { kind: 'beforeAfter'; heading: string; content: BeforeAfterContent }
+  | { kind: 'scenarios'; heading: string; items: ScenarioItem[] }
   | { kind: 'archetype'; name: string; role: string; day: string[]; miraHelps: string[] }
-  | { kind: 'legal'; kicker?: string; heading: string; paragraphs: string[] }
+  | { kind: 'legal'; heading: string; paragraphs: string[] }
   | { kind: 'pricingMatrix' }
   | { kind: 'faq'; items: FaqItem[] };
 
 export interface PageHero {
-  kicker?: string;
   h1: string;
   intro: string;
   primaryCta?: Cta;
@@ -197,10 +195,9 @@ export const PAGES: Record<string, PageContent> = {
   '/pricing': {
     path: '/pricing',
     hero: {
-      kicker: 'Pricing',
       h1: 'Pricing for Instagram shops that sell in the DMs',
       intro:
-        'Start free. Move to Pro when your DMs are busy enough that missing them costs more than the plan. Elite is for shops that want a team around them.',
+        'Start free and move to Pro when you need Mira to answer more customer conversations. Elite is for shops that want a team around them.',
       primaryCta: appCta,
       secondaryLink: { label: 'Ask about Elite', href: 'modal:elite' },
     },
@@ -208,10 +205,9 @@ export const PAGES: Record<string, PageContent> = {
       { kind: 'pricingMatrix' },
       {
         kind: 'story',
-        kicker: 'How to think about price',
         heading: 'Pay for saved sales, not software',
         body:
-          "You shouldn't pay until Mira has shown you it's worth it. Start free and watch what it handles — the DMs answered, the buyers kept moving, the conversations handed to you with context. Free is for trying Mira on your own shop. Pro is for steady DM traffic. Elite is for shops that want onboarding, a dedicated contact, and custom help around how they sell.",
+          "You shouldn't pay until Mira has shown you it's worth it. Start free and watch what it handles: the questions answered, the orders taking shape, the conversations handed to you with context. Free is for trying Mira on your own shop. Pro is for shops that need Mira to answer more customers. Elite is for shops that want onboarding, a dedicated contact, and custom help around how they sell.",
         aside:
           'A customer conversation is one message thread with a unique Instagram account. It can include product questions, cart help, delivery questions, checkout guidance, and a handoff when the answer needs you.',
       },
@@ -228,7 +224,6 @@ export const PAGES: Record<string, PageContent> = {
   '/how-it-works': {
     path: '/how-it-works',
     hero: {
-      kicker: 'How it works',
       h1: 'How Mira starts selling in your Instagram DMs',
       intro:
         'Connect your Instagram, review your catalog, test real DMs — and only then let Mira talk to customers. Careful setup is the point: Mira speaks for your shop.',
@@ -237,13 +232,11 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'numbered',
-        kicker: 'Setup',
         heading: 'The simple version',
         items: STEPS.map((step) => ({ title: step.title, body: step.description })),
       },
       {
         kind: 'story',
-        kicker: 'Test mode first',
         heading: "You're not connecting a tool. You're trusting it with your customers.",
         body:
           'So Mira does not go live the moment you connect. Every new shop starts in test mode: only an Instagram account you choose can message the shop, so you can ask Mira real questions about your own products and check the answers first. Mira only starts replying to customers when you turn it on from your dashboard.',
@@ -252,7 +245,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'promiseGrid',
-        kicker: 'Owner control',
         heading: 'What happens before Mira speaks for your shop',
         items: [
           { title: 'Products from your posts', body: 'Mira reads your posts and photos and turns them into products. When a post updates, the product updates too.' },
@@ -261,7 +253,7 @@ export const PAGES: Record<string, PageContent> = {
           { title: 'Your dashboard', body: 'Every conversation is there with a summary. Take over a thread whenever you want, and hand it back when you are done.' },
         ],
       },
-      { kind: 'prose', kicker: 'Access', heading: 'DM scope', body: DM_SCOPE_REASSURANCE },
+      { kind: 'prose', heading: 'DM scope', body: DM_SCOPE_REASSURANCE },
       faq([
         { question: 'How long does setup take?', answer: 'About ten minutes. Connect your Instagram Professional account, choose where handoff notifications go, and add your payment and delivery details.' },
         { question: 'What kind of Instagram account do I need?', answer: 'A Professional account. Instagram requires it for tools like Mira.' },
@@ -273,10 +265,9 @@ export const PAGES: Record<string, PageContent> = {
   '/instagram-dm-automation': {
     path: '/instagram-dm-automation',
     hero: {
-      kicker: 'Instagram DM automation',
       h1: 'Instagram DM replies that help customers buy',
       intro:
-        "You open Instagram and the same questions are stacked up: price, size, delivery, is it available, can I pay now. Mira answers them from your shop's details — in seconds, around the clock.",
+        "You open Instagram and the same questions are stacked up: price, size, delivery, is it available, can I pay now. While Mira is on, it answers them from your shop's details, even when you cannot be on your phone.",
       primaryCta: appCta,
       secondaryLink: { label: 'How Mira works', href: '/how-it-works' },
     },
@@ -301,7 +292,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'numbered',
-        kicker: 'Setup',
         heading: 'Going live takes three steps',
         items: STEPS.map((step) => ({ title: step.title, body: step.description })),
       },
@@ -328,7 +318,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'story',
-        kicker: 'The honest promise',
         heading: 'A customer is ready for minutes, not hours',
         body:
           'When a shopper asks “how much?” under a fresh post, they are usually comparing options right now. A slow reply turns a warm buyer into a silent thread. Mira keeps the first answer moving while you pack orders, eat dinner, or sleep.',
@@ -345,7 +334,6 @@ export const PAGES: Record<string, PageContent> = {
   '/integrations/instagram': {
     path: '/integrations/instagram',
     hero: {
-      kicker: 'Instagram integration',
       h1: 'Connect Mira to your Instagram shop',
       intro:
         "Mira connects through Instagram's official Meta login for business accounts. It never asks for your password, and you can disconnect any time.",
@@ -355,7 +343,6 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'promiseGrid',
-        kicker: 'Before connection',
         heading: 'What your shop needs',
         items: [
           { title: 'Instagram Professional account', body: 'Instagram requires a Professional account for DM tools like Mira. Personal accounts cannot connect.' },
@@ -366,7 +353,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'story',
-        kicker: 'After connection',
         heading: 'Mira works inside the way your customers already buy',
         body:
           'Customers still find you from posts, stories, and your profile. They still ask in DMs. Mira reads your shop DMs, answers from your details, and brings you in when a conversation needs a human decision.',
@@ -384,7 +370,6 @@ export const PAGES: Record<string, PageContent> = {
       '/features/product-answers': {
     path: '/features/product-answers',
     hero: {
-      kicker: 'Product answers',
       h1: 'Stop answering the same questions all day',
       intro:
         "Every buyer asks the same things. How much, what sizes, is it in stock, do you deliver. Mira answers all of it from your shop's details — in seconds, not hours.",
@@ -412,7 +397,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'story',
-        kicker: 'Catalog trust',
         heading: 'Every answer comes straight from your shop',
         body:
           "Mira reads your posts, your captions, your shop page — prices, sizes, stock, ingredients, everything you've already put up. When a buyer asks, the answer comes from what's there. No extra setup, no scripts to write.",
@@ -421,7 +405,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'promiseGrid',
-        kicker: 'What Mira answers',
         heading: 'The questions buyers ask before they buy',
         items: [
           { title: 'Price and stock', body: '"How much?" and "still available?" — answered from your details.' },
@@ -432,7 +415,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'scenarios',
-        kicker: 'DMs Mira handles',
         heading: 'How it sounds in the DM',
         items: [
           {
@@ -463,10 +445,9 @@ export const PAGES: Record<string, PageContent> = {
   '/features/orders-and-checkout': {
     path: '/features/orders-and-checkout',
     hero: {
-      kicker: 'Orders and checkout',
-      h1: 'From "how much?" to a paid order — in one thread',
+      h1: 'Help customers finish an order in the same conversation',
       intro:
-        'A buyer asks a question. Mira confirms the item, size, and quantity, keeps the whole order in one place, and sends an M-Pesa-ready checkout link when everything is clear. No scattered details, no lost sales in the follow-up.',
+        'A buyer asks a question. Mira confirms the item, size, and quantity, keeps the whole order in one place, and sends an M-Pesa-ready checkout link when everything is clear. You confirm the payment.',
       primaryCta: appCta,
       secondaryLink: { label: 'See what happens when Mira needs you', href: '/features/human-handoff' },
     },
@@ -491,7 +472,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'numbered',
-        kicker: 'Buying flow',
         heading: 'The DM becomes an order thread',
         items: [
           { title: 'Confirm the item', body: 'Mira checks product, size, color, and quantity before treating anyone as ready to buy.' },
@@ -510,7 +490,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'scenarios',
-        kicker: 'Checkout DMs',
         heading: 'How it sounds in the DM',
         items: [
           {
@@ -541,7 +520,6 @@ export const PAGES: Record<string, PageContent> = {
   '/features/human-handoff': {
     path: '/features/human-handoff',
     hero: {
-      kicker: 'Human handoff',
       h1: 'Mira hands tricky DMs back to you',
       intro:
         'A good assistant knows when to stop. Mira answers the repeat questions, then brings you in when a reply needs judgment, permission, or care — with the whole story attached.',
@@ -569,7 +547,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'story',
-        kicker: 'From your side',
         heading: 'What a handoff looks like',
         body:
           'You get the thread, not a mystery. Something like: "Sarah asked whether the hair oil helps with hairlines. I shared the ingredients and price, and told her you\'d advise her properly — the thread is yours." You reply in one message instead of starting from zero.',
@@ -578,7 +555,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'promiseGrid',
-        kicker: 'When Mira stops',
         heading: 'Handoffs protect the shop relationship',
         items: [
           { title: 'Unclear product request', body: "If your catalog can't identify what the shopper wants, Mira asks you." },
@@ -589,7 +565,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'scenarios',
-        kicker: 'Handoff examples',
         heading: 'How a good handoff sounds',
         items: [
           {
@@ -621,7 +596,6 @@ export const PAGES: Record<string, PageContent> = {
       '/use-cases/daily-drop-shops': {
     path: '/use-cases/daily-drop-shops',
     hero: {
-      kicker: 'Daily-drop shops',
       h1: 'Built for daily-drop shops that sell from Instagram',
       intro:
         "You post a drop. The questions pile up — price, size, is it available, do you deliver. Mira answers them all, in seconds, from your own details. Buyers don't wait. You don't type.",
@@ -650,7 +624,7 @@ export const PAGES: Record<string, PageContent> = {
       {
         kind: 'archetype',
         name: 'Wanjiru',
-        role: '12k followers. Nairobi. Posts almost every day. Replies to every DM herself.',
+        role: 'Posts almost every day. Replies to every DM herself.',
         day: [
           'Posts a new drop. Gets price checks before lunch.',
           'Answers size and delivery questions between packing orders.',
@@ -666,8 +640,7 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'promiseGrid',
-        kicker: 'What Mira adds',
-        heading: 'A shop assistant that does not sleep',
+        heading: 'A shop assistant that answers while you work',
         items: [
           { title: 'Replies in seconds', body: 'Price, size, stock, delivery — answered before the buyer loses interest.' },
           { title: 'Knows your shop', body: 'Mira answers from your details, so it never asks you the same thing twice.' },
@@ -677,7 +650,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'scenarios',
-        kicker: 'DMs Mira handles',
         heading: 'How it sounds in the DM',
         items: [
           {
@@ -699,7 +671,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'fitGuide',
-        kicker: 'Good fit',
         heading: 'Made for shops with too many DMs to answer alone',
         body:
           "If you're getting 15 or more product questions a day, posting often, and hearing the same things on repeat — that's where Mira makes the biggest difference. Below that, you can still use it. It just helps more when the DM load is heavy.",
@@ -719,7 +690,6 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/fashion': {
     path: '/use-cases/fashion',
     hero: {
-      kicker: 'Fashion shops',
       h1: 'DM help for fashion and thrift shops',
       intro:
         'One good piece gets twenty DMs: size, price, is it still there. Mira answers them from your page before the buyer moves on — and checks with you when stock is moving fast.',
@@ -795,7 +765,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'fitGuide',
-        kicker: 'Good fit',
         heading: 'Fashion sellers need speed and restraint at the same time',
         body:
           "Your page already has demand. The job is to stop losing interested buyers to slow replies — without ever promising a piece you can't deliver.",
@@ -816,7 +785,6 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/beauty': {
     path: '/use-cases/beauty',
     hero: {
-      kicker: 'Beauty shops',
       h1: 'DM help for beauty shops selling on Instagram',
       intro:
         'Shades, bundles, sealed stock, delivery today — the questions never stop. Mira answers them from your page and leaves the skin advice to you.',
@@ -892,7 +860,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'fitGuide',
-        kicker: 'Good fit',
         heading: 'Beauty DMs are high-volume and trust-sensitive',
         body:
           'Mira is useful when your product facts are clear and you want faster replies without an assistant making claims you would not make yourself.',
@@ -913,7 +880,6 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/accessories': {
     path: '/use-cases/accessories',
     hero: {
-      kicker: 'Accessories shops',
       h1: 'DM help for accessories shops',
       intro:
         'Bags, jewelry, watches, phone cases — detail-heavy products bring detail-heavy questions. Mira answers the facts fast and keeps the taste, bundles, and custom calls with you.',
@@ -989,7 +955,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'fitGuide',
-        kicker: 'Good fit',
         heading: 'Accessories shops win on details',
         body:
           'Buyers want material, size, fit, and packaging answers before they trust a page. One wrong compatibility answer costs a return — so Mira answers what your page supports and asks you about the rest.',
@@ -1010,10 +975,9 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/fragrances': {
     path: '/use-cases/fragrances',
     hero: {
-      kicker: 'Fragrance shops',
-      h1: 'Every scent question, answered in seconds',
+      h1: 'Scent questions answered from your own posts',
       intro:
-        'You post a new scent and the same messages arrive: how much, is it sweet, does it last, is it original. Mira answers the facts from your page the moment buyers ask — and sends the trust questions straight to you.',
+        'You post a new scent and the same messages arrive: how much, is it sweet, does it last, is it original. Mira answers the facts from your page the moment buyers ask, and sends the trust questions straight to you.',
       primaryCta: appCta,
       secondaryLink: { label: 'How handoffs work', href: '/features/human-handoff' },
     },
@@ -1086,7 +1050,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'fitGuide',
-        kicker: 'Good fit',
         heading: 'Made for perfume pages where trust is the product',
         body:
           'Fragrance buyers ask two kinds of questions: facts (notes, size, price, stock) and trust (original, tester, source). Mira takes the facts off your plate and treats every trust question as yours.',
@@ -1107,7 +1070,6 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/home-bakeries-food-brands': {
     path: '/use-cases/home-bakeries-food-brands',
     hero: {
-      kicker: 'Home bakeries and food brands',
       h1: 'DM help for home bakeries and food brands',
       intro:
         'What is available today, does it have nuts, can it reach Kilimani by four. Mira answers your menu questions while you bake — and never improvises on food safety.',
@@ -1183,7 +1145,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'fitGuide',
-        kicker: 'Good fit',
         heading: 'Food brands need speed with food-safety restraint',
         body:
           'Food DMs repeat all day, but the sensitive ones cannot be improvised. Mira helps when your menu, prices, and ingredient notes are written up — and every safety gap comes straight to you.',
@@ -1204,7 +1165,6 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/skincare-haircare-makers': {
     path: '/use-cases/skincare-haircare-makers',
     hero: {
-      kicker: 'Skincare and haircare makers',
       h1: 'DM help for skincare and haircare makers',
       intro:
         'Is it greasy, what is in it, which size is left — your DMs fill with the same questions between batches. Mira answers the product facts and leaves every results claim to you.',
@@ -1280,7 +1240,6 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'fitGuide',
-        kicker: 'Good fit',
         heading: 'Makers need Mira to be careful, not loud',
         body:
           'Small-batch brands win trust through detail, consistency, and honest boundaries. Mira answers the facts you have written and treats every claim as yours to make.',
@@ -1301,7 +1260,6 @@ export const PAGES: Record<string, PageContent> = {
   '/security': {
     path: '/security',
     hero: {
-      kicker: 'Security',
       h1: 'Security at Mira',
       intro:
         'Handing your DMs to software is a big ask. This page says plainly what Mira connects to, what it reads, and how you stay in control.',
@@ -1331,7 +1289,6 @@ export const PAGES: Record<string, PageContent> = {
   '/privacy': {
     path: '/privacy',
     hero: {
-      kicker: 'Privacy',
       h1: 'Privacy Policy',
       intro:
         'Mira uses shop and customer information to answer Instagram DMs, build carts, hand conversations back to the owner, and support the account. These terms stay plain because trust is the product.',
@@ -1383,7 +1340,6 @@ export const PAGES: Record<string, PageContent> = {
   '/terms': {
     path: '/terms',
     hero: {
-      kicker: 'Terms',
       h1: 'Terms of Service',
       intro:
         'These terms explain how shops can use Mira, what you remain responsible for, and where Mira hands conversations back instead of guessing.',
@@ -1435,7 +1391,6 @@ export const PAGES: Record<string, PageContent> = {
   '/data-deletion': {
     path: '/data-deletion',
     hero: {
-      kicker: 'Data deletion',
       h1: 'Data deletion',
       intro:
         'You can ask Mira to delete the shop data connected to your account. Here is exactly what to send and what happens next.',
@@ -1457,7 +1412,6 @@ export const PAGES: Record<string, PageContent> = {
   '/about': {
     path: '/about',
     hero: {
-      kicker: 'About',
       h1: 'About Mira',
       intro:
         'Mira is built in Kenya for Instagram sellers who answer customer DMs all day and need a teammate that understands shop work, not another dashboard.',
@@ -1491,10 +1445,9 @@ export const PAGES: Record<string, PageContent> = {
   '/contact': {
     path: '/contact',
     hero: {
-      kicker: 'Contact',
       h1: 'Contact Mira',
       intro:
-        'Start with the app, ask a question by email, or talk to Mira about a higher-touch setup for a shop with steady DM traffic.',
+        'Start with the app, ask a question by email, or talk to us about a higher-touch setup for your shop.',
       primaryCta: appCta,
       secondaryLink: { label: 'Email hello@withmira.co', href: 'mailto:hello@withmira.co' },
     },
@@ -1514,7 +1467,6 @@ export const PAGES: Record<string, PageContent> = {
   '/help': {
     path: '/help',
     hero: {
-      kicker: 'Help',
       h1: 'Help with Mira',
       intro:
         'Start here if you are checking whether Mira fits your shop, what it needs from Instagram, how catalog answers work, or how to request deletion.',

@@ -6,7 +6,7 @@ interface HandleItem {
 }
 
 const SOLUTION_LEAD =
-  'Mira lives in your DMs and understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.';
+  'Mira lives in your Instagram DMs. It knows your products, replies to customer questions, and helps customers put an order together in the same conversation. When someone needs you personally, Mira passes the conversation to you.';
 
 /**
  * The everyday DM work Mira takes over, as an editorial index rather than a
@@ -18,9 +18,9 @@ const Handles = () => {
 
   const items: HandleItem[] = [
     {
-      title: 'Product Expert',
+      title: 'Product questions',
       description:
-        'Mira understands your catalog well enough to guide customers with clear, helpful answers',
+        'Price, stock, size, colour and ingredients, answered from the posts already on your shop.',
     },
     {
       title: 'Sizes and recommendations',
@@ -48,8 +48,7 @@ const Handles = () => {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <p className="kicker text-ink-light">What Mira handles</p>
-              <h2 className="mt-6 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+              <h2 className="font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
                 The questions you answer all day, answered for you
               </h2>
               <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-light">

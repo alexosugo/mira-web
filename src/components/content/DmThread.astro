@@ -8,11 +8,10 @@ import type { ScenarioItem } from '../../content/pages';
 
 interface Props {
   heading: string;
-  kicker?: string;
   items: ScenarioItem[];
 }
 
-const { heading, kicker, items } = Astro.props;
+const { heading, items } = Astro.props;
 
 // KES figures get the mono face — the brand's commerce texture.
 const kesParts = (text: string) => text.split(/(KES\s?[\d,]+)/g);
@@ -20,7 +19,6 @@ const isKes = (part: string) => /^KES\s?[\d,]+$/.test(part);
 ---
 
 <div>
-  {kicker && <p class="kicker mb-4 text-ink-faint">{kicker}</p>}
   <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
     {heading}
   </h2>

@@ -18,8 +18,8 @@ const PricingMatrix = () => {
           >
             <div className="min-h-[11rem]">
               {plan.isHighlighted && (
-                <p className="mb-4 inline-flex border border-clay/25 px-3 py-1 font-mono text-xs uppercase tracking-wide text-clay">
-                  Most picked
+                <p className="mb-4 inline-flex border border-dawn/30 px-3 py-1 font-mono text-xs uppercase tracking-wide text-dawn-deep">
+                  Recommended
                 </p>
               )}
               <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
@@ -61,7 +61,7 @@ const PricingMatrix = () => {
                   }
                   className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
                     plan.isHighlighted
-                      ? 'bg-ink text-paper hover:bg-ink-light'
+                      ? 'bg-fern text-paper hover:bg-fern-deep'
                       : 'border border-ink/25 text-ink hover:border-ink hover:bg-ink/5'
                   }`}
                 >

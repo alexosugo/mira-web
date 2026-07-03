@@ -12,7 +12,7 @@ interface ChatMessage {
 }
 
 const MESSAGES: ChatMessage[] = [
-  { from: 'customer', text: 'Sasa! Do you have the denim jacket in M?' },
+  { from: 'customer', text: 'Do you have the denim jacket in M?' },
   {
     from: 'mira',
     text: (
@@ -38,21 +38,22 @@ const messageDelay = (index: number) => `${MESSAGE_BASE_DELAY_MS + index * MESSA
 
 /**
  * The hero's proof surface: a believable Instagram DM thread where Mira
- * answers a stock question, builds a cart, and closes the sale overnight.
- * Messages stagger in with CSS-only delays (no JS gating); reduced motion
- * shows everything instantly via the global override in index.css.
+ * answers a stock question, builds a cart, and leaves the order awaiting the
+ * owner's payment confirmation. Messages stagger in with CSS-only delays (no
+ * JS gating); reduced motion shows everything instantly via the global
+ * override in index.css.
  */
 const HeroChatDemo = () => {
   return (
     <div
-      aria-label="Example Instagram DM conversation: Mira answers a customer's stock question, adds a jacket to their cart, and confirms the order at 2:14 AM"
+      aria-label="Example Instagram DM conversation: Mira answers a customer's stock question, adds a jacket to their cart, and marks the order as awaiting the owner's payment confirmation"
       className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-line bg-white"
     >
       {/* Thread header */}
       <div className="flex items-center gap-3 border-b border-line px-5 py-4">
         <div className="relative">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-fern font-display text-sm font-medium text-paper">
-            NT
+            YS
           </div>
           <span
             className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-fern-bright"
@@ -60,7 +61,7 @@ const HeroChatDemo = () => {
           />
         </div>
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-ink">@nia.thrifts</p>
+          <p className="truncate text-sm font-semibold text-ink">@yourshop</p>
           <p className="font-mono text-xs text-fern">Mira replies for you</p>
         </div>
       </div>
@@ -101,7 +102,7 @@ const HeroChatDemo = () => {
           className="pt-2 text-center font-mono text-xs text-ink-faint animate-fade-in-up"
           style={{ animationDelay: messageDelay(MESSAGES.length + 1) }}
         >
-          Order confirmed · 2:14 AM
+          2:14 AM · Order awaiting your payment confirmation
         </p>
       </div>
     </div>

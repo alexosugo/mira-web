@@ -26,7 +26,7 @@ describe('use-case content pages', () => {
   it('uses shop categories as use cases instead of generic Instagram shop labels', () => {
     const dailyDropRoute = ROUTES.find((route) => route.path === '/use-cases/daily-drop-shops');
 
-    expect(dailyDropRoute?.title).toContain('Daily-Drop Shops');
+    expect(dailyDropRoute?.title).toContain('daily-drop shops');
     expect(dailyDropRoute?.pageName).toContain('Daily-Drop Shops');
     expect(dailyDropRoute?.title).not.toContain('Instagram Shops');
     expect(PAGES['/use-cases/daily-drop-shops'].hero.h1).toContain('daily-drop shops');
@@ -90,15 +90,13 @@ describe('use-case content pages', () => {
   });
 
   it('uses locally natural Nairobi category language', () => {
-    expect(ROUTES.find((route) => route.path === '/use-cases/home-bakeries-food-brands')?.title).toContain(
-      'Home Bakeries and Food Brands',
+    expect(ROUTES.find((route) => route.path === '/use-cases/home-bakeries-food-brands')?.title).toContain(      'home bakeries and food brands',
     );
-    expect(ROUTES.find((route) => route.path === '/use-cases/skincare-haircare-makers')?.title).toContain(
-      'Skincare and Haircare Makers',
+    expect(ROUTES.find((route) => route.path === '/use-cases/skincare-haircare-makers')?.title).toContain(      'skincare and haircare makers',
     );
 
     const pageText = Object.values(PAGES)
-      .flatMap((page) => [page.path, page.hero.kicker ?? '', page.hero.h1, page.hero.intro])
+      .flatMap((page) => [page.path, page.hero.h1, page.hero.intro])
       .join(' ');
 
     expect(pageText.toLowerCase()).not.toContain('cottage');

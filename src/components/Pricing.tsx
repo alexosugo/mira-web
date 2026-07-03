@@ -19,9 +19,8 @@ const Pricing = () => {
   return (
     <section id="pricing" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <p className="kicker text-ink-light">Pricing</p>
-        <h2 className="mt-6 max-w-xl font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
-          Start free, upgrade when the DMs do
+        <h2 className="max-w-xl font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+          Start free and choose a plan when you know Mira fits your shop
         </h2>
 
         {/* Three hairline columns rather than shadowed cards. */}

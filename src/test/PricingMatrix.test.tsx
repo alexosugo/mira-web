@@ -17,14 +17,14 @@ describe('Pricing page interactive pricing components', () => {
     expect(screen.getByText('Pro')).toBeInTheDocument();
     expect(screen.getByText('Elite')).toBeInTheDocument();
     expect(screen.getByText('Up to 10 customer conversations a month')).toBeInTheDocument();
-    expect(screen.getByText('Unlimited customer conversations')).toBeInTheDocument();
+    expect(screen.getByText('No monthly conversation cap')).toBeInTheDocument();
     expect(screen.getByText('Custom integrations')).toBeInTheDocument();
   });
 
   it('opens the existing Elite modal from the pricing matrix', () => {
     render(<PricingMatrix />);
 
-    fireEvent.click(screen.getByRole('button', { name: "Let's chat" }));
+    fireEvent.click(screen.getByRole('button', { name: "Ask about Elite" }));
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Get in touch' })).toBeInTheDocument();

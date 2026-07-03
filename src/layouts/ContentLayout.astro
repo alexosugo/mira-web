@@ -171,10 +171,6 @@ const legalIndexes = new Map(
 
             <section id={sectionId(index, section.kind)} class={index > 0 ? 'scroll-mt-28 border-t border-line' : 'scroll-mt-28'}>
               <div class={`mx-auto max-w-6xl px-6 lg:px-8 ${sectionPadding(section.kind)}`}>
-                {'kicker' in section && section.kicker && section.kind !== 'scenarios' && (
-                  <p class="kicker mb-4 text-ink-faint">{section.kicker}</p>
-                )}
-
                 {section.kind === 'prose' && (
                   <div class="max-w-2xl">
                     {section.heading && (
@@ -339,7 +335,7 @@ const legalIndexes = new Map(
                 )}
 
                 {section.kind === 'scenarios' && (
-                  <DmThread heading={section.heading} kicker={section.kicker} items={section.items} />
+                  <DmThread heading={section.heading} items={section.items} />
                 )}
 
                 {section.kind === 'archetype' && (

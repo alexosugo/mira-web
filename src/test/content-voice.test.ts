@@ -18,22 +18,20 @@ allContentStrings.push(DM_SCOPE_REASSURANCE);
 const sectionStrings = (section: ContentSection): readonly string[] => {
   switch (section.kind) {
     case 'prose':
-      return [section.kicker ?? '', section.heading ?? '', section.body];
+      return [section.heading ?? '', section.body];
     case 'split':
-      return [section.kicker ?? '', section.heading, section.body];
+      return [section.heading, section.body];
     case 'list':
-      return [section.kicker ?? '', section.heading ?? '', ...section.items];
+      return [section.heading ?? '', ...section.items];
     case 'numbered':
       return [
-        section.kicker ?? '',
         section.heading ?? '',
         ...section.items.flatMap((item) => [item.title, item.body]),
       ];
     case 'story':
-      return [section.kicker ?? '', section.heading, section.body, section.aside];
+      return [section.heading, section.body, section.aside];
     case 'fitGuide':
       return [
-        section.kicker ?? '',
         section.heading,
         section.body,
         section.worksBest,
@@ -42,22 +40,20 @@ const sectionStrings = (section: ContentSection): readonly string[] => {
       ];
     case 'promiseGrid':
       return [
-        section.kicker ?? '',
         section.heading,
         ...section.items.flatMap((item) => [item.title, item.body]),
       ];
     case 'beforeAfter':
-      return [section.kicker ?? '', section.heading, ...section.content.before, ...section.content.after];
+      return [section.heading, ...section.content.before, ...section.content.after];
     case 'scenarios':
       return [
-        section.kicker ?? '',
         section.heading,
         ...section.items.flatMap((item) => [item.customer, item.mira, item.ownerNote]),
       ];
     case 'archetype':
       return [section.name, section.role, ...section.day, ...section.miraHelps];
     case 'legal':
-      return [section.kicker ?? '', section.heading, ...section.paragraphs];
+      return [section.heading, ...section.paragraphs];
     case 'pricingMatrix':
       return [];
     case 'faq':
@@ -66,7 +62,7 @@ const sectionStrings = (section: ContentSection): readonly string[] => {
 };
 
 for (const page of Object.values(PAGES)) {
-  allContentStrings.push(page.path, page.hero.kicker ?? '', page.hero.h1, page.hero.intro);
+  allContentStrings.push(page.path, page.hero.h1, page.hero.intro);
   if (page.hero.primaryCta) {
     allContentStrings.push(page.hero.primaryCta.label, page.hero.primaryCta.href);
   }

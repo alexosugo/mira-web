@@ -34,7 +34,9 @@
     animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  /* Small uppercase mono label used as section eyebrows. */
+  /* Small uppercase mono label for functional labels only (TOC, column
+     headers, before/after tags). The brand bundle bans decorative section
+     eyebrows — do not reintroduce them with this class. */
   .kicker {
     @apply font-mono text-xs uppercase tracking-[0.18em];
   }
