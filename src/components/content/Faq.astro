@@ -1,0 +1,35 @@
+---
+/**
+ * FAQ as native <details> accordions — keyboard- and screen-reader-native,
+ * zero JS. The mono plus rotates to a multiply when open.
+ */
+import type { FaqItem } from '../../content/pages';
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="max-w-2xl">
+  <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
+    Questions
+  </h2>
+  <div class="mt-10 divide-y divide-line border-y border-line">
+    {items.map((item) => (
+      <details class="group py-1">
+        <summary class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-6 py-4 text-base font-semibold text-ink transition-colors hover:text-fern-deep [&::-webkit-details-marker]:hidden">
+          {item.question}
+          <span
+            class="shrink-0 font-mono text-lg text-ink-faint transition-transform duration-300 ease-out group-open:rotate-45 group-open:text-fern-deep"
+            aria-hidden="true"
+          >
+            +
+          </span>
+        </summary>
+        <p class="pb-5 pr-10 text-base leading-relaxed text-ink-light">{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</div>

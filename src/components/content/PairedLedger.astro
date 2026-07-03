@@ -1,0 +1,54 @@
+---
+/**
+ * Archetype section as a paired ledger: the seller's day on the left, where
+ * Mira fits on the right, row by row. The parallel structure is the story —
+ * every pain line meets its answer across the rule.
+ */
+interface Props {
+  name: string;
+  role: string;
+  day: string[];
+  miraHelps: string[];
+}
+
+const { name, role, day, miraHelps } = Astro.props;
+const rows = Math.max(day.length, miraHelps.length);
+---
+
+<div>
+  <div class="max-w-2xl">
+    <p class="kicker text-ink-faint">Meet a seller like you</p>
+    <h2 class="mt-4 font-display text-[clamp(2rem,1.3rem+3.2vw,3.5rem)] font-medium italic leading-[1.05] tracking-tight text-ink">
+      {name}
+    </h2>
+    <p class="mt-3 font-mono text-sm leading-relaxed text-ink-faint">{role}</p>
+  </div>
+
+  <div class="mt-12 hidden grid-cols-2 gap-x-12 border-b border-line pb-3 md:grid">
+    <h3 class="kicker text-ink-faint">The day now</h3>
+    <h3 class="kicker text-fern-deep">Where Mira fits</h3>
+  </div>
+
+  <div class="mt-6 space-y-8 md:mt-0 md:space-y-0">
+    {Array.from({ length: rows }, (_, i) => (
+      <div class="grid gap-4 md:grid-cols-2 md:gap-x-12 md:border-b md:border-line md:py-6">
+        {day[i] && (
+          <div class="flex items-start gap-3">
+            <span class="kicker mt-1 shrink-0 text-ink-faint md:hidden">Now</span>
+            <span class="mt-2.5 hidden h-1.5 w-1.5 shrink-0 rounded-full border border-ink-faint/50 md:block" aria-hidden="true"></span>
+            <p class="text-base leading-relaxed text-ink-light">{day[i]}</p>
+          </div>
+        )}
+        {miraHelps[i] && (
+          <div class="flex items-start gap-3 border-l-2 border-fern/40 pl-4 md:border-0 md:pl-0">
+            <span class="kicker mt-1 shrink-0 text-fern-deep md:hidden">With Mira</span>
+            <svg class="mt-1 hidden h-4 w-4 shrink-0 text-fern md:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" />
+            </svg>
+            <p class="text-base leading-relaxed text-ink">{miraHelps[i]}</p>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>

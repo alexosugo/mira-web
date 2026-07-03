@@ -2,11 +2,16 @@
 import BaseLayout from './BaseLayout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import EliteModalButton from '../components/EliteModalButton';
 import PricingMatrix from '../components/PricingMatrix';
+import ContentHero from '../components/content/ContentHero.astro';
+import DmThread from '../components/content/DmThread.astro';
+import Timeline from '../components/content/Timeline.astro';
+import PairedLedger from '../components/content/PairedLedger.astro';
+import Faq from '../components/content/Faq.astro';
 import type { PageContent, ContentSection, FaqItem } from '../content/pages';
 import type { Route } from '../lib/routes';
 import { jsonLdForPage } from '../lib/structured-data';
+import { variantForPath, decorForPath } from '../lib/page-variant';
 
 interface Props {
   /** Page body data: hero + sections (+ faq carried as a section). */
@@ -20,31 +25,42 @@ interface Props {
 const { page, route, jsonLd } = Astro.props;
 const pageJsonLd = [...jsonLdForPage(page), ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 
-// Primary CTA styling mirrors the homepage header CTA (fern pill).
-const ctaClass = (variant: 'primary' | 'secondary' | undefined) =>
-  variant === 'secondary'
-    ? 'inline-flex min-h-[44px] items-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5'
-    : 'inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep';
+const variant = variantForPath(page.path);
+const decor = decorForPath(page.path);
+const withThree = page.path === '/instagram-dm-automation';
 
-const sectionId = (index: number, kind: string) => `${kind}-${index}`;
+// Legal pages read as one document: narrow measure, § numbering, and a sticky
+// table of contents once there are enough sections to warrant one.
+const isDocument = variant === 'legal';
+const tocEntries = isDocument
+  ? page.sections
+      .map((section, index) => ({
+        id: `${section.kind}-${index}`,
+        label: 'heading' in section && section.heading ? section.heading : null,
+      }))
+      .filter((entry): entry is { id: string; label: string } => entry.label !== null)
+  : [];
+const showToc = tocEntries.length >= 3;
 
-// Insert a mid-page CTA band after this section index.
+// Mid-page CTA band — product pages only; never inside legal/trust documents.
+const showCtaBand = variant === 'guide' || variant === 'feature' || variant === 'useCase' || variant === 'company';
 const ctaBreakPoint = Math.floor(page.sections.length / 2);
 
 // Vary section padding by kind for visual rhythm.
 const sectionPadding = (kind: string) => {
   if (kind === 'story') return 'py-24 sm:py-32';
   if (kind === 'faq') return 'py-16 sm:py-20';
+  if (kind === 'legal') return 'py-10 sm:py-12';
   return 'py-20 sm:py-24';
 };
 
-// Mono numerals for editorial indexes (DESIGN.md: lists are editorial indexes,
-// never card grids).
+const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 const numeral = (index: number) => String(index + 1).padStart(2, '0');
 
-// Wrap KES figures in the mono face — the brand's commerce texture.
-const kesParts = (text: string) => text.split(/(KES\s?[\d,]+)/g);
-const isKes = (part: string) => /^KES\s?[\d,]+$/.test(part);
+// Legal § numbering counts only legal sections, in order.
+const legalIndexes = new Map(
+  page.sections.filter((s) => s.kind === 'legal').map((s, i) => [s, i]),
+);
 ---
 
 <BaseLayout
@@ -58,315 +74,299 @@ const isKes = (part: string) => /^KES\s?[\d,]+$/.test(part);
   <div class="min-h-screen bg-paper">
     <Header client:load />
     <main>
-      {/* Hero */}
-      <section>
-        <div class="mx-auto max-w-6xl px-6 pb-20 pt-32 sm:pt-40 lg:px-8">
-          {page.hero.kicker && (
-            <p class="animate-fade-in-up mb-5 font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">
-              {page.hero.kicker}
-            </p>
-          )}
-          <h1 class="animate-fade-in-up max-w-2xl font-display text-[clamp(2.25rem,1.4rem+4vw,4rem)] font-medium leading-[1.05] tracking-tight text-ink [text-wrap:balance] [animation-delay:80ms]">
-            {page.hero.h1}
-          </h1>
-          <p class="animate-fade-in-up mt-6 max-w-xl text-lg leading-relaxed text-ink-light [animation-delay:160ms]">{page.hero.intro}</p>
-          {(page.hero.primaryCta || page.hero.secondaryLink) && (
-            <div class="mt-10 flex flex-wrap items-center gap-4">
-              {page.hero.primaryCta && (
-                <a href={page.hero.primaryCta.href} class={ctaClass(page.hero.primaryCta.variant)}>
-                  {page.hero.primaryCta.label}
-                </a>
-              )}
-              {page.hero.secondaryLink && (
-                page.hero.secondaryLink.href === 'modal:elite' ? (
-                  <EliteModalButton client:load label={page.hero.secondaryLink.label} location={`${route.pageName} hero`} />
-                ) : (
-                  <a
-                    href={page.hero.secondaryLink.href}
-                    class="text-sm font-medium text-ink underline-offset-4 transition-colors hover:text-ink-light hover:underline"
-                  >
-                    {page.hero.secondaryLink.label}
-                  </a>
-                )
-              )}
-            </div>
-          )}
-        </div>
-      </section>
+      <ContentHero hero={page.hero} route={route} variant={variant} decor={decor} withThree={withThree} />
 
-      {/* Body sections */}
-      {page.sections.map((section: ContentSection, index: number) => (
-        <Fragment>
-          {/* Mid-page CTA band — hairline-framed, never a background stripe */}
-          {index === ctaBreakPoint && (
-            <section class="border-y border-line">
-              <div class="mx-auto max-w-2xl px-6 py-12 text-center lg:px-8">
-                <p class="font-display text-xl text-ink">Ready to stop typing the same replies?</p>
-                <a
-                  href="https://app.withmira.co"
-                  class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
-                >
-                  Start free
-                </a>
-                <p class="mt-4 font-mono text-xs text-ink-faint">No card needed</p>
-              </div>
-            </section>
-          )}
-
-          <section id={sectionId(index, section.kind)} class={index > 0 ? 'border-t border-line' : ''}>
-            <div class={`mx-auto max-w-6xl px-6 lg:px-8 ${sectionPadding(section.kind)}`}>
-              {'kicker' in section && section.kicker && (
-                <p class="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">{section.kicker}</p>
-              )}
-              {section.kind === 'prose' && (
-                <div class="max-w-2xl">
-                  {section.heading && (
-                    <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
-                      {section.heading}
-                    </h2>
-                  )}
-                  <p class={`text-lg leading-relaxed text-ink-light ${section.heading ? 'mt-6' : ''}`}>{section.body}</p>
-                </div>
-              )}
-
-              {section.kind === 'split' && (
-                <div class="grid gap-12 md:grid-cols-2 md:gap-16">
-                  <div>
-                    <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
-                      {section.heading}
-                    </h2>
-                  </div>
-                  <p class="self-start text-lg leading-relaxed text-ink-light md:pt-2">{section.body}</p>
-                </div>
-              )}
-
-              {section.kind === 'list' && (
-                <div>
-                  {section.heading && (
-                    <h2 class="max-w-xl font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
-                      {section.heading}
-                    </h2>
-                  )}
-                  <ul class="mt-10 space-y-5">
-                    {section.items.map((item: string) => (
-                      <li class="flex items-baseline gap-4">
-                        <span class="text-ink-faint">—</span>
-                        <span class="text-base leading-relaxed text-ink">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {section.kind === 'numbered' && (
-                <div>
-                  {section.heading && (
-                    <h2 class="max-w-xl font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
-                      {section.heading}
-                    </h2>
-                  )}
-                  <ol class="mt-10 max-w-3xl divide-y divide-line border-t border-line">
-                    {section.items.map((item, itemIndex) => (
-                      <li class="grid grid-cols-[3rem_1fr] gap-4 py-6 sm:grid-cols-[4rem_1fr] sm:gap-6">
-                        <span class="font-mono text-sm text-ink-faint" aria-hidden="true">{numeral(itemIndex)}</span>
-                        <div>
-                          <h3 class="font-display text-xl font-medium text-ink">{item.title}</h3>
-                          <p class="mt-2 text-base leading-relaxed text-ink-light">{item.body}</p>
-                        </div>
+      {isDocument ? (
+        <div class="mx-auto max-w-6xl px-6 pb-24 lg:px-8">
+          <div class={showToc ? 'lg:grid lg:grid-cols-12 lg:gap-16' : ''}>
+            {showToc && (
+              <nav class="mb-12 lg:col-span-4 lg:mb-0 xl:col-span-3" aria-label="On this page">
+                <div class="lg:sticky lg:top-28">
+                  <p class="kicker text-ink-faint">On this page</p>
+                  <ol class="mt-5 space-y-3 border-l border-line">
+                    {tocEntries.map((entry, index) => (
+                      <li>
+                        <a
+                          href={`#${entry.id}`}
+                          class="-ml-px flex items-baseline gap-3 border-l-2 border-transparent pl-4 text-sm text-ink-light transition-colors hover:border-fern hover:text-ink"
+                        >
+                          <span class="font-mono text-xs text-ink-faint" aria-hidden="true">§{numeral(index)}</span>
+                          {entry.label}
+                        </a>
                       </li>
                     ))}
                   </ol>
                 </div>
-              )}
-
-              {section.kind === 'story' && (
-                <div>
-                  <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
-                    {section.heading}
-                  </h2>
-                  <div class="mt-6 grid gap-12 md:grid-cols-2 md:gap-16">
-                    <p class="text-lg leading-relaxed text-ink-light">{section.body}</p>
-                    <p class="text-base leading-relaxed text-ink-faint">{section.aside}</p>
-                  </div>
+              </nav>
+            )}
+            <div class={showToc ? 'lg:col-span-8 xl:col-span-8' : 'max-w-3xl'}>
+              {page.sections.map((section, index) => (
+                <section id={sectionId(index, section.kind)} class="scroll-mt-28 border-t border-line py-10 first:border-t-0 first:pt-0 sm:py-12">
+                  {section.kind === 'legal' && (
+                    <article class="max-w-3xl">
+                      <div class="flex items-baseline gap-4">
+                        <span class="font-mono text-sm text-ink-faint" aria-hidden="true">§{numeral(legalIndexes.get(section) ?? 0)}</span>
+                        <h2 class="font-display text-[clamp(1.4rem,1.05rem+1.6vw,2rem)] font-medium leading-[1.15] tracking-tight text-ink">
+                          {section.heading}
+                        </h2>
+                      </div>
+                      <div class="mt-5 space-y-4 sm:pl-[calc(0.875rem+1rem)]">
+                        {section.paragraphs.map((paragraph) => (
+                          <p class="text-base leading-relaxed text-ink-light">{paragraph}</p>
+                        ))}
+                      </div>
+                    </article>
+                  )}
+                  {section.kind === 'prose' && (
+                    <div class="max-w-3xl">
+                      {section.heading && (
+                        <h2 class="font-display text-[clamp(1.4rem,1.05rem+1.6vw,2rem)] font-medium leading-[1.15] tracking-tight text-ink">
+                          {section.heading}
+                        </h2>
+                      )}
+                      <p class={`text-base leading-relaxed text-ink-light ${section.heading ? 'mt-5' : ''}`}>{section.body}</p>
+                    </div>
+                  )}
+                  {section.kind === 'list' && (
+                    <div class="max-w-3xl">
+                      {section.heading && (
+                        <h2 class="font-display text-[clamp(1.4rem,1.05rem+1.6vw,2rem)] font-medium leading-[1.15] tracking-tight text-ink">
+                          {section.heading}
+                        </h2>
+                      )}
+                      <ul class="mt-6 space-y-3 rounded-2xl border border-line bg-white p-6">
+                        {section.items.map((item) => (
+                          <li class="flex items-baseline gap-3">
+                            <span class="font-mono text-xs text-fern-deep" aria-hidden="true">→</span>
+                            <span class="text-base leading-relaxed text-ink">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {section.kind === 'faq' && <Faq items={section.items as FaqItem[]} />}
+                </section>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        page.sections.map((section: ContentSection, index: number) => (
+          <Fragment>
+            {/* Mid-page CTA band — hairline-framed, never a background stripe */}
+            {showCtaBand && index === ctaBreakPoint && (
+              <section class="border-y border-line">
+                <div class="mx-auto max-w-2xl px-6 py-12 text-center lg:px-8">
+                  <p class="font-display text-xl text-ink">Ready to stop typing the same replies?</p>
+                  <a
+                    href="https://app.withmira.co"
+                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
+                  >
+                    Start free
+                  </a>
+                  <p class="mt-4 font-mono text-xs text-ink-faint">No card needed</p>
                 </div>
-              )}
+              </section>
+            )}
 
-              {section.kind === 'fitGuide' && (
-                <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
-                  <div class="lg:col-span-5">
-                    <h2 class="font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+            <section id={sectionId(index, section.kind)} class={index > 0 ? 'scroll-mt-28 border-t border-line' : 'scroll-mt-28'}>
+              <div class={`mx-auto max-w-6xl px-6 lg:px-8 ${sectionPadding(section.kind)}`}>
+                {'kicker' in section && section.kicker && section.kind !== 'scenarios' && (
+                  <p class="kicker mb-4 text-ink-faint">{section.kicker}</p>
+                )}
+
+                {section.kind === 'prose' && (
+                  <div class="max-w-2xl">
+                    {section.heading && (
+                      <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
+                        {section.heading}
+                      </h2>
+                    )}
+                    <p class={`text-lg leading-relaxed text-ink-light ${section.heading ? 'mt-6' : ''}`}>{section.body}</p>
+                  </div>
+                )}
+
+                {section.kind === 'split' && (
+                  <div class="grid gap-12 md:grid-cols-2 md:gap-16">
+                    <div>
+                      <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
+                        {section.heading}
+                      </h2>
+                    </div>
+                    <p class="self-start text-lg leading-relaxed text-ink-light md:pt-2">{section.body}</p>
+                  </div>
+                )}
+
+                {section.kind === 'list' && (
+                  <div>
+                    {section.heading && (
+                      <h2 class="max-w-xl font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
+                        {section.heading}
+                      </h2>
+                    )}
+                    <ul class="mt-10 space-y-5">
+                      {section.items.map((item: string) => (
+                        <li class="flex items-baseline gap-4">
+                          <span class="text-ink-faint">—</span>
+                          <span class="text-base leading-relaxed text-ink">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {section.kind === 'numbered' && (
+                  <Timeline heading={section.heading} items={section.items} />
+                )}
+
+                {section.kind === 'story' && (
+                  <div>
+                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
                       {section.heading}
                     </h2>
-                    <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-light">{section.body}</p>
-                  </div>
-                  <div class="space-y-4 lg:col-span-6 lg:col-start-7">
-                    <div class="rounded-2xl border border-line bg-white p-5">
-                      <p class="font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">Works best when</p>
-                      <p class="mt-3 text-base leading-relaxed text-ink">{section.worksBest}</p>
-                    </div>
-                    <div class="rounded-2xl border border-line bg-white p-5">
-                      <p class="font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">Mira hands over when</p>
-                      <p class="mt-3 text-base leading-relaxed text-ink">{section.handoff}</p>
-                    </div>
-                    <div class="rounded-2xl border border-fern/30 bg-white p-5">
-                      <p class="font-mono text-xs uppercase tracking-[0.18em] text-fern-deep">What you get</p>
-                      <p class="mt-3 text-base leading-relaxed text-ink">{section.ownerGets}</p>
+                    <div class="mt-6 grid gap-12 md:grid-cols-2 md:gap-16">
+                      <p class={`leading-relaxed text-ink-light ${variant === 'company' ? 'font-display text-xl sm:text-2xl' : 'text-lg'}`}>
+                        {section.body}
+                      </p>
+                      {section.aside && (
+                        <p class="border-l-2 border-fern/30 pl-6 text-base leading-relaxed text-ink-faint md:border-0 md:pl-0">
+                          {section.aside}
+                        </p>
+                      )}
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {section.kind === 'promiseGrid' && (
-                <div>
-                  <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
-                    {section.heading}
-                  </h2>
-                  <div class="mt-12 grid gap-x-12 md:grid-cols-2">
-                    {section.items.map((item, itemIndex) => (
-                      <article class="border-t border-line py-6">
-                        <div class="flex items-baseline gap-4">
-                          <span class="font-mono text-xs text-ink-faint" aria-hidden="true">{numeral(itemIndex)}</span>
-                          <h3 class="font-display text-xl font-medium text-ink">{item.title}</h3>
-                        </div>
-                        <p class="mt-3 text-base leading-relaxed text-ink-light sm:pl-[calc(0.75rem+1rem)]">{item.body}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {section.kind === 'beforeAfter' && (
-                <div>
-                  <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
-                    {section.heading}
-                  </h2>
-                  <div data-before-after class="mt-12">
-                    <div class="sticky top-24" data-ba-before-wrapper>
-                      <div data-ba-before class="mx-auto max-w-2xl rounded-3xl bg-white p-8">
-                        <ul class="space-y-5">
-                          {section.content.before.map((item) => (
-                            <li class="flex items-start gap-3">
-                              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint/40"></span>
-                              <span class="text-base leading-relaxed text-ink-faint">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                {section.kind === 'fitGuide' && (
+                  <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+                    <div class="lg:col-span-5">
+                      <h2 class="font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                        {section.heading}
+                      </h2>
+                      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-light">{section.body}</p>
                     </div>
-                    <div data-ba-spacer></div>
-                    <div class="sticky top-24" data-ba-after-wrapper>
-                      <div data-ba-after class="mx-auto max-w-2xl rounded-3xl bg-night p-8 ring-1 ring-fern/30">
-                        <ul class="space-y-5">
-                          {section.content.after.map((item) => (
-                            <li class="flex items-start gap-3">
-                              <svg class="mt-0.5 h-4 w-4 shrink-0 text-fern-bright" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
-                              <span class="text-base leading-relaxed text-paper">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    <div data-ba-spacer-end></div>
-                  </div>
-                </div>
-              )}
-
-              {section.kind === 'scenarios' && (
-                <div>
-                  <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
-                    {section.heading}
-                  </h2>
-                  <div class="mt-12 mx-auto max-w-xl space-y-10">
-                    {section.items.map((item) => (
-                      <div class="space-y-2" data-scenario>
-                        <div class="flex justify-start scenario-bubble scenario-customer">
-                          <p class="max-w-[80%] rounded-2xl rounded-bl-md border border-line bg-white px-4 py-2.5 text-sm leading-relaxed text-ink">
-                            {item.customer}
-                          </p>
+                    <div class="lg:col-span-6 lg:col-start-7">
+                      <div class="overflow-hidden rounded-3xl border border-line bg-white">
+                        <div class="border-b border-line px-6 py-5 sm:px-7">
+                          <p class="kicker text-fern-deep">✓ Works best when</p>
+                          <p class="mt-3 text-base leading-relaxed text-ink">{section.worksBest}</p>
                         </div>
-                        <div class="flex justify-end scenario-bubble scenario-mira">
-                          <p class="max-w-[80%] rounded-2xl rounded-br-md bg-fern px-4 py-2.5 text-sm leading-relaxed text-paper">
-                            {kesParts(item.mira).map((part) =>
-                              isKes(part) ? <span class="font-mono text-[0.8125rem]">{part}</span> : part,
-                            )}
-                          </p>
+                        <div class="border-b border-line px-6 py-5 sm:px-7">
+                          <p class="kicker text-dawn-deep">↗ Mira hands over when</p>
+                          <p class="mt-3 text-base leading-relaxed text-ink">{section.handoff}</p>
                         </div>
-                        <div class="scenario-bubble flex justify-end pt-1">
-                          <p class="max-w-[80%] border-r-2 border-line pr-4 text-right font-mono text-xs leading-relaxed text-ink-faint">
-                            {item.ownerNote}
-                          </p>
+                        <div class="bg-paper-raised/60 px-6 py-5 sm:px-7">
+                          <p class="kicker text-ink-faint">● What you get</p>
+                          <p class="mt-3 text-base leading-relaxed text-ink">{section.ownerGets}</p>
                         </div>
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {section.kind === 'archetype' && (
-                <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
-                  <div class="lg:col-span-4">
-                    <h2 class="font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink">
-                      {section.name}
+                {section.kind === 'promiseGrid' && variant === 'support' && (
+                  <div>
+                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                      {section.heading}
                     </h2>
-                    <p class="mt-4 text-sm text-ink-faint">{section.role}</p>
-                  </div>
-                  <div class="lg:col-span-7 lg:col-start-6">
-                    <div class="grid gap-8 md:grid-cols-2">
-                      <div>
-                        <h3 class="font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">A normal day</h3>
-                        <ul class="mt-5 divide-y divide-line border-t border-line">
-                          {section.day.map((item) => (
-                            <li class="py-3 text-base leading-relaxed text-ink-light">{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 class="font-mono text-xs uppercase tracking-[0.18em] text-fern-deep">Where Mira fits</h3>
-                        <ul class="mt-5 divide-y divide-line border-t border-line">
-                          {section.miraHelps.map((item) => (
-                            <li class="py-3 text-base leading-relaxed text-ink-light">{item}</li>
-                          ))}
-                        </ul>
-                      </div>
+                    <div class="mt-12 grid gap-4 sm:grid-cols-2">
+                      {section.items.map((item, itemIndex) => (
+                        <article class="rounded-3xl border border-line bg-white p-7 transition-colors duration-200 hover:border-fern/50">
+                          <span class="font-mono text-xs text-ink-faint" aria-hidden="true">{numeral(itemIndex)}</span>
+                          <h3 class="mt-4 font-display text-xl font-medium text-ink">{item.title}</h3>
+                          <p class="mt-3 text-base leading-relaxed text-ink-light">{item.body}</p>
+                        </article>
+                      ))}
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {section.kind === 'legal' && (
-                <article class="max-w-3xl">
-                  <h2 class="font-display text-[clamp(1.5rem,1.05rem+2vw,2.25rem)] font-medium leading-[1.12] tracking-tight text-ink">
-                    {section.heading}
-                  </h2>
-                  <div class="mt-6 space-y-4">
-                    {section.paragraphs.map((paragraph) => (
-                      <p class="text-base leading-relaxed text-ink-light">{paragraph}</p>
-                    ))}
+                {section.kind === 'promiseGrid' && variant !== 'support' && (
+                  <div>
+                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                      {section.heading}
+                    </h2>
+                    <div class="mt-12 grid gap-x-12 md:grid-cols-2">
+                      {section.items.map((item, itemIndex) => (
+                        <article class="border-t border-line py-6">
+                          <div class="flex items-baseline gap-4">
+                            <span class="font-mono text-xs text-ink-faint" aria-hidden="true">{numeral(itemIndex)}</span>
+                            <h3 class="font-display text-xl font-medium text-ink">{item.title}</h3>
+                          </div>
+                          <p class="mt-3 text-base leading-relaxed text-ink-light sm:pl-[calc(0.75rem+1rem)]">{item.body}</p>
+                        </article>
+                      ))}
+                    </div>
                   </div>
-                </article>
-              )}
+                )}
 
-              {section.kind === 'pricingMatrix' && <PricingMatrix client:load />}
-
-              {section.kind === 'faq' && (
-                <div class="max-w-2xl">
-                  <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-medium leading-[1.1] tracking-tight text-ink">
-                    Questions
-                  </h2>
-                  <dl class="mt-10 divide-y divide-line border-t border-line">
-                    {section.items.map((item: FaqItem) => (
-                      <div class="py-5">
-                        <dt class="text-base font-semibold text-ink">{item.question}</dt>
-                        <dd class="mt-2 text-base leading-relaxed text-ink-light">{item.answer}</dd>
+                {section.kind === 'beforeAfter' && (
+                  <div>
+                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                      {section.heading}
+                    </h2>
+                    <div data-before-after class="mt-12">
+                      <div class="sticky top-24" data-ba-before-wrapper>
+                        <div data-ba-before class="mx-auto max-w-2xl rounded-3xl bg-white p-8">
+                          <p class="kicker mb-6 text-ink-faint">Before Mira</p>
+                          <ul class="space-y-5">
+                            {section.content.before.map((item) => (
+                              <li class="flex items-start gap-3">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint/40"></span>
+                                <span class="text-base leading-relaxed text-ink-faint">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                    ))}
-                  </dl>
-                </div>
-              )}
-            </div>
-          </section>
-        </Fragment>
-      ))}
+                      <div data-ba-spacer></div>
+                      <div class="sticky top-24" data-ba-after-wrapper>
+                        <div data-ba-after class="mx-auto max-w-2xl rounded-3xl bg-night p-8 ring-1 ring-fern/30">
+                          <p class="kicker mb-6 text-fern-bright">After Mira</p>
+                          <ul class="space-y-5">
+                            {section.content.after.map((item) => (
+                              <li class="flex items-start gap-3">
+                                <svg class="mt-0.5 h-4 w-4 shrink-0 text-fern-bright" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
+                                <span class="text-base leading-relaxed text-paper">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      <div data-ba-spacer-end></div>
+                    </div>
+                  </div>
+                )}
+
+                {section.kind === 'scenarios' && (
+                  <DmThread heading={section.heading} kicker={section.kicker} items={section.items} />
+                )}
+
+                {section.kind === 'archetype' && (
+                  <PairedLedger name={section.name} role={section.role} day={section.day} miraHelps={section.miraHelps} />
+                )}
+
+                {section.kind === 'legal' && (
+                  <article class="max-w-3xl">
+                    <h2 class="font-display text-[clamp(1.5rem,1.05rem+2vw,2.25rem)] font-medium leading-[1.12] tracking-tight text-ink">
+                      {section.heading}
+                    </h2>
+                    <div class="mt-6 space-y-4">
+                      {section.paragraphs.map((paragraph) => (
+                        <p class="text-base leading-relaxed text-ink-light">{paragraph}</p>
+                      ))}
+                    </div>
+                  </article>
+                )}
+
+                {section.kind === 'pricingMatrix' && <PricingMatrix client:load />}
+
+                {section.kind === 'faq' && <Faq items={section.items as FaqItem[]} />}
+              </div>
+            </section>
+          </Fragment>
+        ))
+      )}
     </main>
     <Footer client:visible />
   </div>
