@@ -84,7 +84,8 @@ describe('use-case content pages', () => {
 
       expect(fitGuide.worksBest.length, path).toBeGreaterThan(80);
       expect(fitGuide.handoff.toLowerCase(), path).toMatch(/hand over|handoff/);
-      expect(fitGuide.ownerGets.toLowerCase(), path).toMatch(/owner|maker/);
+      // Voice rule: copy speaks to "you", not about "the owner". Accept either.
+      expect(fitGuide.ownerGets.toLowerCase(), path).toMatch(/\byou\b|\byour\b|owner|maker/);
     }
   });
 
