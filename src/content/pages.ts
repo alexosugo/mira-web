@@ -36,6 +36,7 @@ export const PLANS: Plan[] = [
       'Mira answers your Instagram DMs and comments',
       'Carts and checkout guidance inside the DM',
       'Up to 10 customer conversations a month',
+      'Replies include Mira branding',
     ],
     cta: 'Get started',
     footnote: 'No card details asked, ever.',
@@ -43,7 +44,6 @@ export const PLANS: Plan[] = [
   {
     key: 'pro',
     name: 'Pro',
-    pricePrefix: 'from',
     price: 'KES 3,500',
     priceNote: '/mo',
     description: 'For shops with steady DM traffic. Every message answered, day and night.',
@@ -51,7 +51,7 @@ export const PLANS: Plan[] = [
     features: [
       'Unlimited customer conversations',
       'Replies without Mira branding',
-      'See what customers ask most',
+      'Pay by M-Pesa, cancel any time',
       'Email support from the Mira team',
     ],
     cta: 'Become pro',
@@ -86,17 +86,17 @@ export const STEPS: Step[] = [
   {
     number: '01',
     title: 'Connect your Instagram',
-    description: 'Link your Instagram Business account. Takes less than two minutes.',
+    description: 'Link your Instagram Professional account. The whole setup takes about ten minutes.',
   },
   {
     number: '02',
-    title: 'Mira learns your catalog',
-    description: 'Mira reads your products and learns how to talk about them like you would.',
+    title: 'Mira learns your shop',
+    description: 'Mira reads your posts and turns them into products. You add your payment and delivery details.',
   },
   {
     number: '03',
-    title: 'Go live',
-    description: 'Mira starts replying to DMs. You step in whenever you want.',
+    title: 'Test, then go live',
+    description: 'Your shop starts in test mode. Ask Mira real questions, then turn it on when the answers sound right.',
   },
 ];
 
@@ -213,11 +213,12 @@ export const PAGES: Record<string, PageContent> = {
         body:
           "You shouldn't pay until Mira has shown you it's worth it. Start free and watch what it handles — the DMs answered, the buyers kept moving, the conversations handed to you with context. Free is for trying Mira on your own shop. Pro is for steady DM traffic. Elite is for shops that want onboarding, a dedicated contact, and custom help around how they sell.",
         aside:
-          'A customer conversation is one shopper thread Mira helps with. It can include product questions, cart help, delivery questions, checkout guidance, and a handoff when the answer needs you.',
+          'A customer conversation is one message thread with a unique Instagram account. It can include product questions, cart help, delivery questions, checkout guidance, and a handoff when the answer needs you.',
       },
       faq([
-        { question: 'Is there a free plan?', answer: 'Yes. Free includes up to 10 customer conversations a month.' },
-        { question: 'Do I need a card to start?', answer: 'No. The Free plan does not ask for card details.' },
+        { question: 'Is there a free plan?', answer: 'Yes. Free includes up to 10 customer conversations a month, with Mira branding on replies.' },
+        { question: 'Do I need a card to start?', answer: 'No. The Free plan does not ask for card details. Pro is paid by M-Pesa.' },
+        { question: 'What happens when I use up the 10 free conversations?', answer: 'Mira stops replying to new messages for the rest of the month — but keeps learning from your posts, so it is ready the moment you upgrade or the month resets.' },
         { question: 'Can I upgrade later?', answer: 'Yes. Start free and move to Pro when your DMs grow.' },
         { question: 'What happens when Mira needs me?', answer: 'Mira hands the conversation back with context so you can step in.' },
         { question: 'Do you support M-Pesa checkout?', answer: 'Yes. Mira sends customers an M-Pesa-ready checkout link in the DM.' },
@@ -242,28 +243,29 @@ export const PAGES: Record<string, PageContent> = {
       },
       {
         kind: 'story',
-        kicker: 'Concierge setup',
+        kicker: 'Test mode first',
         heading: "You're not connecting a tool. You're trusting it with your customers.",
         body:
-          'So setup is hands-on. We connect Instagram together, go through your catalog with you, fix prices before anything goes live, and run test conversations from your own recent posts. Mira only starts replying when the answers sound right to you.',
+          'So Mira does not go live the moment you connect. Every new shop starts in test mode: only an Instagram account you choose can message the shop, so you can ask Mira real questions about your own products and check the answers first. Mira only starts replying to customers when you turn it on from your dashboard.',
         aside:
-          'Mira never invents a price. When your catalog is missing a detail, it asks you and hands over.',
+          'Mira never invents a price. When a post is missing one, it asks you to fill it in.',
       },
       {
         kind: 'promiseGrid',
         kicker: 'Owner control',
         heading: 'What happens before Mira speaks for your shop',
         items: [
-          { title: 'Catalog review', body: 'Products, prices, sizes, and stock get checked before Mira replies to a single real customer.' },
-          { title: 'Test mode', body: 'Send sample DMs and see exactly how Mira answers before customers do.' },
-          { title: 'Clean handoff', body: 'Refunds, discounts, disputes, unusual delivery, and unclear products come back to you.' },
-          { title: 'Weekly proof', body: 'Every week you see what Mira handled: DMs answered, handoffs sent, repeat questions covered.' },
+          { title: 'Products from your posts', body: 'Mira reads your posts and photos and turns them into products. When a post updates, the product updates too.' },
+          { title: 'Test mode', body: 'Send sample DMs from an account you choose and see exactly how Mira answers before customers do.' },
+          { title: 'Handoffs, your way', body: 'When Mira is unsure, it notifies you on Instagram, WhatsApp, or email — you pick the channel during setup.' },
+          { title: 'Your dashboard', body: 'Every conversation is there with a summary. Take over a thread whenever you want, and hand it back when you are done.' },
         ],
       },
       { kind: 'prose', kicker: 'Access', heading: 'DM scope', body: DM_SCOPE_REASSURANCE },
       faq([
-        { question: 'How long does setup take?', answer: 'Connecting an Instagram Business account takes less than two minutes. Catalog review takes longer, because accuracy matters.' },
-        { question: 'Can I take over a conversation?', answer: 'Yes. Step in whenever a DM needs your judgment.' },
+        { question: 'How long does setup take?', answer: 'About ten minutes. Connect your Instagram Professional account, choose where handoff notifications go, and add your payment and delivery details.' },
+        { question: 'What kind of Instagram account do I need?', answer: 'A Professional account. Instagram requires it for tools like Mira.' },
+        { question: 'Can I take over a conversation?', answer: 'Yes. Open the thread from your dashboard or the DM itself, take over, and hand back to Mira when you are done.' },
         { question: 'What does Mira read?', answer: DM_SCOPE_REASSURANCE },
       ]),
     ],
@@ -331,12 +333,12 @@ export const PAGES: Record<string, PageContent> = {
         body:
           'When a shopper asks “how much?” under a fresh post, they are usually comparing options right now. A slow reply turns a warm buyer into a silent thread. Mira keeps the first answer moving while you pack orders, eat dinner, or sleep.',
         aside:
-          "The promise is speed and fewer missed DMs. What that does for your sales is something you'll see in your own weekly numbers, not something we claim upfront.",
+          "The promise is speed and fewer missed DMs. What that does for your sales is something you'll see in your own DMs and dashboard, not something we claim upfront.",
       },
       faq([
         { question: 'Is Mira a bot?', answer: "Mira is a shop assistant that answers from your details. When it's unsure, it hands the conversation to you instead of guessing." },
         { question: 'Will it sound like my shop?', answer: 'Mira learns from your posts and captions and keeps replies short and helpful. You can test it before customers ever see it.' },
-        { question: 'What does it cost?', answer: 'There is a free plan with up to 10 customer conversations a month. Pro starts from KES 3,500/mo.' },
+        { question: 'What does it cost?', answer: 'There is a free plan with up to 10 customer conversations a month. Pro is KES 3,500/mo, paid by M-Pesa.' },
       ]),
     ],
   },
@@ -356,8 +358,8 @@ export const PAGES: Record<string, PageContent> = {
         kicker: 'Before connection',
         heading: 'What your shop needs',
         items: [
-          { title: 'Instagram Business account', body: 'Mira is built for shops that sell on Instagram, with DMs as a buying channel.' },
-          { title: 'Catalog source', body: 'Product details Mira can learn from: your posts, captions, or a shop list you review.' },
+          { title: 'Instagram Professional account', body: 'Instagram requires a Professional account for DM tools like Mira. Personal accounts cannot connect.' },
+          { title: 'Catalog source', body: 'Mira builds products from your posts, captions, and photos — and you can add products by hand.' },
           { title: 'Your permission', body: 'You approve the connection, and you can disconnect whenever you want.' },
           { title: 'Product review', body: 'Prices and stock get checked before Mira goes live.' },
         ],
@@ -435,7 +437,7 @@ export const PAGES: Record<string, PageContent> = {
         items: [
           {
             customer: 'How much is the vanilla musk oil?',
-            mira: 'The vanilla musk oil is KES 1,200 for 30ml. Warm vanilla with a musk base. 3 left in stock. Want delivery or pickup?',
+            mira: 'The vanilla musk oil is KES 1,200 for 30ml. Warm vanilla with a musk base, and it is in stock. Want delivery or pickup?',
             ownerNote: "If the price or size isn't on the page, Mira asks you before saying anything.",
           },
           {
@@ -504,7 +506,7 @@ export const PAGES: Record<string, PageContent> = {
         body:
           "The first question is easy. The order is where it breaks: you lose the thread, the buyer asks the same thing twice, the delivery area arrives after you've already quoted. Mira keeps the buying steps in order, so by the time money moves, everyone agrees on what's being bought.",
         aside:
-          'Mira never confirms a payment. Only you — or M-Pesa itself — can say the money actually landed.',
+          'Mira never confirms a payment. When the M-Pesa message arrives it marks the order as payment pending, and you confirm the money actually landed.',
       },
       {
         kind: 'scenarios',
@@ -531,7 +533,7 @@ export const PAGES: Record<string, PageContent> = {
       faq([
         { question: 'Does payment happen inside Instagram?', answer: 'The buyer pays through an M-Pesa-ready checkout link Mira sends in the DM.' },
         { question: 'Can Mira confirm size and quantity?', answer: 'Yes. Every order detail is confirmed in the thread before checkout.' },
-        { question: 'Can Mira confirm payment?', answer: 'No. Only you, or M-Pesa itself, can confirm money landed. Mira never guesses about payment.' },
+        { question: 'Can Mira confirm payment?', answer: 'No. When the M-Pesa confirmation message arrives, Mira marks the order as payment pending — and you confirm the money landed.' },
         { question: 'What if the buyer changes their order?', answer: 'Mira updates the cart in the same thread, so the final order is the one that gets paid for.' },
       ]),
     ],
@@ -609,7 +611,9 @@ export const PAGES: Record<string, PageContent> = {
       },
       faq([
         { question: 'When does Mira hand over?', answer: 'Whenever a conversation needs your judgment: discounts, refunds, complaints, safety questions, or anything your catalog cannot answer.' },
+        { question: 'How do I find out Mira needs me?', answer: 'You get a notification on Instagram, WhatsApp, or email — you choose the channel during setup.' },
         { question: 'What do I see?', answer: 'The customer question, what Mira already answered, and why it stopped — so you can reply in one message.' },
+        { question: 'Can I hand the conversation back to Mira?', answer: 'Yes. Take over from your dashboard or the DM itself, then hand back when you are done.' },
         { question: 'Does Mira guess when it is unsure?', answer: 'No. Unsure becomes a handoff.' },
       ]),
     ],
@@ -639,7 +643,7 @@ export const PAGES: Record<string, PageContent> = {
             'Mira answers the first questions in seconds — price, size, stock — from your details.',
             'The repeat stuff gets handled while you pack, post, or sleep.',
             'Discounts, holds, refunds, special requests — those come to you with the context.',
-            "You can see what Mira handled each week. No more guessing if it's worth it.",
+            "Every conversation sits in your dashboard, so you can see exactly what Mira handled.",
           ],
         },
       },
@@ -657,7 +661,7 @@ export const PAGES: Record<string, PageContent> = {
           'Answers the first questions in seconds — price, size, stock.',
           'Stops the same questions from eating her whole day.',
           'Brings discounts, holds, and tricky stuff to her instead of guessing.',
-          'Shows her the week: how many DMs handled, how many handed over.',
+          'Keeps every conversation in her dashboard, with a summary, so she can take over any time.',
         ],
       },
       {
@@ -668,7 +672,7 @@ export const PAGES: Record<string, PageContent> = {
           { title: 'Replies in seconds', body: 'Price, size, stock, delivery — answered before the buyer loses interest.' },
           { title: 'Knows your shop', body: 'Mira answers from your details, so it never asks you the same thing twice.' },
           { title: 'Knows when to ask you', body: 'If something needs your call — a discount, a hold, a refund — Mira brings it to you.' },
-          { title: 'Shows you the work', body: 'Each week, you see how many DMs Mira handled and what it sent back to you.' },
+          { title: 'Shows you the work', body: 'Every conversation lands in your dashboard with a summary — take over any thread, hand it back when you are done.' },
         ],
       },
       {
@@ -704,7 +708,7 @@ export const PAGES: Record<string, PageContent> = {
         handoff:
           'Discounts, refunds, holds, missing prices, unclear stock — Mira will hand over anything that needs your call.',
         ownerGets:
-          "Fewer repeat DMs. Clearer context on every conversation that comes to you. And a weekly tally — how many DMs Mira handled, how many became owner handoffs — so you always know it's worth it.",
+          "Fewer repeat DMs. Clearer context on every conversation that comes to you. And every thread in your dashboard — what Mira answered, what it handed over — so you always know it's worth it.",
       },
       faq([
         { question: 'Does Mira learn from my posts?', answer: "Yes. It picks up your prices, sizes, and details from what's on your page. Anything missing comes to you." },
@@ -949,7 +953,7 @@ export const PAGES: Record<string, PageContent> = {
           'Answers the product facts and delivery basics instantly.',
           'Collects gift orders — items, budget, card message, date — before she steps in.',
           'Only answers model-fit when her page lists the supported models.',
-          'Shows her which repeat questions it took off her day.',
+          'Keeps every conversation in her dashboard so she can step in whenever she wants.',
         ],
       },
       {
@@ -1172,7 +1176,7 @@ export const PAGES: Record<string, PageContent> = {
           },
           {
             customer: 'Does the granola have nuts, and does the chilli oil need a fridge?',
-            mira: "The granola has almonds and cashews — that's from the maker's own notes. The chilli oil keeps for a month in a cool cupboard, three in the fridge. KES 700 a jar, two left from this batch.",
+            mira: "The granola has almonds and cashews — that's from the maker's own notes. The chilli oil keeps for a month in a cool cupboard, three in the fridge. KES 700 a jar, from this week's batch.",
             ownerNote: "Allergen, storage, and shelf-life answers only come from notes you've written. Gaps come to you.",
           },
         ],
@@ -1259,7 +1263,7 @@ export const PAGES: Record<string, PageContent> = {
         items: [
           {
             customer: 'Do you have vanilla body butter in 250g, or only 100g?',
-            mira: "Both — 250g is KES 950, 100g is KES 450. The 250g is from Tuesday's batch, four jars left. Delivery or pickup?",
+            mira: "Both — 250g is KES 950, 100g is KES 450, and both are in stock from Tuesday's batch. Delivery or pickup?",
             ownerNote: 'If a batch is sold out or waiting on jars, Mira checks with you before promising.',
           },
           {
@@ -1528,7 +1532,7 @@ export const PAGES: Record<string, PageContent> = {
         ],
       },
       faq([
-        { question: 'How do I start?', answer: 'Open the app, connect your Instagram Business account, and add your shop details.' },
+        { question: 'How do I start?', answer: 'Open the app, connect your Instagram Professional account, and add your payment and delivery details. Setup takes about ten minutes.' },
         { question: 'Can I step in?', answer: 'Yes. Mira can hand tricky conversations back to you with context.' },
         { question: 'How do I ask for data deletion?', answer: 'Email hello@withmira.co with your shop name, Instagram handle, and account email.' },
         { question: 'What if Mira does not know an answer?', answer: 'Mira hands the conversation to you instead of guessing.' },
