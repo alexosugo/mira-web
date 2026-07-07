@@ -289,35 +289,29 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                     <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-medium leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
                       {section.heading}
                     </h2>
-                    <div data-before-after class="mt-12">
-                      <div class="sticky top-24" data-ba-before-wrapper>
-                        <div data-ba-before class="mx-auto max-w-2xl rounded-3xl bg-white p-8">
-                          <p class="kicker mb-6 text-ink-faint">Before Mira</p>
-                          <ul class="space-y-5">
-                            {section.content.before.map((item) => (
-                              <li class="flex items-start gap-3">
-                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint/40"></span>
-                                <span class="text-base leading-relaxed text-ink-faint">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                    <div data-before-after class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start">
+                      <div data-ba-card class="rounded-3xl border border-line bg-white p-8">
+                        <p class="kicker mb-6 text-ink-faint">Before Mira</p>
+                        <ul class="space-y-5">
+                          {section.content.before.map((item) => (
+                            <li class="flex items-start gap-3">
+                              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint/40"></span>
+                              <span class="text-base leading-relaxed text-ink-faint">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <div data-ba-spacer></div>
-                      <div class="sticky top-24" data-ba-after-wrapper>
-                        <div data-ba-after class="mx-auto max-w-2xl rounded-3xl bg-night p-8 ring-1 ring-fern/30">
-                          <p class="kicker mb-6 text-fern-bright">After Mira</p>
-                          <ul class="space-y-5">
-                            {section.content.after.map((item) => (
-                              <li class="flex items-start gap-3">
-                                <svg class="mt-0.5 h-4 w-4 shrink-0 text-fern-bright" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
-                                <span class="text-base leading-relaxed text-paper">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                      <div data-ba-card class="rounded-3xl bg-night p-8 ring-1 ring-fern/30 lg:mt-10">
+                        <p class="kicker mb-6 text-fern-bright">After Mira</p>
+                        <ul class="space-y-5">
+                          {section.content.after.map((item) => (
+                            <li class="flex items-start gap-3">
+                              <svg class="mt-0.5 h-4 w-4 shrink-0 text-fern-bright" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
+                              <span class="text-base leading-relaxed text-paper">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <div data-ba-spacer-end></div>
                     </div>
                   </div>
                 )}
@@ -403,49 +397,26 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
       updateBubbles();
     }
 
-    // Before/After sticky stack — fade the before card as the after card covers it.
-    // The covering itself is pure CSS (sticky positioning). JS only handles opacity.
-    const baSections = document.querySelectorAll('[data-before-after]');
+    // Before/After cards rise in with a slight stagger as they scroll into view.
+    const baCards = document.querySelectorAll('[data-ba-card]');
 
-    if (baSections.length > 0) {
-      const updateBeforeAfter = () => {
-        baSections.forEach((section) => {
-          const afterWrapper = section.querySelector('[data-ba-after-wrapper]');
-          const beforeCard = section.querySelector('[data-ba-before]');
-          if (!afterWrapper || !beforeCard) return;
-
-          const beforeRect = beforeCard.getBoundingClientRect();
-          const afterRect = afterWrapper.getBoundingClientRect();
-          const stickyTop = 96; // 6rem (top-24)
-
-          // Fade starts when the after card's top edge reaches the before
-          // card's bottom edge — i.e. when covering actually begins.
-          // Finishes when the after card reaches the sticky position.
-          const fadeStart = beforeRect.bottom;
-          const fadeEnd = stickyTop;
-          const raw = Math.max(0, Math.min(1,
-            (fadeStart - afterRect.top) / (fadeStart - fadeEnd),
-          ));
-          const eased = raw * raw * (3 - 2 * raw);
-
-          beforeCard.style.opacity = String(1 - eased);
-        });
-      };
-
-      let baTicking = false;
-      const onBAScroll = () => {
-        if (!baTicking) {
-          requestAnimationFrame(() => {
-            updateBeforeAfter();
-            baTicking = false;
+    if (baCards.length > 0) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('animate-fade-in-up');
+            io.unobserve(entry.target);
           });
-          baTicking = true;
-        }
-      };
+        },
+        { threshold: 0.2 },
+      );
 
-      window.addEventListener('scroll', onBAScroll, { passive: true });
-      window.addEventListener('resize', onBAScroll, { passive: true });
-      updateBeforeAfter();
+      baCards.forEach((card, i) => {
+        // Cards come in before/after pairs; delay the second of each pair.
+        (card as HTMLElement).style.animationDelay = `${(i % 2) * 150}ms`;
+        io.observe(card);
+      });
     }
   </script>
 </BaseLayout>

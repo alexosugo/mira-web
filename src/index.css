@@ -48,18 +48,11 @@
     opacity: 0;
   }
 
-  /* Before/After sticky stack. The spacer creates the scroll runway between
-     the two sticky card wrappers. The end spacer extends the containing block
-     so the before card stays stuck while the after card covers it.
-     Without JS, cards render normally in sequence with no gap. */
-  .js [data-ba-spacer] {
-    height: 70vh;
-  }
-  .js [data-ba-spacer-end] {
-    height: 20vh;
-  }
-  .js [data-ba-before] {
-    will-change: opacity;
+  /* Before/After card entrance. Hidden only when JS is active; revealed
+     with animate-fade-in-up by the IntersectionObserver in
+     ContentLayout.astro. Without JS, cards render normally. */
+  .js [data-ba-card] {
+    opacity: 0;
   }
 }
 
