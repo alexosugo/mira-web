@@ -76,7 +76,6 @@ export const PLANS: Plan[] = [
 ];
 
 export interface Step {
-  number: string;
   title: string;
   description: string;
 }
@@ -84,17 +83,14 @@ export interface Step {
 /** How-it-works steps. Source of truth for the homepage island and /how-it-works. */
 export const STEPS: Step[] = [
   {
-    number: '01',
     title: 'Connect your Instagram',
     description: 'Link your Instagram Professional account. The whole setup takes about ten minutes.',
   },
   {
-    number: '02',
     title: 'Mira learns your shop',
     description: 'Mira reads your posts and turns them into products. You add your payment and delivery details.',
   },
   {
-    number: '03',
     title: 'Test, then go live',
     description: 'Your shop starts in test mode. Ask Mira real questions, then turn it on when the answers sound right.',
   },

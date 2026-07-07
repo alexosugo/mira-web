@@ -60,17 +60,12 @@ const Handles = () => {
 
           <div className="lg:col-span-6 lg:col-start-7">
             <ol className="divide-y divide-line border-y border-line">
-              {items.map((item, index) => (
-                <li key={item.title} className="flex items-baseline gap-6 py-7">
-                  <span className="w-8 shrink-0 font-mono text-sm text-ink-faint">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-base leading-relaxed text-ink-light">
-                      {item.description}
-                    </p>
-                  </div>
+              {items.map((item) => (
+                <li key={item.title} className="py-7">
+                  <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
+                  <p className="mt-1.5 text-base leading-relaxed text-ink-light">
+                    {item.description}
+                  </p>
                 </li>
               ))}
             </ol>

@@ -87,7 +87,7 @@ describe('canonical content module voice compliance', () => {
   });
 
   it('ships exactly three how-it-works steps', () => {
-    expect(STEPS.map((s) => s.number)).toEqual(['01', '02', '03']);
+    expect(STEPS).toHaveLength(3);
   });
 
   it('ships body content for every registered content page', () => {
