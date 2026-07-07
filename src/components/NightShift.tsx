@@ -11,18 +11,17 @@ interface LedgerEntry {
 
 const LEDGER: LedgerEntry[] = [
   { time: '9:41 PM', text: 'You close for the day. Mira stays on.' },
-  { time: '11:52 PM', text: '"Do you have the denim jacket in M?"' },
+  { time: '11:52 PM', text: '"Sasa! Do you have the denim jacket in M?"' },
   { time: '11:52 PM', text: 'Mira answers: two left in M, KES 2,400.', isMira: true },
   { time: '11:54 PM', text: 'Cart built. M-Pesa checkout link sent.', isMira: true },
-  { time: '2:14 AM', text: 'Customer pays. Order marked awaiting your confirmation.', isPayoff: true },
-  { time: '7:05 AM', text: 'You check the order and confirm the payment.' },
+  { time: '2:14 AM', text: 'Paid. Order confirmed.', isPayoff: true },
+  { time: '7:05 AM', text: 'You wake up to paid orders, not unread DMs.' },
 ];
 
 /**
  * The page's one dark surface: an overnight ledger told in timestamps.
- * It dramatizes the core promise (Mira handles the repeated work while the
- * owner keeps the decisions) without a single product claim: the customer
- * pays, and the owner confirms in the morning.
+ * It dramatizes the core promise — the shop sells while the owner sleeps —
+ * without a single product claim.
  */
 const NightShift = () => {
   const sectionRef = useSectionTracking('night-shift', 'Night Shift Section');
@@ -32,12 +31,13 @@ const NightShift = () => {
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <h2 className="font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-paper [text-wrap:balance]">
-              Customers message at 2 AM. While Mira is on, they get an answer.
+            <p className="kicker text-paper/60">The night shift</p>
+            <h2 className="mt-6 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-paper [text-wrap:balance]">
+              Your customers shop at 2 AM. Now someone answers.
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-paper/70">
-              Price checks, size questions and delivery details get answered the moment they
-              arrive. The decisions that need you wait for you.
+              Price checks, size questions, delivery to CBD — the conversations that used to
+              wait until morning get answered the moment they arrive.
             </p>
           </div>
 

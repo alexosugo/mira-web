@@ -9,12 +9,12 @@ describe('HeroChatDemo', () => {
     expect(screen.getByText(/denim jacket in M\?/)).toBeInTheDocument();
     expect(screen.getByText(/two left in M/)).toBeInTheDocument();
     expect(screen.getByText(/1 × Denim jacket \(M\)/)).toBeInTheDocument();
-    expect(screen.getByText(/2:14 AM · Order awaiting your payment confirmation/)).toBeInTheDocument();
+    expect(screen.getByText(/Order confirmed · 2:14 AM/)).toBeInTheDocument();
   });
 
   it('shows the shop handle and the Mira attribution', () => {
     render(<HeroChatDemo />);
-    expect(screen.getByText('@yourshop')).toBeInTheDocument();
+    expect(screen.getByText('@nia.thrifts')).toBeInTheDocument();
     expect(screen.getByText('Mira replies for you')).toBeInTheDocument();
   });
 

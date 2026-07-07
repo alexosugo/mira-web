@@ -3,10 +3,10 @@ import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { scrollToSection } from '../utils/scrollToSection';
 import HeroChatDemo from './HeroChatDemo';
 
-const HERO_HEADLINE = 'Mira answers customers and helps them order in your Instagram DMs';
+const HERO_HEADLINE = 'Mira answers your DMs and sells in them';
 const HERO_CTA_LABEL = 'Get started';
 const HERO_SUBHEAD =
-  'Mira learns about your products from the posts already on your shop. It answers common questions, helps customers choose, and asks you when it cannot confirm something.';
+  'Mira handles product questions, recommendations, and orders so customers get fast, accurate answers without you glued to your phone.';
 const APP_URL = 'https://app.withmira.co';
 
 const Hero = () => {
@@ -29,11 +29,15 @@ const Hero = () => {
         <div className="grid items-start gap-16 lg:grid-cols-12 lg:gap-12">
           {/* Copy */}
           <div className="lg:col-span-7">
+            <p className="kicker text-ink-light animate-fade-in-up">
+              For Instagram sellers
+            </p>
+
             <h1
-              className="font-display text-[clamp(2.25rem,1.3rem+4.2vw,4rem)] font-medium leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
+              className="mt-6 font-display text-[clamp(2.5rem,1.4rem+4.6vw,4.5rem)] font-medium leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
               style={{ animationDelay: '80ms' }}
             >
-              {HERO_HEADLINE}
+              Mira answers your DMs and sells in them
             </h1>
 
             <p
@@ -76,7 +80,7 @@ const Hero = () => {
               className="mt-14 border-t border-line pt-5 font-mono text-xs text-ink-faint animate-fade-in-up sm:text-sm"
               style={{ animationDelay: '320ms' }}
             >
-              For Professional Instagram accounts&ensp;·&ensp;Start free in Kenya&ensp;·&ensp;No card needed
+              Free to start&ensp;·&ensp;No card needed&ensp;·&ensp;M-Pesa at checkout
             </p>
           </div>
 
