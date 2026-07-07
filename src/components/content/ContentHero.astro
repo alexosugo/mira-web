@@ -32,8 +32,6 @@ const ctaClass = (v: 'primary' | 'secondary' | undefined) =>
 const isDocument = variant === 'legal' || variant === 'trust';
 const hasAmbient = variant === 'guide' || variant === 'feature' || variant === 'useCase';
 
-// Document masthead meta line for legal pages only.
-const showDocMasthead = variant === 'legal';
 ---
 
 <section class="relative overflow-hidden">
@@ -53,13 +51,6 @@ const showDocMasthead = variant === 'legal';
       isDocument ? 'pb-12 pt-28 sm:pt-32' : variant === 'support' ? 'pb-14 pt-28 sm:pt-36' : 'pb-20 pt-32 sm:pt-40'
     }`}
   >
-    {showDocMasthead && (
-      <div class="animate-fade-in-up mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-y border-line py-3">
-        <span class="kicker text-ink-faint">Legal · Plain-language version</span>
-        <span class="kicker text-ink-faint">withmira.co{route.path}</span>
-      </div>
-    )}
-
     <div class={variant === 'feature' ? 'grid items-center gap-12 lg:grid-cols-12' : ''}>
       <div class={variant === 'feature' ? 'lg:col-span-7' : ''}>
         {decor && !isDocument && (
