@@ -15,6 +15,12 @@ const normalizePath = (page) => {
 // JS-disabled visitors get full content. The Netlify function in
 // netlify/functions/ ships via Netlify's own pipeline, so no adapter is needed.
 // Tailwind is processed via postcss.config.js through Astro's built-in Vite pipeline.
+// Extra dev-server hosts (e.g. a tunnel subdomain) allowed via scripts/dev.sh.
+const additionalAllowedHosts = (process.env.VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS ?? '')
+  .split(',')
+  .map((host) => host.trim())
+  .filter(Boolean);
+
 export default defineConfig({
   site: 'https://withmira.co',
   integrations: [
@@ -23,4 +29,9 @@ export default defineConfig({
       filter: (page) => !NOINDEX_PATHS.includes(normalizePath(page)),
     }),
   ],
+  vite: {
+    server: {
+      allowedHosts: additionalAllowedHosts,
+    },
+  },
 });
