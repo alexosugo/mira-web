@@ -270,7 +270,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, buyers wait. After, they get answers while you work.',
+        heading: 'Buyers get answers while you work',
         content: {
           before: [
             'A shopper asks “how much?” under a fresh post. They are comparing options right now.',
@@ -375,7 +375,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, you type every reply. After, the shop replies for you.',
+        heading: 'Your shop replies for you',
         content: {
           before: [
             'You post. The questions flood in. How much, what size, still available, do you deliver.',
@@ -450,7 +450,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: "Before Mira, the order scatters. After, it's confirmed before payment.",
+        heading: 'The order gets confirmed, not scattered across the thread',
         content: {
           before: [
             "A buyer asks one question. Then you're collecting item, size, quantity, delivery area, and payment timing — by hand, between packing orders.",
@@ -525,7 +525,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, tricky DMs interrupt you cold. After, handoffs arrive with context.',
+        heading: 'Handoffs arrive with context, not cold',
         content: {
           before: [
             'A DM says "can you do this today?" and you scroll up trying to work out what they wanted.',
@@ -601,7 +601,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, the DMs run your day. After, you run the DMs.',
+        heading: 'You run the DMs, not the other way around',
         content: {
           before: [
             'You post a drop. Within minutes: how much, what sizes, where do you deliver.',
@@ -695,7 +695,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, one item means twenty threads. After, each buyer gets a next step.',
+        heading: 'Twenty threads about one item, each with a next step',
         content: {
           before: [
             'A dress drops and the comments and DMs land at the same time: size, color, price, pickup, still available.',
@@ -790,7 +790,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, shade questions wait for you. After, product facts move first.',
+        heading: 'Shade questions get product facts, not silence',
         content: {
           before: [
             "Which shade is in stock, what's in the bundle, can it come today — again and again.",
@@ -885,7 +885,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, small questions slow every sale. After, buyers get clarity fast.',
+        heading: 'Small questions stop slowing the sale',
         content: {
           before: [
             'Price, color, material, dimensions, does it fit an iPhone 15 — over and over.',
@@ -980,7 +980,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, scent questions wait. After, buyers get notes, price, and next step.',
+        heading: 'Buyers get the notes, the price, and the next step',
         content: {
           before: [
             'Every post brings the same questions: sweet or woody, how strong, is it unisex, how much for the small size.',
@@ -1075,7 +1075,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, orders need chasing. After, buyers get menu and delivery clarity.',
+        heading: 'Menu and delivery answers without the chasing',
         content: {
           before: [
             "What's available today, which flavors are left, when's the cutoff, can I pick up — while your hands are in dough.",
@@ -1170,7 +1170,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Before Mira, ingredient questions pull you away. After, product facts answer first.',
+        heading: 'Ingredient questions stop pulling you away',
         content: {
           before: [
             'Is the body butter greasy, what scent, which jar size, how do I use it — on repeat.',
