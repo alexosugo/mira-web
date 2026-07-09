@@ -270,7 +270,7 @@ export const PAGES: Record<string, PageContent> = {
     sections: [
       {
         kind: 'beforeAfter',
-        heading: 'Buyers get answers while you work',
+        heading: 'Before Mira, buyers wait for you. After Mira, they get answers while you work.',
         content: {
           before: [
             'A shopper asks “how much?” under a fresh post. They are comparing options right now.',
