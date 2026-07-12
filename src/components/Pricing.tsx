@@ -19,8 +19,7 @@ const Pricing = () => {
   return (
     <section id="pricing" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <p className="kicker text-ink-light">Pricing</p>
-        <h2 className="mt-6 max-w-xl font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+        <h2 className="max-w-xl font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
           Start free, upgrade when the DMs do
         </h2>
 
@@ -31,7 +30,7 @@ const Pricing = () => {
               key={plan.key}
               className="flex flex-col border-b border-line py-10 last:border-b-0 md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
             >
-              <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
+              <h3 className="font-display text-2xl font-semibold text-ink">{plan.name}</h3>
 
               <div className="mt-6 flex items-baseline gap-2">
                 {plan.pricePrefix && (

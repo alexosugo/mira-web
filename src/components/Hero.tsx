@@ -29,12 +29,8 @@ const Hero = () => {
         <div className="grid items-start gap-16 lg:grid-cols-12 lg:gap-12">
           {/* Copy */}
           <div className="lg:col-span-7">
-            <p className="kicker text-ink-light animate-fade-in-up">
-              For Instagram sellers
-            </p>
-
             <h1
-              className="mt-6 font-display text-[clamp(2.5rem,1.4rem+4.6vw,4.5rem)] font-medium leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
+              className="font-display text-[clamp(2.25rem,1.5rem+3.4vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
               style={{ animationDelay: '80ms' }}
             >
               Mira answers your DMs and sells in them

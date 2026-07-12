@@ -39,7 +39,7 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
 
   {decor && (
     <span
-      class="pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[clamp(7rem,22vw,17rem)] font-medium italic leading-none text-fern/[0.07]"
+      class="pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[clamp(7rem,22vw,17rem)] font-semibold italic leading-none text-fern/[0.07]"
       aria-hidden="true"
     >
       {decor.ghostWord}
@@ -60,12 +60,12 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
         )}
 
         <h1
-          class={`animate-fade-in-up font-display font-medium tracking-tight text-ink [text-wrap:balance] [animation-delay:80ms] ${
+          class={`animate-fade-in-up font-display font-semibold tracking-tight text-ink [text-wrap:balance] [animation-delay:80ms] ${
             variant === 'company'
-              ? 'max-w-3xl text-[clamp(2.5rem,1.5rem+4.5vw,4.5rem)] leading-[1.03]'
+              ? 'max-w-3xl text-[clamp(2.25rem,1.6rem+3.2vw,3.75rem)] leading-[1.05]'
               : isDocument
-                ? 'max-w-2xl text-[clamp(2rem,1.3rem+3vw,3.25rem)] leading-[1.08]'
-                : 'max-w-2xl text-[clamp(2.25rem,1.4rem+4vw,4rem)] leading-[1.05]'
+                ? 'max-w-2xl text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] leading-[1.1]'
+                : 'max-w-2xl text-[clamp(2.1rem,1.5rem+2.9vw,3.25rem)] leading-[1.08]'
           }`}
         >
           {hero.h1}

@@ -67,8 +67,7 @@ const Footer = () => {
     <footer ref={sectionRef} className="bg-night text-paper">
       {/* Closing CTA */}
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:px-8">
-        <p className="kicker text-paper/60">One more thing</p>
-        <h2 className="mt-6 max-w-2xl font-display text-[clamp(2rem,1.3rem+3.4vw,3.5rem)] font-medium leading-[1.1] tracking-tight [text-wrap:balance]">
+        <h2 className="max-w-2xl font-display text-[clamp(1.9rem,1.4rem+2.4vw,2.875rem)] font-semibold leading-[1.1] tracking-tight [text-wrap:balance]">
           Your DMs at 2 AM? <em className="font-normal italic">Mira's got it.</em>
         </h2>
         <a
@@ -92,7 +91,7 @@ const Footer = () => {
           <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {FOOTER_GROUPS.map((group) => (
               <div key={group.heading}>
-                <p className="font-mono text-xs uppercase tracking-wide text-paper/45">{group.heading}</p>
+                <p className="font-mono text-xs uppercase tracking-wide text-paper/60">{group.heading}</p>
                 <ul className="mt-4 space-y-2">
                   {group.links.map((link) => (
                     <li key={link.id}>

@@ -31,8 +31,7 @@ const NightShift = () => {
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <p className="kicker text-paper/60">The night shift</p>
-            <h2 className="mt-6 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-paper [text-wrap:balance]">
+            <h2 className="font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-paper [text-wrap:balance]">
               Your customers shop at 2 AM. Now someone answers.
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-paper/70">

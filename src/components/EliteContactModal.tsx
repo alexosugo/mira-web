@@ -264,7 +264,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
             <X className="w-5 h-5" />
           </button>
 
-          <h2 id="modal-title" className="font-display text-2xl font-medium text-ink">
+          <h2 id="modal-title" className="font-display text-2xl font-semibold text-ink">
             Get in touch
           </h2>
           <p className="text-ink-light mt-2 text-sm">
@@ -284,7 +284,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
               <h3
                 ref={successHeadingRef}
                 tabIndex={-1}
-                className="font-display text-xl font-medium text-ink mb-2 focus:outline-none"
+                className="font-display text-xl font-semibold text-ink mb-2 focus:outline-none"
               >
                 Thank you
               </h3>

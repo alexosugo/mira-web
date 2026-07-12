@@ -22,7 +22,7 @@ const PricingMatrix = () => {
                   Recommended
                 </p>
               )}
-              <h3 className="font-display text-2xl font-medium text-ink">{plan.name}</h3>
+              <h3 className="font-display text-2xl font-semibold text-ink">{plan.name}</h3>
               <div className="mt-6 flex items-baseline gap-2">
                 {plan.pricePrefix && <span className="text-sm text-ink-light">{plan.pricePrefix}</span>}
                 <span className="font-mono text-3xl text-ink">{plan.price}</span>

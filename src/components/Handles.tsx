@@ -48,8 +48,7 @@ const Handles = () => {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <p className="kicker text-ink-light">What Mira handles</p>
-              <h2 className="mt-6 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+              <h2 className="font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
                 The questions you answer all day, answered for you
               </h2>
               <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-light">

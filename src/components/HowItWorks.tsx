@@ -7,8 +7,7 @@ const HowItWorks = () => {
   return (
     <section id="how-it-works" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <p className="kicker text-ink-light">How it works</p>
-        <h2 className="mt-6 max-w-xl font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+        <h2 className="max-w-xl font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
           Live in an afternoon, not a quarter
         </h2>
 
