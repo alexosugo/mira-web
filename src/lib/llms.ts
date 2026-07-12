@@ -50,7 +50,7 @@ const sectionLines = (section: ContentSection): readonly string[] => {
         (item): item is string => Boolean(item),
       );
     case 'story':
-      return [section.heading, section.body, section.aside];
+      return [section.heading, section.body, section.aside].filter((item): item is string => Boolean(item));
     case 'fitGuide':
       return [
         section.heading,

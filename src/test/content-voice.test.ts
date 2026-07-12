@@ -29,7 +29,7 @@ const sectionStrings = (section: ContentSection): readonly string[] => {
         ...section.items.flatMap((item) => [item.title, item.body]),
       ];
     case 'story':
-      return [section.heading, section.body, section.aside];
+      return [section.heading, section.body, section.aside ?? ''];
     case 'fitGuide':
       return [
         section.heading,
