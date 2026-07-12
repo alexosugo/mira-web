@@ -16,3 +16,5 @@ Allow: /
 
 User-agent: ClaudeBot
 Allow: /
+
+Sitemap: https://withmira.co/sitemap-index.xml

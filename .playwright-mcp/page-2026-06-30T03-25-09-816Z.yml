@@ -1,0 +1,234 @@
+- generic [ref=e2]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Mira" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - navigation "Main navigation" [ref=e8]:
+          - link "How it works" [ref=e9] [cursor=pointer]:
+            - /url: /how-it-works
+          - link "Pricing" [ref=e10] [cursor=pointer]:
+            - /url: /pricing
+        - link "Get started" [ref=e11] [cursor=pointer]:
+          - /url: https://app.withmira.co
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: Home bakeries and food brands
+      - heading "DM help for home bakeries and food brands" [level=1] [ref=e16]
+      - paragraph [ref=e17]: For Nairobi home bakers, snack brands, pantry brands, and home kitchens selling cakes, cupcakes, cookies, brownies, banana bread, granola, sauces, chilli oil, grazing boxes, and weekly menus through Instagram DMs.
+      - link "Get started" [ref=e19] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: The money shot
+      - heading "Before Mira, every order needs manual follow-up. After Mira, buyers get menu and delivery clarity." [level=2] [ref=e24]
+      - generic [ref=e25]:
+        - article [ref=e26]:
+          - paragraph [ref=e27]: Before Mira
+          - list [ref=e28]:
+            - listitem [ref=e29]: Customers ask what is available today, which flavors are left, what the delivery cutoff is, and whether pickup is possible.
+            - listitem [ref=e30]: The owner repeats prices, sizes, flavors, allergens, shelf life, delivery days, and M-Pesa steps while baking, cooking, or packing.
+            - listitem [ref=e31]: Food safety questions need careful answers, especially around nuts, dairy, gluten, eggs, storage, and reheating.
+            - listitem [ref=e32]: Birthday cakes, grazing boxes, office snack orders, and weekend slots interrupt the owner even when the first question was simple.
+        - article [ref=e33]:
+          - paragraph [ref=e34]: After Mira
+          - list [ref=e35]:
+            - listitem [ref=e36]: Mira answers approved menu, batch, price, ingredient, allergen, pickup, and delivery details.
+            - listitem [ref=e37]: "Customers get guided toward a clean order: item, quantity, date, delivery area, and checkout next step."
+            - listitem [ref=e38]: Allergen, custom cake, bulk order, refund, late-order, and special-event questions go back to the owner.
+            - listitem [ref=e39]: The owner spends less time repeating menu facts and more time making the food.
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - paragraph [ref=e44]: Use case
+        - heading "Muthoni, home bakery and pantry brand owner" [level=2] [ref=e45]
+        - paragraph [ref=e46]: Nairobi food entrepreneur, posts weekly menus and takes orders in DMs
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "A normal day" [level=3] [ref=e50]
+          - list [ref=e51]:
+            - listitem [ref=e52]: Posts cakes, cupcakes, banana bread, granola, chilli oil, sauces, cookies, brownies, or weekend grazing boxes.
+            - listitem [ref=e53]: Customers ask about today's menu, delivery to Kilimani or Westlands, pickup timing, and M-Pesa.
+            - listitem [ref=e54]: Some buyers ask about nuts, dairy, gluten, eggs, shelf life, storage instructions, or reheating.
+            - listitem [ref=e55]: The owner needs orders organized without letting Mira improvise on food safety.
+        - generic [ref=e56]:
+          - heading "Where Mira fits" [level=3] [ref=e57]
+          - list [ref=e58]:
+            - listitem [ref=e59]: Answers approved menu, prices, batch availability, ingredients, allergens, delivery windows, and pickup notes.
+            - listitem [ref=e60]: Collects quantity, date, delivery area, and checkout details before the owner steps in.
+            - listitem [ref=e61]: Hands over custom cakes, bulk orders, allergen-sensitive questions, and late-order requests.
+            - listitem [ref=e62]: Shows which food questions Mira answered instead of the owner typing during prep.
+    - generic [ref=e65]:
+      - paragraph [ref=e66]: Powers Mira adds
+      - heading "Food brands get order clarity before the kitchen gets interrupted" [level=2] [ref=e67]
+      - generic [ref=e68]:
+        - article [ref=e69]:
+          - paragraph [ref=e70]: "01"
+          - heading "Menu memory" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Mira keeps approved menu items, flavors, portions, batch limits, prices, and pickup notes ready.
+        - article [ref=e73]:
+          - paragraph [ref=e74]: "02"
+          - heading "Allergen caution" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Nuts, dairy, gluten, eggs, storage, and reheating questions use approved facts or hand over.
+        - article [ref=e77]:
+          - paragraph [ref=e78]: "03"
+          - heading "Cutoff discipline" [level=3] [ref=e79]
+          - paragraph [ref=e80]: Delivery windows, order cutoffs, weekend slots, and preorder rules can be answered only when the shop has set them.
+        - article [ref=e81]:
+          - paragraph [ref=e82]: "04"
+          - heading "Custom order handoff" [level=3] [ref=e83]
+          - paragraph [ref=e84]: Birthday cakes, corporate orders, grazing boxes, custom menus, and large quantities come back to the owner with context.
+    - generic [ref=e87]:
+      - paragraph [ref=e88]: DMs Mira can reduce
+      - heading "Food DMs move from menu checks to clear orders" [level=2] [ref=e89]
+      - generic [ref=e90]:
+        - article [ref=e91]:
+          - generic [ref=e92]:
+            - paragraph [ref=e93]: "01"
+            - paragraph [ref=e94]: Customer asks
+            - paragraph [ref=e95]: Do you have banana bread or brownies today, and can I get them before 4?
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: Mira can answer
+            - paragraph [ref=e98]: Mira answers approved menu, batch availability, price, pickup, delivery window, and checkout next step.
+          - generic [ref=e99]:
+            - paragraph [ref=e100]: Owner control
+            - paragraph [ref=e101]: If the batch is almost sold out or timing changed, Mira asks the owner before confirming.
+        - article [ref=e102]:
+          - generic [ref=e103]:
+            - paragraph [ref=e104]: "02"
+            - paragraph [ref=e105]: Customer asks
+            - paragraph [ref=e106]: Does the granola have nuts, honey, or dairy?
+          - generic [ref=e107]:
+            - paragraph [ref=e108]: Mira can answer
+            - paragraph [ref=e109]: Mira shares approved ingredient and allergen notes from the catalog, plus storage notes if the shop has approved them.
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: Owner control
+            - paragraph [ref=e112]: Allergen, shelf-life, storage, and dietary questions need approved facts. Missing details go to the owner.
+        - article [ref=e113]:
+          - generic [ref=e114]:
+            - paragraph [ref=e115]: "03"
+            - paragraph [ref=e116]: Customer asks
+            - paragraph [ref=e117]: Can I order a Bento cake and cupcakes for Saturday in Kilimani?
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: Mira can answer
+            - paragraph [ref=e120]: Mira can collect date, quantity, delivery area, flavor, message, and budget before handing over.
+          - generic [ref=e121]:
+            - paragraph [ref=e122]: Owner control
+            - paragraph [ref=e123]: Custom cake design, weekend slots, deposits, large orders, and special pricing stay owner-led.
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - paragraph [ref=e128]: Good fit
+        - heading "Home food brands need speed with food-safety restraint" [level=2] [ref=e129]
+        - paragraph [ref=e130]: Food DMs are repeatable but sensitive. Mira helps when the shop has a clear menu, approved ingredient notes, delivery rules, and a handoff path for custom or safety-sensitive questions.
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - paragraph [ref=e133]: Works best when
+          - paragraph [ref=e134]: Home bakeries, snack brands, pantry brands, and weekly-menu kitchens with clear prices, flavors, batch limits, pickup notes, delivery windows, and ingredient facts.
+        - generic [ref=e135]:
+          - paragraph [ref=e136]: Mira hands over when
+          - paragraph [ref=e137]: Mira should hand over custom cakes, office orders, allergen-sensitive requests, late orders, refunds, deposits, shelf-life questions, and storage or reheating advice that is not approved.
+        - generic [ref=e138]:
+          - paragraph [ref=e139]: What the owner gets
+          - paragraph [ref=e140]: The owner gets cleaner orders with item, quantity, date, area, budget, and the exact food-safety or custom-order question that needs attention.
+    - generic [ref=e143]:
+      - paragraph [ref=e144]: FAQ
+      - heading "Questions" [level=2] [ref=e145]
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - term [ref=e148]: Can Mira answer menu and price questions?
+          - definition [ref=e149]: Yes, when menu, price, and batch details are approved in the catalog.
+        - generic [ref=e150]:
+          - term [ref=e151]: Can Mira answer allergen questions?
+          - definition [ref=e152]: Yes, only from approved ingredient and allergen notes. Otherwise Mira hands over.
+        - generic [ref=e153]:
+          - term [ref=e154]: Can Mira handle custom cakes or bulk food orders?
+          - definition [ref=e155]: Mira can collect the details, then hand the custom order to the owner.
+  - contentinfo [ref=e157]:
+    - generic [ref=e158]:
+      - paragraph [ref=e159]: One more thing
+      - heading "Your DMs at 2 AM? Mira's got it." [level=2] [ref=e160]:
+        - text: Your DMs at 2 AM?
+        - emphasis [ref=e161]: Mira's got it.
+      - link "Get started" [ref=e162] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e164]:
+      - navigation "Footer navigation" [ref=e165]:
+        - generic [ref=e166]:
+          - paragraph [ref=e167]: Product
+          - list [ref=e168]:
+            - listitem [ref=e169]:
+              - link "Pricing" [ref=e170] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e171]:
+              - link "How it works" [ref=e172] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e173]:
+              - link "Instagram integration" [ref=e174] [cursor=pointer]:
+                - /url: /integrations/instagram
+        - generic [ref=e175]:
+          - paragraph [ref=e176]: Features
+          - list [ref=e177]:
+            - listitem [ref=e178]:
+              - link "Product answers" [ref=e179] [cursor=pointer]:
+                - /url: /features/product-answers
+            - listitem [ref=e180]:
+              - link "Orders and checkout" [ref=e181] [cursor=pointer]:
+                - /url: /features/orders-and-checkout
+            - listitem [ref=e182]:
+              - link "Human handoff" [ref=e183] [cursor=pointer]:
+                - /url: /features/human-handoff
+        - generic [ref=e184]:
+          - paragraph [ref=e185]: Use cases
+          - list [ref=e186]:
+            - listitem [ref=e187]:
+              - link "Daily-drop shops" [ref=e188] [cursor=pointer]:
+                - /url: /use-cases/instagram-shops
+            - listitem [ref=e189]:
+              - link "Fashion and thrift" [ref=e190] [cursor=pointer]:
+                - /url: /use-cases/fashion
+            - listitem [ref=e191]:
+              - link "Beauty shops" [ref=e192] [cursor=pointer]:
+                - /url: /use-cases/beauty
+            - listitem [ref=e193]:
+              - link "Accessories shops" [ref=e194] [cursor=pointer]:
+                - /url: /use-cases/accessories
+            - listitem [ref=e195]:
+              - link "Fragrance shops" [ref=e196] [cursor=pointer]:
+                - /url: /use-cases/fragrances
+            - listitem [ref=e197]:
+              - link "Bakeries and food" [ref=e198] [cursor=pointer]:
+                - /url: /use-cases/home-bakeries-food-brands
+            - listitem [ref=e199]:
+              - link "Skincare and haircare" [ref=e200] [cursor=pointer]:
+                - /url: /use-cases/skincare-haircare-makers
+        - generic [ref=e201]:
+          - paragraph [ref=e202]: Company
+          - list [ref=e203]:
+            - listitem [ref=e204]:
+              - link "About" [ref=e205] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e206]:
+              - link "Contact" [ref=e207] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e208]:
+          - paragraph [ref=e209]: Trust
+          - list [ref=e210]:
+            - listitem [ref=e211]:
+              - link "Security" [ref=e212] [cursor=pointer]:
+                - /url: /security
+            - listitem [ref=e213]:
+              - link "Privacy" [ref=e214] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e215]:
+              - link "Terms" [ref=e216] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e217]:
+              - link "Data deletion" [ref=e218] [cursor=pointer]:
+                - /url: /data-deletion
+            - listitem [ref=e219]:
+              - link "Help" [ref=e220] [cursor=pointer]:
+                - /url: /help
+      - generic [ref=e221]:
+        - generic [ref=e222]:
+          - paragraph [ref=e223]: Mira
+          - paragraph [ref=e224]: Made in Nairobi, Kenya · © 2026
+        - link "hello@withmira.co" [ref=e225] [cursor=pointer]:
+          - /url: mailto:hello@withmira.co

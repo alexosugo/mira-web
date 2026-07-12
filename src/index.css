@@ -19,13 +19,6 @@
     outline: 2px solid theme('colors.fern.DEFAULT');
     outline-offset: 3px;
   }
-
-  /* Fraunces renders its warmth at higher optical sizes. */
-  h1,
-  h2,
-  h3 {
-    font-optical-sizing: auto;
-  }
 }
 
 @layer utilities {
@@ -34,9 +27,25 @@
     animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  /* Small uppercase mono label used as section eyebrows. */
+  /* Small uppercase mono label for functional labels only (TOC, column
+     headers, before/after tags). The brand bundle bans decorative section
+     eyebrows — do not reintroduce them with this class. */
   .kicker {
     @apply font-mono text-xs uppercase tracking-[0.18em];
+  }
+
+  /* Scenario chat bubble scroll-linked entrance. Hidden by default only
+     when JS is active; revealed progressively by the scroll-linked handler
+     in ContentLayout.astro. */
+  .js .scenario-bubble {
+    opacity: 0;
+  }
+
+  /* Before/After card entrance. Hidden only when JS is active; revealed
+     with animate-fade-in-up by the IntersectionObserver in
+     ContentLayout.astro. Without JS, cards render normally. */
+  .js [data-ba-card] {
+    opacity: 0;
   }
 }
 

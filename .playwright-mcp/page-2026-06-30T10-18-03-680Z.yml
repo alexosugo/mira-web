@@ -1,0 +1,262 @@
+- generic [ref=f2e2]:
+  - region "Notifications alt+T"
+  - link "Skip to content →":
+    - /url: "#skip-nav"
+  - generic [ref=f2e3]:
+    - banner [ref=f2e4]:
+      - navigation "Main" [ref=f2e5]:
+        - list "Site navigation" [ref=f2e8]:
+          - listitem [ref=f2e9]:
+            - link "Navigate to home" [ref=f2e11] [cursor=pointer]:
+              - /url: /homepage
+              - img "Linear" [ref=f2e12]
+          - listitem [ref=f2e14]:
+            - list [ref=f2e15]:
+              - listitem [ref=f2e16]:
+                - button "Product" [ref=f2e17] [cursor=pointer]
+              - listitem [ref=f2e18]:
+                - button "Resources" [ref=f2e19] [cursor=pointer]
+              - listitem [ref=f2e20]:
+                - link "Customers" [ref=f2e21] [cursor=pointer]:
+                  - /url: /customers
+              - listitem [ref=f2e22]:
+                - link "Pricing" [ref=f2e23] [cursor=pointer]:
+                  - /url: /pricing
+              - listitem [ref=f2e24]:
+                - link "Now" [ref=f2e25] [cursor=pointer]:
+                  - /url: /now
+              - listitem [ref=f2e26]:
+                - link "Contact" [ref=f2e27] [cursor=pointer]:
+                  - /url: /contact
+            - list [ref=f2e29]:
+              - listitem [ref=f2e30]:
+                - link "Log in" [ref=f2e32] [cursor=pointer]:
+                  - /url: /login
+              - listitem [ref=f2e33]:
+                - link "Sign up" [ref=f2e34] [cursor=pointer]:
+                  - /url: /signup
+    - main [ref=f2e35]:
+      - generic [ref=f2e307]:
+        - heading "The system for modern product development" [level=1] [ref=f2e308]:
+          - generic [ref=f2e309]: The system for modern product development
+          - generic [ref=f2e311]:
+            - generic [ref=f2e312]: The
+            - generic [ref=f2e313]: system
+            - generic [ref=f2e314]: for
+            - generic [ref=f2e315]: modern
+            - generic [ref=f2e316]: product
+            - generic [ref=f2e317]: development
+        - paragraph [ref=f2e321]: Linear streamlines work across the entire development cycle, from roadmap to release.
+      - generic [ref=f2e324]:
+        - link "Planning Set the product direction with projects and initiatives" [ref=f2e325] [cursor=pointer]:
+          - /url: /plan
+          - generic [ref=f2e328]:
+            - generic [ref=f2e329]:
+              - heading "Planning" [level=3] [ref=f2e330]:
+                - generic [ref=f2e333]: Planning
+              - paragraph [ref=f2e334]: Set the product direction with projects and initiatives
+            - button [ref=f2e335]:
+              - img [ref=f2e336]
+        - link "Building Make progress with issue tracking and cycle planning" [ref=f2e338] [cursor=pointer]:
+          - /url: /build
+          - img [ref=f2e344]
+          - generic [ref=f2e351]:
+            - generic [ref=f2e352]:
+              - heading "Building" [level=3] [ref=f2e353]:
+                - generic [ref=f2e356]: Building
+              - paragraph [ref=f2e357]: Make progress with issue tracking and cycle planning
+            - button [ref=f2e358]:
+              - img [ref=f2e359]
+        - generic [ref=f2e361]:
+          - link "Artificial intelligence Streamline product development with AI-powered workflows and agents" [ref=f2e362] [cursor=pointer]:
+            - /url: /ai
+            - generic [ref=f2e365]:
+              - generic [ref=f2e366]:
+                - heading "Artificial intelligence" [level=3] [ref=f2e367]
+                - paragraph [ref=f2e368]: Streamline product development with AI-powered workflows and agents
+              - button [ref=f2e369]:
+                - img [ref=f2e370]
+          - link "Insights Instant analytics for any stream of work" [ref=f2e372] [cursor=pointer]:
+            - /url: /insights
+            - generic [ref=f2e375]:
+              - generic [ref=f2e376]:
+                - heading "Insights" [level=3] [ref=f2e377]
+                - paragraph [ref=f2e378]: Instant analytics for any stream of work
+              - button [ref=f2e379]:
+                - img [ref=f2e380]
+          - link "Mobile Move product work forward from anywhere" [ref=f2e382] [cursor=pointer]:
+            - /url: /mobile
+            - generic [ref=f2e385]:
+              - generic [ref=f2e386]:
+                - heading "Mobile" [level=3] [ref=f2e387]
+                - paragraph [ref=f2e388]: Move product work forward from anywhere
+              - button [ref=f2e389]:
+                - img [ref=f2e390]
+          - link "Customer Requests Build what customers actually want" [ref=f2e392] [cursor=pointer]:
+            - /url: /customer-requests
+            - generic [ref=f2e395]:
+              - generic [ref=f2e396]:
+                - heading "Customer Requests" [level=3] [ref=f2e397]
+                - paragraph [ref=f2e398]:
+                  - generic [ref=f2e399]:
+                    - text: Build what customers
+                    - text: actually want
+              - button [ref=f2e400]:
+                - img [ref=f2e401]
+          - link "Linear Asks Turn workplace requests into actionable issues" [ref=f2e403] [cursor=pointer]:
+            - /url: /asks
+            - generic [ref=f2e406]:
+              - generic [ref=f2e407]:
+                - heading "Linear Asks" [level=3] [ref=f2e408]
+                - paragraph [ref=f2e409]: Turn workplace requests into actionable issues
+              - button [ref=f2e410]:
+                - img [ref=f2e411]
+          - link "Linear logo Security Best-in-class security practices keep your work safe and se 0n*d" [ref=f2e413] [cursor=pointer]:
+            - /url: /security
+            - img "Linear logo" [ref=f2e419]
+            - generic [ref=f2e421]:
+              - generic [ref=f2e422]:
+                - heading "Security" [level=3] [ref=f2e423]
+                - paragraph [ref=f2e424]:
+                  - generic [ref=f2e425]:
+                    - text: Best-in-class security practices keep your work safe and se
+                    - generic [ref=f2e426]: 0n*d
+              - button [ref=f2e427]:
+                - img [ref=f2e428]
+      - generic [ref=f2e433]:
+        - heading "Plan the present. Build the future." [level=3] [ref=f2e435]
+        - generic [ref=f2e436]:
+          - button "Contact sales" [ref=f2e437] [cursor=pointer]
+          - button "Get started" [ref=f2e438] [cursor=pointer]
+    - contentinfo [ref=f2e439]:
+      - generic [ref=f2e441]:
+        - link "Linear Logo" [ref=f2e443] [cursor=pointer]:
+          - /url: /
+          - img "Linear Logo" [ref=f2e444]
+        - generic [ref=f2e446]:
+          - heading "Product" [level=3] [ref=f2e447]
+          - list [ref=f2e448]:
+            - listitem [ref=f2e449]:
+              - link "Intake" [ref=f2e450] [cursor=pointer]:
+                - /url: /intake
+            - listitem [ref=f2e451]:
+              - link "Plan" [ref=f2e452] [cursor=pointer]:
+                - /url: /plan
+            - listitem [ref=f2e453]:
+              - link "Build" [ref=f2e454] [cursor=pointer]:
+                - /url: /build
+            - listitem [ref=f2e455]:
+              - link "Diffs" [ref=f2e456] [cursor=pointer]:
+                - /url: /diffs
+            - listitem [ref=f2e457]:
+              - link "Monitor" [ref=f2e458] [cursor=pointer]:
+                - /url: /monitor
+            - listitem [ref=f2e459]:
+              - link "Pricing" [ref=f2e460] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=f2e461]:
+              - link "Security" [ref=f2e462] [cursor=pointer]:
+                - /url: /security
+        - generic [ref=f2e463]:
+          - heading "Features" [level=3] [ref=f2e464]
+          - list [ref=f2e465]:
+            - listitem [ref=f2e466]:
+              - link "Asks" [ref=f2e467] [cursor=pointer]:
+                - /url: /asks
+            - listitem [ref=f2e468]:
+              - link "Agents" [ref=f2e469] [cursor=pointer]:
+                - /url: /agents
+            - listitem [ref=f2e470]:
+              - link "Coding Sessions" [ref=f2e471] [cursor=pointer]:
+                - /url: /coding-sessions
+            - listitem [ref=f2e472]:
+              - link "Customer Requests" [ref=f2e473] [cursor=pointer]:
+                - /url: /customer-requests
+            - listitem [ref=f2e474]:
+              - link "Insights" [ref=f2e475] [cursor=pointer]:
+                - /url: /insights
+            - listitem [ref=f2e476]:
+              - link "Mobile" [ref=f2e477] [cursor=pointer]:
+                - /url: /mobile
+            - listitem [ref=f2e478]:
+              - link "Integrations" [ref=f2e479] [cursor=pointer]:
+                - /url: /integrations
+            - listitem [ref=f2e480]:
+              - link "Changelog" [ref=f2e481] [cursor=pointer]:
+                - /url: /changelog
+        - generic [ref=f2e482]:
+          - heading "Company" [level=3] [ref=f2e483]
+          - list [ref=f2e484]:
+            - listitem [ref=f2e485]:
+              - link "About" [ref=f2e486] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f2e487]:
+              - link "Customers" [ref=f2e488] [cursor=pointer]:
+                - /url: /customers
+            - listitem [ref=f2e489]:
+              - link "Careers" [ref=f2e490] [cursor=pointer]:
+                - /url: /careers
+            - listitem [ref=f2e491]:
+              - link "Blog" [ref=f2e492] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=f2e493]:
+              - link "Method" [ref=f2e494] [cursor=pointer]:
+                - /url: /method
+            - listitem [ref=f2e495]:
+              - link "Quality" [ref=f2e496] [cursor=pointer]:
+                - /url: /quality
+            - listitem [ref=f2e497]:
+              - link "Brand" [ref=f2e498] [cursor=pointer]:
+                - /url: /brand
+        - generic [ref=f2e499]:
+          - heading "Resources" [level=3] [ref=f2e500]
+          - list [ref=f2e501]:
+            - listitem [ref=f2e502]:
+              - link "Switch" [ref=f2e503] [cursor=pointer]:
+                - /url: /switch
+            - listitem [ref=f2e504]:
+              - link "Download" [ref=f2e505] [cursor=pointer]:
+                - /url: /download
+            - listitem [ref=f2e506]:
+              - link "Documentation" [ref=f2e507] [cursor=pointer]:
+                - /url: /docs
+                - generic [ref=f2e508]: Documentation
+            - listitem [ref=f2e509]:
+              - link "Developers" [ref=f2e510] [cursor=pointer]:
+                - /url: /developers
+            - listitem [ref=f2e511]:
+              - link "Status" [ref=f2e512] [cursor=pointer]:
+                - /url: https://linearstatus.com
+            - listitem [ref=f2e513]:
+              - link "Enterprise" [ref=f2e514] [cursor=pointer]:
+                - /url: /enterprise
+            - listitem [ref=f2e515]:
+              - link "Startups" [ref=f2e516] [cursor=pointer]:
+                - /url: /startups
+        - generic [ref=f2e517]:
+          - heading "Connect" [level=3] [ref=f2e518]
+          - list [ref=f2e519]:
+            - listitem [ref=f2e520]:
+              - link "Contact us" [ref=f2e521] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f2e522]:
+              - link "Community" [ref=f2e523] [cursor=pointer]:
+                - /url: https://linear.app/join-slack
+            - listitem [ref=f2e524]:
+              - link "X (Twitter)" [ref=f2e525] [cursor=pointer]:
+                - /url: https://x.com/linear
+            - listitem [ref=f2e526]:
+              - link "GitHub" [ref=f2e527] [cursor=pointer]:
+                - /url: https://github.com/linear
+            - listitem [ref=f2e528]:
+              - link "YouTube" [ref=f2e529] [cursor=pointer]:
+                - /url: https://www.youtube.com/@linear
+        - generic [ref=f2e531]:
+          - link "Privacy" [ref=f2e532] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=f2e533] [cursor=pointer]:
+            - /url: /terms
+          - link "DPA" [ref=f2e534] [cursor=pointer]:
+            - /url: /dpa
+          - link "AUP" [ref=f2e535] [cursor=pointer]:
+            - /url: /legal/aup

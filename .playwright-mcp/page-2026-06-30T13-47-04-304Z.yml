@@ -1,0 +1,168 @@
+- generic [ref=e2]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Mira" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - navigation "Main navigation" [ref=e8]:
+          - link "How it works" [ref=e9] [cursor=pointer]:
+            - /url: /how-it-works
+          - link "Pricing" [ref=e10] [cursor=pointer]:
+            - /url: /pricing
+        - link "Get started" [ref=e11] [cursor=pointer]:
+          - /url: https://app.withmira.co
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - heading "Stop answering the same questions all day" [level=1] [ref=e15]
+      - paragraph [ref=e16]: Every buyer asks the same things. How much, what sizes, is it in stock, do you deliver. Mira answers all of it from your shop's details — in seconds, not hours.
+      - link "Get started" [ref=e18] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e21]:
+      - heading "Before Mira, you type every reply. After Mira, the shop replies for you." [level=2] [ref=e23]
+      - generic [ref=e24]:
+        - paragraph [ref=e25]: You post. The questions flood in. How much, what size, still available, do you deliver.
+        - paragraph [ref=e26]: You answer the same things, over and over, while packing orders and editing posts.
+        - paragraph [ref=e27]: Stock changes. A caption goes stale. Now you're correcting yourself in 10 threads.
+        - paragraph [ref=e28]: Every late response loses you customers - they tell their friends, sales dip
+    - generic [ref=e31]:
+      - heading "Every answer comes straight from your shop" [level=2] [ref=e32]
+      - generic [ref=e33]:
+        - paragraph [ref=e34]: Mira reads your posts, your captions, your shop page — prices, sizes, stock, ingredients, everything you've already put up. When a buyer asks, the answer comes from what's there. No extra setup, no scripts to write.
+        - paragraph [ref=e35]: The more detail you put on your page, the better Mira answers. Post your prices, list your sizes, add your delivery areas — Mira picks it all up.
+    - generic [ref=e37]:
+      - paragraph [ref=e38]: Ready to stop typing the same replies?
+      - link "Start free" [ref=e39] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e42]:
+      - heading "The questions buyers ask before they buy" [level=2] [ref=e43]
+      - generic [ref=e44]:
+        - article [ref=e45]:
+          - heading "Price and stock" [level=3] [ref=e46]
+          - paragraph [ref=e47]: "\"How much?\" and \"still available?\" — answered from your details."
+        - article [ref=e48]:
+          - heading "Sizes and options" [level=3] [ref=e49]
+          - paragraph [ref=e50]: Sizes, colors, shades, flavors, bundles — whatever you have listed.
+        - article [ref=e51]:
+          - heading "Ingredients and safety" [level=3] [ref=e52]
+          - paragraph [ref=e53]: Allergens, ingredients, materials, usage — shared when they're on your page, sent to you when they're not.
+        - article [ref=e54]:
+          - heading "Delivery" [level=3] [ref=e55]
+          - paragraph [ref=e56]: Pickup, delivery areas, cutoff times — shared when you have set them up.
+    - generic [ref=e59]:
+      - heading "How it sounds in the DM" [level=2] [ref=e60]
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - paragraph [ref=e64]: How much is the vanilla musk oil?
+          - paragraph [ref=e66]: The vanilla musk oil is KES 1,200 for 30ml. Warm vanilla with a musk base. 3 left in stock. Want delivery or pickup?
+        - generic [ref=e67]:
+          - paragraph [ref=e69]: Does the granola have nuts?
+          - paragraph [ref=e71]: Yes — contains almonds and walnuts. 250g packs, KES 450 each. Fresh batch from Monday. Delivery within Nairobi or pickup in Westlands.
+        - generic [ref=e72]:
+          - paragraph [ref=e74]: Can this body butter clear dark spots?
+          - paragraph [ref=e76]: It's a shea butter base with cocoa and vanilla — 200ml, KES 800. Great for dry skin. For dark spots, let me bring in the shop owner to advise you properly.
+    - generic [ref=e79]:
+      - heading "Questions" [level=2] [ref=e80]
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - term [ref=e83]: Where do the answers come from?
+          - definition [ref=e84]: Your posts, your captions, your shop page. That's where everything comes from.
+        - generic [ref=e85]:
+          - term [ref=e86]: What if a price isn't set?
+          - definition [ref=e87]: Mira asks you instead of guessing.
+        - generic [ref=e88]:
+          - term [ref=e89]: Can it answer allergen questions?
+          - definition [ref=e90]: Yes, if the details are on your page. If not, the question comes to you.
+        - generic [ref=e91]:
+          - term [ref=e92]: Can it answer delivery questions?
+          - definition [ref=e93]: Yes — pickup, delivery areas, cutoffs. Whatever you've put on your shop.
+  - contentinfo [ref=e95]:
+    - generic [ref=e96]:
+      - paragraph [ref=e97]: One more thing
+      - heading "Your DMs at 2 AM? Mira's got it." [level=2] [ref=e98]:
+        - text: Your DMs at 2 AM?
+        - emphasis [ref=e99]: Mira's got it.
+      - link "Get started" [ref=e100] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e102]:
+      - navigation "Footer navigation" [ref=e103]:
+        - generic [ref=e104]:
+          - paragraph [ref=e105]: Product
+          - list [ref=e106]:
+            - listitem [ref=e107]:
+              - link "Pricing" [ref=e108] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e109]:
+              - link "How it works" [ref=e110] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e111]:
+              - link "Instagram integration" [ref=e112] [cursor=pointer]:
+                - /url: /integrations/instagram
+        - generic [ref=e113]:
+          - paragraph [ref=e114]: Features
+          - list [ref=e115]:
+            - listitem [ref=e116]:
+              - link "Product answers" [ref=e117] [cursor=pointer]:
+                - /url: /features/product-answers
+            - listitem [ref=e118]:
+              - link "Orders and checkout" [ref=e119] [cursor=pointer]:
+                - /url: /features/orders-and-checkout
+            - listitem [ref=e120]:
+              - link "Human handoff" [ref=e121] [cursor=pointer]:
+                - /url: /features/human-handoff
+        - generic [ref=e122]:
+          - paragraph [ref=e123]: Use cases
+          - list [ref=e124]:
+            - listitem [ref=e125]:
+              - link "Daily-drop shops" [ref=e126] [cursor=pointer]:
+                - /url: /use-cases/daily-drop-shops
+            - listitem [ref=e127]:
+              - link "Fashion and thrift" [ref=e128] [cursor=pointer]:
+                - /url: /use-cases/fashion
+            - listitem [ref=e129]:
+              - link "Beauty shops" [ref=e130] [cursor=pointer]:
+                - /url: /use-cases/beauty
+            - listitem [ref=e131]:
+              - link "Accessories shops" [ref=e132] [cursor=pointer]:
+                - /url: /use-cases/accessories
+            - listitem [ref=e133]:
+              - link "Fragrance shops" [ref=e134] [cursor=pointer]:
+                - /url: /use-cases/fragrances
+            - listitem [ref=e135]:
+              - link "Bakeries and food" [ref=e136] [cursor=pointer]:
+                - /url: /use-cases/home-bakeries-food-brands
+            - listitem [ref=e137]:
+              - link "Skincare and haircare" [ref=e138] [cursor=pointer]:
+                - /url: /use-cases/skincare-haircare-makers
+        - generic [ref=e139]:
+          - paragraph [ref=e140]: Company
+          - list [ref=e141]:
+            - listitem [ref=e142]:
+              - link "About" [ref=e143] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e144]:
+              - link "Contact" [ref=e145] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e146]:
+          - paragraph [ref=e147]: Trust
+          - list [ref=e148]:
+            - listitem [ref=e149]:
+              - link "Security" [ref=e150] [cursor=pointer]:
+                - /url: /security
+            - listitem [ref=e151]:
+              - link "Privacy" [ref=e152] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e153]:
+              - link "Terms" [ref=e154] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e155]:
+              - link "Data deletion" [ref=e156] [cursor=pointer]:
+                - /url: /data-deletion
+            - listitem [ref=e157]:
+              - link "Help" [ref=e158] [cursor=pointer]:
+                - /url: /help
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - paragraph [ref=e161]: Mira
+          - paragraph [ref=e162]: Made in Nairobi, Kenya · © 2026
+        - link "hello@withmira.co" [ref=e163] [cursor=pointer]:
+          - /url: mailto:hello@withmira.co

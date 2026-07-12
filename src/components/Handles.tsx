@@ -48,8 +48,7 @@ const Handles = () => {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <p className="kicker text-ink-light">What Mira handles</p>
-              <h2 className="mt-6 font-display text-[clamp(2rem,1.3rem+3vw,3.25rem)] font-medium leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+              <h2 className="font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
                 The questions you answer all day, answered for you
               </h2>
               <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-light">
@@ -60,17 +59,12 @@ const Handles = () => {
 
           <div className="lg:col-span-6 lg:col-start-7">
             <ol className="divide-y divide-line border-y border-line">
-              {items.map((item, index) => (
-                <li key={item.title} className="flex items-baseline gap-6 py-7">
-                  <span className="w-8 shrink-0 font-mono text-sm text-ink-faint">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-base leading-relaxed text-ink-light">
-                      {item.description}
-                    </p>
-                  </div>
+              {items.map((item) => (
+                <li key={item.title} className="py-7">
+                  <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
+                  <p className="mt-1.5 text-base leading-relaxed text-ink-light">
+                    {item.description}
+                  </p>
                 </li>
               ))}
             </ol>

@@ -1,0 +1,138 @@
+- generic [ref=e2]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Mira" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - navigation "Main navigation" [ref=e8]:
+          - link "How it works" [ref=e9] [cursor=pointer]:
+            - /url: /how-it-works
+          - link "Pricing" [ref=e10] [cursor=pointer]:
+            - /url: /pricing
+        - link "Get started" [ref=e11] [cursor=pointer]:
+          - /url: https://app.withmira.co
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: Pricing
+      - heading "Pricing for Instagram shops that sell in the DMs" [level=1] [ref=e16]
+      - paragraph [ref=e17]: Start free, then upgrade when your shop needs more conversations, fewer repeats, and a cleaner customer handoff.
+      - generic [ref=e18]:
+        - link "Get started" [ref=e19] [cursor=pointer]:
+          - /url: https://app.withmira.co
+        - link "Ask about Elite" [ref=e20] [cursor=pointer]:
+          - /url: mailto:hello@withmira.co
+    - generic [ref=e23]:
+      - paragraph [ref=e24]: Plans
+      - heading "Three ways to start" [level=2] [ref=e25]
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - generic [ref=e28]: —
+          - generic [ref=e29]: "Free: KES 0/mo. Try Mira on your own shop. No card needed."
+        - listitem [ref=e30]:
+          - generic [ref=e31]: —
+          - generic [ref=e32]: "Pro: from KES 3,500/mo. For shops with steady DM traffic. Every message answered, day and night."
+        - listitem [ref=e33]:
+          - generic [ref=e34]: —
+          - generic [ref=e35]: "Elite: Custom. For bigger shops and teams. A plan shaped around how you sell."
+    - generic [ref=e38]:
+      - paragraph [ref=e39]: Conversation
+      - heading "What counts as a customer conversation" [level=2] [ref=e40]
+      - paragraph [ref=e41]: A customer conversation is one shopper thread Mira helps with. It can include product questions, cart help, delivery questions, and checkout guidance.
+    - generic [ref=e44]:
+      - paragraph [ref=e45]: FAQ
+      - heading "Questions" [level=2] [ref=e46]
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - term [ref=e49]: Is there a free plan?
+          - definition [ref=e50]: Yes. Free includes up to 10 customer conversations a month.
+        - generic [ref=e51]:
+          - term [ref=e52]: Do I need a card to start?
+          - definition [ref=e53]: No. The Free plan does not ask for card details.
+        - generic [ref=e54]:
+          - term [ref=e55]: Can I upgrade later?
+          - definition [ref=e56]: Yes. You can start free and move to Pro when your DMs grow.
+        - generic [ref=e57]:
+          - term [ref=e58]: What happens when Mira needs me?
+          - definition [ref=e59]: Mira hands the conversation back with context so you can step in.
+        - generic [ref=e60]:
+          - term [ref=e61]: Do you support M-Pesa checkout?
+          - definition [ref=e62]: Mira guides customers toward an M-Pesa-ready checkout link.
+  - contentinfo [ref=e64]:
+    - generic [ref=e65]:
+      - paragraph [ref=e66]: One more thing
+      - heading "Your DMs at 2 AM? Mira's got it." [level=2] [ref=e67]:
+        - text: Your DMs at 2 AM?
+        - emphasis [ref=e68]: Mira's got it.
+      - link "Get started" [ref=e69] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e71]:
+      - navigation "Footer navigation" [ref=e72]:
+        - generic [ref=e73]:
+          - paragraph [ref=e74]: Product
+          - list [ref=e75]:
+            - listitem [ref=e76]:
+              - link "Pricing" [ref=e77] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e78]:
+              - link "How it works" [ref=e79] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e80]:
+              - link "Instagram integration" [ref=e81] [cursor=pointer]:
+                - /url: /integrations/instagram
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: Features
+          - list [ref=e84]:
+            - listitem [ref=e85]:
+              - link "Product answers" [ref=e86] [cursor=pointer]:
+                - /url: /features/product-answers
+            - listitem [ref=e87]:
+              - link "Orders and checkout" [ref=e88] [cursor=pointer]:
+                - /url: /features/orders-and-checkout
+            - listitem [ref=e89]:
+              - link "Human handoff" [ref=e90] [cursor=pointer]:
+                - /url: /features/human-handoff
+        - generic [ref=e91]:
+          - paragraph [ref=e92]: Use cases
+          - list [ref=e93]:
+            - listitem [ref=e94]:
+              - link "Instagram shops" [ref=e95] [cursor=pointer]:
+                - /url: /use-cases/instagram-shops
+            - listitem [ref=e96]:
+              - link "Fashion" [ref=e97] [cursor=pointer]:
+                - /url: /use-cases/fashion
+            - listitem [ref=e98]:
+              - link "Beauty" [ref=e99] [cursor=pointer]:
+                - /url: /use-cases/beauty
+        - generic [ref=e100]:
+          - paragraph [ref=e101]: Company
+          - list [ref=e102]:
+            - listitem [ref=e103]:
+              - link "About" [ref=e104] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e105]:
+              - link "Contact" [ref=e106] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e107]:
+          - paragraph [ref=e108]: Trust
+          - list [ref=e109]:
+            - listitem [ref=e110]:
+              - link "Security" [ref=e111] [cursor=pointer]:
+                - /url: /security
+            - listitem [ref=e112]:
+              - link "Privacy" [ref=e113] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e114]:
+              - link "Terms" [ref=e115] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e116]:
+              - link "Data deletion" [ref=e117] [cursor=pointer]:
+                - /url: /data-deletion
+            - listitem [ref=e118]:
+              - link "Help" [ref=e119] [cursor=pointer]:
+                - /url: /help
+      - generic [ref=e120]:
+        - generic [ref=e121]:
+          - paragraph [ref=e122]: Mira
+          - paragraph [ref=e123]: Made in Nairobi, Kenya · © 2026
+        - link "hello@withmira.co" [ref=e124] [cursor=pointer]:
+          - /url: mailto:hello@withmira.co
