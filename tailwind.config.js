@@ -41,9 +41,12 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        body: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        display: ['Archivo', 'system-ui', 'sans-serif'],
+        body: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+      },
+      letterSpacing: {
+        tight: '-0.05em',
       },
       transitionTimingFunction: {
         out: 'cubic-bezier(0.16, 1, 0.3, 1)',
