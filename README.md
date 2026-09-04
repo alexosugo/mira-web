@@ -89,7 +89,7 @@ mira-web/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (version 18 or higher)
+- Node.js (version 20.19 or higher — required by Vite 8)
 - npm or yarn package manager
 - Supabase account (for backend services)
 

@@ -70,7 +70,7 @@ describe('Sellogram rename', () => {
     expect(elite).toContain('hello@sellogram.co');
     expect(footer).toContain('https://app.withmira.co');
     expect(footer).toContain('hello@sellogram.co');
-    expect(layout).toContain('https://withmira.co/');
+    expect(layout).toContain('https://sellogram.co/');
     expect(layout).toContain('https://app.withmira.co');
     expect(readme).toContain('https://app.netlify.com/projects/withmira/deploys');
 

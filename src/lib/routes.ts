@@ -19,9 +19,9 @@ export interface Route {
   slice: Slice;
 }
 
-export const SITE_URL = 'https://withmira.co';
+export const SITE_URL = 'https://sellogram.co';
 export const APP_URL = 'https://app.withmira.co';
-export const CONTACT_EMAIL = 'hello@withmira.co';
+export const CONTACT_EMAIL = 'hello@sellogram.co';
 
 export const ROUTES: Route[] = [
   {

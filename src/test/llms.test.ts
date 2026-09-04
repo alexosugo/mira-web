@@ -3,7 +3,7 @@ import { generateLlmsTxt, generateLlmsFullTxt } from '../lib/llms';
 import { ROUTES } from '../lib/routes';
 import { violatesVoice } from '../lib/voice';
 
-const SITE_URL = 'https://withmira.co';
+const SITE_URL = 'https://sellogram.co';
 
 describe('llms.txt generators', () => {
   it('llms.txt starts with the project title and a summary blockquote', () => {
