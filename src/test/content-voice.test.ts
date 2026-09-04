@@ -48,10 +48,10 @@ const sectionStrings = (section: ContentSection): readonly string[] => {
     case 'scenarios':
       return [
         section.heading,
-        ...section.items.flatMap((item) => [item.customer, item.mira, item.ownerNote]),
+        ...section.items.flatMap((item) => [item.customer, item.sellogram, item.ownerNote]),
       ];
     case 'archetype':
-      return [section.name, section.role, ...section.day, ...section.miraHelps];
+      return [section.name, section.role, ...section.day, ...section.sellogramHelps];
     case 'legal':
       return [section.heading, ...section.paragraphs];
     case 'pricingMatrix':

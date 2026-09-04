@@ -7,14 +7,14 @@ const MESSAGE_BASE_DELAY_MS = 400;
 const MESSAGE_STEP_MS = 250;
 
 interface ChatMessage {
-  from: 'customer' | 'mira';
+  from: 'customer' | 'sellogram';
   text: ReactNode;
 }
 
 const MESSAGES: ChatMessage[] = [
   { from: 'customer', text: 'Sasa! Do you have the denim jacket in M?' },
   {
-    from: 'mira',
+    from: 'sellogram',
     text: (
       <>
         Yes, two left in M. <span className="font-mono text-[0.85em]">KES 2,400</span>. Want me
@@ -24,7 +24,7 @@ const MESSAGES: ChatMessage[] = [
   },
   { from: 'customer', text: 'Add it. Can you deliver to CBD tomorrow?' },
   {
-    from: 'mira',
+    from: 'sellogram',
     text: (
       <>
         Done. Delivery is <span className="font-mono text-[0.85em]">KES 200</span>, arrives
@@ -37,7 +37,7 @@ const MESSAGES: ChatMessage[] = [
 const messageDelay = (index: number) => `${MESSAGE_BASE_DELAY_MS + index * MESSAGE_STEP_MS}ms`;
 
 /**
- * The hero's proof surface: a believable Instagram DM thread where Mira
+ * The hero's proof surface: a believable Instagram DM thread where Sellogram
  * answers a stock question, builds a cart, and closes the sale overnight.
  * Messages stagger in with CSS-only delays (no JS gating); reduced motion
  * shows everything instantly via the global override in index.css.
@@ -45,7 +45,7 @@ const messageDelay = (index: number) => `${MESSAGE_BASE_DELAY_MS + index * MESSA
 const HeroChatDemo = () => {
   return (
     <div
-      aria-label="Example Instagram DM conversation: Mira answers a customer's stock question, adds a jacket to their cart, and confirms the order at 2:14 AM"
+      aria-label="Example Instagram DM conversation: Sellogram answers a customer's stock question, adds a jacket to their cart, and confirms the order at 2:14 AM"
       className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-line bg-white"
     >
       {/* Thread header */}
@@ -61,7 +61,7 @@ const HeroChatDemo = () => {
         </div>
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold text-ink">@nia.thrifts</p>
-          <p className="font-mono text-xs text-fern">Mira replies for you</p>
+          <p className="font-mono text-xs text-fern">Sellogram replies for you</p>
         </div>
       </div>
 
@@ -70,12 +70,12 @@ const HeroChatDemo = () => {
         {MESSAGES.map((message, index) => (
           <div
             key={index}
-            className={`flex animate-fade-in-up ${message.from === 'mira' ? 'justify-end' : 'justify-start'}`}
+            className={`flex animate-fade-in-up ${message.from === 'sellogram' ? 'justify-end' : 'justify-start'}`}
             style={{ animationDelay: messageDelay(index) }}
           >
             <p
               className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${
-                message.from === 'mira'
+                message.from === 'sellogram'
                   ? 'rounded-2xl rounded-br-md bg-fern text-paper'
                   : 'rounded-2xl rounded-bl-md bg-paper text-ink'
               }`}

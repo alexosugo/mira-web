@@ -3,10 +3,10 @@ import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { scrollToSection } from '../utils/scrollToSection';
 import HeroChatDemo from './HeroChatDemo';
 
-const HERO_HEADLINE = 'Mira answers your DMs and sells in them';
+const HERO_HEADLINE = 'Sellogram answers your DMs and sells in them';
 const HERO_CTA_LABEL = 'Get started';
 const HERO_SUBHEAD =
-  'Mira handles product questions, recommendations, and orders so customers get fast, accurate answers without you glued to your phone.';
+  'Sellogram handles product questions, recommendations, and orders so customers get fast, accurate answers without you glued to your phone.';
 const APP_URL = 'https://app.withmira.co';
 
 const Hero = () => {
@@ -33,7 +33,7 @@ const Hero = () => {
               className="font-display text-[clamp(2.25rem,1.5rem+3.4vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
               style={{ animationDelay: '80ms' }}
             >
-              Mira answers your DMs and sells in them
+              Sellogram answers your DMs and sells in them
             </h1>
 
             <p
@@ -60,7 +60,7 @@ const Hero = () => {
                   isRedirecting ? 'pointer-events-none opacity-80' : ''
                 }`}
               >
-                {isRedirecting ? 'Opening Mira...' : HERO_CTA_LABEL}
+                {isRedirecting ? 'Opening Sellogram...' : HERO_CTA_LABEL}
               </a>
               <button
                 type="button"

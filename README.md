@@ -1,12 +1,12 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/66c9d9aa-b369-4784-978b-916d99e99664/deploy-status?branch=main)](https://app.netlify.com/projects/withmira/deploys)
 
-# Mira - AI Customer Experience Partner
+# Sellogram - AI Customer Experience Partner
 
 Transform your Kenyan business with intelligent 24/7 customer service automation that handles WhatsApp, Instagram, and Facebook messages while you sleep.
 
 ## 🚀 Overview
 
-Mira is an AI-powered customer experience platform specifically designed for Small and Medium Enterprises (SMEs) in Kenya. It automates customer interactions across multiple social media platforms, providing instant responses in local languages while significantly reducing operational costs.
+Sellogram is an AI-powered customer experience platform specifically designed for Small and Medium Enterprises (SMEs) in Kenya. It automates customer interactions across multiple social media platforms, providing instant responses in local languages while significantly reducing operational costs.
 
 ### Key Benefits
 - **24/7 Availability**: Never miss a customer inquiry
@@ -25,7 +25,7 @@ Kenyan SMEs face several challenges with customer service:
 
 ## 💡 Solution
 
-Mira addresses these challenges through:
+Sellogram addresses these challenges through:
 - Intelligent AI that learns your products and policies
 - Automated responses to common inquiries
 - Seamless escalation to human agents when needed

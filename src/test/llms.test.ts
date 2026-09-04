@@ -8,8 +8,8 @@ const SITE_URL = 'https://withmira.co';
 describe('llms.txt generators', () => {
   it('llms.txt starts with the project title and a summary blockquote', () => {
     const out = generateLlmsTxt(SITE_URL);
-    expect(out.startsWith('# Mira\n')).toBe(true);
-    expect(out).toContain('> Mira answers Instagram DMs');
+    expect(out.startsWith('# Sellogram\n')).toBe(true);
+    expect(out).toContain('> Sellogram answers Instagram DMs');
   });
 
   it('llms.txt links every registered route with an absolute URL', () => {

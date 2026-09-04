@@ -18,7 +18,7 @@ describe('feature content pages', () => {
       expect(scenarios.items).toHaveLength(3);
       for (const item of scenarios.items) {
         expect(item.customer.length, path).toBeGreaterThan(10);
-        expect(item.mira.length, path).toBeGreaterThan(45);
+        expect(item.sellogram.length, path).toBeGreaterThan(45);
         expect(item.ownerNote.length, path).toBeGreaterThan(35);
       }
     }

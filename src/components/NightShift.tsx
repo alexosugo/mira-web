@@ -5,15 +5,15 @@ interface LedgerEntry {
   text: string;
   /** The payoff line gets the dawn accent and full-strength text. */
   isPayoff?: boolean;
-  /** Lines where Mira acts get the fern timestamp — her color, her shift. */
-  isMira?: boolean;
+  /** Lines where Sellogram acts get the fern timestamp — its color, its shift. */
+  isSellogram?: boolean;
 }
 
 const LEDGER: LedgerEntry[] = [
-  { time: '9:41 PM', text: 'You close for the day. Mira stays on.' },
+  { time: '9:41 PM', text: 'You close for the day. Sellogram stays on.' },
   { time: '11:52 PM', text: '"Sasa! Do you have the denim jacket in M?"' },
-  { time: '11:52 PM', text: 'Mira answers: two left in M, KES 2,400.', isMira: true },
-  { time: '11:54 PM', text: 'Cart built. M-Pesa checkout link sent.', isMira: true },
+  { time: '11:52 PM', text: 'Sellogram answers: two left in M, KES 2,400.', isSellogram: true },
+  { time: '11:54 PM', text: 'Cart built. M-Pesa checkout link sent.', isSellogram: true },
   { time: '2:14 AM', text: 'Paid. Order confirmed.', isPayoff: true },
   { time: '7:05 AM', text: 'You wake up to paid orders, not unread DMs.' },
 ];
@@ -49,7 +49,7 @@ const NightShift = () => {
                     className={`w-20 shrink-0 text-right font-mono text-xs sm:text-sm ${
                       entry.isPayoff
                         ? 'text-dawn-bright'
-                        : entry.isMira
+                        : entry.isSellogram
                           ? 'text-fern-bright'
                           : 'text-paper/55'
                     }`}

@@ -68,7 +68,7 @@ const Footer = () => {
       {/* Closing CTA */}
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:px-8">
         <h2 className="max-w-2xl font-display text-[clamp(1.9rem,1.4rem+2.4vw,2.875rem)] font-semibold leading-[1.1] tracking-tight [text-wrap:balance]">
-          Your DMs at 2 AM? <em className="font-normal italic">Mira's got it.</em>
+          Your DMs at 2 AM? <em className="font-normal italic">Sellogram's got it.</em>
         </h2>
         <a
           href={APP_URL}
@@ -111,18 +111,18 @@ const Footer = () => {
 
           <div className="mt-12 flex flex-col gap-4 border-t border-night-line pt-8 sm:flex-row sm:items-baseline sm:justify-between">
             <div>
-              <p className="font-display text-xl font-semibold">Mira</p>
+              <p className="font-display text-xl font-semibold">Sellogram</p>
               <p className="mt-2 font-mono text-xs text-paper/55">
                 Made in Nairobi, Kenya · © {currentYear}
               </p>
             </div>
 
             <a
-              href="mailto:hello@withmira.co"
+              href="mailto:hello@sellogram.co"
               onClick={() => handleContactClick('email')}
               className="font-mono text-sm text-paper/60 transition-colors duration-200 hover:text-paper"
             >
-              hello@withmira.co
+              hello@sellogram.co
             </a>
           </div>
         </div>

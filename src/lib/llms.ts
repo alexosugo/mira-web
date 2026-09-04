@@ -33,7 +33,7 @@ const SORT_PRIORITY: Record<string, number> = {
 const byPriority = (a: Route, b: Route): number =>
   (SORT_PRIORITY[a.path] ?? 99) - (SORT_PRIORITY[b.path] ?? 99);
 
-const stripBrand = (title: string): string => title.replace(/\s*\|\s*Mira$/, '');
+const stripBrand = (title: string): string => title.replace(/\s*\|\s*Sellogram$/, '');
 
 const line = (text: string): string => `${text}\n`;
 
@@ -56,7 +56,7 @@ const sectionLines = (section: ContentSection): readonly string[] => {
         section.heading,
         section.body,
         `Works best when: ${section.worksBest}`,
-        `Mira hands over when: ${section.handoff}`,
+        `Sellogram hands over when: ${section.handoff}`,
         `What the owner gets: ${section.ownerGets}`,
       ];
     case 'promiseGrid':
@@ -64,20 +64,20 @@ const sectionLines = (section: ContentSection): readonly string[] => {
     case 'beforeAfter':
       return [
         section.heading,
-        ...section.content.before.map((item) => `Before Mira: ${item}`),
-        ...section.content.after.map((item) => `After Mira: ${item}`),
+        ...section.content.before.map((item) => `Before Sellogram: ${item}`),
+        ...section.content.after.map((item) => `After Sellogram: ${item}`),
       ];
     case 'scenarios':
       return section.items.flatMap((item) => [
         `Customer asks: ${item.customer}`,
-        `Mira answers: ${item.mira}`,
+        `Sellogram answers: ${item.sellogram}`,
         `Owner control: ${item.ownerNote}`,
       ]);
     case 'archetype':
       return [
         `${section.name}: ${section.role}`,
         ...section.day.map((item) => `Daily flow: ${item}`),
-        ...section.miraHelps.map((item) => `Mira helps: ${item}`),
+        ...section.sellogramHelps.map((item) => `Sellogram helps: ${item}`),
       ];
     case 'legal':
       return [section.heading, ...section.paragraphs];
@@ -94,8 +94,8 @@ const sectionLines = (section: ContentSection): readonly string[] => {
  */
 export const generateLlmsTxt = (siteUrl: string): string => {
   const out: string[] = [];
-  out.push(line('# Mira'));
-  out.push(line('> Mira answers Instagram DMs for Kenyan shops. It replies to product, stock, and delivery questions, builds carts, and guides customers to M-Pesa-ready checkout. Built in Kenya, priced in KES.'));
+  out.push(line('# Sellogram'));
+  out.push(line('> Sellogram answers Instagram DMs for Kenyan shops. It replies to product, stock, and delivery questions, builds carts, and guides customers to M-Pesa-ready checkout. Built in Kenya, priced in KES.'));
   out.push(line(''));
   for (const route of [...ROUTES].sort(byPriority)) {
     out.push(line(`- [${stripBrand(route.title)}](${siteUrl}${route.path}): ${route.description}`));
@@ -111,8 +111,8 @@ export const generateLlmsTxt = (siteUrl: string): string => {
  */
 export const generateLlmsFullTxt = (siteUrl: string): string => {
   const out: string[] = [];
-  out.push(line('# Mira — full guide'));
-  out.push(line('> Mira answers Instagram DMs for Kenyan shops that sell in the DMs. It handles product questions, pricing, stock, sizes, and delivery, builds carts, and guides customers to M-Pesa-ready checkout. It hands tricky conversations back to the shop owner. Built in Kenya, priced in KES.'));
+  out.push(line('# Sellogram — full guide'));
+  out.push(line('> Sellogram answers Instagram DMs for Kenyan shops that sell in the DMs. It handles product questions, pricing, stock, sizes, and delivery, builds carts, and guides customers to M-Pesa-ready checkout. It hands tricky conversations back to the shop owner. Built in Kenya, priced in KES.'));
   out.push(line(''));
   out.push(line('## Pages'));
   out.push(line(''));
