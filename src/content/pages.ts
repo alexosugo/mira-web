@@ -180,7 +180,7 @@ const appCta: Cta = {
 
 const talkCta: Cta = {
   label: 'Talk to Sellogram',
-  href: 'mailto:hello@withmira.co',
+  href: 'mailto:hello@sellogram.co',
   trackingKey: 'content_contact_email',
   variant: 'secondary',
 };
@@ -1276,7 +1276,7 @@ export const PAGES: Record<string, PageContent> = {
         kind: 'legal',
         heading: 'Report a concern',
         paragraphs: [
-          'Email hello@withmira.co with any security question, account concern, or suspicious activity.',
+          'Email hello@sellogram.co with any security question, account concern, or suspicious activity.',
           'Never send passwords or payment details by email. Sellogram will never ask for your Instagram password.',
         ],
       },
@@ -1328,7 +1328,7 @@ export const PAGES: Record<string, PageContent> = {
         heading: 'Retention, deletion, and contact',
         paragraphs: [
           'Sellogram keeps information for as long as needed to provide the service, support the shop, maintain account records, meet legal or billing needs, and resolve safety issues.',
-          'To request deletion, email hello@withmira.co with your shop name, Instagram handle, and account email. Some records may be kept where required for billing, safety, fraud prevention, or legal reasons.',
+          'To request deletion, email hello@sellogram.co with your shop name, Instagram handle, and account email. Some records may be kept where required for billing, safety, fraud prevention, or legal reasons.',
         ],
       },
     ],
@@ -1379,7 +1379,7 @@ export const PAGES: Record<string, PageContent> = {
         heading: 'Limits and contact',
         paragraphs: [
           "Sellogram is a shop assistant. It does not replace the owner's judgment, confirm payments, confirm delivery completion, resolve disputes on its own, or promise that every customer will buy.",
-          'Questions about these terms can be sent to hello@withmira.co.',
+          'Questions about these terms can be sent to hello@sellogram.co.',
         ],
       },
     ],
@@ -1445,7 +1445,7 @@ export const PAGES: Record<string, PageContent> = {
       intro:
         'Start with the app, ask a question by email, or talk to us about a higher-touch setup for your shop.',
       primaryCta: appCta,
-      secondaryLink: { label: 'Email hello@withmira.co', href: 'mailto:hello@withmira.co' },
+      secondaryLink: { label: 'Email hello@sellogram.co', href: 'mailto:hello@sellogram.co' },
     },
     sections: [
       {
@@ -1453,9 +1453,9 @@ export const PAGES: Record<string, PageContent> = {
         heading: 'Choose the path that fits your shop',
         items: [
           { title: 'Start Sellogram', body: 'Use the app if you want to try Sellogram on your shop and see how it handles your DMs.' },
-          { title: 'Ask a question', body: 'Email hello@withmira.co for account, setup, billing, privacy, or data-deletion questions.' },
+          { title: 'Ask a question', body: 'Email hello@sellogram.co for account, setup, billing, privacy, or data-deletion questions.' },
           { title: 'Talk about Elite', body: 'Use the Elite inquiry form when your shop needs onboarding, priority help, or custom integrations.' },
-          { title: 'Report a concern', body: 'Send account safety, suspicious activity, or security concerns to hello@withmira.co.' },
+          { title: 'Report a concern', body: 'Send account safety, suspicious activity, or security concerns to hello@sellogram.co.' },
         ],
       },
     ],
@@ -1476,13 +1476,13 @@ export const PAGES: Record<string, PageContent> = {
           { title: 'Getting started', body: 'Connect Instagram, review your catalog, test DMs, then go live when the answers feel right.' },
           { title: 'Products and catalog', body: 'Sellogram answers best when prices, stock, sizes, and delivery notes are reviewed.' },
           { title: 'Orders and checkout', body: 'Sellogram can build a cart and guide shoppers toward an M-Pesa-ready checkout link.' },
-          { title: 'Privacy and deletion', body: 'Read the privacy page or request deletion by emailing hello@withmira.co.' },
+          { title: 'Privacy and deletion', body: 'Read the privacy page or request deletion by emailing hello@sellogram.co.' },
         ],
       },
       faq([
         { question: 'How do I start?', answer: 'Open the app, connect your Instagram Professional account, and add your payment and delivery details. Setup takes about ten minutes.' },
         { question: 'Can I step in?', answer: 'Yes. Sellogram can hand tricky conversations back to you with context.' },
-        { question: 'How do I ask for data deletion?', answer: 'Email hello@withmira.co with your shop name, Instagram handle, and account email.' },
+        { question: 'How do I ask for data deletion?', answer: 'Email hello@sellogram.co with your shop name, Instagram handle, and account email.' },
         { question: 'What if Sellogram does not know an answer?', answer: 'Sellogram hands the conversation to you instead of guessing.' },
       ]),
     ],
