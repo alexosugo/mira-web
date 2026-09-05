@@ -17,4 +17,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://withmira.co/sitemap-index.xml
+Sitemap: https://sellogram.co/sitemap-index.xml

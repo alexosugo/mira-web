@@ -22,7 +22,7 @@ const HowItWorks = () => {
 
         {/* Reassurance at the scariest step: handing over your Instagram. */}
         <p className="mt-14 font-mono text-xs text-ink-faint sm:text-sm">
-          Mira reads only your shop's DMs, nothing else on your account.
+          Sellogram reads only your shop's DMs, nothing else on your account.
         </p>
       </div>
     </section>

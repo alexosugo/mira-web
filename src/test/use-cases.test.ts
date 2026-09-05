@@ -55,7 +55,7 @@ describe('use-case content pages', () => {
       expect(scenarios.items.length, path).toBeLessThanOrEqual(4);
       for (const item of scenarios.items) {
         expect(item.customer.length, path).toBeGreaterThan(10);
-        expect(item.mira.length, path).toBeGreaterThan(40);
+        expect(item.sellogram.length, path).toBeGreaterThan(40);
         expect(item.ownerNote.length, path).toBeGreaterThan(35);
       }
     }

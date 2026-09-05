@@ -17,8 +17,8 @@ interface Props {
 }
 
 const {
-  title = 'Mira — answers customers and helps them order in your Instagram DMs',
-  description = 'Mira answers product questions, helps customers choose, and puts orders together in your Instagram DMs. Built in Kenya, priced in KES. Start free.',
+  title = 'Sellogram — answers customers and helps them order in your Instagram DMs',
+  description = 'Sellogram answers product questions, helps customers choose, and puts orders together in your Instagram DMs. Built in Kenya, priced in KES. Start free.',
   canonicalPath,
   ogTitle,
   ogDescription,
@@ -42,28 +42,28 @@ const structuredData = {
   '@graph': [
     {
       '@type': 'WebSite',
-      '@id': 'https://withmira.co/#website',
-      url: 'https://withmira.co/',
-      name: 'Mira',
+      '@id': 'https://sellogram.co/#website',
+      url: 'https://sellogram.co/',
+      name: 'Sellogram',
       description,
       inLanguage: 'en',
     },
     {
       '@type': 'Product',
-      '@id': 'https://withmira.co/#product',
-      name: 'Mira',
+      '@id': 'https://sellogram.co/#product',
+      name: 'Sellogram',
       description:
-        'Mira answers product questions in Instagram DMs, helps customers choose, builds carts, and sends payment instructions. The shop owner confirms payment.',
-      brand: { '@type': 'Brand', name: 'Mira' },
-      url: 'https://withmira.co/',
+        'Sellogram answers product questions in Instagram DMs, helps customers choose, builds carts, and sends payment instructions. The shop owner confirms payment.',
+      brand: { '@type': 'Brand', name: 'Sellogram' },
+      url: 'https://sellogram.co/',
       areaServed: 'KE',
     },
     {
       '@type': 'Organization',
-      '@id': 'https://withmira.co/#organization',
-      url: 'https://withmira.co/',
-      name: 'Mira',
-      email: 'hello@withmira.co',
+      '@id': 'https://sellogram.co/#organization',
+      url: 'https://sellogram.co/',
+      name: 'Sellogram',
+      email: 'hello@sellogram.co',
     },
     ...pageNodes,
   ],
@@ -82,7 +82,8 @@ const structuredData = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: dark)" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Theme colors and meta tags for mobile browsers -->
@@ -128,7 +129,7 @@ const structuredData = {
     <noscript>
       <div style="max-width: 36rem; margin: 2rem auto; padding: 0 1.5rem; color: #1B2620; text-align: center;">
         <p style="font-size: 1rem; line-height: 1.6;">Some interactive details need JavaScript. To get started, open the app.</p>
-        <a href="https://app.withmira.co" style="display: inline-block; margin-top: 0.75rem; padding: 0.75rem 1.5rem; border-radius: 999px; background: #1B2620; color: #F2F6F3; font-weight: 600; text-decoration: none;">Open Mira</a>
+        <a href="https://app.withmira.co" style="display: inline-block; margin-top: 0.75rem; padding: 0.75rem 1.5rem; border-radius: 999px; background: #1B2620; color: #F2F6F3; font-weight: 600; text-decoration: none;">Open Sellogram</a>
       </div>
     </noscript>
     <script>

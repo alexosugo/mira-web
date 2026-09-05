@@ -12,10 +12,10 @@ describe('HeroChatDemo', () => {
     expect(screen.getByText(/Order confirmed · 2:14 AM/)).toBeInTheDocument();
   });
 
-  it('shows the shop handle and the Mira attribution', () => {
+  it('shows the shop handle and the Sellogram attribution', () => {
     render(<HeroChatDemo />);
     expect(screen.getByText('@nia.thrifts')).toBeInTheDocument();
-    expect(screen.getByText('Mira replies for you')).toBeInTheDocument();
+    expect(screen.getByText('Sellogram replies for you')).toBeInTheDocument();
   });
 
   it('describes the conversation for assistive technology', () => {

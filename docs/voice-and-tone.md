@@ -1,17 +1,17 @@
-# Mira — Voice & Tone
+# Sellogram — Voice & Tone
 
 This is a working summary of the canonical brand bundle
-(`02-voice-and-tone.md` and `03-messaging-and-claims.md` in the Mira brand
+(`02-voice-and-tone.md` and `03-messaging-and-claims.md` in the Sellogram brand
 bundle). When they conflict, the bundle wins.
 
 ## Voice in one sentence
 
-Mira speaks like someone who understands how an Instagram shop is run and can
-explain useful work without sounding like they are selling software.
+Sellogram speaks like someone who understands how an Instagram shop is run and
+can explain useful work without sounding like they are selling software.
 
 ## Core message
 
-**Mira answers customers and helps them order in your Instagram DMs.**
+**Sellogram answers customers and helps them order in your Instagram DMs.**
 Supporting: it learns from the products already posted on your shop and asks
 you when a decision needs you.
 
@@ -19,6 +19,10 @@ you when a decision needs you.
 
 Small and medium Instagram shops, mainly in Kenya, selling physical products
 through a Professional Instagram account. Busy, non-technical, social-first.
+
+## Personality
+
+Helpful friend, not corporate product. Sellogram is a teammate, not a tool.
 
 ## Voice qualities
 
@@ -37,6 +41,12 @@ overfamiliar social-media manager.
   payment." Use "can" for conditional capabilities, "will" only when
   deterministic.
 
+## Technical depth
+
+Zero jargon. Never say "AI-powered", "machine learning", "NLP", or "automation
+engine." Describe what Sellogram *does*: "answers questions", "builds a cart",
+"hands tricky conversations to you."
+
 ## Sentence style
 
 Complete, natural sentences. One main thought per sentence. Active voice.
@@ -46,19 +56,30 @@ exclamation marks. No three-part fragment slogans ("Faster. Smarter. Better.").
 ## Headlines
 
 Name a real shop situation or give a plain answer: "Stop answering the same
-questions all day", "When Mira cannot confirm the answer, it asks you". No
-compressed slogans, forced wordplay, or aggressive hooks.
+questions all day", "When Sellogram cannot confirm the answer, it asks you".
+No compressed slogans, forced wordplay, or aggressive hooks.
+
+## Proof language
+
+Use specifics from the product. "Sellogram handles questions about pricing,
+stock, sizes, and delivery" beats "Sellogram handles all your customer
+inquiries."
+
+## Humor
+
+Light and situational. "Your DMs at 2am? Sellogram's got it." Not forced puns
+or corporate wit.
 
 ## Calls to action
 
 Say what happens next: Get started · Connect your shop · Start free · See how
-Mira works · View pricing. Avoid "Unlock growth", "Transform your DMs", and
-"Learn more" when a more specific action exists.
+Sellogram works · View pricing. Avoid "Unlock growth", "Transform your DMs",
+and "Learn more" when a more specific action exists.
 
 ## Banned language
 
-- **Technology/category**: AI-powered, AI assistant (when "Mira" is enough),
-  automation, machine learning, NLP, platform, ecosystem, solution,
+- **Technology/category**: AI-powered, AI assistant (when "Sellogram" is
+  enough), automation, machine learning, NLP, platform, ecosystem, solution,
   omnichannel.
 - **Corporate**: streamline, optimise, leverage, utilise, facilitate, scale
   your support, increase throughput, customer touchpoints, operational
@@ -67,14 +88,14 @@ Mira works · View pricing. Avoid "Unlock growth", "Transform your DMs", and
   seamless, smart/intelligent (unless technically required), supercharge,
   transform, unlock, never miss a sale, 24/7 sales machine, sell on autopilot,
   human-like, perfect answers.
-- **Generated-copy patterns**: decorative section kickers, "Meet Mira" as a
-  substitute for explaining the product, "Whether you are X, Y or Z" filler,
-  "Say goodbye to...", repeated "From X to Y" formulas, stacks of three
-  abstract benefits.
+- **Generated-copy patterns**: decorative section kickers, "Meet Sellogram" as
+  a substitute for explaining the product, "Whether you are X, Y or Z"
+  filler, "Say goodbye to...", repeated "From X to Y" formulas, stacks of
+  three abstract benefits.
 
 ## Claims
 
-Never claim that Mira: confirms customer payment; supports customer
+Never claim that Sellogram: confirms customer payment; supports customer
 conversations on WhatsApp; works with personal Instagram accounts; answers
 comments or story replies (until the behaviour is documented publicly);
 resolves every missing detail automatically; has proven sales/response-time
@@ -83,8 +104,8 @@ customer-service work. Do not use "unlimited conversations" until fair-use
 rules are confirmed.
 
 Qualify carefully: "about 10 minutes to set up" is a normal case, not a
-guarantee; "answers day and night" describes availability while Mira is on,
-not orders completing without the owner.
+guarantee; "answers day and night" describes availability while Sellogram is
+on, not orders completing without the owner.
 
 ## Evidence
 
