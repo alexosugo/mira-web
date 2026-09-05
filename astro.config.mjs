@@ -22,7 +22,7 @@ const additionalAllowedHosts = (process.env.VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
   .filter(Boolean);
 
 export default defineConfig({
-  site: 'https://withmira.co',
+  site: 'https://sellogram.co',
   integrations: [
     react(),
     sitemap({

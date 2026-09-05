@@ -24,7 +24,7 @@ interface FaqPageNode {
 
 interface ProductOfferNode {
   readonly '@type': 'Product';
-  readonly name: 'Mira';
+  readonly name: 'Sellogram';
   readonly offers: readonly OfferNode[];
 }
 
@@ -40,7 +40,7 @@ const offerPrice = (price: string): string | undefined => {
 
 const pricingOffers = (): ProductOfferNode => ({
   '@type': 'Product',
-  name: 'Mira',
+  name: 'Sellogram',
   offers: PLANS.map((plan) => {
     const price = offerPrice(plan.price);
     return {

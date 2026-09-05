@@ -213,7 +213,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       trackFormSubmission(FORM_ID, FORM_NAME, mechanicsProps, 'error');
       setIsSubmitting(false);
       setSubmitError(
-        'Something went wrong sending your message. Please try again, or email hello@withmira.co.'
+        'Something went wrong sending your message. Please try again, or email hello@sellogram.co.'
       );
     }
   };
@@ -387,7 +387,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 </label>
                 <textarea
                   id="elite-message"
-                  placeholder="What do you sell, and what should Mira handle for you?"
+                  placeholder="What do you sell, and what should Sellogram handle for you?"
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   rows={4}
@@ -421,7 +421,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   </div>
                 </div>
                 <span className="text-sm text-ink-light group-hover:text-ink transition-colors">
-                  I'd like to receive product updates and news from Mira
+                  I'd like to receive product updates and news from Sellogram
                 </span>
               </label>
 

@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { ROUTES, NOINDEX_PATHS } from '../lib/routes';
 import { violatesVoice } from '../lib/voice';
 
-const SUFFIX = '| Mira';
+const SUFFIX = '| Sellogram';
 
 describe('route registry integrity', () => {
   it('ships exactly the 21 planned routes (customers deferred)', () => {
@@ -32,16 +32,16 @@ describe('route registry integrity', () => {
     expect(new Set(names).size).toBe(names.length);
   });
 
-  it('formats every title as `{Phrase} | Mira`', () => {
+  it('formats every title as `{Phrase} | Sellogram`', () => {
     for (const route of ROUTES) {
       expect(route.title.endsWith(SUFFIX), `${route.path} title missing suffix`).toBe(true);
     }
   });
 
-  it('never duplicates the brand inside a title (no "Mira ... | Mira")', () => {
+  it('never duplicates the brand inside a title (no "Sellogram ... | Sellogram")', () => {
     for (const route of ROUTES) {
       const phrase = route.title.slice(0, route.title.length - SUFFIX.length).trim();
-      expect(phrase.toLowerCase(), `${route.path}`).not.toContain('mira');
+      expect(phrase.toLowerCase(), `${route.path}`).not.toContain('sellogram');
     }
   });
 

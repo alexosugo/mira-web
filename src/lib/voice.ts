@@ -1,4 +1,4 @@
-// Phrases banned by the Mira brand bundle (02-voice-and-tone.md), summarised in
+// Phrases banned by the Sellogram brand bundle (02-voice-and-tone.md), summarised in
 // docs/voice-and-tone.md. Single source of truth referenced by the content test
 // harness so banned language cannot ship. Bare "automation" is not listed only
 // because the /instagram-dm-automation page must name the search term it

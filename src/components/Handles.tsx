@@ -6,25 +6,25 @@ interface HandleItem {
 }
 
 const SOLUTION_LEAD =
-  'Mira lives in your DMs and understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Mira passes the conversation back to you.';
+  'Sellogram lives in your DMs and understands your products, replies to customer questions, and guides them through buying wherever they message you. When someone needs you personally, Sellogram passes the conversation back to you.';
 
 /**
- * The everyday DM work Mira takes over, as an editorial index rather than a
+ * The everyday DM work Sellogram takes over, as an editorial index rather than a
  * feature-card grid. Consolidates the old problem/solution/features/benefits
  * sections into one list a busy seller can scan in seconds.
  */
 const Handles = () => {
-  const sectionRef = useSectionTracking('handles', 'What Mira Handles Section');
+  const sectionRef = useSectionTracking('handles', 'What Sellogram Handles Section');
 
   const items: HandleItem[] = [
     {
       title: 'Product Expert',
       description:
-        'Mira understands your catalog well enough to guide customers with clear, helpful answers',
+        'Sellogram understands your catalog well enough to guide customers with clear, helpful answers',
     },
     {
       title: 'Sizes and recommendations',
-      description: 'Mira helps customers pick the right item, the way you would if you were free.',
+      description: 'Sellogram helps customers pick the right item, the way you would if you were free.',
     },
     {
       title: 'Carts and checkout',
