@@ -119,6 +119,8 @@ export interface FaqItem {
 export interface ListItem {
   title: string;
   body: string;
+  /** Optional trigger for promiseGrid items that need to open an action, not just describe it. */
+  cta?: { label: string; href: string };
 }
 
 export interface BeforeAfterContent {
@@ -1454,7 +1456,11 @@ export const PAGES: Record<string, PageContent> = {
         items: [
           { title: 'Start Sellogram', body: 'Use the app if you want to try Sellogram on your shop and see how it handles your DMs.' },
           { title: 'Ask a question', body: 'Email hello@sellogram.co for account, setup, billing, privacy, or data-deletion questions.' },
-          { title: 'Talk about Elite', body: 'Use the Elite inquiry form when your shop needs onboarding, priority help, or custom integrations.' },
+          {
+            title: 'Talk about Elite',
+            body: 'Use the Elite inquiry form when your shop needs onboarding, priority help, or custom integrations.',
+            cta: { label: 'Open the Elite form', href: 'modal:elite' },
+          },
           { title: 'Report a concern', body: 'Send account safety, suspicious activity, or security concerns to hello@sellogram.co.' },
         ],
       },

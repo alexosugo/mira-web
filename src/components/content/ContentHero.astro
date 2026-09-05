@@ -82,7 +82,13 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
         {(hero.primaryCta || hero.secondaryLink) && (
           <div class="animate-fade-in-up mt-10 flex flex-wrap items-center gap-4 [animation-delay:240ms]">
             {hero.primaryCta && (
-              <a href={hero.primaryCta.href} class={ctaClass(hero.primaryCta.variant)}>
+              <a
+                href={hero.primaryCta.href}
+                class={ctaClass(hero.primaryCta.variant)}
+                data-cta-tracking={hero.primaryCta.trackingKey}
+                data-cta-label={hero.primaryCta.label}
+                data-cta-section={`${route.pageName} hero`}
+              >
                 {hero.primaryCta.label}
               </a>
             )}
@@ -130,3 +136,17 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
     </div>
   </div>
 </section>
+
+<script>
+  import { trackCTAClick } from '../../utils/analytics';
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-cta-tracking]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackCTAClick(
+        link.dataset.ctaTracking ?? 'unknown',
+        link.dataset.ctaLabel ?? link.textContent?.trim() ?? '',
+        link.dataset.ctaSection ?? 'hero'
+      );
+    });
+  });
+</script>
