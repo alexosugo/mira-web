@@ -1,0 +1,2208 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - generic [ref=f3e4]:
+      - paragraph [ref=f3e5]: Get 20% (up to $100) off your first payment for design and development services on Dribbble! Use code WELCOME20 🎉
+      - link "Get Started" [ref=f3e6] [cursor=pointer]:
+        - /url: https://dribbble.com/instantmatch
+    - button "close" [ref=f3e7] [cursor=pointer]:
+      - img [ref=f3e8]
+  - generic [ref=f3e11]:
+    - button "Toggle mobile menu" [ref=f3e12] [cursor=pointer]
+    - link "Back to home page" [ref=f3e16] [cursor=pointer]:
+      - /url: /
+      - 'img "Dribbble: the community for graphic design" [ref=f3e17]'
+    - generic [ref=f3e20]:
+      - combobox "Submit" [ref=f3e22]:
+        - search [ref=f3e23]:
+          - searchbox "Submit" [ref=f3e25]: chat ui product page
+      - generic "Change search type" [ref=f3e26]:
+        - generic:
+          - generic:
+            - button "Shots" [ref=f3e27] [cursor=pointer]:
+              - generic [ref=f3e28]: Shots
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Shots
+                  - generic: Designers
+                  - generic: Services
+      - button "Search" [ref=f3e29] [cursor=pointer]:
+        - img [ref=f3e30]
+    - generic [ref=f3e32]:
+      - link "Sign up" [ref=f3e33] [cursor=pointer]:
+        - /url: /signups/new
+      - link "Log in" [ref=f3e34] [cursor=pointer]:
+        - /url: /session/new
+  - generic [ref=f3e35]:
+    - generic [ref=f3e37]:
+      - heading "chat ui product page" [level=1] [ref=f3e38]
+      - paragraph [ref=f3e39]: Inspirational chat ui product page designs for inspiration
+      - list [ref=f3e40]:
+        - listitem [ref=f3e41]: "Related:"
+        - listitem [ref=f3e42]:
+          - link "ux" [ref=f3e43] [cursor=pointer]:
+            - /url: /search/ux
+        - listitem [ref=f3e44]:
+          - link "app" [ref=f3e45] [cursor=pointer]:
+            - /url: /search/app
+        - listitem [ref=f3e46]:
+          - link "web" [ref=f3e47] [cursor=pointer]:
+            - /url: /search/web
+        - listitem [ref=f3e48]:
+          - link "message" [ref=f3e49] [cursor=pointer]:
+            - /url: /search/message
+        - listitem [ref=f3e50]:
+          - link "messenger" [ref=f3e51] [cursor=pointer]:
+            - /url: /search/messenger
+        - listitem [ref=f3e52]:
+          - link "website" [ref=f3e53] [cursor=pointer]:
+            - /url: /search/website
+    - generic [ref=f3e55]:
+      - link "Popular" [ref=f3e58] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=f3e59]
+        - generic [ref=f3e61]: Popular
+      - generic [ref=f3e62]:
+        - link [ref=f3e63] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=f3e64]
+        - list [ref=f3e66]:
+          - listitem [ref=f3e67]:
+            - link "Discover" [ref=f3e68] [cursor=pointer]:
+              - /url: /search/shots/popular/?q=chat-ui-product-page
+          - listitem [ref=f3e69]:
+            - link "Animation" [ref=f3e70] [cursor=pointer]:
+              - /url: /search/shots/popular/animation?q=chat-ui-product-page
+          - listitem [ref=f3e71]:
+            - link "Branding" [ref=f3e72] [cursor=pointer]:
+              - /url: /search/shots/popular/branding?q=chat-ui-product-page
+          - listitem [ref=f3e73]:
+            - link "Illustration" [ref=f3e74] [cursor=pointer]:
+              - /url: /search/shots/popular/illustration?q=chat-ui-product-page
+          - listitem [ref=f3e75]:
+            - link "Mobile" [ref=f3e76] [cursor=pointer]:
+              - /url: /search/shots/popular/mobile?q=chat-ui-product-page
+          - listitem [ref=f3e77]:
+            - link "Print" [ref=f3e78] [cursor=pointer]:
+              - /url: /search/shots/popular/print?q=chat-ui-product-page
+          - listitem [ref=f3e79]:
+            - link "Product Design" [ref=f3e80] [cursor=pointer]:
+              - /url: /search/shots/popular/product-design?q=chat-ui-product-page
+          - listitem [ref=f3e81]:
+            - link "Typography" [ref=f3e82] [cursor=pointer]:
+              - /url: /search/shots/popular/typography?q=chat-ui-product-page
+          - listitem [ref=f3e83]:
+            - link "Web Design" [ref=f3e84] [cursor=pointer]:
+              - /url: /search/shots/popular/web-design?q=chat-ui-product-page
+      - link "Filters" [ref=f3e86] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=f3e87]
+        - text: Filters
+    - main [ref=f3e90]:
+      - generic [ref=f3e91]:
+        - list [ref=f3e92]:
+          - listitem [ref=f3e93]:
+            - generic [ref=f3e94]:
+              - figure [ref=f3e95]:
+                - img "Aurenix – AI Chat & Automation Web UI ai dashboard design ai web ui automation platform ui chatbot ui dark ui design figma web design product landing page saas website design web app ui wrteam design" [ref=f3e96]
+              - link "View Aurenix – AI Chat & Automation Web UI" [ref=f3e98] [cursor=pointer]:
+                - /url: /shots/27053030-Aurenix-AI-Chat-Automation-Web-UI
+                - generic: View Aurenix – AI Chat & Automation Web UI
+              - generic:
+                - generic:
+                  - generic: Aurenix – AI Chat & Automation Web UI
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e99] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e100]:
+                          - img [ref=f3e101]
+                    - listitem:
+                      - link "Save shot" [ref=f3e103] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e104]
+                    - button "Like shot" [ref=f3e106] [cursor=pointer]:
+                      - img [ref=f3e107]
+            - generic [ref=f3e109]:
+              - generic [ref=f3e110]:
+                - link "WRTeam Design WRTeam Design" [ref=f3e111] [cursor=pointer]:
+                  - /url: /wrteamdesign
+                  - img "WRTeam Design" [ref=f3e112]
+                  - generic [ref=f3e113]: WRTeam Design
+                - link "Pro user" [ref=f3e115] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e116]:
+                - generic [ref=f3e118]:
+                  - generic:
+                    - button "Like shot" [ref=f3e119] [cursor=pointer]:
+                      - img [ref=f3e120]
+                    - generic [ref=f3e122]: "4"
+                - generic [ref=f3e123]:
+                  - img [ref=f3e124]
+                  - generic [ref=f3e127]: 4.9k
+          - listitem [ref=f3e128]:
+            - generic [ref=f3e129]:
+              - figure [ref=f3e130]:
+                - img "Tripcal — AI Trip Planner Conversation Page ai ai assistant card design chat ui chatbot clean conversational ai dashboard design figma itinerary planning product design saas travel travel ai trip ai trip planner ui web app" [ref=f3e131]
+              - img [ref=f3e134]
+              - link "View Tripcal — AI Trip Planner Conversation Page" [ref=f3e136] [cursor=pointer]:
+                - /url: /shots/27311673-Tripcal-AI-Trip-Planner-Conversation-Page
+                - generic: View Tripcal — AI Trip Planner Conversation Page
+              - generic:
+                - generic:
+                  - generic: Tripcal — AI Trip Planner Conversation Page
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e137] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e138]:
+                          - img [ref=f3e139]
+                    - listitem:
+                      - link "Save shot" [ref=f3e141] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e142]
+                    - button "Like shot" [ref=f3e144] [cursor=pointer]:
+                      - img [ref=f3e145]
+            - generic [ref=f3e147]:
+              - generic [ref=f3e148]:
+                - link "Nija Works Nija Works" [ref=f3e149] [cursor=pointer]:
+                  - /url: /nijaworks
+                  - img "Nija Works" [ref=f3e150]
+                  - generic [ref=f3e151]: Nija Works
+                - link "Pro user" [ref=f3e153] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e154]: +
+              - generic [ref=f3e155]:
+                - generic [ref=f3e157]:
+                  - generic:
+                    - button "Like shot" [ref=f3e158] [cursor=pointer]:
+                      - img [ref=f3e159]
+                    - generic [ref=f3e161]: "25"
+                - generic [ref=f3e162]:
+                  - img [ref=f3e163]
+                  - generic [ref=f3e166]: 3k
+          - listitem [ref=f3e167]:
+            - generic [ref=f3e168]:
+              - figure [ref=f3e169]:
+                - 'img "Freud Web UI: AI Mental Health Website | AI Therapy Companion ai chatbot app ai therapy brown chat ui flat green health healthcare landing page meditation app mental health mental health web design mental health website mindfulness mood app responsive therapy ui ui kit web design" [ref=f3e170]'
+              - 'link "View Freud Web UI: AI Mental Health Website | AI Therapy Companion" [ref=f3e172] [cursor=pointer]':
+                - /url: /shots/23734329-Freud-Web-UI-AI-Mental-Health-Website-AI-Therapy-Companion
+                - generic: "View Freud Web UI: AI Mental Health Website | AI Therapy Companion"
+              - generic:
+                - generic:
+                  - generic: "Freud Web UI: AI Mental Health Website | AI Therapy Companion"
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e173] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e174]:
+                          - img [ref=f3e175]
+                    - listitem:
+                      - link "Save shot" [ref=f3e177] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e178]
+                    - button "Like shot" [ref=f3e180] [cursor=pointer]:
+                      - img [ref=f3e181]
+            - generic [ref=f3e183]:
+              - generic [ref=f3e184]:
+                - link "UI8 UI8" [ref=f3e185] [cursor=pointer]:
+                  - /url: /UI8
+                  - img "UI8" [ref=f3e186]
+                  - generic [ref=f3e187]: UI8
+                - link "Pro user" [ref=f3e189] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e190]:
+                - generic [ref=f3e192]:
+                  - generic:
+                    - button "Like shot" [ref=f3e193] [cursor=pointer]:
+                      - img [ref=f3e194]
+                    - generic [ref=f3e196]: "378"
+                - generic [ref=f3e197]:
+                  - img [ref=f3e198]
+                  - generic [ref=f3e201]: 110k
+          - listitem [ref=f3e202]:
+            - generic [ref=f3e203]:
+              - figure [ref=f3e204]:
+                - img "AgentAmp – Sales CRM Dashboard for Real Estate agents ai chat ai saas app design app ui app ui concept b2b app crm crm app design concept interface lead management app mobile app mobile app ui product design real estate real estate dashboard saas crm sales crm ui ux web app" [ref=f3e205]
+              - link "View AgentAmp – Sales CRM Dashboard for Real Estate agents" [ref=f3e207] [cursor=pointer]:
+                - /url: /shots/27094514-AgentAmp-Sales-CRM-Dashboard-for-Real-Estate-agents
+                - generic: View AgentAmp – Sales CRM Dashboard for Real Estate agents
+              - generic:
+                - generic:
+                  - generic: AgentAmp – Sales CRM Dashboard for Real Estate agents
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e208] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e209]:
+                          - img [ref=f3e210]
+                    - listitem:
+                      - link "Save shot" [ref=f3e212] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e213]
+                    - button "Like shot" [ref=f3e215] [cursor=pointer]:
+                      - img [ref=f3e216]
+            - generic [ref=f3e218]:
+              - generic [ref=f3e219]:
+                - link "Wavespace - UI/UX Design Agency Wavespace - UI/UX Design Agency" [ref=f3e220] [cursor=pointer]:
+                  - /url: /wavespaceagency
+                  - img "Wavespace - UI/UX Design Agency" [ref=f3e221]
+                  - generic [ref=f3e222]: Wavespace - UI/UX Design Agency
+                - link "Pro user" [ref=f3e224] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e225]: +
+              - generic [ref=f3e226]:
+                - generic [ref=f3e228]:
+                  - generic:
+                    - button "Like shot" [ref=f3e229] [cursor=pointer]:
+                      - img [ref=f3e230]
+                    - generic [ref=f3e232]: "32"
+                - generic [ref=f3e233]:
+                  - img [ref=f3e234]
+                  - generic [ref=f3e237]: 16.1k
+          - listitem [ref=f3e238]:
+            - generic [ref=f3e239]:
+              - figure [ref=f3e240]:
+                - img "Community & Chat App UI Design android app concept app design community app dark mode app design group chat ui interface ios app design mobile app mobile app ui photo sharing product design social app social networking user interface" [ref=f3e241]
+              - link "View Community & Chat App UI Design" [ref=f3e243] [cursor=pointer]:
+                - /url: /shots/27225446-Community-Chat-App-UI-Design
+                - generic: View Community & Chat App UI Design
+              - generic:
+                - generic:
+                  - generic: Community & Chat App UI Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e244] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e245]:
+                          - img [ref=f3e246]
+                    - listitem:
+                      - link "Save shot" [ref=f3e248] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e249]
+                    - button "Like shot" [ref=f3e251] [cursor=pointer]:
+                      - img [ref=f3e252]
+            - generic [ref=f3e254]:
+              - generic [ref=f3e255]:
+                - link "Sk Raju Hossin Sk Raju Hossin" [ref=f3e256] [cursor=pointer]:
+                  - /url: /rajuhossin23456
+                  - img "Sk Raju Hossin" [ref=f3e257]
+                  - generic [ref=f3e258]: Sk Raju Hossin
+                - link "Pro user" [ref=f3e260] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e261]:
+                - generic [ref=f3e263]:
+                  - generic:
+                    - button "Like shot" [ref=f3e264] [cursor=pointer]:
+                      - img [ref=f3e265]
+                    - generic [ref=f3e267]: "139"
+                - generic [ref=f3e268]:
+                  - img [ref=f3e269]
+                  - generic [ref=f3e272]: 19.4k
+          - listitem [ref=f3e273]:
+            - generic [ref=f3e274]:
+              - figure [ref=f3e275]:
+                - img "Real Estate Property Finder Mobile App UI agent chat ui apartment finder app clean mobile design design house search app housing marketplace interface map search mobile app mobile app design modern ui product design property finder ui property listing proptech real estate real estate app real estate startup" [ref=f3e276]
+              - link "View Real Estate Property Finder Mobile App UI" [ref=f3e278] [cursor=pointer]:
+                - /url: /shots/27183793-Real-Estate-Property-Finder-Mobile-App-UI
+                - generic: View Real Estate Property Finder Mobile App UI
+              - generic:
+                - generic:
+                  - generic: Real Estate Property Finder Mobile App UI
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e279] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e280]:
+                          - img [ref=f3e281]
+                    - listitem:
+                      - link "Save shot" [ref=f3e283] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e284]
+                    - button "Like shot" [ref=f3e286] [cursor=pointer]:
+                      - img [ref=f3e287]
+            - generic [ref=f3e289]:
+              - generic [ref=f3e290]:
+                - link "Sk Raju Hossin Sk Raju Hossin" [ref=f3e291] [cursor=pointer]:
+                  - /url: /rajuhossin23456
+                  - img "Sk Raju Hossin" [ref=f3e292]
+                  - generic [ref=f3e293]: Sk Raju Hossin
+                - link "Pro user" [ref=f3e295] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e296]:
+                - generic [ref=f3e298]:
+                  - generic:
+                    - button "Like shot" [ref=f3e299] [cursor=pointer]:
+                      - img [ref=f3e300]
+                    - generic [ref=f3e302]: "82"
+                - generic [ref=f3e303]:
+                  - img [ref=f3e304]
+                  - generic [ref=f3e307]: 8.5k
+          - listitem [ref=f3e308]:
+            - generic [ref=f3e309]:
+              - figure [ref=f3e310]:
+                - img "No-Code Mobile development platform | Redesign YC25 ai ai assistant ai chat ai chatbot ai development ai tool app design development header landing page mobile app mvp no code product design prompt redesign ui design ux design wavespace website" [ref=f3e311]
+              - link "View No-Code Mobile development platform | Redesign YC25" [ref=f3e313] [cursor=pointer]:
+                - /url: /shots/27073213-No-Code-Mobile-development-platform-Redesign-YC25
+                - generic: View No-Code Mobile development platform | Redesign YC25
+              - generic:
+                - generic:
+                  - generic: No-Code Mobile development platform | Redesign YC25
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e314] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e315]:
+                          - img [ref=f3e316]
+                    - listitem:
+                      - link "Save shot" [ref=f3e318] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e319]
+                    - button "Like shot" [ref=f3e321] [cursor=pointer]:
+                      - img [ref=f3e322]
+            - generic [ref=f3e324]:
+              - generic [ref=f3e325]:
+                - link "Wavespace - UI/UX Design Agency Wavespace - UI/UX Design Agency" [ref=f3e326] [cursor=pointer]:
+                  - /url: /wavespaceagency
+                  - img "Wavespace - UI/UX Design Agency" [ref=f3e327]
+                  - generic [ref=f3e328]: Wavespace - UI/UX Design Agency
+                - link "Pro user" [ref=f3e330] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e331]: +
+              - generic [ref=f3e332]:
+                - generic [ref=f3e334]:
+                  - generic:
+                    - button "Like shot" [ref=f3e335] [cursor=pointer]:
+                      - img [ref=f3e336]
+                    - generic [ref=f3e338]: "23"
+                - generic [ref=f3e339]:
+                  - img [ref=f3e340]
+                  - generic [ref=f3e343]: 7.2k
+          - listitem [ref=f3e344]:
+            - generic [ref=f3e345]:
+              - figure [ref=f3e346]:
+                - img "Social Media App UI Design app concept app design community app dark mode app design group chat ui interface ios app design mobile mobile app mobile app design mobile app ui photo sharing product design social app social media app ui social networking social social network uiux user interface" [ref=f3e347]
+              - link "View Social Media App UI Design" [ref=f3e349] [cursor=pointer]:
+                - /url: /shots/27046177-Social-Media-App-UI-Design
+                - generic: View Social Media App UI Design
+              - generic:
+                - generic:
+                  - generic: Social Media App UI Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e350] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e351]:
+                          - img [ref=f3e352]
+                    - listitem:
+                      - link "Save shot" [ref=f3e354] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e355]
+                    - button "Like shot" [ref=f3e357] [cursor=pointer]:
+                      - img [ref=f3e358]
+            - generic [ref=f3e360]:
+              - generic [ref=f3e361]:
+                - link "Fazlur Rahman Fazlur Rahman" [ref=f3e362] [cursor=pointer]:
+                  - /url: /smrubel2724
+                  - img "Fazlur Rahman" [ref=f3e363]
+                  - generic [ref=f3e364]: Fazlur Rahman
+                - link "Pro user" [ref=f3e366] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e367]:
+                - generic [ref=f3e369]:
+                  - generic:
+                    - button "Like shot" [ref=f3e370] [cursor=pointer]:
+                      - img [ref=f3e371]
+                    - generic [ref=f3e373]: "110"
+                - generic [ref=f3e374]:
+                  - img [ref=f3e375]
+                  - generic [ref=f3e378]: 8.9k
+          - listitem [ref=f3e379]:
+            - generic [ref=f3e380]:
+              - figure [ref=f3e381]:
+                - img "Faxx.ai (web) animation brand branding daily digest events faxx graphic design landing page logo mobile product replit sms text texting ui unfold ux website" [ref=f3e382]
+              - link "View Faxx.ai (web)" [ref=f3e384] [cursor=pointer]:
+                - /url: /shots/27195665-Faxx-ai-web
+                - generic: View Faxx.ai (web)
+              - generic:
+                - generic:
+                  - generic: Faxx.ai (web)
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e385] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e386]:
+                          - img [ref=f3e387]
+                    - listitem:
+                      - link "Save shot" [ref=f3e389] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e390]
+                    - button "Like shot" [ref=f3e392] [cursor=pointer]:
+                      - img [ref=f3e393]
+            - generic [ref=f3e395]:
+              - generic [ref=f3e396]:
+                - link "Unfold Unfold" [ref=f3e397] [cursor=pointer]:
+                  - /url: /unfold
+                  - img "Unfold" [ref=f3e398]
+                  - generic [ref=f3e399]: Unfold
+                - link "Pro user" [ref=f3e401] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e402]:
+                - generic [ref=f3e404]:
+                  - generic:
+                    - button "Like shot" [ref=f3e405] [cursor=pointer]:
+                      - img [ref=f3e406]
+                    - generic [ref=f3e408]: "66"
+                - generic [ref=f3e409]:
+                  - img [ref=f3e410]
+                  - generic [ref=f3e413]: 33.9k
+          - listitem [ref=f3e414]:
+            - generic [ref=f3e415]:
+              - figure [ref=f3e416]:
+                - img "InsightLoop — Product Analytics Landing Page UI/UX Design animation branding clean dashboard design dashboard ui data data dashboard data visualization illustration landing page landing page design minimalism mobile modern product design product landing page saas design typography web app web design" [ref=f3e417]
+              - link "View InsightLoop — Product Analytics Landing Page UI/UX Design" [ref=f3e419] [cursor=pointer]:
+                - /url: /shots/27364508-InsightLoop-Product-Analytics-Landing-Page-UI-UX-Design
+                - generic: View InsightLoop — Product Analytics Landing Page UI/UX Design
+              - generic:
+                - generic:
+                  - generic: InsightLoop — Product Analytics Landing Page UI/UX Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e420] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e421]:
+                          - img [ref=f3e422]
+                    - listitem:
+                      - link "Save shot" [ref=f3e424] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e425]
+                    - button "Like shot" [ref=f3e427] [cursor=pointer]:
+                      - img [ref=f3e428]
+            - generic [ref=f3e430]:
+              - generic [ref=f3e431]:
+                - link "Latera Studio Latera Studio" [ref=f3e432] [cursor=pointer]:
+                  - /url: /latera-studio
+                  - img "Latera Studio" [ref=f3e433]
+                  - generic [ref=f3e434]: Latera Studio
+                - link "Pro user" [ref=f3e436] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e437]:
+                - generic [ref=f3e439]:
+                  - generic:
+                    - button "Like shot" [ref=f3e440] [cursor=pointer]:
+                      - img [ref=f3e441]
+                    - generic [ref=f3e443]: "7"
+                - generic [ref=f3e444]:
+                  - img [ref=f3e445]
+                  - generic [ref=f3e448]: "613"
+          - listitem [ref=f3e449]:
+            - generic [ref=f3e450]:
+              - figure [ref=f3e451]:
+                - img "Chat Screen-Mobile App app design chat chat ui gold shop good interface design interface design iso jewelry app luxury shopping massage massage ui screen mobile app online shop services app shop shopping app ui design ux" [ref=f3e452]
+              - link "View Chat Screen-Mobile App" [ref=f3e454] [cursor=pointer]:
+                - /url: /shots/26295487-Chat-Screen-Mobile-App
+                - generic: View Chat Screen-Mobile App
+              - generic:
+                - generic:
+                  - generic: Chat Screen-Mobile App
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e455] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e456]:
+                          - img [ref=f3e457]
+                    - listitem:
+                      - link "Save shot" [ref=f3e459] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e460]
+                    - button "Like shot" [ref=f3e462] [cursor=pointer]:
+                      - img [ref=f3e463]
+            - generic [ref=f3e465]:
+              - link "Harunur Rashid Harunur Rashid" [ref=f3e467] [cursor=pointer]:
+                - /url: /harunbd99
+                - img "Harunur Rashid" [ref=f3e468]
+                - generic [ref=f3e469]: Harunur Rashid
+              - generic [ref=f3e470]:
+                - generic [ref=f3e472]:
+                  - generic:
+                    - button "Like shot" [ref=f3e473] [cursor=pointer]:
+                      - img [ref=f3e474]
+                    - generic [ref=f3e476]: "98"
+                - generic [ref=f3e477]:
+                  - img [ref=f3e478]
+                  - generic [ref=f3e481]: 18.6k
+          - listitem [ref=f3e482]:
+            - generic [ref=f3e483]:
+              - figure [ref=f3e484]:
+                - img "Enterprise SaaS Mobile Landing Page b2b branding dashboard ui enterprise figma ui graphic design landing page logo product design saas design software ui uiux design webapp" [ref=f3e485]
+              - link "View Enterprise SaaS Mobile Landing Page" [ref=f3e487] [cursor=pointer]:
+                - /url: /shots/26875077-Enterprise-SaaS-Mobile-Landing-Page
+                - generic: View Enterprise SaaS Mobile Landing Page
+              - generic:
+                - generic:
+                  - generic: Enterprise SaaS Mobile Landing Page
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e488] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e489]:
+                          - img [ref=f3e490]
+                    - listitem:
+                      - link "Save shot" [ref=f3e492] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e493]
+                    - button "Like shot" [ref=f3e495] [cursor=pointer]:
+                      - img [ref=f3e496]
+            - generic [ref=f3e498]:
+              - generic [ref=f3e499]:
+                - link "Krisna Wiyana Krisna Wiyana" [ref=f3e500] [cursor=pointer]:
+                  - /url: /Krisnawiyana
+                  - img "Krisna Wiyana" [ref=f3e501]
+                  - generic [ref=f3e502]: Krisna Wiyana
+                - link "Pro user" [ref=f3e504] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e505]:
+                - generic [ref=f3e507]:
+                  - generic:
+                    - button "Like shot" [ref=f3e508] [cursor=pointer]:
+                      - img [ref=f3e509]
+                    - generic [ref=f3e511]: "21"
+                - generic [ref=f3e512]:
+                  - img [ref=f3e513]
+                  - generic [ref=f3e516]: 7.1k
+          - listitem [ref=f3e517]:
+            - generic [ref=f3e518]:
+              - figure [ref=f3e519]:
+                - img "Saas Product Page chat clean component dasboard design details digital interface manage minimal navigation product project saas sidebar ui ui design ui kit ux ux design" [ref=f3e520]
+              - link "View Saas Product Page" [ref=f3e522] [cursor=pointer]:
+                - /url: /shots/24468160-Saas-Product-Page
+                - generic: View Saas Product Page
+              - generic:
+                - generic:
+                  - generic: Saas Product Page
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e523] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e524]:
+                          - img [ref=f3e525]
+                    - listitem:
+                      - link "Save shot" [ref=f3e527] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e528]
+                    - button "Like shot" [ref=f3e530] [cursor=pointer]:
+                      - img [ref=f3e531]
+            - generic [ref=f3e533]:
+              - generic [ref=f3e534]:
+                - link "Monty Hayton Monty Hayton" [ref=f3e535] [cursor=pointer]:
+                  - /url: /montyhayton
+                  - img "Monty Hayton" [ref=f3e536]
+                  - generic [ref=f3e537]: Monty Hayton
+                - link "Pro user" [ref=f3e539] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e540]:
+                - generic [ref=f3e542]:
+                  - generic:
+                    - button "Like shot" [ref=f3e543] [cursor=pointer]:
+                      - img [ref=f3e544]
+                    - generic [ref=f3e546]: "409"
+                - generic [ref=f3e547]:
+                  - img [ref=f3e548]
+                  - generic [ref=f3e551]: 178k
+          - listitem [ref=f3e552]:
+            - generic [ref=f3e553]:
+              - figure [ref=f3e554]:
+                - 'img "Lunet: Eyewear - Product Page Website Animation animation branding brutalism cart design ecommerce editorial eyewear interaction design product product detail product page shoping showcase ui ui animation ux web design website website design" [ref=f3e555]'
+              - generic [ref=f3e556]:
+                - img [ref=f3e558]
+                - img [ref=f3e561]
+                - link "Shot Link":
+                  - /url: /shots/26440834-Lunet-Eyewear-Product-Page-Website-Animation
+                  - generic: Shot Link
+              - 'link "View Lunet: Eyewear - Product Page Website Animation" [ref=f3e564] [cursor=pointer]':
+                - /url: /shots/26440834-Lunet-Eyewear-Product-Page-Website-Animation
+                - generic: "View Lunet: Eyewear - Product Page Website Animation"
+              - generic:
+                - generic:
+                  - generic: "Lunet: Eyewear - Product Page Website Animation"
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e565] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e566]:
+                          - img [ref=f3e567]
+                    - listitem:
+                      - link "Save shot" [ref=f3e569] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e570]
+                    - button "Like shot" [ref=f3e572] [cursor=pointer]:
+                      - img [ref=f3e573]
+            - generic [ref=f3e575]:
+              - generic [ref=f3e576]:
+                - link "SlabPixel SlabPixel" [ref=f3e577] [cursor=pointer]:
+                  - /url: /slabpixel
+                  - img "SlabPixel" [ref=f3e578]
+                  - generic [ref=f3e579]: SlabPixel
+                - link "Pro user" [ref=f3e581] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e582]:
+                - generic [ref=f3e584]:
+                  - generic:
+                    - button "Like shot" [ref=f3e585] [cursor=pointer]:
+                      - img [ref=f3e586]
+                    - generic [ref=f3e588]: "110"
+                - generic [ref=f3e589]:
+                  - img [ref=f3e590]
+                  - generic [ref=f3e593]: 22.3k
+          - listitem [ref=f3e594]:
+            - generic [ref=f3e595]:
+              - figure [ref=f3e596]:
+                - 'img "Tidyfolk : Home Furniture - Website Product Page animation clean decoration furniture graphic design home inner page interaction design landing page minimal motion graphics product detail product page prototype showcase ui web web design website website design" [ref=f3e597]'
+              - generic [ref=f3e598]:
+                - img [ref=f3e600]
+                - img [ref=f3e603]
+                - link "Shot Link":
+                  - /url: /shots/26214487-Tidyfolk-Home-Furniture-Website-Product-Page
+                  - generic: Shot Link
+              - 'link "View Tidyfolk : Home Furniture - Website Product Page" [ref=f3e606] [cursor=pointer]':
+                - /url: /shots/26214487-Tidyfolk-Home-Furniture-Website-Product-Page
+                - generic: "View Tidyfolk : Home Furniture - Website Product Page"
+              - generic:
+                - generic:
+                  - generic: "Tidyfolk : Home Furniture - Website Product Page"
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e607] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e608]:
+                          - img [ref=f3e609]
+                    - listitem:
+                      - link "Save shot" [ref=f3e611] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e612]
+                    - button "Like shot" [ref=f3e614] [cursor=pointer]:
+                      - img [ref=f3e615]
+            - generic [ref=f3e617]:
+              - generic [ref=f3e618]:
+                - link "SlabPixel SlabPixel" [ref=f3e619] [cursor=pointer]:
+                  - /url: /slabpixel
+                  - img "SlabPixel" [ref=f3e620]
+                  - generic [ref=f3e621]: SlabPixel
+                - link "Pro user" [ref=f3e623] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e624]:
+                - generic [ref=f3e626]:
+                  - generic:
+                    - button "Like shot" [ref=f3e627] [cursor=pointer]:
+                      - img [ref=f3e628]
+                    - generic [ref=f3e630]: "141"
+                - generic [ref=f3e631]:
+                  - img [ref=f3e632]
+                  - generic [ref=f3e635]: 35.5k
+          - listitem [ref=f3e636]:
+            - generic [ref=f3e637]:
+              - figure [ref=f3e638]:
+                - img "Briefly AI – SaaS Landing Page Hero ai agent ai product chatbot hero design homepage design interface landing page liquid glass responsive design saas dashboard saas product saas website service startup wavespace web web application web design website website redesign" [ref=f3e639]
+              - link "View Briefly AI – SaaS Landing Page Hero" [ref=f3e641] [cursor=pointer]:
+                - /url: /shots/27338306-Briefly-AI-SaaS-Landing-Page-Hero
+                - generic: View Briefly AI – SaaS Landing Page Hero
+              - generic:
+                - generic:
+                  - generic: Briefly AI – SaaS Landing Page Hero
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e642] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e643]:
+                          - img [ref=f3e644]
+                    - listitem:
+                      - link "Save shot" [ref=f3e646] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e647]
+                    - button "Like shot" [ref=f3e649] [cursor=pointer]:
+                      - img [ref=f3e650]
+            - generic [ref=f3e652]:
+              - generic [ref=f3e653]:
+                - link "Wavespace - UI/UX Design Agency Wavespace - UI/UX Design Agency" [ref=f3e654] [cursor=pointer]:
+                  - /url: /wavespaceagency
+                  - img "Wavespace - UI/UX Design Agency" [ref=f3e655]
+                  - generic [ref=f3e656]: Wavespace - UI/UX Design Agency
+                - link "Pro user" [ref=f3e658] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e659]: +
+              - generic [ref=f3e660]:
+                - generic [ref=f3e662]:
+                  - generic:
+                    - button "Like shot" [ref=f3e663] [cursor=pointer]:
+                      - img [ref=f3e664]
+                    - generic [ref=f3e666]: "57"
+                - generic [ref=f3e667]:
+                  - img [ref=f3e668]
+                  - generic [ref=f3e671]: 15.9k
+          - listitem [ref=f3e672]:
+            - generic [ref=f3e673]:
+              - figure [ref=f3e674]:
+                - img "Avenix — E-Commerce Inner Pages UI Design clean ui dashboard ui digital product dribbble ecommerce ecommerce website figma inner page design landing page mobile responsive modern website online store product page responsive web design saas design ui ux user experience user interface web design website design" [ref=f3e675]
+              - link "View Avenix — E-Commerce Inner Pages UI Design" [ref=f3e677] [cursor=pointer]:
+                - /url: /shots/27403169-Avenix-E-Commerce-Inner-Pages-UI-Design
+                - generic: View Avenix — E-Commerce Inner Pages UI Design
+              - generic:
+                - generic:
+                  - generic: Avenix — E-Commerce Inner Pages UI Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e678] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e679]:
+                          - img [ref=f3e680]
+                    - listitem:
+                      - link "Save shot" [ref=f3e682] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e683]
+                    - button "Like shot" [ref=f3e685] [cursor=pointer]:
+                      - img [ref=f3e686]
+            - generic [ref=f3e688]:
+              - generic [ref=f3e689]:
+                - link "WhiteFrame Creative WhiteFrame Creative" [ref=f3e690] [cursor=pointer]:
+                  - /url: /whiteframeagency
+                  - img "WhiteFrame Creative" [ref=f3e691]
+                  - generic [ref=f3e692]: WhiteFrame Creative
+                - link "Pro user" [ref=f3e694] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e695]:
+                - generic [ref=f3e697]:
+                  - generic:
+                    - button "Like shot" [ref=f3e698] [cursor=pointer]:
+                      - img [ref=f3e699]
+                    - generic [ref=f3e701]: "54"
+                - generic [ref=f3e702]:
+                  - img [ref=f3e703]
+                  - generic [ref=f3e706]: 5.6k
+          - listitem [ref=f3e707]:
+            - generic [ref=f3e708]:
+              - figure [ref=f3e709]:
+                - img "AI Product Landing UI - Features Block with custom icons agency agentic ai black corporate feature features freelance glow gradient landing landingpage telecom ui userinterface web website" [ref=f3e710]
+              - generic [ref=f3e711]:
+                - img [ref=f3e713]
+                - link "Shot Link":
+                  - /url: /shots/27140527-AI-Product-Landing-UI-Features-Block-with-custom-icons
+                  - generic: Shot Link
+              - link "View AI Product Landing UI - Features Block with custom icons" [ref=f3e716] [cursor=pointer]:
+                - /url: /shots/27140527-AI-Product-Landing-UI-Features-Block-with-custom-icons
+                - generic: View AI Product Landing UI - Features Block with custom icons
+              - generic:
+                - generic:
+                  - generic: AI Product Landing UI - Features Block with custom icons
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e717] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e718]:
+                          - img [ref=f3e719]
+                    - listitem:
+                      - link "Save shot" [ref=f3e721] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e722]
+                    - button "Like shot" [ref=f3e724] [cursor=pointer]:
+                      - img [ref=f3e725]
+            - generic [ref=f3e727]:
+              - link "Sergey Javie, Sernior UI & UX Designer Sergey Javie, Sernior UI & UX Designer" [ref=f3e729] [cursor=pointer]:
+                - /url: /Javie
+                - img "Sergey Javie, Sernior UI & UX Designer" [ref=f3e730]
+                - generic [ref=f3e731]: Sergey Javie, Sernior UI & UX Designer
+              - generic [ref=f3e732]:
+                - generic [ref=f3e734]:
+                  - generic:
+                    - button "Like shot" [ref=f3e735] [cursor=pointer]:
+                      - img [ref=f3e736]
+                    - generic [ref=f3e738]: "20"
+                - generic [ref=f3e739]:
+                  - img [ref=f3e740]
+                  - generic [ref=f3e743]: 11.8k
+          - listitem [ref=f3e744]:
+            - generic [ref=f3e745]:
+              - figure [ref=f3e746]:
+                - img "E-commerce Admin Dashboard UI – Customers & Product Management interface product service startup ui ux web" [ref=f3e747]
+              - link "View E-commerce Admin Dashboard UI – Customers & Product Management" [ref=f3e749] [cursor=pointer]:
+                - /url: /shots/26600180-E-commerce-Admin-Dashboard-UI-Customers-Product-Management
+                - generic: View E-commerce Admin Dashboard UI – Customers & Product Management
+              - generic:
+                - generic:
+                  - generic: E-commerce Admin Dashboard UI – Customers & Product Management
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e750] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e751]:
+                          - img [ref=f3e752]
+                    - listitem:
+                      - link "Save shot" [ref=f3e754] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e755]
+                    - button "Like shot" [ref=f3e757] [cursor=pointer]:
+                      - img [ref=f3e758]
+            - generic [ref=f3e760]:
+              - link "Opndoo Studio Opndoo Studio" [ref=f3e762] [cursor=pointer]:
+                - /url: /OpndooStudio
+                - img "Opndoo Studio" [ref=f3e763]
+                - generic [ref=f3e764]: Opndoo Studio
+              - generic [ref=f3e765]:
+                - generic [ref=f3e767]:
+                  - generic:
+                    - button "Like shot" [ref=f3e768] [cursor=pointer]:
+                      - img [ref=f3e769]
+                    - generic [ref=f3e771]: "204"
+                - generic [ref=f3e772]:
+                  - img [ref=f3e773]
+                  - generic [ref=f3e776]: 40.4k
+          - listitem [ref=f3e777]:
+            - generic [ref=f3e778]:
+              - figure [ref=f3e779]:
+                - img "Clerk inbox page app ui application ui chat chat design chat ui inbox inbox ui message message design web app" [ref=f3e780]
+              - link "View Clerk inbox page" [ref=f3e782] [cursor=pointer]:
+                - /url: /shots/20580223-Clerk-inbox-page
+                - generic: View Clerk inbox page
+              - generic:
+                - generic:
+                  - generic: Clerk inbox page
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e783] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e784]:
+                          - img [ref=f3e785]
+                    - listitem:
+                      - link "Save shot" [ref=f3e787] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e788]
+                    - button "Like shot" [ref=f3e790] [cursor=pointer]:
+                      - img [ref=f3e791]
+            - generic [ref=f3e793]:
+              - link "Yevhen Havrylenko Yevhen Havrylenko" [ref=f3e795] [cursor=pointer]:
+                - /url: /evgeniygavr
+                - img "Yevhen Havrylenko" [ref=f3e796]
+                - generic [ref=f3e797]: Yevhen Havrylenko
+              - generic [ref=f3e798]:
+                - generic [ref=f3e800]:
+                  - generic:
+                    - button "Like shot" [ref=f3e801] [cursor=pointer]:
+                      - img [ref=f3e802]
+                    - generic [ref=f3e804]: "51"
+                - generic [ref=f3e805]:
+                  - img [ref=f3e806]
+                  - generic [ref=f3e809]: 18.1k
+          - listitem [ref=f3e810]:
+            - generic [ref=f3e811]:
+              - figure [ref=f3e812]:
+                - img "Modern Financial Investment Website - UI/UX Design banking designer finance finance landing page finance website financial app fintech investment investment landing page investment website landing page minimal design modern design product design saas shasanko creations startup ui ux web design website" [ref=f3e813]
+              - link "View Modern Financial Investment Website - UI/UX Design" [ref=f3e815] [cursor=pointer]:
+                - /url: /shots/26772950-Modern-Financial-Investment-Website-UI-UX-Design
+                - generic: View Modern Financial Investment Website - UI/UX Design
+              - generic:
+                - generic:
+                  - generic: Modern Financial Investment Website - UI/UX Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e816] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e817]:
+                          - img [ref=f3e818]
+                    - listitem:
+                      - link "Save shot" [ref=f3e820] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e821]
+                    - button "Like shot" [ref=f3e823] [cursor=pointer]:
+                      - img [ref=f3e824]
+            - generic [ref=f3e826]:
+              - generic [ref=f3e827]:
+                - link "Shasanko Creations ✈ Shasanko Creations ✈" [ref=f3e828] [cursor=pointer]:
+                  - /url: /shasankocreations
+                  - img "Shasanko Creations ✈" [ref=f3e829]
+                  - generic [ref=f3e830]: Shasanko Creations ✈
+                - link "Pro user" [ref=f3e832] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e833]:
+                - generic [ref=f3e835]:
+                  - generic:
+                    - button "Like shot" [ref=f3e836] [cursor=pointer]:
+                      - img [ref=f3e837]
+                    - generic [ref=f3e839]: "118"
+                - generic [ref=f3e840]:
+                  - img [ref=f3e841]
+                  - generic [ref=f3e844]: 15.6k
+          - listitem [ref=f3e845]:
+            - generic [ref=f3e846]:
+              - figure [ref=f3e847]:
+                - img "Video Chat App – Log in & Sign Up Page UI Design android app design chat ui confirm password create an account input field ios login mobile mobile app onboarding product design sign up signup social networking trending video ui ux video call" [ref=f3e848]
+              - link "View Video Chat App – Log in & Sign Up Page UI Design" [ref=f3e850] [cursor=pointer]:
+                - /url: /shots/26591745-Video-Chat-App-Log-in-Sign-Up-Page-UI-Design
+                - generic: View Video Chat App – Log in & Sign Up Page UI Design
+              - generic:
+                - generic:
+                  - generic: Video Chat App – Log in & Sign Up Page UI Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e851] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e852]:
+                          - img [ref=f3e853]
+                    - listitem:
+                      - link "Save shot" [ref=f3e855] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e856]
+                    - button "Like shot" [ref=f3e858] [cursor=pointer]:
+                      - img [ref=f3e859]
+            - generic [ref=f3e861]:
+              - link "Md Uzzal Hossain Md Uzzal Hossain" [ref=f3e863] [cursor=pointer]:
+                - /url: /BDuzzal123-
+                - img "Md Uzzal Hossain" [ref=f3e864]
+                - generic [ref=f3e865]: Md Uzzal Hossain
+              - generic [ref=f3e866]:
+                - generic [ref=f3e868]:
+                  - generic:
+                    - button "Like shot" [ref=f3e869] [cursor=pointer]:
+                      - img [ref=f3e870]
+                    - generic [ref=f3e872]: "80"
+                - generic [ref=f3e873]:
+                  - img [ref=f3e874]
+                  - generic [ref=f3e877]: 16.1k
+          - listitem [ref=f3e878]:
+            - generic [ref=f3e879]:
+              - figure [ref=f3e880]:
+                - img "Able. - Lunch Delivery App UI able app app design application application design delivery app design interface lunch delivery lunch delivery app mobile app mobile ui ui ui design ux design uxui" [ref=f3e881]
+              - link "View Able. - Lunch Delivery App UI" [ref=f3e883] [cursor=pointer]:
+                - /url: /shots/26368667-Able-Lunch-Delivery-App-UI
+                - generic: View Able. - Lunch Delivery App UI
+              - generic:
+                - generic:
+                  - generic: Able. - Lunch Delivery App UI
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e884] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e885]:
+                          - img [ref=f3e886]
+                    - listitem:
+                      - link "Save shot" [ref=f3e888] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e889]
+                    - button "Like shot" [ref=f3e891] [cursor=pointer]:
+                      - img [ref=f3e892]
+            - generic [ref=f3e894]:
+              - link "elodiedupont elodiedupont" [ref=f3e896] [cursor=pointer]:
+                - /url: /elodiedupont_
+                - img "elodiedupont" [ref=f3e897]
+                - generic [ref=f3e898]: elodiedupont
+              - generic [ref=f3e899]:
+                - generic [ref=f3e901]:
+                  - generic:
+                    - button "Like shot" [ref=f3e902] [cursor=pointer]:
+                      - img [ref=f3e903]
+                    - generic [ref=f3e905]: "29"
+                - generic [ref=f3e906]:
+                  - img [ref=f3e907]
+                  - generic [ref=f3e910]: 1.5k
+          - listitem [ref=f3e911]:
+            - generic [ref=f3e912]:
+              - figure [ref=f3e913]:
+                - img "Premium Travel Concierge Custom Mobile App Design app interfaces app layout booking website business app calendar ui card ui carousel ui chat ui custom app holiday home hotel booking website mobile app design mobile app ui mobile dashboard mobile onboarding mobile ui modern app ui travel landing page travel website ui ux design" [ref=f3e914]
+              - link "View Premium Travel Concierge Custom Mobile App Design" [ref=f3e916] [cursor=pointer]:
+                - /url: /shots/27364065-Premium-Travel-Concierge-Custom-Mobile-App-Design
+                - generic: View Premium Travel Concierge Custom Mobile App Design
+              - generic:
+                - generic:
+                  - generic: Premium Travel Concierge Custom Mobile App Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e917] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e918]:
+                          - img [ref=f3e919]
+                    - listitem:
+                      - link "Save shot" [ref=f3e921] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e922]
+                    - button "Like shot" [ref=f3e924] [cursor=pointer]:
+                      - img [ref=f3e925]
+            - generic [ref=f3e927]:
+              - generic [ref=f3e928]:
+                - link "Ronas IT | UI/UX Team Ronas IT | UI/UX Team" [ref=f3e929] [cursor=pointer]:
+                  - /url: /ronasit
+                  - img "Ronas IT | UI/UX Team" [ref=f3e930]
+                  - generic [ref=f3e931]: Ronas IT | UI/UX Team
+                - link "Pro user" [ref=f3e933] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e934]: +
+              - generic [ref=f3e935]:
+                - generic [ref=f3e937]:
+                  - generic:
+                    - button "Like shot" [ref=f3e938] [cursor=pointer]:
+                      - img [ref=f3e939]
+                    - generic [ref=f3e941]: "237"
+                - generic [ref=f3e942]:
+                  - img [ref=f3e943]
+                  - generic [ref=f3e946]: 46.9k
+          - listitem [ref=f3e947]:
+            - generic [ref=f3e948]:
+              - figure [ref=f3e949]:
+                - img "Dairy Farm Website Design agricultural bussines website agriculture agriculture landing page agriculture technology agriculture website agro farm cattle farm websites dairy farm dairy farm website dairy products dairy website farmers market farming website healthy food ecommerce modern farming website organic farm organic farm landing page smart farming ui uiux design" [ref=f3e950]
+              - link "View Dairy Farm Website Design" [ref=f3e952] [cursor=pointer]:
+                - /url: /shots/27369931-Dairy-Farm-Website-Design
+                - generic: View Dairy Farm Website Design
+              - generic:
+                - generic:
+                  - generic: Dairy Farm Website Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e953] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e954]:
+                          - img [ref=f3e955]
+                    - listitem:
+                      - link "Save shot" [ref=f3e957] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e958]
+                    - button "Like shot" [ref=f3e960] [cursor=pointer]:
+                      - img [ref=f3e961]
+            - generic [ref=f3e963]:
+              - generic [ref=f3e964]:
+                - link "Suhayel Ahmed Nasim Suhayel Ahmed Nasim" [ref=f3e965] [cursor=pointer]:
+                  - /url: /suhayelahmednasim
+                  - img "Suhayel Ahmed Nasim" [ref=f3e966]
+                  - generic [ref=f3e967]: Suhayel Ahmed Nasim
+                - link "Pro user" [ref=f3e969] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e970]:
+                - generic [ref=f3e972]:
+                  - generic:
+                    - button "Like shot" [ref=f3e973] [cursor=pointer]:
+                      - img [ref=f3e974]
+                    - generic [ref=f3e976]: "223"
+                - generic [ref=f3e977]:
+                  - img [ref=f3e978]
+                  - generic [ref=f3e981]: 24.2k
+          - listitem [ref=f3e982]:
+            - generic [ref=f3e983]:
+              - figure [ref=f3e984]:
+                - img "Details page - Real Estate Website design system details page landing page landing page design modern ui product page property listing property management property website real estate real estate platform real estate ui real estate website responsive design uxury real estate website web design website design" [ref=f3e985]
+              - link "View Details page - Real Estate Website" [ref=f3e987] [cursor=pointer]:
+                - /url: /shots/27386785-Details-page-Real-Estate-Website
+                - generic: View Details page - Real Estate Website
+              - generic:
+                - generic:
+                  - generic: Details page - Real Estate Website
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e988] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e989]:
+                          - img [ref=f3e990]
+                    - listitem:
+                      - link "Save shot" [ref=f3e992] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e993]
+                    - button "Like shot" [ref=f3e995] [cursor=pointer]:
+                      - img [ref=f3e996]
+            - generic [ref=f3e998]:
+              - generic [ref=f3e999]:
+                - 'link "Delisas: UX/UI & SaaS Agency Delisas: UX/UI & SaaS Agency" [ref=f3e1000] [cursor=pointer]':
+                  - /url: /delisas
+                  - 'img "Delisas: UX/UI & SaaS Agency" [ref=f3e1001]'
+                  - generic [ref=f3e1002]: "Delisas: UX/UI & SaaS Agency"
+                - link "Pro user" [ref=f3e1004] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1005]:
+                - generic [ref=f3e1007]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1008] [cursor=pointer]:
+                      - img [ref=f3e1009]
+                    - generic [ref=f3e1011]: "99"
+                - generic [ref=f3e1012]:
+                  - img [ref=f3e1013]
+                  - generic [ref=f3e1016]: 12.1k
+          - listitem [ref=f3e1017]:
+            - generic [ref=f3e1018]:
+              - figure [ref=f3e1019]:
+                - img "AI Voice Assistant App ai app ai assistant app ai chat ui ai home page artificial intelligence dark mode ui design interactive ai mobile app voice ai app voice ai ui" [ref=f3e1020]
+              - link "View AI Voice Assistant App" [ref=f3e1022] [cursor=pointer]:
+                - /url: /shots/27101030-AI-Voice-Assistant-App
+                - generic: View AI Voice Assistant App
+              - generic:
+                - generic:
+                  - generic: AI Voice Assistant App
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1023] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1024]:
+                          - img [ref=f3e1025]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1027] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1028]
+                    - button "Like shot" [ref=f3e1030] [cursor=pointer]:
+                      - img [ref=f3e1031]
+            - generic [ref=f3e1033]:
+              - generic [ref=f3e1034]:
+                - link "Digcy Digcy" [ref=f3e1035] [cursor=pointer]:
+                  - /url: /Digcy
+                  - img "Digcy" [ref=f3e1036]
+                  - generic [ref=f3e1037]: Digcy
+                - link "Pro user" [ref=f3e1039] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1040]: +
+              - generic [ref=f3e1041]:
+                - generic [ref=f3e1043]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1044] [cursor=pointer]:
+                      - img [ref=f3e1045]
+                    - generic [ref=f3e1047]: "67"
+                - generic [ref=f3e1048]:
+                  - img [ref=f3e1049]
+                  - generic [ref=f3e1052]: 13.4k
+          - listitem [ref=f3e1053]:
+            - generic [ref=f3e1054]:
+              - figure [ref=f3e1055]:
+                - img "AgentAmp - Mobile Design for a Real Estate CRM App ai agent chat ui design crm lead management app lead tracking mobile app ui concept mobile ui product design property property app proptech design real estate real estate agent dashboard real estate app ui real estate mobile ui crm realtor app ui design ux design ux flow wavespace" [ref=f3e1056]
+              - link "View AgentAmp - Mobile Design for a Real Estate CRM App" [ref=f3e1058] [cursor=pointer]:
+                - /url: /shots/26793224-AgentAmp-Mobile-Design-for-a-Real-Estate-CRM-App
+                - generic: View AgentAmp - Mobile Design for a Real Estate CRM App
+              - generic:
+                - generic:
+                  - generic: AgentAmp - Mobile Design for a Real Estate CRM App
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1059] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1060]:
+                          - img [ref=f3e1061]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1063] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1064]
+                    - button "Like shot" [ref=f3e1066] [cursor=pointer]:
+                      - img [ref=f3e1067]
+            - generic [ref=f3e1069]:
+              - generic [ref=f3e1070]:
+                - link "Wavespace - UI/UX Design Agency Wavespace - UI/UX Design Agency" [ref=f3e1071] [cursor=pointer]:
+                  - /url: /wavespaceagency
+                  - img "Wavespace - UI/UX Design Agency" [ref=f3e1072]
+                  - generic [ref=f3e1073]: Wavespace - UI/UX Design Agency
+                - link "Pro user" [ref=f3e1075] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1076]: +
+              - generic [ref=f3e1077]:
+                - generic [ref=f3e1079]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1080] [cursor=pointer]:
+                      - img [ref=f3e1081]
+                    - generic [ref=f3e1083]: "110"
+                - generic [ref=f3e1084]:
+                  - img [ref=f3e1085]
+                  - generic [ref=f3e1088]: 32.8k
+          - listitem [ref=f3e1089]:
+            - generic [ref=f3e1090]:
+              - figure [ref=f3e1091]:
+                - img "Whizzy - AI Agent Platform - Chat agent platform agentic ai ai ai agent ai assistant ai chat ai platform ai research chat ui component deep research design minimal ui teal ui ui uidesign uiux ux uxdesign web design" [ref=f3e1092]
+              - generic [ref=f3e1093]:
+                - img [ref=f3e1095]
+                - link "Shot Link":
+                  - /url: /shots/27479978-Whizzy-AI-Agent-Platform-Chat
+                  - generic: Shot Link
+              - link "View Whizzy - AI Agent Platform - Chat" [ref=f3e1098] [cursor=pointer]:
+                - /url: /shots/27479978-Whizzy-AI-Agent-Platform-Chat
+                - generic: View Whizzy - AI Agent Platform - Chat
+              - generic:
+                - generic:
+                  - generic: Whizzy - AI Agent Platform - Chat
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1099] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1100]:
+                          - img [ref=f3e1101]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1103] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1104]
+                    - button "Like shot" [ref=f3e1106] [cursor=pointer]:
+                      - img [ref=f3e1107]
+            - generic [ref=f3e1109]:
+              - generic [ref=f3e1110]:
+                - link "Uxerflow Uxerflow" [ref=f3e1111] [cursor=pointer]:
+                  - /url: /uxerflow
+                  - img "Uxerflow" [ref=f3e1112]
+                  - generic [ref=f3e1113]: Uxerflow
+                - link "Pro user" [ref=f3e1115] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1116]: +
+              - generic [ref=f3e1117]:
+                - generic [ref=f3e1119]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1120] [cursor=pointer]:
+                      - img [ref=f3e1121]
+                    - generic [ref=f3e1123]: "46"
+                - generic [ref=f3e1124]:
+                  - img [ref=f3e1125]
+                  - generic [ref=f3e1128]: 4.8k
+          - listitem [ref=f3e1129]:
+            - generic [ref=f3e1130]:
+              - figure [ref=f3e1131]:
+                - img "Framer Website landing page animation animation framer expert framer website framer website design landing page landing page animation landing page design minimal product page ui web design web designer webflow website weblfow developer website website designer" [ref=f3e1132]
+              - generic [ref=f3e1133]:
+                - img [ref=f3e1135]
+                - link "Shot Link":
+                  - /url: /shots/25405021-Framer-Website-landing-page-animation
+                  - generic: Shot Link
+              - link "View Framer Website landing page animation" [ref=f3e1138] [cursor=pointer]:
+                - /url: /shots/25405021-Framer-Website-landing-page-animation
+                - generic: View Framer Website landing page animation
+              - generic:
+                - generic:
+                  - generic: Framer Website landing page animation
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1139] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1140]:
+                          - img [ref=f3e1141]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1143] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1144]
+                    - button "Like shot" [ref=f3e1146] [cursor=pointer]:
+                      - img [ref=f3e1147]
+            - generic [ref=f3e1149]:
+              - link "Inspirux Inspirux" [ref=f3e1151] [cursor=pointer]:
+                - /url: /inspirux
+                - img "Inspirux" [ref=f3e1152]
+                - generic [ref=f3e1153]: Inspirux
+              - generic [ref=f3e1154]:
+                - generic [ref=f3e1156]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1157] [cursor=pointer]:
+                      - img [ref=f3e1158]
+                    - generic [ref=f3e1160]: "288"
+                - generic [ref=f3e1161]:
+                  - img [ref=f3e1162]
+                  - generic [ref=f3e1165]: 37.4k
+          - listitem [ref=f3e1166]:
+            - generic [ref=f3e1167]:
+              - figure [ref=f3e1168]:
+                - img "Skincare Website ecommerce website landing page landing page design skincare ecommerce skincare website telehealth website telemedicine website ui uiux ux website website design website redesign wellness website" [ref=f3e1169]
+              - link "View Skincare Website" [ref=f3e1171] [cursor=pointer]:
+                - /url: /shots/27279461-Skincare-Website
+                - generic: View Skincare Website
+              - generic:
+                - generic:
+                  - generic: Skincare Website
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1172] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1173]:
+                          - img [ref=f3e1174]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1176] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1177]
+                    - button "Like shot" [ref=f3e1179] [cursor=pointer]:
+                      - img [ref=f3e1180]
+            - generic [ref=f3e1182]:
+              - generic [ref=f3e1183]:
+                - 'link "Delisas: UX/UI & SaaS Agency Delisas: UX/UI & SaaS Agency" [ref=f3e1184] [cursor=pointer]':
+                  - /url: /delisas
+                  - 'img "Delisas: UX/UI & SaaS Agency" [ref=f3e1185]'
+                  - generic [ref=f3e1186]: "Delisas: UX/UI & SaaS Agency"
+                - link "Pro user" [ref=f3e1188] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1189]:
+                - generic [ref=f3e1191]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1192] [cursor=pointer]:
+                      - img [ref=f3e1193]
+                    - generic [ref=f3e1195]: "113"
+                - generic [ref=f3e1196]:
+                  - img [ref=f3e1197]
+                  - generic [ref=f3e1200]: 13.7k
+          - listitem [ref=f3e1201]:
+            - generic [ref=f3e1202]:
+              - figure [ref=f3e1203]:
+                - img "Orva - AI Dashboard - Chat agent platform agentic ai ai ai agent ai assistant chat mode ui chat ui dashboard dashboard design deep research deploy agent design graphic design prompt ui ui uidesign uiux ux uxdesign workflow automation" [ref=f3e1204]
+              - generic [ref=f3e1205]:
+                - img [ref=f3e1207]
+                - link "Shot Link":
+                  - /url: /shots/27462105-Orva-AI-Dashboard-Chat
+                  - generic: Shot Link
+              - link "View Orva - AI Dashboard - Chat" [ref=f3e1210] [cursor=pointer]:
+                - /url: /shots/27462105-Orva-AI-Dashboard-Chat
+                - generic: View Orva - AI Dashboard - Chat
+              - generic:
+                - generic:
+                  - generic: Orva - AI Dashboard - Chat
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1211] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1212]:
+                          - img [ref=f3e1213]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1215] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1216]
+                    - button "Like shot" [ref=f3e1218] [cursor=pointer]:
+                      - img [ref=f3e1219]
+            - generic [ref=f3e1221]:
+              - generic [ref=f3e1222]:
+                - link "Uxerflow Uxerflow" [ref=f3e1223] [cursor=pointer]:
+                  - /url: /uxerflow
+                  - img "Uxerflow" [ref=f3e1224]
+                  - generic [ref=f3e1225]: Uxerflow
+                - link "Pro user" [ref=f3e1227] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1228]: +
+              - generic [ref=f3e1229]:
+                - generic [ref=f3e1231]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1232] [cursor=pointer]:
+                      - img [ref=f3e1233]
+                    - generic [ref=f3e1235]: "55"
+                - generic [ref=f3e1236]:
+                  - img [ref=f3e1237]
+                  - generic [ref=f3e1240]: 4.3k
+          - listitem [ref=f3e1241]:
+            - generic [ref=f3e1242]:
+              - figure [ref=f3e1243]:
+                - img "Halycon - Video call call call ui conference saas google meet meeting meeting app product design saas app semiflat skype video call sass video saas videochat whereby zoom" [ref=f3e1244]
+              - generic [ref=f3e1246]:
+                - img [ref=f3e1247]
+                - generic [ref=f3e1249]: "1"
+              - link "View Halycon - Video call" [ref=f3e1250] [cursor=pointer]:
+                - /url: /shots/19686545-Halycon-Video-call
+                - generic: View Halycon - Video call
+              - generic:
+                - generic:
+                  - generic: Halycon - Video call
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1251] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1252]:
+                          - img [ref=f3e1253]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1255] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1256]
+                    - button "Like shot" [ref=f3e1258] [cursor=pointer]:
+                      - img [ref=f3e1259]
+            - generic [ref=f3e1261]:
+              - generic [ref=f3e1262]:
+                - link "Patryk Ilnicki Patryk Ilnicki" [ref=f3e1263] [cursor=pointer]:
+                  - /url: /ilnicki
+                  - img "Patryk Ilnicki" [ref=f3e1264]
+                  - generic [ref=f3e1265]: Patryk Ilnicki
+                - link "Pro user" [ref=f3e1267] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1268]:
+                - generic [ref=f3e1270]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1271] [cursor=pointer]:
+                      - img [ref=f3e1272]
+                    - generic [ref=f3e1274]: "291"
+                - generic [ref=f3e1275]:
+                  - img [ref=f3e1276]
+                  - generic [ref=f3e1279]: 131k
+          - listitem [ref=f3e1280]:
+            - generic [ref=f3e1281]:
+              - figure [ref=f3e1282]:
+                - img "Verdex - AI Agriculture Platform Footer Section app automation design farm control farming footer section livestock minimal modern monitoring swiss design technology ui ux website" [ref=f3e1283]
+              - img [ref=f3e1286]
+              - link "View Verdex - AI Agriculture Platform Footer Section" [ref=f3e1288] [cursor=pointer]:
+                - /url: /shots/27511301-Verdex-AI-Agriculture-Platform-Footer-Section
+                - generic: View Verdex - AI Agriculture Platform Footer Section
+              - generic:
+                - generic:
+                  - generic: Verdex - AI Agriculture Platform Footer Section
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1289] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1290]:
+                          - img [ref=f3e1291]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1293] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1294]
+                    - button "Like shot" [ref=f3e1296] [cursor=pointer]:
+                      - img [ref=f3e1297]
+            - generic [ref=f3e1299]:
+              - generic [ref=f3e1300]:
+                - link "Illiyin Studio Illiyin Studio" [ref=f3e1301] [cursor=pointer]:
+                  - /url: /illiyinstudio
+                  - img "Illiyin Studio" [ref=f3e1302]
+                  - generic [ref=f3e1303]: Illiyin Studio
+                - link "Pro user" [ref=f3e1305] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1306]: +
+              - generic [ref=f3e1307]:
+                - generic [ref=f3e1309]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1310] [cursor=pointer]:
+                      - img [ref=f3e1311]
+                    - generic [ref=f3e1313]: "32"
+                - generic [ref=f3e1314]:
+                  - img [ref=f3e1315]
+                  - generic [ref=f3e1318]: 1.6k
+          - listitem [ref=f3e1319]:
+            - generic [ref=f3e1320]:
+              - figure [ref=f3e1321]:
+                - img "Shopline ecommerce app design add to cart app application cart ecommerce fun market marketing online shop online store playful product page shop shopping shopping online store ui user interface ux" [ref=f3e1322]
+              - link "View Shopline ecommerce app design" [ref=f3e1324] [cursor=pointer]:
+                - /url: /shots/24125629-Shopline-ecommerce-app-design
+                - generic: View Shopline ecommerce app design
+              - generic:
+                - generic:
+                  - generic: Shopline ecommerce app design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1325] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1326]:
+                          - img [ref=f3e1327]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1329] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1330]
+                    - button "Like shot" [ref=f3e1332] [cursor=pointer]:
+                      - img [ref=f3e1333]
+            - generic [ref=f3e1335]:
+              - link "Inspirux Inspirux" [ref=f3e1337] [cursor=pointer]:
+                - /url: /inspirux
+                - img "Inspirux" [ref=f3e1338]
+                - generic [ref=f3e1339]: Inspirux
+              - generic [ref=f3e1340]:
+                - generic [ref=f3e1342]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1343] [cursor=pointer]:
+                      - img [ref=f3e1344]
+                    - generic [ref=f3e1346]: "159"
+                - generic [ref=f3e1347]:
+                  - img [ref=f3e1348]
+                  - generic [ref=f3e1351]: 75.8k
+          - listitem [ref=f3e1352]:
+            - generic [ref=f3e1353]:
+              - figure [ref=f3e1354]:
+                - img "CRM Chat Inbox UI Dashboard AI Powered Reply Workflow | Closr ai chat assistant b2b crm design chat composer ux closr contact sidebar design crm chat ui crm inbox design customer messaging ui filllo live chat ui pinned conversations saas chat dashboard saas design agency saas product design saas ui design sales chat ux sales crm ui startup product design three panel layout web app design" [ref=f3e1355]
+              - link "View CRM Chat Inbox UI Dashboard AI Powered Reply Workflow | Closr" [ref=f3e1357] [cursor=pointer]:
+                - /url: /shots/27338467-CRM-Chat-Inbox-UI-Dashboard-AI-Powered-Reply-Workflow-Closr
+                - generic: View CRM Chat Inbox UI Dashboard AI Powered Reply Workflow | Closr
+              - generic:
+                - generic:
+                  - generic: CRM Chat Inbox UI Dashboard AI Powered Reply Workflow | Closr
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1358] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1359]:
+                          - img [ref=f3e1360]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1362] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1363]
+                    - button "Like shot" [ref=f3e1365] [cursor=pointer]:
+                      - img [ref=f3e1366]
+            - generic [ref=f3e1368]:
+              - generic [ref=f3e1369]:
+                - link "Filllo - SaaS Design Agency Filllo - SaaS Design Agency" [ref=f3e1370] [cursor=pointer]:
+                  - /url: /filllodesign
+                  - img "Filllo - SaaS Design Agency" [ref=f3e1371]
+                  - generic [ref=f3e1372]: Filllo - SaaS Design Agency
+                - link "Pro user" [ref=f3e1374] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1375]:
+                - generic [ref=f3e1377]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1378] [cursor=pointer]:
+                      - img [ref=f3e1379]
+                    - generic [ref=f3e1381]: "38"
+                - generic [ref=f3e1382]:
+                  - img [ref=f3e1383]
+                  - generic [ref=f3e1386]: 16.9k
+          - listitem [ref=f3e1387]:
+            - generic [ref=f3e1388]:
+              - figure [ref=f3e1389]:
+                - img "Whizzy - Motion AI Platform - Sign Up agentic ai ai ai agent ai assistant chat ui design light ui marketing motion design motion graphics motion ui multi model ai prompt ui sign up teal ui ui ui design uiux ux ux design" [ref=f3e1390]
+              - generic [ref=f3e1391]:
+                - img [ref=f3e1393]
+                - link "Shot Link":
+                  - /url: /shots/27476291-Whizzy-Motion-AI-Platform-Sign-Up
+                  - generic: Shot Link
+              - link "View Whizzy - Motion AI Platform - Sign Up" [ref=f3e1396] [cursor=pointer]:
+                - /url: /shots/27476291-Whizzy-Motion-AI-Platform-Sign-Up
+                - generic: View Whizzy - Motion AI Platform - Sign Up
+              - generic:
+                - generic:
+                  - generic: Whizzy - Motion AI Platform - Sign Up
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1397] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1398]:
+                          - img [ref=f3e1399]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1401] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1402]
+                    - button "Like shot" [ref=f3e1404] [cursor=pointer]:
+                      - img [ref=f3e1405]
+            - generic [ref=f3e1407]:
+              - generic [ref=f3e1408]:
+                - link "Uxerflow Uxerflow" [ref=f3e1409] [cursor=pointer]:
+                  - /url: /uxerflow
+                  - img "Uxerflow" [ref=f3e1410]
+                  - generic [ref=f3e1411]: Uxerflow
+                - link "Pro user" [ref=f3e1413] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1414]: +
+              - generic [ref=f3e1415]:
+                - generic [ref=f3e1417]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1418] [cursor=pointer]:
+                      - img [ref=f3e1419]
+                    - generic [ref=f3e1421]: "43"
+                - generic [ref=f3e1422]:
+                  - img [ref=f3e1423]
+                  - generic [ref=f3e1426]: 3.1k
+          - listitem [ref=f3e1427]:
+            - generic [ref=f3e1428]:
+              - figure [ref=f3e1429]:
+                - img "Whizzy - AI Agent Platform - Merge Response agentic ai ai ai agent ai assistant ai chat ai platform ai reseacrh chat ui compare ui comparison component design merge response minimal ui ui uidesign uiux ux uxdesign web design" [ref=f3e1430]
+              - generic [ref=f3e1431]:
+                - img [ref=f3e1433]
+                - link "Shot Link":
+                  - /url: /shots/27491679-Whizzy-AI-Agent-Platform-Merge-Response
+                  - generic: Shot Link
+              - link "View Whizzy - AI Agent Platform - Merge Response" [ref=f3e1436] [cursor=pointer]:
+                - /url: /shots/27491679-Whizzy-AI-Agent-Platform-Merge-Response
+                - generic: View Whizzy - AI Agent Platform - Merge Response
+              - generic:
+                - generic:
+                  - generic: Whizzy - AI Agent Platform - Merge Response
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1437] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1438]:
+                          - img [ref=f3e1439]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1441] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1442]
+                    - button "Like shot" [ref=f3e1444] [cursor=pointer]:
+                      - img [ref=f3e1445]
+            - generic [ref=f3e1447]:
+              - generic [ref=f3e1448]:
+                - link "Uxerflow Uxerflow" [ref=f3e1449] [cursor=pointer]:
+                  - /url: /uxerflow
+                  - img "Uxerflow" [ref=f3e1450]
+                  - generic [ref=f3e1451]: Uxerflow
+                - link "Pro user" [ref=f3e1453] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1454]: +
+              - generic [ref=f3e1455]:
+                - generic [ref=f3e1457]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1458] [cursor=pointer]:
+                      - img [ref=f3e1459]
+                    - generic [ref=f3e1461]: "38"
+                - generic [ref=f3e1462]:
+                  - img [ref=f3e1463]
+                  - generic [ref=f3e1466]: 2.1k
+          - listitem [ref=f3e1467]:
+            - generic [ref=f3e1468]:
+              - figure [ref=f3e1469]:
+                - img "Cooper AI Chat - Mobile App Exploration ai app ai assistant ai chat app interface chat ui chatbot ui clean ui dashboard ui gradient ui mobile app design modern ui product design saas ui startup app subscription ui tech app ui ui design ux design" [ref=f3e1470]
+              - link "View Cooper AI Chat - Mobile App Exploration" [ref=f3e1472] [cursor=pointer]:
+                - /url: /shots/27340715-Cooper-AI-Chat-Mobile-App-Exploration
+                - generic: View Cooper AI Chat - Mobile App Exploration
+              - generic:
+                - generic:
+                  - generic: Cooper AI Chat - Mobile App Exploration
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1473] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1474]:
+                          - img [ref=f3e1475]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1477] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1478]
+                    - button "Like shot" [ref=f3e1480] [cursor=pointer]:
+                      - img [ref=f3e1481]
+            - generic [ref=f3e1483]:
+              - generic [ref=f3e1484]:
+                - link "Pixelfit Digital Agency Pixelfit Digital Agency" [ref=f3e1485] [cursor=pointer]:
+                  - /url: /pixelfit
+                  - img "Pixelfit Digital Agency" [ref=f3e1486]
+                  - generic [ref=f3e1487]: Pixelfit Digital Agency
+                - link "Pro user" [ref=f3e1489] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1490]:
+                - generic [ref=f3e1492]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1493] [cursor=pointer]:
+                      - img [ref=f3e1494]
+                    - generic [ref=f3e1496]: "54"
+                - generic [ref=f3e1497]:
+                  - img [ref=f3e1498]
+                  - generic [ref=f3e1501]: 6.4k
+          - listitem [ref=f3e1502]:
+            - generic [ref=f3e1503]:
+              - figure [ref=f3e1504]:
+                - img "E-Commerce - Product Detail clean clothing dashboard design detail page details e commerce ecommerce fashion online store product product detail product page shop store trend ui ux web design website" [ref=f3e1505]
+              - link "View E-Commerce - Product Detail" [ref=f3e1507] [cursor=pointer]:
+                - /url: /shots/23950122-E-Commerce-Product-Detail
+                - generic: View E-Commerce - Product Detail
+              - generic:
+                - generic:
+                  - generic: E-Commerce - Product Detail
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1508] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1509]:
+                          - img [ref=f3e1510]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1512] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1513]
+                    - button "Like shot" [ref=f3e1515] [cursor=pointer]:
+                      - img [ref=f3e1516]
+            - generic [ref=f3e1518]:
+              - generic [ref=f3e1519]:
+                - link "Filllo - SaaS Design Agency Filllo - SaaS Design Agency" [ref=f3e1520] [cursor=pointer]:
+                  - /url: /filllodesign
+                  - img "Filllo - SaaS Design Agency" [ref=f3e1521]
+                  - generic [ref=f3e1522]: Filllo - SaaS Design Agency
+                - link "Pro user" [ref=f3e1524] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1525]:
+                - generic [ref=f3e1527]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1528] [cursor=pointer]:
+                      - img [ref=f3e1529]
+                    - generic [ref=f3e1531]: "143"
+                - generic [ref=f3e1532]:
+                  - img [ref=f3e1533]
+                  - generic [ref=f3e1536]: 52.1k
+          - listitem [ref=f3e1537]:
+            - generic [ref=f3e1538]:
+              - figure [ref=f3e1539]:
+                - img "ShopZen - Create order admin dashboard analytics billing cart create order customer details dashboard ecommerce marketing dashboard order details order info order page order summary ordering payment method product page saas shipping ui ux web app" [ref=f3e1540]
+              - link "View ShopZen - Create order" [ref=f3e1542] [cursor=pointer]:
+                - /url: /shots/24044165-ShopZen-Create-order
+                - generic: View ShopZen - Create order
+              - generic:
+                - generic:
+                  - generic: ShopZen - Create order
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1543] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1544]:
+                          - img [ref=f3e1545]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1547] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1548]
+                    - button "Like shot" [ref=f3e1550] [cursor=pointer]:
+                      - img [ref=f3e1551]
+            - generic [ref=f3e1553]:
+              - generic [ref=f3e1554]:
+                - link "Filllo - SaaS Design Agency Filllo - SaaS Design Agency" [ref=f3e1555] [cursor=pointer]:
+                  - /url: /filllodesign
+                  - img "Filllo - SaaS Design Agency" [ref=f3e1556]
+                  - generic [ref=f3e1557]: Filllo - SaaS Design Agency
+                - link "Pro user" [ref=f3e1559] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1560]:
+                - generic [ref=f3e1562]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1563] [cursor=pointer]:
+                      - img [ref=f3e1564]
+                    - generic [ref=f3e1566]: "174"
+                - generic [ref=f3e1567]:
+                  - img [ref=f3e1568]
+                  - generic [ref=f3e1571]: 99.7k
+          - listitem [ref=f3e1572]:
+            - generic [ref=f3e1573]:
+              - figure [ref=f3e1574]:
+                - img "Nerve - Stock Analyst Dashboard - Chat ai agent ai finance ai stock analyst ai trading chat ui conversational ui dark dashboard deep research design llmui stock dashboard ticker ui trading ui ui uidesign uiux ux uxdesign watch ui wealth tech" [ref=f3e1575]
+              - generic [ref=f3e1576]:
+                - img [ref=f3e1578]
+                - link "Shot Link":
+                  - /url: /shots/27396420-Nerve-Stock-Analyst-Dashboard-Chat
+                  - generic: Shot Link
+              - link "View Nerve - Stock Analyst Dashboard - Chat" [ref=f3e1581] [cursor=pointer]:
+                - /url: /shots/27396420-Nerve-Stock-Analyst-Dashboard-Chat
+                - generic: View Nerve - Stock Analyst Dashboard - Chat
+              - generic:
+                - generic:
+                  - generic: Nerve - Stock Analyst Dashboard - Chat
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1582] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1583]:
+                          - img [ref=f3e1584]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1586] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1587]
+                    - button "Like shot" [ref=f3e1589] [cursor=pointer]:
+                      - img [ref=f3e1590]
+            - generic [ref=f3e1592]:
+              - generic [ref=f3e1593]:
+                - link "Uxerflow Uxerflow" [ref=f3e1594] [cursor=pointer]:
+                  - /url: /uxerflow
+                  - img "Uxerflow" [ref=f3e1595]
+                  - generic [ref=f3e1596]: Uxerflow
+                - link "Pro user" [ref=f3e1598] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1599]: +
+              - generic [ref=f3e1600]:
+                - generic [ref=f3e1602]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1603] [cursor=pointer]:
+                      - img [ref=f3e1604]
+                    - generic [ref=f3e1606]: "44"
+                - generic [ref=f3e1607]:
+                  - img [ref=f3e1608]
+                  - generic [ref=f3e1611]: 2.6k
+          - listitem [ref=f3e1612]:
+            - generic [ref=f3e1613]:
+              - figure [ref=f3e1614]:
+                - img "ShopZen - Inventory List, Product Collection, Purchase admin collection create order create purchase order crete inventory dashboard ecommerce ecommerce product inventory online store product design product list purchase info purchase order saas shop shopify table ui ux web app" [ref=f3e1615]
+              - link "View ShopZen - Inventory List, Product Collection, Purchase" [ref=f3e1617] [cursor=pointer]:
+                - /url: /shots/24083634-ShopZen-Inventory-List-Product-Collection-Purchase
+                - generic: View ShopZen - Inventory List, Product Collection, Purchase
+              - generic:
+                - generic:
+                  - generic: ShopZen - Inventory List, Product Collection, Purchase
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1618] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1619]:
+                          - img [ref=f3e1620]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1622] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1623]
+                    - button "Like shot" [ref=f3e1625] [cursor=pointer]:
+                      - img [ref=f3e1626]
+            - generic [ref=f3e1628]:
+              - generic [ref=f3e1629]:
+                - link "Filllo - SaaS Design Agency Filllo - SaaS Design Agency" [ref=f3e1630] [cursor=pointer]:
+                  - /url: /filllodesign
+                  - img "Filllo - SaaS Design Agency" [ref=f3e1631]
+                  - generic [ref=f3e1632]: Filllo - SaaS Design Agency
+                - link "Pro user" [ref=f3e1634] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1635]:
+                - generic [ref=f3e1637]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1638] [cursor=pointer]:
+                      - img [ref=f3e1639]
+                    - generic [ref=f3e1641]: "132"
+                - generic [ref=f3e1642]:
+                  - img [ref=f3e1643]
+                  - generic [ref=f3e1646]: 78.2k
+          - listitem [ref=f3e1647]:
+            - generic [ref=f3e1648]:
+              - figure [ref=f3e1649]:
+                - img "E-Commerce - Create a New Product add new product add product admin dashboard dashboard e commerce e commerce dashboard online store product product design product details product page sales admin sales admin dashboard stock product store uiux web application web ui webapp" [ref=f3e1650]
+              - link "View E-Commerce - Create a New Product" [ref=f3e1652] [cursor=pointer]:
+                - /url: /shots/23944547-E-Commerce-Create-a-New-Product
+                - generic: View E-Commerce - Create a New Product
+              - generic:
+                - generic:
+                  - generic: E-Commerce - Create a New Product
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1653] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1654]:
+                          - img [ref=f3e1655]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1657] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1658]
+                    - button "Like shot" [ref=f3e1660] [cursor=pointer]:
+                      - img [ref=f3e1661]
+            - generic [ref=f3e1663]:
+              - generic [ref=f3e1664]:
+                - link "Filllo - SaaS Design Agency Filllo - SaaS Design Agency" [ref=f3e1665] [cursor=pointer]:
+                  - /url: /filllodesign
+                  - img "Filllo - SaaS Design Agency" [ref=f3e1666]
+                  - generic [ref=f3e1667]: Filllo - SaaS Design Agency
+                - link "Pro user" [ref=f3e1669] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1670]:
+                - generic [ref=f3e1672]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1673] [cursor=pointer]:
+                      - img [ref=f3e1674]
+                    - generic [ref=f3e1676]: "107"
+                - generic [ref=f3e1677]:
+                  - img [ref=f3e1678]
+                  - generic [ref=f3e1681]: 48k
+          - listitem [ref=f3e1682]:
+            - generic [ref=f3e1683]:
+              - figure [ref=f3e1684]:
+                - img "ShopZen - Product Flow add product admin create product dashboard ecommerce ecommerce product edit product online shopping product design product detail product info product list product page saas shopify shopping table ui ux web app website" [ref=f3e1685]
+              - link "View ShopZen - Product Flow" [ref=f3e1687] [cursor=pointer]:
+                - /url: /shots/24083376-ShopZen-Product-Flow
+                - generic: View ShopZen - Product Flow
+              - generic:
+                - generic:
+                  - generic: ShopZen - Product Flow
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1688] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1689]:
+                          - img [ref=f3e1690]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1692] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1693]
+                    - button "Like shot" [ref=f3e1695] [cursor=pointer]:
+                      - img [ref=f3e1696]
+            - generic [ref=f3e1698]:
+              - generic [ref=f3e1699]:
+                - link "Filllo - SaaS Design Agency Filllo - SaaS Design Agency" [ref=f3e1700] [cursor=pointer]:
+                  - /url: /filllodesign
+                  - img "Filllo - SaaS Design Agency" [ref=f3e1701]
+                  - generic [ref=f3e1702]: Filllo - SaaS Design Agency
+                - link "Pro user" [ref=f3e1704] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1705]:
+                - generic [ref=f3e1707]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1708] [cursor=pointer]:
+                      - img [ref=f3e1709]
+                    - generic [ref=f3e1711]: "119"
+                - generic [ref=f3e1712]:
+                  - img [ref=f3e1713]
+                  - generic [ref=f3e1716]: 59.4k
+          - listitem [ref=f3e1717]:
+            - generic [ref=f3e1718]:
+              - figure [ref=f3e1719]:
+                - img "AI Chatbot Website ✦ Chatzo ai ai bot ai chat ui ai chatbot ai chatbot assistant ai landing page ai website ai website design artificial intelligence chatbot landing landing page saas saas landing page saas product saas website saas website design ui design uiux website" [ref=f3e1720]
+              - link "View AI Chatbot Website ✦ Chatzo" [ref=f3e1722] [cursor=pointer]:
+                - /url: /shots/27321247-AI-Chatbot-Website-Chatzo
+                - generic: View AI Chatbot Website ✦ Chatzo
+              - generic:
+                - generic:
+                  - generic: AI Chatbot Website ✦ Chatzo
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1723] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1724]:
+                          - img [ref=f3e1725]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1727] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1728]
+                    - button "Like shot" [ref=f3e1730] [cursor=pointer]:
+                      - img [ref=f3e1731]
+            - generic [ref=f3e1733]:
+              - generic [ref=f3e1734]:
+                - link "Heloxone® Design Studio Heloxone® Design Studio" [ref=f3e1735] [cursor=pointer]:
+                  - /url: /Heloxone_
+                  - img "Heloxone® Design Studio" [ref=f3e1736]
+                  - generic [ref=f3e1737]: Heloxone® Design Studio
+                - link "Pro user" [ref=f3e1739] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+                  - generic [ref=f3e1740]: +
+              - generic [ref=f3e1741]:
+                - generic [ref=f3e1743]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1744] [cursor=pointer]:
+                      - img [ref=f3e1745]
+                    - generic [ref=f3e1747]: "23"
+                - generic [ref=f3e1748]:
+                  - img [ref=f3e1749]
+                  - generic [ref=f3e1752]: 6.6k
+          - listitem [ref=f3e1753]:
+            - generic [ref=f3e1754]:
+              - figure [ref=f3e1755]:
+                - img "Best AI Chatbot Website UI Design ai assistant ai chatbot artificial intelligence chat ui chatbot ui dark ui design inspiration interface design landing page messaging ui modern ui product design saas design startup ui design user interface ux design virtual assistant web app web design" [ref=f3e1756]
+              - link "View Best AI Chatbot Website UI Design" [ref=f3e1758] [cursor=pointer]:
+                - /url: /shots/27302403-Best-AI-Chatbot-Website-UI-Design
+                - generic: View Best AI Chatbot Website UI Design
+              - generic:
+                - generic:
+                  - generic: Best AI Chatbot Website UI Design
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1759] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1760]:
+                          - img [ref=f3e1761]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1763] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1764]
+                    - button "Like shot" [ref=f3e1766] [cursor=pointer]:
+                      - img [ref=f3e1767]
+            - generic [ref=f3e1769]:
+              - generic [ref=f3e1770]:
+                - link "Excellent Webworld Excellent Webworld" [ref=f3e1771] [cursor=pointer]:
+                  - /url: /excellentwebworld
+                  - img "Excellent Webworld" [ref=f3e1772]
+                  - generic [ref=f3e1773]: Excellent Webworld
+                - link "Pro user" [ref=f3e1775] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1776]:
+                - generic [ref=f3e1778]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1779] [cursor=pointer]:
+                      - img [ref=f3e1780]
+                    - generic [ref=f3e1782]: "10"
+                - generic [ref=f3e1783]:
+                  - img [ref=f3e1784]
+                  - generic [ref=f3e1787]: 12.6k
+          - listitem [ref=f3e1788]:
+            - generic [ref=f3e1789]:
+              - figure [ref=f3e1790]:
+                - img "Legal Consultation Platform Landing Page app landing page attorney consultation ui corporate legal landing page dark mode saas website landing page lawyer video call app legal app website legal consultation app design legal marketplace design legal tech landing page modern legal website online law firm design professional service landing saas for legal saas landing page saas website saas website design schedule session ui telelaw platform site trust based product page" [ref=f3e1791]
+              - link "View Legal Consultation Platform Landing Page" [ref=f3e1793] [cursor=pointer]:
+                - /url: /shots/26508426-Legal-Consultation-Platform-Landing-Page
+                - generic: View Legal Consultation Platform Landing Page
+              - generic:
+                - generic:
+                  - generic: Legal Consultation Platform Landing Page
+                  - list:
+                    - listitem:
+                      - link "Get in touch" [ref=f3e1794] [cursor=pointer]:
+                        - /url: /signups/new
+                        - generic "Get in touch" [ref=f3e1795]:
+                          - img [ref=f3e1796]
+                    - listitem:
+                      - link "Save shot" [ref=f3e1798] [cursor=pointer]:
+                        - /url: /signups/new
+                        - img [ref=f3e1799]
+                    - button "Like shot" [ref=f3e1801] [cursor=pointer]:
+                      - img [ref=f3e1802]
+            - generic [ref=f3e1804]:
+              - generic [ref=f3e1805]:
+                - link "Eva Reed Eva Reed" [ref=f3e1806] [cursor=pointer]:
+                  - /url: /evareed
+                  - img "Eva Reed" [ref=f3e1807]
+                  - generic [ref=f3e1808]: Eva Reed
+                - link "Pro user" [ref=f3e1810] [cursor=pointer]:
+                  - /url: /pro
+                  - text: PRO
+              - generic [ref=f3e1811]:
+                - generic [ref=f3e1813]:
+                  - generic:
+                    - button "Like shot" [ref=f3e1814] [cursor=pointer]:
+                      - img [ref=f3e1815]
+                    - generic [ref=f3e1817]: "20"
+                - generic [ref=f3e1818]:
+                  - img [ref=f3e1819]
+                  - generic [ref=f3e1822]: 15.4k
+        - link "Sign up to continue" [ref=f3e1824] [cursor=pointer]:
+          - /url: /signups/new
+  - contentinfo [ref=f3e1825]:
+    - generic [ref=f3e1828]:
+      - link "Product Design Product Design" [ref=f3e1829] [cursor=pointer]:
+        - /url: /shots/popular/product-design
+        - img "Product Design" [ref=f3e1832]
+        - generic [ref=f3e1833]: Product Design
+      - link "Print Print" [ref=f3e1834] [cursor=pointer]:
+        - /url: /shots/popular/print
+        - img "Print" [ref=f3e1837]
+        - generic [ref=f3e1838]: Print
+      - link "Typography Typography" [ref=f3e1839] [cursor=pointer]:
+        - /url: /shots/popular/typography
+        - img "Typography" [ref=f3e1842]
+        - generic [ref=f3e1843]: Typography
+      - link "Mobile Mobile" [ref=f3e1844] [cursor=pointer]:
+        - /url: /shots/popular/mobile
+        - img "Mobile" [ref=f3e1847]
+        - generic [ref=f3e1848]: Mobile
+      - link "Web Design Web Design" [ref=f3e1849] [cursor=pointer]:
+        - /url: /shots/popular/web-design
+        - img "Web Design" [ref=f3e1852]
+        - generic [ref=f3e1853]: Web Design
+      - link "Animation Animation" [ref=f3e1854] [cursor=pointer]:
+        - /url: /shots/popular/animation
+        - img "Animation" [ref=f3e1857]
+        - generic [ref=f3e1858]: Animation
+      - link "Branding Branding" [ref=f3e1859] [cursor=pointer]:
+        - /url: /shots/popular/branding
+        - img "Branding" [ref=f3e1862]
+        - generic [ref=f3e1863]: Branding
+      - link "Illustration Illustration" [ref=f3e1864] [cursor=pointer]:
+        - /url: /shots/popular/illustration
+        - img "Illustration" [ref=f3e1867]
+        - generic [ref=f3e1868]: Illustration
+      - link "Product Design Product Design" [ref=f3e1869] [cursor=pointer]:
+        - /url: /shots/popular/product-design
+        - img "Product Design" [ref=f3e1872]
+        - generic [ref=f3e1873]: Product Design
+      - link "Print Print" [ref=f3e1874] [cursor=pointer]:
+        - /url: /shots/popular/print
+        - img "Print" [ref=f3e1877]
+        - generic [ref=f3e1878]: Print
+      - link "Typography Typography" [ref=f3e1879] [cursor=pointer]:
+        - /url: /shots/popular/typography
+        - img "Typography" [ref=f3e1882]
+        - generic [ref=f3e1883]: Typography
+      - link "Mobile Mobile" [ref=f3e1884] [cursor=pointer]:
+        - /url: /shots/popular/mobile
+        - img "Mobile" [ref=f3e1887]
+        - generic [ref=f3e1888]: Mobile
+      - link "Web Design Web Design" [ref=f3e1889] [cursor=pointer]:
+        - /url: /shots/popular/web-design
+        - img "Web Design" [ref=f3e1892]
+        - generic [ref=f3e1893]: Web Design
+      - link "Animation Animation" [ref=f3e1894] [cursor=pointer]:
+        - /url: /shots/popular/animation
+        - img "Animation" [ref=f3e1897]
+        - generic [ref=f3e1898]: Animation
+      - link "Branding Branding" [ref=f3e1899] [cursor=pointer]:
+        - /url: /shots/popular/branding
+        - img "Branding" [ref=f3e1902]
+        - generic [ref=f3e1903]: Branding
+      - link "Illustration Illustration" [ref=f3e1904] [cursor=pointer]:
+        - /url: /shots/popular/illustration
+        - img "Illustration" [ref=f3e1907]
+        - generic [ref=f3e1908]: Illustration
+    - generic [ref=f3e1909]:
+      - generic [ref=f3e1910]:
+        - 'link "Dribbble: the community for graphic design Back to home page" [ref=f3e1911] [cursor=pointer]':
+          - /url: /
+          - 'img "Dribbble: the community for graphic design" [ref=f3e1912]'
+          - generic: Back to home page
+        - list [ref=f3e1914]:
+          - listitem [ref=f3e1915]:
+            - link "For designers" [ref=f3e1916] [cursor=pointer]:
+              - /url: /for-designers
+          - listitem [ref=f3e1917]:
+            - link "Hire talent" [ref=f3e1918] [cursor=pointer]:
+              - /url: /hiring
+          - listitem [ref=f3e1919]:
+            - link "Inspiration" [ref=f3e1920] [cursor=pointer]:
+              - /url: /shots/popular
+          - listitem [ref=f3e1921]:
+            - link "Advertising" [ref=f3e1922] [cursor=pointer]:
+              - /url: /advertise
+          - listitem [ref=f3e1923]:
+            - link "Blog" [ref=f3e1924] [cursor=pointer]:
+              - /url: /stories
+          - listitem [ref=f3e1925]:
+            - link "About" [ref=f3e1926] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=f3e1927]:
+            - link "Careers" [ref=f3e1928] [cursor=pointer]:
+              - /url: /careers
+          - listitem [ref=f3e1929]:
+            - link "Support" [ref=f3e1930] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=f3e1931]:
+          - link "X" [ref=f3e1932] [cursor=pointer]:
+            - /url: http://x.com/dribbble
+            - img [ref=f3e1933]
+            - generic: X
+          - link "Facebook" [ref=f3e1935] [cursor=pointer]:
+            - /url: http://facebook.com/dribbble
+            - img [ref=f3e1936]
+            - generic: Facebook
+          - link "Instagram" [ref=f3e1938] [cursor=pointer]:
+            - /url: http://instagram.com/dribbble
+            - img [ref=f3e1939]
+            - generic: Instagram
+          - link "Pinterest" [ref=f3e1941] [cursor=pointer]:
+            - /url: http://www.pinterest.com/dribbble/
+            - img [ref=f3e1942]
+            - generic: Pinterest
+      - generic [ref=f3e1944]:
+        - list [ref=f3e1945]:
+          - listitem [ref=f3e1946]: © 2026 Dribbble
+          - listitem [ref=f3e1947]:
+            - link "Terms" [ref=f3e1948] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=f3e1949]:
+            - link "Privacy" [ref=f3e1950] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=f3e1951]:
+            - link "Cookies" [ref=f3e1952] [cursor=pointer]:
+              - /url: /cookie-policy
+        - list [ref=f3e1953]:
+          - listitem [ref=f3e1954]:
+            - link "Jobs" [ref=f3e1955] [cursor=pointer]:
+              - /url: /directories/jobs
+          - listitem [ref=f3e1956]:
+            - link "Designers" [ref=f3e1957] [cursor=pointer]:
+              - /url: /directories/designers
+          - listitem [ref=f3e1958]:
+            - link "Freelancers" [ref=f3e1959] [cursor=pointer]:
+              - /url: /directories/freelance-designers
+          - listitem [ref=f3e1960]:
+            - link "Tags" [ref=f3e1961] [cursor=pointer]:
+              - /url: /tags
+          - listitem [ref=f3e1962]:
+            - link "Places" [ref=f3e1963] [cursor=pointer]:
+              - /url: /places
+          - listitem [ref=f3e1964]:
+            - link "Resources" [ref=f3e1965] [cursor=pointer]:
+              - /url: /resources
+  - generic:
+    - link "close":
+      - /url: "#"
+      - img

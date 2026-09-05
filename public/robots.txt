@@ -16,3 +16,5 @@ Allow: /
 
 User-agent: ClaudeBot
 Allow: /
+
+Sitemap: https://sellogram.co/sitemap-index.xml

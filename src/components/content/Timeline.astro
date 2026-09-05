@@ -1,0 +1,60 @@
+---
+/**
+ * Steps as a connected vertical timeline: hairline rings joined by a rail,
+ * revealed item-by-item on scroll (IntersectionObserver adds .is-seen;
+ * without JS everything is visible).
+ */
+import type { ListItem } from '../../content/pages';
+
+interface Props {
+  heading?: string;
+  items: ListItem[];
+}
+
+const { heading, items } = Astro.props;
+---
+
+<div>
+  {heading && (
+    <h2 class="max-w-xl font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+      {heading}
+    </h2>
+  )}
+  <ol class="relative mt-12 max-w-3xl">
+    <span class="absolute bottom-8 left-6 top-6 w-px bg-line sm:left-7" aria-hidden="true"></span>
+    {items.map((item) => (
+      <li class="timeline-step relative grid grid-cols-[3rem_1fr] gap-5 pb-12 last:pb-0 sm:grid-cols-[3.5rem_1fr] sm:gap-7" data-timeline-step>
+        <span
+          class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-line bg-paper transition-colors duration-500 sm:h-14 sm:w-14 [.is-seen_&]:border-fern"
+          aria-hidden="true"
+        >
+          <span class="h-2 w-2 rounded-full bg-ink-faint transition-colors duration-500 [.is-seen_&]:bg-fern-deep"></span>
+        </span>
+        <div class="pt-2 sm:pt-3">
+          <h3 class="font-display text-xl font-semibold text-ink sm:text-2xl">{item.title}</h3>
+          <p class="mt-2 max-w-xl text-base leading-relaxed text-ink-light">{item.body}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<script>
+  const steps = document.querySelectorAll('[data-timeline-step]');
+  if (steps.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-seen');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -20% 0px' },
+    );
+    steps.forEach((step) => io.observe(step));
+  } else {
+    steps.forEach((step) => step.classList.add('is-seen'));
+  }
+</script>

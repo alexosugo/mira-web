@@ -1,0 +1,595 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e3]:
+    - navigation "Main navigation" [ref=f5e4]:
+      - generic [ref=f5e6]:
+        - generic [ref=f5e7]:
+          - link [ref=f5e9] [cursor=pointer]:
+            - /url: /
+            - img [ref=f5e10]
+          - generic [ref=f5e21] [cursor=pointer]:
+            - generic [ref=f5e22]: En
+            - combobox [ref=f5e23]:
+              - option "En" [selected]
+              - option "Es"
+              - option "Pt"
+            - img
+        - navigation [ref=f5e24]:
+          - generic [ref=f5e25]:
+            - generic [ref=f5e26] [cursor=pointer]: Product
+            - generic:
+              - generic:
+                - link "Instagram Automate your Instagram Marketing":
+                  - /url: /product/instagram
+                  - generic:
+                    - paragraph: Instagram
+                  - generic: Automate your Instagram Marketing
+                - link "WhatsApp Connect with your Customers Instantly":
+                  - /url: /product/whatsapp
+                  - generic:
+                    - paragraph: WhatsApp
+                  - generic: Connect with your Customers Instantly
+                - 'link "Messenger Facebook Messenger chatbot #1"':
+                  - /url: /product/messenger-marketing
+                  - generic:
+                    - paragraph: Messenger
+                  - generic: "Facebook Messenger chatbot #1"
+                - link "TikTok Turn TikTok Views into Profits with Automation.":
+                  - /url: /product/tiktok
+                  - generic:
+                    - paragraph: TikTok
+                  - generic: Turn TikTok Views into Profits with Automation.
+                - link "Manychat AI A Smarter Way to Chat Automation":
+                  - /url: /product/ai
+                  - generic:
+                    - paragraph: Manychat AI
+                  - generic: A Smarter Way to Chat Automation
+          - generic [ref=f5e27]:
+            - generic [ref=f5e28] [cursor=pointer]: Solutions
+            - generic:
+              - generic:
+                - generic:
+                  - generic: by Business Type
+                  - generic:
+                    - link "for Creators":
+                      - /url: /creators
+                      - paragraph: for Creators
+                    - link "for eCommerce":
+                      - /url: /meet-chatmarketing-for-ecommerce
+                      - paragraph: for eCommerce
+                    - link "for SM Marketers":
+                      - /url: /sm-marketers
+                      - paragraph: for SM Marketers
+                    - link "for Agencies":
+                      - /url: /product/for-agencies
+                      - paragraph: for Agencies
+                    - link "for Brands":
+                      - /url: /brands
+                      - paragraph: for Brands
+                - generic:
+                  - generic: by Use Case
+                  - generic:
+                    - link "Collect Emails":
+                      - /url: https://get.manychat.com/use-case/collect-emails
+                      - paragraph: Collect Emails
+                    - link "Request to Follow":
+                      - /url: https://get.manychat.com/use-case/request-to-follow
+                      - paragraph: Request to Follow
+                    - link "Respond to Comments":
+                      - /url: https://get.manychat.com/use-case/comment-to-dm
+                      - paragraph: Respond to Comments
+                    - link "Follow to DM":
+                      - /url: /use-case/follow-to-dm
+                      - paragraph: Follow to DM
+          - generic [ref=f5e29]:
+            - generic [ref=f5e30] [cursor=pointer]: Agencies
+            - generic:
+              - generic:
+                - link "Hire an Agency Get help from chat marketing experts":
+                  - /url: https://manychat.com/agency/listing
+                  - generic:
+                    - paragraph: Hire an Agency
+                  - generic: Get help from chat marketing experts
+                - link "Join the Affiliate Program Earn up to 50% recurring commission":
+                  - /url: /affiliate/
+                  - generic:
+                    - paragraph: Join the Affiliate Program
+                  - generic: Earn up to 50% recurring commission
+          - link "Pricing" [ref=f5e32] [cursor=pointer]:
+            - /url: /pricing
+          - generic [ref=f5e33]:
+            - generic [ref=f5e34] [cursor=pointer]: Resources
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Learn
+                  - generic:
+                    - link "How To Guides":
+                      - /url: /resources/how-to
+                      - paragraph: How To Guides
+                    - link "Help Center":
+                      - /url: https://help.manychat.com/hc/en-us
+                      - paragraph: Help Center
+                    - link "Webinars":
+                      - /url: https://community.manychat.com/events
+                      - paragraph: Webinars
+                    - link "eBooks":
+                      - /url: /resources/ebooks
+                      - paragraph: eBooks
+                - generic:
+                  - generic: Get Inspired
+                  - generic:
+                    - link "Blog":
+                      - /url: https://manychat.com/blog/
+                      - paragraph: Blog
+                    - link "Community":
+                      - /url: https://community.manychat.com/
+                      - paragraph: Community
+                    - link "YouTube channel":
+                      - /url: https://www.youtube.com/@manychat
+                      - paragraph: YouTube channel
+                    - link "Chronically Online":
+                      - /url: https://com.manychat.com/
+                      - paragraph: Chronically Online
+                    - link "Success Stories":
+                      - /url: https://manychat.com/blog/success-stories/
+                      - paragraph: Success Stories
+        - generic [ref=f5e36]:
+          - link "Get Started Get Started Get Started" [ref=f5e37] [cursor=pointer]:
+            - /url: https://app.manychat.com/signup/facebookAuth?channel=instagram
+            - generic [ref=f5e39]:
+              - text: Get Started
+              - generic [ref=f5e40]: Get Started
+              - generic [ref=f5e41]: Get Started
+          - link "Sign In Sign In Sign In" [ref=f5e42] [cursor=pointer]:
+            - /url: https://app.manychat.com/signin
+            - generic [ref=f5e44]:
+              - text: Sign In
+              - generic [ref=f5e45]: Sign In
+              - generic [ref=f5e46]: Sign In
+    - main [ref=f5e47]:
+      - generic [ref=f5e48]:
+        - generic [ref=f5e50]:
+          - generic [ref=f5e51]:
+            - heading "Your Instagram just got smarter" [level=1] [ref=f5e52]
+            - paragraph [ref=f5e54]: Send links, answer questions, collect leads, and close sales — automatically — and stop treating engagement like a full-time job.
+            - link "Get started Get started Get started" [ref=f5e56] [cursor=pointer]:
+              - /url: https://app.manychat.com/signup/facebookAuth?channel=instagram
+              - generic [ref=f5e58]:
+                - text: Get started
+                - generic [ref=f5e59]: Get started
+                - generic [ref=f5e60]: Get started
+          - generic [ref=f5e61]:
+            - img "Meta Business Partner" [ref=f5e62]
+            - img "TikTok Marketing Partner" [ref=f5e63]
+            - img "G2 Rating" [ref=f5e64]
+        - generic [ref=f5e65]:
+          - img "A man in a purple tshirt" [ref=f5e67]
+          - generic [ref=f5e68]:
+            - generic [ref=f5e71]:
+              - generic [ref=f5e72]: Automatically
+              - generic [ref=f5e73] [cursor=pointer]:
+                - generic [ref=f5e74]:
+                  - generic [ref=f5e76]:
+                    - img "Check Icon" [ref=f5e77]
+                    - img "Check Icon" [ref=f5e78]
+                  - heading "Reply to DMs" [level=3] [ref=f5e79]
+                - generic [ref=f5e80]:
+                  - generic [ref=f5e82]:
+                    - img "Check Icon" [ref=f5e83]
+                    - img "Check Icon" [ref=f5e84]
+                  - heading "Get new followers" [level=3] [ref=f5e85]
+                - generic [ref=f5e86]:
+                  - generic [ref=f5e88]:
+                    - img "Check Icon" [ref=f5e89]
+                    - img "Check Icon" [ref=f5e90]
+                  - heading "Reply to comments" [level=3] [ref=f5e91]
+                - generic [ref=f5e92]:
+                  - generic [ref=f5e94]:
+                    - img "Check Icon" [ref=f5e95]
+                    - img "Check Icon" [ref=f5e96]
+                  - heading "Send links" [level=3] [ref=f5e97]
+            - generic [ref=f5e99]:
+              - img "Are you ready to get that link" [ref=f5e100]
+              - img "Yeah, send it over" [ref=f5e101]
+              - img "Here's the link" [ref=f5e102]
+            - img "Comment reply" [ref=f5e105]
+            - generic [ref=f5e107]:
+              - img "Is this bag waterproof?" [ref=f5e108]
+              - img "Yep! Want to see how it works?" [ref=f5e109]
+              - img "Sure" [ref=f5e110]
+            - generic [ref=f5e112]:
+              - img "Here is a secret link available only for followers" [ref=f5e113]
+              - img "Done" [ref=f5e114]
+      - generic [ref=f5e116]:
+        - heading "💜’d by Instagrammers like" [level=4] [ref=f5e117]:
+          - text: 💜’d by
+          - text: Instagrammers like
+        - generic [ref=f5e121]:
+          - generic [ref=f5e123]:
+            - generic [ref=f5e124] [cursor=pointer]:
+              - 'img "photo of influencer #1" [ref=f5e125]'
+              - generic [ref=f5e126]:
+                - generic [ref=f5e127]:
+                  - text: jenna kutcher
+                  - generic [ref=f5e128]: 1M followers
+                - paragraph [ref=f5e129]: “This is a must-have for creators and entrepreneurs. Seriously a game-changer!”
+                - button "Learn more" [ref=f5e131]:
+                  - generic [ref=f5e132]: Learn more
+            - generic [ref=f5e134] [cursor=pointer]:
+              - 'img "photo of influencer #2" [ref=f5e135]'
+              - generic [ref=f5e136]:
+                - generic [ref=f5e137]:
+                  - text: Marketing Harry
+                  - generic [ref=f5e138]: 540K followers
+                - paragraph [ref=f5e139]: “Using Manychat, I generated $135,000 from 2 posts.”
+                - button "Learn more" [ref=f5e141]:
+                  - generic [ref=f5e142]: Learn more
+            - generic [ref=f5e144] [cursor=pointer]:
+              - 'img "photo of influencer #3" [ref=f5e145]'
+              - generic [ref=f5e146]:
+                - generic [ref=f5e147]:
+                  - text: Theresa Dinh
+                  - generic [ref=f5e148]: 89K followers
+                - paragraph [ref=f5e149]: “Manychat is the best thing that ever happened to me for Instagram.”
+                - button "Learn more" [ref=f5e151]:
+                  - generic [ref=f5e152]: Learn more
+            - generic [ref=f5e154] [cursor=pointer]:
+              - 'img "photo of influencer #4" [ref=f5e155]'
+              - generic [ref=f5e156]:
+                - generic [ref=f5e157]:
+                  - text: Kahlea Wade
+                  - generic [ref=f5e158]: 25K followers
+                - paragraph [ref=f5e159]: “I saw a MASSIVE increase in conversions and engagement within just a week...”
+                - button "Learn more" [ref=f5e161]:
+                  - generic [ref=f5e162]: Learn more
+            - generic [ref=f5e164] [cursor=pointer]:
+              - 'img "photo of influencer #5" [ref=f5e165]'
+              - generic [ref=f5e166]:
+                - generic [ref=f5e167]:
+                  - text: Konstantinos Synodinos
+                  - generic [ref=f5e168]: 950K followers
+                - paragraph [ref=f5e169]: “For creators above 10k followers, Manychat is a MUST.”
+                - button "Learn more" [ref=f5e171]:
+                  - generic [ref=f5e172]: Learn more
+            - generic [ref=f5e174] [cursor=pointer]:
+              - 'img "photo of influencer #6" [ref=f5e175]'
+              - generic [ref=f5e176]:
+                - generic [ref=f5e177]:
+                  - text: Hannah Stewart
+                  - generic [ref=f5e178]: 792K followers
+                - paragraph [ref=f5e179]: “I reached over 1.6M accounts (a 172% increase)...”
+                - button "Learn more" [ref=f5e181]:
+                  - generic [ref=f5e182]: Learn more
+            - generic [ref=f5e184] [cursor=pointer]:
+              - 'img "photo of influencer #7" [ref=f5e185]'
+              - generic [ref=f5e186]:
+                - generic [ref=f5e187]: Murray & Co Marketing
+                - paragraph [ref=f5e188]: “Thanks to Manychat, I was able to help my client, BossChicks.”
+                - button "Learn more" [ref=f5e190]:
+                  - generic [ref=f5e191]: Learn more
+          - generic [ref=f5e194]:
+            - generic [ref=f5e195] [cursor=pointer]:
+              - 'img "photo of influencer #1" [ref=f5e196]'
+              - generic [ref=f5e197]:
+                - generic [ref=f5e198]:
+                  - text: jenna kutcher
+                  - generic [ref=f5e199]: 1M followers
+                - paragraph [ref=f5e200]: “This is a must-have for creators and entrepreneurs. Seriously a game-changer!”
+                - button "Learn more" [ref=f5e202]:
+                  - generic [ref=f5e203]: Learn more
+            - generic [ref=f5e205] [cursor=pointer]:
+              - 'img "photo of influencer #2" [ref=f5e206]'
+              - generic [ref=f5e207]:
+                - generic [ref=f5e208]:
+                  - text: Marketing Harry
+                  - generic [ref=f5e209]: 540K followers
+                - paragraph [ref=f5e210]: “Using Manychat, I generated $135,000 from 2 posts.”
+                - button "Learn more" [ref=f5e212]:
+                  - generic [ref=f5e213]: Learn more
+            - generic [ref=f5e215] [cursor=pointer]:
+              - 'img "photo of influencer #3" [ref=f5e216]'
+              - generic [ref=f5e217]:
+                - generic [ref=f5e218]:
+                  - text: Theresa Dinh
+                  - generic [ref=f5e219]: 89K followers
+                - paragraph [ref=f5e220]: “Manychat is the best thing that ever happened to me for Instagram.”
+                - button "Learn more" [ref=f5e222]:
+                  - generic [ref=f5e223]: Learn more
+            - generic [ref=f5e225] [cursor=pointer]:
+              - 'img "photo of influencer #4" [ref=f5e226]'
+              - generic [ref=f5e227]:
+                - generic [ref=f5e228]:
+                  - text: Kahlea Wade
+                  - generic [ref=f5e229]: 25K followers
+                - paragraph [ref=f5e230]: “I saw a MASSIVE increase in conversions and engagement within just a week...”
+                - button "Learn more" [ref=f5e232]:
+                  - generic [ref=f5e233]: Learn more
+            - generic [ref=f5e235] [cursor=pointer]:
+              - 'img "photo of influencer #5" [ref=f5e236]'
+              - generic [ref=f5e237]:
+                - generic [ref=f5e238]:
+                  - text: Konstantinos Synodinos
+                  - generic [ref=f5e239]: 950K followers
+                - paragraph [ref=f5e240]: “For creators above 10k followers, Manychat is a MUST.”
+                - button "Learn more" [ref=f5e242]:
+                  - generic [ref=f5e243]: Learn more
+            - generic [ref=f5e245] [cursor=pointer]:
+              - 'img "photo of influencer #6" [ref=f5e246]'
+              - generic [ref=f5e247]:
+                - generic [ref=f5e248]:
+                  - text: Hannah Stewart
+                  - generic [ref=f5e249]: 792K followers
+                - paragraph [ref=f5e250]: “I reached over 1.6M accounts (a 172% increase)...”
+                - button "Learn more" [ref=f5e252]:
+                  - generic [ref=f5e253]: Learn more
+            - generic [ref=f5e255] [cursor=pointer]:
+              - 'img "photo of influencer #7" [ref=f5e256]'
+              - generic [ref=f5e257]:
+                - generic [ref=f5e258]: Murray & Co Marketing
+                - paragraph [ref=f5e259]: “Thanks to Manychat, I was able to help my client, BossChicks.”
+                - button "Learn more" [ref=f5e261]:
+                  - generic [ref=f5e262]: Learn more
+      - generic [ref=f5e266]:
+        - img "features icon" [ref=f5e267]
+        - heading "Put Instagram growth on autopilot" [level=2] [ref=f5e269]
+        - paragraph [ref=f5e270]: Managing everyone who wants a piece of your time in DMs and comments? Here's how we making engaging (at scale) so much easier.
+      - generic [ref=f5e272]:
+        - generic [ref=f5e274]:
+          - img "With/Without icon" [ref=f5e275]
+          - heading "Stop working overtime. Start replying in real time." [level=2] [ref=f5e277]
+          - paragraph [ref=f5e278]: Keep collecting W's even while catching Z's.
+        - generic [ref=f5e281]:
+          - generic [ref=f5e283]:
+            - generic [ref=f5e284]:
+              - generic [ref=f5e285]:
+                - generic [ref=f5e286]: "Before Manychat:"
+                - heading "You're doing IG the hard way" [level=2] [ref=f5e287]
+              - list [ref=f5e288]:
+                - listitem [ref=f5e289]:
+                  - generic [ref=f5e290]: Wasting time replying the same tired reply to every DM.
+                  - img "box-icon" [ref=f5e291]
+                - listitem [ref=f5e292]:
+                  - generic [ref=f5e293]: Missing leads because you can’t respond fast enough.
+                  - img "box-icon" [ref=f5e294]
+                - listitem [ref=f5e295]:
+                  - generic [ref=f5e296]: Letting comments pile up while you’re busy doing everything else.
+                  - img "box-icon" [ref=f5e297]
+                - listitem [ref=f5e298]:
+                  - generic [ref=f5e299]: Losing hours in your inbox when you should be growing your business.
+                  - img "box-icon" [ref=f5e300]
+            - link "get started get started get started" [ref=f5e301] [cursor=pointer]:
+              - /url: https://app.manychat.com/signup/facebookAuth?channel=instagram
+              - generic [ref=f5e303]:
+                - text: get started
+                - generic [ref=f5e304]: get started
+                - generic [ref=f5e305]: get started
+          - generic [ref=f5e307]:
+            - generic [ref=f5e308]:
+              - generic [ref=f5e309]:
+                - img [ref=f5e310]
+                - generic [ref=f5e312]: "After Manychat:"
+                - heading "K.I.S.S. Keep it simple... silly" [level=2] [ref=f5e313]
+              - list [ref=f5e314]:
+                - listitem [ref=f5e315]:
+                  - generic [ref=f5e316]: Every question gets answered. Fast.
+                  - img "box-icon" [ref=f5e317]
+                - listitem [ref=f5e318]:
+                  - generic [ref=f5e319]: Leads? Saved, tagged, tracked—basically gift-wrapped for you
+                  - img "box-icon" [ref=f5e320]
+                - listitem [ref=f5e321]:
+                  - generic [ref=f5e322]: Every DM or comment becomes a chance to sell (even when you’re offline)
+                  - img "box-icon" [ref=f5e323]
+                - listitem [ref=f5e324]:
+                  - generic [ref=f5e325]: And you? Finally, free to kick back and sip your coffee while it’s still hot
+                  - img "box-icon" [ref=f5e326]
+            - link "get started get started get started" [ref=f5e327] [cursor=pointer]:
+              - /url: https://app.manychat.com/signup/facebookAuth?channel=instagram
+              - generic [ref=f5e329]:
+                - text: get started
+                - generic [ref=f5e330]: get started
+                - generic [ref=f5e331]: get started
+      - generic [ref=f5e333]:
+        - generic [ref=f5e334]:
+          - img "templates icon" [ref=f5e335]
+          - heading "Start growing on Instagram today" [level=2] [ref=f5e337]
+          - paragraph [ref=f5e338]: You’ve got enough on your plate. So we made Manychat stupid easy to use. Most folks are up and running in minutes.
+        - generic [ref=f5e340]:
+          - generic [ref=f5e342]:
+            - heading "See how it works" [level=2] [ref=f5e343]
+            - generic [ref=f5e344]:
+              - generic [ref=f5e345] [cursor=pointer]:
+                - heading "Say hi to new followers" [level=3] [ref=f5e346]
+                - button "Check it out" [ref=f5e348]:
+                  - generic [ref=f5e349]: Check it out
+              - generic [ref=f5e351] [cursor=pointer]:
+                - heading "Run giveaways that actually grow your audience" [level=3] [ref=f5e352]
+                - button "Check it out" [ref=f5e354]:
+                  - generic [ref=f5e355]: Check it out
+              - generic [ref=f5e357] [cursor=pointer]:
+                - heading "Deliver lead magnets seamlessly" [level=3] [ref=f5e358]
+                - button "Check it out" [ref=f5e360]:
+                  - generic [ref=f5e361]: Check it out
+              - generic [ref=f5e363] [cursor=pointer]:
+                - heading "Kick off sales conversations" [level=3] [ref=f5e364]
+                - button "Check it out" [ref=f5e366]:
+                  - generic [ref=f5e367]: Check it out
+              - generic [ref=f5e369] [cursor=pointer]:
+                - heading "Book appointments or calls directly" [level=3] [ref=f5e370]
+                - button "Check it out" [ref=f5e372]:
+                  - generic [ref=f5e373]: Check it out
+          - generic [ref=f5e384]: Automatically DM new followers — say hi, share a freebie, or make an offer. Turn followers into fans, and fans into customers.
+          - link "get started get started get started" [ref=f5e386] [cursor=pointer]:
+            - /url: https://app.manychat.com/signup/facebookAuth?channel=instagram
+            - generic [ref=f5e388]:
+              - text: get started
+              - generic [ref=f5e389]: get started
+              - generic [ref=f5e390]: get started
+      - generic [ref=f5e392]:
+        - generic [ref=f5e393]:
+          - img "rocket icon" [ref=f5e394]
+          - heading "New to automation? Don't sweat it." [level=2] [ref=f5e396]
+          - paragraph [ref=f5e397]: No more inbox chaos. No more manual replies. No more wasted time. Get up in running in MINUTES.
+        - generic [ref=f5e398]:
+          - generic [ref=f5e403]:
+            - heading "Sign up for free" [level=3] [ref=f5e404]
+            - paragraph [ref=f5e405]: Start your free trial — no credit card required
+          - generic [ref=f5e410]:
+            - heading "Go live in minutes" [level=3] [ref=f5e411]
+            - paragraph [ref=f5e412]: Seriously, it’s that simple
+          - generic [ref=f5e417]:
+            - heading "Cancel anytime" [level=3] [ref=f5e418]
+            - paragraph [ref=f5e419]: "Spoiler: you won’t want to ;)"
+        - generic [ref=f5e420]:
+          - link "Get started free Get started free Get started free" [ref=f5e421] [cursor=pointer]:
+            - /url: https://app.manychat.com/signup/facebookAuth?channel=instagram
+            - generic [ref=f5e423]:
+              - text: Get started free
+              - generic [ref=f5e424]: Get started free
+              - generic [ref=f5e425]: Get started free
+          - link "See plans See plans See plans" [ref=f5e426] [cursor=pointer]:
+            - /url: /pricing
+            - generic [ref=f5e428]:
+              - text: See plans
+              - generic [ref=f5e429]: See plans
+              - generic [ref=f5e430]: See plans
+      - generic [ref=f5e432]:
+        - generic [ref=f5e433]:
+          - img "FAQ icon" [ref=f5e434]
+          - heading "Frequently asked questions" [level=2] [ref=f5e436]
+        - generic [ref=f5e439]:
+          - generic [ref=f5e440]:
+            - button "Will using Manychat get my IG account locked? arrow ico" [ref=f5e441]:
+              - heading "Will using Manychat get my IG account locked?" [level=3] [ref=f5e443]
+              - img "arrow ico" [ref=f5e444]
+            - region "Will using Manychat get my IG account locked? arrow ico":
+              - paragraph [ref=f5e446]:
+                - text: Not at all. In fact, Manychat is a
+                - link "Meta official business partner!" [ref=f5e447] [cursor=pointer]:
+                  - /url: /security
+                - text: 🤝
+          - generic [ref=f5e448]:
+            - button "What is Instagram DM Marketing? arrow ico" [ref=f5e449]:
+              - heading "What is Instagram DM Marketing?" [level=3] [ref=f5e451]
+              - img "arrow ico" [ref=f5e452]
+            - region "What is Instagram DM Marketing? arrow ico":
+              - paragraph [ref=f5e454]: Instagram DM Marketing helps you grow followers, boost engagement, attract leads, drive sales, and respond to customers 24/7—automating your entire Instagram funnel while answering FAQs and converting followers.
+          - generic [ref=f5e455]:
+            - button "Will Instagram DM Marketing make conversations sound like a robot, or can it mimic my voice? arrow ico" [ref=f5e456]:
+              - heading "Will Instagram DM Marketing make conversations sound like a robot, or can it mimic my voice?" [level=3] [ref=f5e458]
+              - img "arrow ico" [ref=f5e459]
+            - region "Will Instagram DM Marketing make conversations sound like a robot, or can it mimic my voice? arrow ico":
+              - paragraph [ref=f5e461]: "*Beep* *boop* 🤖 Just kidding. It’s your automation — you can make it say (almost) anything you want. Use slang, tell dad jokes, speak pig latin—whatever your customers expect."
+          - generic [ref=f5e462]:
+            - button "Do I need to know how to code to set up the automations? arrow ico" [ref=f5e463]:
+              - heading "Do I need to know how to code to set up the automations?" [level=3] [ref=f5e465]
+              - img "arrow ico" [ref=f5e466]
+            - region "Do I need to know how to code to set up the automations? arrow ico":
+              - paragraph [ref=f5e468]: No coding needed! Our Automation Builder is intuitive with options for every skill level—from Quick Automations that guide you step-by-step to our customizable Flow Builder where you can create simple or robust solutions. Plus, our AI can help build flows for you automatically. 👀
+    - contentinfo [ref=f5e469]:
+      - generic [ref=f5e470]:
+        - generic [ref=f5e471]:
+          - generic [ref=f5e472]:
+            - generic:
+              - link "Manychat logo":
+                - /url: /
+                - img "Manychat logo"
+            - generic [ref=f5e473]:
+              - generic [ref=f5e474]:
+                - text: product
+                - generic [ref=f5e475]:
+                  - link "Instagram" [ref=f5e477] [cursor=pointer]:
+                    - /url: /product/instagram
+                  - link "TikTok" [ref=f5e479] [cursor=pointer]:
+                    - /url: /product/tiktok
+                  - link "WhatsApp" [ref=f5e481] [cursor=pointer]:
+                    - /url: /product/whatsapp
+                  - link "Messenger" [ref=f5e483] [cursor=pointer]:
+                    - /url: /product/messenger-marketing
+                  - link "Manychat AI" [ref=f5e485] [cursor=pointer]:
+                    - /url: /product/ai
+                  - link "SMS marketing" [ref=f5e487] [cursor=pointer]:
+                    - /url: /sms-marketing
+                  - link "For Brands" [ref=f5e489] [cursor=pointer]:
+                    - /url: /brands
+                  - link "For eCommerce" [ref=f5e491] [cursor=pointer]:
+                    - /url: /meet-chatmarketing-for-ecommerce
+                  - link "Integrations" [ref=f5e493] [cursor=pointer]:
+                    - /url: /integrations
+                  - link "Pricing" [ref=f5e495] [cursor=pointer]:
+                    - /url: /pricing
+              - generic [ref=f5e496]:
+                - text: manychat
+                - generic [ref=f5e497]:
+                  - link "About" [ref=f5e499] [cursor=pointer]:
+                    - /url: /about
+                  - link "Manyfesto" [ref=f5e501] [cursor=pointer]:
+                    - /url: /manifesto
+                  - link "Careers" [ref=f5e503] [cursor=pointer]:
+                    - /url: https://careers.manychat.com/
+                  - link "Press" [ref=f5e505] [cursor=pointer]:
+                    - /url: /press
+                  - link "Privacy & security" [ref=f5e507] [cursor=pointer]:
+                    - /url: /security
+              - generic [ref=f5e508]:
+                - text: partners
+                - generic [ref=f5e509]:
+                  - link "Manychat for agencies" [ref=f5e511] [cursor=pointer]:
+                    - /url: /product/for-agencies
+                  - link "Hire an agency" [ref=f5e513] [cursor=pointer]:
+                    - /url: https://manychat.com/agency/listing
+                  - link "Join the affiliate program" [ref=f5e515] [cursor=pointer]:
+                    - /url: /affiliate/
+              - generic [ref=f5e516]:
+                - text: resources
+                - generic [ref=f5e517]:
+                  - link "Help center" [ref=f5e519] [cursor=pointer]:
+                    - /url: https://help.manychat.com/
+                  - link "Community" [ref=f5e521] [cursor=pointer]:
+                    - /url: https://community.manychat.com/
+                  - link "Blog" [ref=f5e523] [cursor=pointer]:
+                    - /url: /blog/
+                  - link "Chronically online" [ref=f5e525] [cursor=pointer]:
+                    - /url: https://com.manychat.com/
+                  - link "How to" [ref=f5e527] [cursor=pointer]:
+                    - /url: /resources/how-to
+                  - link "Video course" [ref=f5e529] [cursor=pointer]:
+                    - /url: /resources/video-course
+                  - link "Chatbot examples" [ref=f5e531] [cursor=pointer]:
+                    - /url: /messenger-marketing-examples
+              - generic [ref=f5e532]:
+                - text: Other
+                - generic [ref=f5e533]:
+                  - link "Status page" [ref=f5e535] [cursor=pointer]:
+                    - /url: https://status.manychat.com/
+                  - link "Changelog" [ref=f5e537] [cursor=pointer]:
+                    - /url: https://community.manychat.com/product-updates
+                  - link "Privacy settings" [ref=f5e539] [cursor=pointer]:
+                    - /url: "#"
+                  - link "Privacy policy" [ref=f5e541] [cursor=pointer]:
+                    - /url: /legal/privacy
+                  - link "Terms of service" [ref=f5e543] [cursor=pointer]:
+                    - /url: /legal/tos
+              - generic [ref=f5e544]:
+                - text: Social media
+                - generic [ref=f5e545]:
+                  - link "Instagram" [ref=f5e547] [cursor=pointer]:
+                    - /url: https://www.instagram.com/manychat
+                    - img "Instagram" [ref=f5e548]
+                  - link "Youtube" [ref=f5e550] [cursor=pointer]:
+                    - /url: https://www.youtube.com/@manychat
+                    - img "Youtube" [ref=f5e551]
+                  - link "Tiktok" [ref=f5e553] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@manychat
+                    - img "Tiktok" [ref=f5e554]
+          - generic [ref=f5e555]:
+            - generic:
+              - button:
+                - img [ref=f5e558]
+            - generic [ref=f5e560]: © 2026, Manychat, Inc.
+        - link "get started free get started free get started free" [ref=f5e562] [cursor=pointer]:
+          - /url: https://app.manychat.com/signup/facebookAuth?channel=instagram
+          - generic [ref=f5e564]:
+            - text: get started free
+            - generic [ref=f5e565]: get started free
+            - generic [ref=f5e566]: get started free
+  - alert [ref=f5e567]

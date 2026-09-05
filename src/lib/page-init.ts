@@ -9,6 +9,7 @@
  *   3. Track scroll depth at 25/50/75/100%.
  */
 import { initMixpanel } from './mixpanel';
+import { resolvePageName } from './page-name';
 import { initializeTracking, trackPageView, trackEvent } from '../utils/analytics';
 
 const SCROLL_MILESTONES = [25, 50, 75, 100] as const;
@@ -57,5 +58,7 @@ const setupScrollDepthTracking = (): void => {
 
 initializeTracking();
 setupLazyMixpanel();
-trackPageView('Landing Page', 'main');
+// Page-aware: ContentLayout writes data-page-name on <body>; the homepage leaves
+// it unset and resolvePageName falls back to "Landing Page" (no regression).
+trackPageView(resolvePageName(), 'main');
 setupScrollDepthTracking();

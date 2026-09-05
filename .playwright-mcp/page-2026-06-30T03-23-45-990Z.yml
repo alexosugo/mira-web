@@ -1,0 +1,234 @@
+- generic [ref=e2]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Mira" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - navigation "Main navigation" [ref=e8]:
+          - link "How it works" [ref=e9] [cursor=pointer]:
+            - /url: /how-it-works
+          - link "Pricing" [ref=e10] [cursor=pointer]:
+            - /url: /pricing
+        - link "Get started" [ref=e11] [cursor=pointer]:
+          - /url: https://app.withmira.co
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: Fragrance shops
+      - heading "DM help for fragrance shops" [level=1] [ref=e16]
+      - paragraph [ref=e17]: For Nairobi perfume sellers moving designer bottles, niche scents, Arabian oils, oud, bakhoor, body mists, pocket sprays, decants, discovery sets, and gift boxes through Instagram DMs.
+      - link "Get started" [ref=e19] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: The money shot
+      - heading "Before Mira, every scent question waits. After Mira, buyers get clear fragrance facts fast." [level=2] [ref=e24]
+      - generic [ref=e25]:
+        - article [ref=e26]:
+          - paragraph [ref=e27]: Before Mira
+          - list [ref=e28]:
+            - listitem [ref=e29]: Customers ask whether a scent is sweet, woody, fresh, clean, strong, unisex, office-safe, date-night, or good for gifting.
+            - listitem [ref=e30]: The owner repeats prices for decants, 3ml oils, 6ml roll-ons, 30ml bottles, 50ml sprays, body mists, bakhoor, and gift sets.
+            - listitem [ref=e31]: Trust-sensitive questions about tester stock, source, batch, bottle size, longevity, projection, and authenticity interrupt the owner.
+            - listitem [ref=e32]: A buyer comparing several perfume pages can go quiet before the owner replies with notes, price, and delivery.
+        - article [ref=e33]:
+          - paragraph [ref=e34]: After Mira
+          - list [ref=e35]:
+            - listitem [ref=e36]: Mira answers approved scent notes, sizes, prices, stock, gift options, and delivery basics.
+            - listitem [ref=e37]: Repeat questions about designer, niche, Arabian, oud, musk, amber, vanilla, citrus, florals, and freshies move quickly.
+            - listitem [ref=e38]: Unverified source, authenticity, batch, tester, dupe, longevity, or projection claims go back to the owner.
+            - listitem [ref=e39]: "Ready buyers get guided toward a clean cart: scent, size, quantity, delivery area, and checkout next step."
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - paragraph [ref=e44]: Use case
+        - heading "Amina, Nairobi fragrance seller" [level=2] [ref=e45]
+        - paragraph [ref=e46]: Perfume shop owner, posts scent drops and closes orders from DMs
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "A normal day" [level=3] [ref=e50]
+          - list [ref=e51]:
+            - listitem [ref=e52]: Customers ask whether a vanilla musk is sweet, whether a designer-inspired scent lasts, or whether a fresh fragrance works for office wear.
+            - listitem [ref=e53]: Gift buyers need help choosing between a decant, roll-on oil, pocket spray, body mist, bakhoor set, or wrapped gift box.
+            - listitem [ref=e54]: Some shoppers ask about source, tester bottles, packaging, batch, longevity, and whether a scent is original.
+            - listitem [ref=e55]: The owner wants fast replies but cannot let Mira make trust claims it cannot prove.
+        - generic [ref=e56]:
+          - heading "Where Mira fits" [level=3] [ref=e57]
+          - list [ref=e58]:
+            - listitem [ref=e59]: Answers approved scent notes, concentration, size, price, stock, packaging, and delivery basics.
+            - listitem [ref=e60]: Groups gift requests into a clean handoff when the customer wants advice or bundle pricing.
+            - listitem [ref=e61]: Hands over source, authenticity, tester, batch, longevity, and unusual product questions.
+            - listitem [ref=e62]: Keeps checkout details tidy once the shopper picks a scent and size.
+    - generic [ref=e65]:
+      - paragraph [ref=e66]: Powers Mira adds
+      - heading "Fragrance shops get speed without careless trust claims" [level=2] [ref=e67]
+      - generic [ref=e68]:
+        - article [ref=e69]:
+          - paragraph [ref=e70]: "01"
+          - heading "Scent note memory" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Mira keeps approved notes like oud, amber, musk, vanilla, citrus, rose, powdery, smoky, fresh, sweet, and woody ready for buyers.
+        - article [ref=e73]:
+          - paragraph [ref=e74]: "02"
+          - heading "Size and price clarity" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Decants, roll-on oils, pocket sprays, body mists, full bottles, bakhoor sets, and gift boxes can each have clear approved prices.
+        - article [ref=e77]:
+          - paragraph [ref=e78]: "03"
+          - heading "Gift buyer support" [level=3] [ref=e79]
+          - paragraph [ref=e80]: Mira can collect budget, scent preference, occasion, packaging need, and delivery area before handing over nuanced recommendations.
+        - article [ref=e81]:
+          - paragraph [ref=e82]: "04"
+          - heading "Authenticity handoff" [level=3] [ref=e83]
+          - paragraph [ref=e84]: Questions about source, tester stock, batches, originality, longevity, and projection stay owner-led unless approved details exist.
+    - generic [ref=e87]:
+      - paragraph [ref=e88]: DMs Mira can reduce
+      - heading "Perfume DMs become scent-aware buying threads" [level=2] [ref=e89]
+      - generic [ref=e90]:
+        - article [ref=e91]:
+          - generic [ref=e92]:
+            - paragraph [ref=e93]: "01"
+            - paragraph [ref=e94]: Customer asks
+            - paragraph [ref=e95]: Do you have something fresh for office wear, not too loud?
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: Mira can answer
+            - paragraph [ref=e98]: Mira can share approved fresh, clean, citrus, aquatic, or soft musk options with size, price, and delivery basics.
+          - generic [ref=e99]:
+            - paragraph [ref=e100]: Owner control
+            - paragraph [ref=e101]: Subjective scent matching and high-trust recommendations can still be handed to the owner.
+        - article [ref=e102]:
+          - generic [ref=e103]:
+            - paragraph [ref=e104]: "02"
+            - paragraph [ref=e105]: Customer asks
+            - paragraph [ref=e106]: How much is the 10ml decant, 6ml vanilla musk oil, and Lattafa gift box?
+          - generic [ref=e107]:
+            - paragraph [ref=e108]: Mira can answer
+            - paragraph [ref=e109]: Mira answers approved price, stock, scent notes, size, packaging, and delivery basics for each item.
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: Owner control
+            - paragraph [ref=e112]: If size, source, price, or packaging is missing, Mira asks the owner before quoting.
+        - article [ref=e113]:
+          - generic [ref=e114]:
+            - paragraph [ref=e115]: "03"
+            - paragraph [ref=e116]: Customer asks
+            - paragraph [ref=e117]: Is this designer bottle original, tester, or inspired?
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: Mira can answer
+            - paragraph [ref=e120]: Mira shares only approved sourcing language and hands over if the answer needs the owner’s trust promise.
+          - generic [ref=e121]:
+            - paragraph [ref=e122]: Owner control
+            - paragraph [ref=e123]: Authenticity, tester, batch, dupe, projection, longevity, and source claims need owner control.
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - paragraph [ref=e128]: Good fit
+        - heading "Fragrance is popular enough to deserve its own page" [level=2] [ref=e129]
+        - paragraph [ref=e130]: Nairobi fragrance DMs have a different rhythm from general beauty. Shoppers ask about notes, strength, longevity, size, gifting, packaging, designer comparisons, niche taste, oils, and trust. Mira helps when the shop has clear product details and wants faster answers without careless claims.
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - paragraph [ref=e133]: Works best when
+          - paragraph [ref=e134]: Perfume pages selling designer, niche, Arabian, oils, decants, body mists, bakhoor, discovery sets, and gift boxes with approved notes, prices, sizes, and sourcing language.
+        - generic [ref=e135]:
+          - paragraph [ref=e136]: Mira hands over when
+          - paragraph [ref=e137]: Mira should hand over authenticity, tester, batch, dupe, projection, longevity, source, subjective scent matching, and premium gift recommendations unless the owner has approved the exact answer.
+        - generic [ref=e138]:
+          - paragraph [ref=e139]: What the owner gets
+          - paragraph [ref=e140]: The owner gets scent-aware buyer threads with budget, occasion, notes, size, delivery area, and the trust question that needs a human answer.
+    - generic [ref=e143]:
+      - paragraph [ref=e144]: FAQ
+      - heading "Questions" [level=2] [ref=e145]
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - term [ref=e148]: Can Mira answer perfume note questions?
+          - definition [ref=e149]: Yes, when scent notes and product details are approved in the catalog.
+        - generic [ref=e150]:
+          - term [ref=e151]: Can Mira recommend gifts?
+          - definition [ref=e152]: Mira can collect budget, scent preference, occasion, and delivery needs, then answer from approved products or hand over.
+        - generic [ref=e153]:
+          - term [ref=e154]: Can Mira answer authenticity questions?
+          - definition [ref=e155]: Only with approved sourcing language. If the answer is uncertain, Mira hands over.
+  - contentinfo [ref=e157]:
+    - generic [ref=e158]:
+      - paragraph [ref=e159]: One more thing
+      - heading "Your DMs at 2 AM? Mira's got it." [level=2] [ref=e160]:
+        - text: Your DMs at 2 AM?
+        - emphasis [ref=e161]: Mira's got it.
+      - link "Get started" [ref=e162] [cursor=pointer]:
+        - /url: https://app.withmira.co
+    - generic [ref=e164]:
+      - navigation "Footer navigation" [ref=e165]:
+        - generic [ref=e166]:
+          - paragraph [ref=e167]: Product
+          - list [ref=e168]:
+            - listitem [ref=e169]:
+              - link "Pricing" [ref=e170] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e171]:
+              - link "How it works" [ref=e172] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e173]:
+              - link "Instagram integration" [ref=e174] [cursor=pointer]:
+                - /url: /integrations/instagram
+        - generic [ref=e175]:
+          - paragraph [ref=e176]: Features
+          - list [ref=e177]:
+            - listitem [ref=e178]:
+              - link "Product answers" [ref=e179] [cursor=pointer]:
+                - /url: /features/product-answers
+            - listitem [ref=e180]:
+              - link "Orders and checkout" [ref=e181] [cursor=pointer]:
+                - /url: /features/orders-and-checkout
+            - listitem [ref=e182]:
+              - link "Human handoff" [ref=e183] [cursor=pointer]:
+                - /url: /features/human-handoff
+        - generic [ref=e184]:
+          - paragraph [ref=e185]: Use cases
+          - list [ref=e186]:
+            - listitem [ref=e187]:
+              - link "Daily-drop shops" [ref=e188] [cursor=pointer]:
+                - /url: /use-cases/instagram-shops
+            - listitem [ref=e189]:
+              - link "Fashion and thrift" [ref=e190] [cursor=pointer]:
+                - /url: /use-cases/fashion
+            - listitem [ref=e191]:
+              - link "Beauty shops" [ref=e192] [cursor=pointer]:
+                - /url: /use-cases/beauty
+            - listitem [ref=e193]:
+              - link "Accessories shops" [ref=e194] [cursor=pointer]:
+                - /url: /use-cases/accessories
+            - listitem [ref=e195]:
+              - link "Fragrance shops" [ref=e196] [cursor=pointer]:
+                - /url: /use-cases/fragrances
+            - listitem [ref=e197]:
+              - link "Bakeries and food" [ref=e198] [cursor=pointer]:
+                - /url: /use-cases/home-bakeries-food-brands
+            - listitem [ref=e199]:
+              - link "Skincare and haircare" [ref=e200] [cursor=pointer]:
+                - /url: /use-cases/skincare-haircare-makers
+        - generic [ref=e201]:
+          - paragraph [ref=e202]: Company
+          - list [ref=e203]:
+            - listitem [ref=e204]:
+              - link "About" [ref=e205] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e206]:
+              - link "Contact" [ref=e207] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e208]:
+          - paragraph [ref=e209]: Trust
+          - list [ref=e210]:
+            - listitem [ref=e211]:
+              - link "Security" [ref=e212] [cursor=pointer]:
+                - /url: /security
+            - listitem [ref=e213]:
+              - link "Privacy" [ref=e214] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e215]:
+              - link "Terms" [ref=e216] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e217]:
+              - link "Data deletion" [ref=e218] [cursor=pointer]:
+                - /url: /data-deletion
+            - listitem [ref=e219]:
+              - link "Help" [ref=e220] [cursor=pointer]:
+                - /url: /help
+      - generic [ref=e221]:
+        - generic [ref=e222]:
+          - paragraph [ref=e223]: Mira
+          - paragraph [ref=e224]: Made in Nairobi, Kenya · © 2026
+        - link "hello@withmira.co" [ref=e225] [cursor=pointer]:
+          - /url: mailto:hello@withmira.co

@@ -34,6 +34,7 @@ dist-ssr
 .qodo
 # roborev snapshots
 /.roborev/
+.roborev.toml
 coverage/
 # Local Netlify folder
 .netlify
@@ -41,3 +42,12 @@ coverage/
 # Dolt database files (added by bd init)
 .dolt/
 *.db
+
+# Deciduous database (local)
+.deciduous/
+
+# Beads / Dolt files (added by bd init)
+.beads-credential-key
+.beads/*.pid.lock
+.beads/hooks/post-commit
+.beads/hooks/post-rewrite
