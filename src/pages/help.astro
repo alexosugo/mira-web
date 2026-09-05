@@ -1,0 +1,11 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { PAGES } from '../content/pages';
+import { getRoute } from '../lib/routes';
+
+const path = '/help';
+const page = PAGES[path];
+const route = getRoute(path);
+---
+
+<ContentLayout page={page} route={route} />

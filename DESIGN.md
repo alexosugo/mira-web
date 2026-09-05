@@ -1,82 +1,96 @@
 ---
 name: Mira
-description: Your shop's teammate in the DMs. Mira answers, builds carts, and sells while you sleep.
+description: Mira answers customers and helps them order in your Instagram DMs.
+source: /docs in this repo summarise the canonical Mira brand bundle (MIRA-BRAND-SYSTEM.md, visual-tokens.json). When they conflict, the brand bundle wins.
 colors:
-  paper: "#FAF7F1"
-  paper-raised: "#F3EEE4"
-  ink: "#211C15"
-  ink-light: "#5E5749"
-  ink-faint: "#6E6657"
-  line: "#E6DFD1"
-  teal: "#2F6B63"
-  teal-deep: "#24544E"
-  teal-bright: "#7FB5AB"
-  clay: "#B23E1D"
-  clay-deep: "#933312"
-  clay-bright: "#D96B45"
-  night: "#1B1712"
-  night-raised: "#262019"
-  night-line: "#352D23"
+  paper: "#F2F6F3"
+  paper-raised: "#E7EEE9"
+  ink: "#1B2620"
+  ink-light: "#49584F"
+  ink-faint: "#58685E"
+  line: "#DCE6DF"
+  fern: "#177E54"
+  fern-deep: "#11603F"
+  fern-bright: "#8BD9B3"
+  dawn: "#A35F0C"
+  dawn-deep: "#834B0A"
+  dawn-bright: "#F0B254"
+  night: "#0E1E17"
+  night-raised: "#162C22"
+  night-line: "#264436"
 fonts:
-  display: Fraunces (variable, 400–600, italic for emphasis)
+  display: Fraunces (variable, 400–600, occasional italic emphasis)
   body: Instrument Sans (400, 500, 600)
   mono: IBM Plex Mono (400, 500)
 ---
 
 # Mira Visual System
 
-Direction: **warm editorial calm**. Real hierarchy, intentional whitespace, restraint.
-A page that earns trust through quiet craft, not decoration.
+Direction: **quiet, useful and product-led**. A well-made commerce publication
+combined with clear product evidence, not a generic software landing page.
+Calm rather than urgency; practical work rather than abstract technology.
 
 ## Surfaces
 
-- **Paper** (`#FAF7F1`) is the ground. Cards sit on white with a single hairline
-  border (`line`), never a drop shadow.
-- **Night** (`#1B1712`) is reserved for exactly two surfaces: the night-shift
-  ledger and the footer. One dark moment per scroll gives the page its depth.
+- **Paper** (`#F2F6F3`) is the ground. Panels sit on white or raised paper with
+  a single hairline border (`line`), no drop shadows by default.
+- **Night** (`#0E1E17`) is for the footer and, at most, one strong dark
+  narrative section per page. Intentional depth, not a dark-mode style.
 - Light theme only. No dark-mode toggle.
 
-## The Clay Rule
+## The Fern Rule
 
-Clay (`#B23E1D`) means **a sale closed**. It appears on the cart confirmation
-in the hero chat, the "Paid" line in the night ledger, the "Most popular"
-pricing tag, and nowhere else. CTAs are ink-filled pills — the accent is never
-a button color. If a new surface wants clay, it must be a money moment.
+Fern (`#177E54`) means **Mira is acting or the customer takes the main
+action**: Mira's reply bubbles, primary buttons, active controls, presence and
+processing states (`fern-bright` on dark). Do not cover large areas with
+bright fern — it guides attention, it does not dominate.
 
-## The Teal Rule
+## The Dawn Rule
 
-Teal (`#2F6B63`) means **Mira is speaking or working**: her reply bubbles in
-the hero chat, her presence dot, and her action lines in the night ledger
-(`teal-bright` on dark). The customer stays paper-and-ink; the sale stays
-clay. Like clay, teal is never a button color.
+Dawn (`#A35F0C`) means **a commerce milestone**: a completed cart, an order
+state, payment awaiting confirmation, a pricing highlight. Use sparingly and
+never as a general decorative accent or a button color. If a new surface wants
+dawn, it must be a money moment.
 
 ## Typography
 
-- **Fraunces** for display: weight 500, tight leading, optical sizing on.
-  Italic is the only emphasis device in headlines (one word, used sparingly).
-- **Instrument Sans** for body and UI.
-- **IBM Plex Mono** for everything ledger-like: timestamps, KES figures,
-  kickers (`.kicker` — 12px uppercase, 0.18em tracking), footnotes, trust
-  strips. The mono is the brand's commerce texture.
+- **Fraunces** for display: page and major section headlines, optical sizing
+  on. Italic emphasis is occasional — one word, not every heading.
+- **Instrument Sans** for body, navigation, buttons, forms, UI annotations.
+- **IBM Plex Mono** for functional commerce detail only: KES figures,
+  timestamps, order identifiers, plan limits, status labels, ledger lines.
+  Do not use mono as a decorative section kicker — decorative kickers are not
+  part of the content-page system.
 
 ## Layout
 
-- `max-w-6xl` container, 12-column grid, asymmetric 7/5 or 5/6+offset splits.
-- Sections are separated by whitespace (`py-24 → py-40`) or a single hairline,
-  never background-color stripes.
-- Lists are editorial indexes (mono numerals + hairline dividers), never card
-  grids.
+- `max-w-6xl` container, 12-column desktop grid, preferred splits 7/5, 5/7, 6/6.
+- Phone first. Comfortable reading widths, generous but purposeful whitespace.
+- Sections separate by whitespace or a single hairline — no automatic
+  alternating background stripes.
+- Cards only when items are genuinely separate or selectable; lists prefer
+  editorial indexes (mono numerals + hairline dividers) over card grids.
+- Let the subject determine the page structure; asymmetry is welcome where it
+  clarifies product evidence.
+
+## Evidence
+
+Product screenshots and DM conversations are the evidence system; photography
+is supportive. Customer bubbles stay neutral paper-and-ink; Mira bubbles are
+fern; commerce states may use dawn; owner intervention is visually explicit.
+Conversations read like real buying conversations. No robots, sparkles,
+gradient blobs, floating chat icons or fake dashboards.
 
 ## Motion
 
-One gesture: `animate-fade-in-up` (14px rise, 0.8s, ease-out-expo), staggered
-by `animation-delay`. Hover states are color transitions only. Everything
-respects `prefers-reduced-motion` via the global override in `index.css`.
+Motion shows cause and effect: one gesture, `animate-fade-in-up` (14px rise,
+0.8s, ease-out-expo), staggered by `animation-delay`. No constant floating or
+pulsing. Everything respects `prefers-reduced-motion` via the global override
+in `index.css`.
 
 ## Accessibility
 
 - WCAG 2.1 AA: every text style clears 4.5:1 on its surface (`ink-faint` and
-  the on-dark `paper/55+` steps are tuned to this floor).
-- Focus-visible: 2px clay outline, 3px offset, global.
-- Touch targets ≥ 40px; the header CTA is visible at every viewport (no
-  hamburger, no sticky bar).
+  the on-dark steps are tuned to this floor).
+- Focus-visible: 2px fern outline, 3px offset, global.
+- Touch targets ≥ 44px; meaning never carried by color alone.

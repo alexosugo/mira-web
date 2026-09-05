@@ -1,0 +1,82 @@
+---
+/**
+ * Per-vertical line-drawn motif glyphs for use-case heroes. Hand-tuned
+ * single-stroke SVGs so every vertical gets its own mark without shipping an
+ * icon library. Decorative: always rendered aria-hidden.
+ */
+import type { MotifKey } from '../../lib/page-variant';
+
+interface Props {
+  motif: MotifKey;
+  class?: string;
+}
+
+const { motif, class: className = '' } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  aria-hidden="true"
+>
+  {motif === 'drops' && (
+    <>
+      <rect x="14" y="30" width="36" height="22" rx="3" />
+      <path d="M18 30v-6a3 3 0 0 1 3-3h22a3 3 0 0 1 3 3v6" />
+      <path d="M22 21v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5" />
+      <path d="M26 41h12" />
+    </>
+  )}
+  {motif === 'hanger' && (
+    <>
+      <path d="M32 18a5 5 0 1 1 5-5" />
+      <path d="M32 18v6" />
+      <path d="M32 24 8 42a3 3 0 0 0 2 5h44a3 3 0 0 0 2-5L32 24Z" />
+    </>
+  )}
+  {motif === 'mirror' && (
+    <>
+      <ellipse cx="32" cy="24" rx="14" ry="16" />
+      <ellipse cx="32" cy="24" rx="9" ry="11" />
+      <path d="M32 40v8" />
+      <path d="M22 52h20" />
+    </>
+  )}
+  {motif === 'ring' && (
+    <>
+      <circle cx="32" cy="38" r="14" />
+      <path d="M26 26l6-10 6 10" />
+      <path d="M32 16v-4" />
+    </>
+  )}
+  {motif === 'bottle' && (
+    <>
+      <rect x="20" y="24" width="24" height="28" rx="5" />
+      <path d="M27 24v-5h10v5" />
+      <rect x="28" y="12" width="8" height="7" rx="1.5" />
+      <path d="M27 34c3 3 7 3 10 0" />
+    </>
+  )}
+  {motif === 'cake' && (
+    <>
+      <path d="M14 38h36v10a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V38Z" />
+      <path d="M14 38c4-8 12-12 18-12s14 4 18 12" />
+      <path d="M14 38c3 3 6 3 9 0s6-3 9 0 6 3 9 0 6-3 9 0" />
+      <path d="M32 26v-6" />
+      <circle cx="32" cy="17" r="2.5" />
+    </>
+  )}
+  {motif === 'jar' && (
+    <>
+      <rect x="18" y="26" width="28" height="26" rx="6" />
+      <rect x="22" y="16" width="20" height="6" rx="2" />
+      <path d="M22 22v4M42 22v4" />
+      <path d="M26 39h12" />
+    </>
+  )}
+</svg>

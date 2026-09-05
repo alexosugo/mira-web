@@ -1,7 +1,7 @@
 {
-  "name": "Mira - AI Customer Experience Partner",
-  "short_name": "Mira",
-  "description": "Transform your Kenyan SME with Mira's intelligent customer service automation",
+  "name": "Sellogram - AI Customer Experience Partner",
+  "short_name": "Sellogram",
+  "description": "Transform your Kenyan SME with Sellogram's intelligent customer service automation",
   "icons": [
     {
       "src": "/favicon.svg",
@@ -29,8 +29,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#C0DC2D",
-  "background_color": "#13243E",
+  "theme_color": "#F2F6F3",
+  "background_color": "#F2F6F3",
   "display": "standalone",
   "start_url": "/",
   "scope": "/"

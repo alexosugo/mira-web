@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         // "Morning light" palette: a soft green-tinted ground, fern green
-        // where Mira is present, and a dawn-amber accent for a closing sale.
+        // where Sellogram is acting, and a dawn-amber accent for a closing sale.
         paper: {
           DEFAULT: '#F2F6F3',
           raised: '#E7EEE9',
@@ -17,8 +17,8 @@ export default {
           faint: '#58685E',
         },
         line: '#DCE6DF',
-        // Fern means Mira (and the product) is acting: her chat bubbles, her
-        // presence dot, and every button and interactive control.
+        // Fern means Sellogram is acting: product replies, presence, success,
+        // and every primary button and interactive control.
         fern: {
           DEFAULT: '#177E54',
           deep: '#11603F',
@@ -41,9 +41,12 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        body: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        display: ['Archivo', 'system-ui', 'sans-serif'],
+        body: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+      },
+      letterSpacing: {
+        tight: '-0.05em',
       },
       transitionTimingFunction: {
         out: 'cubic-bezier(0.16, 1, 0.3, 1)',

@@ -1,0 +1,122 @@
+---
+/**
+ * Ambient hero backdrop: soft chat-bubble motes drifting slowly upward, like
+ * messages arriving overnight. Pure 2D canvas (~1.5KB), decorative only —
+ * aria-hidden, paused off-screen, and skipped entirely under
+ * prefers-reduced-motion (a static scatter is painted once instead).
+ */
+interface Props {
+  /** Motes per 100k px². Keep low; this is atmosphere, not confetti. */
+  density?: number;
+  class?: string;
+}
+
+const { density = 1.1, class: className = '' } = Astro.props;
+---
+
+<canvas
+  data-ambient-field
+  data-density={density}
+  class={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
+  aria-hidden="true"></canvas>
+
+<script>
+  const FERN = 'rgba(23, 126, 84, A)';
+  const DAWN = 'rgba(163, 95, 12, A)';
+  const INK = 'rgba(27, 38, 32, A)';
+
+  interface Mote {
+    x: number;
+    y: number;
+    r: number;
+    speed: number;
+    drift: number;
+    alpha: number;
+    color: string;
+    tail: boolean;
+  }
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLCanvasElement>('[data-ambient-field]').forEach((canvas) => {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const density = Number(canvas.dataset.density ?? '1.1');
+    let motes: Mote[] = [];
+    let raf = 0;
+    let running = false;
+
+    const makeMote = (w: number, h: number, seedY = false): Mote => {
+      const palette = Math.random();
+      return {
+        x: Math.random() * w,
+        y: seedY ? Math.random() * h : h + 20,
+        r: 2.5 + Math.random() * 5,
+        speed: 0.08 + Math.random() * 0.22,
+        drift: (Math.random() - 0.5) * 0.12,
+        alpha: 0.05 + Math.random() * 0.09,
+        color: palette < 0.55 ? FERN : palette < 0.75 ? DAWN : INK,
+        tail: Math.random() < 0.4,
+      };
+    };
+
+    // Rounded "bubble" with an optional speech tail — the site's one motif.
+    const drawMote = (m: Mote) => {
+      ctx.fillStyle = m.color.replace('A', String(m.alpha));
+      ctx.beginPath();
+      // Rounded-rect bubble, wider than tall.
+      const w = m.r * 2.6;
+      const h = m.r * 1.7;
+      ctx.roundRect(m.x - w / 2, m.y - h / 2, w, h, h / 2);
+      ctx.fill();
+      if (m.tail) {
+        ctx.beginPath();
+        ctx.arc(m.x - w / 2 + 1, m.y + h / 2 + 1, m.r * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.round(((rect.width * rect.height) / 100_000) * density);
+      motes = Array.from({ length: count }, () => makeMote(rect.width, rect.height, true));
+      if (reduced) {
+        // One static, calm scatter. No animation loop.
+        ctx.clearRect(0, 0, rect.width, rect.height);
+        motes.forEach(drawMote);
+      }
+    };
+
+    const tick = () => {
+      const rect = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      motes.forEach((m, i) => {
+        m.y -= m.speed;
+        m.x += m.drift;
+        if (m.y < -20 || m.x < -30 || m.x > rect.width + 30) motes[i] = makeMote(rect.width, rect.height);
+        drawMote(m);
+      });
+      if (running) raf = requestAnimationFrame(tick);
+    };
+
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    if (!reduced) {
+      new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !running) {
+          running = true;
+          raf = requestAnimationFrame(tick);
+        } else if (!entry.isIntersecting && running) {
+          running = false;
+          cancelAnimationFrame(raf);
+        }
+      }).observe(canvas);
+    }
+  });
+</script>

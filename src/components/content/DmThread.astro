@@ -1,0 +1,67 @@
+---
+/**
+ * Scenario exchanges framed as a real Instagram thread: presence header,
+ * customer/Sellogram bubbles, and the owner note as a handoff aside. Bubble reveal
+ * is scroll-linked via the .scenario-bubble handler in ContentLayout.
+ */
+import type { ScenarioItem } from '../../content/pages';
+
+interface Props {
+  heading: string;
+  items: ScenarioItem[];
+}
+
+const { heading, items } = Astro.props;
+
+// KES figures get the mono face — the brand's commerce texture.
+const kesParts = (text: string) => text.split(/(KES\s?[\d,]+)/g);
+const isKes = (part: string) => /^KES\s?[\d,]+$/.test(part);
+---
+
+<div>
+  <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+    {heading}
+  </h2>
+
+  <div class="mx-auto mt-12 max-w-xl rounded-3xl border border-line bg-white">
+    <div class="flex items-center justify-between border-b border-line px-6 py-4">
+      <div class="flex items-center gap-2.5">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute h-full w-full animate-ping rounded-full bg-fern/50 motion-reduce:hidden"></span>
+          <span class="relative h-2 w-2 rounded-full bg-fern"></span>
+        </span>
+        <span class="font-mono text-xs text-ink-faint">yourshop</span>
+      </div>
+      <span class="font-mono text-xs text-fern-deep">Sellogram is answering</span>
+    </div>
+
+    <div class="space-y-10 px-6 py-8 sm:px-8">
+      {items.map((item, index) => (
+        <div class="space-y-2" data-scenario>
+          {index > 0 && <div class="mb-6 border-t border-dashed border-line" aria-hidden="true"></div>}
+          <div class="flex justify-start scenario-bubble scenario-customer">
+            <p class="max-w-[85%] rounded-2xl rounded-bl-md border border-line bg-paper px-4 py-2.5 text-sm leading-relaxed text-ink">
+              {item.customer}
+            </p>
+          </div>
+          <div class="flex justify-end scenario-bubble scenario-sellogram">
+            <p class="max-w-[85%] rounded-2xl rounded-br-md bg-fern px-4 py-2.5 text-sm leading-relaxed text-paper">
+              {kesParts(item.sellogram).map((part) =>
+                isKes(part) ? <span class="font-mono text-[0.8125rem]">{part}</span> : part,
+              )}
+            </p>
+          </div>
+          <div class="scenario-bubble flex justify-end pt-1">
+            <p class="max-w-[85%] text-right font-mono text-xs leading-relaxed text-ink-faint">
+              {item.ownerNote}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="border-t border-line px-6 py-3 text-center font-mono text-[0.6875rem] text-ink-faint">
+      An illustrative conversation, not a real customer thread.
+    </p>
+  </div>
+</div>

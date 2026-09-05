@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
+import sellogramWordmark from '../../brand/identity/wordmark/master/sellogram.svg?raw';
 import { useCTATracking } from '../hooks/useTracking';
-import { scrollToSection } from '../utils/scrollToSection';
 
 const APP_URL = 'https://app.withmira.co';
 const CTA_LABEL = 'Get started';
 
+// Global nav uses real routes so it works from any page (route-always). The
+// homepage no longer smooth-scrolls from the header; in-page CTAs handle that.
 const NAV_ITEMS = [
-  { id: 'how-it-works', label: 'How it works' },
-  { id: 'pricing', label: 'Pricing' },
+  { href: '/how-it-works', label: 'How it works', id: 'how-it-works' },
+  { href: '/pricing', label: 'Pricing', id: 'pricing' },
 ];
 
 /**
@@ -40,16 +42,17 @@ const Header = () => {
         isScrolled ? 'border-line' : 'border-transparent'
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
         <a
-          href="#hero"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection('hero');
-          }}
-          className="font-display text-2xl font-semibold tracking-tight text-ink"
+          href="/"
+          aria-label="Sellogram"
+          className="block w-32 sm:w-36 text-ink"
         >
-          Mira
+          <span
+            aria-hidden="true"
+            className="block [&>svg]:h-auto [&>svg]:w-full"
+            dangerouslySetInnerHTML={{ __html: sellogramWordmark }}
+          />
         </a>
 
         <div className="flex items-center gap-2 sm:gap-6">
@@ -57,12 +60,8 @@ const Header = () => {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  trackCTA(`header_nav_${item.id}`, item.label, 'header');
-                  scrollToSection(item.id);
-                }}
+                href={item.href}
+                onClick={() => trackCTA(`header_nav_${item.id}`, item.label, 'header')}
                 className="text-sm text-ink-light transition-colors duration-200 hover:text-ink"
               >
                 {item.label}
