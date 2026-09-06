@@ -39,6 +39,9 @@ coverage/
 # Local Netlify folder
 .netlify
 
+# Generated hero asset (materialized from assets/hero before dev/build/test)
+public/images/sellogram-hero-nairobi.webp
+
 # Dolt database files (added by bd init)
 .dolt/
 *.db

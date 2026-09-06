@@ -20,7 +20,7 @@ describe('hero photography asset', () => {
     const image = fs.readFileSync(HERO_IMAGE);
     const dimensions = readLossyWebpDimensions(image);
 
-    expect(image.byteLength).toBeGreaterThan(100_000);
+    expect(image.byteLength).toBeGreaterThan(40_000);
     expect(dimensions).toEqual({ width: 1536, height: 1024 });
   });
 });

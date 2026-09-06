@@ -25,11 +25,11 @@ const HeroChatDemo = () => {
       <img
         src={HERO_IMAGE_SRC}
         alt="Nairobi fashion seller photographing a denim look against a cobalt-blue stairwell"
-        width={900}
-        height={600}
+        width={1536}
+        height={1024}
         loading="eager"
         decoding="async"
-        className="aspect-[3/2] h-full w-full object-cover"
+        className="aspect-[3/2] w-full object-cover"
       />
 
       <div className="absolute inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto sm:left-[48%] sm:top-5 sm:w-[46%]">
