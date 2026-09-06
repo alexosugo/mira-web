@@ -24,11 +24,11 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} className="pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
+    <section ref={sectionRef} className="pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-44 lg:pb-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid items-start gap-16 lg:grid-cols-12 lg:gap-12">
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
           {/* Copy */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-5">
             <h1
               className="font-display text-[clamp(2.25rem,1.5rem+3.4vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
               style={{ animationDelay: '80ms' }}
@@ -71,17 +71,16 @@ const Hero = () => {
               </button>
             </div>
 
-            {/* Quiet trust strip */}
             <p
               className="mt-14 border-t border-line pt-5 font-mono text-xs text-ink-faint animate-fade-in-up sm:text-sm"
               style={{ animationDelay: '320ms' }}
             >
-              Free to start&ensp;·&ensp;No card needed&ensp;·&ensp;M-Pesa at checkout
+              Free to start&ensp;·&ensp;Connect your Instagram Professional account
             </p>
           </div>
 
-          {/* Proof: the DM doing the selling */}
-          <div className="lg:col-span-5 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+          {/* Proof: merchant context and the shop DM Sellogram powers */}
+          <div className="lg:col-span-7 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
             <HeroChatDemo />
           </div>
         </div>
