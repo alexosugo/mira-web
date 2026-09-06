@@ -61,22 +61,12 @@ const HeroChatDemo = () => {
                 </p>
               </div>
             ))}
-
-            <div className="flex items-center gap-3 rounded-xl border border-line bg-white px-3 py-2 sm:hidden">
-              <div className="flex h-10 w-9 shrink-0 items-center justify-center rounded-lg bg-paper-raised text-lg" aria-hidden="true">
-                👖
-              </div>
-              <div className="min-w-0">
-                <p className="truncate text-xs font-semibold text-ink">Patchwork denim set</p>
-                <p className="mt-0.5 font-mono text-[0.65rem] text-ink-faint">KSh 6,000 · Size M</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-5 left-[58%] hidden w-[31%] items-center gap-3 rounded-2xl border border-white/70 bg-white/95 px-3 py-3 backdrop-blur-sm sm:flex">
-        <div className="flex h-12 w-11 shrink-0 items-center justify-center rounded-xl bg-paper-raised text-xl" aria-hidden="true">
+      <div className="absolute left-3 top-3 flex w-[12rem] items-center gap-3 rounded-2xl border border-white/70 bg-white/95 px-3 py-3 backdrop-blur-sm sm:bottom-5 sm:left-[58%] sm:top-auto sm:w-[31%]">
+        <div className="flex h-10 w-9 shrink-0 items-center justify-center rounded-xl bg-paper-raised text-lg sm:h-12 sm:w-11 sm:text-xl" aria-hidden="true">
           👖
         </div>
         <div className="min-w-0">
