@@ -24,27 +24,29 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} className="pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-44 lg:pb-32">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-          {/* Copy */}
-          <div className="lg:col-span-5">
+    <section ref={sectionRef} className="overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-40">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-10 2xl:px-14">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(320px,0.72fr)_minmax(0,1.42fr)] lg:gap-8 xl:gap-10">
+          <div className="relative z-10 lg:py-10">
+            <p className="mb-5 font-mono text-xs uppercase tracking-[0.14em] text-fern">
+              Instagram commerce, without the inbox shift
+            </p>
             <h1
-              className="font-display text-[clamp(2.25rem,1.5rem+3.4vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-ink [text-wrap:balance] animate-fade-in-up"
+              className="max-w-[11ch] animate-fade-in-up font-display text-[clamp(2.7rem,2rem+3.4vw,5rem)] font-semibold leading-[0.96] tracking-tight text-ink [text-wrap:balance]"
               style={{ animationDelay: '80ms' }}
             >
-              Sellogram answers your DMs and sells in them
+              {HERO_HEADLINE}
             </h1>
 
             <p
-              className="mt-8 max-w-md text-lg leading-relaxed text-ink-light animate-fade-in-up"
+              className="mt-7 max-w-lg animate-fade-in-up text-lg leading-relaxed text-ink-light sm:text-xl"
               style={{ animationDelay: '160ms' }}
             >
               {HERO_SUBHEAD}
             </p>
 
             <div
-              className="mt-10 flex flex-wrap items-center gap-6 animate-fade-in-up"
+              className="mt-9 flex animate-fade-in-up flex-wrap items-center gap-6"
               style={{ animationDelay: '240ms' }}
             >
               <a
@@ -56,7 +58,7 @@ const Hero = () => {
                   window.location.href = APP_URL;
                 }}
                 aria-busy={isRedirecting}
-                className={`inline-flex min-h-[48px] items-center rounded-full bg-fern px-7 text-base font-medium text-paper transition-colors duration-200 hover:bg-fern-deep ${
+                className={`inline-flex min-h-[50px] items-center rounded-full bg-fern px-8 text-base font-medium text-paper transition-colors duration-200 hover:bg-fern-deep ${
                   isRedirecting ? 'pointer-events-none opacity-80' : ''
                 }`}
               >
@@ -72,15 +74,17 @@ const Hero = () => {
             </div>
 
             <p
-              className="mt-14 border-t border-line pt-5 font-mono text-xs text-ink-faint animate-fade-in-up sm:text-sm"
+              className="mt-10 max-w-md border-t border-line pt-5 font-mono text-xs text-ink-faint sm:text-sm"
               style={{ animationDelay: '320ms' }}
             >
               Free to start&ensp;·&ensp;Connect your Instagram Professional account
             </p>
           </div>
 
-          {/* Proof: merchant context and the shop DM Sellogram powers */}
-          <div className="lg:col-span-7 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+          <div
+            className="min-w-0 animate-fade-in-up lg:-mr-2 xl:-mr-8"
+            style={{ animationDelay: '260ms' }}
+          >
             <HeroChatDemo />
           </div>
         </div>
