@@ -44,12 +44,14 @@ describe('Sellogram rename', () => {
     }
   });
 
-  it('uses Sellogram rather than Mira as the chat actor identifier', () => {
+  it('keeps Sellogram behind the shop identity in shopper-facing chat', () => {
     const chat = read('src/components/HeroChatDemo.tsx');
     const nightShift = read('src/components/NightShift.tsx');
 
     expect(chat).not.toMatch(/['"]mira['"]/);
-    expect(chat).toContain("'sellogram'");
+    expect(chat).toContain("'shop'");
+    expect(chat).not.toContain("'sellogram'");
+    expect(chat).toContain('Sellogram powers');
     expect(nightShift).not.toContain('isMira');
     expect(nightShift).toContain('isSellogram');
   });
