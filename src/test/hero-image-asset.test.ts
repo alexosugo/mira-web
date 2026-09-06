@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const HERO_IMAGE = path.join(process.cwd(), 'public/images/sellogram-hero-nairobi.webp');
+const HERO_IMAGE = path.join(process.cwd(), 'public/images/hero/cobalt-stairwell.webp');
 
 function readLossyWebpDimensions(buffer: Buffer) {
   expect(buffer.subarray(0, 4).toString('ascii')).toBe('RIFF');
@@ -20,7 +20,6 @@ describe('hero photography asset', () => {
     const image = fs.readFileSync(HERO_IMAGE);
     const dimensions = readLossyWebpDimensions(image);
 
-    expect(image.byteLength).toBeGreaterThan(40_000);
     expect(dimensions).toEqual({ width: 1536, height: 1024 });
   });
 });

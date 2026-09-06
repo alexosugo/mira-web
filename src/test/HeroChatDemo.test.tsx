@@ -4,14 +4,17 @@ import { render, screen } from '@testing-library/react';
 import HeroChatDemo from '../components/HeroChatDemo';
 
 describe('HeroChatDemo', () => {
-  it('renders the Nairobi commerce photograph as the hero proof surface', () => {
+  it('renders the full cobalt stairwell photograph as the hero proof surface', () => {
     render(<HeroChatDemo />);
 
-    expect(
-      screen.getByRole('img', {
-        name: /Nairobi fashion seller photographing a denim look against a cobalt-blue stairwell/i,
-      })
-    ).toBeInTheDocument();
+    const image = screen.getByRole('img', {
+      name: /Nairobi fashion seller photographing a denim look against a cobalt-blue stairwell/i,
+    });
+
+    expect(image).toHaveAttribute('src', '/images/hero/cobalt-stairwell.webp');
+    expect(image).toHaveAttribute('width', '1536');
+    expect(image).toHaveAttribute('height', '1024');
+    expect(image.className).not.toContain('object-cover');
   });
 
   it('shows the customer chatting with the shop, not with Sellogram', () => {
