@@ -122,17 +122,31 @@ For production:
 
 ## Image library
 
-A complete reference set of the generated images is being stored under `assets/imagery-library/`. The reference copies are intentionally web-sized so the branch does not absorb a large unoptimized generation archive. The existing hero materialization path remains the source for the larger hero asset.
+The branch contains the complete generated set as a lightweight reference archive:
 
-When a reference image is selected for a large final placement, replace that specific reference with a larger optimized source before shipping.
+`assets/imagery-library/sellogram-generated-reference-library-360.zip`
+
+The archive contains all 65 generated images as WebP reference copies with a maximum dimension of 360 px. `assets/imagery-library/manifest.txt` lists every filename.
+
+These are selection and composition references, not production-size masters. The approved cobalt hero retains its higher-resolution source through the existing hero materialization flow. When another reference image is selected for a large placement, replace that specific reference with its higher-resolution optimized source before shipping.
 
 ## Current implementation
 
-Commit `6e00439` introduced the imagery-led homepage composition, including the new supported-shop / DM-journey / delivery sections.
+Commit `6e00439` introduced the imagery-led homepage composition, including the new supported-shop, DM-journey, and delivery sections.
 
 The design implementation plan is in `docs/superpowers/plans/2026-09-06-imagery-led-landing-page.md`.
 
 Do not assume the current composition is final. The next pass should be visual tuning at real viewport sizes, especially the hero scale and crop.
+
+## Known implementation gap
+
+The new homepage components currently reference paths under `public/images/shops/` and `public/images/outcomes/`, but production-size assets have not yet been materialized into those paths. Use the reference library to choose the exact source images, then add optimized production assets or extend the existing materialization script before treating the page as deployment-ready.
+
+The current code should therefore be treated as a composition pass, not a finished deployable page.
+
+## CI note
+
+The repository declares Node `>=22.12.0`, but `.github/workflows/ci.yml` currently installs Node 20. The earlier CI run also failed on the intentionally-red imagery contract commit before the new components were added. Re-run verification from the latest branch state after aligning Node versions rather than relying on that historical failure.
 
 ## Verification
 
@@ -154,5 +168,3 @@ Then inspect at minimum:
 - 390 px mobile
 
 Visual inspection is required. Tests cannot tell whether an expansive image has accidentally become a small card.
-
-Note: the repository CI workflow currently configures Node 20 while `package.json` requires Node >= 22.12.0. Align CI before treating engine warnings as meaningful application failures.
