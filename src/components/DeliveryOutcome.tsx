@@ -1,3 +1,11 @@
+import ShopDMCard, { type ShopDMMessage } from './ShopDMCard';
+
+const DELIVERY_MESSAGES: readonly ShopDMMessage[] = [
+  { from: 'customer', text: 'Sent to the M-Pesa number.' },
+  { from: 'shop', text: 'Payment confirmed. Your order is packed.' },
+  { from: 'shop', text: "Rider ametoka. He'll call when he gets to the gate." },
+];
+
 const DeliveryOutcome = () => {
   return (
     <section id="delivery-outcome" className="py-24 sm:py-32 lg:py-40">
@@ -15,16 +23,27 @@ const DeliveryOutcome = () => {
           </p>
         </div>
 
-        <figure className="mt-12 overflow-hidden rounded-[1.75rem] bg-paper-raised shadow-[0_30px_90px_rgba(14,30,23,0.12)] sm:mt-16 sm:rounded-[2.25rem]">
-          <img
-            src="/images/outcomes/piki-piki-delivery.webp"
-            alt="Nairobi piki piki rider delivering a Sellogram-powered shop order to a customer at her gate"
-            width={1200}
-            height={675}
-            loading="lazy"
-            decoding="async"
-            className="block h-auto w-full"
-          />
+        <figure className="relative mt-12 sm:mt-16">
+          <div className="overflow-hidden rounded-xl bg-paper-raised shadow-[0_30px_90px_rgba(14,30,23,0.12)] sm:rounded-2xl">
+            <img
+              src="/images/outcomes/piki-piki-delivery.webp"
+              alt="Nairobi piki piki rider delivering a Sellogram-powered shop order to a customer at her gate"
+              width={1672}
+              height={941}
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1440px) 1360px, calc(100vw - 2.5rem)"
+              className="block h-auto w-full"
+            />
+          </div>
+
+          <div className="relative z-10 mx-4 -mt-12 sm:absolute sm:right-[4%] sm:top-[8%] sm:mx-0 sm:mt-0 sm:w-[34%] lg:w-[28%]">
+            <ShopDMCard
+              shopName="Cocoa Rose Beauty"
+              initials="CR"
+              messages={DELIVERY_MESSAGES}
+            />
+          </div>
         </figure>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">

@@ -56,7 +56,7 @@ describe('Sellogram rename', () => {
     expect(nightShift).toContain('isSellogram');
   });
 
-  it('does not migrate legacy URLs until the domain cutover is explicitly requested', () => {
+  it('uses the current Sellogram app URL after the domain cutover', () => {
     const header = read('src/components/Header.tsx');
     const hero = read('src/components/Hero.tsx');
     const pricing = read('src/components/Pricing.tsx');
@@ -65,19 +65,18 @@ describe('Sellogram rename', () => {
     const layout = read('src/layouts/BaseLayout.astro');
     const readme = read('README.md');
 
-    expect(header).toContain('https://app.withmira.co');
-    expect(hero).toContain('https://app.withmira.co');
-    expect(pricing).toContain('https://app.withmira.co');
-    expect(elite).toContain('app.withmira.co');
+    expect(header).toContain('https://app.sellogram.co');
+    expect(hero).toContain('https://app.sellogram.co');
+    expect(pricing).toContain('https://app.sellogram.co');
+    expect(elite).toContain('app.sellogram.co');
     expect(elite).toContain('hello@sellogram.co');
-    expect(footer).toContain('https://app.withmira.co');
     expect(footer).toContain('hello@sellogram.co');
     expect(layout).toContain('https://sellogram.co/');
-    expect(layout).toContain('https://app.withmira.co');
+    expect(layout).toContain('https://app.sellogram.co');
     expect(readme).toContain('https://app.netlify.com/projects/withmira/deploys');
 
-    for (const file of [header, hero, pricing, elite, footer, layout, readme]) {
-      expect(file).not.toContain('app.sellogram.co');
+    for (const file of [header, hero, pricing, elite, footer, layout]) {
+      expect(file).not.toContain('app.withmira.co');
     }
   });
 });

@@ -7,20 +7,13 @@
         "node": ">=22.12.0"
     },
     "scripts": {
-        "materialize:hero": "node scripts/materialize-hero-image.mjs",
-        "predev": "npm run materialize:hero",
         "dev": "astro dev",
-        "predev:netlify": "npm run materialize:hero",
         "dev:netlify": "netlify dev",
-        "prebuild": "npm run materialize:hero",
         "build": "astro build",
         "lint": "eslint .",
         "preview": "astro preview",
-        "pretest": "npm run materialize:hero",
         "test": "vitest run",
-        "pretest:watch": "npm run materialize:hero",
         "test:watch": "vitest",
-        "pretest:coverage": "npm run materialize:hero",
         "test:coverage": "vitest run --coverage"
     },
     "dependencies": {

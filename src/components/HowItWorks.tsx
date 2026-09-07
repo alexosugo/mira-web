@@ -18,8 +18,8 @@ const HowItWorks = () => {
               <img
                 src="/images/shops/daily-drop.webp"
                 alt="Fashion sellers moving a rack of new stock through the city"
-                width={720}
-                height={480}
+                width={1672}
+                height={941}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"

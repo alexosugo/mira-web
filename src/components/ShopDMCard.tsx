@@ -1,14 +1,14 @@
 export interface ShopDMMessage {
-  from: 'customer' | 'shop';
-  text: string;
+  readonly from: 'customer' | 'shop';
+  readonly text: string;
 }
 
 interface ShopDMCardProps {
-  shopName: string;
-  initials: string;
-  messages: ShopDMMessage[];
-  className?: string;
-  compact?: boolean;
+  readonly shopName: string;
+  readonly initials: string;
+  readonly messages: readonly ShopDMMessage[];
+  readonly className?: string;
+  readonly compact?: boolean;
 }
 
 const ShopDMCard = ({
@@ -20,7 +20,7 @@ const ShopDMCard = ({
 }: ShopDMCardProps) => {
   return (
     <div
-      className={`overflow-hidden rounded-2xl border border-white/75 bg-white/95 shadow-[0_18px_60px_rgba(14,30,23,0.18)] backdrop-blur-md ${className}`}
+      className={`overflow-hidden rounded-[1.15rem] border border-white/75 bg-white/95 shadow-[0_18px_60px_rgba(14,30,23,0.18)] backdrop-blur-md ${className}`}
     >
       <div className={`flex items-center gap-3 border-b border-line ${compact ? 'px-3 py-2.5' : 'px-4 py-3'}`}>
         <div

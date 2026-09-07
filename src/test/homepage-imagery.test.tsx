@@ -39,6 +39,12 @@ describe('imagery-led homepage sections', () => {
     expect(screen.getByText(/Sent to the M-Pesa number/i)).toBeInTheDocument();
     expect(screen.getByText(/Rider ametoka/i)).toBeInTheDocument();
     expect(screen.queryByText(/card payment/i)).not.toBeInTheDocument();
+
+    const journeyImages = screen.getAllByRole('img');
+    expect(journeyImages).toHaveLength(4);
+    for (const image of journeyImages) {
+      expect(image.getAttribute('src')).toMatch(/^\/images\/journey\//);
+    }
   });
 
   it('finishes the story with a real delivery outcome', () => {
@@ -48,5 +54,8 @@ describe('imagery-led homepage sections', () => {
     expect(
       screen.getByRole('img', { name: /piki piki rider delivering a Sellogram-powered shop order/i })
     ).toBeInTheDocument();
+    expect(screen.getByText('Cocoa Rose Beauty')).toBeInTheDocument();
+    expect(screen.getByText(/Payment confirmed. Your order is packed/i)).toBeInTheDocument();
+    expect(screen.getByText(/Rider ametoka/i)).toBeInTheDocument();
   });
 });

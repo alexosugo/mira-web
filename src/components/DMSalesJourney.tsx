@@ -1,71 +1,89 @@
 import ShopDMCard, { type ShopDMMessage } from './ShopDMCard';
 
 interface JourneyStage {
-  number: string;
-  title: string;
-  description: string;
-  city: string;
-  image: string;
-  imageAlt: string;
-  shopName: string;
-  initials: string;
-  messages: ShopDMMessage[];
-  chatPosition: string;
+  readonly number: string;
+  readonly title: string;
+  readonly description: string;
+  readonly city: string;
+  readonly image: string;
+  readonly imageAlt: string;
+  readonly imageWidth: number;
+  readonly imageHeight: number;
+  readonly shopName: string;
+  readonly initials: string;
+  readonly messages: readonly ShopDMMessage[];
+  readonly mediaLayout: string;
+  readonly copyLayout: string;
+  readonly chatPosition: string;
 }
 
-const STAGES: JourneyStage[] = [
+const STAGES: readonly JourneyStage[] = [
   {
     number: '01',
     title: 'Answers product questions',
     description: 'Product details, size, stock, shade, scent, and the small questions that decide whether someone keeps shopping.',
     city: 'Accra',
-    image: '/images/shops/fashion-thrift.webp',
+    image: '/images/journey/product-question.webp',
     imageAlt: 'Fashion seller measuring a garment before answering a customer sizing question',
+    imageWidth: 1122,
+    imageHeight: 1402,
     shopName: 'Kasa Archive',
     initials: 'KA',
     messages: [
-      { from: 'customer', text: 'Do you have this in a 10?' },
-      { from: 'shop', text: 'Yes. Size 10 is still in stock — GH₵420.' },
+      { from: 'customer', text: "Please what's the waist on the size 10?" },
+      { from: 'shop', text: '30 inches. Size 10 is in stock — GH₵420.' },
     ],
-    chatPosition: 'md:left-5',
+    mediaLayout: 'lg:col-span-7',
+    copyLayout: 'lg:col-span-4 lg:col-start-9',
+    chatPosition: 'md:right-5',
   },
   {
     number: '02',
     title: 'Shares delivery details',
     description: 'Area, fee, and timing can be answered while the buyer is still ready to move.',
     city: 'Lagos',
-    image: '/images/shops/beauty.webp',
+    image: '/images/journey/delivery-details.webp',
     imageAlt: 'Beauty seller preparing products while a customer asks about delivery',
+    imageWidth: 1122,
+    imageHeight: 1402,
     shopName: 'Mide Beauty',
     initials: 'MB',
     messages: [
       { from: 'customer', text: 'How much delivery to Lekki Phase 1?' },
       { from: 'shop', text: '₦3,000. Rider can get there this afternoon.' },
     ],
-    chatPosition: 'md:right-5',
+    mediaLayout: 'lg:col-span-7 lg:col-start-6 lg:row-start-1',
+    copyLayout: 'lg:col-span-4 lg:row-start-1',
+    chatPosition: 'md:left-5',
   },
   {
     number: '03',
     title: 'Receives payment confirmations',
     description: 'When the customer sends payment confirmation, the conversation keeps moving instead of disappearing into the inbox.',
     city: 'Nairobi',
-    image: '/images/shops/fragrance.webp',
+    image: '/images/journey/payment-confirmation.webp',
     imageAlt: 'Fragrance seller preparing an order after a customer sends payment confirmation',
+    imageWidth: 1122,
+    imageHeight: 1402,
     shopName: 'Aster Fragrance',
     initials: 'AF',
     messages: [
       { from: 'customer', text: 'Sent to the M-Pesa number.' },
-      { from: 'shop', text: 'Seen, thank you. Got it.' },
+      { from: 'shop', text: 'Payment confirmed. Your order is packed.' },
     ],
-    chatPosition: 'md:left-5',
+    mediaLayout: 'lg:col-span-7',
+    copyLayout: 'lg:col-span-4 lg:col-start-9',
+    chatPosition: 'md:right-5',
   },
   {
     number: '04',
     title: 'Keeps the order moving',
     description: 'The customer gets the next useful update without needing to chase the shop for it.',
     city: 'Nairobi',
-    image: '/images/outcomes/piki-piki-delivery.webp',
+    image: '/images/journey/order-progress.webp',
     imageAlt: 'Piki piki rider handing a beauty order to a customer at her gate',
+    imageWidth: 1672,
+    imageHeight: 941,
     shopName: 'Cocoa Rose Beauty',
     initials: 'CR',
     messages: [
@@ -73,7 +91,9 @@ const STAGES: JourneyStage[] = [
       { from: 'customer', text: 'Sawa, thanks.' },
       { from: 'shop', text: "He'll call when he gets to the gate." },
     ],
-    chatPosition: 'md:right-5',
+    mediaLayout: 'lg:col-span-7 lg:col-start-6 lg:row-start-1',
+    copyLayout: 'lg:col-span-4 lg:row-start-1',
+    chatPosition: 'md:left-5',
   },
 ];
 
@@ -94,16 +114,19 @@ const DMSalesJourney = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-x-6 gap-y-14 lg:mt-20 lg:grid-cols-2">
+        <ol className="mt-14 space-y-20 lg:mt-24 lg:space-y-28">
           {STAGES.map((stage) => (
-            <article key={stage.number} className="min-w-0">
-              <div className="relative">
-                <div className="aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-paper-raised">
+            <li key={stage.number} className="grid min-w-0 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:items-center lg:gap-7">
+              <div className={`relative min-w-0 ${stage.mediaLayout}`}>
+                <div className="aspect-[5/4] overflow-hidden rounded-xl bg-paper-raised sm:rounded-2xl">
                   <img
                     src={stage.image}
                     alt={stage.imageAlt}
+                    width={stage.imageWidth}
+                    height={stage.imageHeight}
                     loading="lazy"
                     decoding="async"
+                    sizes="(min-width: 1024px) 58vw, 100vw"
                     className="h-full w-full object-cover"
                   />
                 </div>
@@ -114,28 +137,28 @@ const DMSalesJourney = () => {
                     shopName={stage.shopName}
                     initials={stage.initials}
                     messages={stage.messages}
-                    compact
+                    className="md:max-w-[20rem]"
                   />
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-[auto_1fr] gap-4 md:mt-7">
-                <span className="font-mono text-xs text-fern">{stage.number}</span>
-                <div>
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h3 className="font-display text-2xl font-semibold text-ink">{stage.title}</h3>
-                    <span className="font-mono text-[0.65rem] uppercase tracking-wide text-ink-faint">
-                      {stage.city}
-                    </span>
-                  </div>
-                  <p className="mt-2 max-w-xl text-base leading-relaxed text-ink-light">
-                    {stage.description}
-                  </p>
+              <div className={stage.copyLayout}>
+                <span className="font-display text-6xl font-semibold leading-none text-ink/10 sm:text-7xl">
+                  {stage.number}
+                </span>
+                <div className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="font-display text-3xl font-semibold leading-tight text-ink">{stage.title}</h3>
+                  <span className="font-mono text-[0.65rem] uppercase tracking-wide text-ink-faint">
+                    {stage.city}
+                  </span>
                 </div>
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-light sm:text-lg">
+                  {stage.description}
+                </p>
               </div>
-            </article>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

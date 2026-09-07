@@ -1,33 +1,42 @@
+import { ArrowUpRight } from 'lucide-react';
+
 interface SupportedShop {
-  name: string;
-  href: string;
-  image: string;
-  imageAlt: string;
-  description: string;
-  tags: string[];
-  layout: string;
-  aspect: string;
+  readonly name: string;
+  readonly href: string;
+  readonly image: string;
+  readonly imageAlt: string;
+  readonly imageWidth: number;
+  readonly imageHeight: number;
+  readonly description: string;
+  readonly details: string;
+  readonly layout: string;
+  readonly aspect: string;
+  readonly imagePosition?: string;
 }
 
-const SHOPS: SupportedShop[] = [
+const SHOPS: readonly SupportedShop[] = [
   {
     name: 'Daily-drop shops',
     href: '/use-cases/daily-drop-shops',
     image: '/images/shops/daily-drop.webp',
     imageAlt: 'Fashion sellers moving a rack of fresh pieces through the city',
+    imageWidth: 1672,
+    imageHeight: 941,
     description: 'New stock moves fast. Sellogram keeps product and availability questions moving with it.',
-    tags: ['drops', 'stock', 'delivery'],
+    details: 'Drops · stock · delivery',
     layout: 'lg:col-span-7',
-    aspect: 'aspect-[3/2]',
+    aspect: 'aspect-[16/10]',
   },
   {
     name: 'Fashion & thrift',
     href: '/use-cases/fashion',
     image: '/images/shops/fashion-thrift.webp',
     imageAlt: 'Fashion seller measuring denim at a bright city worktable',
+    imageWidth: 1122,
+    imageHeight: 1402,
     description: 'Sizes, measurements, prices, and stock answered in the shop DM.',
-    tags: ['sizes', 'measurements', 'stock'],
-    layout: 'lg:col-span-5',
+    details: 'Sizes · measurements · stock',
+    layout: 'lg:col-span-5 lg:mt-24',
     aspect: 'aspect-[4/5]',
   },
   {
@@ -35,8 +44,10 @@ const SHOPS: SupportedShop[] = [
     href: '/use-cases/beauty',
     image: '/images/shops/beauty.webp',
     imageAlt: 'Beauty seller packing colorful products in a bright studio',
+    imageWidth: 1122,
+    imageHeight: 1402,
     description: 'Shade, bundle, stock, and delivery questions without the endless back and forth.',
-    tags: ['shades', 'bundles', 'delivery'],
+    details: 'Shades · bundles · delivery',
     layout: 'lg:col-span-4',
     aspect: 'aspect-[4/5]',
   },
@@ -45,9 +56,11 @@ const SHOPS: SupportedShop[] = [
     href: '/use-cases/accessories',
     image: '/images/shops/accessories.webp',
     imageAlt: 'Accessories seller wrapping a gift order by hand',
+    imageWidth: 1122,
+    imageHeight: 1402,
     description: 'Bags, jewellery, gifts, compatibility questions, and the details buyers need before they order.',
-    tags: ['details', 'gifts', 'orders'],
-    layout: 'lg:col-span-4',
+    details: 'Details · gifts · orders',
+    layout: 'lg:col-span-4 lg:mt-16',
     aspect: 'aspect-[4/5]',
   },
   {
@@ -55,8 +68,10 @@ const SHOPS: SupportedShop[] = [
     href: '/use-cases/fragrances',
     image: '/images/shops/fragrance.webp',
     imageAlt: 'Male fragrance maker working with bottles and scent materials',
+    imageWidth: 1122,
+    imageHeight: 1402,
     description: 'Notes, decant sizes, availability, and delivery details answered from your own shop information.',
-    tags: ['notes', 'decants', 'stock'],
+    details: 'Notes · decants · stock',
     layout: 'lg:col-span-4',
     aspect: 'aspect-[4/5]',
   },
@@ -65,20 +80,26 @@ const SHOPS: SupportedShop[] = [
     href: '/use-cases/home-bakeries-food-brands',
     image: '/images/shops/bakery-food.webp',
     imageAlt: 'Baker packing fresh pastries and customer orders',
+    imageWidth: 1122,
+    imageHeight: 1402,
     description: 'Today’s availability, order timing, delivery areas, and menu questions while you keep making.',
-    tags: ['menu', 'timing', 'delivery'],
+    details: 'Menu · timing · delivery',
     layout: 'lg:col-span-7',
     aspect: 'aspect-[16/10]',
+    imagePosition: 'object-top',
   },
   {
     name: 'Skincare & haircare',
     href: '/use-cases/skincare-haircare-makers',
     image: '/images/shops/skincare-haircare.webp',
     imageAlt: 'Skincare maker preparing jars and bottles in a sunlit studio',
+    imageWidth: 1122,
+    imageHeight: 1402,
     description: 'Product facts, ingredients, sizes, stock, and orders answered between batches.',
-    tags: ['products', 'sizes', 'orders'],
+    details: 'Products · sizes · orders',
     layout: 'lg:col-span-5',
     aspect: 'aspect-[16/10]',
+    imagePosition: 'object-top',
   },
 ];
 
@@ -99,43 +120,37 @@ const SupportedShops = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12">
+        <div className="mt-14 grid gap-x-5 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-flow-row-dense lg:grid-cols-12 lg:gap-x-7 lg:gap-y-20">
           {SHOPS.map((shop) => (
             <a
               key={shop.href}
               href={shop.href}
               className={`group block ${shop.layout}`}
             >
-              <div className={`overflow-hidden rounded-[1.5rem] bg-paper-raised ${shop.aspect}`}>
+              <div className={`overflow-hidden rounded-xl bg-paper-raised sm:rounded-2xl ${shop.aspect}`}>
                 <img
                   src={shop.image}
                   alt={shop.imageAlt}
+                  width={shop.imageWidth}
+                  height={shop.imageHeight}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.02]"
+                  sizes="(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
+                  className={`h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.02] ${shop.imagePosition ?? ''}`}
                 />
               </div>
-              <div className="mt-5 flex items-start justify-between gap-5">
+              <div className="mt-5 flex items-start justify-between gap-5 border-t border-line pt-4">
                 <div>
                   <h3 className="font-display text-xl font-semibold text-ink sm:text-2xl">{shop.name}</h3>
                   <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-light sm:text-base">
                     {shop.description}
                   </p>
                 </div>
-                <span className="mt-1 text-xl text-ink-faint transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-                  ↗
-                </span>
+                <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-ink-faint transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
               </div>
-              <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${shop.name} capabilities`}>
-                {shop.tags.map((tag) => (
-                  <li
-                    key={tag}
-                    className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-wide text-ink-faint"
-                  >
-                    {tag}
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-ink-faint">
+                {shop.details}
+              </p>
             </a>
           ))}
         </div>

@@ -24,22 +24,25 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} className="overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-40">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-10 2xl:px-14">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(320px,0.72fr)_minmax(0,1.42fr)] lg:gap-8 xl:gap-10">
-          <div className="relative z-10 lg:py-10">
+    <section ref={sectionRef} className="overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36 lg:pb-36 lg:pt-40">
+      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
+        <div className="grid gap-9 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.14em] text-fern">
               Instagram commerce, without the inbox shift
             </p>
             <h1
-              className="max-w-[11ch] animate-fade-in-up font-display text-[clamp(2.7rem,2rem+3.4vw,5rem)] font-semibold leading-[0.96] tracking-tight text-ink [text-wrap:balance]"
+              className="max-w-[12ch] animate-fade-in-up font-display text-[clamp(3rem,1.8rem+5vw,6.6rem)] font-semibold leading-[0.9] tracking-tight text-ink [text-wrap:balance]"
               style={{ animationDelay: '80ms' }}
             >
               {HERO_HEADLINE}
             </h1>
 
+          </div>
+
+          <div className="lg:col-span-4 lg:pb-2">
             <p
-              className="mt-7 max-w-lg animate-fade-in-up text-lg leading-relaxed text-ink-light sm:text-xl"
+              className="max-w-lg animate-fade-in-up text-lg leading-relaxed text-ink-light sm:text-xl"
               style={{ animationDelay: '160ms' }}
             >
               {HERO_SUBHEAD}
@@ -73,21 +76,19 @@ const Hero = () => {
               </button>
             </div>
 
-            <p
-              className="mt-10 max-w-md border-t border-line pt-5 font-mono text-xs text-ink-faint sm:text-sm"
-              style={{ animationDelay: '320ms' }}
-            >
-              Free to start&ensp;·&ensp;Connect your Instagram Professional account
-            </p>
-          </div>
-
-          <div
-            className="min-w-0 animate-fade-in-up lg:-mr-2 xl:-mr-8"
-            style={{ animationDelay: '260ms' }}
-          >
-            <HeroChatDemo />
           </div>
         </div>
+
+        <p className="mt-10 max-w-md border-t border-line pt-5 font-mono text-xs text-ink-faint sm:text-sm lg:mt-12">
+          Free to start&ensp;·&ensp;Connect your Instagram Professional account
+        </p>
+      </div>
+
+      <div
+        className="mx-auto mt-10 max-w-[1600px] animate-fade-in-up px-3 sm:mt-14 sm:px-5 lg:mt-16 lg:px-8"
+        style={{ animationDelay: '260ms' }}
+      >
+        <HeroChatDemo />
       </div>
     </section>
   );

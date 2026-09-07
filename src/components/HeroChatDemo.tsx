@@ -19,7 +19,7 @@ const HeroChatDemo = () => {
       aria-label="Example Nia Thrift Instagram DM conversation about a denim set and delivery to Kilimani"
       className="relative isolate"
     >
-      <div className="overflow-hidden rounded-[1.75rem] bg-night shadow-[0_30px_90px_rgba(14,30,23,0.16)] sm:rounded-[2.25rem]">
+      <div className="overflow-hidden rounded-xl bg-night shadow-[0_30px_90px_rgba(14,30,23,0.16)] sm:rounded-2xl">
         <img
           src={HERO_IMAGE_SRC}
           alt="Nairobi fashion seller photographing a denim look against a cobalt-blue stairwell"
@@ -27,15 +27,17 @@ const HeroChatDemo = () => {
           height={1024}
           loading="eager"
           decoding="async"
+          fetchPriority="high"
+          sizes="(min-width: 1600px) 1536px, calc(100vw - 2rem)"
           className="block h-auto w-full"
         />
       </div>
 
-      <div className="relative z-10 mx-3 -mt-12 sm:absolute sm:left-[52%] sm:top-[5%] sm:mx-0 sm:mt-0 sm:w-[32%] lg:w-[34%]">
+      <div className="relative z-10 mx-3 -mt-10 sm:absolute sm:left-[4%] sm:top-[7%] sm:mx-0 sm:mt-0 sm:w-[31%] lg:w-[28%] xl:w-[26%]">
         <ShopDMCard shopName="Nia Thrift" initials="NT" messages={MESSAGES} />
       </div>
 
-      <div className="relative z-20 mx-8 -mt-2 flex max-w-[17rem] items-center justify-between gap-4 rounded-2xl border border-white/75 bg-white/95 px-4 py-3 shadow-[0_16px_48px_rgba(14,30,23,0.16)] backdrop-blur-md sm:absolute sm:bottom-[8%] sm:left-[60%] sm:mx-0 sm:mt-0 sm:w-[27%] sm:max-w-none">
+      <div className="relative z-20 mx-8 -mt-2 flex max-w-[17rem] items-center justify-between gap-4 rounded-xl border border-white/75 bg-white/95 px-4 py-3 shadow-[0_16px_48px_rgba(14,30,23,0.16)] backdrop-blur-md sm:absolute sm:bottom-[8%] sm:left-[4%] sm:mx-0 sm:mt-0 sm:w-[29%] sm:max-w-none lg:w-[25%]">
         <div className="min-w-0">
           <p className="truncate text-xs font-semibold text-ink sm:text-sm">Patchwork denim set</p>
           <p className="mt-0.5 font-mono text-[0.65rem] text-ink-faint sm:text-xs">KSh 6,000 · Size M</p>

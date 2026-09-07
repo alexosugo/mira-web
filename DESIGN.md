@@ -1,7 +1,7 @@
 ---
-name: Mira
-description: Mira answers customers and helps them order in your Instagram DMs.
-source: /docs in this repo summarise the canonical Mira brand bundle (MIRA-BRAND-SYSTEM.md, visual-tokens.json). When they conflict, the brand bundle wins.
+name: Sellogram
+description: Sellogram answers customers and helps them order in a shop's Instagram DMs.
+source: The product rules in docs/imagery-handoff.md and the tokens in this file define the current landing-page system.
 colors:
   paper: "#F2F6F3"
   paper-raised: "#E7EEE9"
@@ -19,23 +19,24 @@ colors:
   night-raised: "#162C22"
   night-line: "#264436"
 fonts:
-  display: Fraunces (variable, 400–600, occasional italic emphasis)
-  body: Instrument Sans (400, 500, 600)
+  display: Archivo (400, 500, 600, 700)
+  body: Source Sans 3 (400, 500, 600)
   mono: IBM Plex Mono (400, 500)
 ---
 
-# Mira Visual System
+# Sellogram visual system
 
-Direction: **quiet, useful and product-led**. A well-made commerce publication
-combined with clear product evidence, not a generic software landing page.
-Calm rather than urgency; practical work rather than abstract technology.
+Direction: **editorial, sharp, colorful, and product-led**. Generated photography
+shows the merchant world. Live HTML/CSS shows Sellogram acting in the shop DM.
+The page must feel Instagram-native, not like a generic software landing page.
 
 ## Surfaces
 
 - **Paper** (`#F2F6F3`) is the ground. Panels sit on white or raised paper with
   a single hairline border (`line`), no drop shadows by default.
-- **Night** (`#0E1E17`) is for the footer and, at most, one strong dark
-  narrative section per page. Intentional depth, not a dark-mode style.
+- **Night** (`#0E1E17`) is for the footer and the NightShift section.
+- Cobalt, rose, amber, and bright studio color come from photography. Do not
+  mute them with beige or terracotta overlays.
 - Light theme only. No dark-mode toggle.
 
 ## The Fern Rule
@@ -54,9 +55,8 @@ dawn, it must be a money moment.
 
 ## Typography
 
-- **Fraunces** for display: page and major section headlines, optical sizing
-  on. Italic emphasis is occasional — one word, not every heading.
-- **Instrument Sans** for body, navigation, buttons, forms, UI annotations.
+- **Archivo** for display: page and major section headlines, tightly tracked.
+- **Source Sans 3** for body, navigation, buttons, forms, and UI annotations.
 - **IBM Plex Mono** for functional commerce detail only: KES figures,
   timestamps, order identifiers, plan limits, status labels, ledger lines.
   Do not use mono as a decorative section kicker — decorative kickers are not
@@ -64,22 +64,25 @@ dawn, it must be a money moment.
 
 ## Layout
 
-- `max-w-6xl` container, 12-column desktop grid, preferred splits 7/5, 5/7, 6/6.
+- Most content uses a 12-column container between 1280 and 1440 px.
+- The homepage hero image can extend to 1600 px. It must keep its full 3:2
+  frame and remain larger than the DM UI that sits over it.
 - Phone first. Comfortable reading widths, generous but purposeful whitespace.
 - Sections separate by whitespace or a single hairline — no automatic
   alternating background stripes.
-- Cards only when items are genuinely separate or selectable; lists prefer
-  editorial indexes (mono numerals + hairline dividers) over card grids.
+- Cards only when items are separate or selectable. Repeated stories use
+  editorial indexes, uneven image grids, mono numerals, and hairline dividers.
 - Let the subject determine the page structure; asymmetry is welcome where it
   clarifies product evidence.
 
 ## Evidence
 
-Product screenshots and DM conversations are the evidence system; photography
-is supportive. Customer bubbles stay neutral paper-and-ink; Mira bubbles are
-fern; commerce states may use dawn; owner intervention is visually explicit.
-Conversations read like real buying conversations. No robots, sparkles,
-gradient blobs, floating chat icons or fake dashboards.
+Photography establishes the merchant world. DM and product UI is live HTML/CSS,
+not baked text. The shopper always messages the shop. Sellogram stays behind
+the shop identity. Customer bubbles stay neutral paper-and-ink. Shop replies
+use fern. Commerce states may use dawn. Conversations must read like real local
+buying conversations. No robots, sparkles, gradient blobs, floating chat icons,
+fake dashboards, generic card payments, or invented pickup flows.
 
 ## Motion
 
