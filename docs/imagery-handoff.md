@@ -34,7 +34,7 @@ North star:
 
 The cobalt stairwell fashion scene is the primary hero direction.
 
-The user explicitly wants the photograph to remain **expansive**. Do not put it back inside a small SaaS card or crop away the photographer/model/environment relationship merely to preserve the old page grid.
+The photograph must remain **expansive**. Do not put it back inside a small SaaS card or crop away the photographer/model/environment relationship merely to preserve the old page grid.
 
 Keep the message:
 
@@ -75,6 +75,8 @@ The supported-shop section should promote the existing footer use cases into the
 - `/use-cases/skincare-haircare-makers`
 
 ## Recommended imagery
+
+All source images below are under `assets/imagery-library/full/Sellogram Imagery Full Resolution/`.
 
 ### Hero
 - `cobalt_stairwell_street_style.webp`
@@ -122,15 +124,13 @@ For production:
 
 ## Image library
 
-The branch contains the complete generated set as a lightweight contact-sheet/reference archive:
+The branch contains the complete generated set at:
 
-`assets/imagery-library/sellogram-generated-reference-library-64.zip`
+`assets/imagery-library/full/Sellogram Imagery Full Resolution/`
 
-The archive contains all 65 generated images as WebP reference copies with a maximum dimension of 64 px. `assets/imagery-library/manifest.txt` lists every filename.
+The directory contains the 65 optimized WebP source images. `assets/imagery-library/manifest.txt` is the canonical filename list.
 
-The tiny copies are only there so every generated frame and filename travels with the Git branch. They are not production-size assets. A separate full-resolution optimized archive containing the same 65 filenames accompanies this handoff. Use that full-resolution pack when moving selected images into production.
-
-The approved cobalt hero retains its higher-resolution source through the existing hero materialization flow.
+Keep the source library separate from served production assets. When a frame is selected for a homepage placement, copy or materialize that selected image into the appropriate `public/images/` path and optimize it for that placement.
 
 ## Current implementation
 
@@ -140,15 +140,13 @@ The design implementation plan is in `docs/superpowers/plans/2026-09-06-imagery-
 
 Do not assume the current composition is final. The next pass should be visual tuning at real viewport sizes, especially the hero scale and crop.
 
-## Known implementation gap
+## Current implementation gap
 
-The new homepage components currently reference paths under `public/images/shops/` and `public/images/outcomes/`, but production-size assets have not yet been materialized into those paths. Use the full-resolution handoff archive to choose and add the exact production assets, then update/extend the existing materialization flow before treating the page as deployment-ready.
-
-The current code should therefore be treated as a composition pass, not a finished deployable page.
+The full source library is now in the repository. The homepage components still need the selected production assets copied or materialized into their final `public/images/` paths and wired to those paths before the imagery pass is deployment-ready.
 
 ## CI note
 
-The repository declares Node `>=22.12.0`, but `.github/workflows/ci.yml` currently installs Node 20. The earlier CI run also failed on the intentionally-red imagery contract commit before the new components were added. Re-run verification from the latest branch state after aligning Node versions rather than relying on that historical failure.
+The repository declares Node `>=22.12.0`, but `.github/workflows/ci.yml` currently installs Node 20. Align the workflow before treating CI as authoritative for the current Astro toolchain.
 
 ## Verification
 

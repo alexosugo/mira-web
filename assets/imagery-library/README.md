@@ -2,19 +2,15 @@
 
 This directory contains the complete generated imagery set from the September 2026 Sellogram landing-page art-direction work.
 
-## Reference archive
+## Full-resolution source library
 
-`./sellogram-generated-reference-library-64.zip` contains all 65 generated images as very small WebP contact-sheet/reference copies, scaled to a maximum dimension of 64 px. These copies exist so every generated frame and filename travels with the branch without adding the full 12+ MB generation archive to source control.
+`./full/Sellogram Imagery Full Resolution/` contains the complete set of 65 optimized WebP source images. Keep the original filenames: `manifest.txt` is the canonical filename list.
 
-See `manifest.txt` for the complete filename list.
+These are source assets for the landing-page design work. Do not serve the whole library by default. When an image is selected for a production placement, copy or materialize the chosen asset into the appropriate `public/images/` path and reference that served asset from the component.
 
-These 64 px files are **not production assets**. They are only for identifying the correct source image. A full-resolution optimized archive was handed to the owner separately with this branch handoff.
+The primary hero direction is `full/Sellogram Imagery Full Resolution/cobalt_stairwell_street_style.webp`.
 
-## Production use
-
-The approved cobalt hero already has a higher-resolution source path in the branch through the existing hero materialization flow.
-
-When an image from this library is selected for a final placement, use the matching full-resolution WebP from the handoff archive and optimize it for that placement. Do not enlarge the 64 px reference copies.
+The recommended delivery/outcome frame is `full/Sellogram Imagery Full Resolution/cocoa_rose_gate_delivery.webp`.
 
 ## Design handoff
 
