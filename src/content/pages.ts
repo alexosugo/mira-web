@@ -176,7 +176,7 @@ export interface PageContent {
  */
 const appCta: Cta = {
   label: 'Get started',
-  href: 'https://app.withmira.co',
+  href: 'https://app.sellogram.co',
   trackingKey: 'content_get_started',
 };
 

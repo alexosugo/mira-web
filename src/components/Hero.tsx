@@ -7,7 +7,7 @@ const HERO_HEADLINE = 'Sellogram answers your DMs and sells in them';
 const HERO_CTA_LABEL = 'Get started';
 const HERO_SUBHEAD =
   'Sellogram handles product questions, recommendations, and orders so customers get fast, accurate answers without you glued to your phone.';
-const APP_URL = 'https://app.withmira.co';
+const APP_URL = 'https://app.sellogram.co';
 
 const Hero = () => {
   const [isRedirecting, setIsRedirecting] = useState(false);

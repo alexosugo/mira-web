@@ -196,7 +196,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       if (!submissionActiveRef.current) return;
 
       // Value Moment. No identify() — the site stays anonymous so the device id
-      // carries to app.withmira.co for merge at real signup (see lib/mixpanel).
+      // carries to app.sellogram.co for merge at real signup (see lib/mixpanel).
       trackLeadCaptured({
         lead_type: 'elite',
         email: inquiry.email,

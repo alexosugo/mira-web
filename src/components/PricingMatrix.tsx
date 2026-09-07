@@ -3,7 +3,7 @@ import { PLANS } from '../content/pages';
 import { useCTATracking } from '../hooks/useTracking';
 import EliteModalButton from './EliteModalButton';
 
-const appUrl = 'https://app.withmira.co';
+const appUrl = 'https://app.sellogram.co';
 
 const PricingMatrix = () => {
   const { trackCTA } = useCTATracking();

@@ -1,6 +1,6 @@
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 
-const APP_URL = 'https://app.withmira.co';
+const APP_URL = 'https://app.sellogram.co';
 
 const FinalCTA = () => {
   const sectionRef = useSectionTracking('final-cta', 'Final CTA');

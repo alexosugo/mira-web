@@ -67,7 +67,7 @@ const Pricing = () => {
                   </button>
                 ) : (
                   <a
-                    href="https://app.withmira.co"
+                    href="https://app.sellogram.co"
                     onClick={() => handleCTAClick(plan.key, plan.cta)}
                     className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
                       plan.isHighlighted

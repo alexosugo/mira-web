@@ -20,7 +20,7 @@ export interface Route {
 }
 
 export const SITE_URL = 'https://sellogram.co';
-export const APP_URL = 'https://app.withmira.co';
+export const APP_URL = 'https://app.sellogram.co';
 export const CONTACT_EMAIL = 'hello@sellogram.co';
 
 export const ROUTES: Route[] = [

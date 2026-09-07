@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import sellogramWordmark from '../../brand/identity/wordmark/master/sellogram.svg?raw';
 import { useCTATracking } from '../hooks/useTracking';
 
-const APP_URL = 'https://app.withmira.co';
+const APP_URL = 'https://app.sellogram.co';
 const CTA_LABEL = 'Get started';
 
 // Global nav uses real routes so it works from any page (route-always). The
