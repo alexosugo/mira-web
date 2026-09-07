@@ -122,13 +122,15 @@ For production:
 
 ## Image library
 
-The branch contains the complete generated set as a lightweight reference archive:
+The branch contains the complete generated set as a lightweight contact-sheet/reference archive:
 
-`assets/imagery-library/sellogram-generated-reference-library-360.zip`
+`assets/imagery-library/sellogram-generated-reference-library-64.zip`
 
-The archive contains all 65 generated images as WebP reference copies with a maximum dimension of 360 px. `assets/imagery-library/manifest.txt` lists every filename.
+The archive contains all 65 generated images as WebP reference copies with a maximum dimension of 64 px. `assets/imagery-library/manifest.txt` lists every filename.
 
-These are selection and composition references, not production-size masters. The approved cobalt hero retains its higher-resolution source through the existing hero materialization flow. When another reference image is selected for a large placement, replace that specific reference with its higher-resolution optimized source before shipping.
+The tiny copies are only there so every generated frame and filename travels with the Git branch. They are not production-size assets. A separate full-resolution optimized archive containing the same 65 filenames accompanies this handoff. Use that full-resolution pack when moving selected images into production.
+
+The approved cobalt hero retains its higher-resolution source through the existing hero materialization flow.
 
 ## Current implementation
 
@@ -140,7 +142,7 @@ Do not assume the current composition is final. The next pass should be visual t
 
 ## Known implementation gap
 
-The new homepage components currently reference paths under `public/images/shops/` and `public/images/outcomes/`, but production-size assets have not yet been materialized into those paths. Use the reference library to choose the exact source images, then add optimized production assets or extend the existing materialization script before treating the page as deployment-ready.
+The new homepage components currently reference paths under `public/images/shops/` and `public/images/outcomes/`, but production-size assets have not yet been materialized into those paths. Use the full-resolution handoff archive to choose and add the exact production assets, then update/extend the existing materialization flow before treating the page as deployment-ready.
 
 The current code should therefore be treated as a composition pass, not a finished deployable page.
 
