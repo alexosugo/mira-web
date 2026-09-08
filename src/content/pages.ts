@@ -96,7 +96,7 @@ export const STEPS: Step[] = [
   },
   {
     title: 'Turn it on.',
-    description: 'When the replies sound right, put Sellogram to work in your DMs.',
+    description: 'When the replies sound right, put Sellogram to work in your DMs',
   },
 ];
 

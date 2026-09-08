@@ -84,7 +84,7 @@ const SupportedShops = () => {
     <section id="supported-shops" className="bg-cobalt py-20 text-white sm:py-28 lg:py-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
-          Whatever you sell, the questions repeat.
+          Whatever you sell, the questions repeat
         </h2>
 
         <div className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:gap-x-8 lg:gap-y-12">

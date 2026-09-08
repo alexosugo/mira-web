@@ -19,12 +19,12 @@ describe('homepage voice', () => {
   it('opens with the Instagram bio promise and no marketing kicker', () => {
     const { container } = render(<Hero />);
 
-    const heading = screen.getByRole('heading', { name: 'Your inbox has one job: to sell.' });
+    const heading = screen.getByRole('heading', { name: 'Your inbox has one job: to sell' });
     expect(heading).toBeInTheDocument();
     expect(heading.className).toContain('5.5rem');
     expect(container.querySelector('.border-t')).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Put Sellogram to work' })).toBeInTheDocument();
-    expect(screen.getByText('Start free. No card.')).toBeInTheDocument();
+    expect(screen.queryByText('Start free. No card.')).not.toBeInTheDocument();
     expect(screen.queryByText(/Instagram commerce/i)).not.toBeInTheDocument();
   });
 
@@ -54,7 +54,7 @@ describe('homepage voice', () => {
     unmount();
 
     render(<FinalCTA />);
-    const finalHeading = screen.getByRole('heading', { name: 'Put Sellogram to work in your DMs.' });
+    const finalHeading = screen.getByRole('heading', { name: 'Put Sellogram to work in your DM' });
     expect(finalHeading).toBeInTheDocument();
     expect(finalHeading.className).toContain('3.5rem');
     expect(screen.getByRole('link', { name: 'Put Sellogram to work' })).toBeInTheDocument();

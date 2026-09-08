@@ -27,7 +27,6 @@ const HeroChatDemo = () => {
           height={1024}
           loading="eager"
           decoding="async"
-          fetchPriority="high"
           sizes="(min-width: 1600px) 1536px, calc(100vw - 2rem)"
           className="block h-auto w-full"
         />

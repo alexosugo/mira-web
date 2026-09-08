@@ -12,14 +12,11 @@ const FinalCTA = () => {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
-              Put Sellogram to work in your DMs.
+              Put Sellogram to work in your DM
             </h2>
           </div>
 
           <div className="lg:col-span-4">
-            <p className="max-w-md text-base leading-relaxed text-white/80">
-              Connect your Instagram. Let your inbox get back to selling.
-            </p>
             <a
               href={APP_URL}
               onClick={() =>

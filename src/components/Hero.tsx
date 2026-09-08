@@ -3,7 +3,7 @@ import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { scrollToSection } from '../utils/scrollToSection';
 import HeroChatDemo from './HeroChatDemo';
 
-const HERO_HEADLINE = 'Your inbox has one job: to sell.';
+const HERO_HEADLINE = 'Your inbox has one job: to sell';
 const HERO_CTA_LABEL = 'Put Sellogram to work';
 const HERO_SUBHEAD =
   'Sellogram answers product questions, takes orders and keeps customers updated in your shop’s Instagram DMs.';
@@ -75,10 +75,6 @@ const Hero = () => {
 
           </div>
         </div>
-
-        <p className="mt-8 max-w-md text-sm text-ink-faint lg:mt-10">
-          Start free. No card.
-        </p>
       </div>
 
       <div
