@@ -71,17 +71,17 @@ const STAGES: readonly JourneyStage[] = [
 
 const DMSalesJourney = () => {
   return (
-    <section id="dm-sales-journey" className="border-y border-line bg-white/35 py-24 sm:py-32 lg:py-40">
+    <section id="dm-sales-journey" className="bg-white/35 py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
-        <h2 className="max-w-5xl font-display text-[clamp(2.2rem,1.5rem+3vw,4.4rem)] font-semibold leading-[1] tracking-tight text-ink [text-wrap:balance]">
+        <h2 className="max-w-5xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight text-ink [text-wrap:balance]">
           From “Is it available?” to “Rider ametoka.”
         </h2>
 
-        <ol className="mt-14 space-y-16 lg:mt-20 lg:space-y-20">
+        <ol className="mt-12 space-y-14 lg:mt-16 lg:space-y-16">
           {STAGES.map((stage, index) => (
             <li
               key={stage.title}
-              className={`min-w-0 border-t border-line pt-7 ${
+              className={`min-w-0 ${
                 stage.isOutcome
                   ? ''
                   : 'grid gap-7 lg:grid-cols-12 lg:items-center lg:gap-8'
@@ -90,10 +90,10 @@ const DMSalesJourney = () => {
               <div
                 className={`relative min-w-0 ${
                   stage.isOutcome
-                    ? ''
+                    ? 'lg:max-w-[1200px]'
                     : index % 2 === 0
-                      ? 'lg:col-span-8'
-                      : 'lg:col-span-8 lg:col-start-5 lg:row-start-1'
+                      ? 'lg:col-span-7'
+                      : 'lg:col-span-7 lg:col-start-6 lg:row-start-1'
                 }`}
               >
                 <div className={`${stage.isOutcome ? 'aspect-[16/9]' : 'aspect-[5/4]'} overflow-hidden rounded-xl bg-paper-raised sm:rounded-2xl`}>
@@ -127,7 +127,7 @@ const DMSalesJourney = () => {
               </div>
 
               <h3
-                className={`font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl ${
+                className={`font-display text-2xl font-semibold leading-tight text-ink sm:text-3xl ${
                   stage.isOutcome
                     ? 'mt-7 max-w-xl'
                     : index % 2 === 0

@@ -17,9 +17,12 @@ vi.mock('../hooks/useTracking', () => ({
 
 describe('homepage voice', () => {
   it('opens with the Instagram bio promise and no marketing kicker', () => {
-    render(<Hero />);
+    const { container } = render(<Hero />);
 
-    expect(screen.getByRole('heading', { name: 'Your inbox has one job: to sell.' })).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { name: 'Your inbox has one job: to sell.' });
+    expect(heading).toBeInTheDocument();
+    expect(heading.className).toContain('5.5rem');
+    expect(container.querySelector('.border-t')).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Put Sellogram to work' })).toBeInTheDocument();
     expect(screen.getByText('Start free. No card.')).toBeInTheDocument();
     expect(screen.queryByText(/Instagram commerce/i)).not.toBeInTheDocument();
@@ -51,7 +54,9 @@ describe('homepage voice', () => {
     unmount();
 
     render(<FinalCTA />);
-    expect(screen.getByRole('heading', { name: 'Put Sellogram to work in your DMs.' })).toBeInTheDocument();
+    const finalHeading = screen.getByRole('heading', { name: 'Put Sellogram to work in your DMs.' });
+    expect(finalHeading).toBeInTheDocument();
+    expect(finalHeading.className).toContain('3.5rem');
     expect(screen.getByRole('link', { name: 'Put Sellogram to work' })).toBeInTheDocument();
     expect(screen.queryByText(/Less inbox duty/i)).not.toBeInTheDocument();
   });

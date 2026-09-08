@@ -22,11 +22,11 @@ const NightShift = () => {
   const sectionRef = useSectionTracking('night-shift', 'Night Shift Section');
 
   return (
-    <section ref={sectionRef} className="bg-night py-24 sm:py-32 lg:py-40">
+    <section ref={sectionRef} className="bg-night py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <h2 className="font-display text-[clamp(2.1rem,1.5rem+2.6vw,3.4rem)] font-semibold leading-[1.04] tracking-tight text-paper [text-wrap:balance]">
+            <h2 className="font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight text-paper [text-wrap:balance]">
               Close shop. Keep selling.
             </h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-paper/70">

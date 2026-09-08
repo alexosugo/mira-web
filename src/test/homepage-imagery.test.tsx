@@ -27,6 +27,16 @@ describe('imagery-led homepage sections', () => {
     }
   });
 
+  it('keeps the supported-shop grid compact and free of repeated rules', () => {
+    const { container } = render(<SupportedShops />);
+
+    const shopImages = screen.getAllByRole('img');
+    for (const image of shopImages) {
+      expect(image.parentElement?.className).toContain('sm:aspect-[4/3]');
+    }
+    expect(container.querySelectorAll('.border-t')).toHaveLength(0);
+  });
+
   it('shows four different stages of the DM sale instead of repeating availability', () => {
     render(<DMSalesJourney />);
 
@@ -52,5 +62,17 @@ describe('imagery-led homepage sections', () => {
     expect(screen.getByText('Cocoa Rose Beauty')).toBeInTheDocument();
     expect(screen.queryByText('Inside the sale')).not.toBeInTheDocument();
     expect(screen.queryByText('Accra')).not.toBeInTheDocument();
+  });
+
+  it('uses compact journey images and headings without stage rules', () => {
+    const { container } = render(<DMSalesJourney />);
+
+    const section = container.querySelector('#dm-sales-journey');
+    expect(section?.className).not.toContain('border-y');
+    expect(container.querySelectorAll('li.border-t')).toHaveLength(0);
+
+    const stageHeading = screen.getByRole('heading', { name: /Size 10 is in stock/i });
+    expect(stageHeading.className).toContain('text-2xl');
+    expect(stageHeading.className).toContain('sm:text-3xl');
   });
 });

@@ -29,7 +29,7 @@ const Hero = () => {
         <div className="grid gap-9 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <h1
-              className="max-w-[12ch] animate-fade-in-up font-display text-[clamp(3rem,1.8rem+5vw,6.6rem)] font-semibold leading-[0.9] tracking-tight text-ink [text-wrap:balance]"
+              className="max-w-[12ch] animate-fade-in-up font-display text-[clamp(2.75rem,1.8rem+4.2vw,5.5rem)] font-semibold leading-[0.92] tracking-tight text-ink [text-wrap:balance]"
               style={{ animationDelay: '80ms' }}
             >
               {HERO_HEADLINE}
@@ -76,13 +76,13 @@ const Hero = () => {
           </div>
         </div>
 
-        <p className="mt-10 max-w-md border-t border-line pt-5 text-sm text-ink-faint lg:mt-12">
+        <p className="mt-8 max-w-md text-sm text-ink-faint lg:mt-10">
           Start free. No card.
         </p>
       </div>
 
       <div
-        className="mx-auto mt-10 max-w-[1600px] animate-fade-in-up px-3 sm:mt-14 sm:px-5 lg:mt-16 lg:px-8"
+        className="mx-auto mt-10 max-w-[1240px] animate-fade-in-up px-3 sm:mt-14 sm:px-5 lg:mt-16 lg:px-8"
         style={{ animationDelay: '260ms' }}
       >
         <HeroChatDemo />

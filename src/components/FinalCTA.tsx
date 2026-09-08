@@ -8,10 +8,10 @@ const FinalCTA = () => {
 
   return (
     <section ref={sectionRef} className="px-5 pb-5 sm:px-8 sm:pb-8 lg:px-10 lg:pb-10">
-      <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[1.75rem] bg-cobalt px-6 py-16 text-white sm:rounded-[2.25rem] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+      <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[1.75rem] bg-cobalt px-6 py-14 text-white sm:rounded-[2.25rem] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <h2 className="max-w-4xl font-display text-[clamp(2.3rem,1.6rem+3vw,4.5rem)] font-semibold leading-[0.98] tracking-tight [text-wrap:balance]">
+            <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
               Put Sellogram to work in your DMs.
             </h2>
           </div>

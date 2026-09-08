@@ -81,20 +81,20 @@ const SHOPS: readonly SupportedShop[] = [
 
 const SupportedShops = () => {
   return (
-    <section id="supported-shops" className="bg-cobalt py-24 text-white sm:py-32 lg:py-40">
+    <section id="supported-shops" className="bg-cobalt py-20 text-white sm:py-28 lg:py-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
-        <h2 className="max-w-4xl font-display text-[clamp(2.2rem,1.5rem+3vw,4.4rem)] font-semibold leading-[1] tracking-tight [text-wrap:balance]">
+        <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
           Whatever you sell, the questions repeat.
         </h2>
 
-        <div className="mt-14 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:gap-x-8 lg:gap-y-16">
+        <div className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:gap-x-8 lg:gap-y-12">
           {SHOPS.map((shop) => (
             <a
               key={shop.href}
               href={shop.href}
               className="group block"
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-xl bg-cobalt-deep sm:aspect-[4/5] sm:rounded-2xl">
+              <div className="aspect-[4/3] overflow-hidden rounded-xl bg-cobalt-deep sm:aspect-[4/3] sm:rounded-2xl">
                 <img
                   src={shop.image}
                   alt={shop.imageAlt}
@@ -106,7 +106,7 @@ const SupportedShops = () => {
                   className={`h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.02] ${shop.imagePosition ?? ''}`}
                 />
               </div>
-              <div className="mt-5 flex items-start justify-between gap-5 border-t border-white/30 pt-4">
+              <div className="mt-4 flex items-start justify-between gap-5">
                 <div>
                   <h3 className="font-display text-xl font-semibold sm:text-2xl">{shop.name}</h3>
                   <p className="mt-2 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
@@ -119,12 +119,12 @@ const SupportedShops = () => {
           ))}
           <a
             href="https://app.sellogram.co"
-            className="group flex aspect-[4/3] flex-col justify-between rounded-xl bg-paper p-7 text-ink transition-transform duration-200 hover:-translate-y-1 sm:aspect-[4/5] sm:rounded-2xl sm:p-9"
+            className="group flex aspect-[4/3] flex-col justify-between rounded-xl bg-paper p-7 text-ink transition-transform duration-200 hover:-translate-y-1 sm:aspect-[4/3] sm:rounded-2xl sm:p-9"
           >
             <h3 className="max-w-[12ch] font-display text-3xl font-semibold leading-tight sm:text-4xl">
               Sell on Instagram?
             </h3>
-            <span className="flex items-center justify-between border-t border-line pt-5 text-lg font-medium">
+            <span className="flex items-center justify-between text-lg font-medium">
               Put Sellogram to work
               <ArrowUpRight className="h-5 w-5 transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
             </span>
