@@ -78,13 +78,13 @@ const Footer = () => {
               <p className="font-mono text-xs uppercase tracking-wide text-paper/60">
                 {group.heading}
               </p>
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-3">
                 {group.links.map((link) => (
                   <li key={link.id}>
                     <a
                       href={link.href}
                       onClick={() => trackCTA(`footer_link_${link.id}`, link.label, 'footer')}
-                      className="text-sm text-paper/70 transition-colors duration-200 hover:text-paper"
+                      className="inline-flex min-h-[44px] min-w-[44px] items-center text-sm text-paper/70 transition-colors duration-200 hover:text-paper"
                     >
                       {link.label}
                     </a>
@@ -106,7 +106,7 @@ const Footer = () => {
           <a
             href="mailto:hello@sellogram.co"
             onClick={() => handleContactClick('email')}
-            className="font-mono text-sm text-paper/60 transition-colors duration-200 hover:text-paper"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm text-paper/60 transition-colors duration-200 hover:text-paper"
           >
             hello@sellogram.co
           </a>

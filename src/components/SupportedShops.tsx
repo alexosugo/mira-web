@@ -7,10 +7,7 @@ interface SupportedShop {
   readonly imageAlt: string;
   readonly imageWidth: number;
   readonly imageHeight: number;
-  readonly description: string;
-  readonly details: string;
-  readonly layout: string;
-  readonly aspect: string;
+  readonly question: string;
   readonly imagePosition?: string;
 }
 
@@ -20,12 +17,9 @@ const SHOPS: readonly SupportedShop[] = [
     href: '/use-cases/daily-drop-shops',
     image: '/images/shops/daily-drop.webp',
     imageAlt: 'Fashion sellers moving a rack of fresh pieces through the city',
-    imageWidth: 1672,
-    imageHeight: 941,
-    description: 'New stock moves fast. Sellogram keeps product and availability questions moving with it.',
-    details: 'Drops · stock · delivery',
-    layout: 'lg:col-span-7',
-    aspect: 'aspect-[16/10]',
+    imageWidth: 1536,
+    imageHeight: 1024,
+    question: 'How much is the blue set?',
   },
   {
     name: 'Fashion & thrift',
@@ -34,10 +28,7 @@ const SHOPS: readonly SupportedShop[] = [
     imageAlt: 'Fashion seller measuring denim at a bright city worktable',
     imageWidth: 1122,
     imageHeight: 1402,
-    description: 'Sizes, measurements, prices, and stock answered in the shop DM.',
-    details: 'Sizes · measurements · stock',
-    layout: 'lg:col-span-5 lg:mt-24',
-    aspect: 'aspect-[4/5]',
+    question: 'Is size 10 still in stock?',
   },
   {
     name: 'Beauty',
@@ -46,10 +37,7 @@ const SHOPS: readonly SupportedShop[] = [
     imageAlt: 'Beauty seller packing colorful products in a bright studio',
     imageWidth: 1122,
     imageHeight: 1402,
-    description: 'Shade, bundle, stock, and delivery questions without the endless back and forth.',
-    details: 'Shades · bundles · delivery',
-    layout: 'lg:col-span-4',
-    aspect: 'aspect-[4/5]',
+    question: 'Which shade matches this?',
   },
   {
     name: 'Accessories',
@@ -58,10 +46,7 @@ const SHOPS: readonly SupportedShop[] = [
     imageAlt: 'Accessories seller wrapping a gift order by hand',
     imageWidth: 1122,
     imageHeight: 1402,
-    description: 'Bags, jewellery, gifts, compatibility questions, and the details buyers need before they order.',
-    details: 'Details · gifts · orders',
-    layout: 'lg:col-span-4 lg:mt-16',
-    aspect: 'aspect-[4/5]',
+    question: 'Can you deliver today?',
   },
   {
     name: 'Fragrance',
@@ -70,10 +55,7 @@ const SHOPS: readonly SupportedShop[] = [
     imageAlt: 'Male fragrance maker working with bottles and scent materials',
     imageWidth: 1122,
     imageHeight: 1402,
-    description: 'Notes, decant sizes, availability, and delivery details answered from your own shop information.',
-    details: 'Notes · decants · stock',
-    layout: 'lg:col-span-4',
-    aspect: 'aspect-[4/5]',
+    question: 'Do you have a 30ml decant?',
   },
   {
     name: 'Bakeries & food',
@@ -82,10 +64,7 @@ const SHOPS: readonly SupportedShop[] = [
     imageAlt: 'Baker packing fresh pastries and customer orders',
     imageWidth: 1122,
     imageHeight: 1402,
-    description: 'Today’s availability, order timing, delivery areas, and menu questions while you keep making.',
-    details: 'Menu · timing · delivery',
-    layout: 'lg:col-span-7',
-    aspect: 'aspect-[16/10]',
+    question: 'Can I order this for Saturday?',
     imagePosition: 'object-top',
   },
   {
@@ -95,39 +74,27 @@ const SHOPS: readonly SupportedShop[] = [
     imageAlt: 'Skincare maker preparing jars and bottles in a sunlit studio',
     imageWidth: 1122,
     imageHeight: 1402,
-    description: 'Product facts, ingredients, sizes, stock, and orders answered between batches.',
-    details: 'Products · sizes · orders',
-    layout: 'lg:col-span-5',
-    aspect: 'aspect-[16/10]',
+    question: 'How big is the bottle?',
     imagePosition: 'object-top',
   },
 ];
 
 const SupportedShops = () => {
   return (
-    <section id="supported-shops" className="py-24 sm:py-32 lg:py-40">
+    <section id="supported-shops" className="bg-cobalt py-24 text-white sm:py-32 lg:py-40">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-fern">Built around real shops</p>
-            <h2 className="mt-4 max-w-4xl font-display text-[clamp(2.2rem,1.5rem+3vw,4.4rem)] font-semibold leading-[1] tracking-tight text-ink [text-wrap:balance]">
-              Made for the kinds of shops that sell on Instagram
-            </h2>
-          </div>
-          <p className="max-w-md text-base leading-relaxed text-ink-light lg:col-span-4 lg:justify-self-end">
-            From daily drops to beauty, fragrance, and food, Sellogram helps shops that already
-            sell through DMs.
-          </p>
-        </div>
+        <h2 className="max-w-4xl font-display text-[clamp(2.2rem,1.5rem+3vw,4.4rem)] font-semibold leading-[1] tracking-tight [text-wrap:balance]">
+          Whatever you sell, the questions repeat.
+        </h2>
 
-        <div className="mt-14 grid gap-x-5 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-flow-row-dense lg:grid-cols-12 lg:gap-x-7 lg:gap-y-20">
+        <div className="mt-14 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:gap-x-8 lg:gap-y-16">
           {SHOPS.map((shop) => (
             <a
               key={shop.href}
               href={shop.href}
-              className={`group block ${shop.layout}`}
+              className="group block"
             >
-              <div className={`overflow-hidden rounded-xl bg-paper-raised sm:rounded-2xl ${shop.aspect}`}>
+              <div className="aspect-[4/3] overflow-hidden rounded-xl bg-cobalt-deep sm:aspect-[4/5] sm:rounded-2xl">
                 <img
                   src={shop.image}
                   alt={shop.imageAlt}
@@ -139,20 +106,29 @@ const SupportedShops = () => {
                   className={`h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.02] ${shop.imagePosition ?? ''}`}
                 />
               </div>
-              <div className="mt-5 flex items-start justify-between gap-5 border-t border-line pt-4">
+              <div className="mt-5 flex items-start justify-between gap-5 border-t border-white/30 pt-4">
                 <div>
-                  <h3 className="font-display text-xl font-semibold text-ink sm:text-2xl">{shop.name}</h3>
-                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-light sm:text-base">
-                    {shop.description}
+                  <h3 className="font-display text-xl font-semibold sm:text-2xl">{shop.name}</h3>
+                  <p className="mt-2 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+                    “{shop.question}”
                   </p>
                 </div>
-                <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-ink-faint transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
+                <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-white/65 transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
               </div>
-              <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-ink-faint">
-                {shop.details}
-              </p>
             </a>
           ))}
+          <a
+            href="https://app.sellogram.co"
+            className="group flex aspect-[4/3] flex-col justify-between rounded-xl bg-paper p-7 text-ink transition-transform duration-200 hover:-translate-y-1 sm:aspect-[4/5] sm:rounded-2xl sm:p-9"
+          >
+            <h3 className="max-w-[12ch] font-display text-3xl font-semibold leading-tight sm:text-4xl">
+              Sell on Instagram?
+            </h3>
+            <span className="flex items-center justify-between border-t border-line pt-5 text-lg font-medium">
+              Put Sellogram to work
+              <ArrowUpRight className="h-5 w-5 transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
+            </span>
+          </a>
         </div>
       </div>
     </section>

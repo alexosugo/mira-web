@@ -24,7 +24,7 @@ describe('Sellogram web identity assets', () => {
     expect(header).toContain("../../brand/identity/wordmark/master/sellogram.svg?raw");
     expect(header).toContain('dangerouslySetInnerHTML');
     expect(header).toContain('aria-label="Sellogram"');
-    expect(header).toContain('className="block w-32 sm:w-36 text-ink"');
+    expect(header).toContain('className="flex min-h-[44px] w-32 items-center text-ink sm:w-36"');
     expect(header).not.toMatch(/>\s*Sellogram\s*</);
   });
 

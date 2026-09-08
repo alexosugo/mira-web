@@ -3,10 +3,10 @@ import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { scrollToSection } from '../utils/scrollToSection';
 import HeroChatDemo from './HeroChatDemo';
 
-const HERO_HEADLINE = 'Sellogram answers your DMs and sells in them';
-const HERO_CTA_LABEL = 'Get started';
+const HERO_HEADLINE = 'Your inbox has one job: to sell.';
+const HERO_CTA_LABEL = 'Put Sellogram to work';
 const HERO_SUBHEAD =
-  'Sellogram handles product questions, recommendations, and orders so customers get fast, accurate answers without you glued to your phone.';
+  'Sellogram answers product questions, takes orders and keeps customers updated in your shop’s Instagram DMs.';
 const APP_URL = 'https://app.sellogram.co';
 
 const Hero = () => {
@@ -28,9 +28,6 @@ const Hero = () => {
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-9 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <p className="mb-5 font-mono text-xs uppercase tracking-[0.14em] text-fern">
-              Instagram commerce, without the inbox shift
-            </p>
             <h1
               className="max-w-[12ch] animate-fade-in-up font-display text-[clamp(3rem,1.8rem+5vw,6.6rem)] font-semibold leading-[0.9] tracking-tight text-ink [text-wrap:balance]"
               style={{ animationDelay: '80ms' }}
@@ -70,17 +67,17 @@ const Hero = () => {
               <button
                 type="button"
                 onClick={() => scrollToSection('how-it-works')}
-                className="text-base text-ink-light underline decoration-line underline-offset-4 transition-colors duration-200 hover:text-ink hover:decoration-ink"
+                className="inline-flex min-h-[44px] items-center text-base text-ink-light underline decoration-line underline-offset-4 transition-colors duration-200 hover:text-ink hover:decoration-ink"
               >
-                See how it works
+                See it sell
               </button>
             </div>
 
           </div>
         </div>
 
-        <p className="mt-10 max-w-md border-t border-line pt-5 font-mono text-xs text-ink-faint sm:text-sm lg:mt-12">
-          Free to start&ensp;·&ensp;Connect your Instagram Professional account
+        <p className="mt-10 max-w-md border-t border-line pt-5 text-sm text-ink-faint lg:mt-12">
+          Start free. No card.
         </p>
       </div>
 

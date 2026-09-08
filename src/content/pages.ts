@@ -46,7 +46,7 @@ export const PLANS: Plan[] = [
     name: 'Pro',
     price: 'KES 3,500',
     priceNote: '/mo',
-    description: 'For shops that need Sellogram to answer more customers. While Sellogram is on, it replies day and night.',
+    description: 'For shops with more customer conversations. Sellogram replies day and night.',
     featuresLead: 'Everything in Free, plus:',
     features: [
       'No monthly conversation cap',
@@ -62,7 +62,7 @@ export const PLANS: Plan[] = [
     key: 'elite',
     name: 'Elite',
     price: 'Custom',
-    description: 'For bigger shops and teams. A plan shaped around how you sell.',
+    description: 'For bigger shops and teams that need hands-on setup and custom integrations.',
     featuresLead: 'Everything in Pro, plus:',
     features: [
       'Onboarding for you and your team',
@@ -71,7 +71,7 @@ export const PLANS: Plan[] = [
       'Custom integrations',
     ],
     cta: 'Ask about Elite',
-    footnote: 'Priced to fit your shop.',
+    footnote: 'Talk to us for a price.',
   },
 ];
 
@@ -83,21 +83,26 @@ export interface Step {
 /** How-it-works steps. Source of truth for the homepage island and /how-it-works. */
 export const STEPS: Step[] = [
   {
-    title: 'Connect your Instagram',
-    description: 'Link your Instagram Professional account. The whole setup takes about ten minutes.',
+    title: 'Connect your Instagram account.',
+    description: 'Link the Professional account your customers already message.',
   },
   {
-    title: 'Sellogram learns your shop',
-    description: 'Sellogram reads your posts and turns them into products. You add your payment and delivery details.',
+    title: 'Sellogram learns from your shop.',
+    description: 'It uses your posts, DMs and the shop details you add.',
   },
   {
-    title: 'Test, then go live',
-    description: 'Your shop starts in test mode. Ask Sellogram real questions, then turn it on when the answers sound right.',
+    title: 'Ask the questions your customers ask.',
+    description: 'Check product, stock, payment and delivery replies in test mode.',
+  },
+  {
+    title: 'Turn it on.',
+    description: 'When the replies sound right, put Sellogram to work in your DMs.',
   },
 ];
 
 /** Reassurance line shown at the scariest step (handing over your Instagram). */
-export const DM_SCOPE_REASSURANCE = "Sellogram reads only your shop's DMs, nothing else on your account.";
+export const DM_SCOPE_REASSURANCE =
+  'Sellogram uses your Instagram page content, including posts and DMs, plus the shop details you add.';
 
 // ---------------------------------------------------------------------------
 // Content page schema (consumed by ContentLayout)
@@ -359,7 +364,11 @@ export const PAGES: Record<string, PageContent> = {
       },
       faq([
         { question: 'Will Sellogram ask for my password?', answer: "No. Connection happens through Instagram's official Meta login. Nobody from Sellogram will ever ask for your password." },
-        { question: 'Can Sellogram read my personal messages?', answer: "No. Sellogram reads only your shop's DMs, nothing else on your account." },
+        {
+          question: 'Can Sellogram read my personal messages?',
+          answer:
+            'Sellogram connects only to the Instagram Professional account you approve. It uses that shop page content, including posts and DMs.',
+        },
         { question: 'Can I switch it off?', answer: 'Yes. Pause or disconnect Sellogram any time.' },
         { question: 'What if a product has no price?', answer: 'Sellogram asks you instead of making one up.' },
       ]),
@@ -1269,7 +1278,7 @@ export const PAGES: Record<string, PageContent> = {
         heading: 'Plain-language security promises',
         items: [
           { title: 'No Instagram password', body: "Sellogram connects through Instagram's official Meta login. It never asks for your password — and neither will anyone from Sellogram." },
-          { title: 'Shop DMs only', body: DM_SCOPE_REASSURANCE },
+          { title: 'Your shop account', body: DM_SCOPE_REASSURANCE },
           { title: "You're in control", body: 'Step in, pause, or disconnect Sellogram whenever you want.' },
           { title: 'No guessed answers', body: 'When product details are missing or uncertain, Sellogram hands the conversation to you instead of making something up.' },
         ],

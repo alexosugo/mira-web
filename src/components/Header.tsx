@@ -3,7 +3,7 @@ import sellogramWordmark from '../../brand/identity/wordmark/master/sellogram.sv
 import { useCTATracking } from '../hooks/useTracking';
 
 const APP_URL = 'https://app.sellogram.co';
-const CTA_LABEL = 'Get started';
+const CTA_LABEL = 'Start free';
 
 // Global nav uses real routes so it works from any page (route-always). The
 // homepage no longer smooth-scrolls from the header; in-page CTAs handle that.
@@ -46,7 +46,7 @@ const Header = () => {
         <a
           href="/"
           aria-label="Sellogram"
-          className="block w-32 sm:w-36 text-ink"
+          className="flex min-h-[44px] w-32 items-center text-ink sm:w-36"
         >
           <span
             aria-hidden="true"
@@ -62,7 +62,7 @@ const Header = () => {
                 key={item.id}
                 href={item.href}
                 onClick={() => trackCTA(`header_nav_${item.id}`, item.label, 'header')}
-                className="text-sm text-ink-light transition-colors duration-200 hover:text-ink"
+                className="inline-flex min-h-[44px] items-center text-sm text-ink-light transition-colors duration-200 hover:text-ink"
               >
                 {item.label}
               </a>
@@ -72,7 +72,7 @@ const Header = () => {
           <a
             href={APP_URL}
             onClick={handleCTAClick}
-            className="inline-flex min-h-[40px] items-center rounded-full bg-fern px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
+            className="inline-flex min-h-[44px] items-center rounded-full bg-fern px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
           >
             {CTA_LABEL}
           </a>

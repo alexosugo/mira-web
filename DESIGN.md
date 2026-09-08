@@ -9,6 +9,8 @@ colors:
   ink-light: "#49584F"
   ink-faint: "#58685E"
   line: "#DCE6DF"
+  cobalt: "#0D5DA8"
+  cobalt-deep: "#09477F"
   fern: "#177E54"
   fern-deep: "#11603F"
   fern-bright: "#8BD9B3"
@@ -35,14 +37,15 @@ The page must feel Instagram-native, not like a generic software landing page.
 - **Paper** (`#F2F6F3`) is the ground. Panels sit on white or raised paper with
   a single hairline border (`line`), no drop shadows by default.
 - **Night** (`#0E1E17`) is for the footer and the NightShift section.
-- Cobalt, rose, amber, and bright studio color come from photography. Do not
-  mute them with beige or terracotta overlays.
+- **Cobalt** (`#0D5DA8`) can hold a full editorial chapter. Use its deep step
+  for supporting surfaces. Rose, amber, and bright studio color stay in the
+  photography. Do not mute them with beige or terracotta overlays.
 - Light theme only. No dark-mode toggle.
 
 ## The Fern Rule
 
-Fern (`#177E54`) means **Mira is acting or the customer takes the main
-action**: Mira's reply bubbles, primary buttons, active controls, presence and
+Fern (`#177E54`) means **Sellogram is acting or the customer takes the main
+action**: shop reply bubbles, primary buttons, active controls, presence and
 processing states (`fern-bright` on dark). Do not cover large areas with
 bright fern — it guides attention, it does not dominate.
 
@@ -59,8 +62,9 @@ dawn, it must be a money moment.
 - **Source Sans 3** for body, navigation, buttons, forms, and UI annotations.
 - **IBM Plex Mono** for functional commerce detail only: KES figures,
   timestamps, order identifiers, plan limits, status labels, ledger lines.
-  Do not use mono as a decorative section kicker — decorative kickers are not
-  part of the content-page system.
+  Do not use mono as decoration.
+- Marketing kickers are banned. Start each section with its heading or the
+  content itself. Functional status, time, price, and order labels can remain.
 
 ## Layout
 
@@ -70,10 +74,19 @@ dawn, it must be a money moment.
 - Phone first. Comfortable reading widths, generous but purposeful whitespace.
 - Sections separate by whitespace or a single hairline — no automatic
   alternating background stripes.
-- Cards only when items are separate or selectable. Repeated stories use
-  editorial indexes, uneven image grids, mono numerals, and hairline dividers.
-- Let the subject determine the page structure; asymmetry is welcome where it
-  clarifies product evidence.
+- Cards only when items are separate or selectable. Category collections use
+  a stable grid and one image ratio. They must scan as one clear set.
+- Let the subject determine the page structure. Use asymmetry only when it
+  makes the message or sequence clearer.
+
+## Primitives
+
+- **Shop DM card:** live HTML/CSS with the shop name and neutral customer
+  bubbles. The shop replies in fern.
+- **Editorial image link:** photography, a hairline, a plain heading, and one
+  useful line of copy. No shadowed software card surface.
+- **Primary action:** a fern pill on light surfaces or a paper pill on cobalt.
+- **Section heading:** Archivo display type with no kicker above it.
 
 ## Evidence
 

@@ -20,7 +20,7 @@ const Pricing = () => {
     <section id="pricing" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <h2 className="max-w-xl font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
-          Start free, upgrade when the DMs do
+          Start free. Pay when you need more.
         </h2>
 
         {/* Three hairline columns rather than shadowed cards. */}

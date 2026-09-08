@@ -82,12 +82,17 @@ describe('canonical content module voice compliance', () => {
     }
   });
 
+  it('does not claim that Sellogram reads DMs only', () => {
+    expect(allContentStrings.join('\n')).not.toMatch(/reads only your shop's DMs/i);
+    expect(allContentStrings.join('\n')).not.toMatch(/Shop DMs only/i);
+  });
+
   it('ships exactly three pricing plans (Free, Pro, Elite)', () => {
     expect(PLANS.map((p) => p.key)).toEqual(['free', 'pro', 'elite']);
   });
 
-  it('ships exactly three how-it-works steps', () => {
-    expect(STEPS).toHaveLength(3);
+  it('ships exactly four how-it-works steps', () => {
+    expect(STEPS).toHaveLength(4);
   });
 
   it('ships body content for every registered content page', () => {

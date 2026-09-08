@@ -8,14 +8,14 @@ interface LedgerEntry {
 }
 
 const LEDGER: LedgerEntry[] = [
-  { time: '9:41 PM', text: 'You close for the day. Sellogram stays on.' },
+  { time: '9:41 PM', text: 'You close for the day.' },
   { time: '11:52 PM', text: '"Hii denim set bado iko in M?"' },
-  { time: '11:52 PM', text: 'The shop replies: M is in stock, KSh 6,000.', isSellogram: true },
+  { time: '11:52 PM', text: 'Size M is in stock. KSh 6,000.', isSellogram: true },
   { time: '12:07 AM', text: '"Na delivery Kilimani?"' },
   { time: '12:07 AM', text: 'KSh 250. Rider can bring it tomorrow morning.', isSellogram: true },
   { time: '2:14 AM', text: '"Sent to the M-Pesa number."', isPayoff: true },
-  { time: '2:15 AM', text: 'Payment confirmed. Order moves forward.', isSellogram: true },
-  { time: '7:05 AM', text: 'You wake up to an order, not a cold DM.' },
+  { time: '2:15 AM', text: 'Payment confirmed. Your order is packed.', isSellogram: true },
+  { time: '7:05 AM', text: 'You wake up to an order.' },
 ];
 
 const NightShift = () => {
@@ -26,15 +26,12 @@ const NightShift = () => {
       <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-fern-bright">
-              After hours
-            </p>
-            <h2 className="mt-4 font-display text-[clamp(2.1rem,1.5rem+2.6vw,3.4rem)] font-semibold leading-[1.04] tracking-tight text-paper [text-wrap:balance]">
-              Your customers shop late. Sellogram keeps answering.
+            <h2 className="font-display text-[clamp(2.1rem,1.5rem+2.6vw,3.4rem)] font-semibold leading-[1.04] tracking-tight text-paper [text-wrap:balance]">
+              Close shop. Keep selling.
             </h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-paper/70">
-              Product questions, delivery details, and order updates keep moving in your shop DM
-              while you are away from the phone.
+              Your customers can still ask about size, stock, price and delivery. Sellogram answers
+              from your shop’s information.
             </p>
           </div>
 

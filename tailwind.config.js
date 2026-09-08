@@ -17,6 +17,10 @@ export default {
           faint: '#58685E',
         },
         line: '#DCE6DF',
+        cobalt: {
+          DEFAULT: '#0D5DA8',
+          deep: '#09477F',
+        },
         // Fern means Sellogram is acting: product replies, presence, success,
         // and every primary button and interactive control.
         fern: {
