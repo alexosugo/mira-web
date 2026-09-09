@@ -7,6 +7,11 @@ interface ShopDMCardProps {
   readonly shopName: string;
   readonly initials: string;
   readonly messages: readonly ShopDMMessage[];
+  readonly sharedPost?: {
+    readonly image: string;
+    readonly imageAlt: string;
+    readonly title: string;
+  };
   readonly className?: string;
   readonly compact?: boolean;
 }
@@ -15,6 +20,7 @@ const ShopDMCard = ({
   shopName,
   initials,
   messages,
+  sharedPost,
   className = '',
   compact = false,
 }: ShopDMCardProps) => {
@@ -38,6 +44,23 @@ const ShopDMCard = ({
       </div>
 
       <div className={compact ? 'space-y-2 px-3 py-3' : 'space-y-2.5 px-3 py-3 sm:px-4 sm:py-4'}>
+        {sharedPost && (
+          <div className="flex overflow-hidden rounded-xl border border-line bg-white">
+            <img
+              src={sharedPost.image}
+              alt={sharedPost.imageAlt}
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+              className="h-14 w-20 shrink-0 object-cover"
+            />
+            <div className="min-w-0 px-2.5 py-2">
+              <p className="text-[0.6rem] text-ink-faint">Shared a post</p>
+              <p className="mt-0.5 truncate text-[0.68rem] font-semibold text-ink">{sharedPost.title}</p>
+            </div>
+          </div>
+        )}
         {messages.map((message, index) => (
           <div
             key={`${message.from}-${index}-${message.text}`}

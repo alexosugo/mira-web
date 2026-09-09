@@ -1,6 +1,6 @@
 import React from 'react';
-import { describe, expect, it } from 'vitest';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
 import SupportedShops from '../components/SupportedShops';
 import DMSalesJourney from '../components/DMSalesJourney';
 
@@ -38,67 +38,64 @@ describe('imagery-led homepage sections', () => {
   });
 
   it('follows one Cocoa Rose Beauty order from stock question to delivery', () => {
-    const { container } = render(<DMSalesJourney />);
+    render(<DMSalesJourney />);
 
     expect(
       screen.getByRole('heading', { name: 'From “Is it available?” to “Rider ametoka”' })
     ).toBeInTheDocument();
-    expect(screen.getByText('One customer. One order. From the first question to the delivery update.')).toBeInTheDocument();
-    expect(screen.getAllByRole('heading', { name: '“Hi, is shade 08 still available?”' })).toHaveLength(2);
-    expect(screen.getAllByRole('heading', { name: '“How much is delivery to Kilimani?”' })).toHaveLength(2);
-    expect(screen.getAllByRole('heading', { name: '“Sent to the M-Pesa number.”' })).toHaveLength(2);
-    expect(screen.getAllByRole('heading', { name: '“Rider ametoka.”' })).toHaveLength(2);
-
-    expect(screen.getAllByText(/Sellogram asks the shop owner to confirm the payment/i)).toHaveLength(2);
+    expect(screen.getByRole('heading', { name: '“Hi, is shade 08 still available?”' })).toBeInTheDocument();
+    expect(screen.getByTestId('journey-instagram-post')).toBeInTheDocument();
+    expect(screen.getByText('Shared a post')).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: '“How much is delivery to Kilimani?”' })).not.toBeInTheDocument();
+    expect(screen.queryByText('One customer. One order. From the first question to the delivery update.')).not.toBeInTheDocument();
+    expect(screen.queryByText(/Sellogram asks the shop owner to confirm the payment/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/card payment/i)).not.toBeInTheDocument();
     expect(screen.queryByText('Kasa Archive')).not.toBeInTheDocument();
     expect(screen.queryByText('Mide Beauty')).not.toBeInTheDocument();
     expect(screen.queryByText('Aster Fragrance')).not.toBeInTheDocument();
 
-    const mobileStory = container.querySelector('[data-testid="journey-mobile-story"]');
-    expect(mobileStory).not.toBeNull();
-    const journeyImages = within(mobileStory as HTMLElement).getAllByRole('img');
-    expect(journeyImages).toHaveLength(4);
-    for (const image of journeyImages) {
-      expect(image.getAttribute('src')).toMatch(/^\/images\/journey\//);
-    }
-    expect(
-      within(mobileStory as HTMLElement).getByRole('img', { name: /piki piki rider delivering a Cocoa Rose Beauty order/i })
-    ).toBeInTheDocument();
-    expect(screen.getAllByText('Cocoa Rose Beauty')).toHaveLength(5);
+    expect(screen.getAllByText('Cocoa Rose Beauty')).toHaveLength(1);
     expect(screen.queryByText('Inside the sale')).not.toBeInTheDocument();
     expect(screen.queryByText('Accra')).not.toBeInTheDocument();
   });
 
-  it('changes the desktop visual when a progress dot is selected', () => {
-    render(<DMSalesJourney />);
+  it('shows one stage at a time and changes it without moving the page', () => {
+    const scrollIntoView = HTMLElement.prototype.scrollIntoView;
+    const scrollSpy = vi.fn();
+    HTMLElement.prototype.scrollIntoView = scrollSpy;
+    const { container } = render(<DMSalesJourney />);
 
     const firstDot = screen.getByRole('button', { name: 'Show step 1: Hi, is shade 08 still available?' });
-    const finalDot = screen.getByRole('button', { name: 'Show step 4: Rider ametoka.' });
+    const finalDot = screen.getByRole('button', { name: 'Show step 5: Rider ametoka.' });
     expect(firstDot).toHaveAttribute('aria-current', 'step');
 
     fireEvent.click(finalDot);
 
     expect(firstDot).not.toHaveAttribute('aria-current');
     expect(finalDot).toHaveAttribute('aria-current', 'step');
-    expect(screen.getByTestId('journey-desktop-visual').querySelector('img')).toHaveAttribute(
-      'src',
-      '/images/journey/cocoa-rose-delivery.webp'
-    );
+    expect(screen.getByRole('heading', { name: '“Rider ametoka.”' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: '“Hi, is shade 08 still available?”' })).not.toBeInTheDocument();
+    expect(container.querySelectorAll('[data-journey-frame]')).toHaveLength(1);
+    expect(scrollSpy).not.toHaveBeenCalled();
+
+    HTMLElement.prototype.scrollIntoView = scrollIntoView;
   });
 
-  it('uses one compact image frame and no stage rules', () => {
+  it('uses five compact progress dots with no connector', () => {
     const { container } = render(<DMSalesJourney />);
 
-    const section = container.querySelector('#dm-sales-journey');
-    expect(section?.className).not.toContain('border-y');
-    expect(container.querySelectorAll('li.border-t')).toHaveLength(0);
+    expect(screen.getAllByRole('button', { name: /Show step/ })).toHaveLength(5);
+    expect(container.querySelector('[data-journey-connector]')).not.toBeInTheDocument();
+    expect(container.querySelector('[data-journey-panel]')).toHaveClass('sticky');
+  });
 
-    const mobileStory = container.querySelector('[data-testid="journey-mobile-story"]');
-    const frames = mobileStory?.querySelectorAll('[data-journey-frame]');
-    expect(frames).toHaveLength(4);
-    for (const frame of frames ?? []) {
-      expect(frame.className).toContain('aspect-[4/3]');
-    }
+  it('uses the shop DM for payment details instead of a seller portrait', () => {
+    render(<DMSalesJourney />);
+
+    fireEvent.click(screen.getByRole('button', { name: /Show step 3/ }));
+
+    expect(screen.getByTestId('journey-payment-inbox')).toBeInTheDocument();
+    expect(screen.getByText(/M-Pesa Buy Goods till/)).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: /shop owner/i })).not.toBeInTheDocument();
   });
 });

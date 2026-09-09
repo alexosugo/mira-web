@@ -104,6 +104,11 @@ Motion shows cause and effect: one gesture, `animate-fade-in-up` (14px rise,
 pulsing. Everything respects `prefers-reduced-motion` via the global override
 in `index.css`.
 
+The DM sales journey is the exception. It uses one pinned frame while normal
+page scroll selects five discrete stages. The frame and progress dots do not
+move. Stage content changes with a short opacity fade only. The dots have no
+connector line.
+
 ## Accessibility
 
 - WCAG 2.1 AA: every text style clears 4.5:1 on its surface (`ink-faint` and
