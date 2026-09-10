@@ -1,6 +1,6 @@
 import React from 'react';
-import { describe, expect, it, vi } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { render, screen, within } from '@testing-library/react';
 import SupportedShops from '../components/SupportedShops';
 import DMSalesJourney from '../components/DMSalesJourney';
 
@@ -44,7 +44,8 @@ describe('imagery-led homepage sections', () => {
       screen.getByRole('heading', { name: 'From “Is it available?” to “Rider ametoka”' })
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: '“Hi, is shade 08 still available?”' })).toBeInTheDocument();
-    expect(screen.getByTestId('journey-instagram-post')).toBeInTheDocument();
+    expect(screen.getByTestId('journey-dm')).toBeInTheDocument();
+    expect(screen.queryByTestId('journey-instagram-post')).not.toBeInTheDocument();
     expect(screen.getByText('Shared a post')).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: '“How much is delivery to Kilimani?”' })).not.toBeInTheDocument();
     expect(screen.queryByText('One customer. One order. From the first question to the delivery update.')).not.toBeInTheDocument();
@@ -59,43 +60,31 @@ describe('imagery-led homepage sections', () => {
     expect(screen.queryByText('Accra')).not.toBeInTheDocument();
   });
 
-  it('shows one stage at a time and changes it without moving the page', () => {
-    const scrollIntoView = HTMLElement.prototype.scrollIntoView;
-    const scrollSpy = vi.fn();
-    HTMLElement.prototype.scrollIntoView = scrollSpy;
+  it('shows one stage at a time in one fixed visual area', () => {
     const { container } = render(<DMSalesJourney />);
 
-    const firstDot = screen.getByRole('button', { name: 'Show step 1: Hi, is shade 08 still available?' });
-    const finalDot = screen.getByRole('button', { name: 'Show step 5: Rider ametoka.' });
-    expect(firstDot).toHaveAttribute('aria-current', 'step');
-
-    fireEvent.click(finalDot);
-
-    expect(firstDot).not.toHaveAttribute('aria-current');
-    expect(finalDot).toHaveAttribute('aria-current', 'step');
-    expect(screen.getByRole('heading', { name: '“Rider ametoka.”' })).toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: '“Hi, is shade 08 still available?”' })).not.toBeInTheDocument();
     expect(container.querySelectorAll('[data-journey-frame]')).toHaveLength(1);
-    expect(scrollSpy).not.toHaveBeenCalled();
-
-    HTMLElement.prototype.scrollIntoView = scrollIntoView;
+    expect(container.querySelectorAll('[data-journey-visual]')).toHaveLength(1);
+    expect(screen.queryByRole('img', { name: /Cocoa Rose Beauty model/i })).not.toBeInTheDocument();
   });
 
-  it('uses five compact progress dots with no connector', () => {
+  it('uses five passive progress dots with no connector', () => {
     const { container } = render(<DMSalesJourney />);
+    const progress = screen.getByRole('list', { name: 'Order progress' });
+    const dots = within(progress).getAllByRole('listitem');
 
-    expect(screen.getAllByRole('button', { name: /Show step/ })).toHaveLength(5);
+    expect(dots).toHaveLength(5);
+    expect(dots[0]).toHaveAttribute('aria-current', 'step');
+    expect(screen.queryByRole('button', { name: /Show step/ })).not.toBeInTheDocument();
     expect(container.querySelector('[data-journey-connector]')).not.toBeInTheDocument();
     expect(container.querySelector('[data-journey-panel]')).toHaveClass('sticky');
   });
 
-  it('uses the shop DM for payment details instead of a seller portrait', () => {
+  it('keeps the customer inside the shop DM', () => {
     render(<DMSalesJourney />);
 
-    fireEvent.click(screen.getByRole('button', { name: /Show step 3/ }));
-
-    expect(screen.getByTestId('journey-payment-inbox')).toBeInTheDocument();
-    expect(screen.getByText(/M-Pesa Buy Goods till/)).toBeInTheDocument();
+    expect(screen.getByText('Cocoa Rose Beauty')).toBeInTheDocument();
+    expect(screen.queryByText('Sellogram')).not.toBeInTheDocument();
     expect(screen.queryByRole('img', { name: /shop owner/i })).not.toBeInTheDocument();
   });
 });
