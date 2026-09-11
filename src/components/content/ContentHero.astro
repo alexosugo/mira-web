@@ -27,7 +27,7 @@ const { hero, route, variant, decor, withThree = false } = Astro.props;
 const ctaClass = (v: 'primary' | 'secondary' | undefined) =>
   v === 'secondary'
     ? 'inline-flex min-h-[44px] items-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5'
-    : 'inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep';
+    : 'inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper';
 
 const isDocument = variant === 'legal' || variant === 'trust';
 const hasAmbient = variant === 'guide' || variant === 'feature' || variant === 'useCase';
@@ -55,7 +55,7 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
       <div class={variant === 'feature' ? 'lg:col-span-7' : ''}>
         {decor && !isDocument && (
           <p class="animate-fade-in-up mb-5">
-            <Motif motif={decor.motif} class="h-9 w-9 text-fern" />
+            <Motif motif={decor.motif} class="h-9 w-9 text-fern-deep" />
           </p>
         )}
 
@@ -117,8 +117,8 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
           <div class="animate-fade-in-up rounded-3xl border border-line bg-white p-6 shadow-none [animation-delay:320ms]">
             <div class="flex items-center gap-2 border-b border-line pb-4">
               <span class="relative flex h-2 w-2">
-                <span class="absolute h-full w-full animate-ping rounded-full bg-fern/50"></span>
-                <span class="relative h-2 w-2 rounded-full bg-fern"></span>
+                <span class="absolute h-full w-full animate-ping rounded-full bg-fern-deep/50"></span>
+                <span class="relative h-2 w-2 rounded-full bg-fern-deep"></span>
               </span>
               <span class="font-mono text-xs text-ink-faint">yourshop · Sellogram is on</span>
             </div>

@@ -12,9 +12,9 @@ This file records the visual system already used by the website. It is descripti
 | Ink light | `#49584F` | Secondary text |
 | Ink faint | `#58685E` | Quiet text that must remain readable on Paper |
 | Line | `#DCE6DF` | Hairline borders and dividers |
-| Fern | `#177E54` | Primary action colour |
-| Fern deep | `#11603F` | Fern hover/darker state |
-| Fern bright | `#8BD9B3` | Fern on dark surfaces |
+| Fern | `#9EEB47` | Primary action colour. Fill only, always with Ink text |
+| Fern deep | `#44780C` | Fern text, icons, focus ring and hover fill on light |
+| Fern bright | `#B5F27C` | Fern text on dark surfaces |
 | Dawn | `#A35F0C` | Commerce accent |
 | Dawn deep | `#834B0A` | Darker commerce text/accent |
 | Dawn bright | `#F0B254` | Commerce accent on dark surfaces |
@@ -24,7 +24,7 @@ This file records the visual system already used by the website. It is descripti
 
 ### Colour roles
 
-Fern is the action colour. Use it for primary actions, active product states, Sellogram responses, presence, and success states.
+Fern is the action colour. The lime default is a fill only; it sits at 1.3:1 against Paper, so text, icons and focus rings on light surfaces use Fern deep. Use it for primary actions, active product states, Sellogram responses, presence, and success states.
 
 Dawn is the commerce colour. Use it for money, carts, payment, completed sales, and selected commercial emphasis. Do not use Dawn as the normal primary button colour.
 

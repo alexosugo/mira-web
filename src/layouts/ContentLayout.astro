@@ -151,7 +151,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                   <p class="font-display text-xl text-ink">Ready to stop typing the same replies?</p>
                   <a
                     href="https://app.sellogram.co"
-                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
+                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper"
                   >
                     Start free
                   </a>
@@ -269,12 +269,12 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                                 client:load
                                 label={item.cta.label}
                                 location={`${route.pageName} ${section.heading}`}
-                                className="mt-4 inline-flex text-sm font-medium text-fern underline-offset-4 hover:underline"
+                                className="mt-4 inline-flex text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
                               />
                             ) : (
                               <a
                                 href={item.cta.href}
-                                class="mt-4 inline-block text-sm font-medium text-fern underline-offset-4 hover:underline"
+                                class="mt-4 inline-block text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
                               >
                                 {item.cta.label}
                               </a>

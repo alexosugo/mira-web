@@ -27,8 +27,8 @@ const isKes = (part: string) => /^KES\s?[\d,]+$/.test(part);
     <div class="flex items-center justify-between border-b border-line px-6 py-4">
       <div class="flex items-center gap-2.5">
         <span class="relative flex h-2 w-2">
-          <span class="absolute h-full w-full animate-ping rounded-full bg-fern/50 motion-reduce:hidden"></span>
-          <span class="relative h-2 w-2 rounded-full bg-fern"></span>
+          <span class="absolute h-full w-full animate-ping rounded-full bg-fern-deep/50 motion-reduce:hidden"></span>
+          <span class="relative h-2 w-2 rounded-full bg-fern-deep"></span>
         </span>
         <span class="font-mono text-xs text-ink-faint">yourshop</span>
       </div>
@@ -45,7 +45,7 @@ const isKes = (part: string) => /^KES\s?[\d,]+$/.test(part);
             </p>
           </div>
           <div class="flex justify-end scenario-bubble scenario-sellogram">
-            <p class="max-w-[85%] rounded-2xl rounded-br-md bg-fern px-4 py-2.5 text-sm leading-relaxed text-paper">
+            <p class="max-w-[85%] rounded-2xl rounded-br-md bg-fern px-4 py-2.5 text-sm leading-relaxed text-ink">
               {kesParts(item.sellogram).map((part) =>
                 isKes(part) ? <span class="font-mono text-[0.8125rem]">{part}</span> : part,
               )}

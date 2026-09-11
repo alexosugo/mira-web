@@ -22,12 +22,15 @@ export default {
           deep: '#09477F',
         },
         // Fern means Sellogram is acting: product replies, presence, success,
-        // and every primary button and interactive control.
+        // and every primary button and interactive control. The lime default
+        // is a fill colour only and always carries ink text, never paper.
         fern: {
-          DEFAULT: '#177E54',
-          deep: '#11603F',
-          // Brighter step for legibility on the dark night-shift section.
-          bright: '#8BD9B3',
+          DEFAULT: '#9EEB47',
+          // Text, icons, focus rings and hover fills on light surfaces, where
+          // the lime default sits at 1.3:1 against paper.
+          deep: '#44780C',
+          // Text on the dark night-shift section and footer.
+          bright: '#B5F27C',
         },
         // Dawn means money: the cart confirmation, the paid ledger line, the
         // highlighted-plan tag. Never a button color.

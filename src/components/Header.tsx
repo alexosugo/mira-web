@@ -72,7 +72,7 @@ const Header = () => {
           <a
             href={APP_URL}
             onClick={handleCTAClick}
-            className="inline-flex min-h-[44px] items-center rounded-full bg-fern px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
+            className="inline-flex min-h-[44px] items-center rounded-full bg-fern px-5 text-sm font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper"
           >
             {CTA_LABEL}
           </a>

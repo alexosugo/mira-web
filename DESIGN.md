@@ -11,9 +11,9 @@ colors:
   line: "#DCE6DF"
   cobalt: "#0D5DA8"
   cobalt-deep: "#09477F"
-  fern: "#177E54"
-  fern-deep: "#11603F"
-  fern-bright: "#8BD9B3"
+  fern: "#9EEB47"
+  fern-deep: "#44780C"
+  fern-bright: "#B5F27C"
   dawn: "#A35F0C"
   dawn-deep: "#834B0A"
   dawn-bright: "#F0B254"
@@ -44,10 +44,12 @@ The page must feel Instagram-native, not like a generic software landing page.
 
 ## The Fern Rule
 
-Fern (`#177E54`) means **Sellogram is acting or the customer takes the main
+Fern (`#9EEB47`) means **Sellogram is acting or the customer takes the main
 action**: shop reply bubbles, primary buttons, active controls, presence and
 processing states (`fern-bright` on dark). Do not cover large areas with
-bright fern — it guides attention, it does not dominate.
+bright fern — it guides attention, it does not dominate. Lime is a fill
+colour and always carries ink text. On light surfaces, fern text, icons and
+focus rings use `fern-deep` (`#44780C`).
 
 ## The Dawn Rule
 

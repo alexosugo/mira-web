@@ -277,7 +277,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
           {isSuccess ? (
             <div className="py-8 text-center animate-fade-in-up" role="status">
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-fern/10 flex items-center justify-center">
-                <svg className="w-7 h-7 text-fern" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg className="w-7 h-7 text-fern-deep" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -414,7 +414,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                     }`}
                   >
                     {formData.optInUpdates && (
-                      <svg className="w-3 h-3 text-paper" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <svg className="w-3 h-3 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     )}

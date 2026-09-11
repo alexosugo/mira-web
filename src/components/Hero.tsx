@@ -59,7 +59,7 @@ const Hero = () => {
                   window.location.href = APP_URL;
                 }}
                 aria-busy={isRedirecting}
-                className={`inline-flex min-h-[50px] items-center rounded-full bg-fern px-8 text-base font-medium text-paper transition-colors duration-200 hover:bg-fern-deep ${
+                className={`inline-flex min-h-[50px] items-center rounded-full bg-fern px-8 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper ${
                   isRedirecting ? 'pointer-events-none opacity-80' : ''
                 }`}
               >

@@ -71,7 +71,7 @@ const Pricing = () => {
                     onClick={() => handleCTAClick(plan.key, plan.cta)}
                     className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
                       plan.isHighlighted
-                        ? 'bg-fern text-paper hover:bg-fern-deep'
+                        ? 'bg-fern text-ink hover:bg-fern-deep hover:text-paper'
                         : 'border border-ink/25 text-ink hover:border-ink hover:bg-ink/5'
                     }`}
                   >
