@@ -245,7 +245,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       aria-labelledby="modal-title"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-night/70" onClick={handleBackdropClick} />
+      <div className="absolute inset-0 bg-ink/70" onClick={handleBackdropClick} />
 
       {/* Modal: single hairline elevation, matching the page's demo card */}
       <div
@@ -293,7 +293,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
               </p>
               <button
                 onClick={resetAndClose}
-                className="px-6 py-3 rounded-full bg-fern text-paper font-medium
+                className="px-6 py-3 rounded-full bg-fern text-ink font-medium
                            hover:bg-fern-deep transition-colors duration-200"
               >
                 Close
@@ -437,7 +437,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 type="submit"
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
-                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-fern text-paper font-medium
+                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-fern text-ink font-medium
                            hover:bg-fern-deep transition-colors duration-200
                            ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
               >

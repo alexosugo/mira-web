@@ -14,13 +14,13 @@ This file records the visual system already used by the website. It is descripti
 | Line | `#DEE6D7` | Hairline borders and dividers |
 | Fern | `#9EEB47` | Primary action colour. Fill only, always with Ink text |
 | Fern deep | `#44780C` | Fern text, icons, focus ring and hover fill on light |
-| Fern bright | `#B5F27C` | Fern text on dark surfaces |
+| Fern bright | `#225C13` | Sellogram-is-acting accent on Night |
 | Dawn | `#A35F0C` | Commerce accent |
 | Dawn deep | `#834B0A` | Darker commerce text/accent |
-| Dawn bright | `#F0B254` | Commerce accent on dark surfaces |
-| Night | `#131E09` | Primary dark surface |
-| Night raised | `#1D2C0E` | Raised surface on Night |
-| Night line | `#2F441B` | Dividers on Night |
+| Dawn bright | `#834B0A` | Commerce accent on Night |
+| Night | `#9EEB47` | Bold lime surface. Carries ink text |
+| Night raised | `#90DC33` | Raised surface on Night |
+| Night line | `#5E9221` | Dividers on Night |
 
 ### Colour roles
 
@@ -28,7 +28,7 @@ Fern is the action colour. The lime default is a fill only; it sits at 1.3:1 aga
 
 Dawn is the commerce colour. Use it for money, carts, payment, completed sales, and selected commercial emphasis. Do not use Dawn as the normal primary button colour.
 
-Night is the dark surface. Use it for deliberate high-contrast sections and the footer, with the bright Fern and Dawn variants where needed.
+Night is the dark surface slot, now filled by a bold lime. It is a light lime, so use ink for text and the deep Fern and Dawn bright variants for accents. Use it for deliberate high-impact sections and the footer.
 
 Paper and Ink are the default ground and foreground. Most of the public experience should remain here.
 

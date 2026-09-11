@@ -13,13 +13,13 @@ colors:
   cobalt-deep: "#09477F"
   fern: "#9EEB47"
   fern-deep: "#44780C"
-  fern-bright: "#B5F27C"
+  fern-bright: "#225C13"
   dawn: "#A35F0C"
   dawn-deep: "#834B0A"
-  dawn-bright: "#F0B254"
-  night: "#131E09"
-  night-raised: "#1D2C0E"
-  night-line: "#2F441B"
+  dawn-bright: "#834B0A"
+  night: "#9EEB47"
+  night-raised: "#90DC33"
+  night-line: "#5E9221"
 fonts:
   display: Archivo (400, 500, 600, 700)
   body: Source Sans 3 (400, 500, 600)
@@ -36,7 +36,8 @@ The page must feel Instagram-native, not like a generic software landing page.
 
 - **Paper** (`#F3F6F0`) is the ground. Panels sit on white or raised paper with
   a single hairline border (`line`), no drop shadows by default.
-- **Night** (`#131E09`) is for the footer and the NightShift section.
+- **Night** (`#9EEB47`) is a light lime surface for the footer and the NightShift
+  section. Everything on it uses ink text.
 - **Cobalt** (`#0D5DA8`) can hold a full editorial chapter. Use its deep step
   for supporting surfaces. Rose, amber, and bright studio color stay in the
   photography. Do not mute them with beige or terracotta overlays.

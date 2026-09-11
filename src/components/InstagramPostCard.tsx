@@ -13,7 +13,7 @@ const InstagramPostCard = ({ image, imageAlt }: InstagramPostCardProps) => (
   >
     <header className="flex items-center gap-3 px-3 py-2.5">
       <span
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-night text-[0.65rem] font-semibold text-paper"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-[0.65rem] font-semibold text-paper"
         aria-hidden="true"
       >
         CR

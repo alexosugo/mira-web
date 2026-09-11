@@ -67,7 +67,7 @@ const Footer = () => {
   };
 
   return (
-    <footer ref={sectionRef} className="bg-night text-paper">
+    <footer ref={sectionRef} className="bg-night text-ink">
       <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <nav
           aria-label="Footer navigation"
@@ -75,7 +75,7 @@ const Footer = () => {
         >
           {FOOTER_GROUPS.map((group) => (
             <div key={group.heading}>
-              <p className="font-mono text-xs uppercase tracking-wide text-paper/60">
+              <p className="font-mono text-xs uppercase tracking-wide text-ink-light">
                 {group.heading}
               </p>
               <ul className="mt-3">
@@ -84,7 +84,7 @@ const Footer = () => {
                     <a
                       href={link.href}
                       onClick={() => trackCTA(`footer_link_${link.id}`, link.label, 'footer')}
-                      className="inline-flex min-h-[44px] min-w-[44px] items-center text-sm text-paper/70 transition-colors duration-200 hover:text-paper"
+                      className="inline-flex min-h-[44px] min-w-[44px] items-center text-sm text-ink-light transition-colors duration-200 hover:text-ink"
                     >
                       {link.label}
                     </a>
@@ -98,7 +98,7 @@ const Footer = () => {
         <div className="mt-12 flex flex-col gap-4 border-t border-night-line pt-8 sm:flex-row sm:items-baseline sm:justify-between">
           <div>
             <p className="font-display text-xl font-semibold">Sellogram</p>
-            <p className="mt-2 font-mono text-xs text-paper/55">
+            <p className="mt-2 font-mono text-xs text-ink-light">
               Made in Nairobi, Kenya · © {currentYear}
             </p>
           </div>
@@ -106,7 +106,7 @@ const Footer = () => {
           <a
             href="mailto:hello@sellogram.co"
             onClick={() => handleContactClick('email')}
-            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm text-paper/60 transition-colors duration-200 hover:text-paper"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm text-ink-light transition-colors duration-200 hover:text-ink"
           >
             hello@sellogram.co
           </a>

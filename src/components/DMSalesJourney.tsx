@@ -111,7 +111,7 @@ const DMSalesJourney = () => {
   const sharedPost = dmStagesSoFar.find((stage) => stage.sharedPost)?.sharedPost;
 
   return (
-    <section id="dm-sales-journey" ref={sectionRef} className="bg-night py-20 text-paper sm:py-28 lg:py-32">
+    <section id="dm-sales-journey" ref={sectionRef} className="bg-night py-20 text-ink sm:py-28 lg:py-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance]">
           From “Is it available?” to “Rider ametoka”
@@ -128,10 +128,10 @@ const DMSalesJourney = () => {
                       type="button"
                       onClick={() => selectStage(index)}
                       className={`flex min-h-[44px] items-center gap-3 rounded-full px-4 text-left text-sm transition-colors duration-150 md:w-full md:rounded-xl md:px-4 md:py-3 md:text-base ${
-                        isActive ? 'bg-paper text-ink' : 'text-paper/70 hover:bg-night-raised hover:text-paper'
+                        isActive ? 'bg-ink text-paper' : 'text-ink-light hover:bg-night-raised hover:text-ink'
                       }`}
                     >
-                      <span className={`font-mono text-xs ${isActive ? 'text-fern-deep' : 'text-paper/45'}`}>{index + 1}</span>
+                      <span className={`font-mono text-xs ${isActive ? 'text-fern' : 'text-ink-light'}`}>{index + 1}</span>
                       <span className="font-medium">{stage.title}</span>
                     </button>
                   </li>
@@ -139,7 +139,7 @@ const DMSalesJourney = () => {
               })}
             </ol>
 
-            <p key={activeStage.title} className="mt-6 max-w-[31rem] animate-journey-fade text-base leading-relaxed text-paper/75 sm:text-lg" aria-live="polite">
+            <p key={activeStage.title} className="mt-6 max-w-[31rem] animate-journey-fade text-base leading-relaxed text-ink-light sm:text-lg" aria-live="polite">
               {activeStage.description}
             </p>
           </div>

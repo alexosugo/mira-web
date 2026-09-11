@@ -31,7 +31,7 @@ const ShopDMCard = ({
     >
       <div className={`flex items-center gap-3 border-b border-line ${compact ? 'px-3 py-2.5' : 'px-4 py-3'}`}>
         <div
-          className={`flex shrink-0 items-center justify-center rounded-full bg-night font-semibold text-paper ${
+          className={`flex shrink-0 items-center justify-center rounded-full bg-ink font-semibold text-paper ${
             compact ? 'h-7 w-7 text-[0.62rem]' : 'h-8 w-8 text-xs'
           }`}
           aria-hidden="true"

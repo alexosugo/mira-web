@@ -19,7 +19,7 @@ const HeroChatDemo = () => {
       aria-label="Example Nia Thrift Instagram DM conversation about a denim set and delivery to Kilimani"
       className="relative isolate"
     >
-      <div className="overflow-hidden rounded-xl bg-night shadow-[0_30px_90px_rgba(19,30,9,0.16)] sm:rounded-2xl">
+      <div className="overflow-hidden rounded-xl bg-ink shadow-[0_30px_90px_rgba(19,30,9,0.16)] sm:rounded-2xl">
         <img
           src={HERO_IMAGE_SRC}
           alt="Nairobi fashion seller photographing a denim look against a cobalt-blue stairwell"

@@ -29,22 +29,23 @@ export default {
           // Text, icons, focus rings and hover fills on light surfaces, where
           // the lime default sits at 1.3:1 against paper.
           deep: '#44780C',
-          // Text on the dark night-shift section and footer.
-          bright: '#B5F27C',
+          // Sellogram-is-acting accent on the lime night surface.
+          bright: '#225C13',
         },
         // Dawn means money: the cart confirmation, the paid ledger line, the
         // highlighted-plan tag. Never a button color.
         dawn: {
           DEFAULT: '#A35F0C',
           deep: '#834B0A',
-          // Brighter step for legibility on the dark night-shift section.
-          bright: '#F0B254',
+          // Commerce accent on the lime night surface.
+          bright: '#834B0A',
         },
-        // On-dark equivalents for the night-shift section and footer.
+        // The bold surface used by the night-shift section, the journey and
+        // the footer. It is a light lime, so everything on it carries ink text.
         night: {
-          DEFAULT: '#131E09',
-          raised: '#1D2C0E',
-          line: '#2F441B',
+          DEFAULT: '#9EEB47',
+          raised: '#90DC33',
+          line: '#5E9221',
         },
       },
       fontFamily: {

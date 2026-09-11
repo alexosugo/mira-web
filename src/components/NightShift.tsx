@@ -26,10 +26,10 @@ const NightShift = () => {
       <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <h2 className="font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight text-paper [text-wrap:balance]">
+            <h2 className="font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight text-ink [text-wrap:balance]">
               Close shop. Keep selling.
             </h2>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-paper/70">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-ink-light">
               Your customers can still ask about size, stock, price and delivery. Sellogram answers
               from your shop’s information.
             </p>
@@ -45,14 +45,14 @@ const NightShift = () => {
                         ? 'text-dawn-bright'
                         : entry.isSellogram
                           ? 'text-fern-bright'
-                          : 'text-paper/55'
+                          : 'text-ink-light'
                     }`}
                   >
                     {entry.time}
                   </span>
                   <span
                     className={`text-sm leading-relaxed sm:text-base ${
-                      entry.isPayoff ? 'font-medium text-paper' : 'text-paper/70'
+                      entry.isPayoff ? 'font-semibold text-ink' : 'text-ink-light'
                     }`}
                   >
                     {entry.text}
