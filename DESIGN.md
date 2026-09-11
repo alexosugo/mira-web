@@ -36,8 +36,8 @@ The page must feel Instagram-native, not like a generic software landing page.
 
 - **Paper** (`#F3F6F0`) is the ground. Panels sit on white or raised paper with
   a single hairline border (`line`), no drop shadows by default.
-- **Night** (`#90DD34`) is a light lime surface for the footer and the NightShift
-  section. Everything on it uses ink text.
+- **Night** (`#90DD34`) is a light lime surface for the footer and the DM
+  journey. Everything on it uses ink text.
 - **Cobalt** (`#0D5DA8`) can hold a full editorial chapter. Use its deep step
   for supporting surfaces. Rose, amber, and bright studio color stay in the
   photography. Do not mute them with beige or terracotta overlays.

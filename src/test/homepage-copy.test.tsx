@@ -2,7 +2,6 @@ import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import Hero from '../components/Hero';
-import NightShift from '../components/NightShift';
 import HowItWorks from '../components/HowItWorks';
 import Pricing from '../components/Pricing';
 import FinalCTA from '../components/FinalCTA';
@@ -27,15 +26,6 @@ describe('homepage voice', () => {
     expect(screen.getByText(/Tricky questions come to you/)).toBeInTheDocument();
     expect(screen.queryByText('Start free. No card.')).not.toBeInTheDocument();
     expect(screen.queryByText(/Instagram commerce/i)).not.toBeInTheDocument();
-  });
-
-  it('uses direct language for late-night selling', () => {
-    render(<NightShift />);
-
-    expect(screen.getByRole('heading', { name: 'Close shop. Keep selling.' })).toBeInTheDocument();
-    expect(screen.getByText('Payment confirmed. Your order is packed.')).toBeInTheDocument();
-    expect(screen.queryByText('After hours')).not.toBeInTheDocument();
-    expect(screen.queryByText(/The shop replies/i)).not.toBeInTheDocument();
   });
 
   it('states what Sellogram reads and removes numbered setup labels', () => {

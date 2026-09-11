@@ -16,7 +16,6 @@ const activeBrandFiles = [
   'src/components/Hero.tsx',
   'src/components/HeroChatDemo.tsx',
   'src/components/HowItWorks.tsx',
-  'src/components/NightShift.tsx',
   'src/components/Pricing.tsx',
   'src/layouts/BaseLayout.astro',
   'PRODUCT.md',
@@ -46,14 +45,11 @@ describe('Sellogram rename', () => {
 
   it('keeps Sellogram behind the shop identity in shopper-facing chat', () => {
     const chat = read('src/components/HeroChatDemo.tsx');
-    const nightShift = read('src/components/NightShift.tsx');
 
     expect(chat).not.toMatch(/['"]mira['"]/);
     expect(chat).toContain("'shop'");
     expect(chat).not.toContain("'sellogram'");
     expect(chat).toContain('Sellogram powers');
-    expect(nightShift).not.toContain('isMira');
-    expect(nightShift).toContain('isSellogram');
   });
 
   it('uses the current Sellogram app URL after the domain cutover', () => {
