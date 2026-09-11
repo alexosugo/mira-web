@@ -1,17 +1,14 @@
 import React from 'react';
 import { describe, expect, it } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import SupportedShops from '../components/SupportedShops';
 import DMSalesJourney from '../components/DMSalesJourney';
 
 const EXPECTED_SHOPS = [
-  ['Daily-drop shops', '/use-cases/daily-drop-shops'],
   ['Fashion & thrift', '/use-cases/fashion'],
   ['Beauty', '/use-cases/beauty'],
   ['Accessories', '/use-cases/accessories'],
-  ['Fragrance', '/use-cases/fragrances'],
   ['Bakeries & food', '/use-cases/home-bakeries-food-brands'],
-  ['Skincare & haircare', '/use-cases/skincare-haircare-makers'],
 ] as const;
 
 describe('imagery-led homepage sections', () => {
@@ -25,6 +22,7 @@ describe('imagery-led homepage sections', () => {
     for (const [name, href] of EXPECTED_SHOPS) {
       expect(screen.getByRole('link', { name: new RegExp(name, 'i') })).toHaveAttribute('href', href);
     }
+    expect(screen.getAllByRole('link')).toHaveLength(EXPECTED_SHOPS.length);
   });
 
   it('keeps the supported-shop grid compact and free of repeated rules', () => {
@@ -43,11 +41,11 @@ describe('imagery-led homepage sections', () => {
     expect(
       screen.getByRole('heading', { name: 'From “Is it available?” to “Rider ametoka”' })
     ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: '“Hi, is shade 08 still available?”' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Hi, is shade 08 still available\?/ })).toBeInTheDocument();
     expect(screen.getByTestId('journey-dm')).toBeInTheDocument();
     expect(screen.queryByTestId('journey-instagram-post')).not.toBeInTheDocument();
     expect(screen.getByText('Shared a post')).toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: '“How much is delivery to Kilimani?”' })).not.toBeInTheDocument();
+    expect(screen.queryByText('Delivery to Kilimani is KSh 250.')).not.toBeInTheDocument();
     expect(screen.queryByText('One customer. One order. From the first question to the delivery update.')).not.toBeInTheDocument();
     expect(screen.queryByText(/Sellogram asks the shop owner to confirm the payment/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/card payment/i)).not.toBeInTheDocument();
@@ -68,16 +66,23 @@ describe('imagery-led homepage sections', () => {
     expect(screen.queryByRole('img', { name: /Cocoa Rose Beauty model/i })).not.toBeInTheDocument();
   });
 
-  it('uses five passive progress dots with no connector', () => {
+  it('lets the reader pick any of the five steps without scroll locking', () => {
     const { container } = render(<DMSalesJourney />);
     const progress = screen.getByRole('list', { name: 'Order progress' });
-    const dots = within(progress).getAllByRole('listitem');
+    const steps = within(progress).getAllByRole('listitem');
 
-    expect(dots).toHaveLength(5);
-    expect(dots[0]).toHaveAttribute('aria-current', 'step');
-    expect(screen.queryByRole('button', { name: /Show step/ })).not.toBeInTheDocument();
+    expect(steps).toHaveLength(5);
+    expect(steps[0]).toHaveAttribute('aria-current', 'step');
+    expect(container.querySelector('.sticky')).not.toBeInTheDocument();
     expect(container.querySelector('[data-journey-connector]')).not.toBeInTheDocument();
-    expect(container.querySelector('[data-journey-panel]')).toHaveClass('sticky');
+
+    fireEvent.click(within(progress).getByRole('button', { name: /Send me the payment details/ }));
+    expect(steps[2]).toHaveAttribute('aria-current', 'step');
+    expect(screen.getByText('Hi, is shade 08 still available?')).toBeInTheDocument();
+    expect(screen.getByText(/Buy Goods till 946512/).className).toContain('bg-dawn-bright');
+
+    fireEvent.click(within(progress).getByRole('button', { name: /Rider ametoka/ }));
+    expect(screen.getByRole('img', { name: /Piki piki rider/ })).toBeInTheDocument();
   });
 
   it('keeps the customer inside the shop DM', () => {

@@ -1,6 +1,7 @@
 export interface ShopDMMessage {
   readonly from: 'customer' | 'shop';
   readonly text: string;
+  readonly isMilestone?: boolean;
 }
 
 interface ShopDMCardProps {
@@ -70,9 +71,11 @@ const ShopDMCard = ({
               className={`max-w-[88%] rounded-2xl px-3 py-2 leading-snug ${
                 compact ? 'text-[0.68rem]' : 'text-[0.72rem] sm:text-xs'
               } ${
-                message.from === 'shop'
-                  ? 'rounded-br-md bg-fern/10 text-ink'
-                  : 'rounded-bl-md bg-paper text-ink'
+                message.isMilestone
+                  ? 'rounded-br-md bg-dawn-bright/25 font-medium text-ink'
+                  : message.from === 'shop'
+                    ? 'rounded-br-md bg-fern/10 text-ink'
+                    : 'rounded-bl-md bg-paper text-ink'
               }`}
             >
               {message.text}

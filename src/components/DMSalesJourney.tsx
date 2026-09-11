@@ -54,7 +54,7 @@ const STAGES: readonly JourneyStage[] = [
     visual: 'dm',
     messages: [
       { from: 'customer', text: 'I’ll take it. Send me the payment details.' },
-      { from: 'shop', text: 'Pay KSh 1,450 to M-Pesa Buy Goods till 946512.' },
+      { from: 'shop', text: 'Pay KSh 1,450 to M-Pesa Buy Goods till 946512.', isMilestone: true },
     ],
   },
   {
@@ -73,130 +73,103 @@ const STAGES: readonly JourneyStage[] = [
   },
 ];
 
+const AUTO_ADVANCE_MS = 3200;
+
 const DMSalesJourney = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const triggerRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') return;
+    if (hasInteracted || activeIndex === STAGES.length - 1) return;
+    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const triggerIndices = new Map<Element, number>();
-    for (const [index, trigger] of triggerRefs.current.entries()) {
-      if (trigger) triggerIndices.set(trigger, index);
-    }
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) {
+        timer = setTimeout(() => setActiveIndex((i) => Math.min(i + 1, STAGES.length - 1)), AUTO_ADVANCE_MS);
+      } else if (timer) {
+        clearTimeout(timer);
+      }
+    }, { threshold: 0.5 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => {
+      observer.disconnect();
+      if (timer) clearTimeout(timer);
+    };
+  }, [activeIndex, hasInteracted]);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const index = triggerIndices.get(entry.target);
-          if (index !== undefined) setActiveIndex(index);
-        }
-      },
-      { rootMargin: '-49% 0px -49%', threshold: 0 }
-    );
-
-    for (const trigger of triggerIndices.keys()) observer.observe(trigger);
-    return () => observer.disconnect();
-  }, []);
+  const selectStage = (index: number) => {
+    setHasInteracted(true);
+    setActiveIndex(index);
+  };
 
   const activeStage = STAGES[activeIndex] ?? STAGES[0];
+  const dmStagesSoFar = STAGES.slice(0, activeIndex + 1).filter((stage): stage is DMJourneyStage => stage.visual === 'dm');
+  const conversation = dmStagesSoFar.flatMap((stage) => stage.messages);
+  const sharedPost = dmStagesSoFar.find((stage) => stage.sharedPost)?.sharedPost;
 
   return (
-    <section id="dm-sales-journey" className="bg-night text-paper">
-      <div className="relative h-[500svh]">
-        <div
-          data-journey-panel
-          className="sticky top-20 z-10 flex h-[calc(100svh-5rem)] min-h-[36rem] overflow-hidden"
-        >
-          <div className="mx-auto flex h-full w-full max-w-[1440px] flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-            <h2 className="max-w-4xl shrink-0 font-display text-[clamp(1.6rem,1.35rem+1vw,2.5rem)] font-semibold leading-[1.05] tracking-tight [text-wrap:balance]">
-              From “Is it available?” to “Rider ametoka”
-            </h2>
+    <section id="dm-sales-journey" ref={sectionRef} className="bg-night py-20 text-paper sm:py-28 lg:py-32">
+      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
+        <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance]">
+          From “Is it available?” to “Rider ametoka”
+        </h2>
 
-            <div className="my-auto grid min-h-0 flex-1 grid-cols-1 items-center gap-6 py-6 md:grid-cols-12 md:gap-8 lg:gap-12">
-              <div className="flex flex-col gap-6 md:col-span-5 md:flex-row md:items-center lg:col-span-4">
-                <ol
-                  className="flex shrink-0 gap-3 md:flex-col"
-                  aria-label="Order progress"
-                >
-                  {STAGES.map((stage, index) => {
-                    const isActive = index === activeIndex;
-                    return (
-                      <li
-                        key={stage.title}
-                        aria-current={isActive ? 'step' : undefined}
-                        className="flex h-3 w-3 items-center justify-center"
-                      >
-                        <span
-                          className={`block h-2 w-2 rounded-full transition-colors duration-150 ${
-                            isActive ? 'bg-paper ring-1 ring-paper/60' : 'bg-paper/30'
-                          }`}
-                          aria-hidden="true"
-                        />
-                        <span className="sr-only">Step {index + 1} of {STAGES.length}</span>
-                      </li>
-                    );
-                  })}
-                </ol>
+        <div className="mt-10 grid gap-8 md:grid-cols-12 md:gap-8 lg:mt-14 lg:gap-12">
+          <div className="min-w-0 md:col-span-5 lg:col-span-4">
+            <ol className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 md:mx-0 md:flex-col md:gap-1 md:overflow-visible md:px-0 md:pb-0" aria-label="Order progress">
+              {STAGES.map((stage, index) => {
+                const isActive = index === activeIndex;
+                return (
+                  <li key={stage.title} aria-current={isActive ? 'step' : undefined} className="shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => selectStage(index)}
+                      className={`flex min-h-[44px] items-center gap-3 rounded-full px-4 text-left text-sm transition-colors duration-150 md:w-full md:rounded-xl md:px-4 md:py-3 md:text-base ${
+                        isActive ? 'bg-paper text-ink' : 'text-paper/70 hover:bg-night-raised hover:text-paper'
+                      }`}
+                    >
+                      <span className={`font-mono text-xs ${isActive ? 'text-fern-deep' : 'text-paper/45'}`}>{index + 1}</span>
+                      <span className="font-medium">{stage.title}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
 
-                <div key={activeStage.title} className="animate-journey-fade" aria-live="polite">
-                  <h3 className="max-w-[17ch] font-display text-[clamp(1.35rem,1.15rem+0.65vw,2rem)] font-semibold leading-[1.08] tracking-tight">
-                    {activeStage.title}
-                  </h3>
-                  <p className="mt-4 max-w-[31rem] text-base leading-relaxed text-paper/75 sm:text-lg md:max-w-[24rem]">
-                    {activeStage.description}
-                  </p>
+            <p key={activeStage.title} className="mt-6 max-w-[31rem] animate-journey-fade text-base leading-relaxed text-paper/75 sm:text-lg" aria-live="polite">
+              {activeStage.description}
+            </p>
+          </div>
+
+          <div key={`${activeStage.title}-visual`} data-journey-visual className="min-w-0 animate-journey-fade md:col-span-7 lg:col-span-8">
+            <div data-journey-frame className="relative ml-auto aspect-[4/3] w-full max-w-[40rem] overflow-hidden rounded-2xl bg-night-raised">
+              {activeStage.visual === 'dm' ? (
+                <div data-testid="journey-dm" className="h-full">
+                  <ShopDMCard
+                    shopName="Cocoa Rose Beauty"
+                    initials="CR"
+                    messages={conversation}
+                    sharedPost={sharedPost}
+                    className="h-full rounded-none border-0 bg-white shadow-none backdrop-blur-none [&>div:last-child]:flex [&>div:last-child]:h-[calc(100%-3.5rem)] [&>div:last-child]:flex-col [&>div:last-child]:justify-end [&>div:last-child]:space-y-3 sm:[&>div:last-child]:px-8 sm:[&>div:last-child]:pb-8"
+                  />
                 </div>
-              </div>
-
-              <div
-                key={`${activeStage.title}-visual`}
-                data-journey-visual
-                className="animate-journey-fade md:col-span-7 lg:col-span-8"
-              >
-                <div
-                  data-journey-frame
-                  className="relative ml-auto aspect-[4/3] w-full max-w-[40rem] overflow-hidden rounded-2xl bg-night-raised"
-                >
-                  {activeStage.visual === 'dm' ? (
-                    <div data-testid="journey-dm" className="h-full">
-                      <ShopDMCard
-                        shopName="Cocoa Rose Beauty"
-                        initials="CR"
-                        messages={activeStage.messages}
-                        sharedPost={activeStage.sharedPost}
-                        className="h-full rounded-none border-0 bg-white shadow-none backdrop-blur-none [&>div:last-child]:flex [&>div:last-child]:h-[calc(100%-3.5rem)] [&>div:last-child]:flex-col [&>div:last-child]:justify-center [&>div:last-child]:space-y-3 sm:[&>div:last-child]:px-8"
-                      />
-                    </div>
-                  ) : (
-                    <img
-                      src={activeStage.image}
-                      alt={activeStage.imageAlt}
-                      width="1672"
-                      height="941"
-                      loading="lazy"
-                      decoding="async"
-                      sizes="(min-width: 1440px) 640px, (min-width: 768px) 58vw, calc(100vw - 2.5rem)"
-                      className="h-full w-full object-cover"
-                    />
-                  )}
-                </div>
-              </div>
+              ) : (
+                <img
+                  src={activeStage.image}
+                  alt={activeStage.imageAlt}
+                  width="1672"
+                  height="941"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 1440px) 640px, (min-width: 768px) 58vw, calc(100vw - 2.5rem)"
+                  className="h-full w-full object-cover"
+                />
+              )}
             </div>
           </div>
-        </div>
-
-        <div className="absolute inset-0" aria-hidden="true">
-          {STAGES.map((stage, index) => (
-            <div
-              key={stage.title}
-              ref={(node) => {
-                triggerRefs.current[index] = node;
-              }}
-              className="h-svh"
-            />
-          ))}
         </div>
       </div>
     </section>

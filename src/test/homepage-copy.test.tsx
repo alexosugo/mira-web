@@ -23,7 +23,8 @@ describe('homepage voice', () => {
     expect(heading).toBeInTheDocument();
     expect(heading.className).toContain('5.5rem');
     expect(container.querySelector('.border-t')).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Put Sellogram to work' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Start free' })).toBeInTheDocument();
+    expect(screen.getByText(/Tricky questions come to you/)).toBeInTheDocument();
     expect(screen.queryByText('Start free. No card.')).not.toBeInTheDocument();
     expect(screen.queryByText(/Instagram commerce/i)).not.toBeInTheDocument();
   });
@@ -44,6 +45,7 @@ describe('homepage voice', () => {
     expect(STEPS).toHaveLength(4);
     expect(DM_SCOPE_REASSURANCE).toMatch(/posts and DMs/i);
     expect(DM_SCOPE_REASSURANCE).not.toMatch(/only your shop's DMs/i);
+    expect(screen.getByText(/hands to you/)).toBeInTheDocument();
     expect(screen.queryByText('Set up once')).not.toBeInTheDocument();
     expect(screen.queryByText('01')).not.toBeInTheDocument();
   });
@@ -54,10 +56,11 @@ describe('homepage voice', () => {
     unmount();
 
     render(<FinalCTA />);
-    const finalHeading = screen.getByRole('heading', { name: 'Put Sellogram to work in your DM' });
+    const finalHeading = screen.getByRole('heading', { name: 'Put Sellogram to work in your DMs' });
     expect(finalHeading).toBeInTheDocument();
     expect(finalHeading.className).toContain('3.5rem');
-    expect(screen.getByRole('link', { name: 'Put Sellogram to work' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Start free' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Ask us a question' })).toHaveAttribute('href', '/contact');
     expect(screen.queryByText(/Less inbox duty/i)).not.toBeInTheDocument();
   });
 
@@ -73,7 +76,7 @@ describe('homepage voice', () => {
     unmount();
 
     const hero = render(<Hero />);
-    expect(screen.getByRole('button', { name: 'See it sell' }).className).toContain('min-h-[44px]');
+    expect(screen.getByRole('button', { name: 'See a sale happen' }).className).toContain('min-h-[44px]');
     hero.unmount();
 
     render(<Footer />);

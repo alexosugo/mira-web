@@ -4,7 +4,8 @@ import { scrollToSection } from '../utils/scrollToSection';
 import HeroChatDemo from './HeroChatDemo';
 
 const HERO_HEADLINE = 'Your inbox has one job: to sell';
-const HERO_CTA_LABEL = 'Put Sellogram to work';
+const HERO_CTA_LABEL = 'Start free';
+const HERO_TRUST_LINE = 'Sellogram replies from your posts and shop details. Tricky questions come to you.';
 const HERO_SUBHEAD =
   'Sellogram answers product questions, takes orders and keeps customers updated in your shop’s Instagram DMs.';
 const APP_URL = 'https://app.sellogram.co';
@@ -24,7 +25,7 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} className="overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36 lg:pb-36 lg:pt-40">
+    <section ref={sectionRef} className="overflow-hidden pb-16 pt-24 sm:pb-20 sm:pt-28 lg:pb-24 lg:pt-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-9 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
@@ -66,19 +67,23 @@ const Hero = () => {
               </a>
               <button
                 type="button"
-                onClick={() => scrollToSection('how-it-works')}
+                onClick={() => scrollToSection('dm-sales-journey')}
                 className="inline-flex min-h-[44px] items-center text-base text-ink-light underline decoration-line underline-offset-4 transition-colors duration-200 hover:text-ink hover:decoration-ink"
               >
-                See it sell
+                See a sale happen
               </button>
             </div>
+
+            <p className="mt-5 max-w-lg animate-fade-in-up text-sm leading-relaxed text-ink-light" style={{ animationDelay: '300ms' }}>
+              {HERO_TRUST_LINE}
+            </p>
 
           </div>
         </div>
       </div>
 
       <div
-        className="mx-auto mt-10 max-w-[1240px] animate-fade-in-up px-3 sm:mt-14 sm:px-5 lg:mt-16 lg:px-8"
+        className="mx-auto mt-8 max-w-[1240px] animate-fade-in-up px-3 sm:mt-10 sm:px-5 lg:px-8"
         style={{ animationDelay: '260ms' }}
       >
         <HeroChatDemo />

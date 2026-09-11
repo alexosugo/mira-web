@@ -1,5 +1,5 @@
 import { useSectionTracking } from '../hooks/useTracking';
-import { STEPS } from '../content/pages';
+import { DM_SCOPE_REASSURANCE, STEPS } from '../content/pages';
 
 const HowItWorks = () => {
   const sectionRef = useSectionTracking('how-it-works', 'How It Works Section');
@@ -37,6 +37,9 @@ const HowItWorks = () => {
                 </li>
               ))}
             </ol>
+            <p className="mt-10 max-w-xl border-t border-line pt-6 text-sm leading-relaxed text-ink-light">
+              {DM_SCOPE_REASSURANCE} Anything it cannot answer, it hands to you.
+            </p>
           </div>
         </div>
       </div>

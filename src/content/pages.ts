@@ -38,7 +38,7 @@ export const PLANS: Plan[] = [
       'Up to 10 customer conversations a month',
       'Replies include Sellogram branding',
     ],
-    cta: 'Get started',
+    cta: 'Start free',
     footnote: 'No card details asked, ever.',
   },
   {
@@ -96,7 +96,7 @@ export const STEPS: Step[] = [
   },
   {
     title: 'Turn it on.',
-    description: 'When the replies sound right, put Sellogram to work in your DMs',
+    description: 'When the replies sound right, put Sellogram to work in your DMs.',
   },
 ];
 
