@@ -53,8 +53,9 @@ const SHOPS: readonly SupportedShop[] = [
 
 const SupportedShops = () => {
   return (
-    <section id="supported-shops" className="bg-cobalt py-20 text-white sm:py-28 lg:py-32">
-      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
+    <section id="supported-shops" className="py-6 sm:py-8 lg:py-10">
+      <div className="mx-auto max-w-[1240px] px-3 sm:px-5 lg:px-8">
+        <div className="rounded-xl bg-cobalt px-5 py-16 text-white sm:rounded-2xl sm:px-8 sm:py-20 lg:px-12 lg:py-24">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance] lg:col-span-8">
             Whatever you sell, the questions repeat
@@ -94,6 +95,7 @@ const SupportedShops = () => {
               </div>
             </a>
           ))}
+        </div>
         </div>
       </div>
     </section>
