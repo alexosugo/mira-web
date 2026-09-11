@@ -6,20 +6,20 @@ colors:
   paper: "#F3F6F0"
   paper-raised: "#E8EEE3"
   ink: "#1E2617"
-  ink-light: "#4D5844"
+  ink-light: "#4A5541"
   ink-faint: "#5C6852"
   line: "#DEE6D7"
   cobalt: "#0D5DA8"
   cobalt-deep: "#09477F"
-  fern: "#9EEB47"
+  fern: "#90DD34"
   fern-deep: "#44780C"
   fern-bright: "#225C13"
   dawn: "#A35F0C"
   dawn-deep: "#834B0A"
-  dawn-bright: "#834B0A"
-  night: "#9EEB47"
-  night-raised: "#90DC33"
-  night-line: "#5E9221"
+  dawn-bright: "#794402"
+  night: "#90DD34"
+  night-raised: "#83CE1C"
+  night-line: "#558912"
 fonts:
   display: Archivo (400, 500, 600, 700)
   body: Source Sans 3 (400, 500, 600)
@@ -36,7 +36,7 @@ The page must feel Instagram-native, not like a generic software landing page.
 
 - **Paper** (`#F3F6F0`) is the ground. Panels sit on white or raised paper with
   a single hairline border (`line`), no drop shadows by default.
-- **Night** (`#9EEB47`) is a light lime surface for the footer and the NightShift
+- **Night** (`#90DD34`) is a light lime surface for the footer and the NightShift
   section. Everything on it uses ink text.
 - **Cobalt** (`#0D5DA8`) can hold a full editorial chapter. Use its deep step
   for supporting surfaces. Rose, amber, and bright studio color stay in the
@@ -45,7 +45,7 @@ The page must feel Instagram-native, not like a generic software landing page.
 
 ## The Fern Rule
 
-Fern (`#9EEB47`) means **Sellogram is acting or the customer takes the main
+Fern (`#90DD34`) means **Sellogram is acting or the customer takes the main
 action**: shop reply bubbles, primary buttons, active controls, presence and
 processing states (`fern-bright` on dark). Do not cover large areas with
 bright fern — it guides attention, it does not dominate. Lime is a fill

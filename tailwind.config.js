@@ -12,7 +12,7 @@ export default {
         },
         ink: {
           DEFAULT: '#1E2617',
-          light: '#4D5844',
+          light: '#4A5541',
           // Quietest text step that still clears 4.5:1 on paper.
           faint: '#5C6852',
         },
@@ -25,7 +25,7 @@ export default {
         // and every primary button and interactive control. The lime default
         // is a fill colour only and always carries ink text, never paper.
         fern: {
-          DEFAULT: '#9EEB47',
+          DEFAULT: '#90DD34',
           // Text, icons, focus rings and hover fills on light surfaces, where
           // the lime default sits at 1.3:1 against paper.
           deep: '#44780C',
@@ -38,14 +38,14 @@ export default {
           DEFAULT: '#A35F0C',
           deep: '#834B0A',
           // Commerce accent on the lime night surface.
-          bright: '#834B0A',
+          bright: '#794402',
         },
         // The bold surface used by the night-shift section, the journey and
         // the footer. It is a light lime, so everything on it carries ink text.
         night: {
-          DEFAULT: '#9EEB47',
-          raised: '#90DC33',
-          line: '#5E9221',
+          DEFAULT: '#90DD34',
+          raised: '#83CE1C',
+          line: '#558912',
         },
       },
       fontFamily: {

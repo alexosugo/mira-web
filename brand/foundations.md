@@ -9,18 +9,18 @@ This file records the visual system already used by the website. It is descripti
 | Paper | `#F3F6F0` | Default page background |
 | Paper raised | `#E8EEE3` | Raised light surfaces |
 | Ink | `#1E2617` | Primary text and dark marks |
-| Ink light | `#4D5844` | Secondary text |
+| Ink light | `#4A5541` | Secondary text |
 | Ink faint | `#5C6852` | Quiet text that must remain readable on Paper |
 | Line | `#DEE6D7` | Hairline borders and dividers |
-| Fern | `#9EEB47` | Primary action colour. Fill only, always with Ink text |
+| Fern | `#90DD34` | Primary action colour. Fill only, always with Ink text |
 | Fern deep | `#44780C` | Fern text, icons, focus ring and hover fill on light |
 | Fern bright | `#225C13` | Sellogram-is-acting accent on Night |
 | Dawn | `#A35F0C` | Commerce accent |
 | Dawn deep | `#834B0A` | Darker commerce text/accent |
-| Dawn bright | `#834B0A` | Commerce accent on Night |
-| Night | `#9EEB47` | Bold lime surface. Carries ink text |
-| Night raised | `#90DC33` | Raised surface on Night |
-| Night line | `#5E9221` | Dividers on Night |
+| Dawn bright | `#794402` | Commerce accent on Night |
+| Night | `#90DD34` | Bold lime surface. Carries ink text |
+| Night raised | `#83CE1C` | Raised surface on Night |
+| Night line | `#558912` | Dividers on Night |
 
 ### Colour roles
 

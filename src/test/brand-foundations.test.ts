@@ -16,9 +16,9 @@ describe('Sellogram brand foundations', () => {
     const requiredTokens = [
       ['Paper', '#F3F6F0'],
       ['Ink', '#1E2617'],
-      ['Fern', '#9EEB47'],
+      ['Fern', '#90DD34'],
       ['Dawn', '#A35F0C'],
-      ['Night', '#9EEB47'],
+      ['Night', '#90DD34'],
     ] as const;
 
     for (const [name, value] of requiredTokens) {

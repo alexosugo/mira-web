@@ -15,11 +15,11 @@ Paste the matching block at the end of each prompt.
 
 **PHOTO**
 
-> Editorial lifestyle photograph, natural window light, warm and grounded, Nairobi Kenya, small independent shop. Real person, candid, not posed. Muted palette: pale sage paper tones (#F3F6F0, #E8EEE3), deep green (#9EEB47), warm amber (#A35F0C), dark green-black shadows (#1E2617). 35mm film look, soft grain, shallow depth of field. No text, no logos, no watermarks, no neon, no glowing screens, no robots, no holograms, no stock-photo smile.
+> Editorial lifestyle photograph, natural window light, warm and grounded, Nairobi Kenya, small independent shop. Real person, candid, not posed. Muted palette: pale sage paper tones (#F3F6F0, #E8EEE3), deep green (#90DD34), warm amber (#A35F0C), dark green-black shadows (#1E2617). 35mm film look, soft grain, shallow depth of field. No text, no logos, no watermarks, no neon, no glowing screens, no robots, no holograms, no stock-photo smile.
 
 **SPOT**
 
-> Flat vector spot illustration, single object, soft rounded shapes, thick matte fills, subtle paper grain. Palette only: sage paper #E8EEE3, fern green #9EEB47, deep fern #44780C, amber #A35F0C, ink #1E2617. Transparent background. Off-centre composition, one small amber accent. No text, no gradients, no outlines, no 3D, no sparkles, no faces.
+> Flat vector spot illustration, single object, soft rounded shapes, thick matte fills, subtle paper grain. Palette only: sage paper #E8EEE3, fern green #90DD34, deep fern #44780C, amber #A35F0C, ink #1E2617. Transparent background. Off-centre composition, one small amber accent. No text, no gradients, no outlines, no 3D, no sparkles, no faces.
 
 **NIGHT**
 
