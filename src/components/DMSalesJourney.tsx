@@ -112,7 +112,7 @@ const DMSalesJourney = () => {
 
   return (
     <section id="dm-sales-journey" ref={sectionRef} className="py-6 sm:py-8 lg:py-10">
-      <div className="px-2 sm:px-3">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="rounded-xl bg-night px-5 py-16 text-ink sm:rounded-2xl sm:px-8 sm:py-20 lg:px-16 lg:py-24">
         <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance]">
           From “Is it available?” to “Rider ametoka”
