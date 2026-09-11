@@ -19,7 +19,7 @@ const HeroChatDemo = () => {
       aria-label="Example Nia Thrift Instagram DM conversation about a denim set and delivery to Kilimani"
       className="relative isolate"
     >
-      <div className="overflow-hidden rounded-xl bg-night shadow-[0_30px_90px_rgba(14,30,23,0.16)] sm:rounded-2xl">
+      <div className="overflow-hidden rounded-xl bg-night shadow-[0_30px_90px_rgba(19,30,9,0.16)] sm:rounded-2xl">
         <img
           src={HERO_IMAGE_SRC}
           alt="Nairobi fashion seller photographing a denim look against a cobalt-blue stairwell"
@@ -36,7 +36,7 @@ const HeroChatDemo = () => {
         <ShopDMCard shopName="Nia Thrift" initials="NT" messages={MESSAGES} />
       </div>
 
-      <div className="relative z-20 mx-8 -mt-2 flex max-w-[17rem] items-center justify-between gap-4 rounded-xl border border-white/75 bg-white/95 px-4 py-3 shadow-[0_16px_48px_rgba(14,30,23,0.16)] backdrop-blur-md sm:absolute sm:bottom-[8%] sm:left-[4%] sm:mx-0 sm:mt-0 sm:w-[29%] sm:max-w-none lg:w-[25%]">
+      <div className="relative z-20 mx-8 -mt-2 flex max-w-[17rem] items-center justify-between gap-4 rounded-xl border border-white/75 bg-white/95 px-4 py-3 shadow-[0_16px_48px_rgba(19,30,9,0.16)] backdrop-blur-md sm:absolute sm:bottom-[8%] sm:left-[4%] sm:mx-0 sm:mt-0 sm:w-[29%] sm:max-w-none lg:w-[25%]">
         <div className="min-w-0">
           <p className="truncate text-xs font-semibold text-ink sm:text-sm">Patchwork denim set</p>
           <p className="mt-0.5 font-mono text-[0.65rem] text-ink-faint sm:text-xs">KSh 6,000 · Size M</p>

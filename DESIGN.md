@@ -3,12 +3,12 @@ name: Sellogram
 description: Sellogram answers customers and helps them order in a shop's Instagram DMs.
 source: The product rules in docs/imagery-handoff.md and the tokens in this file define the current landing-page system.
 colors:
-  paper: "#F2F6F3"
-  paper-raised: "#E7EEE9"
-  ink: "#1B2620"
-  ink-light: "#49584F"
-  ink-faint: "#58685E"
-  line: "#DCE6DF"
+  paper: "#F3F6F0"
+  paper-raised: "#E8EEE3"
+  ink: "#1E2617"
+  ink-light: "#4D5844"
+  ink-faint: "#5C6852"
+  line: "#DEE6D7"
   cobalt: "#0D5DA8"
   cobalt-deep: "#09477F"
   fern: "#9EEB47"
@@ -17,9 +17,9 @@ colors:
   dawn: "#A35F0C"
   dawn-deep: "#834B0A"
   dawn-bright: "#F0B254"
-  night: "#0E1E17"
-  night-raised: "#162C22"
-  night-line: "#264436"
+  night: "#131E09"
+  night-raised: "#1D2C0E"
+  night-line: "#2F441B"
 fonts:
   display: Archivo (400, 500, 600, 700)
   body: Source Sans 3 (400, 500, 600)
@@ -34,9 +34,9 @@ The page must feel Instagram-native, not like a generic software landing page.
 
 ## Surfaces
 
-- **Paper** (`#F2F6F3`) is the ground. Panels sit on white or raised paper with
+- **Paper** (`#F3F6F0`) is the ground. Panels sit on white or raised paper with
   a single hairline border (`line`), no drop shadows by default.
-- **Night** (`#0E1E17`) is for the footer and the NightShift section.
+- **Night** (`#131E09`) is for the footer and the NightShift section.
 - **Cobalt** (`#0D5DA8`) can hold a full editorial chapter. Use its deep step
   for supporting surfaces. Rose, amber, and bright studio color stay in the
   photography. Do not mute them with beige or terracotta overlays.

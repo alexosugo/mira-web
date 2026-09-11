@@ -7,16 +7,16 @@ export default {
         // "Morning light" palette: a soft green-tinted ground, fern green
         // where Sellogram is acting, and a dawn-amber accent for a closing sale.
         paper: {
-          DEFAULT: '#F2F6F3',
-          raised: '#E7EEE9',
+          DEFAULT: '#F3F6F0',
+          raised: '#E8EEE3',
         },
         ink: {
-          DEFAULT: '#1B2620',
-          light: '#49584F',
+          DEFAULT: '#1E2617',
+          light: '#4D5844',
           // Quietest text step that still clears 4.5:1 on paper.
-          faint: '#58685E',
+          faint: '#5C6852',
         },
-        line: '#DCE6DF',
+        line: '#DEE6D7',
         cobalt: {
           DEFAULT: '#0D5DA8',
           deep: '#09477F',
@@ -42,9 +42,9 @@ export default {
         },
         // On-dark equivalents for the night-shift section and footer.
         night: {
-          DEFAULT: '#0E1E17',
-          raised: '#162C22',
-          line: '#264436',
+          DEFAULT: '#131E09',
+          raised: '#1D2C0E',
+          line: '#2F441B',
         },
       },
       fontFamily: {

@@ -27,7 +27,7 @@ const ShopDMCard = ({
 }: ShopDMCardProps) => {
   return (
     <div
-      className={`overflow-hidden rounded-[1.15rem] border border-white/75 bg-white/95 shadow-[0_18px_60px_rgba(14,30,23,0.18)] backdrop-blur-md ${className}`}
+      className={`overflow-hidden rounded-[1.15rem] border border-white/75 bg-white/95 shadow-[0_18px_60px_rgba(19,30,9,0.18)] backdrop-blur-md ${className}`}
     >
       <div className={`flex items-center gap-3 border-b border-line ${compact ? 'px-3 py-2.5' : 'px-4 py-3'}`}>
         <div

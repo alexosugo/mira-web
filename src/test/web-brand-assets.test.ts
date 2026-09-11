@@ -40,9 +40,9 @@ describe('Sellogram web identity assets', () => {
     const manifest = JSON.parse(readText('public/site.webmanifest'));
     const browserConfig = readText('public/browserconfig.xml');
 
-    expect(manifest.theme_color).toBe('#F2F6F3');
-    expect(manifest.background_color).toBe('#F2F6F3');
-    expect(browserConfig).toContain('<TileColor>#F2F6F3</TileColor>');
+    expect(manifest.theme_color).toBe('#F3F6F0');
+    expect(manifest.background_color).toBe('#F3F6F0');
+    expect(browserConfig).toContain('<TileColor>#F3F6F0</TileColor>');
     expect(browserConfig).toContain('/mstile-150x150.png');
   });
 
