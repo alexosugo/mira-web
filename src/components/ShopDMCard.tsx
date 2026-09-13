@@ -15,6 +15,7 @@ interface ShopDMCardProps {
   };
   readonly className?: string;
   readonly compact?: boolean;
+  readonly animateMessages?: boolean;
 }
 
 const ShopDMCard = ({
@@ -24,6 +25,7 @@ const ShopDMCard = ({
   sharedPost,
   className = '',
   compact = false,
+  animateMessages = false,
 }: ShopDMCardProps) => {
   return (
     <div
@@ -65,7 +67,7 @@ const ShopDMCard = ({
         {messages.map((message, index) => (
           <div
             key={`${message.from}-${index}-${message.text}`}
-            className={`flex ${message.from === 'shop' ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${animateMessages ? 'animate-journey-message' : ''} ${message.from === 'shop' ? 'justify-end' : 'justify-start'}`}
           >
             <p
               className={`max-w-[88%] rounded-2xl px-3 py-2 leading-snug ${

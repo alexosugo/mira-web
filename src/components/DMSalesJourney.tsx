@@ -145,7 +145,7 @@ const DMSalesJourney = () => {
             </p>
           </div>
 
-          <div key={`${activeStage.title}-visual`} data-journey-visual className="min-w-0 animate-journey-fade md:col-span-7 lg:col-span-8">
+          <div data-journey-visual className="min-w-0 md:col-span-7 lg:col-span-8">
             <div data-journey-frame className="relative ml-auto aspect-[4/3] w-full max-w-[40rem] overflow-hidden rounded-2xl bg-night-raised">
               {activeStage.visual === 'dm' ? (
                 <div data-testid="journey-dm" className="h-full">
@@ -154,6 +154,7 @@ const DMSalesJourney = () => {
                     initials="CR"
                     messages={conversation}
                     sharedPost={sharedPost}
+                    animateMessages
                     className="h-full rounded-none border-0 bg-white shadow-none backdrop-blur-none [&>div:last-child]:flex [&>div:last-child]:h-[calc(100%-3.5rem)] [&>div:last-child]:flex-col [&>div:last-child]:justify-end [&>div:last-child]:space-y-3 sm:[&>div:last-child]:px-8 sm:[&>div:last-child]:pb-8"
                   />
                 </div>
@@ -166,7 +167,7 @@ const DMSalesJourney = () => {
                   loading="lazy"
                   decoding="async"
                   sizes="(min-width: 1440px) 640px, (min-width: 768px) 58vw, calc(100vw - 2.5rem)"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full animate-journey-fade object-cover"
                 />
               )}
             </div>

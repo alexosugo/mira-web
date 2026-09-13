@@ -72,7 +72,7 @@ const SupportedShops = () => {
               href={shop.href}
               className="group block"
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-xl bg-cobalt-deep sm:aspect-[4/3] sm:rounded-2xl">
+              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-cobalt-deep sm:rounded-2xl">
                 <img
                   src={shop.image}
                   alt={shop.imageAlt}

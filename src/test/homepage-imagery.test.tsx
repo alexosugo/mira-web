@@ -30,7 +30,7 @@ describe('imagery-led homepage sections', () => {
 
     const shopImages = screen.getAllByRole('img');
     for (const image of shopImages) {
-      expect(image.parentElement?.className).toContain('sm:aspect-[4/3]');
+      expect(image.parentElement?.className).toContain('aspect-[4/5]');
     }
     expect(container.querySelectorAll('.border-t')).toHaveLength(0);
   });

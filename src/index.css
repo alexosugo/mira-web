@@ -28,7 +28,11 @@
   }
 
   .animate-journey-fade {
-    animation: journey-fade 180ms ease-out both;
+    animation: journey-fade 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-journey-message {
+    animation: journey-message 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   /* Small uppercase mono label for functional labels only (TOC, column
@@ -67,9 +71,21 @@
 @keyframes journey-fade {
   from {
     opacity: 0;
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes journey-message {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

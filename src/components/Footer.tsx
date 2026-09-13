@@ -75,7 +75,7 @@ const Footer = () => {
         >
           {FOOTER_GROUPS.map((group) => (
             <div key={group.heading}>
-              <p className="font-mono text-xs uppercase tracking-wide text-ink-light">
+              <p className="font-mono text-xs font-medium uppercase tracking-wide text-ink">
                 {group.heading}
               </p>
               <ul className="mt-3">
@@ -84,7 +84,7 @@ const Footer = () => {
                     <a
                       href={link.href}
                       onClick={() => trackCTA(`footer_link_${link.id}`, link.label, 'footer')}
-                      className="inline-flex min-h-[44px] min-w-[44px] items-center text-sm text-ink-light transition-colors duration-200 hover:text-ink"
+                      className="inline-flex min-h-[44px] min-w-[44px] items-center text-sm font-medium text-ink transition-colors duration-200 hover:text-ink"
                     >
                       {link.label}
                     </a>
@@ -98,7 +98,7 @@ const Footer = () => {
         <div className="mt-12 flex flex-col gap-4 border-t border-night-line pt-8 sm:flex-row sm:items-baseline sm:justify-between">
           <div>
             <p className="font-display text-xl font-semibold">Sellogram</p>
-            <p className="mt-2 font-mono text-xs text-ink-light">
+            <p className="mt-2 font-mono text-xs font-medium text-ink">
               Made in Nairobi, Kenya · © {currentYear}
             </p>
           </div>
@@ -106,7 +106,7 @@ const Footer = () => {
           <a
             href="mailto:hello@sellogram.co"
             onClick={() => handleContactClick('email')}
-            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm text-ink-light transition-colors duration-200 hover:text-ink"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm font-medium text-ink transition-colors duration-200 hover:text-ink"
           >
             hello@sellogram.co
           </a>
