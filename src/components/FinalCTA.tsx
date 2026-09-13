@@ -7,14 +7,16 @@ const FinalCTA = () => {
   const { trackCTA } = useCTATracking();
 
   return (
-    <section ref={sectionRef} className="px-5 pb-5 sm:px-8 sm:pb-8 lg:px-10 lg:pb-10">
+    <section ref={sectionRef} className="px-5 py-5 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
       <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[1.75rem] bg-cobalt px-6 py-14 text-white sm:rounded-[2.25rem] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-        <div className="flex flex-col items-center gap-7 text-center">
-          <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
-            Put Sellogram to work in your DMs
-          </h2>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-8">
+            <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
+              Put Sellogram to work in your DMs
+            </h2>
+          </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 lg:col-span-4">
             <a
               href={APP_URL}
               onClick={() =>
