@@ -98,27 +98,27 @@ export const ROUTES: Route[] = [
   },
   {
     path: '/use-cases/fashion',
-    title: 'DM help for fashion shops | Sellogram',
+    title: "Fashion and thrift shops on Instagram | Sellogram",
     description:
-      'DM help for fashion shops. Sellogram answers size, color, and stock questions and guides customers to checkout.',
+      "New arrivals bring size, price and availability questions. Sellogram helps fashion and thrift customers choose and order in Instagram DMs.",
     pageName: 'Fashion Use Case Page',
     indexable: true,
     slice: 2,
   },
   {
     path: '/use-cases/beauty',
-    title: 'DM help for beauty shops | Sellogram',
+    title: "Beauty shops on Instagram | Sellogram",
     description:
-      'DM help for beauty shops. Sellogram answers shade and stock questions and guides customers to checkout.',
+      "Shades, bundles, sizes and prices. Sellogram helps beauty customers compare products and put orders together in Instagram DMs.",
     pageName: 'Beauty Use Case Page',
     indexable: true,
     slice: 2,
   },
   {
     path: '/use-cases/accessories',
-    title: 'DM help for accessories shops | Sellogram',
+    title: "Accessories shops on Instagram | Sellogram",
     description:
-      'DM help for accessories shops selling bags, jewelry, watches, sunglasses, and phone accessories through Instagram DMs.',
+      "From bag colours to phone case fit, Sellogram answers product details and helps accessories customers order by Instagram DM.",
     pageName: 'Accessories Use Case Page',
     indexable: true,
     slice: 2,
@@ -134,9 +134,9 @@ export const ROUTES: Route[] = [
   },
   {
     path: '/use-cases/home-bakeries-food-brands',
-    title: 'DM help for home bakeries and food brands | Sellogram',
+    title: "Orders for home bakeries and food brands | Sellogram",
     description:
-      'DM help for Nairobi home bakeries and food brands taking Instagram orders for cakes, cookies, granola, sauces, chilli oil, and pantry goods.',
+      "Menu questions, Saturday orders, delivery and pickup. Sellogram helps food customers order while you focus on making the food.",
     pageName: 'Home Bakeries and Food Brands Use Case Page',
     indexable: true,
     slice: 2,

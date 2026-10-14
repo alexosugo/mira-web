@@ -168,11 +168,29 @@ export interface PageHero {
   secondaryLink?: { label: string; href: string };
 }
 
+export interface ShopMessage {
+  from: 'customer' | 'sellogram';
+  text: string;
+}
+
+export interface ShopStory {
+  openingQuestions: string;
+  openingClose: string;
+  sceneHeading: string;
+  messages: ShopMessage[];
+  sceneAfter: string[];
+  secondHeading: string;
+  secondParagraphs: string[];
+  ctaClose: string;
+}
+
 export interface PageContent {
   /** Canonical path; also the BaseLayout canonical URL path. */
   path: string;
   hero: PageHero;
   sections: ContentSection[];
+  /** Short editorial buying story for the four homepage-linked shop pages. */
+  shopStory?: ShopStory;
 }
 
 /**
@@ -697,287 +715,125 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/fashion': {
     path: '/use-cases/fashion',
     hero: {
-      h1: 'DM help for fashion and thrift shops',
-      intro:
-        'One good piece gets twenty DMs: size, price, is it still there. Sellogram answers them from your page before the buyer moves on — and checks with you when stock is moving fast.',
+      h1: "New arrivals. Same questions. Every time.",
+      intro: "You post a new collection. Before you've finished putting up your Stories, the DMs start coming in.",
       primaryCta: appCta,
-      secondaryLink: { label: 'How orders come together', href: '/features/orders-and-checkout' },
     },
-    sections: [
-      {
-        kind: 'beforeAfter',
-        heading: 'Twenty threads about one item, each with a next step',
-        content: {
-          before: [
-            'A dress drops and the comments and DMs land at the same time: size, color, price, pickup, still available.',
-            'You switch between selling, packing, editing posts, and apologizing for late replies.',
-            'A one-off piece sells — and the DMs keep asking for it, thread after thread.',
-            "The buyer who wanted it most is the one who couldn't wait.",
-          ],
-          after: [
-            'Sellogram answers size, color, price, and delivery from your page in seconds.',
-            'Sold or uncertain? Sellogram points to alternatives you have — or checks with you.',
-            'Ready buyers get a cart: piece, size, delivery area, checkout link.',
-            "You keep the calls that matter: styling, bargaining, and stock you haven't confirmed.",
-          ],
+    shopStory: {
+      "openingQuestions": "\"How much?\" \"Is this still available?\" \"Do you have my size?\"",
+      "openingClose": "Sellogram helps customers find what they want, get answers and place orders while you get on with running your shop.",
+      "sceneHeading": "That jacket you posted? Someone wants it.",
+      "messages": [
+        {
+          "from": "customer",
+          "text": "Hi, is the brown jacket still available in medium?"
         },
-      },
-      {
-        kind: 'archetype',
-        name: 'Achieng',
-        role: 'Curated thrift seller in Nairobi. Posts new pieces three times a week, sells mostly from stories.',
-        day: [
-          'Posts a story. Ten people ask the waist size of the same pair of jeans.',
-          'Fast buyers want delivery to CBD, Westlands, or Kasarani — today.',
-          'A piece sells while ten more shoppers are still asking about it.',
-          'One wrong "yes, it\'s available" costs her more than a slow reply.',
-        ],
-        sellogramHelps: [
-          'Answers size, measurements, color, price, and delivery from her page.',
-          'Suggests similar available pieces when the one they want is gone.',
-          'Never promises stock it has not confirmed — it asks her first.',
-          'Builds the cart when the buyer says yes.',
-        ],
-      },
-      {
-        kind: 'promiseGrid',
-        heading: 'What Sellogram handles for a fashion page',
-        items: [
-          { title: 'Size checks', body: '“Do you have medium?” and “will this fit a size 10?” — answered from your measurements.' },
-          { title: 'Fast stock', body: 'When stock is uncertain, Sellogram checks with you instead of promising.' },
-          { title: 'Condition and color', body: "Thrift or new, true-to-photo notes, fabric and care — from what you've written." },
-          { title: 'Checkout', body: 'Piece, size, quantity, and delivery kept together in one thread.' },
-        ],
-      },
-      {
-        kind: 'scenarios',
-        heading: 'How it sounds in the DM',
-        items: [
-          {
-            customer: 'Is this UK 8 or small? Can you send waist measurements?',
-            sellogram: "It's a UK 8 — waist 30cm flat, length 102cm. KES 1,200, and it's still available. Want delivery or CBD pickup?",
-            ownerNote: 'Fit advice and try-on judgment go to you. Sellogram sticks to the measurements.',
-          },
-          {
-            customer: 'Is the black pair still available for CBD pickup?',
-            sellogram: "Let me check with the owner — these are moving fast and I'd rather confirm than promise. Meanwhile: they're KES 2,000, sizes 39–41.",
-            ownerNote: 'One-off pieces get confirmed with you before Sellogram says "it\'s yours."',
-          },
-          {
-            customer: 'Is the denim jacket thrifted or new, and is the color true to the photo?',
-            sellogram: "It's curated thrift, excellent condition — photographed in daylight, so the color is close. KES 1,500. Want more photos before you decide?",
-            ownerNote: 'Condition disputes and extra video requests stay with you to handle.',
-          },
-        ],
-      },
-      {
-        kind: 'fitGuide',
-        heading: 'Fashion sellers need speed and restraint at the same time',
-        body:
-          "Your page already has demand. The job is to stop losing interested buyers to slow replies — without ever promising a piece you can't deliver.",
-        worksBest:
-          'Curated thrift, shoes, bags, and outfit pages with repeat questions about size, measurements, condition, color, pickup, delivery, and whether a one-off piece is still available.',
-        handoff:
-          "Always a handoff: styling judgment, bargaining, damaged-item concerns, custom sourcing, try-on video requests, and any stock you haven't confirmed.",
-        ownerGets:
-          'Buyer-ready threads with piece, size, measurements, and delivery sorted — and the judgment calls flagged for you.',
-      },
-      faq([
-        { question: 'Can Sellogram answer size questions?', answer: 'Yes, from the sizes and measurements on your page.' },
-        { question: 'What about sold-out pieces?', answer: 'Sellogram suggests available alternatives or checks with you. It never promises stock it cannot see.' },
-        { question: 'Can Sellogram give styling advice?', answer: 'Simple suggestions from your catalog, yes. Personal styling stays with you.' },
-      ]),
-    ],
+        {
+          "from": "sellogram",
+          "text": "Yes, medium is listed at KES 1,800. Would you like delivery or pickup?"
+        }
+      ],
+      "sceneAfter": [
+        "That's one less conversation you need to stop what you're doing to answer.",
+        "Sellogram knows what's on your page, from prices and sizes to colours and measurements you've provided. When someone is ready to buy, it helps them put together an order."
+      ],
+      "secondHeading": "New stock? Sellogram keeps up.",
+      "secondParagraphs": [
+        "Post something new and Sellogram picks up the product details. Update a listing and Sellogram updates what it knows.",
+        "And when a customer asks something that isn't clear, like whether a one-of-a-kind piece is still available or whether a dress will fit, Sellogram checks with you rather than making promises.",
+        "You handle the decisions. Sellogram handles the questions it can answer."
+      ],
+      "ctaClose": "Connect your Instagram shop and see how Sellogram answers questions about your own products."
+    },
+    sections: [],
   },
   '/use-cases/beauty': {
     path: '/use-cases/beauty',
     hero: {
-      h1: 'DM help for beauty shops selling on Instagram',
-      intro:
-        'Shades, bundles, sealed stock, delivery today — the questions never stop. Sellogram answers them from your page and leaves the skin advice to you.',
+      h1: "There's always one more beauty question.",
+      intro: "",
       primaryCta: appCta,
-      secondaryLink: { label: 'How handoffs work', href: '/features/human-handoff' },
     },
-    sections: [
-      {
-        kind: 'beforeAfter',
-        heading: 'Shade questions get product facts, not silence',
-        content: {
-          before: [
-            "Which shade is in stock, what's in the bundle, can it come today — again and again.",
-            'You repeat the same price and stock answers while being careful not to promise results.',
-            'A buyer who needed one quick confirmation disappears before you reply.',
-            'Small orders pile up and checkout details scatter across threads.',
-          ],
-          after: [
-            'Sellogram answers shade, stock, bundle, price, and delivery from your page.',
-            'Recommendations stick to product facts — never skin promises.',
-            'Ready buyers get a tidy cart and an M-Pesa-ready checkout link.',
-            'Skin concerns and complaints come to you, with the thread attached.',
-          ],
+    shopStory: {
+      "openingQuestions": "\"Do you have shade 330?\" \"What's in the set?\" \"How much is the bigger bottle?\"",
+      "openingClose": "Your customers want to be sure they're buying the right thing. Sellogram helps them explore your products, compare options and find what they're looking for, right in your Instagram DMs.",
+      "sceneHeading": "From \"Do you have it?\" to \"I'll take it.\"",
+      "messages": [
+        {
+          "from": "customer",
+          "text": "Do you have the peach lip gloss? And how much is the lip combo?"
         },
-      },
-      {
-        kind: 'archetype',
-        name: 'Njeri',
-        role: 'Beauty seller in Nairobi. Runs product drops from Instagram, closes orders in the DMs.',
-        day: [
-          'Posts a restock. "Do you have 330?" arrives thirty times.',
-          'Buyers want a quick bundle suggestion before they pay.',
-          'She is careful never to promise what a product cannot do.',
-          'Small orders stack up faster than she can keep the details straight.',
-        ],
-        sellogramHelps: [
-          'Answers shade, stock, price, and bundle questions the moment they land.',
-          'Suggests from her products without promising results.',
-          'Hands skin concerns and complaints to her with the full thread.',
-          'Sends ready buyers the checkout link.',
-        ],
-      },
-      {
-        kind: 'promiseGrid',
-        heading: 'What Sellogram handles for a beauty page',
-        items: [
-          { title: 'Shade and stock', body: '"Do you have 330, sealed?" — answered from your stock details.' },
-          { title: 'Bundles', body: "What's in the set, what it costs, what can be swapped — by your rules." },
-          { title: 'Cleaner checkout', body: 'Product, quantity, and delivery kept together before payment.' },
-          { title: 'Skin questions', body: 'Acne, reactions, dark spots, pregnancy — always handed to you.' },
-        ],
-      },
-      {
-        kind: 'scenarios',
-        heading: 'How it sounds in the DM',
-        items: [
-          {
-            customer: 'Do you have Fit Me 330, and is it sealed?',
-            sellogram: 'Yes — Fit Me 330 is in stock, sealed, KES 1,350. Want delivery or pickup? I can send the checkout link.',
-            ownerNote: 'If shade or packaging details are missing from your page, Sellogram checks with you.',
-          },
-          {
-            customer: 'Can I swap the toner in the bundle for sunscreen?',
-            sellogram: 'The glow bundle allows one swap — toner for sunscreen works, same price at KES 2,800. Should I set that up?',
-            ownerNote: "Swaps only happen by rules you've set. Anything that changes your margin comes to you.",
-          },
-          {
-            customer: 'I have oily skin and dark spots. Which one should I use?',
-            sellogram: 'I can tell you the facts — the gel moisturizer is oil-free and light, KES 900. For your skin specifically, let me bring in the owner to advise you properly.',
-            ownerNote: 'Skin concerns and results questions get human care, every time.',
-          },
-        ],
-      },
-      {
-        kind: 'fitGuide',
-        heading: 'Beauty DMs are high-volume and trust-sensitive',
-        body:
-          'Sellogram is useful when your product facts are clear and you want faster replies without an assistant making claims you would not make yourself.',
-        worksBest:
-          'Beauty shops with clear shade, stock, sealed-packaging, bundle, price, and delivery details that customers ask about every day.',
-        handoff:
-          'Always a handoff: skin reactions, acne, dark spots, pregnancy, complaints, custom bundles, discounts, and anything that sounds medical or guaranteed.',
-        ownerGets:
-          'You get faster routine answers, and the sensitive questions arrive with context instead of guesswork.',
-      },
-      faq([
-        { question: 'Can Sellogram answer shade and stock questions?', answer: 'Yes, from the details on your page.' },
-        { question: 'Can Sellogram recommend products?', answer: 'It suggests from your catalog facts. It never makes medical or guaranteed-result claims.' },
-        { question: 'What happens with sensitive questions?', answer: 'They come to you with the whole conversation attached.' },
-      ]),
-    ],
+        {
+          "from": "sellogram",
+          "text": "Yes, the peach gloss is available. The lip combo comes with a gloss and liner for KES 1,600."
+        },
+        {
+          "from": "customer",
+          "text": "I'll take the combo."
+        },
+        {
+          "from": "sellogram",
+          "text": "Lovely. Would you like delivery or pickup?"
+        }
+      ],
+      "sceneAfter": [
+        "Sellogram can help customers choose between products, check what's available, and put their orders together without waiting for you to reply."
+      ],
+      "secondHeading": "Your products, your information.",
+      "secondParagraphs": [
+        "You've already spent time posting your products, shades, sizes and prices.",
+        "Sellogram uses those details to answer customer questions. Add a new product or update a post, and it picks up the changes.",
+        "And when a customer needs advice about a skin concern, a reaction or something that isn't in your product information, Sellogram brings you into the conversation.",
+        "So customers can get help shopping, and you're still there when they need you."
+      ],
+      "ctaClose": "Connect your beauty shop and try Sellogram with your own products."
+    },
+    sections: [],
   },
   '/use-cases/accessories': {
     path: '/use-cases/accessories',
     hero: {
-      h1: 'DM help for accessories shops',
-      intro:
-        'Bags, jewelry, watches, phone cases — detail-heavy products bring detail-heavy questions. Sellogram answers the facts fast and keeps the taste, bundles, and custom calls with you.',
+      h1: "Sometimes it's the little details.",
+      intro: "",
       primaryCta: appCta,
-      secondaryLink: { label: 'How orders come together', href: '/features/orders-and-checkout' },
     },
-    sections: [
-      {
-        kind: 'beforeAfter',
-        heading: 'Small questions stop slowing the sale',
-        content: {
-          before: [
-            'Price, color, material, dimensions, does it fit an iPhone 15 — over and over.',
-            'You answer from captions, screenshots, and memory while stock keeps changing.',
-            'Gift buyers comparing three shops buy from whoever sounds surest, soonest.',
-            'Custom requests interrupt you even when the first question was simple.',
-          ],
-          after: [
-            'Sellogram answers price, color, material, dimensions, and compatibility from your details.',
-            'Gift orders arrive organized: items, budget, date, delivery — collected before you step in.',
-            'Buyers who know what they want go straight to checkout.',
-            'Custom work, discounts, and uncertain fits come to you.',
-          ],
+    shopStory: {
+      "openingQuestions": "\"Does it come in black?\" \"Is the necklace stainless steel?\" \"Will this case fit my phone?\"",
+      "openingClose": "A few questions can stand between someone liking your product and actually buying it. Sellogram helps customers get the details they need and take the next step.",
+      "sceneHeading": "They like the bag. Now they have questions.",
+      "messages": [
+        {
+          "from": "customer",
+          "text": "Do you have this bag in black?"
         },
-      },
-      {
-        kind: 'archetype',
-        name: 'Linet',
-        role: 'Accessories seller in Nairobi. Posts bags and jewelry drops, closes orders in the DMs.',
-        day: [
-          '"How much is the bag? Is the necklace stainless? Does this case fit a 15 Pro Max?"',
-          'Gift buyers need packaging, timing, and bundle answers before they pay.',
-          'One wrong compatibility answer means a return and an unhappy buyer.',
-          'She wants speed — without Sellogram promising custom work it cannot check.',
-        ],
-        sellogramHelps: [
-          'Answers the product facts and delivery basics instantly.',
-          'Collects gift orders — items, budget, card message, date — before she steps in.',
-          'Only answers model-fit when her page lists the supported models.',
-          'Keeps every conversation in her dashboard so she can step in whenever she wants.',
-        ],
-      },
-      {
-        kind: 'promiseGrid',
-        heading: 'What Sellogram handles for an accessories page',
-        items: [
-          { title: 'Product details', body: 'Price, color, material, dimensions, stock — ready when buyers ask.' },
-          { title: 'Compatibility, carefully', body: 'Phone-model fit answered only when your page lists the models. Otherwise it asks you.' },
-          { title: 'Gift buyers', body: 'Timing, packaging notes, and bundle basics handled before you step in.' },
-          { title: 'Custom work', body: 'Special orders and bundle pricing come to you with the details collected.' },
-        ],
-      },
-      {
-        kind: 'scenarios',
-        heading: 'How it sounds in the DM',
-        items: [
-          {
-            customer: 'Is the gold necklace stainless steel or does it tarnish?',
-            sellogram: "It's 316 stainless steel — doesn't tarnish with normal wear. KES 850, in stock. Want it delivered or picked up?",
-            ownerNote: "Material and hypoallergenic claims only come from what you've listed.",
-          },
-          {
-            customer: 'Does this MagSafe case fit iPhone 15 Pro Max?',
-            sellogram: 'Yes — this one is listed for the 15 Pro Max. KES 1,600, black and clear in stock. Which color?',
-            ownerNote: "If a model isn't on your list, Sellogram asks you — a wrong fit answer costs a return.",
-          },
-          {
-            customer: 'Can you pack the bag, earrings, and sunglasses as a birthday gift?',
-            sellogram: "Lovely combo — that's KES 4,300 together. When do you need it, and where's it going? I'll pass the wrapping request to the owner with everything ready.",
-            ownerNote: 'Gift packaging promises and bundle pricing stay yours to decide.',
-          },
-        ],
-      },
-      {
-        kind: 'fitGuide',
-        heading: 'Accessories shops win on details',
-        body:
-          'Buyers want material, size, fit, and packaging answers before they trust a page. One wrong compatibility answer costs a return — so Sellogram answers what your page supports and asks you about the rest.',
-        worksBest:
-          'Bag, jewelry, watch, sunglasses, phone-case, and gifting pages with material notes, dimensions, model lists, colors, stock, and delivery rules written up.',
-        handoff:
-          'Always a handoff: custom work, repairs, unclear compatibility, gift packaging promises, discounts, and any material claim you have not listed.',
-        ownerGets:
-          'You get cleaner bundle requests and far fewer repeat checks on price, material, fit, stock, and delivery.',
-      },
-      faq([
-        { question: 'Can Sellogram answer jewelry and bag questions?', answer: 'Yes: price, color, material, dimensions, stock, and delivery — from your page.' },
-        { question: 'Can Sellogram answer phone accessory compatibility?', answer: 'Only when your page lists the supported models. Uncertain fits come to you.' },
-        { question: 'Can Sellogram handle gift bundles?', answer: 'It collects the items and delivery details, then hands the pricing and packaging to you.' },
-      ]),
-    ],
+        {
+          "from": "sellogram",
+          "text": "Yes, it's available in black and brown for KES 2,400."
+        },
+        {
+          "from": "customer",
+          "text": "Can you gift-wrap it? It's for a birthday."
+        },
+        {
+          "from": "sellogram",
+          "text": "Let me check the gift wrapping with the shop. When do you need it?"
+        }
+      ],
+      "sceneAfter": [
+        "Some questions are straightforward. Others need your say.",
+        "Sellogram answers what it knows about your products and checks with you about special requests."
+      ],
+      "secondHeading": "Give customers the details before they have to ask twice.",
+      "secondParagraphs": [
+        "Whether it's a bag, a watch, a pair of earrings or a phone case, customers want to know exactly what they're getting.",
+        "Sellogram can answer questions about colours, materials, prices, sizes and compatibility using the details you've provided.",
+        "It can also help customers choose between products and get an order ready.",
+        "If you haven't listed something, like whether a case fits a particular phone or whether gift wrapping is available, it won't make up an answer.",
+        "You stay in charge of the things only you can confirm."
+      ],
+      "ctaClose": "Let customers browse, ask questions and order from your Instagram shop."
+    },
+    sections: [],
   },
   '/use-cases/fragrances': {
     path: '/use-cases/fragrances',
@@ -1077,97 +933,47 @@ export const PAGES: Record<string, PageContent> = {
   '/use-cases/home-bakeries-food-brands': {
     path: '/use-cases/home-bakeries-food-brands',
     hero: {
-      h1: 'DM help for home bakeries and food brands',
-      intro:
-        'What is available today, does it have nuts, can it reach Kilimani by four. Sellogram answers your menu questions while you bake — and never improvises on food safety.',
+      h1: "You're busy in the kitchen. Your DMs aren't waiting.",
+      intro: "",
       primaryCta: appCta,
-      secondaryLink: { label: 'What Sellogram answers on its own', href: '/features/product-answers' },
     },
-    sections: [
-      {
-        kind: 'beforeAfter',
-        heading: 'Menu and delivery answers without the chasing',
-        content: {
-          before: [
-            "What's available today, which flavors are left, when's the cutoff, can I pick up — while your hands are in dough.",
-            'You repeat prices, sizes, allergens, and delivery days between the oven and the packing table.',
-            'Allergy questions deserve careful answers, and careful takes time.',
-            'Custom cakes and office orders interrupt, even when the first question was simple.',
-          ],
-          after: [
-            "Sellogram answers your menu, prices, flavors, allergens, and cutoffs from what you've set.",
-            'Orders arrive clear: item, quantity, date, delivery area, checkout link.',
-            'Allergen gaps, custom cakes, and bulk orders come to you — never guessed.',
-            'You spend the saved time making the food.',
-          ],
+    shopStory: {
+      "openingQuestions": "\"What's on the menu today?\" \"Can I order for Saturday?\" \"Do you deliver?\"",
+      "openingClose": "There's a lot happening behind every food order. Sellogram helps customers check your menu, find prices and arrange their orders while you focus on preparing the food.",
+      "sceneHeading": "Another order comes in while you're baking.",
+      "messages": [
+        {
+          "from": "customer",
+          "text": "Hi, can I get two boxes of brownies for Saturday?"
         },
-      },
-      {
-        kind: 'archetype',
-        name: 'Muthoni',
-        role: 'Home bakery and pantry brand in Nairobi. Posts weekly menus, takes orders in the DMs.',
-        day: [
-          'Posts the weekend menu. The "what\'s left?" messages start immediately.',
-          'Answers delivery and M-Pesa questions while three things are in the oven.',
-          'A nut-allergy question stops everything — that answer has to be right.',
-          'Saturday slots fill up and she loses track of who confirmed what.',
-        ],
-        sellogramHelps: [
-          'Answers menu, prices, batch availability, allergen notes, delivery windows, and pickup times instantly.',
-          'Collects quantity, date, delivery area, and checkout details before the owner steps in.',
-          'Hands over custom cakes, bulk orders, allergen-sensitive questions, and late-order requests.',
-          'Shows which food questions Sellogram answered instead of the owner typing during prep.',
-        ],
-      },
-      {
-        kind: 'promiseGrid',
-        heading: 'What Sellogram handles for a food page',
-        items: [
-          { title: 'Menu memory', body: "Today's items, flavors, portions, batch limits, and prices — ready when buyers ask." },
-          { title: 'Allergen caution', body: 'Nuts, dairy, gluten, eggs — answered only from your notes, or handed to you.' },
-          { title: 'Order cutoffs', body: "Delivery windows, weekend slots, and preorder rules — as you've set them." },
-          { title: 'Custom orders', body: 'Birthday cakes, grazing boxes, and office orders come to you with details collected.' },
-        ],
-      },
-      {
-        kind: 'scenarios',
-        heading: 'How it sounds in the DM',
-        items: [
-          {
-            customer: 'Do you have banana bread or brownies today, and can I get them before 4?',
-            sellogram: 'Both — banana bread is KES 450, brownies KES 600 a box. Orders before 1pm make the 4pm delivery. Want one of each?',
-            ownerNote: 'If a batch is nearly sold out or timing changed, Sellogram checks with you before confirming.',
-          },
-          {
-            customer: 'Can I order a Bento cake and cupcakes for Saturday in Kilimani?',
-            sellogram: "Yes — Saturday still has slots. Bento cakes are KES 1,800, cupcakes KES 1,200 for six. What flavors, and what should the cake say? I'll pass the details to the baker to confirm your slot.",
-            ownerNote: 'Custom designs, deposits, and weekend slots get your final confirmation.',
-          },
-          {
-            customer: 'Does the granola have nuts, and does the chilli oil need a fridge?',
-            sellogram: "The granola has almonds and cashews — that's from the maker's own notes. The chilli oil keeps for a month in a cool cupboard, three in the fridge. KES 700 a jar, from this week's batch.",
-            ownerNote: "Allergen, storage, and shelf-life answers only come from notes you've written. Gaps come to you.",
-          },
-        ],
-      },
-      {
-        kind: 'fitGuide',
-        heading: 'Food brands need speed with food-safety restraint',
-        body:
-          'Food DMs repeat all day, but the sensitive ones cannot be improvised. Sellogram helps when your menu, prices, and ingredient notes are written up — and every safety gap comes straight to you.',
-        worksBest:
-          'Home bakeries, snack brands, pantry brands, and weekly-menu kitchens with clear prices, flavors, batch limits, pickup notes, delivery windows, and ingredient facts.',
-        handoff:
-          'Always a handoff: custom cakes, office orders, allergy-sensitive requests, late orders, refunds, deposits, and any storage or dietary question you have not written up.',
-        ownerGets:
-          'Clear orders — item, quantity, date, area — and the food-safety questions flagged for your careful answer.',
-      },
-      faq([
-        { question: 'Can Sellogram answer menu and price questions?', answer: "Yes, from the menu and prices you've set." },
-        { question: 'Can Sellogram answer allergen questions?', answer: 'Only from your own ingredient notes. Anything missing comes to you.' },
-        { question: 'Can Sellogram take custom cake or bulk orders?', answer: 'It collects the details, then hands the order to you to confirm.' },
-      ]),
-    ],
+        {
+          "from": "sellogram",
+          "text": "Brownies are KES 600 a box. That's KES 1,200 for two. Would you like delivery or pickup?"
+        },
+        {
+          "from": "customer",
+          "text": "Delivery, please. I'm in Kilimani."
+        },
+        {
+          "from": "sellogram",
+          "text": "Got it. Let me check Saturday availability with the shop before we confirm."
+        }
+      ],
+      "sceneAfter": [
+        "Sellogram can answer menu questions, share prices and collect order details, even when you're nowhere near your phone.",
+        "And when something needs your confirmation, it brings you in."
+      ],
+      "secondHeading": "Today's menu. Tomorrow's orders.",
+      "secondParagraphs": [
+        "Maybe you're posting fresh pastries every morning. Maybe you take weekend orders for cakes, snacks or meal boxes.",
+        "Sellogram uses the menus, products, prices and ordering details you've shared to help customers find what they want.",
+        "They can ask what's available, choose quantities, check delivery options and get the payment details they need.",
+        "Custom cakes, special requests, allergy concerns and dates you haven't confirmed still come to you.",
+        "You make the food. Sellogram helps with the conversations around it."
+      ],
+      "ctaClose": "Connect your food business and let Sellogram help customers place their orders."
+    },
+    sections: [],
   },
   '/use-cases/skincare-haircare-makers': {
     path: '/use-cases/skincare-haircare-makers',

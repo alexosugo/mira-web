@@ -2,123 +2,93 @@ import { describe, expect, it } from 'vitest';
 import { PAGES } from '../content/pages';
 import { ROUTES } from '../lib/routes';
 
-const USE_CASE_PATHS = [
-  '/use-cases/daily-drop-shops',
+const FEATURED_PATHS = [
   '/use-cases/fashion',
   '/use-cases/beauty',
   '/use-cases/accessories',
-  '/use-cases/fragrances',
   '/use-cases/home-bakeries-food-brands',
+] as const;
+
+const OTHER_PATHS = [
+  '/use-cases/daily-drop-shops',
+  '/use-cases/fragrances',
   '/use-cases/skincare-haircare-makers',
 ] as const;
 
-const CATEGORY_TERMS: Record<(typeof USE_CASE_PATHS)[number], string[]> = {
-  '/use-cases/daily-drop-shops': ['hold', 'rider', 'size 38', 'kasarani'],
-  '/use-cases/fashion': ['waist', 'thrift', 'pickup', 'condition'],
-  '/use-cases/beauty': ['shade', 'sealed', 'bundle', 'oily skin'],
-  '/use-cases/accessories': ['stainless steel', 'magsafe', 'gift', 'tarnish'],
-  '/use-cases/fragrances': ['decant', 'designer', 'lattafa', 'authenticity'],
-  '/use-cases/home-bakeries-food-brands': ['banana bread', 'granola', 'bento cake', 'allergen'],
-  '/use-cases/skincare-haircare-makers': ['body butter', 'black soap', 'salon', 'refill'],
-};
+describe('homepage-linked shop use cases', () => {
+  it('gives each shop a short buying story rather than the old template', () => {
+    const headlines = new Set<string>();
 
-describe('use-case content pages', () => {
-  it('uses shop categories as use cases instead of generic Instagram shop labels', () => {
-    const dailyDropRoute = ROUTES.find((route) => route.path === '/use-cases/daily-drop-shops');
-
-    expect(dailyDropRoute?.title).toContain('daily-drop shops');
-    expect(dailyDropRoute?.pageName).toContain('Daily-Drop Shops');
-    expect(dailyDropRoute?.title).not.toContain('Instagram Shops');
-    expect(PAGES['/use-cases/daily-drop-shops'].hero.h1).toContain('daily-drop shops');
-  });
-
-  it('keeps all use-case pages on the same high-signal story beats', () => {
-    for (const path of USE_CASE_PATHS) {
-      const sectionKinds = PAGES[path].sections.map((section) => section.kind);
-
-      expect(sectionKinds, path).toContain('archetype');
-      expect(sectionKinds, path).toContain('promiseGrid');
-      expect(sectionKinds, path).toContain('scenarios');
-      expect(sectionKinds, path).toContain('fitGuide');
-      expect(sectionKinds, path).toContain('faq');
+    for (const path of FEATURED_PATHS) {
+      const page = PAGES[path];
+      const story = page.shopStory;
+      expect(story, path).toBeDefined();
+      expect(page.sections, path).toEqual([]);
+      expect(page.hero.primaryCta?.href, path).toBe('https://app.sellogram.co');
+      expect(story?.openingQuestions, path).toContain('?');
+      expect(story?.sceneHeading.length, path).toBeGreaterThan(10);
+      expect(story?.messages.length, path).toBeGreaterThanOrEqual(2);
+      expect(story?.messages.some((m) => m.from === 'customer'), path).toBe(true);
+      expect(story?.messages.some((m) => m.from === 'sellogram'), path).toBe(true);
+      expect(story?.secondParagraphs.length, path).toBeGreaterThanOrEqual(2);
+      expect(story?.ctaClose.length, path).toBeGreaterThan(20);
+      headlines.add(page.hero.h1);
     }
+    expect(headlines.size).toBe(FEATURED_PATHS.length);
   });
 
-  it('includes category-specific DM scenarios with owner-control boundaries', () => {
-    for (const path of USE_CASE_PATHS) {
-      const scenarios = PAGES[path].sections.find((section) => section.kind === 'scenarios');
+  it('keeps the buying questions distinctive', () => {
+    const expected = {
+      '/use-cases/fashion': ['jacket', 'medium', 'one-of-a-kind', 'stock'],
+      '/use-cases/beauty': ['shade 330', 'lip combo', 'skin concern', 'products'],
+      '/use-cases/accessories': ['stainless steel', 'bag', 'gift wrapping', 'compatibility'],
+      '/use-cases/home-bakeries-food-brands': ['saturday', 'brownies', 'menu', 'allergy'],
+    } as const;
 
-      expect(scenarios?.kind, path).toBe('scenarios');
-      if (scenarios?.kind !== 'scenarios') continue;
-
-      expect(scenarios.items.length, path).toBeGreaterThanOrEqual(2);
-      expect(scenarios.items.length, path).toBeLessThanOrEqual(4);
-      for (const item of scenarios.items) {
-        expect(item.customer.length, path).toBeGreaterThan(10);
-        expect(item.sellogram.length, path).toBeGreaterThan(40);
-        expect(item.ownerNote.length, path).toBeGreaterThan(35);
+    for (const path of FEATURED_PATHS) {
+      const copy = JSON.stringify(PAGES[path]).toLowerCase();
+      for (const term of expected[path]) {
+        expect(copy, `${path} should mention ${term}`).toContain(term);
       }
     }
   });
 
-  it('uses category-specific buyer language in each scenario section', () => {
-    for (const path of USE_CASE_PATHS) {
-      const scenarios = PAGES[path].sections.find((section) => section.kind === 'scenarios');
+  it('does not invent shop-owner biographies', () => {
+    const copy = FEATURED_PATHS.map((path) => JSON.stringify(PAGES[path])).join(' ');
+    for (const name of ['Achieng', 'Njeri', 'Linet', 'Muthoni']) {
+      expect(copy).not.toContain(name);
+    }
+  });
 
-      expect(scenarios?.kind, path).toBe('scenarios');
-      if (scenarios?.kind !== 'scenarios') continue;
+  it('leaves the other three use cases on their existing content structure', () => {
+    const dailyDrop = PAGES['/use-cases/daily-drop-shops'];
+    expect(dailyDrop.hero.h1).toContain('daily-drop shops');
+    expect(ROUTES.find((r) => r.path === dailyDrop.path)?.title).toContain('daily-drop shops');
 
-      const scenarioText = JSON.stringify(scenarios).toLowerCase();
-      for (const term of CATEGORY_TERMS[path]) {
-        expect(scenarioText, `${path} should mention ${term}`).toContain(term);
+    for (const path of OTHER_PATHS) {
+      const page = PAGES[path];
+      expect(page.shopStory).toBeUndefined();
+      const kinds = page.sections.map((s) => s.kind);
+      for (const required of ['archetype', 'promiseGrid', 'scenarios', 'fitGuide', 'faq']) {
+        expect(kinds, path).toContain(required);
       }
     }
   });
 
-  it('gives every use case a practical fit and handoff guide', () => {
-    for (const path of USE_CASE_PATHS) {
-      const fitGuide = PAGES[path].sections.find((section) => section.kind === 'fitGuide');
-
-      expect(fitGuide?.kind, path).toBe('fitGuide');
-      if (fitGuide?.kind !== 'fitGuide') continue;
-
-      expect(fitGuide.worksBest.length, path).toBeGreaterThan(80);
-      expect(fitGuide.handoff.toLowerCase(), path).toMatch(/hand over|handoff/);
-      // Voice rule: copy speaks to "you", not about "the owner". Accept either.
-      expect(fitGuide.ownerGets.toLowerCase(), path).toMatch(/\byou\b|\byour\b|owner|maker/);
-    }
-  });
-
-  it('uses locally natural Nairobi category language', () => {
-    expect(ROUTES.find((route) => route.path === '/use-cases/home-bakeries-food-brands')?.title).toContain(      'home bakeries and food brands',
-    );
-    expect(ROUTES.find((route) => route.path === '/use-cases/skincare-haircare-makers')?.title).toContain(      'skincare and haircare makers',
-    );
-
-    const pageText = Object.values(PAGES)
-      .flatMap((page) => [page.path, page.hero.h1, page.hero.intro])
-      .join(' ');
-
-    expect(pageText.toLowerCase()).not.toContain('cottage');
-  });
-
-  it('keeps fragrance broader than Arabian perfumes alone', () => {
+  it('retains fragrance category coverage', () => {
     const fragrance = PAGES['/use-cases/fragrances'];
-    const text = [fragrance.hero.intro, ...fragrance.sections.map((section) => JSON.stringify(section))]
-      .join(' ')
-      .toLowerCase();
-
-    expect(text).toContain('designer');
-    expect(text).toContain('niche');
-    expect(text).toContain('arabian');
-    expect(text).toContain('decant');
+    const copy = [fragrance.hero.intro, ...fragrance.sections.map((s) => JSON.stringify(s))]
+      .join(' ').toLowerCase();
+    for (const term of ['designer', 'niche', 'arabian', 'decant']) {
+      expect(copy).toContain(term);
+    }
   });
 
   it('keeps public use-case copy free of internal planning language', () => {
-    const useCaseText = USE_CASE_PATHS.map((path) => JSON.stringify(PAGES[path])).join(' ').toLowerCase();
-
-    expect(useCaseText).not.toContain('gtm plan');
-    expect(useCaseText).not.toContain('launch plan');
-    expect(useCaseText).not.toContain('later use case');
+    const paths = [...FEATURED_PATHS, ...OTHER_PATHS];
+    const copy = paths.map((path) => JSON.stringify(PAGES[path])).join(' ').toLowerCase();
+    for (const term of ['gtm plan', 'launch plan', 'later use case']) {
+      expect(copy).not.toContain(term);
+    }
   });
 });

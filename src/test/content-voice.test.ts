@@ -69,6 +69,19 @@ for (const page of Object.values(PAGES)) {
   if (page.hero.secondaryLink) {
     allContentStrings.push(page.hero.secondaryLink.label, page.hero.secondaryLink.href);
   }
+  if (page.shopStory) {
+    const story = page.shopStory;
+    allContentStrings.push(
+      story.openingQuestions,
+      story.openingClose,
+      story.sceneHeading,
+      ...story.messages.map((message) => message.text),
+      ...story.sceneAfter,
+      story.secondHeading,
+      ...story.secondParagraphs,
+      story.ctaClose,
+    );
+  }
   for (const section of page.sections) {
     allContentStrings.push(...sectionStrings(section));
   }

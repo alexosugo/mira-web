@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PricingMatrix from '../components/PricingMatrix';
 import ContentHero from '../components/content/ContentHero.astro';
+import ShopUseCasePage from '../components/content/ShopUseCasePage.astro';
 import DmThread from '../components/content/DmThread.astro';
 import Timeline from '../components/content/Timeline.astro';
 import PairedLedger from '../components/content/PairedLedger.astro';
@@ -69,9 +70,13 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
   <div class="min-h-screen bg-paper">
     <Header client:load />
     <main>
-      <ContentHero hero={page.hero} route={route} variant={variant} decor={decor} withThree={withThree} />
+      {page.shopStory ? (
+        <ShopUseCasePage hero={page.hero} story={page.shopStory} route={route} />
+      ) : (
+        <ContentHero hero={page.hero} route={route} variant={variant} decor={decor} withThree={withThree} />
+      )}
 
-      {isDocument ? (
+      {!page.shopStory && (isDocument ? (
         <div class="mx-auto max-w-6xl px-6 pb-24 lg:px-8">
           <div class={showToc ? 'lg:grid lg:grid-cols-12 lg:gap-16' : ''}>
             {showToc && (
@@ -361,7 +366,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
             </section>
           </Fragment>
         ))
-      )}
+      ))}
     </main>
     <Footer client:visible />
   </div>

@@ -1,0 +1,109 @@
+---
+/**
+ * The four shop types linked from the homepage use a buying story instead of
+ * fictional seller profiles, repeated feature grids or long FAQs.
+ */
+import type { PageHero, ShopStory } from '../../content/pages';
+import type { Route } from '../../lib/routes';
+
+interface Props {
+  hero: PageHero;
+  story: ShopStory;
+  route: Route;
+}
+
+const { hero, story, route } = Astro.props;
+const cta = hero.primaryCta;
+---
+
+<article class="mx-auto max-w-6xl px-5 pb-20 pt-28 sm:px-8 sm:pb-28 sm:pt-36 lg:px-10">
+  <header class="max-w-3xl">
+    <h1 class="max-w-3xl font-display text-[clamp(2.4rem,1.6rem+3.8vw,4.75rem)] font-semibold leading-[1.03] tracking-tight text-ink [text-wrap:balance]">
+      {hero.h1}
+    </h1>
+    {hero.intro && <p class="mt-8 max-w-2xl text-lg leading-relaxed text-ink-light sm:text-xl">{hero.intro}</p>}
+    <p class={`max-w-2xl font-display text-xl leading-snug text-ink sm:text-2xl ${hero.intro ? 'mt-6' : 'mt-9'}`}>
+      {story.openingQuestions}
+    </p>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-light">
+      {story.openingClose}
+    </p>
+  </header>
+
+  <section class="mt-20 border-t border-line pt-14 sm:mt-28 sm:pt-20" aria-labelledby="shop-example-heading">
+    <h2 id="shop-example-heading" class="max-w-2xl font-display text-[clamp(1.8rem,1.2rem+2.1vw,2.75rem)] font-semibold leading-[1.12] tracking-tight text-ink [text-wrap:balance]">
+      {story.sceneHeading}
+    </h2>
+    <div class="mt-10 grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-7">
+        <div class="overflow-hidden rounded-2xl border border-line bg-white">
+          <div class="border-b border-line px-5 py-4">
+            <p class="text-sm font-medium text-ink">Instagram DMs</p>
+          </div>
+          <ol class="space-y-3 px-5 py-7 sm:px-8">
+            {story.messages.map((message) => (
+              <li class={message.from === 'sellogram' ? 'flex justify-end' : 'flex justify-start'}>
+                <p class={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed text-ink sm:text-base ${
+                  message.from === 'sellogram'
+                    ? 'rounded-br-md bg-fern'
+                    : 'rounded-bl-md border border-line bg-paper'
+                }`}>
+                  {message.text}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <p class="border-t border-line px-5 py-3 text-xs leading-relaxed text-ink-faint sm:px-8">
+            Example conversation based on questions Instagram shops commonly receive.
+          </p>
+        </div>
+      </div>
+      <div class="space-y-5 lg:col-span-5">
+        {story.sceneAfter.map((paragraph) => (
+          <p class="max-w-lg text-base leading-relaxed text-ink-light sm:text-lg">{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-20 max-w-3xl border-t border-line pt-14 sm:mt-28 sm:pt-20" aria-labelledby="shop-details-heading">
+    <h2 id="shop-details-heading" class="max-w-2xl font-display text-[clamp(1.8rem,1.2rem+2.1vw,2.75rem)] font-semibold leading-[1.12] tracking-tight text-ink [text-wrap:balance]">
+      {story.secondHeading}
+    </h2>
+    <div class="mt-7 space-y-5">
+      {story.secondParagraphs.map((paragraph) => (
+        <p class="max-w-2xl text-base leading-relaxed text-ink-light sm:text-lg">{paragraph}</p>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-16 border-t border-line pt-12 sm:mt-20" aria-label="Get started">
+    {cta && (
+      <a
+        href={cta.href}
+        class="inline-flex min-h-[48px] items-center justify-center rounded-full bg-fern px-8 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper"
+        data-shop-use-case-cta
+        data-cta-tracking={cta.trackingKey}
+        data-cta-label={cta.label}
+        data-cta-section={`${route.pageName} footer`}
+      >
+        {cta.label}
+      </a>
+    )}
+    <p class="mt-5 max-w-xl text-base leading-relaxed text-ink-light">{story.ctaClose}</p>
+  </section>
+</article>
+
+<script>
+  import { trackCTAClick } from '../../utils/analytics';
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-shop-use-case-cta]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackCTAClick(
+        link.dataset.ctaTracking ?? 'content_get_started',
+        link.dataset.ctaLabel ?? 'Get started',
+        link.dataset.ctaSection ?? 'use case',
+      );
+    });
+  });
+</script>
