@@ -1,6 +1,6 @@
 import React from 'react';
-import { describe, expect, it } from 'vitest';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import SupportedShops from '../components/SupportedShops';
 import DMSalesJourney from '../components/DMSalesJourney';
 
@@ -12,6 +12,10 @@ const EXPECTED_SHOPS = [
 ] as const;
 
 describe('imagery-led homepage sections', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('promotes every supported shop type with a real use-case link', () => {
     render(<SupportedShops />);
 
@@ -66,7 +70,7 @@ describe('imagery-led homepage sections', () => {
     expect(screen.queryByRole('img', { name: /Cocoa Rose Beauty model/i })).not.toBeInTheDocument();
   });
 
-  it('lets the reader pick any of the five steps without scroll locking', () => {
+  it('lets the reader pick any of the five steps without scroll locking', async () => {
     const { container } = render(<DMSalesJourney />);
     const progress = screen.getByRole('list', { name: 'Order progress' });
     const steps = within(progress).getAllByRole('listitem');
@@ -74,15 +78,43 @@ describe('imagery-led homepage sections', () => {
     expect(steps).toHaveLength(5);
     expect(steps[0]).toHaveAttribute('aria-current', 'step');
     expect(container.querySelector('.sticky')).not.toBeInTheDocument();
-    expect(container.querySelector('[data-journey-connector]')).not.toBeInTheDocument();
+    expect(container.querySelector('[data-journey-connector]')).toBeInTheDocument();
 
     fireEvent.click(within(progress).getByRole('button', { name: /Send me the payment details/ }));
     expect(steps[2]).toHaveAttribute('aria-current', 'step');
     expect(screen.getByText('Hi, is shade 08 still available?')).toBeInTheDocument();
-    expect(screen.getByText(/Buy Goods till 946512/).className).toContain('bg-dawn-bright');
+    expect((await screen.findByText(/Buy Goods till 946512/, undefined, { timeout: 4000 })).className).toContain('bg-dawn-bright');
 
     fireEvent.click(within(progress).getByRole('button', { name: /Rider ametoka/ }));
     expect(screen.getByRole('img', { name: /Piki piki rider/ })).toBeInTheDocument();
+  });
+
+  it('opens the clicked stage description and closes the previous one', () => {
+    render(<DMSalesJourney />);
+    const progress = screen.getByRole('list', { name: 'Order progress' });
+
+    fireEvent.click(within(progress).getByRole('button', { name: /How much is delivery to Kilimani/ }));
+
+    expect(screen.getByText('Your shop sends the delivery fee in the same chat.').closest('[aria-hidden="true"]')).toBeNull();
+    expect(
+      screen.getByText('A customer shares your post to your DMs. Your shop confirms the stock and price.').closest('[aria-hidden="true"]')
+    ).not.toBeNull();
+  });
+
+  it('shows the shop typing before its reply lands', () => {
+    vi.useFakeTimers();
+    render(<DMSalesJourney />);
+
+    expect(screen.getByText('Hi, is shade 08 still available?')).toBeInTheDocument();
+    expect(screen.getByTestId('dm-typing')).toBeInTheDocument();
+    expect(screen.queryByText('Yes. Shade 08 is in stock. It’s KSh 1,200.')).not.toBeInTheDocument();
+
+    act(() => {
+      vi.advanceTimersByTime(1100);
+    });
+
+    expect(screen.getByText('Yes. Shade 08 is in stock. It’s KSh 1,200.')).toBeInTheDocument();
+    expect(screen.queryByTestId('dm-typing')).not.toBeInTheDocument();
   });
 
   it('keeps the customer inside the shop DM', () => {
