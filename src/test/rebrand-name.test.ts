@@ -11,7 +11,6 @@ function read(relativePath: string) {
 const activeBrandFiles = [
   'src/components/EliteContactModal.tsx',
   'src/components/Footer.tsx',
-  'src/components/Handles.tsx',
   'src/components/Header.tsx',
   'src/components/Hero.tsx',
   'src/components/HeroChatDemo.tsx',
