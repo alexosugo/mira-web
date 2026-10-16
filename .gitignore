@@ -54,3 +54,5 @@ public/images/sellogram-hero-nairobi.webp
 .beads/*.pid.lock
 .beads/hooks/post-commit
 .beads/hooks/post-rewrite
+
+.serena/
