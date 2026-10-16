@@ -21,20 +21,13 @@ const FOOTER_GROUPS: { heading: string; links: { href: string; label: string; id
   {
     heading: 'Use cases',
     links: [
-      { href: '/use-cases/daily-drop-shops', label: 'Daily-drop shops', id: 'daily-drop-shops' },
       { href: '/use-cases/fashion', label: 'Fashion and thrift', id: 'fashion' },
       { href: '/use-cases/beauty', label: 'Beauty shops', id: 'beauty' },
       { href: '/use-cases/accessories', label: 'Accessories shops', id: 'accessories' },
-      { href: '/use-cases/fragrances', label: 'Fragrance shops', id: 'fragrances' },
       {
         href: '/use-cases/home-bakeries-food-brands',
         label: 'Bakeries and food',
         id: 'home-bakeries-food-brands',
-      },
-      {
-        href: '/use-cases/skincare-haircare-makers',
-        label: 'Skincare and haircare',
-        id: 'skincare-haircare-makers',
       },
     ],
   },
