@@ -7,33 +7,35 @@ const FinalCTA = () => {
   const { trackCTA } = useCTATracking();
 
   return (
-    <section ref={sectionRef} className="px-5 py-5 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-      <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[1.75rem] bg-cobalt px-6 py-14 text-white sm:rounded-[2.25rem] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-8">
-            <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
-              Put Sellogram to work in your DMs
-            </h2>
-          </div>
+    <section ref={sectionRef} className="py-6 sm:py-8 lg:py-10">
+      <div className="px-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] overflow-hidden rounded-xl bg-cobalt px-6 py-14 text-white sm:rounded-2xl sm:px-10 sm:py-16 lg:p-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-8">
+              <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance]">
+                Put Sellogram to work in your DMs
+              </h2>
+            </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 lg:col-span-4">
-            <a
-              href={APP_URL}
-              onClick={() =>
-                trackCTA('final_cta_button', 'Start free', 'final-cta', {
-                  button_location: 'final_cta',
-                })
-              }
-              className="inline-flex min-h-[48px] items-center rounded-full bg-white px-7 text-base font-medium text-[#123124] transition-transform duration-200 hover:-translate-y-0.5"
-            >
-              Start free
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex min-h-[48px] items-center text-base text-white/85 underline decoration-white/40 underline-offset-4 transition-colors duration-200 hover:text-white hover:decoration-white"
-            >
-              Ask us a question
-            </a>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 lg:col-span-4">
+              <a
+                href={APP_URL}
+                onClick={() =>
+                  trackCTA('final_cta_button', 'Start free', 'final-cta', {
+                    button_location: 'final_cta',
+                  })
+                }
+                className="inline-flex min-h-[48px] items-center rounded-full bg-white px-7 text-base font-medium text-[#123124] transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                Start free
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex min-h-[48px] items-center text-base text-white/85 underline decoration-white/40 underline-offset-4 transition-colors duration-200 hover:text-white hover:decoration-white"
+              >
+                Ask us a question
+              </a>
+            </div>
           </div>
         </div>
       </div>
