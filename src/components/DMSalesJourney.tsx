@@ -92,7 +92,7 @@ const DMSalesJourney = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(true);
-  const [line, setLine] = useState({ top: 0, height: 0, fill: 0 });
+  const [line, setLine] = useState({ top: 0, height: 0, active: 0, next: 0 });
   const sectionRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLOListElement | null>(null);
   const markerRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -113,15 +113,15 @@ const DMSalesJourney = () => {
     const first = markerRefs.current[0];
     const last = markerRefs.current[LAST_INDEX];
     const active = markerRefs.current[activeIndex];
-    if (!list || !first || !last || !active) return;
+    const next = markerRefs.current[Math.min(activeIndex + 1, LAST_INDEX)];
+    if (!list || !first || !last || !active || !next) return;
     const listTop = list.getBoundingClientRect().top;
     const centerOf = (marker: HTMLElement) => {
       const rect = marker.getBoundingClientRect();
       return rect.top - listTop + rect.height / 2;
     };
     const top = centerOf(first);
-    const height = centerOf(last) - top;
-    setLine({ top, height, fill: height > 0 ? (centerOf(active) - top) / height : 0 });
+    setLine({ top, height: centerOf(last) - top, active: centerOf(active) - top, next: centerOf(next) - top });
   }, [activeIndex]);
 
   useIsomorphicLayoutEffect(() => {
@@ -165,13 +165,26 @@ const DMSalesJourney = () => {
                 <div
                   data-journey-connector
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-[13.5px] w-px bg-ink/20"
+                  className="pointer-events-none absolute left-[13px] w-0.5 bg-ink/20"
                   style={{ top: line.top, height: line.height }}
                 >
                   <div
-                    className={`h-full w-full origin-top bg-ink transition-transform duration-500 ${EASE_OUT_QUINT}`}
-                    style={{ transform: `scaleY(${line.fill})` }}
+                    className={`h-full w-full origin-top bg-ink ${hasInteracted ? `transition-transform duration-500 ${EASE_OUT_QUINT}` : ''}`}
+                    style={{ transform: `scaleY(${line.height > 0 ? line.active / line.height : 0})` }}
                   />
+                  {isAutoplaying && (
+                    <div
+                      key={activeIndex}
+                      data-journey-timer
+                      onAnimationEnd={advanceStage}
+                      className="absolute left-0 w-full origin-top animate-journey-progress bg-ink"
+                      style={{
+                        top: line.active,
+                        height: line.next - line.active,
+                        animationPlayState: !isInView || isHovered || isFocused ? 'paused' : 'running',
+                      }}
+                    />
+                  )}
                 </div>
                 <ol
                   ref={listRef}
@@ -218,16 +231,6 @@ const DMSalesJourney = () => {
                               <p className="max-w-[31rem] text-[0.95rem] leading-relaxed text-ink/80 [text-wrap:pretty] sm:text-base">
                                 {stage.description}
                               </p>
-                              {isActive && isAutoplaying && (
-                                <div className="mt-3 h-0.5 max-w-[31rem] overflow-hidden rounded-full bg-ink/15">
-                                  <div
-                                    key={activeIndex}
-                                    onAnimationEnd={advanceStage}
-                                    className="h-full origin-left animate-journey-progress bg-ink"
-                                    style={{ animationPlayState: !isInView || isHovered || isFocused ? 'paused' : 'running' }}
-                                  />
-                                </div>
-                              )}
                             </div>
                           </div>
                         </div>

@@ -74,10 +74,10 @@
 
 @keyframes journey-progress {
   from {
-    transform: scaleX(0);
+    transform: scaleY(0);
   }
   to {
-    transform: scaleX(1);
+    transform: scaleY(1);
   }
 }
 
