@@ -23,7 +23,6 @@ export default getViteConfig({
       exclude: [
         'node_modules/**',
         'src/test/**',
-        'src/vite-env.d.ts',
         '*.config.*',
         'dist/**',
         '.astro/**',

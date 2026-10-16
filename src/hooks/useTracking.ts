@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { trackSectionView, trackCTAClick, trackFormSubmission, trackFormFieldInteraction, trackEvent } from '../utils/analytics';
+import { trackSectionView, trackCTAClick } from '../utils/analytics';
 
 // Hook for tracking section visibility
 export const useSectionTracking = (sectionId: string, sectionName: string) => {
@@ -38,47 +38,3 @@ export const useCTATracking = () => {
   return { trackCTA };
 };
 
-// Hook for tracking form submissions
-export const useFormTracking = () => {
-  const trackSubmission = (formId: string, formName: string, formData: Record<string, unknown>, status: 'error' | 'attempt') => {
-    trackFormSubmission(formId, formName, formData, status);
-  };
-
-  const trackFieldInteraction = (fieldId: string, fieldName: string, interactionType: 'focus' | 'blur' | 'change', value?: string) => {
-    trackFormFieldInteraction(fieldId, fieldName, interactionType, value);
-  };
-
-  return { trackSubmission, trackFieldInteraction };
-};
-
-// Hook for tracking scroll depth
-export const useScrollTracking = () => {
-  const scrollDepthRef = useRef(0);
-  const trackingIntervalsRef = useRef<Set<number>>(new Set());
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = Math.round((scrollTop / documentHeight) * 100);
-
-      if (scrollPercent > scrollDepthRef.current) {
-        scrollDepthRef.current = scrollPercent;
-
-        // Track at 25%, 50%, 75%, and 100% intervals
-        [25, 50, 75, 100].forEach(interval => {
-          if (scrollPercent >= interval && !trackingIntervalsRef.current.has(interval)) {
-            trackingIntervalsRef.current.add(interval);
-            
-            trackEvent('page_scrolled', { depth_percent: interval });
-          }
-        });
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return scrollDepthRef;
-};

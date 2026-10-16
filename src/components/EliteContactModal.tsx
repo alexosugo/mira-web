@@ -391,6 +391,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   rows={4}
+                  maxLength={5000}
                   aria-required="true"
                   className={`${INPUT_CLASSES(Boolean(errors.message))} resize-none`}
                 />

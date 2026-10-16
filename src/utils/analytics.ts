@@ -67,21 +67,6 @@ export const trackLeadCaptured = (leadData: Record<string, unknown>) => {
   trackEvent('lead_captured', leadData);
 };
 
-// Form field interaction tracking
-export const trackFormFieldInteraction = (
-  fieldId: string,
-  fieldName: string,
-  interactionType: 'focus' | 'blur' | 'change',
-  value?: string
-) => {
-  trackEvent('form_field_interacted', {
-    field_id: fieldId,
-    field_name: fieldName,
-    interaction_type: interactionType,
-    value: value ?? null
-  });
-};
-
 // Page view tracking
 export const trackPageView = (pageName: string, pageSection?: string) => {
   trackEvent('page_viewed', {

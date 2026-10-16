@@ -1,6 +1,6 @@
 # Sellogram Web
 
-Marketing landing page for Sellogram: answers a shop's Instagram DMs and sells in them (Kenyan Instagram sellers, waitlist conversion). Vite + React 18 + TypeScript + Tailwind, deployed on Netlify.
+Marketing landing page for Sellogram: answers a shop's Instagram DMs and sells in them (Kenyan Instagram sellers, waitlist conversion). Astro 7 + React 18 + TypeScript + Tailwind, deployed on Netlify.
 
 ## Design Context
 

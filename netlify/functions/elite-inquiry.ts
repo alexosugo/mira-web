@@ -9,6 +9,48 @@ interface EliteInquiryPayload {
   opt_in_updates: boolean;
 }
 
+function sanitize(value: string): string {
+  return value.replace(/</g, '').replace(/>/g, '').trim();
+}
+
+function validatePayload(raw: unknown): { ok: true; inquiry: EliteInquiryPayload } | { ok: false; error: string } {
+  if (typeof raw !== 'object' || raw === null) {
+    return { ok: false, error: 'Invalid payload' };
+  }
+  const { shop_name, email, contact_name, message, opt_in_updates, phone } = raw as Record<string, unknown>;
+
+  if (typeof shop_name !== 'string' || !shop_name.trim()) return { ok: false, error: 'shop_name is required' };
+  if (shop_name.length > 200) return { ok: false, error: 'shop_name too long' };
+
+  if (typeof contact_name !== 'string' || !contact_name.trim()) return { ok: false, error: 'contact_name is required' };
+  if (contact_name.length > 200) return { ok: false, error: 'contact_name too long' };
+
+  if (typeof email !== 'string' || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email.trim())) {
+    return { ok: false, error: 'valid email is required' };
+  }
+  if (email.length > 255) return { ok: false, error: 'email too long' };
+
+  if (typeof message !== 'string' || !message.trim()) return { ok: false, error: 'message is required' };
+  if (message.length > 5000) return { ok: false, error: 'message too long' };
+
+  if (phone !== undefined && phone !== null && typeof phone !== 'string') {
+    return { ok: false, error: 'invalid phone' };
+  }
+  if (typeof phone === 'string' && phone.length > 50) return { ok: false, error: 'phone too long' };
+
+  return {
+    ok: true,
+    inquiry: {
+      shop_name: sanitize(shop_name),
+      email: email.trim(),
+      contact_name: sanitize(contact_name),
+      message: sanitize(message),
+      opt_in_updates: opt_in_updates === true,
+      phone: typeof phone === 'string' && phone.trim() ? sanitize(phone) : null,
+    },
+  };
+}
+
 function buildSlackMessage(inquiry: EliteInquiryPayload): object {
   const lines = [
     `*Shop:* ${inquiry.shop_name}`,
@@ -50,17 +92,22 @@ export const handler: Handler = async (event: HandlerEvent) => {
     return { statusCode: 500, body: JSON.stringify({ error: 'Server configuration error' }) };
   }
 
-  let inquiry: EliteInquiryPayload;
+  let parsed: unknown;
   try {
-    inquiry = JSON.parse(event.body ?? '');
+    parsed = JSON.parse(event.body ?? '');
   } catch {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
+  }
+
+  const validation = validatePayload(parsed);
+  if (!validation.ok) {
+    return { statusCode: 400, body: JSON.stringify({ error: validation.error }) };
   }
 
   const response = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(buildSlackMessage(inquiry)),
+    body: JSON.stringify(buildSlackMessage(validation.inquiry)),
   });
 
   if (!response.ok) {
