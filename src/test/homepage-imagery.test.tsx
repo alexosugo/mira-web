@@ -125,6 +125,101 @@ describe('imagery-led homepage sections', () => {
     expect(screen.queryByTestId('dm-typing')).not.toBeInTheDocument();
   });
 
+  describe('autoplay', () => {
+    const observerCallbacks: IntersectionObserverCallback[] = [];
+
+    const setFrameInView = (isIntersecting: boolean) => {
+      act(() => {
+        for (const callback of observerCallbacks) {
+          callback([{ isIntersecting } as IntersectionObserverEntry], {} as IntersectionObserver);
+        }
+      });
+    };
+
+    const timer = (container: HTMLElement) => container.querySelector<HTMLElement>('[data-journey-timer]');
+    const currentStep = () =>
+      within(screen.getByRole('list', { name: 'Order progress' }))
+        .getAllByRole('listitem')
+        .findIndex((step) => step.getAttribute('aria-current') === 'step');
+
+    afterEach(() => {
+      observerCallbacks.length = 0;
+      vi.unstubAllGlobals();
+    });
+
+    const stubBrowser = ({ isReducedMotion = false } = {}) => {
+      vi.stubGlobal(
+        'IntersectionObserver',
+        class {
+          constructor(callback: IntersectionObserverCallback) {
+            observerCallbacks.push(callback);
+          }
+          observe() {}
+          disconnect() {}
+        }
+      );
+      vi.stubGlobal('matchMedia', (query: string) => ({ matches: isReducedMotion, media: query }));
+    };
+
+    it('moves to the next step each time the timer on the line finishes, then stops at the last step', () => {
+      stubBrowser();
+      const { container } = render(<DMSalesJourney />);
+      setFrameInView(true);
+
+      for (let step = 1; step <= 4; step += 1) {
+        fireEvent.animationEnd(timer(container)!);
+        expect(currentStep()).toBe(step);
+      }
+      expect(timer(container)).toBeNull();
+    });
+
+    it('runs the timer only while the visual is in view and nobody hovers or focuses the section', () => {
+      stubBrowser();
+      const { container } = render(<DMSalesJourney />);
+      const section = container.querySelector('#dm-sales-journey')!;
+
+      expect(timer(container)!.style.animationPlayState).toBe('paused');
+      setFrameInView(true);
+      expect(timer(container)!.style.animationPlayState).toBe('running');
+
+      fireEvent.pointerEnter(section);
+      expect(timer(container)!.style.animationPlayState).toBe('paused');
+      fireEvent.pointerLeave(section);
+      expect(timer(container)!.style.animationPlayState).toBe('running');
+
+      setFrameInView(false);
+      expect(timer(container)!.style.animationPlayState).toBe('paused');
+      setFrameInView(true);
+      expect(timer(container)!.style.animationPlayState).toBe('running');
+
+      const lastStep = screen.getByRole('button', { name: /Rider ametoka/ });
+      fireEvent.focus(lastStep);
+      expect(timer(container)!.style.animationPlayState).toBe('paused');
+      fireEvent.blur(lastStep);
+      expect(timer(container)!.style.animationPlayState).toBe('running');
+    });
+
+    it('stops autoplay for good once the reader picks a step', () => {
+      stubBrowser();
+      const { container } = render(<DMSalesJourney />);
+      setFrameInView(true);
+
+      fireEvent.click(screen.getByRole('button', { name: /How much is delivery to Kilimani/ }));
+
+      expect(currentStep()).toBe(1);
+      expect(timer(container)).toBeNull();
+    });
+
+    it('does not autoplay when the reader prefers reduced motion', () => {
+      stubBrowser({ isReducedMotion: true });
+      const { container } = render(<DMSalesJourney />);
+      setFrameInView(true);
+
+      expect(timer(container)).toBeNull();
+      expect(currentStep()).toBe(0);
+    });
+  });
+
   it('keeps the customer inside the shop DM', () => {
     render(<DMSalesJourney />);
 
