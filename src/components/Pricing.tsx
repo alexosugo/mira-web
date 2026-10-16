@@ -17,9 +17,9 @@ const Pricing = () => {
   };
 
   return (
-    <section id="pricing" ref={sectionRef} className="py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <h2 className="max-w-xl font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+    <section id="pricing" ref={sectionRef} className="py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
+        <h2 className="max-w-xl font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight text-ink [text-wrap:balance]">
           Start free. Pay when you need more.
         </h2>
 

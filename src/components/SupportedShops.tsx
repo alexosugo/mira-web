@@ -55,12 +55,12 @@ const SupportedShops = () => {
   return (
     <section id="supported-shops" className="py-6 sm:py-8 lg:py-10">
       <div className="px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1440px] rounded-xl bg-cobalt px-5 py-16 text-white sm:rounded-2xl sm:px-8 sm:py-20 lg:px-16 lg:py-24">
+        <div className="mx-auto max-w-[1440px] rounded-xl bg-cobalt px-6 py-14 sm:px-10 sm:py-16 lg:p-20 text-white sm:rounded-2xl">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
             <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance] lg:col-span-8">
               Whatever you sell, the questions repeat
             </h2>
-            <p className="max-w-md text-base leading-relaxed text-white/80 sm:text-lg lg:col-span-3 lg:col-start-10 lg:max-w-none">
+            <p className="max-w-md text-base leading-relaxed text-white/85 sm:text-lg lg:col-span-3 lg:col-start-10 lg:max-w-none">
               Also fragrance, skincare, daily drops and more. Sellogram learns the answers from your shop.
             </p>
           </div>
