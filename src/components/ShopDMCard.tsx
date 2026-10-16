@@ -23,6 +23,7 @@ interface ShopDMCardProps {
 
 const MESSAGE_LAND_MS = 320;
 const TYPING_MS = 700;
+export const REPLY_DELAY_MS = MESSAGE_LAND_MS + TYPING_MS;
 
 const countThroughCustomerMessages = (messages: readonly ShopDMMessage[], start: number) => {
   let count = start;
@@ -40,10 +41,13 @@ const ShopDMCard = ({
   animateMessages = false,
 }: ShopDMCardProps) => {
   const [revealedCount, setRevealedCount] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const visibleCount = animateMessages
     ? countThroughCustomerMessages(messages, Math.min(revealedCount, messages.length))
     : messages.length;
-  const isTyping = visibleCount < messages.length;
+  const isTyping = isMounted && visibleCount < messages.length;
+
+  useEffect(() => setIsMounted(true), []);
 
   useEffect(() => {
     if (!animateMessages) return;
@@ -52,7 +56,7 @@ const ShopDMCard = ({
       return;
     }
     if (visibleCount >= messages.length) return;
-    const timer = setTimeout(() => setRevealedCount(visibleCount + 1), MESSAGE_LAND_MS + TYPING_MS);
+    const timer = setTimeout(() => setRevealedCount(visibleCount + 1), REPLY_DELAY_MS);
     return () => clearTimeout(timer);
   }, [animateMessages, messages.length, revealedCount, visibleCount]);
 

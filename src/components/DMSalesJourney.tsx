@@ -89,7 +89,8 @@ const DMSalesJourney = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [isInView, setIsInView] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(true);
   const [line, setLine] = useState({ top: 0, height: 0, fill: 0 });
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -100,9 +101,10 @@ const DMSalesJourney = () => {
 
   useEffect(() => {
     setIsReducedMotion(prefersReducedMotion());
-    if (typeof IntersectionObserver === 'undefined' || !sectionRef.current) return;
+    const frame = sectionRef.current?.querySelector('[data-journey-frame]');
+    if (typeof IntersectionObserver === 'undefined' || !frame) return;
     const observer = new IntersectionObserver(([entry]) => setIsInView(Boolean(entry?.isIntersecting)), { threshold: 0.5 });
-    observer.observe(sectionRef.current);
+    observer.observe(frame);
     return () => observer.disconnect();
   }, []);
 
@@ -147,19 +149,19 @@ const DMSalesJourney = () => {
     <section
       id="dm-sales-journey"
       ref={sectionRef}
-      onPointerEnter={() => setIsPaused(true)}
-      onPointerLeave={() => setIsPaused(false)}
+      onPointerEnter={() => setIsHovered(true)}
+      onPointerLeave={() => setIsHovered(false)}
       className="py-6 sm:py-8 lg:py-10"
     >
       <div className="px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1440px] rounded-xl bg-night p-6 text-ink sm:rounded-2xl sm:p-10 lg:p-16">
-          <div className="grid gap-8 md:grid-cols-12 lg:gap-12">
-            <div className="contents min-w-0 md:col-span-5 md:block">
+          <div className="grid gap-8 lg:gap-12 xl:grid-cols-12">
+            <div className="contents min-w-0 xl:col-span-5 xl:block">
               <h2 className="order-1 font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance]">
                 From “Is it available?” to “Rider ametoka”
               </h2>
 
-              <div className="relative order-3 md:mt-8 lg:mt-10">
+              <div className="relative order-3 xl:mt-10">
                 <div
                   data-journey-connector
                   aria-hidden="true"
@@ -174,8 +176,8 @@ const DMSalesJourney = () => {
                 <ol
                   ref={listRef}
                   aria-label="Order progress"
-                  onFocus={() => setIsPaused(true)}
-                  onBlur={() => setIsPaused(false)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
                   onTransitionEnd={measureLine}
                 >
                   {STAGES.map((stage, index) => {
@@ -222,7 +224,7 @@ const DMSalesJourney = () => {
                                     key={activeIndex}
                                     onAnimationEnd={advanceStage}
                                     className="h-full origin-left animate-journey-progress bg-ink"
-                                    style={{ animationPlayState: !isInView || isPaused ? 'paused' : 'running' }}
+                                    style={{ animationPlayState: !isInView || isHovered || isFocused ? 'paused' : 'running' }}
                                   />
                                 </div>
                               )}
@@ -236,8 +238,8 @@ const DMSalesJourney = () => {
               </div>
             </div>
 
-            <div data-journey-visual className="order-2 min-w-0 md:order-none md:col-span-7">
-              <div data-journey-frame className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-night-raised md:aspect-[16/10]">
+            <div data-journey-visual className="order-2 min-w-0 xl:order-none xl:col-span-7">
+              <div data-journey-frame className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-night-raised sm:aspect-[16/10] xl:aspect-[4/3] min-[1330px]:aspect-[16/10]">
                 <div data-testid="journey-dm" {...hiddenUnless(isDMActive)} className={layerClass(isDMActive)}>
                   <ShopDMCard
                     shopName="Cocoa Rose Beauty"
@@ -261,7 +263,7 @@ const DMSalesJourney = () => {
                       height="941"
                       loading="lazy"
                       decoding="async"
-                      sizes="(min-width: 1440px) 700px, (min-width: 768px) 55vw, calc(100vw - 5.5rem)"
+                      sizes="(min-width: 1440px) 700px, (min-width: 1280px) 55vw, calc(100vw - 5.5rem)"
                       className={`h-full w-full object-cover ${layerClass(isActive)}`}
                     />
                   );

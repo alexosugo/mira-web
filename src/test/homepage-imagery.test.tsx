@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import SupportedShops from '../components/SupportedShops';
 import DMSalesJourney from '../components/DMSalesJourney';
+import { REPLY_DELAY_MS } from '../components/ShopDMCard';
 
 const EXPECTED_SHOPS = [
   ['Fashion & thrift', '/use-cases/fashion'],
@@ -70,7 +71,8 @@ describe('imagery-led homepage sections', () => {
     expect(screen.queryByRole('img', { name: /Cocoa Rose Beauty model/i })).not.toBeInTheDocument();
   });
 
-  it('lets the reader pick any of the five steps without scroll locking', async () => {
+  it('lets the reader pick any of the five steps without scroll locking', () => {
+    vi.useFakeTimers();
     const { container } = render(<DMSalesJourney />);
     const progress = screen.getByRole('list', { name: 'Order progress' });
     const steps = within(progress).getAllByRole('listitem');
@@ -83,7 +85,13 @@ describe('imagery-led homepage sections', () => {
     fireEvent.click(within(progress).getByRole('button', { name: /Send me the payment details/ }));
     expect(steps[2]).toHaveAttribute('aria-current', 'step');
     expect(screen.getByText('Hi, is shade 08 still available?')).toBeInTheDocument();
-    expect((await screen.findByText(/Buy Goods till 946512/, undefined, { timeout: 4000 })).className).toContain('bg-dawn-bright');
+    const pendingShopReplies = 3;
+    for (let reply = 0; reply < pendingShopReplies; reply += 1) {
+      act(() => {
+        vi.advanceTimersByTime(REPLY_DELAY_MS);
+      });
+    }
+    expect(screen.getByText(/Buy Goods till 946512/).className).toContain('bg-dawn-bright');
 
     fireEvent.click(within(progress).getByRole('button', { name: /Rider ametoka/ }));
     expect(screen.getByRole('img', { name: /Piki piki rider/ })).toBeInTheDocument();
@@ -110,7 +118,7 @@ describe('imagery-led homepage sections', () => {
     expect(screen.queryByText('Yes. Shade 08 is in stock. It’s KSh 1,200.')).not.toBeInTheDocument();
 
     act(() => {
-      vi.advanceTimersByTime(1100);
+      vi.advanceTimersByTime(REPLY_DELAY_MS);
     });
 
     expect(screen.getByText('Yes. Shade 08 is in stock. It’s KSh 1,200.')).toBeInTheDocument();
