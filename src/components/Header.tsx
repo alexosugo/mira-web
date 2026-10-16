@@ -42,7 +42,7 @@ const Header = () => {
         isScrolled ? 'border-line' : 'border-transparent'
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
         <a
           href="/"
           aria-label="Sellogram"
