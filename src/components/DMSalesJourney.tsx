@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import ShopDMCard, { type ShopDMMessage } from './ShopDMCard';
-import { prefersReducedMotion } from '../lib/motion';
+import { REDUCED_MOTION_QUERY } from '../lib/motion';
 
 interface JourneyStageBase {
   readonly title: string;
@@ -96,11 +96,23 @@ const DMSalesJourney = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLOListElement | null>(null);
   const markerRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const stepIdPrefix = useId();
 
   const isAutoplaying = !hasInteracted && !isReducedMotion && activeIndex < LAST_INDEX;
 
   useEffect(() => {
-    setIsReducedMotion(prefersReducedMotion());
+    if (typeof window.matchMedia !== 'function') {
+      setIsReducedMotion(false);
+      return;
+    }
+    const query = window.matchMedia(REDUCED_MOTION_QUERY);
+    const update = () => setIsReducedMotion(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
     const frame = sectionRef.current?.querySelector('[data-journey-frame]');
     if (typeof IntersectionObserver === 'undefined' || !frame) return;
     const observer = new IntersectionObserver(([entry]) => setIsInView(Boolean(entry?.isIntersecting)), { threshold: 0.5 });
@@ -195,10 +207,13 @@ const DMSalesJourney = () => {
                 >
                   {STAGES.map((stage, index) => {
                     const isActive = index === activeIndex;
+                    const descriptionId = `${stepIdPrefix}-step-${index}`;
                     return (
                       <li key={stage.title} aria-current={isActive ? 'step' : undefined}>
                         <button
                           type="button"
+                          aria-expanded={isActive}
+                          aria-controls={descriptionId}
                           onClick={() => selectStage(index)}
                           className="group flex min-h-[44px] w-full items-center gap-3 rounded-md py-1.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
                         >
@@ -221,6 +236,7 @@ const DMSalesJourney = () => {
                           </span>
                         </button>
                         <div
+                          id={descriptionId}
                           {...hiddenUnless(isActive)}
                           className={`grid transition-[grid-template-rows,opacity] duration-300 ${EASE_OUT_QUINT} ${
                             isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'

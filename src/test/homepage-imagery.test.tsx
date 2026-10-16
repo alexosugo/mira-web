@@ -142,8 +142,19 @@ describe('imagery-led homepage sections', () => {
         .getAllByRole('listitem')
         .findIndex((step) => step.getAttribute('aria-current') === 'step');
 
+    const motionListeners: (() => void)[] = [];
+    let isReducedMotionOn = false;
+
+    const setReducedMotion = (isOn: boolean) => {
+      isReducedMotionOn = isOn;
+      act(() => {
+        for (const listener of motionListeners) listener();
+      });
+    };
+
     afterEach(() => {
       observerCallbacks.length = 0;
+      motionListeners.length = 0;
       vi.unstubAllGlobals();
     });
 
@@ -158,7 +169,15 @@ describe('imagery-led homepage sections', () => {
           disconnect() {}
         }
       );
-      vi.stubGlobal('matchMedia', (query: string) => ({ matches: isReducedMotion, media: query }));
+      isReducedMotionOn = isReducedMotion;
+      vi.stubGlobal('matchMedia', (query: string) => ({
+        get matches() {
+          return isReducedMotionOn;
+        },
+        media: query,
+        addEventListener: (_type: string, listener: () => void) => motionListeners.push(listener),
+        removeEventListener: () => {},
+      }));
     };
 
     it('moves to the next step each time the timer on the line finishes, then stops at the last step', () => {
@@ -218,6 +237,38 @@ describe('imagery-led homepage sections', () => {
       expect(timer(container)).toBeNull();
       expect(currentStep()).toBe(0);
     });
+
+    it('stops autoplay when the reader turns on reduced motion after the page loads', () => {
+      stubBrowser();
+      const { container } = render(<DMSalesJourney />);
+      setFrameInView(true);
+      expect(timer(container)).not.toBeNull();
+
+      setReducedMotion(true);
+
+      expect(timer(container)).toBeNull();
+      expect(currentStep()).toBe(0);
+    });
+  });
+
+  it('tells assistive tech which step description each button opens', () => {
+    render(<DMSalesJourney />);
+    const firstStep = screen.getByRole('button', { name: /Hi, is shade 08 still available\?/ });
+    const secondStep = screen.getByRole('button', { name: /How much is delivery to Kilimani/ });
+
+    expect(firstStep).toHaveAttribute('aria-expanded', 'true');
+    expect(secondStep).toHaveAttribute('aria-expanded', 'false');
+    expect(document.getElementById(firstStep.getAttribute('aria-controls')!)).toHaveTextContent(
+      'A customer shares your post to your DMs. Your shop confirms the stock and price.'
+    );
+
+    fireEvent.click(secondStep);
+
+    expect(firstStep).toHaveAttribute('aria-expanded', 'false');
+    expect(secondStep).toHaveAttribute('aria-expanded', 'true');
+    expect(document.getElementById(secondStep.getAttribute('aria-controls')!)).toHaveTextContent(
+      'Your shop sends the delivery fee in the same chat.'
+    );
   });
 
   it('keeps the customer inside the shop DM', () => {
