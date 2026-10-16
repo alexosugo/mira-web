@@ -128,11 +128,11 @@ const DMSalesJourney = () => {
                     <button
                       type="button"
                       onClick={() => selectStage(index)}
-                      className={`flex min-h-[44px] items-center gap-3 rounded-full px-4 text-left text-sm transition-colors duration-150 md:w-full md:rounded-xl md:px-4 md:py-3 md:text-base ${
+                      className={`group flex min-h-[44px] items-center gap-3 rounded-full px-4 text-left text-sm transition-colors duration-150 md:w-full md:rounded-xl md:px-4 md:py-3 md:text-base ${
                         isActive ? 'bg-ink text-paper' : 'text-ink-light hover:bg-night-raised hover:text-ink'
                       }`}
                     >
-                      <span className={`font-mono text-xs ${isActive ? 'text-fern' : 'text-ink-light'}`}>{index + 1}</span>
+                      <span className={`font-mono text-xs ${isActive ? 'text-fern' : 'text-ink-light group-hover:text-ink'}`}>{index + 1}</span>
                       <span className="font-medium">{stage.title}</span>
                     </button>
                   </li>
