@@ -12,7 +12,7 @@ const FinalCTA = () => {
         <div className="mx-auto max-w-[1440px] overflow-hidden rounded-xl bg-cobalt px-6 py-14 text-white sm:rounded-2xl sm:px-10 sm:py-16 lg:p-20">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">
-              <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance]">
+              <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">
                 Put Sellogram to work in your DMs
               </h2>
             </div>
