@@ -25,7 +25,7 @@ const FinalCTA = () => {
                     button_location: 'final_cta',
                   })
                 }
-                className="inline-flex min-h-[48px] items-center rounded-full bg-white px-7 text-base font-medium text-[#123124] transition-transform duration-200 hover:-translate-y-0.5"
+                className="inline-flex min-h-[48px] items-center rounded-full bg-white px-7 text-base font-medium text-ink transition-transform duration-200 hover:-translate-y-0.5"
               >
                 Start free
               </a>

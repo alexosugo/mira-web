@@ -60,7 +60,7 @@ const SupportedShops = () => {
             <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance] lg:col-span-8">
               Whatever you sell, the questions repeat
             </h2>
-            <p className="max-w-md text-base leading-relaxed text-white/80 sm:text-lg lg:col-span-3 lg:col-start-10 lg:max-w-none">
+            <p className="max-w-md text-base leading-relaxed text-white/85 sm:text-lg lg:col-span-3 lg:col-start-10 lg:max-w-none">
               Also fragrance, skincare, daily drops and more. Sellogram learns the answers from your shop.
             </p>
           </div>
