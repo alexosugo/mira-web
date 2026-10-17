@@ -166,7 +166,7 @@ const DMSalesJourney = () => {
       className="py-6 sm:py-8 lg:py-10"
     >
       <div className="px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1440px] rounded-xl bg-night p-6 text-ink sm:rounded-2xl sm:p-10 lg:p-16">
+        <div className="mx-auto max-w-[1440px] rounded-xl bg-night px-6 py-14 sm:px-10 sm:py-16 lg:p-20 text-ink sm:rounded-2xl">
           <div className="grid gap-8 lg:gap-12 xl:grid-cols-12">
             <div className="contents min-w-0 xl:col-span-5 xl:block">
               <h2 className="order-1 font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight [text-wrap:balance]">
