@@ -48,7 +48,7 @@ describe('homepage voice', () => {
     render(<FinalCTA />);
     const finalHeading = screen.getByRole('heading', { name: 'Put Sellogram to work in your DMs' });
     expect(finalHeading).toBeInTheDocument();
-    expect(finalHeading.className).toContain('3.5rem');
+    expect(finalHeading.className).toContain('2.25rem');
     expect(screen.getByRole('link', { name: 'Start free' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Ask us a question' })).toHaveAttribute('href', '/contact');
     expect(screen.queryByText(/Less inbox duty/i)).not.toBeInTheDocument();

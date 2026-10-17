@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { PAGES } from '../content/pages';
 import { ROUTES } from '../lib/routes';
@@ -35,6 +36,16 @@ describe('homepage-linked shop use cases', () => {
       headlines.add(page.hero.h1);
     }
     expect(headlines.size).toBe(FEATURED_PATHS.length);
+  });
+
+  it('gives each story a shop identity and a homepage photo that exists', () => {
+    for (const path of FEATURED_PATHS) {
+      const story = PAGES[path].shopStory;
+      expect(story?.shopName, path).toBeTruthy();
+      expect(story?.shopInitials, path).toMatch(/^[A-Z]{2}$/);
+      expect(existsSync(`public${story?.image}`), path).toBe(true);
+      expect(story?.openingQuestions, path).not.toContain('"');
+    }
   });
 
   it('keeps the buying questions distinctive', () => {

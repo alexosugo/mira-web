@@ -174,6 +174,10 @@ export interface ShopMessage {
 }
 
 export interface ShopStory {
+  shopName: string;
+  shopInitials: string;
+  image: string;
+  imageAlt: string;
   openingQuestions: string;
   openingClose: string;
   sceneHeading: string;
@@ -198,7 +202,7 @@ export interface PageContent {
  * establishes the type only; route files in later slices add entries here.
  */
 const appCta: Cta = {
-  label: 'Get started',
+  label: 'Start free',
   href: 'https://app.sellogram.co',
   trackingKey: 'content_get_started',
 };
@@ -720,7 +724,11 @@ export const PAGES: Record<string, PageContent> = {
       primaryCta: appCta,
     },
     shopStory: {
-      "openingQuestions": "\"How much?\" \"Is this still available?\" \"Do you have my size?\"",
+      shopName: "Nia Thrift",
+      shopInitials: "NT",
+      image: "/images/shops/fashion-thrift.webp",
+      imageAlt: "Fashion seller measuring denim at a bright city worktable",
+      "openingQuestions": "“How much?” “Is this still available?” “Do you have my size?”",
       "openingClose": "Sellogram helps customers find what they want, get answers and place orders while you get on with running your shop.",
       "sceneHeading": "That jacket you posted? Someone wants it.",
       "messages": [
@@ -755,9 +763,13 @@ export const PAGES: Record<string, PageContent> = {
       primaryCta: appCta,
     },
     shopStory: {
-      "openingQuestions": "\"Do you have shade 330?\" \"What's in the set?\" \"How much is the bigger bottle?\"",
+      shopName: "Cocoa Rose Beauty",
+      shopInitials: "CR",
+      image: "/images/shops/beauty.webp",
+      imageAlt: "Beauty seller packing colorful products in a bright studio",
+      "openingQuestions": "“Do you have shade 330?” “What's in the set?” “How much is the bigger bottle?”",
       "openingClose": "Your customers want to be sure they're buying the right thing. Sellogram helps them explore your products, compare options and find what they're looking for, right in your Instagram DMs.",
-      "sceneHeading": "From \"Do you have it?\" to \"I'll take it.\"",
+      "sceneHeading": "From “Do you have it?” to “I'll take it.”",
       "messages": [
         {
           "from": "customer",
@@ -798,7 +810,11 @@ export const PAGES: Record<string, PageContent> = {
       primaryCta: appCta,
     },
     shopStory: {
-      "openingQuestions": "\"Does it come in black?\" \"Is the necklace stainless steel?\" \"Will this case fit my phone?\"",
+      shopName: "Kito Accessories",
+      shopInitials: "KA",
+      image: "/images/shops/accessories.webp",
+      imageAlt: "Accessories seller wrapping a gift order by hand",
+      "openingQuestions": "“Does it come in black?” “Is the necklace stainless steel?” “Will this case fit my phone?”",
       "openingClose": "A few questions can stand between someone liking your product and actually buying it. Sellogram helps customers get the details they need and take the next step.",
       "sceneHeading": "They like the bag. Now they have questions.",
       "messages": [
@@ -816,7 +832,7 @@ export const PAGES: Record<string, PageContent> = {
         },
         {
           "from": "sellogram",
-          "text": "Let me check the gift wrapping with the shop. When do you need it?"
+          "text": "I'll check on gift wrapping and come back to you. When do you need it?"
         }
       ],
       "sceneAfter": [
@@ -938,7 +954,11 @@ export const PAGES: Record<string, PageContent> = {
       primaryCta: appCta,
     },
     shopStory: {
-      "openingQuestions": "\"What's on the menu today?\" \"Can I order for Saturday?\" \"Do you deliver?\"",
+      shopName: "Mama Keki Bakes",
+      shopInitials: "MK",
+      image: "/images/shops/bakery-food.webp",
+      imageAlt: "Baker packing fresh pastries and customer orders",
+      "openingQuestions": "“What's on the menu today?” “Can I order for Saturday?” “Do you deliver?”",
       "openingClose": "There's a lot happening behind every food order. Sellogram helps customers check your menu, find prices and arrange their orders while you focus on preparing the food.",
       "sceneHeading": "Another order comes in while you're baking.",
       "messages": [
@@ -956,7 +976,7 @@ export const PAGES: Record<string, PageContent> = {
         },
         {
           "from": "sellogram",
-          "text": "Got it. Let me check Saturday availability with the shop before we confirm."
+          "text": "Got it. I'll check Saturday availability and confirm shortly."
         }
       ],
       "sceneAfter": [
