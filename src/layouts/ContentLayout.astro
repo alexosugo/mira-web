@@ -83,12 +83,12 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
               <nav class="mb-12 lg:col-span-4 lg:mb-0 xl:col-span-3" aria-label="On this page">
                 <div class="lg:sticky lg:top-28">
                   <p class="kicker text-ink-faint">On this page</p>
-                  <ol class="mt-5 space-y-3 border-l border-line">
+                  <ol class="mt-5 border-l border-line lg:space-y-3">
                     {tocEntries.map((entry) => (
                       <li>
                         <a
                           href={`#${entry.id}`}
-                          class="-ml-px block border-l-2 border-transparent pl-4 text-sm text-ink-light transition-colors hover:border-fern hover:text-ink"
+                          class="-ml-px flex min-h-[44px] items-center border-l-2 border-transparent pl-4 text-sm text-ink-light transition-colors hover:border-fern hover:text-ink lg:min-h-0"
                         >
                           {entry.label}
                         </a>
@@ -274,12 +274,12 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                                 client:load
                                 label={item.cta.label}
                                 location={`${route.pageName} ${section.heading}`}
-                                className="mt-4 inline-flex text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
+                                className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
                               />
                             ) : (
                               <a
                                 href={item.cta.href}
-                                class="mt-4 inline-block text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
+                                class="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
                               >
                                 {item.cta.label}
                               </a>

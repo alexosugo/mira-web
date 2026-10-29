@@ -280,7 +280,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
         <div className="relative px-8 pt-8 pb-4">
           <button
             onClick={resetAndClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-ink-light
+            className="absolute top-4 right-4 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-ink-light
                        hover:text-ink hover:bg-ink/5 transition-colors duration-200"
             aria-label="Close modal"
           >
