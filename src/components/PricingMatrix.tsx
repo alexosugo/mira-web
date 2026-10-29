@@ -14,14 +14,12 @@ const PricingMatrix = () => {
         {PLANS.map((plan) => (
           <article
             key={plan.key}
-            className="flex flex-col border-b border-line py-10 last:border-b-0 md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
+            className="flex flex-col border-b border-line py-10 last:border-b-0 md:row-span-3 md:grid md:grid-rows-[subgrid] md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
           >
-            <div className="min-h-[11rem]">
-              {plan.isHighlighted && (
-                <p className="mb-4 inline-flex border border-dawn/30 px-3 py-1 font-mono text-xs uppercase tracking-wide text-dawn-deep">
-                  Recommended
-                </p>
-              )}
+            <div>
+              <p className={`mb-4 border border-dawn/30 px-3 py-1 font-mono text-xs uppercase tracking-wide text-dawn-deep ${plan.isHighlighted ? 'inline-flex' : 'hidden md:invisible md:inline-flex'}`} aria-hidden={!plan.isHighlighted}>
+                Recommended
+              </p>
               <h3 className="font-display text-2xl font-semibold text-ink">{plan.name}</h3>
               <div className="mt-6 flex items-baseline gap-2">
                 {plan.pricePrefix && <span className="text-sm text-ink-light">{plan.pricePrefix}</span>}
@@ -32,7 +30,9 @@ const PricingMatrix = () => {
             </div>
 
             <div className="mt-8 border-t border-line pt-8">
-              {plan.featuresLead && <p className="mb-4 text-sm font-semibold text-ink">{plan.featuresLead}</p>}
+              <p className={`mb-4 text-sm font-semibold text-ink ${plan.featuresLead ? '' : 'hidden md:block md:invisible'}`} aria-hidden={!plan.featuresLead}>
+                {plan.featuresLead || 'Everything in Free, plus:'}
+              </p>
               <ul className="space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">

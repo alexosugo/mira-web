@@ -28,24 +28,29 @@ const Pricing = () => {
           {PLANS.map((plan) => (
             <div
               key={plan.key}
-              className="flex flex-col border-b border-line py-10 last:border-b-0 md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
+              className="flex flex-col border-b border-line py-10 last:border-b-0 md:row-span-3 md:grid md:grid-rows-[subgrid] md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
             >
-              <h3 className="font-display text-2xl font-semibold text-ink">{plan.name}</h3>
+              <div>
+                <p className={`mb-4 border border-dawn/30 px-3 py-1 font-mono text-xs uppercase tracking-wide text-dawn-deep ${plan.isHighlighted ? 'inline-flex' : 'hidden md:invisible md:inline-flex'}`} aria-hidden={!plan.isHighlighted}>
+                  Recommended
+                </p>
+                <h3 className="font-display text-2xl font-semibold text-ink">{plan.name}</h3>
 
-              <div className="mt-6 flex items-baseline gap-2">
-                {plan.pricePrefix && (
-                  <span className="text-sm text-ink-light">{plan.pricePrefix}</span>
-                )}
-                <span className="font-mono text-3xl text-ink">{plan.price}</span>
-                {plan.priceNote && <span className="text-sm text-ink-light">{plan.priceNote}</span>}
+                <div className="mt-6 flex items-baseline gap-2">
+                  {plan.pricePrefix && (
+                    <span className="text-sm text-ink-light">{plan.pricePrefix}</span>
+                  )}
+                  <span className="font-mono text-3xl text-ink">{plan.price}</span>
+                  {plan.priceNote && <span className="text-sm text-ink-light">{plan.priceNote}</span>}
+                </div>
+
+                <p className="mt-4 text-base leading-relaxed text-ink-light">{plan.description}</p>
               </div>
 
-              <p className="mt-4 text-base leading-relaxed text-ink-light">{plan.description}</p>
-
-              <ul className="mt-8 space-y-3">
-                {plan.featuresLead && (
-                  <li className="text-sm font-semibold text-ink">{plan.featuresLead}</li>
-                )}
+              <ul className="mt-8 space-y-3 border-t border-line pt-8">
+                <li className={`text-sm font-semibold text-ink ${plan.featuresLead ? '' : 'hidden md:block md:invisible'}`} aria-hidden={!plan.featuresLead}>
+                  {plan.featuresLead || 'Everything in Free, plus:'}
+                </li>
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <Check className="mt-1 h-4 w-4 shrink-0 text-ink-faint" aria-hidden="true" />
