@@ -13,16 +13,20 @@ function sanitize(value: string): string {
   return value.replace(/</g, '').replace(/>/g, '').trim();
 }
 
+function sanitizeLine(value: string): string {
+  return sanitize(value).replace(/\s+/g, ' ');
+}
+
 function validatePayload(raw: unknown): { ok: true; inquiry: EliteInquiryPayload } | { ok: false; error: string } {
   if (typeof raw !== 'object' || raw === null) {
     return { ok: false, error: 'Invalid payload' };
   }
   const { shop_name, email, contact_name, message, opt_in_updates, phone } = raw as Record<string, unknown>;
 
-  if (typeof shop_name !== 'string' || !shop_name.trim()) return { ok: false, error: 'shop_name is required' };
+  if (typeof shop_name !== 'string' || !sanitizeLine(shop_name)) return { ok: false, error: 'shop_name is required' };
   if (shop_name.length > 200) return { ok: false, error: 'shop_name too long' };
 
-  if (typeof contact_name !== 'string' || !contact_name.trim()) return { ok: false, error: 'contact_name is required' };
+  if (typeof contact_name !== 'string' || !sanitizeLine(contact_name)) return { ok: false, error: 'contact_name is required' };
   if (contact_name.length > 200) return { ok: false, error: 'contact_name too long' };
 
   if (typeof email !== 'string' || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email.trim())) {
@@ -30,7 +34,7 @@ function validatePayload(raw: unknown): { ok: true; inquiry: EliteInquiryPayload
   }
   if (email.length > 255) return { ok: false, error: 'email too long' };
 
-  if (typeof message !== 'string' || !message.trim()) return { ok: false, error: 'message is required' };
+  if (typeof message !== 'string' || !sanitize(message)) return { ok: false, error: 'message is required' };
   if (message.length > 5000) return { ok: false, error: 'message too long' };
 
   if (phone !== undefined && phone !== null && typeof phone !== 'string') {
@@ -41,24 +45,24 @@ function validatePayload(raw: unknown): { ok: true; inquiry: EliteInquiryPayload
   return {
     ok: true,
     inquiry: {
-      shop_name: sanitize(shop_name),
+      shop_name: sanitizeLine(shop_name),
       email: email.trim(),
-      contact_name: sanitize(contact_name),
+      contact_name: sanitizeLine(contact_name),
       message: sanitize(message),
       opt_in_updates: opt_in_updates === true,
-      phone: typeof phone === 'string' && phone.trim() ? sanitize(phone) : null,
+      phone: typeof phone === 'string' && sanitizeLine(phone) ? sanitizeLine(phone) : null,
     },
   };
 }
 
 function buildSlackMessage(inquiry: EliteInquiryPayload): object {
-  const lines = [
-    `*Shop:* ${inquiry.shop_name}`,
-    `*Contact:* ${inquiry.contact_name}`,
-    `*Email:* ${inquiry.email}`,
-    inquiry.phone ? `*Phone:* ${inquiry.phone}` : null,
-    `*Opt-in updates:* ${inquiry.opt_in_updates ? 'Yes' : 'No'}`,
-  ].filter(Boolean).join('\n');
+  const rows: Array<[string, string]> = [
+    ['Shop', inquiry.shop_name],
+    ['Contact', inquiry.contact_name],
+    ['Email', inquiry.email],
+    ...(inquiry.phone ? [['Phone', inquiry.phone] as [string, string]] : []),
+    ['Opt-in updates', inquiry.opt_in_updates ? 'Yes' : 'No'],
+  ];
 
   return {
     blocks: [
@@ -68,14 +72,19 @@ function buildSlackMessage(inquiry: EliteInquiryPayload): object {
       },
       {
         type: 'section',
-        text: { type: 'mrkdwn', text: lines },
+        fields: rows.flatMap(([label, value]) => [
+          { type: 'mrkdwn', text: `*${label}:*` },
+          { type: 'plain_text', text: value, emoji: false },
+        ]),
       },
       {
         type: 'section',
-        // Slack caps section blocks at 3000 chars. Truncate message content so
-        // the prefix + body never exceeds that, rather than letting long inputs
-        // silently fail the webhook.
-        text: { type: 'mrkdwn', text: `*About their shop:*\n${inquiry.message.slice(0, 2980)}` },
+        text: { type: 'mrkdwn', text: '*About their shop:*' },
+      },
+      {
+        type: 'section',
+        // Slack caps section text at 3000 chars; truncate rather than let long inputs fail the webhook.
+        text: { type: 'plain_text', text: inquiry.message.slice(0, 3000), emoji: false },
       },
     ],
   };
