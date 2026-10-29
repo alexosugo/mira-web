@@ -16,6 +16,8 @@ PUBLIC = ROOT / "public"
 
 INK = "#1B2620"
 PAPER = "#F2F6F3"
+FAVICON_INK = "#1E2617"
+FERN = "#90DD34"
 
 
 def render_symbol(svg: str, size: int, *, background: str | None = None) -> Image.Image:
@@ -40,21 +42,25 @@ def save_png(svg: str, name: str, size: int, *, background: str | None = None) -
 def main() -> None:
     svg = SYMBOL_MASTER.read_text()
 
-    # SVG favicon is the locked S / Pure master itself. Raster files below are
-    # generated outputs from the same master and preserve its approved framing.
-    (PUBLIC / "favicon.svg").write_text(svg)
-    (PUBLIC / "favicon-light.svg").write_text(svg.replace("currentColor", PAPER))
+    # An opaque tile keeps the approved mark visible on either browser tab theme.
+    favicon = svg.replace("currentColor", FAVICON_INK).replace(
+        "><path",
+        f'><rect x="-50" y="-24.5" width="273" height="273" fill="{FERN}"/><path',
+        1,
+    )
+    (PUBLIC / "favicon.svg").write_text(favicon)
+    (PUBLIC / "favicon-light.svg").write_text(favicon)
 
-    save_png(svg, "favicon-16x16.png", 16)
-    save_png(svg, "favicon-32x32.png", 32)
-    save_png(svg, "favicon.png", 512, background=PAPER)
+    save_png(favicon, "favicon-16x16.png", 16)
+    save_png(favicon, "favicon-32x32.png", 32)
+    save_png(favicon, "favicon.png", 512)
     save_png(svg, "apple-touch-icon.png", 180, background=PAPER)
     save_png(svg, "android-chrome-192x192.png", 192, background=PAPER)
     save_png(svg, "android-chrome-512x512.png", 512, background=PAPER)
     save_png(svg, "mstile-150x150.png", 150, background=PAPER)
 
     # ICO contains the standard small favicon sizes, all generated from S / Pure.
-    ico_source = render_symbol(svg, 256)
+    ico_source = render_symbol(favicon, 256)
     ico_source.save(PUBLIC / "favicon.ico", format="ICO", sizes=[(16, 16), (32, 32), (48, 48)])
 
 

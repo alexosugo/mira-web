@@ -28,12 +28,26 @@ describe('Sellogram web identity assets', () => {
     expect(header).not.toMatch(/>\s*Sellogram\s*</);
   });
 
-  it('uses the locked S / Pure master as the public SVG favicon', () => {
+  it('preserves the approved S shape on an opaque, theme-independent favicon', () => {
     const master = readText('brand/identity/symbol/master/sellogram-symbol.svg');
     const favicon = readText('public/favicon.svg');
 
-    expect(favicon).toBe(master);
+    expect(favicon.match(/<path d="([^"]+)"/)?.[1]).toBe(master.match(/<path d="([^"]+)"/)?.[1]);
     expect(favicon).toContain('viewBox="-50 -24.5 273 273"');
+    expect(favicon).toContain('<rect x="-50" y="-24.5" width="273" height="273" fill="#90DD34"/>');
+    expect(favicon).toContain('fill="#1E2617"');
+    expect(favicon).not.toContain('currentColor');
+    expect(readText('public/favicon-light.svg')).toBe(favicon);
+  });
+
+  it('uses one universal SVG favicon and refreshes cached browser fallbacks', () => {
+    const layout = readText('src/layouts/BaseLayout.astro');
+    const svgLinks = layout.match(/<link[^>]+type="image\/svg\+xml"[^>]*>/g);
+
+    expect(svgLinks).toEqual(['<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />']);
+    for (const name of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png']) {
+      expect(layout).toContain(`href="/${name}?v=2"`);
+    }
   });
 
   it('uses the Sellogram foundation colours in the web manifest and browser tile', () => {
