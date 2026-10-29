@@ -41,7 +41,7 @@ const HeroChatDemo = () => {
           <p className="truncate text-xs font-semibold text-ink sm:text-sm">Patchwork denim set</p>
           <p className="mt-0.5 font-mono text-xs text-ink-faint">KSh 6,000 · Size M</p>
         </div>
-        <span className="shrink-0 rounded-full bg-fern/10 px-2 py-1 font-mono text-xs uppercase tracking-wide text-fern-deep">
+        <span className="shrink-0 rounded-full bg-fern/10 px-2 py-1 font-body text-xs uppercase tracking-wide text-fern-deep">
           in stock
         </span>
       </div>

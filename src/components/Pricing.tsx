@@ -31,7 +31,7 @@ const Pricing = () => {
               className="flex flex-col border-b border-line py-10 last:border-b-0 md:row-span-3 md:grid md:grid-rows-[subgrid] md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
             >
               <div>
-                <p className={`mb-4 border border-dawn/30 px-3 py-1 font-mono text-xs uppercase tracking-wide text-dawn-deep ${plan.isHighlighted ? 'inline-flex' : 'hidden md:invisible md:inline-flex'}`} aria-hidden={!plan.isHighlighted}>
+                <p className={`mb-4 border border-dawn/30 px-3 py-1 font-body text-xs uppercase tracking-wide text-dawn-deep ${plan.isHighlighted ? 'inline-flex' : 'hidden md:invisible md:inline-flex'}`} aria-hidden={!plan.isHighlighted}>
                   Recommended
                 </p>
                 <h3 className="font-display text-2xl font-semibold text-ink">{plan.name}</h3>
@@ -84,7 +84,7 @@ const Pricing = () => {
                   </a>
                 )}
                 {plan.footnote && (
-                  <p className="mt-3 font-mono text-xs text-ink-faint">{plan.footnote}</p>
+                  <p className="mt-3 font-body text-xs text-ink-faint">{plan.footnote}</p>
                 )}
               </div>
             </div>

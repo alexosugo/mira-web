@@ -53,7 +53,7 @@
      headers, before/after tags). The brand bundle bans decorative section
      eyebrows — do not reintroduce them with this class. */
   .kicker {
-    @apply font-mono text-xs uppercase tracking-[0.18em];
+    @apply font-body text-xs uppercase tracking-[0.18em];
   }
 
   /* Scenario chat bubble scroll-linked entrance. Hidden by default only

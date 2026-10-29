@@ -27,7 +27,7 @@ const Hero = () => {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <h1
-              className="max-w-[12ch] animate-fade-in-up font-display text-[clamp(2.75rem,1.8rem+4.2vw,5.5rem)] font-semibold leading-[1] tracking-tight text-ink [text-wrap:balance]"
+              className="max-w-[12ch] animate-fade-in-up font-display text-[clamp(2.75rem,1.8rem+4.2vw,5.5rem)] font-semibold leading-[1] tracking-tighter text-ink [text-wrap:balance]"
               style={{ animationDelay: '80ms' }}
             >
               {HERO_HEADLINE}

@@ -60,7 +60,7 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
         )}
 
         <h1
-          class={`animate-fade-in-up font-display font-semibold tracking-tight text-ink [text-wrap:balance] [animation-delay:80ms] ${
+          class={`animate-fade-in-up font-display font-semibold ${isDocument ? 'tracking-tight' : 'tracking-tighter'} text-ink [text-wrap:balance] [animation-delay:80ms] ${
             variant === 'company'
               ? 'max-w-3xl text-[clamp(2.25rem,1.6rem+3.2vw,3.75rem)] leading-[1.05]'
               : isDocument
@@ -120,7 +120,7 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
                 <span class="absolute h-full w-full animate-ping rounded-full bg-fern-deep/50"></span>
                 <span class="relative h-2 w-2 rounded-full bg-fern-deep"></span>
               </span>
-              <span class="font-mono text-xs text-ink-faint">yourshop · Sellogram is on</span>
+              <span class="font-body text-xs text-ink-faint">yourshop · Sellogram is on</span>
             </div>
             <div class="mt-5 space-y-3">
               <div class="h-8 w-3/5 rounded-2xl rounded-bl-md border border-line bg-paper"></div>

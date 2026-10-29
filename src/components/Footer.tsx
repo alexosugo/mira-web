@@ -68,7 +68,7 @@ const Footer = () => {
         >
           {FOOTER_GROUPS.map((group) => (
             <div key={group.heading}>
-              <p className="font-mono text-xs font-medium uppercase tracking-wide text-ink">
+              <p className="font-body text-xs font-medium uppercase tracking-wide text-ink">
                 {group.heading}
               </p>
               <ul className="mt-3">
@@ -91,7 +91,7 @@ const Footer = () => {
         <div className="mt-12 flex flex-col gap-4 border-t border-night-line pt-8 sm:flex-row sm:items-baseline sm:justify-between">
           <div>
             <p className="font-display text-xl font-semibold">Sellogram</p>
-            <p className="mt-2 font-mono text-xs font-medium text-ink">
+            <p className="mt-2 font-body text-xs font-medium text-ink">
               Made in Nairobi, Kenya · © {currentYear}
             </p>
           </div>
@@ -99,7 +99,7 @@ const Footer = () => {
           <a
             href="mailto:hello@sellogram.co"
             onClick={() => handleContactClick('email')}
-            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm font-medium text-ink underline-offset-4 hover:underline"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center font-body text-sm font-medium text-ink underline-offset-4 hover:underline"
           >
             hello@sellogram.co
           </a>
