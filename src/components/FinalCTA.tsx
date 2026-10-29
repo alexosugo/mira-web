@@ -29,20 +29,20 @@ const FinalCTA = ({ note, trackingSection = 'final-cta' }: FinalCTAProps) => {
                     button_location: 'final_cta',
                   })
                 }
-                className="inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-semibold text-ink transition duration-300 hover:-translate-y-0.5 hover:bg-white active:translate-y-0 active:scale-[0.98]"
+                className="inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-semibold text-ink transition duration-300 hover:-translate-y-0.5 hover:bg-white active:translate-y-0 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 Start free
               </a>
               <a
                 href="/contact"
-                className="inline-flex min-h-[44px] items-center text-base text-white/85 underline decoration-white/40 underline-offset-4 transition-colors duration-300 hover:text-white hover:decoration-white"
+                className="inline-flex min-h-[44px] items-center text-base text-white/85 underline decoration-white/40 underline-offset-4 transition-colors duration-300 hover:text-white hover:decoration-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 Ask us a question
               </a>
             </div>
           </div>
 
-          <div className="relative min-h-[16rem] lg:col-span-5 lg:min-h-0">
+          <div className="relative min-h-[16rem] lg:col-span-5 lg:min-h-[22rem]">
             <img
               src="/images/outcomes/piki-piki-delivery.webp"
               alt="Rider handing a delivery to a customer at her apartment gate"
