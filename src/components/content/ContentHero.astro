@@ -1,9 +1,10 @@
 ---
 /**
  * Variant-aware hero. Each page family opens differently — process pages get
- * ambient motion, feature pages get a floating DM texture, use-case pages get
- * their vertical's motif and a ghosted display word, legal pages get a
- * document masthead — while sharing the same type system and CTA row.
+ * ambient motion, feature pages layer a DM texture over a shop photo, use-case
+ * pages pair their vertical's motif with a photo and a ghosted display word,
+ * legal pages get a document masthead — while sharing the same type system
+ * and CTA row.
  */
 import EliteModalButton from '../EliteModalButton';
 import AmbientField from './AmbientField.astro';
@@ -11,27 +12,35 @@ import Motif from './Motif.astro';
 import ThreadScene from './ThreadScene.astro';
 import type { PageHero } from '../../content/pages';
 import type { Route } from '../../lib/routes';
-import type { PageVariant, UseCaseDecor } from '../../lib/page-variant';
+import type { HeroPhoto, PageVariant, UseCaseDecor } from '../../lib/page-variant';
 
 interface Props {
   hero: PageHero;
   route: Route;
   variant: PageVariant;
   decor?: UseCaseDecor;
+  photo?: HeroPhoto;
   /** Pillar page only: swap the 2D ambient field for the Three.js stream. */
   withThree?: boolean;
 }
 
-const { hero, route, variant, decor, withThree = false } = Astro.props;
+const { hero, route, variant, decor, photo, withThree = false } = Astro.props;
 
 const ctaClass = (v: 'primary' | 'secondary' | undefined) =>
   v === 'secondary'
     ? 'inline-flex min-h-[44px] items-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5'
-    : 'inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper';
+    : 'inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-semibold text-ink transition duration-300 hover:-translate-y-0.5 hover:bg-fern-deep hover:text-paper active:translate-y-0 active:scale-[0.98] motion-reduce:hover:translate-y-0';
 
 const isDocument = variant === 'legal' || variant === 'trust';
-const hasAmbient = variant === 'guide' || variant === 'feature' || variant === 'useCase';
+const hasAmbient = !photo && (variant === 'guide' || variant === 'feature' || variant === 'useCase');
+const showDmTexture = variant === 'feature';
+const isLandscape = photo ? photo.width > photo.height : false;
 
+const headlineClass = variant === 'company'
+  ? 'max-w-4xl text-[clamp(2.75rem,1.4rem+5.4vw,6rem)] leading-[0.95]'
+  : isDocument
+    ? 'max-w-3xl text-[clamp(2.25rem,1.5rem+3vw,3.75rem)] leading-[1.02]'
+    : 'max-w-3xl text-[clamp(2.5rem,1.4rem+4.4vw,5rem)] leading-[0.96]';
 ---
 
 <section class="relative overflow-hidden">
@@ -39,7 +48,7 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
 
   {decor && (
     <span
-      class="pointer-events-none absolute -bottom-8 right-0 select-none font-display text-[clamp(7rem,22vw,17rem)] font-semibold italic leading-none text-fern/[0.07]"
+      class="pointer-events-none absolute -bottom-8 left-0 select-none font-display text-[clamp(7rem,22vw,17rem)] font-semibold italic leading-none text-fern/[0.07]"
       aria-hidden="true"
     >
       {decor.ghostWord}
@@ -48,39 +57,33 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
 
   <div
     class={`relative mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10 ${
-      isDocument ? 'pb-12 pt-28 sm:pt-32' : variant === 'support' ? 'pb-14 pt-28 sm:pt-36' : 'pb-20 pt-32 sm:pt-40'
+      isDocument ? 'pb-14 pt-28 sm:pt-36' : variant === 'support' ? 'pb-14 pt-28 sm:pt-36' : 'pb-20 pt-32 sm:pt-40 lg:pb-28'
     }`}
   >
-    <div class={variant === 'feature' ? 'grid items-center gap-12 lg:grid-cols-12' : ''}>
-      <div class={variant === 'feature' ? 'lg:col-span-7' : ''}>
+    <div class={photo ? 'grid items-center gap-14 lg:grid-cols-12 lg:gap-12' : ''}>
+      <div class={photo ? 'lg:col-span-7' : ''}>
         {decor && !isDocument && (
-          <p class="animate-fade-in-up mb-5">
-            <Motif motif={decor.motif} class="h-9 w-9 text-fern-deep" />
+          <p class="animate-fade-in-up mb-6 inline-flex h-14 w-14 -rotate-6 items-center justify-center rounded-2xl bg-fern text-ink">
+            <Motif motif={decor.motif} class="h-8 w-8" />
           </p>
         )}
 
         <h1
-          class={`animate-fade-in-up font-display font-semibold ${isDocument ? 'tracking-tight' : 'tracking-tighter'} text-ink [text-wrap:balance] [animation-delay:80ms] ${
-            variant === 'company'
-              ? 'max-w-3xl text-[clamp(2.25rem,1.6rem+3.2vw,3.75rem)] leading-[1.05]'
-              : isDocument
-                ? 'max-w-2xl text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] leading-[1.1]'
-                : 'max-w-2xl text-[clamp(2.1rem,1.5rem+2.9vw,3.25rem)] leading-[1.08]'
-          }`}
+          class={`animate-fade-in-up font-display font-semibold tracking-tighter text-ink [text-wrap:balance] [animation-delay:80ms] ${headlineClass}`}
         >
           {hero.h1}
         </h1>
 
         <p
-          class={`animate-fade-in-up mt-6 leading-relaxed text-ink-light [animation-delay:160ms] ${
-            variant === 'company' ? 'max-w-2xl font-display text-xl sm:text-2xl' : 'max-w-xl text-lg'
+          class={`animate-fade-in-up mt-7 leading-relaxed text-ink-light [animation-delay:160ms] [text-wrap:pretty] ${
+            variant === 'company' ? 'max-w-2xl font-display text-xl sm:text-2xl' : 'max-w-xl text-lg sm:text-xl'
           }`}
         >
           {hero.intro}
         </p>
 
         {(hero.primaryCta || hero.secondaryLink) && (
-          <div class="animate-fade-in-up mt-10 flex flex-wrap items-center gap-4 [animation-delay:240ms]">
+          <div class="animate-fade-in-up mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:240ms]">
             {hero.primaryCta && (
               <a
                 href={hero.primaryCta.href}
@@ -102,7 +105,7 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
               ) : (
                 <a
                   href={hero.secondaryLink.href}
-                  class="inline-flex min-h-[44px] items-center text-sm font-medium text-ink underline-offset-4 transition-colors hover:text-ink-light hover:underline"
+                  class="inline-flex min-h-[44px] items-center text-base text-ink underline decoration-ink/30 underline-offset-4 transition-colors duration-300 hover:decoration-ink"
                 >
                   {hero.secondaryLink.label}
                 </a>
@@ -111,26 +114,39 @@ const hasAmbient = variant === 'guide' || variant === 'feature' || variant === '
         )}
       </div>
 
-      {variant === 'feature' && (
-        <div class="hidden lg:col-span-5 lg:block" aria-hidden="true">
-          {/* Abstract DM texture: a live-feeling thread, no invented copy. */}
-          <div class="animate-fade-in-up rounded-3xl border border-line bg-white p-6 shadow-none [animation-delay:320ms]">
-            <div class="flex items-center gap-2 border-b border-line pb-4">
-              <span class="relative flex h-2 w-2">
-                <span class="absolute h-full w-full animate-ping rounded-full bg-fern-deep/50"></span>
-                <span class="relative h-2 w-2 rounded-full bg-fern-deep"></span>
-              </span>
-              <span class="font-body text-xs text-ink-faint">yourshop · Sellogram is on</span>
-            </div>
-            <div class="mt-5 space-y-3">
-              <div class="h-8 w-3/5 rounded-2xl rounded-bl-md border border-line bg-paper"></div>
-              <div class="h-8 w-2/5 rounded-2xl rounded-bl-md border border-line bg-paper"></div>
-              <div class="ml-auto h-12 w-4/5 rounded-2xl rounded-br-md bg-fern/90"></div>
-              <div class="flex justify-end pt-1">
-                <span class="font-mono text-[0.65rem] text-ink-faint">replied in 4s</span>
+      {photo && (
+        <div class="relative mx-auto w-full max-w-md pb-10 lg:col-span-5 lg:max-w-none lg:pb-0" aria-hidden="true">
+          <div class="animate-fade-in-up overflow-hidden rounded-2xl bg-paper-raised shadow-[0_30px_90px_rgba(19,30,9,0.16)] [animation-delay:200ms] lg:rotate-2">
+            <img
+              src={photo.src}
+              alt=""
+              width={photo.width}
+              height={photo.height}
+              loading="eager"
+              decoding="async"
+              sizes="(min-width: 1280px) 460px, (min-width: 1024px) 38vw, 28rem"
+              class={`block w-full object-cover ${isLandscape ? 'aspect-[4/5] object-[35%_center]' : 'aspect-[4/5]'}`}
+            />
+          </div>
+
+          {showDmTexture && (
+            <div class="animate-fade-in-up absolute -bottom-2 left-4 right-10 rounded-2xl bg-white p-5 shadow-[0_24px_60px_rgba(19,30,9,0.18)] [animation-delay:320ms] sm:-left-6 sm:right-auto sm:w-72 lg:-left-12 lg:bottom-10 lg:-rotate-2">
+              <div class="flex items-center gap-2 border-b border-line pb-3">
+                <span class="relative flex h-2 w-2">
+                  <span class="absolute h-full w-full animate-ping rounded-full bg-fern-deep/50 motion-reduce:hidden"></span>
+                  <span class="relative h-2 w-2 rounded-full bg-fern-deep"></span>
+                </span>
+                <span class="font-body text-xs text-ink-faint">yourshop · Sellogram is on</span>
+              </div>
+              <div class="mt-4 space-y-2.5">
+                <div class="h-7 w-3/5 rounded-2xl rounded-bl-md border border-line bg-paper"></div>
+                <div class="ml-auto h-10 w-4/5 rounded-2xl rounded-br-md bg-fern"></div>
+                <div class="flex justify-end">
+                  <span class="font-mono text-[0.65rem] text-ink-faint">replied in 4s</span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>

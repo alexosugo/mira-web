@@ -46,7 +46,7 @@ const Pricing = () => {
 
                 <div className="mt-6 flex items-baseline gap-2">
                   {plan.pricePrefix && <span className="text-sm text-ink-light">{plan.pricePrefix}</span>}
-                  <span className="font-mono text-4xl tracking-tight text-ink lg:text-5xl">{plan.price}</span>
+                  <span className="whitespace-nowrap font-mono text-4xl tracking-tight text-ink xl:text-5xl">{plan.price}</span>
                   {plan.priceNote && (
                     <span className={`text-sm ${isFeatured ? 'text-ink' : 'text-ink-light'}`}>{plan.priceNote}</span>
                   )}

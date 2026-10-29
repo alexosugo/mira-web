@@ -13,7 +13,7 @@ import EliteModalButton from '../components/EliteModalButton';
 import type { PageContent, ContentSection, FaqItem } from '../content/pages';
 import type { Route } from '../lib/routes';
 import { jsonLdForPage } from '../lib/structured-data';
-import { variantForPath, decorForPath } from '../lib/page-variant';
+import { variantForPath, decorForPath, heroPhotoForPath } from '../lib/page-variant';
 
 interface Props {
   /** Page body data: hero + sections (+ faq carried as a section). */
@@ -29,6 +29,7 @@ const pageJsonLd = [...jsonLdForPage(page), ...(jsonLd ? (Array.isArray(jsonLd) 
 
 const variant = variantForPath(page.path);
 const decor = decorForPath(page.path);
+const heroPhoto = heroPhotoForPath(page.path);
 const withThree = page.path === '/instagram-dm-automation';
 
 // Legal pages read as one document: narrow measure, § numbering, and a sticky
@@ -57,6 +58,8 @@ const sectionPadding = (kind: string) => {
 };
 
 const sectionId = (index: number, kind: string) => `${kind}-${index}`;
+
+const isPanel = (index: number) => index % 2 === 0;
 ---
 
 <BaseLayout
@@ -73,7 +76,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
       {page.shopStory ? (
         <ShopUseCasePage hero={page.hero} story={page.shopStory} route={route} />
       ) : (
-        <ContentHero hero={page.hero} route={route} variant={variant} decor={decor} withThree={withThree} />
+        <ContentHero hero={page.hero} route={route} variant={variant} decor={decor} photo={heroPhoto} withThree={withThree} />
       )}
 
       {!page.shopStory && (isDocument ? (
@@ -149,24 +152,26 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
       ) : (
         page.sections.map((section: ContentSection, index: number) => (
           <Fragment>
-            {/* Mid-page CTA band — hairline-framed, never a background stripe */}
             {showCtaBand && index === ctaBreakPoint && (
-              <section class="border-y border-line">
-                <div class="mx-auto max-w-2xl px-6 py-12 text-center lg:px-8">
-                  <p class="font-display text-xl text-ink">Ready to stop typing the same replies?</p>
-                  <a
-                    href="https://app.sellogram.co"
-                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper"
-                  >
-                    Start free
-                  </a>
-                  <p class="mt-4 font-body text-xs text-ink-faint">No card needed</p>
+              <section class="px-3 py-2 sm:px-6 lg:px-10">
+                <div class="mx-auto flex max-w-[1440px] flex-col items-start gap-8 rounded-2xl bg-cobalt px-8 py-12 text-white sm:px-12 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-14">
+                  <p class="max-w-2xl font-display text-[clamp(1.75rem,1.2rem+2.2vw,3rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance]">Ready to stop typing the same replies?</p>
+                  <div class="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-3">
+                    <a
+                      href="https://app.sellogram.co"
+                      class="inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-semibold text-ink transition duration-300 hover:-translate-y-0.5 hover:bg-white active:translate-y-0 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:hover:translate-y-0"
+                    >
+                      Start free
+                    </a>
+                    <p class="font-body text-sm text-white/80">No card needed</p>
+                  </div>
                 </div>
               </section>
             )}
 
-            <section id={sectionId(index, section.kind)} class={index > 0 ? 'scroll-mt-28 border-t border-line' : 'scroll-mt-28'}>
-              <div class={`mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10 ${sectionPadding(section.kind)}`}>
+            <section id={sectionId(index, section.kind)} class={`scroll-mt-28 ${isPanel(index) ? 'px-3 py-2 sm:px-6 lg:px-10' : ''}`}>
+              <div class={isPanel(index) ? 'mx-auto max-w-[1440px] rounded-2xl bg-paper-raised' : ''}>
+              <div class={`mx-auto max-w-[1280px] ${isPanel(index) ? 'px-5 sm:px-10 lg:px-14' : 'px-5 sm:px-8 lg:px-10'} ${sectionPadding(section.kind)}`}>
                 {section.kind === 'prose' && (
                   <div class="max-w-2xl">
                     {section.heading && (
@@ -174,7 +179,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                         {section.heading}
                       </h2>
                     )}
-                    <p class={`text-lg leading-relaxed text-ink-light ${section.heading ? 'mt-6' : ''}`}>{section.body}</p>
+                    <p class={section.heading ? 'mt-6 text-lg leading-relaxed text-ink-light' : 'font-display text-2xl leading-snug text-ink [text-wrap:balance] sm:text-3xl'}>{section.body}</p>
                   </div>
                 )}
 
@@ -199,7 +204,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                     <ul class="mt-10 space-y-5">
                       {section.items.map((item: string) => (
                         <li class="flex items-baseline gap-4">
-                          <span class="text-ink-faint">—</span>
+                          <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-fern-deep" aria-hidden="true"></span>
                           <span class="text-base leading-relaxed text-ink">{item}</span>
                         </li>
                       ))}
@@ -223,8 +228,9 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                     </div>
                     {section.aside && (
                       <aside class="lg:col-span-4 lg:col-start-9 lg:self-center">
-                        <div class="rounded-3xl border border-line bg-white p-7 sm:p-8">
-                          <p class="font-display text-lg leading-snug text-ink">{section.aside}</p>
+                        <div class="relative rounded-2xl bg-white p-7 shadow-[0_24px_60px_rgba(19,30,9,0.14)] sm:p-8 lg:rotate-2">
+                          <span class="absolute -top-3 left-7 h-6 w-14 -rotate-3 rounded-sm bg-fern/80" aria-hidden="true"></span>
+                          <p class="font-display text-xl leading-snug text-ink [text-wrap:pretty]">{section.aside}</p>
                         </div>
                       </aside>
                     )}
@@ -240,7 +246,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                       <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-light">{section.body}</p>
                     </div>
                     <div class="lg:col-span-6 lg:col-start-7">
-                      <div class="overflow-hidden rounded-3xl border border-line bg-white">
+                      <div class="overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_rgba(19,30,9,0.12)]">
                         <div class="border-b border-line px-6 py-5 sm:px-7">
                           <p class="kicker text-fern-deep">✓ Works best when</p>
                           <p class="mt-3 text-base leading-relaxed text-ink">{section.worksBest}</p>
@@ -249,8 +255,8 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                           <p class="kicker text-dawn-deep">↗ Sellogram hands over when</p>
                           <p class="mt-3 text-base leading-relaxed text-ink">{section.handoff}</p>
                         </div>
-                        <div class="bg-paper-raised/60 px-6 py-5 sm:px-7">
-                          <p class="kicker text-ink-faint">● What you get</p>
+                        <div class="bg-night px-6 py-5 sm:px-7">
+                          <p class="kicker text-ink">● What you get</p>
                           <p class="mt-3 text-base leading-relaxed text-ink">{section.ownerGets}</p>
                         </div>
                       </div>
@@ -263,9 +269,9 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                     <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
-                    <div class="mt-12 grid gap-4 sm:grid-cols-2">
+                    <div class="mt-12 grid gap-5 sm:grid-cols-2">
                       {section.items.map((item) => (
-                        <article class="rounded-3xl border border-line bg-white p-7 transition-colors duration-200 hover:border-fern/50">
+                        <article class="rounded-2xl bg-white p-7 shadow-[0_1px_0_rgba(19,30,9,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(19,30,9,0.12)] motion-reduce:hover:translate-y-0 sm:p-8">
                           <h3 class="font-display text-xl font-semibold text-ink">{item.title}</h3>
                           <p class="mt-3 text-base leading-relaxed text-ink-light">{item.body}</p>
                           {item.cta &&
@@ -295,11 +301,14 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                     <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
-                    <div class="mt-12 grid gap-x-12 md:grid-cols-2">
-                      {section.items.map((item) => (
-                        <article class="border-t border-line py-6">
-                          <h3 class="font-display text-xl font-semibold text-ink">{item.title}</h3>
-                          <p class="mt-3 text-base leading-relaxed text-ink-light">{item.body}</p>
+                    <div class="mt-12 grid gap-5 md:grid-cols-2 md:gap-6 md:pb-10">
+                      {section.items.map((item, itemIndex) => (
+                        <article class={`rounded-2xl p-7 sm:p-8 ${isPanel(index) ? 'bg-white' : 'bg-paper-raised'} ${itemIndex % 2 === 1 ? 'md:translate-y-10' : ''}`}>
+                          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-fern text-ink" aria-hidden="true">
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
+                          </span>
+                          <h3 class="mt-5 font-display text-xl font-semibold text-ink sm:text-2xl">{item.title}</h3>
+                          <p class="mt-3 text-base leading-relaxed text-ink-light [text-wrap:pretty]">{item.body}</p>
                         </article>
                       ))}
                     </div>
@@ -311,8 +320,8 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                     <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
-                    <div data-before-after class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start">
-                      <div data-ba-card class="rounded-3xl border border-line bg-white p-8">
+                    <div data-before-after class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-0">
+                      <div data-ba-card class="rounded-2xl bg-white p-8 sm:p-10 lg:-rotate-1">
                         <p class="kicker mb-6 text-ink-faint">Before Sellogram</p>
                         <ul class="space-y-5">
                           {section.content.before.map((item) => (
@@ -323,7 +332,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                           ))}
                         </ul>
                       </div>
-                      <div data-ba-card class="rounded-3xl bg-night p-8 ring-1 ring-ink/20 lg:mt-10">
+                      <div data-ba-card class="relative z-10 rounded-2xl bg-night p-8 shadow-[0_30px_80px_rgba(68,120,12,0.28)] sm:p-10 lg:-ml-10 lg:mt-14 lg:rotate-1">
                         <p class="kicker mb-6 text-fern-bright">After Sellogram</p>
                         <ul class="space-y-5">
                           {section.content.after.map((item) => (
@@ -362,6 +371,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'pricingMatrix' && <PricingMatrix client:load />}
 
                 {section.kind === 'faq' && <Faq items={section.items as FaqItem[]} />}
+              </div>
               </div>
             </section>
           </Fragment>
