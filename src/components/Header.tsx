@@ -32,13 +32,11 @@ const Header = () => {
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [menuOpen]);
 
-  const handleCTAClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
+  const handleCTAClick = () => {
     trackCTA('header_cta_button', CTA_LABEL, 'header', {
       button_location: 'top_navigation',
       button_type: 'secondary',
     });
-    window.location.href = APP_URL;
   };
 
   const navLinks = NAV_ITEMS.map((item) => (

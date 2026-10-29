@@ -32,6 +32,7 @@ const canonical = new URL(canonicalPath ?? Astro.url.pathname, Astro.site).href;
 // Open Graph / Twitter fallback to the page title/description when not provided.
 const resolvedOgTitle = ogTitle ?? title;
 const resolvedOgDescription = ogDescription ?? description;
+const socialImage = new URL('/android-chrome-512x512.png', Astro.site).href;
 
 // JSON-LD: WebSite + Product (site-wide) plus optional Organization and any
 // page-specific nodes (Offer, FAQPage) passed via the jsonLd prop. Kept factual
@@ -101,12 +102,16 @@ const structuredData = {
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={resolvedOgTitle} />
     <meta property="og:description" content={resolvedOgDescription} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Sellogram logo" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:card" content="summary" />
     <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={resolvedOgTitle} />
     <meta property="twitter:description" content={resolvedOgDescription} />
+    <meta property="twitter:image" content={socialImage} />
+    <meta property="twitter:image:alt" content="Sellogram logo" />
 
     <!-- Additional Meta Tags -->
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />

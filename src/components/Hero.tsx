@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useCTATracking, useSectionTracking } from '../hooks/useTracking';
 import { scrollToSection } from '../utils/scrollToSection';
 import HeroChatDemo from './HeroChatDemo';
@@ -11,12 +10,10 @@ const HERO_SUBHEAD =
 const APP_URL = 'https://app.sellogram.co';
 
 const Hero = () => {
-  const [isRedirecting, setIsRedirecting] = useState(false);
   const { trackCTA } = useCTATracking();
   const sectionRef = useSectionTracking('hero', 'Hero Section');
 
   const handleCTAClick = () => {
-    setIsRedirecting(true);
     trackCTA('hero_cta_button', HERO_CTA_LABEL, 'hero', {
       button_location: 'hero_section',
       button_type: 'primary',
@@ -52,18 +49,10 @@ const Hero = () => {
             >
               <a
                 href={APP_URL}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (isRedirecting) return;
-                  handleCTAClick();
-                  window.location.href = APP_URL;
-                }}
-                aria-busy={isRedirecting}
-                className={`inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-medium text-ink transition duration-300 hover:bg-fern-deep hover:text-paper active:scale-[0.98] ${
-                  isRedirecting ? 'pointer-events-none opacity-80' : ''
-                }`}
+                onClick={handleCTAClick}
+                className="inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-medium text-ink transition duration-300 hover:bg-fern-deep hover:text-paper active:scale-[0.98]"
               >
-                {isRedirecting ? 'Opening Sellogram...' : HERO_CTA_LABEL}
+                {HERO_CTA_LABEL}
               </a>
               <button
                 type="button"

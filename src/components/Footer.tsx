@@ -77,7 +77,7 @@ const Footer = () => {
                     <a
                       href={link.href}
                       onClick={() => trackCTA(`footer_link_${link.id}`, link.label, 'footer')}
-                      className="inline-flex min-h-[44px] min-w-[44px] items-center text-sm font-medium text-ink transition-colors duration-200 hover:text-ink"
+                      className="inline-flex min-h-[44px] min-w-[44px] items-center text-sm font-medium text-ink underline-offset-4 hover:underline"
                     >
                       {link.label}
                     </a>
@@ -99,7 +99,7 @@ const Footer = () => {
           <a
             href="mailto:hello@sellogram.co"
             onClick={() => handleContactClick('email')}
-            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm font-medium text-ink transition-colors duration-200 hover:text-ink"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center font-mono text-sm font-medium text-ink underline-offset-4 hover:underline"
           >
             hello@sellogram.co
           </a>
