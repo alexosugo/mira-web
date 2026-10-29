@@ -70,12 +70,17 @@ const Header = () => {
           <button
             ref={menuButtonRef}
             type="button"
+            aria-label="Menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex min-h-[44px] items-center rounded-md px-3 text-sm font-semibold text-ink transition-colors duration-300 hover:bg-paper-raised sm:hidden"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-ink transition-colors duration-300 hover:bg-paper-raised sm:hidden"
           >
-            {menuOpen ? 'Close' : 'Menu'}
+            <span aria-hidden="true" className="relative h-5 w-6">
+              <span className={`absolute left-0 top-0 h-0.5 w-6 rounded-full bg-current transition-transform duration-300 motion-reduce:transition-none ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+              <span className={`absolute left-0 top-2 h-0.5 w-6 rounded-full bg-current transition-opacity duration-300 motion-reduce:transition-none ${menuOpen ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`absolute left-0 top-4 h-0.5 w-6 rounded-full bg-current transition-transform duration-300 motion-reduce:transition-none ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+            </span>
           </button>
         </div>
       </div>
