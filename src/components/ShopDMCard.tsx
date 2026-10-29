@@ -60,7 +60,7 @@ const ShopDMCard = ({
     return () => clearTimeout(timer);
   }, [animateMessages, messages.length, revealedCount, visibleCount]);
 
-  const bubbleText = compact ? 'text-[0.68rem]' : 'text-[0.72rem] sm:text-xs';
+  const bubbleText = 'text-xs';
 
   return (
     <div
@@ -77,7 +77,7 @@ const ShopDMCard = ({
         </div>
         <div className="min-w-0">
           <p className={`truncate font-semibold text-ink ${compact ? 'text-xs' : 'text-sm'}`}>{shopName}</p>
-          <p className={`text-ink-faint ${compact ? 'text-[0.62rem]' : 'text-[0.7rem]'}`}>Instagram</p>
+          <p className="text-xs text-ink-faint">Instagram</p>
         </div>
       </div>
 
@@ -94,8 +94,8 @@ const ShopDMCard = ({
               className="h-14 w-20 shrink-0 object-cover"
             />
             <div className="min-w-0 px-2.5 py-2">
-              <p className="text-[0.6rem] text-ink-faint">Shared a post</p>
-              <p className="mt-0.5 truncate text-[0.68rem] font-semibold text-ink">{sharedPost.title}</p>
+              <p className="text-xs text-ink-faint">Shared a post</p>
+              <p className="mt-0.5 truncate text-xs font-semibold text-ink">{sharedPost.title}</p>
             </div>
           </div>
         )}

@@ -20,7 +20,7 @@ const InstagramPostCard = ({ image, imageAlt }: InstagramPostCardProps) => (
       </span>
       <div className="min-w-0 flex-1">
         <p className="truncate text-xs font-semibold">cocoarosebeauty</p>
-        <p className="text-[0.65rem] text-ink-faint">Nairobi</p>
+        <p className="text-xs text-ink-faint">Nairobi</p>
       </div>
       <MoreHorizontal className="h-5 w-5" aria-hidden="true" />
     </header>

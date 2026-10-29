@@ -39,9 +39,9 @@ const HeroChatDemo = () => {
       <div className="relative z-20 mx-8 -mt-2 flex max-w-[17rem] items-center justify-between gap-4 rounded-xl border border-white/75 bg-white/95 px-4 py-3 shadow-[0_16px_48px_rgba(19,30,9,0.16)] backdrop-blur-md sm:absolute sm:bottom-[8%] sm:left-[4%] sm:mx-0 sm:mt-0 sm:w-[29%] sm:max-w-none lg:w-[25%]">
         <div className="min-w-0">
           <p className="truncate text-xs font-semibold text-ink sm:text-sm">Patchwork denim set</p>
-          <p className="mt-0.5 font-mono text-[0.65rem] text-ink-faint sm:text-xs">KSh 6,000 · Size M</p>
+          <p className="mt-0.5 font-mono text-xs text-ink-faint">KSh 6,000 · Size M</p>
         </div>
-        <span className="shrink-0 rounded-full bg-fern/10 px-2 py-1 font-mono text-[0.6rem] uppercase tracking-wide text-fern-deep">
+        <span className="shrink-0 rounded-full bg-fern/10 px-2 py-1 font-mono text-xs uppercase tracking-wide text-fern-deep">
           in stock
         </span>
       </div>

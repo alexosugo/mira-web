@@ -27,7 +27,7 @@ const { hero, route, variant, decor, withThree = false } = Astro.props;
 const ctaClass = (v: 'primary' | 'secondary' | undefined) =>
   v === 'secondary'
     ? 'inline-flex min-h-[44px] items-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5'
-    : 'inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper';
+    : 'inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper';
 
 const isDocument = variant === 'legal' || variant === 'trust';
 const hasAmbient = variant === 'guide' || variant === 'feature' || variant === 'useCase';

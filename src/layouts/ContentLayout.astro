@@ -156,7 +156,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                   <p class="font-display text-xl text-ink">Ready to stop typing the same replies?</p>
                   <a
                     href="https://app.sellogram.co"
-                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper"
+                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper"
                   >
                     Start free
                   </a>
@@ -170,7 +170,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'prose' && (
                   <div class="max-w-2xl">
                     {section.heading && (
-                      <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section-compact">
                         {section.heading}
                       </h2>
                     )}
@@ -181,7 +181,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'split' && (
                   <div class="grid gap-12 md:grid-cols-2 md:gap-16">
                     <div>
-                      <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section-compact">
                         {section.heading}
                       </h2>
                     </div>
@@ -192,7 +192,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'list' && (
                   <div>
                     {section.heading && (
-                      <h2 class="max-w-xl font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="max-w-xl heading-section-compact">
                         {section.heading}
                       </h2>
                     )}
@@ -214,7 +214,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'story' && (
                   <div class={section.aside ? 'grid gap-10 lg:grid-cols-12 lg:gap-16' : ''}>
                     <div class={section.aside ? 'lg:col-span-7' : 'max-w-3xl'}>
-                      <h2 class="font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section">
                         {section.heading}
                       </h2>
                       <p class={`mt-6 leading-relaxed text-ink-light ${variant === 'company' ? 'font-display text-xl sm:text-2xl' : 'text-lg'}`}>
@@ -234,7 +234,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'fitGuide' && (
                   <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
                     <div class="lg:col-span-5">
-                      <h2 class="font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section">
                         {section.heading}
                       </h2>
                       <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-light">{section.body}</p>
@@ -260,7 +260,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
                 {section.kind === 'promiseGrid' && variant === 'support' && (
                   <div>
-                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                    <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
                     <div class="mt-12 grid gap-4 sm:grid-cols-2">
@@ -292,7 +292,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
                 {section.kind === 'promiseGrid' && variant !== 'support' && (
                   <div>
-                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                    <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
                     <div class="mt-12 grid gap-x-12 md:grid-cols-2">
@@ -308,7 +308,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
                 {section.kind === 'beforeAfter' && (
                   <div>
-                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                    <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
                     <div data-before-after class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start">
