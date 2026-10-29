@@ -375,9 +375,11 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
     document.documentElement.classList.add('js');
 
     const scenarios = document.querySelectorAll('[data-scenario]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     if (scenarios.length > 0) {
       const updateBubbles = () => {
+        if (reducedMotion.matches) return;
         const vh = window.innerHeight;
 
         scenarios.forEach((group) => {
@@ -416,6 +418,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll, { passive: true });
+      reducedMotion.addEventListener('change', updateBubbles);
       updateBubbles();
     }
 

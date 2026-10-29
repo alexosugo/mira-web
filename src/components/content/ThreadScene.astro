@@ -14,19 +14,29 @@
 
 <script>
   const host = document.querySelector<HTMLElement>('[data-thread-scene]');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const wide = window.matchMedia('(min-width: 768px)').matches;
 
-  if (host && !reduced && wide) {
+  if (host && wide) {
+    let initialized = false;
+    let loading = false;
+    let updateScene = () => {};
+    const start = () => {
+      if (motion.matches || initialized || loading) return;
+      loading = true;
     const idle = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1500));
     idle(async () => {
       let THREE: typeof import('three');
       try {
         THREE = await import('three');
       } catch {
+        loading = false;
         return; // Offline or chunk failed: the static hero already works.
       }
 
+      loading = false;
+      if (motion.matches || initialized) return;
+      initialized = true;
       const width = host.clientWidth;
       const height = host.clientHeight;
 
@@ -78,7 +88,8 @@
       window.addEventListener('mousemove', onMouse, { passive: true });
 
       const clock = new THREE.Clock();
-      let running = true;
+      let running = false;
+      let visible = false;
       let raf = 0;
 
       const tick = () => {
@@ -106,20 +117,22 @@
       };
       window.addEventListener('resize', onResize, { passive: true });
 
-      new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting && !running) {
+      updateScene = () => {
+        const shouldRun = visible && !motion.matches;
+        renderer.domElement.style.opacity = motion.matches ? '0' : '1';
+        if (shouldRun && !running) {
           running = true;
           raf = requestAnimationFrame(tick);
-        } else if (!entry.isIntersecting && running) {
+        } else if (!shouldRun && running) {
           running = false;
           cancelAnimationFrame(raf);
         }
+      };
+      new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        updateScene();
       }).observe(host);
-
-      raf = requestAnimationFrame(tick);
-      requestAnimationFrame(() => {
-        renderer.domElement.style.opacity = '1';
-      });
+      updateScene();
 
       window.addEventListener('pagehide', () => {
         cancelAnimationFrame(raf);
@@ -127,5 +140,11 @@
         renderer.dispose();
       });
     });
+    };
+    motion.addEventListener('change', () => {
+      if (initialized) updateScene();
+      else start();
+    });
+    start();
   }
 </script>
