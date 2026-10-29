@@ -64,7 +64,7 @@ const Header = () => {
         </a>
         <div className="flex items-center gap-2 sm:gap-6">
           <nav aria-label="Main navigation" className="hidden items-center gap-6 sm:flex">{navLinks}</nav>
-          <a href={APP_URL} onClick={handleCTAClick} className="inline-flex min-h-[44px] items-center rounded-full bg-fern px-5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-fern-deep hover:text-paper active:scale-[0.98]">
+          <a href={APP_URL} onClick={handleCTAClick} className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full bg-fern px-3 text-sm font-medium text-ink transition-colors duration-300 hover:bg-fern-deep hover:text-paper active:scale-[0.98] sm:px-5">
             {CTA_LABEL}
           </a>
           <button
