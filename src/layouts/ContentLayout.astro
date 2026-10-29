@@ -69,7 +69,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 >
   <div class="min-h-screen bg-paper">
     <Header client:load />
-    <main>
+    <main id="main-content" tabindex="-1">
       {page.shopStory ? (
         <ShopUseCasePage hero={page.hero} story={page.shopStory} route={route} />
       ) : (

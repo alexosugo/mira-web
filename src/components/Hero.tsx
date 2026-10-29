@@ -27,7 +27,7 @@ const Hero = () => {
   return (
     <section ref={sectionRef} className="overflow-hidden pb-16 pt-24 sm:pb-20 sm:pt-28 lg:pb-24 lg:pt-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
-        <div className="grid gap-9 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <h1
               className="max-w-[12ch] animate-fade-in-up font-display text-[clamp(2.75rem,1.8rem+4.2vw,5.5rem)] font-semibold leading-[0.92] tracking-tight text-ink [text-wrap:balance]"
@@ -47,7 +47,7 @@ const Hero = () => {
             </p>
 
             <div
-              className="mt-9 flex animate-fade-in-up flex-wrap items-center gap-6"
+              className="mt-8 flex animate-fade-in-up flex-wrap items-center gap-6"
               style={{ animationDelay: '240ms' }}
             >
               <a
@@ -59,7 +59,7 @@ const Hero = () => {
                   window.location.href = APP_URL;
                 }}
                 aria-busy={isRedirecting}
-                className={`inline-flex min-h-[50px] items-center rounded-full bg-fern px-8 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper ${
+                className={`inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-medium text-ink transition duration-300 hover:bg-fern-deep hover:text-paper active:scale-[0.98] ${
                   isRedirecting ? 'pointer-events-none opacity-80' : ''
                 }`}
               >
@@ -68,7 +68,7 @@ const Hero = () => {
               <button
                 type="button"
                 onClick={() => scrollToSection('dm-sales-journey')}
-                className="inline-flex min-h-[44px] items-center text-base text-ink-light underline decoration-line underline-offset-4 transition-colors duration-200 hover:text-ink hover:decoration-ink"
+                className="inline-flex min-h-[44px] items-center text-base text-ink-light underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-ink"
               >
                 See a sale happen
               </button>
