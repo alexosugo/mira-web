@@ -63,7 +63,7 @@ const headlineClass = variant === 'company'
     <div class={photo ? 'grid items-center gap-14 lg:grid-cols-12 lg:gap-12' : ''}>
       <div class={photo ? 'lg:col-span-7' : ''}>
         {decor && !isDocument && (
-          <p class="animate-fade-in-up mb-6 inline-flex h-14 w-14 -rotate-6 items-center justify-center rounded-2xl bg-fern text-ink">
+          <p class="animate-fade-in-up mb-6 inline-flex h-14 w-14 [rotate:-6deg] items-center justify-center rounded-2xl bg-fern text-ink">
             <Motif motif={decor.motif} class="h-8 w-8" />
           </p>
         )}
@@ -116,7 +116,7 @@ const headlineClass = variant === 'company'
 
       {photo && (
         <div class="relative mx-auto w-full max-w-md pb-10 lg:col-span-5 lg:max-w-none lg:pb-0" aria-hidden="true">
-          <div class="animate-fade-in-up overflow-hidden rounded-2xl bg-paper-raised shadow-[0_30px_90px_rgba(19,30,9,0.16)] [animation-delay:200ms] lg:rotate-2">
+          <div class="animate-fade-in-up overflow-hidden rounded-2xl bg-paper-raised shadow-[0_30px_90px_rgba(19,30,9,0.16)] [animation-delay:200ms] lg:[rotate:2deg]">
             <img
               src={photo.src}
               alt=""
@@ -130,7 +130,7 @@ const headlineClass = variant === 'company'
           </div>
 
           {showDmTexture && (
-            <div class="animate-fade-in-up absolute -bottom-2 left-4 right-10 rounded-2xl bg-white p-5 shadow-[0_24px_60px_rgba(19,30,9,0.18)] [animation-delay:320ms] sm:-left-6 sm:right-auto sm:w-72 lg:-left-12 lg:bottom-10 lg:-rotate-2">
+            <div class="animate-fade-in-up absolute -bottom-2 left-4 right-10 rounded-2xl bg-white p-5 shadow-[0_24px_60px_rgba(19,30,9,0.18)] [animation-delay:320ms] sm:-left-6 sm:right-auto sm:w-72 lg:-left-12 lg:bottom-10 lg:[rotate:-2deg]">
               <div class="flex items-center gap-2 border-b border-line pb-3">
                 <span class="relative flex h-2 w-2">
                   <span class="absolute h-full w-full animate-ping rounded-full bg-fern-deep/50 motion-reduce:hidden"></span>

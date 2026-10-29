@@ -9,7 +9,7 @@ const PricingMatrix = () => {
   const { trackCTA } = useCTATracking();
 
   return (
-    <div className="grid gap-6 md:grid-cols-3 md:items-stretch md:gap-0 md:py-6">
+    <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch lg:gap-0 lg:py-6">
       {PLANS.map((plan) => {
         const isFeatured = Boolean(plan.isHighlighted);
         return (
@@ -17,8 +17,8 @@ const PricingMatrix = () => {
             key={plan.key}
             className={`flex flex-col ${
               isFeatured
-                ? 'relative z-10 rounded-2xl bg-night p-8 text-ink shadow-[0_30px_80px_rgba(68,120,12,0.28)] md:-my-6 md:p-10'
-                : 'border-y border-line py-10 md:px-10 md:first:pl-0 md:last:pr-0'
+                ? 'relative z-10 rounded-2xl bg-night p-8 text-ink shadow-[0_30px_80px_rgba(68,120,12,0.28)] lg:-my-6 lg:p-10'
+                : 'border-y border-ink/15 py-10 lg:px-10 lg:first:pl-0 lg:last:pr-0'
             }`}
           >
             <div className="flex items-center justify-between gap-4">
@@ -29,9 +29,9 @@ const PricingMatrix = () => {
                 </p>
               )}
             </div>
-            <div className="mt-6 flex items-baseline gap-2">
+            <div className="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
               {plan.pricePrefix && <span className="text-sm text-ink-light">{plan.pricePrefix}</span>}
-              <span className="whitespace-nowrap font-mono text-4xl tracking-tight text-ink xl:text-5xl">{plan.price}</span>
+              <span className="whitespace-nowrap font-mono text-3xl tracking-tight text-ink xl:text-4xl">{plan.price}</span>
               {plan.priceNote && (
                 <span className={`text-sm ${isFeatured ? 'text-ink' : 'text-ink-light'}`}>{plan.priceNote}</span>
               )}
@@ -53,7 +53,7 @@ const PricingMatrix = () => {
               ))}
             </ul>
 
-            <div className="mt-10 md:mt-auto md:pt-10">
+            <div className="mt-10 lg:mt-auto lg:pt-10">
               {plan.key === 'elite' ? (
                 <EliteModalButton
                   label={plan.cta}
