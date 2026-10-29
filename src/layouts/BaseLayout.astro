@@ -14,6 +14,7 @@ interface Props {
   noindex?: boolean;
   /** Mixpanel page-view label; written to <body data-page-name>. */
   pageName?: string;
+  landingPage?: boolean;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   jsonLd,
   noindex = false,
   pageName,
+  landingPage = false,
 } = Astro.props;
 
 const canonical = new URL(canonicalPath ?? Astro.url.pathname, Astro.site).href;
@@ -118,14 +120,17 @@ const structuredData = {
     <meta name="geo.region" content="KE" />
     <meta name="geo.country" content="Kenya" />
 
-    <!-- Google Fonts: Archivo (display), Source Sans 3 (body/UI), IBM Plex Mono (timestamps, KES figures) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    {landingPage ? (
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    ) : (
+      <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    )}
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
-  <body data-page-name={pageName} style="font-family: 'Source Sans 3', sans-serif; background-color: #F3F6F0;">
+  <body data-page-name={pageName} style={`font-family: ${landingPage ? "'Manrope'" : "'Source Sans 3'"}, sans-serif; background-color: #F3F6F0;`}>
     <slot />
     <noscript>
       <div style="max-width: 36rem; margin: 2rem auto; padding: 0 1.5rem; color: #1E2617; text-align: center;">

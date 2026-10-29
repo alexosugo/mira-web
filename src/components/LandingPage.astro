@@ -1,0 +1,740 @@
+---
+import wordmark from "../../brand/identity/wordmark/master/sellogram.svg?raw";
+import "./landing.css";
+import { PLANS } from "../content/pages";
+
+const APP_URL = "https://app.sellogram.co";
+const homepagePlans = PLANS.filter(
+  (plan) => plan.key === "free" || plan.key === "pro",
+);
+interface Benefit {
+  title: string;
+  description: string;
+  href: string;
+}
+const benefits: Benefit[] = [
+  {
+    title: "An answer while they’re still interested.",
+    description:
+      "Prices, sizes, stock and delivery. The everyday questions get a reply from your posts and shop details.",
+    href: "/features/product-answers",
+  },
+  {
+    title: "A conversation that becomes an order.",
+    description:
+      "Help customers choose, put their cart together and share payment instructions. All in the same DM.",
+    href: "/features/orders-and-checkout",
+  },
+  {
+    title: "Your shop. Your final say.",
+    description:
+      "When a question needs you, Sellogram hands it over. You take the conversation from there.",
+    href: "/features/human-handoff",
+  },
+];
+const steps = [
+  {
+    title: "Connect your shop.",
+    description:
+      "Link the Instagram Professional account your customers already know.",
+  },
+  {
+    title: "Make it yours.",
+    description:
+      "Add payment and delivery details. Review your products and try customer questions in test mode.",
+  },
+  {
+    title: "Open for conversation.",
+    description:
+      "Happy with the replies? Turn Sellogram on. You can take over whenever a conversation needs you.",
+  },
+];
+const faqs = [
+  {
+    question: "What kind of Instagram account do I need?",
+    answer:
+      "A Professional Instagram account for your shop. Sellogram currently supports shops in Kenya.",
+  },
+  {
+    question: "Where do the answers come from?",
+    answer:
+      "Your Instagram posts and the shop details you add, including payment and delivery options. Update a post and Sellogram updates its product information.",
+  },
+  {
+    question: "Can I try it before customers see replies?",
+    answer:
+      "Yes. Your shop starts in test mode. Use your designated test account to check the replies, then turn Sellogram on when you are ready.",
+  },
+  {
+    question: "What happens when it cannot answer?",
+    answer:
+      "Sellogram brings the question to you through your chosen notification channel. You can take over in Instagram or in your dashboard.",
+  },
+  {
+    question: "Does Sellogram confirm payments?",
+    answer:
+      "No. It shares your payment instructions and collects order details. You check the payment and confirm it yourself.",
+  },
+  {
+    question: "What is included in the free plan?",
+    answer:
+      "Up to 10 customer conversations each month, with Sellogram branding in replies. A conversation is a message thread with one Instagram account. No card is required.",
+  },
+  {
+    question: "What happens at the free plan limit?",
+    answer:
+      "Sellogram stops replying when you reach 10 customer conversations for the month. Product updates still run. Upgrade to Pro for no monthly conversation cap.",
+  },
+  {
+    question: "Does it reply to WhatsApp customers too?",
+    answer:
+      "Customer conversations are currently on Instagram. WhatsApp is available as an owner notification option, not as a customer sales channel.",
+  },
+];
+const tagline = ["Less time in your inbox.", "More time for your shop."];
+---
+
+<div class="landing-page">
+  <a class="lp-skip" href="#main-content">
+    Skip to content
+  </a>
+  <header class="lp-header">
+    <a class="lp-logo" href="/" aria-label="Sellogram home" aria-current="page">
+      <span aria-hidden="true" set:html={wordmark} />
+    </a>
+    <nav aria-label="Main navigation" class="lp-desktop-nav">
+      <a href="#how-it-works">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#questions">Questions</a>
+    </nav>
+    <div class="lp-header-actions">
+      <a
+        class="lp-button lp-button-small"
+        href={APP_URL}
+        data-cta="header_cta_button"
+        data-section="header"
+      >
+        Start free <span aria-hidden="true">↗</span>
+      </a>
+      <button
+        class="lp-menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="lp-mobile-menu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+  <dialog
+    id="lp-mobile-menu"
+    class="lp-mobile-menu"
+    aria-label="Navigation menu"
+  >
+    <div class="lp-menu-heading">
+      <a class="lp-logo" href="/" aria-label="Sellogram home">
+        <span aria-hidden="true" set:html={wordmark} />
+      </a>
+      <button type="button" class="lp-menu-close" aria-label="Close menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <nav aria-label="Mobile navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#questions">Questions</a>
+      <a href={APP_URL} data-cta="mobile_cta_button" data-section="header">
+        Start free ↗
+      </a>
+    </nav>
+    <p>Your shop, with a little more breathing room.</p>
+  </dialog>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    })}
+  />
+  <main id="main-content" tabindex="-1">
+    <section
+      class="lp-hero lp-container"
+      data-track-section="hero"
+      aria-labelledby="lp-hero-title"
+    >
+      <div class="lp-hero-copy">
+        <p class="lp-audience">
+          <span class="lp-presence" aria-hidden="true"></span> For shops that
+          sell on Instagram
+        </p>
+        <h1 id="lp-hero-title">
+          <span>Your DMs.</span>
+          <span>Your next sale.</span>
+        </h1>
+        <p class="lp-hero-description">
+          Sellogram answers questions, takes orders and keeps the conversation
+          going in your shop’s Instagram DMs. You get on with your day.
+        </p>
+        <a
+          href={APP_URL}
+          class="lp-button lp-hero-cta"
+          data-cta="hero_cta_button"
+          data-section="hero"
+        >
+          Start free <span aria-hidden="true">↗</span>
+        </a>
+        <p class="lp-risk">KES 0 to get started. No card needed.</p>
+        <div class="lp-hero-note">
+          <span class="lp-note-symbol" aria-hidden="true">
+            ↳
+          </span>
+          <p>
+            Knows your products.
+            <br />
+            Knows when to bring you in.
+          </p>
+        </div>
+      </div>
+      <figure class="lp-hero-visual">
+        <div class="lp-hero-photo">
+          <img
+            src="/images/hero/cobalt-stairwell.webp"
+            alt="Nairobi fashion seller photographing a denim look against a blue stairwell"
+            width="1536"
+            height="1024"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <span class="lp-photo-label">
+            Out making moves. Still taking orders.
+          </span>
+        </div>
+        <div class="lp-cart-sticker">
+          <span>Example cart</span>
+          <strong>Denim set · Size M</strong>
+          <p>KSh 6,000 + delivery</p>
+          <span class="lp-cart-ready">Ready for checkout ↗</span>
+        </div>
+        <div
+          class="lp-demo-chat"
+          role="group"
+          aria-label="Illustrative Instagram conversation at Nia Thrift"
+        >
+          <div class="lp-chat-heading">
+            <span class="lp-shop-avatar">nt.</span>
+            <div>
+              <strong>Nia Thrift</strong>
+              <span>Typically replies with Sellogram</span>
+            </div>
+            <span class="lp-chat-more" aria-hidden="true">
+              ···
+            </span>
+          </div>
+          <div
+            class="lp-demo-tabs"
+            role="tablist"
+            aria-label="Example sale views"
+          >
+            <button
+              type="button"
+              id="lp-conversation-tab"
+              role="tab"
+              aria-selected="true"
+              aria-controls="lp-conversation-panel"
+            >
+              Conversation
+            </button>
+            <button
+              type="button"
+              id="lp-order-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="lp-order-panel"
+              tabindex="-1"
+            >
+              Order summary
+            </button>
+          </div>
+          <div
+            id="lp-conversation-panel"
+            class="lp-demo-panel"
+            role="tabpanel"
+            aria-labelledby="lp-conversation-tab"
+            tabindex="0"
+          >
+            <div class="lp-chat-messages">
+              <p class="lp-message lp-customer">Hii denim set bado iko in M?</p>
+              <p class="lp-message lp-shop">Iko. Full set ni KSh 6,000.</p>
+              <p class="lp-message lp-customer">Na delivery Kilimani?</p>
+              <p class="lp-message lp-shop">
+                KSh 250. We can send a rider this afternoon.
+              </p>
+            </div>
+          </div>
+          <div
+            id="lp-order-panel"
+            class="lp-demo-panel lp-order-panel"
+            role="tabpanel"
+            aria-labelledby="lp-order-tab"
+            tabindex="0"
+            hidden
+          >
+            <p class="lp-order-title">One denim set. Ready to go.</p>
+            <div class="lp-order-row">
+              <span>Denim set · Size M</span>
+              <strong>KSh 6,000</strong>
+            </div>
+            <div class="lp-order-row">
+              <span>Delivery · Kilimani</span>
+              <strong>KSh 250</strong>
+            </div>
+            <div class="lp-order-row lp-order-total">
+              <span>Total</span>
+              <strong>KSh 6,250</strong>
+            </div>
+            <p class="lp-payment-note">Payment awaits your confirmation.</p>
+          </div>
+          <div class="lp-chat-status">
+            <span class="lp-presence" aria-hidden="true"></span> A reply. A next
+            step. A possible sale.
+          </div>
+        </div>
+        <figcaption>
+          Illustrative conversation. Your shop stays the face of every reply.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section
+      class="lp-capabilities lp-container"
+      aria-label="What Sellogram helps with"
+      data-reveal
+      data-track-section="benefits"
+    >
+      <p>
+        From the first
+        <br />
+        <strong>“How much?”</strong>
+      </p>
+      <span aria-hidden="true">↗</span>
+      <p>
+        To the details
+        <br />
+        <strong>“Can you deliver?”</strong>
+      </p>
+      <span aria-hidden="true">↗</span>
+      <p>
+        To the order
+        <br />
+        <strong>“I’ll take it.”</strong>
+      </p>
+      <div class="lp-capabilities-note">
+        One conversation.
+        <br />
+        Right in your DMs.
+      </div>
+    </section>
+
+    <section
+      class="lp-benefits lp-container lp-section"
+      aria-labelledby="lp-benefits-title"
+      data-reveal
+      data-track-section="product-answers"
+    >
+      <div class="lp-section-intro">
+        <h2 id="lp-benefits-title">
+          Big plans for your shop.
+          <br />
+          Less inbox on your plate.
+        </h2>
+        <p>
+          The same questions keep coming. Give them a helpful answer while you
+          pack orders, find new stock or call it a day.
+        </p>
+      </div>
+      <div class="lp-benefit-layout">
+        <figure class="lp-benefit-photo">
+          <img
+            src="/images/shops/daily-drop.webp"
+            width="1672"
+            height="941"
+            loading="lazy"
+            alt="Fashion sellers taking a rack of new stock through the city"
+          />
+          <figcaption>
+            <span class="lp-presence" aria-hidden="true"></span> Out building
+            your business. Still open for orders.
+          </figcaption>
+        </figure>
+        <div class="lp-benefit-list">
+          {benefits.map((benefit, index) => (
+            <article>
+              <span class="lp-benefit-number" aria-hidden="true">
+                0{index + 1}
+              </span>
+              <div>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.description}</p>
+                <a href={benefit.href}>
+                  See how it works <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="lp-tagline lp-container"
+      aria-label="More time for your shop"
+      data-track-section="more-time"
+    >
+      <span class="lp-tagline-mark" aria-hidden="true">
+        ↳
+      </span>
+      <h2>
+        {tagline.map((line) => (
+          <span class="lp-tagline-line">
+            {line.split(" ").map((word) => (
+              <span class="lp-reveal-word">{word} </span>
+            ))}
+          </span>
+        ))}
+      </h2>
+      <p>
+        Your customers get an answer.
+        <br />
+        You get a little breathing room.
+      </p>
+    </section>
+
+    <section
+      id="how-it-works"
+      class="lp-setup lp-container lp-section"
+      data-reveal
+      data-track-section="how-it-works"
+      aria-labelledby="lp-setup-title"
+    >
+      <div class="lp-section-intro">
+        <h2 id="lp-setup-title">
+          Your shop already has
+          <br />
+          the answers. Start there.
+        </h2>
+        <p>
+          No new storefront. No product spreadsheet. Start with the Instagram
+          account your customers already message.
+        </p>
+      </div>
+      <ol class="lp-steps">
+        {steps.map((step, index) => (
+          <li>
+            <span class="lp-step-number">0{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </li>
+        ))}
+      </ol>
+      <aside class="lp-test-note">
+        <span aria-hidden="true">↳</span>
+        <p>
+          <strong>Try it before you turn it on.</strong> Your shop starts in
+          test mode, so you can check the replies first.
+        </p>
+      </aside>
+    </section>
+
+    <section
+      id="pricing"
+      class="lp-pricing lp-container lp-section"
+      data-reveal
+      data-track-section="pricing"
+      aria-labelledby="lp-pricing-title"
+    >
+      <div class="lp-section-intro">
+        <h2 id="lp-pricing-title">
+          A small start.
+          <br />
+          Room to grow.
+        </h2>
+        <p>
+          Try it on your own shop for free. Move to Pro when you need more
+          conversations.
+        </p>
+      </div>
+      <div class="lp-plans">
+        {homepagePlans.map((plan) => (
+          <article
+            class:list={["lp-plan", { "lp-plan-pro": plan.key === "pro" }]}
+          >
+            <div class="lp-plan-top">
+              <h3>{plan.name}</h3>
+              <span>
+                {plan.key === "pro"
+                  ? "Keep the conversation going"
+                  : "Get a feel for it"}
+              </span>
+            </div>
+            <p class="lp-price">
+              {plan.price}
+              <span>/ month</span>
+            </p>
+            <p>{plan.description}</p>
+            <ul>
+              {plan.features.map((feature) => (
+                <li>{feature.replace("M-Pesa", "Mpesa")}</li>
+              ))}
+            </ul>
+            <a
+              href={APP_URL}
+              class:list={[
+                "lp-button",
+                { "lp-button-outline": plan.key === "free" },
+              ]}
+              data-cta={`pricing_${plan.key}_button`}
+              data-section="pricing"
+              data-cta-label={plan.cta}
+            >
+              {plan.cta} <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        ))}
+      </div>
+      <div class="lp-pricing-footnote">
+        <p>Need help setting up a bigger team?</p>
+        <a href="/pricing">
+          Explore Elite and compare plans <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section
+      id="questions"
+      class="lp-faq lp-container lp-section"
+      aria-labelledby="lp-faq-title"
+      data-reveal
+      data-track-section="questions"
+    >
+      <div class="lp-section-intro">
+        <h2 id="lp-faq-title">
+          A few things
+          <br />
+          you might be wondering.
+        </h2>
+        <p>
+          Handing over your DMs is a big step.
+          <br />
+          <a href="/contact">We’re here if you want to talk it through ↗</a>
+        </p>
+      </div>
+      <div class="lp-faq-grid">
+        {faqs.map((faq) => (
+          <article>
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section
+      class="lp-final"
+      data-reveal
+      data-track-section="final-cta"
+      aria-labelledby="lp-final-title"
+    >
+      <div class="lp-container">
+        <p class="lp-final-note">Your customers are already in your DMs.</p>
+        <h2 id="lp-final-title">
+          Be there for them.
+          <br />
+          Without always being there.
+        </h2>
+        <a
+          href={APP_URL}
+          class="lp-button"
+          data-cta="final_cta_button"
+          data-section="final-cta"
+        >
+          Start free <span aria-hidden="true">↗</span>
+        </a>
+        <p class="lp-risk">10 conversations a month. KES 0. Yours to try.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="lp-footer lp-container">
+    <div class="lp-footer-top">
+      <a class="lp-logo" href="/" aria-label="Sellogram home">
+        <span aria-hidden="true" set:html={wordmark} />
+      </a>
+      <p>A little help. A lot more shop.</p>
+      <a href="mailto:hello@sellogram.co">Say hello ↗</a>
+    </div>
+    <div class="lp-footer-bottom">
+      <p>Made in Nairobi, Kenya · © {new Date().getFullYear()} Sellogram</p>
+      <nav aria-label="Footer navigation">
+        <a href="/how-it-works">How it works</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/security">Security</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<script>
+  import { trackCTAClick, trackSectionView } from "../utils/analytics";
+
+  document
+    .querySelectorAll<HTMLAnchorElement>(".landing-page [data-cta]")
+    .forEach((link) => {
+      link.addEventListener("click", () =>
+        trackCTAClick(
+          link.dataset.cta!,
+          link.dataset.ctaLabel ?? "Start free",
+          link.dataset.section!,
+        ),
+      );
+    });
+
+  const demoTabs = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('.lp-demo-tabs [role="tab"]'),
+  );
+  const activateTab = (tab: HTMLButtonElement) => {
+    demoTabs.forEach((item) => {
+      const selected = item === tab;
+      item.setAttribute("aria-selected", String(selected));
+      item.tabIndex = selected ? 0 : -1;
+      const panel = document.getElementById(
+        item.getAttribute("aria-controls")!,
+      ) as HTMLElement;
+      panel.hidden = !selected;
+    });
+    trackCTAClick(tab.id, tab.textContent || "", "hero");
+  };
+  demoTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activateTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key))
+        return;
+      event.preventDefault();
+      const nextIndex =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? demoTabs.length - 1
+            : (index +
+                (event.key === "ArrowRight" ? 1 : -1) +
+                demoTabs.length) %
+              demoTabs.length;
+      const next = demoTabs[nextIndex];
+      activateTab(next);
+      next.focus();
+    });
+  });
+
+  const toggle = document.querySelector<HTMLButtonElement>(".lp-menu-toggle");
+  const menu = document.querySelector<HTMLDialogElement>(".lp-mobile-menu");
+  const close = document.querySelector<HTMLButtonElement>(".lp-menu-close");
+  let previousOverflow = "";
+  if (toggle && menu && close) {
+    toggle.addEventListener("click", () => {
+      previousOverflow = document.body.style.overflow;
+      menu.showModal();
+      document.body.style.overflow = "hidden";
+      toggle.setAttribute("aria-expanded", "true");
+    });
+    close.addEventListener("click", () => menu.close());
+    menu
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", () => menu.close()));
+    menu.addEventListener("close", () => {
+      document.body.style.overflow = previousOverflow;
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.focus();
+    });
+    window
+      .matchMedia("(min-width: 768px)")
+      .addEventListener("change", (event) => {
+        if (event.matches && menu.open) menu.close();
+      });
+  }
+
+  const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const revealElements = document.querySelectorAll<HTMLElement>(
+    ".landing-page [data-reveal]",
+  );
+  const words = document.querySelectorAll<HTMLElement>(".lp-reveal-word");
+  const revealAll = () => {
+    revealElements.forEach((element) => element.classList.add("lp-visible"));
+    words.forEach((word) => word.classList.add("lp-word-active"));
+  };
+
+  if ("IntersectionObserver" in window) {
+    const sections = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target as HTMLElement;
+          if (element.dataset.trackSection)
+            trackSectionView(
+              element.dataset.trackSection,
+              element.dataset.trackSection,
+            );
+          element.classList.add("lp-visible");
+          observer.unobserve(element);
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document
+      .querySelectorAll<HTMLElement>(".landing-page [data-track-section]")
+      .forEach((section) => sections.observe(section));
+    if (!motion.matches) {
+      revealElements.forEach((element) =>
+        element.classList.add("lp-reveal-ready"),
+      );
+      words.forEach((word) => word.classList.add("lp-word-ready"));
+      let framePending = false;
+      const revealWords = () => {
+        framePending = false;
+        words.forEach((word, index) => {
+          const trigger = window.innerHeight * 0.85 - index * 16;
+          if (word.getBoundingClientRect().top < trigger)
+            word.classList.add("lp-word-active");
+        });
+        if (
+          Array.from(words).every((word) =>
+            word.classList.contains("lp-word-active"),
+          )
+        ) {
+          window.removeEventListener("scroll", scheduleWordReveal);
+          window.removeEventListener("resize", scheduleWordReveal);
+        }
+      };
+      const scheduleWordReveal = () => {
+        if (framePending) return;
+        framePending = true;
+        requestAnimationFrame(revealWords);
+      };
+      window.addEventListener("scroll", scheduleWordReveal, { passive: true });
+      window.addEventListener("resize", scheduleWordReveal);
+      scheduleWordReveal();
+    } else revealAll();
+    motion.addEventListener("change", (event) => {
+      if (event.matches) revealAll();
+    });
+  }
+</script>
