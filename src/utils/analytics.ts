@@ -62,7 +62,7 @@ export const trackFormSubmission = (
 
 // Lead capture — the on-site Value Moment. Carries the lead's details as event
 // properties (there is no Mixpanel profile, by design: the site never calls
-// identify). Real signup + identify happens later in app.withmira.co.
+// identify). Real signup + identify happens later in app.sellogram.co.
 export const trackLeadCaptured = (leadData: Record<string, unknown>) => {
   trackEvent('lead_captured', leadData);
 };

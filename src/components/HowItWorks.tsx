@@ -1,29 +1,47 @@
 import { useSectionTracking } from '../hooks/useTracking';
-import { STEPS } from '../content/pages';
+import { DM_SCOPE_REASSURANCE, STEPS } from '../content/pages';
 
 const HowItWorks = () => {
   const sectionRef = useSectionTracking('how-it-works', 'How It Works Section');
 
   return (
-    <section id="how-it-works" ref={sectionRef} className="border-t border-line py-24 sm:py-32 lg:py-40">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <h2 className="max-w-xl font-display text-[clamp(1.9rem,1.4rem+2.2vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
-          Live in an afternoon, not a quarter
-        </h2>
+    <section id="how-it-works" ref={sectionRef} className="py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-16">
+          <div className="lg:col-span-5">
+            <h2 className="font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight text-ink [text-wrap:balance]">
+              Put Sellogram to work this afternoon.
+            </h2>
 
-        <ol className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-8 lg:mt-20">
-          {STEPS.map((step) => (
-            <li key={step.title} className="border-t border-line pt-6">
-              <h3 className="text-lg font-semibold text-ink">{step.title}</h3>
-              <p className="mt-2 text-base leading-relaxed text-ink-light">{step.description}</p>
-            </li>
-          ))}
-        </ol>
+            <div className="mt-9 overflow-hidden rounded-[1.5rem] bg-paper-raised">
+              <img
+                src="/images/shops/daily-drop.webp"
+                alt="Fashion sellers moving a rack of new stock through the city"
+                width={1672}
+                height={941}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full"
+              />
+            </div>
+          </div>
 
-        {/* Reassurance at the scariest step: handing over your Instagram. */}
-        <p className="mt-14 font-mono text-xs text-ink-faint sm:text-sm">
-          Sellogram reads only your shop's DMs, nothing else on your account.
-        </p>
+          <div className="lg:col-span-6 lg:col-start-7 lg:pt-12">
+            <ol className="space-y-9">
+              {STEPS.map((step) => (
+                <li key={step.title}>
+                  <div>
+                    <h3 className="text-lg font-semibold text-ink sm:text-xl">{step.title}</h3>
+                    <p className="mt-2 max-w-xl text-base leading-relaxed text-ink-light">{step.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-10 max-w-xl border-t border-line pt-6 text-sm leading-relaxed text-ink-light">
+              {DM_SCOPE_REASSURANCE} Anything it cannot answer, it hands to you.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,83 +1,92 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import sellogramWordmark from '../../brand/identity/wordmark/master/sellogram.svg?raw';
 import { useCTATracking } from '../hooks/useTracking';
 
-const APP_URL = 'https://app.withmira.co';
-const CTA_LABEL = 'Get started';
+const APP_URL = 'https://app.sellogram.co';
+const CTA_LABEL = 'Start free';
 
-// Global nav uses real routes so it works from any page (route-always). The
-// homepage no longer smooth-scrolls from the header; in-page CTAs handle that.
 const NAV_ITEMS = [
   { href: '/how-it-works', label: 'How it works', id: 'how-it-works' },
   { href: '/pricing', label: 'Pricing', id: 'pricing' },
 ];
 
-/**
- * Minimal fixed header: wordmark, two nav links, one CTA.
- * The CTA stays visible at every viewport, so no hamburger and no
- * separate mobile sticky bar are needed.
- */
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState('');
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const { trackCTA } = useCTATracking();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 16);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    setCurrentPath(window.location.pathname.replace(/\/$/, '') || '/');
   }, []);
 
-  const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [menuOpen]);
+
+  const handleCTAClick = () => {
     trackCTA('header_cta_button', CTA_LABEL, 'header', {
       button_location: 'top_navigation',
       button_type: 'secondary',
     });
-    window.location.href = APP_URL;
   };
 
-  return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 bg-paper/90 backdrop-blur-sm transition-[border-color] duration-300 border-b ${
-        isScrolled ? 'border-line' : 'border-transparent'
-      }`}
+  const navLinks = NAV_ITEMS.map((item) => (
+    <a
+      key={item.id}
+      href={item.href}
+      aria-current={currentPath === item.href ? 'page' : undefined}
+      onClick={() => trackCTA(`header_nav_${item.id}`, item.label, 'header')}
+      className="inline-flex min-h-[44px] items-center text-sm text-ink-light transition-colors duration-300 hover:text-ink aria-[current=page]:font-semibold aria-[current=page]:text-ink aria-[current=page]:underline aria-[current=page]:underline-offset-4"
     >
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-        <a
-          href="/"
-          aria-label="Sellogram"
-          className="block w-32 sm:w-36 text-ink"
-        >
-          <span
-            aria-hidden="true"
-            className="block [&>svg]:h-auto [&>svg]:w-full"
-            dangerouslySetInnerHTML={{ __html: sellogramWordmark }}
-          />
+      {item.label}
+    </a>
+  ));
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-sm">
+      <a href="#main-content" className="sr-only min-h-[44px] focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:items-center focus:rounded-md focus:bg-ink focus:px-4 focus:text-paper">
+        Skip to content
+      </a>
+      <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+        <a href="/" aria-label="Sellogram" className="flex min-h-[44px] w-32 items-center text-ink sm:w-36">
+          <span aria-hidden="true" className="[&>svg]:h-auto [&>svg]:w-full" dangerouslySetInnerHTML={{ __html: sellogramWordmark }} />
         </a>
-
         <div className="flex items-center gap-2 sm:gap-6">
-          <nav aria-label="Main navigation" className="hidden sm:flex items-center gap-6">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={() => trackCTA(`header_nav_${item.id}`, item.label, 'header')}
-                className="text-sm text-ink-light transition-colors duration-200 hover:text-ink"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <a
-            href={APP_URL}
-            onClick={handleCTAClick}
-            className="inline-flex min-h-[40px] items-center rounded-full bg-fern px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
-          >
+          <nav aria-label="Main navigation" className="hidden items-center gap-6 sm:flex">{navLinks}</nav>
+          <a href={APP_URL} onClick={handleCTAClick} className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full bg-fern px-3 text-sm font-medium text-ink transition-colors duration-300 hover:bg-fern-deep hover:text-paper active:scale-[0.98] sm:px-5">
             {CTA_LABEL}
           </a>
+          <button
+            ref={menuButtonRef}
+            type="button"
+            aria-label="Menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-ink transition duration-300 hover:bg-paper-raised active:scale-[0.98] motion-reduce:active:scale-100 sm:hidden"
+          >
+            <span aria-hidden="true" className="relative h-5 w-6">
+              <span className={`absolute left-0 top-0 h-0.5 w-6 rounded-full bg-current transition-transform duration-300 motion-reduce:transition-none ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+              <span className={`absolute left-0 top-2 h-0.5 w-6 rounded-full bg-current transition-opacity duration-300 motion-reduce:transition-none ${menuOpen ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`absolute left-0 top-4 h-0.5 w-6 rounded-full bg-current transition-transform duration-300 motion-reduce:transition-none ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+            </span>
+          </button>
         </div>
       </div>
+      {menuOpen && (
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-line bg-paper px-5 pb-4 sm:hidden">
+          <div className="mx-auto flex max-w-[1280px] flex-col">{navLinks}</div>
+        </nav>
+      )}
     </header>
   );
 };

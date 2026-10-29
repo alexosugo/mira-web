@@ -75,7 +75,7 @@ export async function initMixpanel(): Promise<void> {
     mixpanel.init(TOKEN, {
       ...(API_HOST ? { api_host: API_HOST } : {}),
       // Cookie (not localStorage) so the anon distinct_id + UTM super-properties
-      // survive the redirect from this marketing site to app.withmira.co. The
+      // survive the redirect from this marketing site to app.sellogram.co. The
       // cookie is set on the shared root domain (.withmira.co), so attribution
       // carries across subdomains — IF the app initializes the same Mixpanel
       // project. (No-op for genuinely cross-domain redirects; see README/handoff.)
@@ -113,6 +113,6 @@ export function track(eventName: string, properties: Record<string, unknown> = {
 // Note: this marketing site deliberately never calls mixpanel.identify(). Leads
 // have no stable user id yet, and Mixpanel forbids email-as-$user_id (emails
 // change). Staying anonymous keeps the cookie's $device_id free to be claimed by
-// app.withmira.co's identify(dbUserId) at real signup, so Simplified ID Merge
+// app.sellogram.co's identify(dbUserId) at real signup, so Simplified ID Merge
 // stitches the whole marketing -> app journey to that user. Identifying here
 // would prematurely claim the device and sever that merge.

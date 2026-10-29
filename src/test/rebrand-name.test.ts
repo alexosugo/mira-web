@@ -11,12 +11,10 @@ function read(relativePath: string) {
 const activeBrandFiles = [
   'src/components/EliteContactModal.tsx',
   'src/components/Footer.tsx',
-  'src/components/Handles.tsx',
   'src/components/Header.tsx',
   'src/components/Hero.tsx',
   'src/components/HeroChatDemo.tsx',
   'src/components/HowItWorks.tsx',
-  'src/components/NightShift.tsx',
   'src/components/Pricing.tsx',
   'src/layouts/BaseLayout.astro',
   'PRODUCT.md',
@@ -44,17 +42,16 @@ describe('Sellogram rename', () => {
     }
   });
 
-  it('uses Sellogram rather than Mira as the chat actor identifier', () => {
+  it('keeps Sellogram behind the shop identity in shopper-facing chat', () => {
     const chat = read('src/components/HeroChatDemo.tsx');
-    const nightShift = read('src/components/NightShift.tsx');
 
     expect(chat).not.toMatch(/['"]mira['"]/);
-    expect(chat).toContain("'sellogram'");
-    expect(nightShift).not.toContain('isMira');
-    expect(nightShift).toContain('isSellogram');
+    expect(chat).toContain("'shop'");
+    expect(chat).not.toContain("'sellogram'");
+    expect(chat).toContain('Sellogram powers');
   });
 
-  it('does not migrate legacy URLs until the domain cutover is explicitly requested', () => {
+  it('uses the current Sellogram app URL after the domain cutover', () => {
     const header = read('src/components/Header.tsx');
     const hero = read('src/components/Hero.tsx');
     const pricing = read('src/components/Pricing.tsx');
@@ -63,19 +60,18 @@ describe('Sellogram rename', () => {
     const layout = read('src/layouts/BaseLayout.astro');
     const readme = read('README.md');
 
-    expect(header).toContain('https://app.withmira.co');
-    expect(hero).toContain('https://app.withmira.co');
-    expect(pricing).toContain('https://app.withmira.co');
-    expect(elite).toContain('app.withmira.co');
+    expect(header).toContain('https://app.sellogram.co');
+    expect(hero).toContain('https://app.sellogram.co');
+    expect(pricing).toContain('https://app.sellogram.co');
+    expect(elite).toContain('app.sellogram.co');
     expect(elite).toContain('hello@sellogram.co');
-    expect(footer).toContain('https://app.withmira.co');
     expect(footer).toContain('hello@sellogram.co');
     expect(layout).toContain('https://sellogram.co/');
-    expect(layout).toContain('https://app.withmira.co');
+    expect(layout).toContain('https://app.sellogram.co');
     expect(readme).toContain('https://app.netlify.com/projects/withmira/deploys');
 
-    for (const file of [header, hero, pricing, elite, footer, layout, readme]) {
-      expect(file).not.toContain('app.sellogram.co');
+    for (const file of [header, hero, pricing, elite, footer, layout]) {
+      expect(file).not.toContain('app.withmira.co');
     }
   });
 });

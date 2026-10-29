@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import PricingMatrix from '../components/PricingMatrix';
+import Pricing from '../components/Pricing';
 import EliteModalButton from '../components/EliteModalButton';
 
 vi.mock('../utils/analytics', () => ({
@@ -9,7 +10,24 @@ vi.mock('../utils/analytics', () => ({
   trackLeadCaptured: vi.fn(),
 }));
 
+vi.mock('../hooks/useTracking', () => ({
+  useSectionTracking: () => ({ current: null }),
+  useCTATracking: () => ({ trackCTA: vi.fn() }),
+}));
+
 describe('Pricing page interactive pricing components', () => {
+  it.each([['homepage', Pricing], ['pricing page', PricingMatrix]])(
+    'identifies the recommended plan and keeps signup links on the %s',
+    (_page, Component) => {
+      render(<Component />);
+
+      expect(screen.getByText('Recommended', { selector: '[aria-hidden="false"]' })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Start free' })).toHaveAttribute('href', 'https://app.sellogram.co');
+      expect(screen.getByRole('link', { name: 'Upgrade to Pro' })).toHaveAttribute('href', 'https://app.sellogram.co');
+      fireEvent.click(screen.getByRole('button', { name: 'Ask about Elite' }));
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    },
+  );
   it('renders the full homepage pricing matrix', () => {
     render(<PricingMatrix />);
 

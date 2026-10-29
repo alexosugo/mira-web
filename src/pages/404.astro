@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+---
+
+<BaseLayout title="Page not found | Sellogram" description="The page you requested could not be found." canonicalPath="/404" noindex>
+  <div class="flex min-h-screen flex-col bg-paper">
+    <Header client:load />
+    <main id="main-content" tabindex="-1" class="flex flex-1 items-center">
+      <div class="mx-auto w-full max-w-[1280px] px-5 py-24 sm:px-8 lg:px-10">
+        <p class="kicker text-ink-faint">404</p>
+        <h1 class="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">We couldn't find that page.</h1>
+        <p class="mt-5 max-w-xl text-lg text-ink-light">The page may have moved or the link may be incorrect.</p>
+        <a href="/" class="mt-8 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 py-3 font-semibold text-ink transition-colors duration-200 hover:bg-night-raised">Back to home</a>
+      </div>
+    </main>
+    <Footer client:visible />
+  </div>
+</BaseLayout>

@@ -1,0 +1,129 @@
+---
+/**
+ * The four shop types linked from the homepage use a buying story instead of
+ * fictional seller profiles, repeated feature grids or long FAQs.
+ */
+import ShopDMCard, { type ShopDMMessage } from '../ShopDMCard';
+import FinalCTA from '../FinalCTA';
+import type { PageHero, ShopStory } from '../../content/pages';
+import type { Route } from '../../lib/routes';
+
+interface Props {
+  hero: PageHero;
+  story: ShopStory;
+  route: Route;
+}
+
+const { hero, story, route } = Astro.props;
+const cta = hero.primaryCta;
+const messages: ShopDMMessage[] = story.messages.map((message) => ({
+  from: message.from === 'sellogram' ? 'shop' : 'customer',
+  text: message.text,
+}));
+const container = 'mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10';
+const sectionHeading = 'font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight text-ink [text-wrap:balance]';
+---
+
+<article>
+  <section class="pb-20 pt-28 sm:pb-28 sm:pt-36 lg:pb-32">
+    <div class={container}>
+      <header class="grid gap-9 lg:grid-cols-12 lg:items-end">
+        <div class="lg:col-span-8">
+          <h1 class="max-w-[16ch] animate-fade-in-up font-display text-[clamp(2.5rem,1.7rem+3.6vw,4.75rem)] font-semibold leading-[0.96] tracking-tighter text-ink [animation-delay:80ms] [text-wrap:balance]">
+            {hero.h1}
+          </h1>
+          {hero.intro && (
+            <p class="mt-8 max-w-2xl animate-fade-in-up text-lg leading-relaxed text-ink-light [animation-delay:120ms] sm:text-xl">{hero.intro}</p>
+          )}
+          <p class={`max-w-2xl animate-fade-in-up font-display text-xl leading-snug text-ink [animation-delay:140ms] [text-wrap:balance] sm:text-2xl ${hero.intro ? 'mt-4' : 'mt-8'}`}>
+            {story.openingQuestions}
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 lg:pb-2">
+          <p class="max-w-lg animate-fade-in-up text-lg leading-relaxed text-ink-light [animation-delay:160ms] [text-wrap:pretty]">
+            {story.openingClose}
+          </p>
+          {cta && (
+            <a
+              href={cta.href}
+              class="mt-8 inline-flex min-h-[50px] animate-fade-in-up items-center rounded-full bg-fern px-8 text-base font-medium text-ink transition-colors duration-200 [animation-delay:240ms] hover:bg-fern-deep hover:text-paper"
+              data-shop-use-case-cta
+              data-cta-tracking={cta.trackingKey}
+              data-cta-label={cta.label}
+              data-cta-section={`${route.pageName} hero`}
+            >
+              {cta.label}
+            </a>
+          )}
+        </div>
+      </header>
+
+      <section class="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-12 lg:items-center lg:gap-16" aria-labelledby="shop-example-heading">
+        <figure class="w-full max-w-[34rem] animate-fade-in-up [animation-delay:260ms] lg:col-span-6 lg:max-w-none">
+          <div class="relative">
+            <div class="aspect-[4/5] overflow-hidden rounded-xl bg-paper-raised shadow-[0_30px_90px_rgba(19,30,9,0.16)] sm:rounded-2xl">
+              <img
+                src={story.image}
+                alt={story.imageAlt}
+                width="1122"
+                height="1402"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, (min-width: 640px) 34rem, 100vw"
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div class="relative z-10 mx-3 -mt-24 sm:absolute sm:inset-x-[6%] sm:bottom-[5%] sm:mx-0 sm:mt-0">
+              <ShopDMCard shopName={story.shopName} initials={story.shopInitials} messages={messages} />
+            </div>
+          </div>
+          <figcaption class="mt-4 text-xs leading-relaxed text-ink-faint">
+            Example conversation based on questions Instagram shops commonly receive.
+          </figcaption>
+        </figure>
+
+        <div class="lg:col-span-5 lg:col-start-8">
+          <h2 id="shop-example-heading" class={sectionHeading}>
+            {story.sceneHeading}
+          </h2>
+          <div class="mt-7 space-y-5">
+            {story.sceneAfter.map((paragraph) => (
+              <p class="max-w-lg text-base leading-relaxed text-ink-light [text-wrap:pretty] sm:text-lg">{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 lg:py-32" aria-labelledby="shop-details-heading">
+    <div class={`${container} grid gap-10 lg:grid-cols-12 lg:gap-16`}>
+      <h2 id="shop-details-heading" class={`lg:col-span-5 ${sectionHeading}`}>
+        {story.secondHeading}
+      </h2>
+      <div class="space-y-5 lg:col-span-6 lg:col-start-7 lg:pt-3">
+        {story.secondParagraphs.map((paragraph) => (
+          <p class="max-w-xl text-base leading-relaxed text-ink-light [text-wrap:pretty] sm:text-lg">{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA client:visible note={story.ctaClose} trackingSection={`${route.pageName} final-cta`} />
+</article>
+
+<script>
+  import { trackCTAClick } from '../../utils/analytics';
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-shop-use-case-cta]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackCTAClick(
+        link.dataset.ctaTracking ?? 'content_get_started',
+        link.dataset.ctaLabel ?? 'Start free',
+        link.dataset.ctaSection ?? 'use case',
+      );
+    });
+  });
+</script>

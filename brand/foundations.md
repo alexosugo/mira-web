@@ -6,29 +6,29 @@ This file records the visual system already used by the website. It is descripti
 
 | Token | Value | Use |
 | --- | --- | --- |
-| Paper | `#F2F6F3` | Default page background |
-| Paper raised | `#E7EEE9` | Raised light surfaces |
-| Ink | `#1B2620` | Primary text and dark marks |
-| Ink light | `#49584F` | Secondary text |
-| Ink faint | `#58685E` | Quiet text that must remain readable on Paper |
-| Line | `#DCE6DF` | Hairline borders and dividers |
-| Fern | `#177E54` | Primary action colour |
-| Fern deep | `#11603F` | Fern hover/darker state |
-| Fern bright | `#8BD9B3` | Fern on dark surfaces |
+| Paper | `#F3F6F0` | Default page background |
+| Paper raised | `#E8EEE3` | Raised light surfaces |
+| Ink | `#1E2617` | Primary text and dark marks |
+| Ink light | `#4A5541` | Secondary text |
+| Ink faint | `#5C6852` | Quiet text that must remain readable on Paper |
+| Line | `#DEE6D7` | Hairline borders and dividers |
+| Fern | `#90DD34` | Primary action colour. Fill only, always with Ink text |
+| Fern deep | `#44780C` | Fern text, icons, focus ring and hover fill on light |
+| Fern bright | `#225C13` | Sellogram-is-acting accent on Night |
 | Dawn | `#A35F0C` | Commerce accent |
 | Dawn deep | `#834B0A` | Darker commerce text/accent |
-| Dawn bright | `#F0B254` | Commerce accent on dark surfaces |
-| Night | `#0E1E17` | Primary dark surface |
-| Night raised | `#162C22` | Raised surface on Night |
-| Night line | `#264436` | Dividers on Night |
+| Dawn bright | `#794402` | Commerce accent on Night |
+| Night | `#90DD34` | Bold lime surface. Carries ink text |
+| Night raised | `#83CE1C` | Raised surface on Night |
+| Night line | `#558912` | Dividers on Night |
 
 ### Colour roles
 
-Fern is the action colour. Use it for primary actions, active product states, Sellogram responses, presence, and success states.
+Fern is the action colour. The lime default is a fill only; it sits at 1.3:1 against Paper, so text, icons and focus rings on light surfaces use Fern deep. Use it for primary actions, active product states, Sellogram responses, presence, and success states.
 
 Dawn is the commerce colour. Use it for money, carts, payment, completed sales, and selected commercial emphasis. Do not use Dawn as the normal primary button colour.
 
-Night is the dark surface. Use it for deliberate high-contrast sections and the footer, with the bright Fern and Dawn variants where needed.
+Night is the dark surface slot, now filled by a bold lime. It is a light lime, so use ink for text and the deep Fern and Dawn bright variants for accents. Use it for deliberate high-impact sections and the footer.
 
 Paper and Ink are the default ground and foreground. Most of the public experience should remain here.
 

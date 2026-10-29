@@ -1,110 +1,51 @@
-import type { ReactNode } from 'react';
-import { Check } from 'lucide-react';
+import ShopDMCard, { type ShopDMMessage } from './ShopDMCard';
 
-/** Stagger start for the first message; each subsequent message lands 250ms later,
-    so the full conversation (including the 2:14 AM payoff) completes within ~2s. */
-const MESSAGE_BASE_DELAY_MS = 400;
-const MESSAGE_STEP_MS = 250;
+const HERO_IMAGE_SRC = '/images/hero/cobalt-stairwell.webp';
 
-interface ChatMessage {
-  from: 'customer' | 'sellogram';
-  text: ReactNode;
-}
-
-const MESSAGES: ChatMessage[] = [
-  { from: 'customer', text: 'Sasa! Do you have the denim jacket in M?' },
-  {
-    from: 'sellogram',
-    text: (
-      <>
-        Yes, two left in M. <span className="font-mono text-[0.85em]">KES 2,400</span>. Want me
-        to add one to your cart?
-      </>
-    ),
-  },
-  { from: 'customer', text: 'Add it. Can you deliver to CBD tomorrow?' },
-  {
-    from: 'sellogram',
-    text: (
-      <>
-        Done. Delivery is <span className="font-mono text-[0.85em]">KES 200</span>, arrives
-        tomorrow. You can pay with M-Pesa at checkout.
-      </>
-    ),
-  },
+const MESSAGES: ShopDMMessage[] = [
+  { from: 'customer', text: 'Hii denim set bado iko in M?' },
+  { from: 'shop', text: 'Iko. Full set ni KSh 6,000.' },
+  { from: 'customer', text: 'Na delivery Kilimani?' },
+  { from: 'shop', text: 'KSh 250. Ukichukua leo rider can bring it this afternoon.' },
 ];
 
-const messageDelay = (index: number) => `${MESSAGE_BASE_DELAY_MS + index * MESSAGE_STEP_MS}ms`;
-
 /**
- * The hero's proof surface: a believable Instagram DM thread where Sellogram
- * answers a stock question, builds a cart, and closes the sale overnight.
- * Messages stagger in with CSS-only delays (no JS gating); reduced motion
- * shows everything instantly via the global override in index.css.
+ * Hero proof surface: the merchant world plus the shop DM that Sellogram powers.
+ * Sellogram stays behind the shop identity; the customer only sees the shop.
  */
 const HeroChatDemo = () => {
   return (
-    <div
-      aria-label="Example Instagram DM conversation: Sellogram answers a customer's stock question, adds a jacket to their cart, and confirms the order at 2:14 AM"
-      className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-line bg-white"
+    <figure
+      aria-label="Example Nia Thrift Instagram DM conversation about a denim set and delivery to Kilimani"
+      className="relative isolate"
     >
-      {/* Thread header */}
-      <div className="flex items-center gap-3 border-b border-line px-5 py-4">
-        <div className="relative">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-fern font-display text-sm font-medium text-paper">
-            NT
-          </div>
-          <span
-            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-fern-bright"
-            aria-hidden="true"
-          />
-        </div>
+      <div className="overflow-hidden rounded-xl bg-ink shadow-[0_30px_90px_rgba(19,30,9,0.16)] sm:rounded-2xl">
+        <img
+          src={HERO_IMAGE_SRC}
+          alt="Nairobi fashion seller photographing a denim look against a cobalt-blue stairwell"
+          width={1536}
+          height={1024}
+          loading="eager"
+          decoding="async"
+          sizes="(min-width: 1600px) 1536px, calc(100vw - 2rem)"
+          className="block h-auto w-full"
+        />
+      </div>
+
+      <div className="relative z-10 mx-3 -mt-10 sm:absolute sm:left-[4%] sm:top-[7%] sm:mx-0 sm:mt-0 sm:w-[31%] lg:w-[28%] xl:w-[26%]">
+        <ShopDMCard shopName="Nia Thrift" initials="NT" messages={MESSAGES} />
+      </div>
+
+      <div className="relative z-20 mx-8 -mt-2 flex max-w-[17rem] items-center justify-between gap-4 rounded-xl border border-white/75 bg-white/95 px-4 py-3 shadow-[0_16px_48px_rgba(19,30,9,0.16)] backdrop-blur-md sm:absolute sm:bottom-[8%] sm:left-[4%] sm:mx-0 sm:mt-0 sm:w-[29%] sm:max-w-none lg:w-[25%]">
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-ink">@nia.thrifts</p>
-          <p className="font-mono text-xs text-fern">Sellogram replies for you</p>
+          <p className="truncate text-xs font-semibold text-ink sm:text-sm">Patchwork denim set</p>
+          <p className="mt-0.5 font-mono text-xs text-ink-faint">KSh 6,000 · Size M</p>
         </div>
+        <span className="shrink-0 rounded-full bg-fern/10 px-2 py-1 font-body text-xs uppercase tracking-wide text-fern-deep">
+          in stock
+        </span>
       </div>
-
-      {/* Messages */}
-      <div className="space-y-3 px-4 py-5">
-        {MESSAGES.map((message, index) => (
-          <div
-            key={index}
-            className={`flex animate-fade-in-up ${message.from === 'sellogram' ? 'justify-end' : 'justify-start'}`}
-            style={{ animationDelay: messageDelay(index) }}
-          >
-            <p
-              className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${
-                message.from === 'sellogram'
-                  ? 'rounded-2xl rounded-br-md bg-fern text-paper'
-                  : 'rounded-2xl rounded-bl-md bg-paper text-ink'
-              }`}
-            >
-              {message.text}
-            </p>
-          </div>
-        ))}
-
-        {/* Cart confirmation: the page's one dawn signal above the fold */}
-        <div
-          className="flex justify-end animate-fade-in-up"
-          style={{ animationDelay: messageDelay(MESSAGES.length) }}
-        >
-          <p className="inline-flex items-center gap-2 rounded-2xl rounded-br-md border border-dawn/30 bg-dawn/5 px-4 py-2.5 font-mono text-xs text-dawn-deep sm:text-sm">
-            <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
-            1 × Denim jacket (M) · KES 2,400
-          </p>
-        </div>
-
-        {/* Outcome */}
-        <p
-          className="pt-2 text-center font-mono text-xs text-ink-faint animate-fade-in-up"
-          style={{ animationDelay: messageDelay(MESSAGES.length + 1) }}
-        >
-          Order confirmed · 2:14 AM
-        </p>
-      </div>
-    </div>
+    </figure>
   );
 };
 

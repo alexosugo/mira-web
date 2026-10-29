@@ -3,7 +3,7 @@ import { PLANS } from '../content/pages';
 import { useCTATracking } from '../hooks/useTracking';
 import EliteModalButton from './EliteModalButton';
 
-const appUrl = 'https://app.withmira.co';
+const appUrl = 'https://app.sellogram.co';
 
 const PricingMatrix = () => {
   const { trackCTA } = useCTATracking();
@@ -14,14 +14,12 @@ const PricingMatrix = () => {
         {PLANS.map((plan) => (
           <article
             key={plan.key}
-            className="flex flex-col border-b border-line py-10 last:border-b-0 md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
+            className="flex flex-col border-b border-line py-10 last:border-b-0 md:row-span-3 md:grid md:grid-rows-[subgrid] md:border-b-0 md:px-10 md:first:pl-0 md:last:pr-0"
           >
-            <div className="min-h-[11rem]">
-              {plan.isHighlighted && (
-                <p className="mb-4 inline-flex border border-dawn/30 px-3 py-1 font-mono text-xs uppercase tracking-wide text-dawn-deep">
-                  Recommended
-                </p>
-              )}
+            <div>
+              <p className={`mb-4 border border-dawn/30 px-3 py-1 font-body text-xs uppercase tracking-wide text-dawn-deep ${plan.isHighlighted ? 'inline-flex' : 'hidden md:invisible md:inline-flex'}`} aria-hidden={!plan.isHighlighted}>
+                Recommended
+              </p>
               <h3 className="font-display text-2xl font-semibold text-ink">{plan.name}</h3>
               <div className="mt-6 flex items-baseline gap-2">
                 {plan.pricePrefix && <span className="text-sm text-ink-light">{plan.pricePrefix}</span>}
@@ -32,7 +30,9 @@ const PricingMatrix = () => {
             </div>
 
             <div className="mt-8 border-t border-line pt-8">
-              {plan.featuresLead && <p className="mb-4 text-sm font-semibold text-ink">{plan.featuresLead}</p>}
+              <p className={`mb-4 text-sm font-semibold text-ink ${plan.featuresLead ? '' : 'hidden md:block md:invisible'}`} aria-hidden={!plan.featuresLead}>
+                {plan.featuresLead || 'Everything in Free, plus:'}
+              </p>
               <ul className="space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
@@ -48,7 +48,7 @@ const PricingMatrix = () => {
                 <EliteModalButton
                   label={plan.cta}
                   location="pricing_page_matrix"
-                  className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5"
+                  className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-ink/25 px-6 text-base font-medium text-ink transition duration-200 hover:border-ink hover:bg-ink/5 active:scale-[0.98] motion-reduce:active:scale-100"
                 />
               ) : (
                 <a
@@ -59,16 +59,16 @@ const PricingMatrix = () => {
                       plan_type: plan.key,
                     })
                   }
-                  className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
+                  className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-base font-medium transition duration-200 active:scale-[0.98] motion-reduce:active:scale-100 ${
                     plan.isHighlighted
-                      ? 'bg-fern text-paper hover:bg-fern-deep'
+                      ? 'bg-fern text-ink hover:bg-fern-deep hover:text-paper'
                       : 'border border-ink/25 text-ink hover:border-ink hover:bg-ink/5'
                   }`}
                 >
                   {plan.cta}
                 </a>
               )}
-              {plan.footnote && <p className="mt-3 font-mono text-xs text-ink-faint">{plan.footnote}</p>}
+              {plan.footnote && <p className="mt-3 font-body text-xs text-ink-faint">{plan.footnote}</p>}
             </div>
           </article>
         ))}

@@ -1,0 +1,105 @@
+import { ArrowUpRight } from 'lucide-react';
+
+interface SupportedShop {
+  readonly name: string;
+  readonly href: string;
+  readonly image: string;
+  readonly imageAlt: string;
+  readonly imageWidth: number;
+  readonly imageHeight: number;
+  readonly question: string;
+  readonly imagePosition?: string;
+}
+
+const SHOPS: readonly SupportedShop[] = [
+  {
+    name: 'Fashion & thrift',
+    href: '/use-cases/fashion',
+    image: '/images/shops/fashion-thrift.webp',
+    imageAlt: 'Fashion seller measuring denim at a bright city worktable',
+    imageWidth: 1122,
+    imageHeight: 1402,
+    question: 'Is size 10 still in stock?',
+  },
+  {
+    name: 'Beauty',
+    href: '/use-cases/beauty',
+    image: '/images/shops/beauty.webp',
+    imageAlt: 'Beauty seller packing colorful products in a bright studio',
+    imageWidth: 1122,
+    imageHeight: 1402,
+    question: 'Which shade matches this?',
+  },
+  {
+    name: 'Accessories',
+    href: '/use-cases/accessories',
+    image: '/images/shops/accessories.webp',
+    imageAlt: 'Accessories seller wrapping a gift order by hand',
+    imageWidth: 1122,
+    imageHeight: 1402,
+    question: 'Can you deliver today?',
+  },
+  {
+    name: 'Bakeries & food',
+    href: '/use-cases/home-bakeries-food-brands',
+    image: '/images/shops/bakery-food.webp',
+    imageAlt: 'Baker packing fresh pastries and customer orders',
+    imageWidth: 1122,
+    imageHeight: 1402,
+    question: 'Can I order this for Saturday?',
+    imagePosition: 'object-top',
+  },
+];
+
+const SupportedShops = () => {
+  return (
+    <section id="supported-shops" className="py-6 sm:py-8 lg:py-10">
+      <div className="px-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] rounded-xl bg-cobalt px-6 py-14 sm:px-10 sm:py-16 lg:p-20 text-white sm:rounded-2xl">
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <h2 className="max-w-4xl font-display text-[clamp(2rem,1.5rem+2.4vw,3.5rem)] font-semibold leading-[1.02] tracking-tight [text-wrap:balance] lg:col-span-8">
+              Whatever you sell, the questions repeat
+            </h2>
+            <p className="max-w-md text-base leading-relaxed text-white/85 sm:text-lg lg:col-span-3 lg:col-start-10 lg:max-w-none">
+              Also fragrance, skincare, daily drops and more. Sellogram learns the answers from your shop.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+            {SHOPS.map((shop) => (
+              <a
+                key={shop.href}
+                href={shop.href}
+                className="group block rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:rounded-2xl"
+              >
+                <div className="aspect-[4/5] overflow-hidden rounded-xl bg-cobalt-deep sm:rounded-2xl">
+                  <img
+                    src={shop.image}
+                    alt={shop.imageAlt}
+                    width={shop.imageWidth}
+                    height={shop.imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className={`h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.02] ${shop.imagePosition ?? ''}`}
+                  />
+                </div>
+                <div className="mt-5 flex items-start justify-between gap-5">
+                  <div>
+                    <h3 className="font-display text-xl font-semibold">{shop.name}</h3>
+                    <p className="mt-1.5 text-base leading-relaxed text-white/85 sm:text-lg">
+                      “{shop.question}”
+                    </p>
+                  </div>
+                  <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-white/65 transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SupportedShops;

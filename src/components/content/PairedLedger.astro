@@ -20,7 +20,7 @@ const rows = Math.max(day.length, sellogramHelps.length);
     <h2 class="font-display text-[clamp(1.9rem,1.4rem+2.4vw,2.875rem)] font-semibold italic leading-[1.05] tracking-tight text-ink [text-wrap:balance]">
       {name}
     </h2>
-    <p class="mt-3 font-mono text-sm leading-relaxed text-ink-faint">
+    <p class="mt-3 font-body text-sm leading-relaxed text-ink-faint">
       {role} An example seller, not a customer story.
     </p>
   </div>
@@ -34,19 +34,19 @@ const rows = Math.max(day.length, sellogramHelps.length);
     {Array.from({ length: rows }, (_, i) => (
       <div class="grid gap-4 md:grid-cols-2 md:gap-x-12 md:border-b md:border-line md:py-6">
         {day[i] && (
-          <div class="flex items-start gap-3">
-            <span class="kicker mt-1 shrink-0 text-ink-faint md:hidden">Now</span>
+          <div class="flex flex-wrap items-start gap-x-3 gap-y-2 md:flex-nowrap md:gap-y-0">
+            <span class="kicker basis-full text-ink-faint md:hidden">Now</span>
             <span class="mt-2.5 hidden h-1.5 w-1.5 shrink-0 rounded-full border border-ink-faint/50 md:block" aria-hidden="true"></span>
-            <p class="text-base leading-relaxed text-ink-light">{day[i]}</p>
+            <p class="min-w-0 flex-1 text-base leading-relaxed text-ink-light">{day[i]}</p>
           </div>
         )}
         {sellogramHelps[i] && (
-          <div class="flex items-start gap-3">
-            <span class="kicker mt-1 shrink-0 text-fern-deep md:hidden">With Sellogram</span>
-            <svg class="mt-1 h-4 w-4 shrink-0 text-fern" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <div class="flex flex-wrap items-start gap-x-3 gap-y-2 md:flex-nowrap md:gap-y-0">
+            <span class="kicker basis-full text-fern-deep md:hidden">With Sellogram</span>
+            <svg class="mt-1 h-4 w-4 shrink-0 text-fern-deep" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" />
             </svg>
-            <p class="text-base leading-relaxed text-ink">{sellogramHelps[i]}</p>
+            <p class="min-w-0 flex-1 text-base leading-relaxed text-ink">{sellogramHelps[i]}</p>
           </div>
         )}
       </div>

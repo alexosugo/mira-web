@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen, fireEvent } from '@testing-library/react';
 import EliteContactModal from '../components/EliteContactModal';
 
 const submitEliteInquiry = vi.fn();
@@ -116,6 +116,88 @@ describe('EliteContactModal', () => {
     fireEvent.click(screen.getByText('Send message'));
     expect(submitEliteInquiry).not.toHaveBeenCalled();
     expect(screen.getByText('Please enter your shop name')).toBeInTheDocument();
+  });
+
+  it('associates errors with invalid fields and focuses the first one', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fireEvent.click(screen.getByText('Send message'));
+    for (const [label, message] of [
+      [/Shop name/, /Please enter your shop name/],
+      [/Email/, /Please enter your email/],
+      [/Your name/, /Please enter your name/],
+      [/About your shop/, /Tell us a little about your shop/],
+    ] as const) {
+      const field = screen.getByLabelText(label);
+      expect(field).toHaveAttribute('aria-invalid', 'true');
+      expect(field).toHaveAccessibleDescription(message);
+    }
+    expect(screen.getByLabelText(/Shop name/)).toHaveFocus();
+  });
+
+  it('shows the inline email error for an invalid address', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'bad-email' } });
+    fireEvent.click(screen.getByText('Send message'));
+    expect(screen.getByLabelText(/Email/)).toHaveAccessibleDescription(/Enter a valid email address/);
+    expect(screen.getByLabelText(/Email/)).toHaveFocus();
+  });
+
+  it('validates the values that will be sent after sanitization', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.change(screen.getByLabelText(/Shop name/), { target: { value: '<>' } });
+    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: '<>@example.com' } });
+    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: '<>' } });
+    fireEvent.change(screen.getByLabelText(/About your shop/), { target: { value: '<>' } });
+    fireEvent.click(screen.getByText('Send message'));
+    expect(screen.getByLabelText(/Shop name/)).toHaveAccessibleDescription(/Please enter your shop name/);
+    expect(screen.getByLabelText(/Email/)).toHaveAccessibleDescription(/Enter a valid email address/);
+    expect(screen.getByLabelText(/Your name/)).toHaveAccessibleDescription(/Please enter your name/);
+    expect(screen.getByLabelText(/About your shop/)).toHaveAccessibleDescription(/Tell us a little/);
+    expect(submitEliteInquiry).not.toHaveBeenCalled();
+  });
+
+  it('rejects email addresses that fail browser syntax validation', () => {
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'a,b@example.com' } });
+    fireEvent.click(screen.getByText('Send message'));
+    expect(screen.getByLabelText(/Email/)).toHaveAccessibleDescription(/Enter a valid email address/);
+    expect(submitEliteInquiry).not.toHaveBeenCalled();
+  });
+
+  it('keeps focus within the dialog while submission is pending', () => {
+    submitEliteInquiry.mockReturnValue(new Promise(() => {}));
+    render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.click(screen.getByText('Send message'));
+    const close = screen.getByRole('button', { name: 'Close modal' });
+    close.focus();
+    fireEvent.keyDown(document, { key: 'Tab', shiftKey: true });
+    expect(screen.getByRole('checkbox')).toHaveFocus();
+  });
+
+  it('ignores an earlier response after closing and submitting a new inquiry', async () => {
+    let resolveFirst!: () => void;
+    let resolveSecond!: () => void;
+    submitEliteInquiry.mockReturnValueOnce(new Promise<void>(resolve => { resolveFirst = resolve; }))
+      .mockReturnValueOnce(new Promise<void>(resolve => { resolveSecond = resolve; }));
+    const { rerender } = render(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.click(screen.getByText('Send message'));
+    fireEvent.click(screen.getByRole('button', { name: 'Close modal' }));
+    rerender(<EliteContactModal isOpen={false} onClose={() => {}} />);
+    rerender(<EliteContactModal isOpen onClose={() => {}} />);
+    fillValidForm();
+    fireEvent.click(screen.getByText('Send message'));
+    await act(async () => { resolveFirst(); });
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Sending...' })).toBeDisabled();
+    expect(trackLeadCaptured).not.toHaveBeenCalled();
+    await act(async () => { resolveSecond(); });
+    expect(screen.getByRole('status')).toBeInTheDocument();
+    expect(trackLeadCaptured).toHaveBeenCalledTimes(1);
   });
 
   it('rejects shop name shorter than 2 characters', () => {

@@ -31,7 +31,7 @@ const EMPTY_FORM: FormData = {
 };
 
 const INPUT_CLASSES = (hasError: boolean) =>
-  `w-full px-4 py-3 rounded-lg transition-colors duration-200 focus:outline-none
+  `w-full px-4 py-3 rounded-lg transition-colors duration-200
    bg-paper text-ink placeholder-ink-faint border ${
      hasError
        ? 'border-red-600/60 focus:border-red-600 focus:ring-2 focus:ring-red-600/20'
@@ -43,9 +43,11 @@ const LABEL_CLASSES = 'block text-sm font-semibold text-ink mb-1.5';
 const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
-  const submissionActiveRef = useRef(false);
+  const submissionIdRef = useRef(0);
+  const focusErrorsRef = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -56,7 +58,14 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     if (isOpen) {
       previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
       document.body.style.overflow = 'hidden';
-      setTimeout(() => firstInputRef.current?.focus(), 100);
+      const timer = setTimeout(() => {
+        if (!modalRef.current?.contains(document.activeElement)) firstInputRef.current?.focus();
+      }, 100);
+      return () => {
+        clearTimeout(timer);
+        submissionIdRef.current += 1;
+        document.body.style.overflow = '';
+      };
     } else {
       document.body.style.overflow = '';
       previouslyFocusedRef.current?.focus();
@@ -66,6 +75,15 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (focusErrorsRef.current) {
+      focusErrorsRef.current = false;
+      modalRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+    }
+  }, [errors]);
+
+  useEffect(() => () => { submissionIdRef.current += 1; }, []);
 
   // The submit button unmounts on success; without this, keyboard focus drops
   // to <body> and assistive tech never hears the confirmation.
@@ -79,9 +97,9 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
 
     const handleTab = (e: KeyboardEvent) => {
       if (e.key !== 'Tab' || !modalRef.current) return;
-      const focusables = modalRef.current.querySelectorAll<HTMLElement>(
+      const focusables = Array.from(modalRef.current.querySelectorAll<HTMLElement>(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
+      )).filter((element) => !element.hasAttribute('disabled'));
       if (focusables.length === 0) return;
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
@@ -138,31 +156,36 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
+    const shopName = sanitizeInput(formData.companyName).trim();
+    const email = sanitizeInput(formData.email).trim();
+    const personName = sanitizeInput(formData.personName).trim();
+    const message = sanitizeInput(formData.message).trim();
 
-    if (!formData.companyName.trim()) {
+    if (!shopName) {
       newErrors.companyName = 'Please enter your shop name';
-    } else if (formData.companyName.trim().length < 2) {
+    } else if (shopName.length < 2) {
       newErrors.companyName = 'Shop name must be at least 2 characters';
     }
-    if (!formData.email.trim()) {
+    if (!email) {
       newErrors.email = 'Please enter your email';
-    } else if (!validateEmail(formData.email.trim())) {
-      newErrors.email = 'Email needs an @ and a domain, like nia@example.com';
+    } else if (!validateEmail(email) || emailInputRef.current?.validity.typeMismatch) {
+      newErrors.email = 'Enter a valid email address, like nia@example.com';
     }
     if (formData.phone && formData.phone !== PHONE_PREFIX) {
       if (!/^\+254\d{9}$/.test(formData.phone)) {
         newErrors.phone = 'Enter a valid Kenyan number, e.g. +254712345678';
       }
     }
-    if (!formData.personName.trim()) {
+    if (!personName) {
       newErrors.personName = 'Please enter your name';
-    } else if (formData.personName.trim().length < 2) {
+    } else if (personName.length < 2) {
       newErrors.personName = 'Name must be at least 2 characters';
     }
-    if (!formData.message.trim()) {
+    if (!message) {
       newErrors.message = 'Tell us a little about your shop';
     }
 
+    focusErrorsRef.current = Object.keys(newErrors).length > 0;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -170,11 +193,11 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (isSubmitting || !validateForm()) return;
 
     setIsSubmitting(true);
     setSubmitError(null);
-    submissionActiveRef.current = true;
+    const submissionId = ++submissionIdRef.current;
 
     const inquiry: EliteInquiry = {
       shop_name: sanitizeInput(formData.companyName),
@@ -193,10 +216,10 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
     try {
       await submitEliteInquiry(inquiry);
 
-      if (!submissionActiveRef.current) return;
+      if (submissionId !== submissionIdRef.current) return;
 
       // Value Moment. No identify() — the site stays anonymous so the device id
-      // carries to app.withmira.co for merge at real signup (see lib/mixpanel).
+      // carries to app.sellogram.co for merge at real signup (see lib/mixpanel).
       trackLeadCaptured({
         lead_type: 'elite',
         email: inquiry.email,
@@ -208,7 +231,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       setIsSubmitting(false);
       setIsSuccess(true);
     } catch (err) {
-      if (!submissionActiveRef.current) return;
+      if (submissionId !== submissionIdRef.current) return;
       console.error('Elite inquiry submission failed:', err);
       trackFormSubmission(FORM_ID, FORM_NAME, mechanicsProps, 'error');
       setIsSubmitting(false);
@@ -226,7 +249,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
   };
 
   const resetAndClose = () => {
-    submissionActiveRef.current = false;
+    submissionIdRef.current += 1;
     setFormData(EMPTY_FORM);
     setErrors({});
     setIsSubmitting(false);
@@ -245,7 +268,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
       aria-labelledby="modal-title"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-night/70" onClick={handleBackdropClick} />
+      <div className="absolute inset-0 bg-ink/70" onClick={handleBackdropClick} />
 
       {/* Modal: single hairline elevation, matching the page's demo card */}
       <div
@@ -257,7 +280,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
         <div className="relative px-8 pt-8 pb-4">
           <button
             onClick={resetAndClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-ink-light
+            className="absolute top-4 right-4 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-ink-light
                        hover:text-ink hover:bg-ink/5 transition-colors duration-200"
             aria-label="Close modal"
           >
@@ -277,7 +300,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
           {isSuccess ? (
             <div className="py-8 text-center animate-fade-in-up" role="status">
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-fern/10 flex items-center justify-center">
-                <svg className="w-7 h-7 text-fern" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg className="w-7 h-7 text-fern-deep" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -293,14 +316,14 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
               </p>
               <button
                 onClick={resetAndClose}
-                className="px-6 py-3 rounded-full bg-fern text-paper font-medium
-                           hover:bg-fern-deep transition-colors duration-200"
+                className="px-6 py-3 rounded-full bg-fern text-ink font-medium
+                           hover:bg-fern-deep hover:text-paper active:scale-[0.98] motion-reduce:active:scale-100 transition duration-200"
               >
                 Close
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form noValidate onSubmit={handleSubmit} className="space-y-4">
               {/* Shop name */}
               <div>
                 <label htmlFor="elite-shop-name" className={LABEL_CLASSES}>
@@ -314,10 +337,12 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   value={formData.companyName}
                   onChange={(e) => handleInputChange('companyName', e.target.value)}
                   aria-required="true"
+                  aria-invalid={errors.companyName ? 'true' : undefined}
+                  aria-describedby={errors.companyName ? 'elite-shop-name-error' : undefined}
                   className={INPUT_CLASSES(Boolean(errors.companyName))}
                 />
                 {errors.companyName && (
-                  <p className="mt-1.5 text-sm text-red-700">{errors.companyName}</p>
+                  <p id="elite-shop-name-error" className="mt-1.5 text-sm text-red-700">{errors.companyName}</p>
                 )}
               </div>
 
@@ -327,12 +352,14 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   Email <span aria-hidden="true">*</span>
                 </label>
                 <input
+                  ref={emailInputRef}
                   id="elite-email"
                   type="email"
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
                   aria-required="true"
+                  aria-invalid={errors.email ? 'true' : undefined}
                   aria-describedby={errors.email ? 'elite-email-error' : undefined}
                   className={INPUT_CLASSES(Boolean(errors.email))}
                 />
@@ -353,6 +380,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   value={formData.phone}
                   onChange={(e) => handlePhoneChange(e.target.value)}
                   maxLength={13}
+                  aria-invalid={errors.phone ? 'true' : undefined}
                   aria-describedby={errors.phone ? 'elite-phone-error' : undefined}
                   className={INPUT_CLASSES(Boolean(errors.phone))}
                 />
@@ -373,10 +401,12 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   value={formData.personName}
                   onChange={(e) => handleInputChange('personName', e.target.value)}
                   aria-required="true"
+                  aria-invalid={errors.personName ? 'true' : undefined}
+                  aria-describedby={errors.personName ? 'elite-name-error' : undefined}
                   className={INPUT_CLASSES(Boolean(errors.personName))}
                 />
                 {errors.personName && (
-                  <p className="mt-1.5 text-sm text-red-700">{errors.personName}</p>
+                  <p id="elite-name-error" className="mt-1.5 text-sm text-red-700">{errors.personName}</p>
                 )}
               </div>
 
@@ -393,10 +423,12 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                   rows={4}
                   maxLength={5000}
                   aria-required="true"
+                  aria-invalid={errors.message ? 'true' : undefined}
+                  aria-describedby={errors.message ? 'elite-message-error' : undefined}
                   className={`${INPUT_CLASSES(Boolean(errors.message))} resize-none`}
                 />
                 {errors.message && (
-                  <p className="mt-1.5 text-sm text-red-700">{errors.message}</p>
+                  <p id="elite-message-error" className="mt-1.5 text-sm text-red-700">{errors.message}</p>
                 )}
               </div>
 
@@ -410,12 +442,12 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                     className="sr-only peer"
                   />
                   <div
-                    className={`w-5 h-5 border rounded transition-colors duration-200 flex items-center justify-center ${
+                    className={`w-5 h-5 border rounded transition-colors duration-200 flex items-center justify-center peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-fern-deep ${
                       formData.optInUpdates ? 'bg-fern border-fern' : 'border-ink-faint bg-paper'
                     }`}
                   >
                     {formData.optInUpdates && (
-                      <svg className="w-3 h-3 text-paper" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <svg className="w-3 h-3 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     )}
@@ -438,8 +470,8 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 type="submit"
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
-                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-fern text-paper font-medium
-                           hover:bg-fern-deep transition-colors duration-200
+                className={`w-full mt-4 py-3.5 px-6 rounded-full bg-fern text-ink font-medium
+                           enabled:hover:bg-fern-deep enabled:hover:text-paper enabled:active:scale-[0.98] motion-reduce:active:scale-100 transition duration-200
                            ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}

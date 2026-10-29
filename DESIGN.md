@@ -1,49 +1,56 @@
 ---
-name: Mira
-description: Mira answers customers and helps them order in your Instagram DMs.
-source: /docs in this repo summarise the canonical Mira brand bundle (MIRA-BRAND-SYSTEM.md, visual-tokens.json). When they conflict, the brand bundle wins.
+name: Sellogram
+description: Sellogram answers customers and helps them order in a shop's Instagram DMs.
+source: The product rules in docs/imagery-handoff.md and the tokens in this file define the current landing-page system.
 colors:
-  paper: "#F2F6F3"
-  paper-raised: "#E7EEE9"
-  ink: "#1B2620"
-  ink-light: "#49584F"
-  ink-faint: "#58685E"
-  line: "#DCE6DF"
-  fern: "#177E54"
-  fern-deep: "#11603F"
-  fern-bright: "#8BD9B3"
+  paper: "#F3F6F0"
+  paper-raised: "#E8EEE3"
+  ink: "#1E2617"
+  ink-light: "#4A5541"
+  ink-faint: "#5C6852"
+  line: "#DEE6D7"
+  cobalt: "#0D5DA8"
+  cobalt-deep: "#09477F"
+  fern: "#90DD34"
+  fern-deep: "#44780C"
+  fern-bright: "#225C13"
   dawn: "#A35F0C"
   dawn-deep: "#834B0A"
-  dawn-bright: "#F0B254"
-  night: "#0E1E17"
-  night-raised: "#162C22"
-  night-line: "#264436"
+  dawn-bright: "#794402"
+  night: "#90DD34"
+  night-raised: "#83CE1C"
+  night-line: "#558912"
 fonts:
-  display: Fraunces (variable, 400–600, occasional italic emphasis)
-  body: Instrument Sans (400, 500, 600)
+  display: Archivo (400, 500, 600, 700)
+  body: Source Sans 3 (400, 500, 600)
   mono: IBM Plex Mono (400, 500)
 ---
 
-# Mira Visual System
+# Sellogram visual system
 
-Direction: **quiet, useful and product-led**. A well-made commerce publication
-combined with clear product evidence, not a generic software landing page.
-Calm rather than urgency; practical work rather than abstract technology.
+Direction: **editorial, sharp, colorful, and product-led**. Generated photography
+shows the merchant world. Live HTML/CSS shows Sellogram acting in the shop DM.
+The page must feel Instagram-native, not like a generic software landing page.
 
 ## Surfaces
 
-- **Paper** (`#F2F6F3`) is the ground. Panels sit on white or raised paper with
+- **Paper** (`#F3F6F0`) is the ground. Panels sit on white or raised paper with
   a single hairline border (`line`), no drop shadows by default.
-- **Night** (`#0E1E17`) is for the footer and, at most, one strong dark
-  narrative section per page. Intentional depth, not a dark-mode style.
+- **Night** (`#90DD34`) is a light lime surface for the footer and the DM
+  journey. Everything on it uses ink text.
+- **Cobalt** (`#0D5DA8`) can hold a full editorial chapter. Use its deep step
+  for supporting surfaces. Rose, amber, and bright studio color stay in the
+  photography. Do not mute them with beige or terracotta overlays.
 - Light theme only. No dark-mode toggle.
 
 ## The Fern Rule
 
-Fern (`#177E54`) means **Mira is acting or the customer takes the main
-action**: Mira's reply bubbles, primary buttons, active controls, presence and
+Fern (`#90DD34`) means **Sellogram is acting or the customer takes the main
+action**: shop reply bubbles, primary buttons, active controls, presence and
 processing states (`fern-bright` on dark). Do not cover large areas with
-bright fern — it guides attention, it does not dominate.
+bright fern — it guides attention, it does not dominate. Lime is a fill
+colour and always carries ink text. On light surfaces, fern text, icons and
+focus rings use `fern-deep` (`#44780C`).
 
 ## The Dawn Rule
 
@@ -54,32 +61,44 @@ dawn, it must be a money moment.
 
 ## Typography
 
-- **Fraunces** for display: page and major section headlines, optical sizing
-  on. Italic emphasis is occasional — one word, not every heading.
-- **Instrument Sans** for body, navigation, buttons, forms, UI annotations.
+- **Archivo** for display: page and major section headlines, tightly tracked.
+- **Source Sans 3** for body, navigation, buttons, forms, and UI annotations.
 - **IBM Plex Mono** for functional commerce detail only: KES figures,
   timestamps, order identifiers, plan limits, status labels, ledger lines.
-  Do not use mono as a decorative section kicker — decorative kickers are not
-  part of the content-page system.
+  Do not use mono as decoration.
+- Marketing kickers are banned. Start each section with its heading or the
+  content itself. Functional status, time, price, and order labels can remain.
 
 ## Layout
 
-- `max-w-6xl` container, 12-column desktop grid, preferred splits 7/5, 5/7, 6/6.
+- Most content uses a 12-column container between 1280 and 1440 px.
+- The homepage hero image can extend to 1600 px. It must keep its full 3:2
+  frame and remain larger than the DM UI that sits over it.
 - Phone first. Comfortable reading widths, generous but purposeful whitespace.
 - Sections separate by whitespace or a single hairline — no automatic
   alternating background stripes.
-- Cards only when items are genuinely separate or selectable; lists prefer
-  editorial indexes (mono numerals + hairline dividers) over card grids.
-- Let the subject determine the page structure; asymmetry is welcome where it
-  clarifies product evidence.
+- Cards only when items are separate or selectable. Category collections use
+  a stable grid and one image ratio. They must scan as one clear set.
+- Let the subject determine the page structure. Use asymmetry only when it
+  makes the message or sequence clearer.
+
+## Primitives
+
+- **Shop DM card:** live HTML/CSS with the shop name and neutral customer
+  bubbles. The shop replies in fern.
+- **Editorial image link:** photography, a hairline, a plain heading, and one
+  useful line of copy. No shadowed software card surface.
+- **Primary action:** a fern pill on light surfaces or a paper pill on cobalt.
+- **Section heading:** Archivo display type with no kicker above it.
 
 ## Evidence
 
-Product screenshots and DM conversations are the evidence system; photography
-is supportive. Customer bubbles stay neutral paper-and-ink; Mira bubbles are
-fern; commerce states may use dawn; owner intervention is visually explicit.
-Conversations read like real buying conversations. No robots, sparkles,
-gradient blobs, floating chat icons or fake dashboards.
+Photography establishes the merchant world. DM and product UI is live HTML/CSS,
+not baked text. The shopper always messages the shop. Sellogram stays behind
+the shop identity. Customer bubbles stay neutral paper-and-ink. Shop replies
+use fern. Commerce states may use dawn. Conversations must read like real local
+buying conversations. No robots, sparkles, gradient blobs, floating chat icons,
+fake dashboards, generic card payments, or invented pickup flows.
 
 ## Motion
 
@@ -87,6 +106,11 @@ Motion shows cause and effect: one gesture, `animate-fade-in-up` (14px rise,
 0.8s, ease-out-expo), staggered by `animation-delay`. No constant floating or
 pulsing. Everything respects `prefers-reduced-motion` via the global override
 in `index.css`.
+
+The DM sales journey is the exception. It uses one pinned frame while normal
+page scroll selects five discrete stages. The frame and progress dots do not
+move. Stage content changes with a short opacity fade only. The dots have no
+connector line.
 
 ## Accessibility
 

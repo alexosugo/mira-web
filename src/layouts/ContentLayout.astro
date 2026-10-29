@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PricingMatrix from '../components/PricingMatrix';
 import ContentHero from '../components/content/ContentHero.astro';
+import ShopUseCasePage from '../components/content/ShopUseCasePage.astro';
 import DmThread from '../components/content/DmThread.astro';
 import Timeline from '../components/content/Timeline.astro';
 import PairedLedger from '../components/content/PairedLedger.astro';
@@ -68,22 +69,26 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 >
   <div class="min-h-screen bg-paper">
     <Header client:load />
-    <main>
-      <ContentHero hero={page.hero} route={route} variant={variant} decor={decor} withThree={withThree} />
+    <main id="main-content" tabindex="-1">
+      {page.shopStory ? (
+        <ShopUseCasePage hero={page.hero} story={page.shopStory} route={route} />
+      ) : (
+        <ContentHero hero={page.hero} route={route} variant={variant} decor={decor} withThree={withThree} />
+      )}
 
-      {isDocument ? (
-        <div class="mx-auto max-w-6xl px-6 pb-24 lg:px-8">
+      {!page.shopStory && (isDocument ? (
+        <div class="mx-auto max-w-[1280px] px-5 pb-24 sm:px-8 lg:px-10">
           <div class={showToc ? 'lg:grid lg:grid-cols-12 lg:gap-16' : ''}>
             {showToc && (
               <nav class="mb-12 lg:col-span-4 lg:mb-0 xl:col-span-3" aria-label="On this page">
                 <div class="lg:sticky lg:top-28">
                   <p class="kicker text-ink-faint">On this page</p>
-                  <ol class="mt-5 space-y-3 border-l border-line">
+                  <ol class="mt-5 border-l border-line lg:space-y-3">
                     {tocEntries.map((entry) => (
                       <li>
                         <a
                           href={`#${entry.id}`}
-                          class="-ml-px block border-l-2 border-transparent pl-4 text-sm text-ink-light transition-colors hover:border-fern hover:text-ink"
+                          class="-ml-px flex min-h-[44px] items-center border-l-2 border-transparent pl-4 text-sm text-ink-light transition-colors hover:border-fern hover:text-ink lg:min-h-0"
                         >
                           {entry.label}
                         </a>
@@ -128,7 +133,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                       <ul class="mt-6 space-y-3 rounded-2xl border border-line bg-white p-6">
                         {section.items.map((item) => (
                           <li class="flex items-baseline gap-3">
-                            <span class="font-mono text-xs text-fern-deep" aria-hidden="true">→</span>
+                            <span class="font-body text-xs text-fern-deep" aria-hidden="true">→</span>
                             <span class="text-base leading-relaxed text-ink">{item}</span>
                           </li>
                         ))}
@@ -150,22 +155,22 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 <div class="mx-auto max-w-2xl px-6 py-12 text-center lg:px-8">
                   <p class="font-display text-xl text-ink">Ready to stop typing the same replies?</p>
                   <a
-                    href="https://app.withmira.co"
-                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-sm font-medium text-paper transition-colors duration-200 hover:bg-fern-deep"
+                    href="https://app.sellogram.co"
+                    class="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-fern px-6 text-base font-medium text-ink transition-colors duration-200 hover:bg-fern-deep hover:text-paper"
                   >
                     Start free
                   </a>
-                  <p class="mt-4 font-mono text-xs text-ink-faint">No card needed</p>
+                  <p class="mt-4 font-body text-xs text-ink-faint">No card needed</p>
                 </div>
               </section>
             )}
 
             <section id={sectionId(index, section.kind)} class={index > 0 ? 'scroll-mt-28 border-t border-line' : 'scroll-mt-28'}>
-              <div class={`mx-auto max-w-6xl px-6 lg:px-8 ${sectionPadding(section.kind)}`}>
+              <div class={`mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10 ${sectionPadding(section.kind)}`}>
                 {section.kind === 'prose' && (
                   <div class="max-w-2xl">
                     {section.heading && (
-                      <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section-compact">
                         {section.heading}
                       </h2>
                     )}
@@ -176,7 +181,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'split' && (
                   <div class="grid gap-12 md:grid-cols-2 md:gap-16">
                     <div>
-                      <h2 class="font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section-compact">
                         {section.heading}
                       </h2>
                     </div>
@@ -187,7 +192,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'list' && (
                   <div>
                     {section.heading && (
-                      <h2 class="max-w-xl font-display text-[clamp(1.75rem,1.2rem+2.4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="max-w-xl heading-section-compact">
                         {section.heading}
                       </h2>
                     )}
@@ -209,7 +214,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'story' && (
                   <div class={section.aside ? 'grid gap-10 lg:grid-cols-12 lg:gap-16' : ''}>
                     <div class={section.aside ? 'lg:col-span-7' : 'max-w-3xl'}>
-                      <h2 class="font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section">
                         {section.heading}
                       </h2>
                       <p class={`mt-6 leading-relaxed text-ink-light ${variant === 'company' ? 'font-display text-xl sm:text-2xl' : 'text-lg'}`}>
@@ -229,7 +234,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                 {section.kind === 'fitGuide' && (
                   <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
                     <div class="lg:col-span-5">
-                      <h2 class="font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                      <h2 class="heading-section">
                         {section.heading}
                       </h2>
                       <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-light">{section.body}</p>
@@ -255,7 +260,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
                 {section.kind === 'promiseGrid' && variant === 'support' && (
                   <div>
-                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                    <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
                     <div class="mt-12 grid gap-4 sm:grid-cols-2">
@@ -269,12 +274,12 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                                 client:load
                                 label={item.cta.label}
                                 location={`${route.pageName} ${section.heading}`}
-                                className="mt-4 inline-flex text-sm font-medium text-fern underline-offset-4 hover:underline"
+                                className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
                               />
                             ) : (
                               <a
                                 href={item.cta.href}
-                                class="mt-4 inline-block text-sm font-medium text-fern underline-offset-4 hover:underline"
+                                class="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
                               >
                                 {item.cta.label}
                               </a>
@@ -287,7 +292,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
                 {section.kind === 'promiseGrid' && variant !== 'support' && (
                   <div>
-                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                    <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
                     <div class="mt-12 grid gap-x-12 md:grid-cols-2">
@@ -303,7 +308,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
                 {section.kind === 'beforeAfter' && (
                   <div>
-                    <h2 class="max-w-2xl font-display text-[clamp(1.8rem,1.15rem+2.8vw,3rem)] font-semibold leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+                    <h2 class="max-w-2xl heading-section">
                       {section.heading}
                     </h2>
                     <div data-before-after class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start">
@@ -318,13 +323,13 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
                           ))}
                         </ul>
                       </div>
-                      <div data-ba-card class="rounded-3xl bg-night p-8 ring-1 ring-fern/30 lg:mt-10">
+                      <div data-ba-card class="rounded-3xl bg-night p-8 ring-1 ring-ink/20 lg:mt-10">
                         <p class="kicker mb-6 text-fern-bright">After Sellogram</p>
                         <ul class="space-y-5">
                           {section.content.after.map((item) => (
                             <li class="flex items-start gap-3">
                               <svg class="mt-0.5 h-4 w-4 shrink-0 text-fern-bright" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
-                              <span class="text-base leading-relaxed text-paper">{item}</span>
+                              <span class="text-base leading-relaxed text-ink">{item}</span>
                             </li>
                           ))}
                         </ul>
@@ -361,7 +366,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
             </section>
           </Fragment>
         ))
-      )}
+      ))}
     </main>
     <Footer client:visible />
   </div>
@@ -370,9 +375,11 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
     document.documentElement.classList.add('js');
 
     const scenarios = document.querySelectorAll('[data-scenario]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     if (scenarios.length > 0) {
       const updateBubbles = () => {
+        if (reducedMotion.matches) return;
         const vh = window.innerHeight;
 
         scenarios.forEach((group) => {
@@ -411,6 +418,7 @@ const sectionId = (index: number, kind: string) => `${kind}-${index}`;
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll, { passive: true });
+      reducedMotion.addEventListener('change', updateBubbles);
       updateBubbles();
     }
 

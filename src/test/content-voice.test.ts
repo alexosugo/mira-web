@@ -69,6 +69,19 @@ for (const page of Object.values(PAGES)) {
   if (page.hero.secondaryLink) {
     allContentStrings.push(page.hero.secondaryLink.label, page.hero.secondaryLink.href);
   }
+  if (page.shopStory) {
+    const story = page.shopStory;
+    allContentStrings.push(
+      story.openingQuestions,
+      story.openingClose,
+      story.sceneHeading,
+      ...story.messages.map((message) => message.text),
+      ...story.sceneAfter,
+      story.secondHeading,
+      ...story.secondParagraphs,
+      story.ctaClose,
+    );
+  }
   for (const section of page.sections) {
     allContentStrings.push(...sectionStrings(section));
   }
@@ -82,12 +95,17 @@ describe('canonical content module voice compliance', () => {
     }
   });
 
+  it('does not claim that Sellogram reads DMs only', () => {
+    expect(allContentStrings.join('\n')).not.toMatch(/reads only your shop's DMs/i);
+    expect(allContentStrings.join('\n')).not.toMatch(/Shop DMs only/i);
+  });
+
   it('ships exactly three pricing plans (Free, Pro, Elite)', () => {
     expect(PLANS.map((p) => p.key)).toEqual(['free', 'pro', 'elite']);
   });
 
-  it('ships exactly three how-it-works steps', () => {
-    expect(STEPS).toHaveLength(3);
+  it('ships exactly four how-it-works steps', () => {
+    expect(STEPS).toHaveLength(4);
   });
 
   it('ships body content for every registered content page', () => {

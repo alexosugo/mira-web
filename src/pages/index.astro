@@ -2,24 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import NightShift from '../components/NightShift';
-import Handles from '../components/Handles';
+import SupportedShops from '../components/SupportedShops';
+import DMSalesJourney from '../components/DMSalesJourney';
 import HowItWorks from '../components/HowItWorks';
 import Pricing from '../components/Pricing';
+import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
 ---
 
 <BaseLayout>
   <div class="min-h-screen bg-paper">
     <Header client:load />
-    <main>
+    <main id="main-content" tabindex="-1">
       <div id="hero">
         <Hero client:visible />
       </div>
-      <NightShift client:visible />
-      <Handles client:visible />
-      <HowItWorks client:visible />
+      <DMSalesJourney client:visible />
+      <SupportedShops client:visible />
       <Pricing client:visible />
+      <HowItWorks client:visible />
+      <FinalCTA client:visible />
     </main>
     <Footer client:visible />
   </div>

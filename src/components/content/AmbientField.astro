@@ -36,7 +36,7 @@ const { density = 1.1, class: className = '' } = Astro.props;
     tail: boolean;
   }
 
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   document.querySelectorAll<HTMLCanvasElement>('[data-ambient-field]').forEach((canvas) => {
     const ctx = canvas.getContext('2d');
@@ -85,7 +85,7 @@ const { density = 1.1, class: className = '' } = Astro.props;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.round(((rect.width * rect.height) / 100_000) * density);
       motes = Array.from({ length: count }, () => makeMote(rect.width, rect.height, true));
-      if (reduced) {
+      if (motion.matches) {
         // One static, calm scatter. No animation loop.
         ctx.clearRect(0, 0, rect.width, rect.height);
         motes.forEach(drawMote);
@@ -107,16 +107,26 @@ const { density = 1.1, class: className = '' } = Astro.props;
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    if (!reduced) {
-      new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting && !running) {
-          running = true;
-          raf = requestAnimationFrame(tick);
-        } else if (!entry.isIntersecting && running) {
-          running = false;
-          cancelAnimationFrame(raf);
-        }
-      }).observe(canvas);
-    }
+    let visible = false;
+    const updateMotion = () => {
+      const shouldRun = visible && !motion.matches;
+      if (shouldRun && !running) {
+        running = true;
+        raf = requestAnimationFrame(tick);
+      } else if (!shouldRun && running) {
+        running = false;
+        cancelAnimationFrame(raf);
+      }
+      if (motion.matches) {
+        const rect = canvas.getBoundingClientRect();
+        ctx.clearRect(0, 0, rect.width, rect.height);
+        motes.forEach(drawMote);
+      }
+    };
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      updateMotion();
+    }).observe(canvas);
+    motion.addEventListener('change', updateMotion);
   });
 </script>
