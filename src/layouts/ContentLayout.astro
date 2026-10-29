@@ -171,207 +171,207 @@ const isPanel = (index: number) => index % 2 === 0;
 
             <section id={sectionId(index, section.kind)} class={`scroll-mt-28 ${isPanel(index) ? 'px-3 py-2 sm:px-6 lg:px-10' : ''}`}>
               <div class={isPanel(index) ? 'mx-auto max-w-[1440px] rounded-2xl bg-paper-raised' : ''}>
-              <div class={`mx-auto max-w-[1280px] ${isPanel(index) ? 'px-5 sm:px-10 lg:px-14' : 'px-5 sm:px-8 lg:px-10'} ${sectionPadding(section.kind)}`}>
-                {section.kind === 'prose' && (
-                  <div class="max-w-2xl">
-                    {section.heading && (
-                      <h2 class="heading-section-compact">
-                        {section.heading}
-                      </h2>
-                    )}
-                    <p class={section.heading ? 'mt-6 text-lg leading-relaxed text-ink-light' : 'font-display text-2xl leading-snug text-ink [text-wrap:balance] sm:text-3xl'}>{section.body}</p>
-                  </div>
-                )}
+                <div class={`mx-auto max-w-[1280px] ${isPanel(index) ? 'px-5 sm:px-10 lg:px-14' : 'px-5 sm:px-8 lg:px-10'} ${sectionPadding(section.kind)}`}>
+                  {section.kind === 'prose' && (
+                    <div class="max-w-2xl">
+                      {section.heading && (
+                        <h2 class="heading-section-compact">
+                          {section.heading}
+                        </h2>
+                      )}
+                      <p class={section.heading ? 'mt-6 text-lg leading-relaxed text-ink-light' : 'font-display text-2xl leading-snug text-ink [text-wrap:balance] sm:text-3xl'}>{section.body}</p>
+                    </div>
+                  )}
 
-                {section.kind === 'split' && (
-                  <div class="grid gap-12 md:grid-cols-2 md:gap-16">
+                  {section.kind === 'split' && (
+                    <div class="grid gap-12 md:grid-cols-2 md:gap-16">
+                      <div>
+                        <h2 class="heading-section-compact">
+                          {section.heading}
+                        </h2>
+                      </div>
+                      <p class="self-start text-lg leading-relaxed text-ink-light md:pt-2">{section.body}</p>
+                    </div>
+                  )}
+
+                  {section.kind === 'list' && (
                     <div>
-                      <h2 class="heading-section-compact">
-                        {section.heading}
-                      </h2>
+                      {section.heading && (
+                        <h2 class="max-w-xl heading-section-compact">
+                          {section.heading}
+                        </h2>
+                      )}
+                      <ul class="mt-10 space-y-5">
+                        {section.items.map((item: string) => (
+                          <li class="flex items-baseline gap-4">
+                            <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-fern-deep" aria-hidden="true"></span>
+                            <span class="text-base leading-relaxed text-ink">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <p class="self-start text-lg leading-relaxed text-ink-light md:pt-2">{section.body}</p>
-                  </div>
-                )}
+                  )}
 
-                {section.kind === 'list' && (
-                  <div>
-                    {section.heading && (
-                      <h2 class="max-w-xl heading-section-compact">
-                        {section.heading}
-                      </h2>
-                    )}
-                    <ul class="mt-10 space-y-5">
-                      {section.items.map((item: string) => (
-                        <li class="flex items-baseline gap-4">
-                          <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-fern-deep" aria-hidden="true"></span>
-                          <span class="text-base leading-relaxed text-ink">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                  {section.kind === 'numbered' && (
+                    <Timeline heading={section.heading} items={section.items} />
+                  )}
 
-                {section.kind === 'numbered' && (
-                  <Timeline heading={section.heading} items={section.items} />
-                )}
-
-                {section.kind === 'story' && (
-                  <div class={section.aside ? 'grid gap-10 lg:grid-cols-12 lg:gap-16' : ''}>
-                    <div class={section.aside ? 'lg:col-span-7' : 'max-w-3xl'}>
-                      <h2 class="heading-section">
-                        {section.heading}
-                      </h2>
-                      <p class={`mt-6 leading-relaxed text-ink-light ${variant === 'company' ? 'font-display text-xl sm:text-2xl' : 'text-lg'}`}>
-                        {section.body}
-                      </p>
+                  {section.kind === 'story' && (
+                    <div class={section.aside ? 'grid gap-10 lg:grid-cols-12 lg:gap-16' : ''}>
+                      <div class={section.aside ? 'lg:col-span-7' : 'max-w-3xl'}>
+                        <h2 class="heading-section">
+                          {section.heading}
+                        </h2>
+                        <p class={`mt-6 leading-relaxed text-ink-light ${variant === 'company' ? 'font-display text-xl sm:text-2xl' : 'text-lg'}`}>
+                          {section.body}
+                        </p>
+                      </div>
+                      {section.aside && (
+                        <aside class="lg:col-span-4 lg:col-start-9 lg:self-center">
+                          <div class="relative rounded-2xl bg-white p-7 shadow-[0_24px_60px_rgba(19,30,9,0.14)] sm:p-8 lg:rotate-2">
+                            <span class="absolute -top-3 left-7 h-6 w-14 -rotate-3 rounded-sm bg-fern/80" aria-hidden="true"></span>
+                            <p class="font-display text-xl leading-snug text-ink [text-wrap:pretty]">{section.aside}</p>
+                          </div>
+                        </aside>
+                      )}
                     </div>
-                    {section.aside && (
-                      <aside class="lg:col-span-4 lg:col-start-9 lg:self-center">
-                        <div class="relative rounded-2xl bg-white p-7 shadow-[0_24px_60px_rgba(19,30,9,0.14)] sm:p-8 lg:rotate-2">
-                          <span class="absolute -top-3 left-7 h-6 w-14 -rotate-3 rounded-sm bg-fern/80" aria-hidden="true"></span>
-                          <p class="font-display text-xl leading-snug text-ink [text-wrap:pretty]">{section.aside}</p>
-                        </div>
-                      </aside>
-                    )}
-                  </div>
-                )}
+                  )}
 
-                {section.kind === 'fitGuide' && (
-                  <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
-                    <div class="lg:col-span-5">
-                      <h2 class="heading-section">
-                        {section.heading}
-                      </h2>
-                      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-light">{section.body}</p>
-                    </div>
-                    <div class="lg:col-span-6 lg:col-start-7">
-                      <div class="overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_rgba(19,30,9,0.12)]">
-                        <div class="border-b border-line px-6 py-5 sm:px-7">
-                          <p class="kicker text-fern-deep">✓ Works best when</p>
-                          <p class="mt-3 text-base leading-relaxed text-ink">{section.worksBest}</p>
-                        </div>
-                        <div class="border-b border-line px-6 py-5 sm:px-7">
-                          <p class="kicker text-dawn-deep">↗ Sellogram hands over when</p>
-                          <p class="mt-3 text-base leading-relaxed text-ink">{section.handoff}</p>
-                        </div>
-                        <div class="bg-night px-6 py-5 sm:px-7">
-                          <p class="kicker text-ink">● What you get</p>
-                          <p class="mt-3 text-base leading-relaxed text-ink">{section.ownerGets}</p>
+                  {section.kind === 'fitGuide' && (
+                    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+                      <div class="lg:col-span-5">
+                        <h2 class="heading-section">
+                          {section.heading}
+                        </h2>
+                        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-light">{section.body}</p>
+                      </div>
+                      <div class="lg:col-span-6 lg:col-start-7">
+                        <div class="overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_rgba(19,30,9,0.12)]">
+                          <div class="border-b border-line px-6 py-5 sm:px-7">
+                            <p class="kicker text-fern-deep">✓ Works best when</p>
+                            <p class="mt-3 text-base leading-relaxed text-ink">{section.worksBest}</p>
+                          </div>
+                          <div class="border-b border-line px-6 py-5 sm:px-7">
+                            <p class="kicker text-dawn-deep">↗ Sellogram hands over when</p>
+                            <p class="mt-3 text-base leading-relaxed text-ink">{section.handoff}</p>
+                          </div>
+                          <div class="bg-night px-6 py-5 sm:px-7">
+                            <p class="kicker text-ink">● What you get</p>
+                            <p class="mt-3 text-base leading-relaxed text-ink">{section.ownerGets}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {section.kind === 'promiseGrid' && variant === 'support' && (
-                  <div>
-                    <h2 class="max-w-2xl heading-section">
-                      {section.heading}
-                    </h2>
-                    <div class="mt-12 grid gap-5 sm:grid-cols-2">
-                      {section.items.map((item) => (
-                        <article class="rounded-2xl bg-white p-7 shadow-[0_1px_0_rgba(19,30,9,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(19,30,9,0.12)] motion-reduce:hover:translate-y-0 sm:p-8">
-                          <h3 class="font-display text-xl font-semibold text-ink">{item.title}</h3>
-                          <p class="mt-3 text-base leading-relaxed text-ink-light">{item.body}</p>
-                          {item.cta &&
-                            (item.cta.href === 'modal:elite' ? (
-                              <EliteModalButton
-                                client:load
-                                label={item.cta.label}
-                                location={`${route.pageName} ${section.heading}`}
-                                className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
-                              />
-                            ) : (
-                              <a
-                                href={item.cta.href}
-                                class="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
-                              >
-                                {item.cta.label}
-                              </a>
+                  {section.kind === 'promiseGrid' && variant === 'support' && (
+                    <div>
+                      <h2 class="max-w-2xl heading-section">
+                        {section.heading}
+                      </h2>
+                      <div class="mt-12 grid gap-5 sm:grid-cols-2">
+                        {section.items.map((item) => (
+                          <article class="rounded-2xl bg-white p-7 shadow-[0_1px_0_rgba(19,30,9,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(19,30,9,0.12)] motion-reduce:hover:translate-y-0 sm:p-8">
+                            <h3 class="font-display text-xl font-semibold text-ink">{item.title}</h3>
+                            <p class="mt-3 text-base leading-relaxed text-ink-light">{item.body}</p>
+                            {item.cta &&
+                              (item.cta.href === 'modal:elite' ? (
+                                <EliteModalButton
+                                  client:load
+                                  label={item.cta.label}
+                                  location={`${route.pageName} ${section.heading}`}
+                                  className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
+                                />
+                              ) : (
+                                <a
+                                  href={item.cta.href}
+                                  class="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-fern-deep underline-offset-4 hover:underline"
+                                >
+                                  {item.cta.label}
+                                </a>
+                              ))}
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {section.kind === 'promiseGrid' && variant !== 'support' && (
+                    <div>
+                      <h2 class="max-w-2xl heading-section">
+                        {section.heading}
+                      </h2>
+                      <div class="mt-12 grid gap-5 md:grid-cols-2 md:gap-6 md:pb-10">
+                        {section.items.map((item, itemIndex) => (
+                          <article class={`rounded-2xl p-7 sm:p-8 ${isPanel(index) ? 'bg-white' : 'bg-paper-raised'} ${itemIndex % 2 === 1 ? 'md:translate-y-10' : ''}`}>
+                            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-fern text-ink" aria-hidden="true">
+                              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
+                            </span>
+                            <h3 class="mt-5 font-display text-xl font-semibold text-ink sm:text-2xl">{item.title}</h3>
+                            <p class="mt-3 text-base leading-relaxed text-ink-light [text-wrap:pretty]">{item.body}</p>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {section.kind === 'beforeAfter' && (
+                    <div>
+                      <h2 class="max-w-2xl heading-section">
+                        {section.heading}
+                      </h2>
+                      <div data-before-after class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-0">
+                        <div data-ba-card class="rounded-2xl bg-white p-8 sm:p-10 lg:[rotate:-1deg]">
+                          <p class="kicker mb-6 text-ink-faint">Before Sellogram</p>
+                          <ul class="space-y-5">
+                            {section.content.before.map((item) => (
+                              <li class="flex items-start gap-3">
+                                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint/40"></span>
+                                <span class="text-base leading-relaxed text-ink-faint">{item}</span>
+                              </li>
                             ))}
-                        </article>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {section.kind === 'promiseGrid' && variant !== 'support' && (
-                  <div>
-                    <h2 class="max-w-2xl heading-section">
-                      {section.heading}
-                    </h2>
-                    <div class="mt-12 grid gap-5 md:grid-cols-2 md:gap-6 md:pb-10">
-                      {section.items.map((item, itemIndex) => (
-                        <article class={`rounded-2xl p-7 sm:p-8 ${isPanel(index) ? 'bg-white' : 'bg-paper-raised'} ${itemIndex % 2 === 1 ? 'md:translate-y-10' : ''}`}>
-                          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-fern text-ink" aria-hidden="true">
-                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
-                          </span>
-                          <h3 class="mt-5 font-display text-xl font-semibold text-ink sm:text-2xl">{item.title}</h3>
-                          <p class="mt-3 text-base leading-relaxed text-ink-light [text-wrap:pretty]">{item.body}</p>
-                        </article>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {section.kind === 'beforeAfter' && (
-                  <div>
-                    <h2 class="max-w-2xl heading-section">
-                      {section.heading}
-                    </h2>
-                    <div data-before-after class="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-0">
-                      <div data-ba-card class="rounded-2xl bg-white p-8 sm:p-10 lg:[rotate:-1deg]">
-                        <p class="kicker mb-6 text-ink-faint">Before Sellogram</p>
-                        <ul class="space-y-5">
-                          {section.content.before.map((item) => (
-                            <li class="flex items-start gap-3">
-                              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint/40"></span>
-                              <span class="text-base leading-relaxed text-ink-faint">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div data-ba-card class="relative z-10 rounded-2xl bg-night p-8 shadow-[0_30px_80px_rgba(68,120,12,0.28)] sm:p-10 lg:-ml-10 lg:mt-14 lg:[rotate:1deg]">
-                        <p class="kicker mb-6 text-fern-bright">After Sellogram</p>
-                        <ul class="space-y-5">
-                          {section.content.after.map((item) => (
-                            <li class="flex items-start gap-3">
-                              <svg class="mt-0.5 h-4 w-4 shrink-0 text-fern-bright" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
-                              <span class="text-base leading-relaxed text-ink">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
+                          </ul>
+                        </div>
+                        <div data-ba-card class="relative z-10 rounded-2xl bg-night p-8 shadow-[0_30px_80px_rgba(68,120,12,0.28)] sm:p-10 lg:-ml-10 lg:mt-14 lg:[rotate:1deg]">
+                          <p class="kicker mb-6 text-fern-bright">After Sellogram</p>
+                          <ul class="space-y-5">
+                            {section.content.after.map((item) => (
+                              <li class="flex items-start gap-3">
+                                <svg class="mt-0.5 h-4 w-4 shrink-0 text-fern-bright" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
+                                <span class="text-base leading-relaxed text-ink">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {section.kind === 'scenarios' && (
-                  <DmThread heading={section.heading} items={section.items} />
-                )}
+                  {section.kind === 'scenarios' && (
+                    <DmThread heading={section.heading} items={section.items} />
+                  )}
 
-                {section.kind === 'archetype' && (
-                  <PairedLedger name={section.name} role={section.role} day={section.day} sellogramHelps={section.sellogramHelps} />
-                )}
+                  {section.kind === 'archetype' && (
+                    <PairedLedger name={section.name} role={section.role} day={section.day} sellogramHelps={section.sellogramHelps} />
+                  )}
 
-                {section.kind === 'legal' && (
-                  <article class="max-w-3xl">
-                    <h2 class="font-display text-[clamp(1.5rem,1.05rem+2vw,2.25rem)] font-semibold leading-[1.12] tracking-tight text-ink [text-wrap:balance]">
-                      {section.heading}
-                    </h2>
-                    <div class="mt-6 space-y-4">
-                      {section.paragraphs.map((paragraph) => (
-                        <p class="text-base leading-relaxed text-ink-light">{paragraph}</p>
-                      ))}
-                    </div>
-                  </article>
-                )}
+                  {section.kind === 'legal' && (
+                    <article class="max-w-3xl">
+                      <h2 class="font-display text-[clamp(1.5rem,1.05rem+2vw,2.25rem)] font-semibold leading-[1.12] tracking-tight text-ink [text-wrap:balance]">
+                        {section.heading}
+                      </h2>
+                      <div class="mt-6 space-y-4">
+                        {section.paragraphs.map((paragraph) => (
+                          <p class="text-base leading-relaxed text-ink-light">{paragraph}</p>
+                        ))}
+                      </div>
+                    </article>
+                  )}
 
-                {section.kind === 'pricingMatrix' && <PricingMatrix client:load />}
+                  {section.kind === 'pricingMatrix' && <PricingMatrix client:load />}
 
-                {section.kind === 'faq' && <Faq items={section.items as FaqItem[]} />}
-              </div>
+                  {section.kind === 'faq' && <Faq items={section.items as FaqItem[]} />}
+                </div>
               </div>
             </section>
           </Fragment>
