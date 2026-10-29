@@ -48,7 +48,7 @@ const PricingMatrix = () => {
                 <EliteModalButton
                   label={plan.cta}
                   location="pricing_page_matrix"
-                  className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5"
+                  className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-ink/25 px-6 text-sm font-medium text-ink transition duration-200 hover:border-ink hover:bg-ink/5 active:scale-[0.98] motion-reduce:active:scale-100"
                 />
               ) : (
                 <a
@@ -59,7 +59,7 @@ const PricingMatrix = () => {
                       plan_type: plan.key,
                     })
                   }
-                  className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition-colors duration-200 ${
+                  className={`inline-flex min-h-[44px] w-full items-center justify-center rounded-full px-6 text-sm font-medium transition duration-200 active:scale-[0.98] motion-reduce:active:scale-100 ${
                     plan.isHighlighted
                       ? 'bg-fern text-ink hover:bg-fern-deep hover:text-paper'
                       : 'border border-ink/25 text-ink hover:border-ink hover:bg-ink/5'

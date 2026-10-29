@@ -74,7 +74,7 @@ const Header = () => {
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-ink transition-colors duration-300 hover:bg-paper-raised sm:hidden"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-ink transition duration-300 hover:bg-paper-raised active:scale-[0.98] motion-reduce:active:scale-100 sm:hidden"
           >
             <span aria-hidden="true" className="relative h-5 w-6">
               <span className={`absolute left-0 top-0 h-0.5 w-6 rounded-full bg-current transition-transform duration-300 motion-reduce:transition-none ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />

@@ -31,7 +31,7 @@ const EMPTY_FORM: FormData = {
 };
 
 const INPUT_CLASSES = (hasError: boolean) =>
-  `w-full px-4 py-3 rounded-lg transition-colors duration-200 focus:outline-none
+  `w-full px-4 py-3 rounded-lg transition-colors duration-200
    bg-paper text-ink placeholder-ink-faint border ${
      hasError
        ? 'border-red-600/60 focus:border-red-600 focus:ring-2 focus:ring-red-600/20'
@@ -294,7 +294,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
               <button
                 onClick={resetAndClose}
                 className="px-6 py-3 rounded-full bg-fern text-ink font-medium
-                           hover:bg-fern-deep transition-colors duration-200"
+                           hover:bg-fern-deep hover:text-paper active:scale-[0.98] motion-reduce:active:scale-100 transition duration-200"
               >
                 Close
               </button>
@@ -409,7 +409,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                     className="sr-only peer"
                   />
                   <div
-                    className={`w-5 h-5 border rounded transition-colors duration-200 flex items-center justify-center ${
+                    className={`w-5 h-5 border rounded transition-colors duration-200 flex items-center justify-center peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-fern-deep ${
                       formData.optInUpdates ? 'bg-fern border-fern' : 'border-ink-faint bg-paper'
                     }`}
                   >
@@ -438,7 +438,7 @@ const EliteContactModal = ({ isOpen, onClose }: EliteContactModalProps) => {
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
                 className={`w-full mt-4 py-3.5 px-6 rounded-full bg-fern text-ink font-medium
-                           hover:bg-fern-deep transition-colors duration-200
+                           enabled:hover:bg-fern-deep enabled:hover:text-paper enabled:active:scale-[0.98] motion-reduce:active:scale-100 transition duration-200
                            ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}
