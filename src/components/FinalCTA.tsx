@@ -14,16 +14,14 @@ const FinalCTA = ({ note, trackingSection = 'final-cta' }: FinalCTAProps) => {
   return (
     <section ref={sectionRef} className="py-6 sm:py-8 lg:py-10">
       <div className="px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1280px] overflow-hidden rounded-xl bg-cobalt px-6 py-9 text-white sm:rounded-2xl sm:px-10 sm:py-10 lg:px-12">
-          <div className="grid gap-7 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-8">
-              <h2 className="max-w-4xl font-display text-[clamp(1.6rem,1.25rem+1.4vw,2.25rem)] font-semibold leading-[1.08] tracking-tight [text-wrap:balance]">
-                Put Sellogram to work in your DMs
-              </h2>
-              {note && <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/85">{note}</p>}
-            </div>
+        <div className="mx-auto grid max-w-[1440px] overflow-hidden rounded-2xl bg-cobalt text-white lg:grid-cols-12">
+          <div className="px-6 py-12 sm:px-10 sm:py-14 lg:col-span-7 lg:p-20">
+            <h2 className="max-w-2xl font-display text-[clamp(2.25rem,1.4rem+3.6vw,4.5rem)] font-semibold leading-[0.98] tracking-tight [text-wrap:balance]">
+              Put Sellogram to work in your DMs
+            </h2>
+            {note && <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85 [text-wrap:pretty]">{note}</p>}
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 lg:col-span-4 lg:justify-end">
+            <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
               <a
                 href={APP_URL}
                 onClick={() =>
@@ -31,17 +29,30 @@ const FinalCTA = ({ note, trackingSection = 'final-cta' }: FinalCTAProps) => {
                     button_location: 'final_cta',
                   })
                 }
-                className="inline-flex min-h-[48px] items-center rounded-full bg-white px-7 text-base font-medium text-ink transition-transform duration-200 hover:-translate-y-0.5"
+                className="inline-flex min-h-12 items-center rounded-full bg-fern px-8 text-base font-semibold text-ink transition duration-300 hover:-translate-y-0.5 hover:bg-white active:translate-y-0 active:scale-[0.98]"
               >
                 Start free
               </a>
               <a
                 href="/contact"
-                className="inline-flex min-h-[48px] items-center text-base text-white/85 underline decoration-white/40 underline-offset-4 transition-colors duration-200 hover:text-white hover:decoration-white"
+                className="inline-flex min-h-[44px] items-center text-base text-white/85 underline decoration-white/40 underline-offset-4 transition-colors duration-300 hover:text-white hover:decoration-white"
               >
                 Ask us a question
               </a>
             </div>
+          </div>
+
+          <div className="relative min-h-[16rem] lg:col-span-5 lg:min-h-0">
+            <img
+              src="/images/outcomes/piki-piki-delivery.webp"
+              alt="Rider handing a delivery to a customer at her apartment gate"
+              width={1672}
+              height={941}
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="absolute inset-0 h-full w-full object-cover object-[70%_center]"
+            />
           </div>
         </div>
       </div>
