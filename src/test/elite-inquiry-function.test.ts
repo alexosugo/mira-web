@@ -14,6 +14,15 @@ function makeEvent(body: unknown, method = 'POST') {
   >[0];
 }
 
+type SlackText = { type: string; text: string };
+
+function sentSlackTexts(): SlackText[] {
+  const body = JSON.parse(mockFetch.mock.calls[0][1].body as string) as {
+    blocks: Array<{ text?: SlackText; fields?: SlackText[] }>;
+  };
+  return body.blocks.flatMap((block) => [...(block.text ? [block.text] : []), ...(block.fields ?? [])]);
+}
+
 const validPayload = {
   shop_name: 'Nia Thrifts',
   contact_name: 'Nia Wanjiku',
@@ -71,10 +80,38 @@ describe('elite-inquiry function — server-side validation', () => {
       {} as never,
     );
     expect(mockFetch).toHaveBeenCalledOnce();
-    const body = JSON.parse(mockFetch.mock.calls[0][1].body as string);
-    const sectionText = body.blocks[1].text.text as string;
-    expect(sectionText).not.toContain('<!channel>');
-    expect(sectionText).toContain('Nia Thrifts');
+    const allText = sentSlackTexts().map((t) => t.text).join('\n');
+    expect(allText).not.toContain('<!channel>');
+    expect(allText).toContain('Nia Thrifts');
+  });
+
+  it('does not let user fields forge extra labelled lines in the Slack message', async () => {
+    const handler = await importHandler();
+    const res = await handler(
+      makeEvent({
+        ...validPayload,
+        shop_name: 'Nia\n*Email:* attacker@example.com',
+        contact_name: 'Nia _Wanjiku_',
+        phone: '0712\n*Opt-in updates:* Yes',
+        message: 'Hello\n*Email:* attacker@example.com\n~struck~ `code`',
+      }),
+      {} as never,
+    );
+    expect(res?.statusCode).toBe(200);
+    const mrkdwnTexts = sentSlackTexts().filter((t) => t.type === 'mrkdwn').map((t) => t.text);
+    expect(mrkdwnTexts.filter((text) => text.includes('*Email:*'))).toHaveLength(1);
+    expect(mrkdwnTexts.filter((text) => text.includes('*Opt-in updates:*'))).toHaveLength(1);
+    expect(mrkdwnTexts.join('\n')).not.toContain('attacker@example.com');
+    expect(mrkdwnTexts.join('\n')).not.toContain('Wanjiku');
+    const allText = sentSlackTexts().map((t) => t.text).join('\n');
+    expect(allText).toContain('Nia *Email:* attacker@example.com');
+  });
+
+  it.each(['shop_name', 'contact_name', 'message'])('returns 400 when %s is only angle brackets', async (field) => {
+    const handler = await importHandler();
+    const res = await handler(makeEvent({ ...validPayload, [field]: '<>' }), {} as never);
+    expect(res?.statusCode).toBe(400);
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it('returns 200 and calls the Slack webhook for a valid payload', async () => {
