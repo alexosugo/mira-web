@@ -1,7 +1,7 @@
 ---
 /**
  * FAQ as native <details> accordions — keyboard- and screen-reader-native,
- * zero JS. The mono plus rotates to a multiply when open.
+ * zero JS. The plus rotates to a multiply when open.
  */
 import type { FaqItem } from '../../content/pages';
 
@@ -12,23 +12,23 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div class="max-w-2xl">
-  <h2 class="heading-section-compact">
+<div class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+  <h2 class="heading-section lg:col-span-4">
     Questions
   </h2>
-  <div class="mt-10 divide-y divide-line border-y border-line">
+  <div class="space-y-3 lg:col-span-8">
     {items.map((item) => (
-      <details class="group py-1">
-        <summary class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-6 py-4 text-base font-semibold text-ink transition-colors hover:text-fern-deep [&::-webkit-details-marker]:hidden">
+      <details class="group rounded-2xl bg-white px-6 transition-shadow duration-300 open:shadow-[0_24px_60px_rgba(19,30,9,0.1)] sm:px-7">
+        <summary class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-6 py-5 text-base font-semibold text-ink transition-colors hover:text-fern-deep sm:text-lg [&::-webkit-details-marker]:hidden">
           {item.question}
           <span
-            class="shrink-0 font-body text-lg text-ink-faint transition-transform duration-300 ease-out group-open:rotate-45 group-open:text-fern-deep"
+            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-paper-raised font-body text-lg text-ink transition duration-300 ease-out group-open:rotate-45 group-open:bg-fern"
             aria-hidden="true"
           >
             +
           </span>
         </summary>
-        <p class="pb-5 pr-10 text-base leading-relaxed text-ink-light">{item.answer}</p>
+        <p class="pb-6 pr-10 text-base leading-relaxed text-ink-light [text-wrap:pretty]">{item.answer}</p>
       </details>
     ))}
   </div>

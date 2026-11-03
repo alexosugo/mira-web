@@ -51,3 +51,25 @@ export function variantForPath(path: string): PageVariant {
 export function decorForPath(path: string): UseCaseDecor | undefined {
   return USE_CASE_DECOR[path];
 }
+
+export interface HeroPhoto {
+  src: string;
+  width: number;
+  height: number;
+}
+
+const portrait = (src: string): HeroPhoto => ({ src, width: 1122, height: 1402 });
+
+const HERO_PHOTOS: Record<string, HeroPhoto> = {
+  '/features/product-answers': portrait('/images/journey/product-question.webp'),
+  '/features/orders-and-checkout': portrait('/images/journey/payment-confirmation.webp'),
+  '/features/human-handoff': portrait('/images/journey/cocoa-rose-packing.webp'),
+  '/integrations/instagram': portrait('/images/journey/cocoa-rose-product.webp'),
+  '/use-cases/fragrances': portrait('/images/shops/fragrance.webp'),
+  '/use-cases/skincare-haircare-makers': portrait('/images/shops/skincare-haircare.webp'),
+  '/use-cases/daily-drop-shops': { src: '/images/shops/daily-drop.webp', width: 1536, height: 1024 },
+};
+
+export function heroPhotoForPath(path: string): HeroPhoto | undefined {
+  return HERO_PHOTOS[path];
+}

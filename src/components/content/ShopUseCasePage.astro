@@ -21,7 +21,7 @@ const messages: ShopDMMessage[] = story.messages.map((message) => ({
   text: message.text,
 }));
 const container = 'mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10';
-const sectionHeading = 'font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.04] tracking-tight text-ink [text-wrap:balance]';
+const sectionHeading = 'font-display text-[clamp(2.25rem,1.4rem+3.2vw,4rem)] font-semibold leading-[0.98] tracking-tight text-ink [text-wrap:balance]';
 ---
 
 <article>
@@ -29,7 +29,7 @@ const sectionHeading = 'font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-sem
     <div class={container}>
       <header class="grid gap-9 lg:grid-cols-12 lg:items-end">
         <div class="lg:col-span-8">
-          <h1 class="max-w-[16ch] animate-fade-in-up font-display text-[clamp(2.5rem,1.7rem+3.6vw,4.75rem)] font-semibold leading-[0.96] tracking-tighter text-ink [animation-delay:80ms] [text-wrap:balance]">
+          <h1 class="max-w-[16ch] animate-fade-in-up font-display text-[clamp(2.75rem,1.5rem+5vw,6rem)] font-semibold leading-[0.94] tracking-tighter text-ink [animation-delay:80ms] [text-wrap:balance]">
             {hero.h1}
           </h1>
           {hero.intro && (
@@ -47,7 +47,7 @@ const sectionHeading = 'font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-sem
           {cta && (
             <a
               href={cta.href}
-              class="mt-8 inline-flex min-h-[50px] animate-fade-in-up items-center rounded-full bg-fern px-8 text-base font-medium text-ink transition-colors duration-200 [animation-delay:240ms] hover:bg-fern-deep hover:text-paper"
+              class="mt-8 inline-flex min-h-12 animate-fade-in-up items-center rounded-full bg-fern px-8 text-base font-semibold text-ink transition duration-300 [animation-delay:240ms] hover:-translate-y-0.5 hover:bg-fern-deep hover:text-paper active:translate-y-0 active:scale-[0.98] motion-reduce:hover:translate-y-0"
               data-shop-use-case-cta
               data-cta-tracking={cta.trackingKey}
               data-cta-label={cta.label}
@@ -62,7 +62,7 @@ const sectionHeading = 'font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-sem
       <section class="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-12 lg:items-center lg:gap-16" aria-labelledby="shop-example-heading">
         <figure class="w-full max-w-[34rem] animate-fade-in-up [animation-delay:260ms] lg:col-span-6 lg:max-w-none">
           <div class="relative">
-            <div class="aspect-[4/5] overflow-hidden rounded-xl bg-paper-raised shadow-[0_30px_90px_rgba(19,30,9,0.16)] sm:rounded-2xl">
+            <div class="aspect-[4/5] overflow-hidden rounded-xl bg-paper-raised shadow-[0_30px_90px_rgba(19,30,9,0.16)] sm:rounded-2xl lg:-rotate-1">
               <img
                 src={story.image}
                 alt={story.imageAlt}
@@ -75,7 +75,7 @@ const sectionHeading = 'font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-sem
                 class="h-full w-full object-cover"
               />
             </div>
-            <div class="relative z-10 mx-3 -mt-24 sm:absolute sm:inset-x-[6%] sm:bottom-[5%] sm:mx-0 sm:mt-0">
+            <div class="relative z-10 mx-3 -mt-24 sm:absolute sm:bottom-[5%] sm:left-[6%] sm:right-[-4%] sm:mx-0 sm:mt-0 lg:right-[-10%] lg:rotate-1">
               <ShopDMCard shopName={story.shopName} initials={story.shopInitials} messages={messages} />
             </div>
           </div>
@@ -98,8 +98,8 @@ const sectionHeading = 'font-display text-[clamp(2rem,1.5rem+2vw,3rem)] font-sem
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 lg:py-32" aria-labelledby="shop-details-heading">
-    <div class={`${container} grid gap-10 lg:grid-cols-12 lg:gap-16`}>
+  <section class="px-3 py-2 sm:px-6 lg:px-10" aria-labelledby="shop-details-heading">
+    <div class="mx-auto grid max-w-[1440px] gap-10 rounded-2xl bg-paper-raised px-5 py-16 sm:px-10 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:px-14 lg:py-24">
       <h2 id="shop-details-heading" class={`lg:col-span-5 ${sectionHeading}`}>
         {story.secondHeading}
       </h2>

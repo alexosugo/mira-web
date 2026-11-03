@@ -21,7 +21,7 @@ describe('Pricing page interactive pricing components', () => {
     (_page, Component) => {
       render(<Component />);
 
-      expect(screen.getByText('Recommended', { selector: '[aria-hidden="false"]' })).toBeInTheDocument();
+      expect(screen.getByText('Recommended', { ignore: '[aria-hidden="true"]' })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'Start free' })).toHaveAttribute('href', 'https://app.sellogram.co');
       expect(screen.getByRole('link', { name: 'Upgrade to Pro' })).toHaveAttribute('href', 'https://app.sellogram.co');
       fireEvent.click(screen.getByRole('button', { name: 'Ask about Elite' }));

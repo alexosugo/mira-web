@@ -20,7 +20,7 @@ describe('homepage voice', () => {
 
     const heading = screen.getByRole('heading', { name: 'Your inbox has one job: to sell' });
     expect(heading).toBeInTheDocument();
-    expect(heading.className).toContain('5.5rem');
+    expect(heading.className).toContain('7.5rem');
     expect(container.querySelector('.border-t')).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Start free' })).toBeInTheDocument();
     expect(screen.getByText(/Tricky questions come to you/)).toBeInTheDocument();

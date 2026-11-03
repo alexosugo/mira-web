@@ -1,7 +1,7 @@
 ---
 /**
- * Steps as a connected vertical timeline: hairline rings joined by a rail,
- * revealed item-by-item on scroll (IntersectionObserver adds .is-seen;
+ * Steps as a connected checklist: tick rings joined by a rail, the last step
+ * filled, revealed item-by-item on scroll (IntersectionObserver adds .is-seen;
  * without JS everything is visible).
  */
 import type { ListItem } from '../../content/pages';
@@ -21,18 +21,22 @@ const { heading, items } = Astro.props;
     </h2>
   )}
   <ol class="relative mt-12 max-w-3xl">
-    <span class="absolute bottom-8 left-6 top-6 w-px bg-line sm:left-7" aria-hidden="true"></span>
-    {items.map((item) => (
-      <li class="timeline-step relative grid grid-cols-[3rem_1fr] gap-5 pb-12 last:pb-0 sm:grid-cols-[3.5rem_1fr] sm:gap-7" data-timeline-step>
+    <span class="absolute bottom-8 left-5 top-6 w-0.5 rounded-full bg-fern-deep/25" aria-hidden="true"></span>
+    {items.map((item, index) => (
+      <li class="timeline-step relative grid grid-cols-[2.5rem_1fr] gap-5 pb-10 last:pb-0 sm:gap-7" data-timeline-step>
         <span
-          class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-line bg-paper transition-colors duration-500 sm:h-14 sm:w-14 [.is-seen_&]:border-fern"
+          class={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-500 ${
+            index === items.length - 1
+              ? 'bg-fern text-ink'
+              : 'border-2 border-ink-faint/40 bg-paper-raised text-ink-faint/60 [.is-seen_&]:border-fern-deep [.is-seen_&]:text-fern-deep'
+          }`}
           aria-hidden="true"
         >
-          <span class="h-2 w-2 rounded-full bg-ink-faint transition-colors duration-500 [.is-seen_&]:bg-fern-deep"></span>
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 0 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" /></svg>
         </span>
-        <div class="pt-2 sm:pt-3">
+        <div class="pt-1.5">
           <h3 class="font-display text-xl font-semibold text-ink sm:text-2xl">{item.title}</h3>
-          <p class="mt-2 max-w-xl text-base leading-relaxed text-ink-light">{item.body}</p>
+          <p class="mt-2 max-w-xl text-base leading-relaxed text-ink-light [text-wrap:pretty]">{item.body}</p>
         </div>
       </li>
     ))}

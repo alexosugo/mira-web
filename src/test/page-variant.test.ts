@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { decorForPath, variantForPath } from '../lib/page-variant';
+import { existsSync } from 'node:fs';
+import { decorForPath, heroPhotoForPath, variantForPath } from '../lib/page-variant';
 import { ROUTES } from '../lib/routes';
 
 describe('variantForPath', () => {
@@ -50,5 +51,18 @@ describe('decorForPath', () => {
   it('returns undefined for paths without decor', () => {
     expect(decorForPath('/pricing')).toBeUndefined();
     expect(decorForPath('/use-cases/unknown')).toBeUndefined();
+  });
+});
+
+describe('heroPhotoForPath', () => {
+  it('points every hero photo at a file that exists in public', () => {
+    for (const route of ROUTES) {
+      const photo = heroPhotoForPath(route.path);
+      if (photo) expect(existsSync(`public${photo.src}`)).toBe(true);
+    }
+  });
+
+  it('returns undefined for document pages', () => {
+    expect(heroPhotoForPath('/privacy')).toBeUndefined();
   });
 });

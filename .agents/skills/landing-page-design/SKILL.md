@@ -15,6 +15,8 @@ This skill has two halves. **Part A** decides what the page says and how it is s
 
 Apply to all web UI work: landing pages, marketing sites, components, dashboards, prototypes, and design reviews. When a rule here conflicts with a framework default, this file wins. When the user's explicit prompt conflicts with a rule, the user wins.
 
+**In this repo,** `PRODUCT.md`, `brand/foundations.md`, `docs/voice-and-tone.md` and `tailwind.config.js` win over Part B and over the copy rules here. Keep the brand fonts, palette, easing and motion; use this skill for page strategy, structure and state coverage.
+
 **Companion skill.** For upgrading an *existing* site rather than building a new one, use `redesign-existing-projects` ([github.com/elayadesign/redesign-skill](https://github.com/elayadesign/redesign-skill)). It diagnoses generic patterns and defers to this file for every concrete value.
 
 ---
